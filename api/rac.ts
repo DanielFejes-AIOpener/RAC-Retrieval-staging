@@ -4,6 +4,9 @@ import { resolveRefs } from '../lib/resolver';
 import { applyInheritance } from '../lib/merger';
 import { stripMeta, extractSection } from '../lib/utils';
 
+// Valid layers
+const VALID_LAYERS = ['CONFIG', 'CLIENT', 'LOGIC', 'OPS', 'ORG', 'PACK', 'ROLE', 'USE_CASE', 'WORKFLOW'];
+
 // Layers that require client_id
 const LAYERS_NEEDING_CLIENT = ['USE_CASE', 'OPS', 'ORG', 'PACK', 'WORKFLOW'];
 
@@ -11,6 +14,44 @@ interface RequestBody {
   path: string;           // Required: "USE_CASE/COPYWRITER" or "USE_CASE/COPYWRITER/prohibitions"
   client_id: string;      // Required: "AI_OPENER"
   include_client?: boolean; // Optional: default true
+}
+
+/**
+ * Get all available paths for a layer
+ */
+function getLayerPaths(layer: string): string[] {
+  const index = getFileIndex();
+  const paths: string[] = [];
+  
+  for (const key of Object.keys(index)) {
+    if (key.startsWith(`${layer}_`) || key.startsWith(`${layer}:`)) {
+      const match = key.match(/_\d+_(.+)$/);
+      if (match) {
+        paths.push(`${layer}/${match[1]}`);
+      }
+    }
+  }
+  
+  return paths;
+}
+
+/**
+ * Get top-level sections from content
+ */
+function getAvailableSections(content: any): string[] {
+  if (!content || typeof content !== 'object' || Array.isArray(content)) {
+    return [];
+  }
+  return Object.keys(content).filter(k => k !== 'meta' && k !== 'extends');
+}
+
+/**
+ * Try to extract short name from a full file ID
+ * e.g., "ORG_02_BRAND_POSITIONING" -> "BRAND_POSITIONING"
+ */
+function extractShortName(fileId: string): string | null {
+  const match = fileId.match(/^[A-Z_]+_\d+_(.+)$/);
+  return match ? match[1] : null;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -28,7 +69,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({
       error: true,
       code: 'INVALID_PATH',
-      message: 'path is required. Format: LAYER/FILE_ID or LAYER/FILE_ID/SECTION'
+      message: 'path is required. Format: LAYER/FILE_ID or LAYER/FILE_ID/SECTION',
+      valid_layers: VALID_LAYERS,
+      example: 'USE_CASE/COPYWRITER'
     });
   }
 
@@ -39,13 +82,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({
       error: true,
       code: 'INVALID_PATH',
-      message: 'path is required. Format: LAYER/FILE_ID or LAYER/FILE_ID/SECTION'
+      message: 'path is required. Format: LAYER/FILE_ID or LAYER/FILE_ID/SECTION',
+      valid_layers: VALID_LAYERS,
+      example: 'USE_CASE/COPYWRITER'
     });
   }
 
   const layer = pathParts[0].toUpperCase();
   let fileId = pathParts[1] || '';
   let sectionPath = pathParts.slice(2).join('.');
+
+  // Validate layer
+  if (!VALID_LAYERS.includes(layer)) {
+    return res.status(400).json({
+      error: true,
+      code: 'INVALID_LAYER',
+      message: `Invalid layer: ${layer}`,
+      valid_layers: VALID_LAYERS
+    });
+  }
 
   // Special case: CONFIG layer
   if (layer === 'CONFIG') {
@@ -63,30 +118,47 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({
       error: true,
       code: 'CLIENT_REQUIRED',
-      message: 'client_id is required for this path',
+      message: `client_id is required for ${layer} paths`,
       available_clients: getAvailableClients()
     });
   }
 
   try {
     // Find the file
-    const filePath = findFileByPath(layer, fileId);
+    let filePath = findFileByPath(layer, fileId);
+    
+    // If not found, check if user provided full ID instead of short name
+    if (!filePath && fileId) {
+      const shortName = extractShortName(fileId);
+      if (shortName) {
+        filePath = findFileByPath(layer, shortName);
+        if (filePath) {
+          // Auto-correct and continue, but note in response
+          fileId = shortName;
+        }
+      }
+    }
     
     if (!filePath) {
-      const index = getFileIndex();
-      const suggestions = Object.keys(index)
-        .filter(k => k.includes(layer))
-        .slice(0, 5)
-        .map(k => {
-          const match = k.match(/_\d+_(.+)$/);
-          return match ? `${layer}/${match[1]}` : k;
-        });
+      const availablePaths = getLayerPaths(layer);
+      
+      // Try to find similar paths for suggestions
+      const suggestions = availablePaths.slice(0, 10);
+      
+      // Check if user used wrong format
+      const shortName = extractShortName(fileId);
+      let hint = '';
+      if (shortName) {
+        hint = `Did you mean "${layer}/${shortName}"? Use short names, not full file IDs.`;
+      }
       
       return res.status(404).json({
         error: true,
         code: 'NOT_FOUND',
         message: `Path not found: ${pathString}`,
-        suggestions
+        hint: hint || 'Use short names like "COPYWRITER", not "USE_CASE_04_COPYWRITER"',
+        suggestions,
+        available_in_layer: availablePaths
       });
     }
 
@@ -112,14 +184,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Extract section if specified
     if (sectionPath) {
-      content = extractSection(content, sectionPath);
-      if (content === null || content === undefined) {
+      const availableSections = getAvailableSections(content);
+      const extracted = extractSection(content, sectionPath);
+      
+      if (extracted === null || extracted === undefined) {
         return res.status(404).json({
           error: true,
           code: 'SECTION_NOT_FOUND',
-          message: `Section not found: ${sectionPath}`
+          message: `Section not found: ${sectionPath}`,
+          available_sections: availableSections
         });
       }
+      content = extracted;
     }
 
     // Build response
@@ -140,6 +216,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           id: clientId,
           ...clientContent
         };
+      } else {
+        // Client not found - add warning
+        response.client_warning = `Client '${clientId}' not found`;
+        response.available_clients = getAvailableClients();
       }
     }
 
