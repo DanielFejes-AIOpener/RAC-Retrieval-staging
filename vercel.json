@@ -9,6 +9,10 @@
   ],
   "routes": [
     {
+      "src": "/api/rac",
+      "dest": "/api/rac.ts"
+    },
+    {
       "src": "/api/context/(.*)",
       "dest": "/api/context/[...path].ts?path=$1"
     },
