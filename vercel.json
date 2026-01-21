@@ -10,7 +10,7 @@
   "routes": [
     {
       "src": "/api/context/(.*)",
-      "dest": "/api/context/[...path].ts"
+      "dest": "/api/context/[...path].ts?path=$1"
     },
     {
       "src": "/api/file/(.*)",
