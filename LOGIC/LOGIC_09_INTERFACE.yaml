@@ -1,0 +1,379 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# LOGIC_09_INTERFACE.yaml
+# ══════════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-12-11"
+  purpose: "Interface standards, output formatting, and HITL triggers (SSOT)"
+  notes: "v2.0 - Complete HITL triggers with confidence bands and escalation"
+  tags: [logic, interface, hitl, ux, output, ssot]
+
+# ══════════════════════════════════════════════════════════════════════════════
+# HITL TRIGGERS (SSOT)
+# ══════════════════════════════════════════════════════════════════════════════
+
+hitl_triggers:
+  description: "Conditions requiring human intervention"
+  
+  confidence_bands:
+    description: "Action based on agent confidence score (0.0 - 1.0)"
+    
+    high_confidence:
+      range: [0.85, 1.0]
+      action: "Proceed autonomously"
+      hitl_required: false
+      logging: "standard"
+      
+    medium_confidence:
+      range: [0.60, 0.85]
+      action: "Proceed with disclosure"
+      hitl_required: false
+      disclosure: "Flag uncertainty to user"
+      disclosure_template: "Note: I have moderate confidence in this response."
+      logging: "enhanced"
+      
+    low_confidence:
+      range: [0.40, 0.60]
+      action: "Request confirmation"
+      hitl_required: true
+      prompt_template: "I'm not certain about this. Please confirm: {action}"
+      logging: "detailed"
+      
+    very_low_confidence:
+      range: [0.0, 0.40]
+      action: "Escalate to human"
+      hitl_required: true
+      prompt_template: "I cannot proceed confidently. Human decision required for: {action}"
+      logging: "full"
+      block_autonomous: true
+
+  human_required:
+    description: "Actions that ALWAYS require human approval (immutable)"
+    immutable: true
+    
+    actions:
+      - trigger: "budget_threshold_exceeded"
+        condition: "Proposed spend > approved budget"
+        action: "Block until human approval"
+        escalation_level: 2
+        
+      - trigger: "legal_compliance_claim"
+        condition: "Content includes legal/regulatory assertions"
+        action: "Flag for legal review"
+        escalation_level: 3
+        
+      - trigger: "competitor_disparagement"
+        condition: "Negative claims about competitors"
+        action: "Block until human approval"
+        escalation_level: 2
+        
+      - trigger: "pricing_commitment"
+        condition: "Any pricing or discount commitment"
+        action: "Block until human approval"
+        escalation_level: 2
+        
+      - trigger: "external_publication"
+        condition: "Content will be published externally"
+        action: "Require human review before publish"
+        escalation_level: 1
+        
+      - trigger: "pii_handling"
+        condition: "Processing personally identifiable information"
+        action: "Confirm consent and handling procedures"
+        escalation_level: 2
+        
+      - trigger: "high_risk_workflow"
+        condition: "workflow.risk_level == 'high'"
+        action: "Human approval at entry and exit"
+        escalation_level: 2
+        
+      - trigger: "deadline_at_risk"
+        condition: "Estimated completion > deadline"
+        action: "Alert human, request guidance"
+        escalation_level: 1
+        
+      - trigger: "irreversible_action"
+        condition: "Action cannot be undone"
+        action: "Require explicit human confirmation"
+        escalation_level: 2
+        
+      - trigger: "evidence_tier_insufficient"
+        condition: "Only tier_3 evidence for quantitative claim"
+        action: "Flag for verification"
+        escalation_level: 1
+        
+      - trigger: "ai_policy_approval_required"
+        condition: "Action in ai_policy.approval_required_for"
+        action: "Block until human approval per ai_policy"
+        escalation_level: 2
+
+  escalation_path:
+    description: "How HITL requests are routed"
+    
+    levels:
+      1:
+        name: "Primary contact"
+        source: "CLIENT.client_identity.contact.primary OR ORG.agency_identity.contact.primary_email"
+        timeout_hours: 24
+        
+      2:
+        name: "Approver with relevant scope"
+        source: "CLIENT.client_identity.contact.approver OR ORG designated approver"
+        timeout_hours: 12
+        
+      3:
+        name: "Agency operations lead"
+        source: "ORG.agency_identity.contact.escalation_email"
+        timeout_hours: 4
+        
+      4:
+        name: "System administrator"
+        source: "CONFIG defined admin contact"
+        timeout_hours: 2
+        
+    timeout:
+      default_hours: 24
+      urgent_hours: 4
+      action_on_timeout: "Pause workflow, notify next level"
+      max_escalations: 3
+      
+    notification:
+      channels: ["email", "slack"]
+      include_context: true
+      include_recommendation: true
+
+# ══════════════════════════════════════════════════════════════════════════════
+# OUTPUT STANDARDS (SSOT)
+# ══════════════════════════════════════════════════════════════════════════════
+
+output_standards:
+  description: "Required standards for all agent outputs"
+  
+  accessibility:
+    description: "Non-negotiable accessibility requirements (immutable)"
+    immutable: true
+    requirements:
+      - requirement: "Alt text for all images"
+        standard: "WCAG 2.1 AA"
+        
+      - requirement: "Semantic heading hierarchy"
+        description: "H1 --> H2 --> H3, no skipped levels"
+        
+      - requirement: "Sufficient color contrast"
+        ratio: "4.5:1 for normal text, 3:1 for large text"
+        
+      - requirement: "Screen reader compatible"
+        description: "No content conveyed solely through visual means"
+        
+      - requirement: "Keyboard navigable"
+        description: "All interactive elements accessible via keyboard"
+        
+      - requirement: "Clear link text"
+        description: "Links describe destination, avoid 'click here'"
+        
+  dei_requirements:
+    description: "Non-negotiable DEI requirements (immutable)"
+    immutable: true
+    requirements:
+      - requirement: "Inclusive language"
+        examples: ["they/them for unknown gender", "partner vs husband/wife"]
+        
+      - requirement: "Avoid stereotypes"
+        description: "No assumptions based on demographics"
+        
+      - requirement: "Represent diversity in examples"
+        description: "Vary names, contexts, scenarios"
+        
+      - requirement: "Gender-neutral defaults"
+        description: "Use neutral terms unless specific gender known"
+        
+      - requirement: "Culturally sensitive"
+        description: "Consider global audience, avoid idioms"
+        
+      - requirement: "Ability-inclusive language"
+        description: "Avoid ableist terms, focus on capability not limitation"
+        
+  formatting:
+    description: "Standard formatting rules"
+    rules:
+      - rule: "Markdown for structured content"
+        application: "Reports, documentation, deliverables"
+        
+      - rule: "Clear heading hierarchy"
+        levels: ["#", "##", "###"]
+        max_depth: 4
+        
+      - rule: "Bulleted lists for 3+ items"
+        exception: "Ordered lists for sequential steps"
+        
+      - rule: "Tables for comparative data"
+        requirements: ["Header row", "Consistent columns"]
+        
+      - rule: "Code blocks for technical content"
+        syntax_highlighting: true
+        
+      - rule: "Blockquotes for citations"
+        attribution_required: true
+
+# ══════════════════════════════════════════════════════════════════════════════
+# UX PATTERNS
+# ══════════════════════════════════════════════════════════════════════════════
+
+ux_patterns:
+  description: "User experience patterns for agent interactions"
+  
+  response_structure:
+    default:
+      - "Direct answer or action"
+      - "Supporting context (if needed)"
+      - "Next steps or options"
+      
+    complex_response:
+      - "TL;DR summary"
+      - "Detailed explanation"
+      - "Evidence and sources"
+      - "Recommendations"
+      
+  numbered_choices:
+    description: "Present options as numbered list for easy selection"
+    enabled: true
+    format: "1. Option A\n2. Option B\n3. Option C"
+    max_choices: 7
+    default_highlight: true
+    
+  progressive_disclosure:
+    description: "Layer information from summary to detail"
+    pattern:
+      layer_1: "TL;DR / Key takeaway"
+      layer_2: "Main content / explanation"
+      layer_3: "Supporting detail / evidence"
+    expansion_prompt: "Would you like more detail on any of these points?"
+    
+  error_communication:
+    structure:
+      - "What happened (clear, non-technical)"
+      - "Why it matters"
+      - "What to do next"
+    tone: "Helpful, not apologetic"
+    avoid: ["Technical jargon", "Blame", "Excessive apology"]
+    
+  confirmation_patterns:
+    high_stakes:
+      template: "I'm about to {action}. This {consequence}. Confirm? [Yes/No]"
+      require_explicit: true
+      
+    medium_stakes:
+      template: "Proceeding with {action}. Say 'stop' to pause."
+      require_explicit: false
+      
+  progress_indicators:
+    enabled: true
+    for_actions:
+      - "Multi-step processes"
+      - "Long-running operations"
+      - "Workflow phases"
+    format: "Step {current} of {total}: {description}"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# AI DISCLOSURE
+# ══════════════════════════════════════════════════════════════════════════════
+
+ai_disclosure:
+  description: "Requirements for disclosing AI-generated content"
+  
+  required_for:
+    - "External publications"
+    - "Client deliverables (unless waived)"
+    - "Content entering public domain"
+    - "Limited-risk AI Act scenarios"
+    
+  disclosure_templates:
+    standard: "This content was created with AI assistance."
+    detailed: "This content was generated using AI technology and reviewed by [human reviewer]."
+    minimal: "AI-assisted"
+    
+  placement:
+    documents: "Footer or metadata"
+    emails: "Signature area"
+    social_posts: "End of post or bio link"
+    
+  waiver:
+    allowed: true
+    requires: "Explicit client approval documented"
+    stored_in: "CLIENT.preferences.ai_disclosure_waived"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TRACE OUTPUT PATTERNS
+# ══════════════════════════════════════════════════════════════════════════════
+
+trace_output:
+  description: "How to present trace and audit information"
+  
+  layers:
+    user_facing:
+      description: "What users see"
+      includes:
+        - "Action summaries"
+        - "Key decisions"
+        - "Sources used"
+      excludes:
+        - "Internal model prompts"
+        - "System IDs"
+        - "Tool names"
+        
+    audit_layer:
+      description: "Full trace for compliance"
+      includes:
+        - "All decisions with reasoning"
+        - "Evidence citations"
+        - "HITL checkpoints"
+        - "Quality gate results"
+        - "Timestamps"
+        
+  formatting:
+    trace_marker: "#trace"
+    detail_marker: "#detail"
+    redact_patterns:
+      - "internal_id"
+      - "model_prompt"
+      - "api_key"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# LANGUAGE HANDLING
+# ══════════════════════════════════════════════════════════════════════════════
+
+language_handling:
+  description: "Language detection and output rules"
+  
+  detection:
+    method: "auto-detect from input"
+    fallback: "$ref: CONFIG_00_INSTANCE#instance.defaults.language.fallback"
+    
+  interaction_language:
+    description: "Language for conversation with user"
+    source_priority:
+      1: "DEMO.language.interaction (if demo_mode)"
+      2: "CLIENT.preferences.language.primary"
+      3: "ORG.defaults.language.primary"
+      4: "CONFIG.instance.defaults.language.output"
+      5: "match_input"
+      
+  output_language:
+    description: "Language for deliverables"
+    source_priority:
+      1: "DEMO.language.output (if demo_mode)"
+      2: "CLIENT.preferences.language.deliverables"
+      3: "ORG.defaults.deliverables.default_language"
+      4: "match_interaction"
+      
+  supported_languages:
+    - code: "nl"
+      name: "Dutch"
+    - code: "en"
+      name: "English"
+    - code: "de"
+      name: "German"
+    - code: "fr"
+      name: "French"
