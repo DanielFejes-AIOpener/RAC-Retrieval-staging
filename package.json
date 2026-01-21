@@ -1,0 +1,27 @@
+{
+  "name": "rag-rac",
+  "version": "1.0.0",
+  "description": "RAC Context Engine API",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node test_impl.ts",
+    "sim": "ts-node test_api_sim.ts",
+    "dev": "vercel dev",
+    "build": "tsc",
+    "deploy": "vercel --prod"
+  },
+  "keywords": ["rac", "context", "api", "ai"],
+  "author": "AI Opener",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "@vercel/node": "^5.5.25",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "yaml": "^2.8.2"
+  },
+  "dependencies": {
+    "yaml": "^2.8.2"
+  }
+}

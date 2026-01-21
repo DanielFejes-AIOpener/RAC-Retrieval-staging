@@ -1,0 +1,239 @@
+# ORG_03_AUDIENCE_MESSAGING.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG audience definitions and messaging canon (baseline)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2026-01-06"
+  purpose: "ORG audience definitions and messaging canon (baseline)"
+  notes: "Phase I required. Combines discovery prompts (client-specific) with industry defaults (research-based)."
+  tags: [org, ssot, messaging, audience]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AUDIENCES — ICPs and Personas
+# ═══════════════════════════════════════════════════════════════════════════
+
+audiences:
+  # Agent uses generic B2B professional targeting if empty
+  icps: []
+  # Structure:
+  # - name: "Scale-up Marketing Team"
+  #   company_size: "50-250 employees"
+  #   industries: ["SaaS", "Tech"]
+  #   pain_points: ["Capacity", "Costs", "Consistency"]
+  
+  personas: []
+  # Structure:
+  # - name: "Marketing Manager"
+  #   goals: ["Deliver more", "Prove ROI"]
+  #   frustrations: ["Budget", "Tools"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING (Client-specific — discovery prompts)
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING — Key messages and CTAs
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging:
+  # Client-specific key messages - agent uses value-focused framing if empty
+  key_messages: []
+  # Structure:
+  # - message: "Primary value proposition"
+  #   supporting_points: ["Point 1", "Point 2"]
+  
+  ctas:
+    # Source: B2B Marketing Messaging Best Practices research (2025)
+    
+    high_converting_phrases:
+      description: "Action-oriented, benefit-focused CTAs that convert"
+      awareness:
+        - "Learn More"
+        - "Read the Full Guide"
+        - "Discover [Topic]"
+        - "Watch Webinar"
+        - "Explore Solutions"
+        - "Download the Report"
+      consideration:
+        - "View Pricing"
+        - "See a Live Demo"
+        - "Get a Free Quote"
+        - "Compare Plans"
+        - "How It Works"
+        - "Take a Product Tour"
+        - "Download Case Study"
+      decision:
+        - "Start Your Free Trial"
+        - "Request a Demo"
+        - "Contact Sales"
+        - "Get Started Now"
+        - "Schedule a 15-Minute Call"
+        - "Sign Up Today"
+    
+    phrases_to_avoid:
+      description: "Generic or demotivating CTAs that underperform"
+      items:
+        - "Submit"  # bland, no context or incentive
+        - "Send"  # no motivation
+        - "Click Here"  # too generic, bad for accessibility
+        - "'Learn More' as primary CTA"  # too weak for decision stage
+        - "'Buy Now' for high-ticket B2B"  # too aggressive for research stage
+      note: "Button text should be part of the call-to-action itself"
+    
+    best_practices:
+      - "Use strong verbs: Get, Start, Explore, Claim, Download"
+      - "Add value hint: 'See It in Action', 'Claim Your Free Ebook'"
+      - "Add urgency when appropriate: 'Book your spot – Limited seats'"
+      - "Match CTA to buyer's stage readiness"
+      - "One primary CTA per page/email performs best"
+      - "Make next step clear: user should know what happens after click"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONSTRAINTS — NEVER-SAY LIST (Industry defaults + client additions)
+# ═══════════════════════════════════════════════════════════════════════════
+
+constraints:
+  description: "Never-say list, claims boundaries, tone constraints."
+  
+  never_say:
+    description: "Words and phrases to avoid in all content."
+    
+    # Source: B2B Marketing Messaging Best Practices research (2025)
+    
+    buzzwords_to_avoid:
+      description: "88% of B2B decision-makers say buzzwords make companies less trustworthy"
+      items:
+        - "revolutionair"
+        - "disruptief"
+        - "game-changing"
+        - "cutting-edge"
+        - "world-class"
+        - "best-in-class"
+        - "bleeding-edge"
+        - "industry-leading"
+        - "innovative"  # everyone claims this, buyers don't trust it
+        - "synergy"
+        - "leverage"
+        - "paradigm shift"
+        - "move the needle"
+        - "circle back"
+        - "low-hanging fruit"
+        - "boiling the ocean"
+        - "awesome"
+        - "amazing"
+    
+    vague_claims_to_avoid:
+      description: "Subjective/unverifiable claims that trigger skepticism"
+      items:
+        - "de beste"
+        - "marktleider"
+        - "leading provider"
+        - "uniek"
+        - "nummer 1"
+        - "toonaangevend"
+        - "we try to provide"  # weak, non-committal
+        - "I think our product is"  # undermines confidence
+        - "some of the best"  # invites doubt
+      note: "These require evidence to use; without proof, avoid or rephrase"
+    
+    legal_risk_phrases:
+      description: "EU/NL advertising regulations prohibit misleading claims"
+      source: "Dutch Advertising Code (Nederlandse Reclame Code)"
+      items:
+        - "gegarandeerd"
+        - "100% zeker"
+        - "100% effective"
+        - "altijd"
+        - "nooit"
+        - "bewezen"  # without source
+        - "de enige"  # the only - unless verifiable
+        - "gratis"  # if not truly free
+        - "free"  # if hidden costs exist
+        - "#1"  # without substantiation
+        - "fastest"  # without benchmark data
+        - "award-winning"  # if outdated or misleading
+      note: "Puffery (obvious exaggeration) is tolerated, but specific claims require proof"
+    
+    dutch_eu_specific_avoid:
+      description: "Language that doesn't translate well to NL/EU audiences"
+      items:
+        - "klantjes"
+        - "probleempje"
+        - "even snel"
+        - "makkelijk"  # often underestimates complexity
+        - "Fortune 500"  # US-centric reference
+        - "awesome"  # US hype doesn't land in EU
+        - "amazing"  # seen as embellishment
+        - "the best ever"  # comes across as arrogant
+      note: "Europeans appreciate modest, straightforward tone over US-style enthusiasm"
+    
+    # Client-specific additions (override in CLIENT layer)
+    client_additions: []
+  
+  must_include:
+    # Mandatory elements for compliance (e.g., disclaimers, legal texts)
+    # Most marketing content doesn't need this - skip if empty
+    items: []
+
+  tone_constraints:
+    description: "Boundaries for tone of voice."
+    
+    # Source: B2B Marketing Messaging Best Practices research (2025)
+    
+    tone_profiles:
+      description: "Common B2B tone options - choose based on brand and audience"
+      
+      professional_authoritative:
+        description: "Formal, no-nonsense, expertise-focused"
+        use_when: "Finance, legal, enterprise IT, consulting"
+        characteristics: ["clear", "confident", "fact-focused", "logical"]
+        example: "Research shows that... Our analysis indicates..."
+        
+      conversational_friendly:
+        description: "Relaxed, personable, yet professional"
+        use_when: "SaaS, creative industries, startups"
+        characteristics: ["warm", "approachable", "human", "uses contractions"]
+        example: "We get it - compliance is complicated. That's why we..."
+        brands_example: "Slack, Mailchimp"
+        
+      technical_informative:
+        description: "Precise, detailed, expert-oriented"
+        use_when: "IT, engineering, scientific products"
+        characteristics: ["accurate", "terminology-rich", "detailed"]
+        example: "The API supports RESTful endpoints with OAuth 2.0..."
+        brands_example: "Cisco documentation"
+        
+      empathetic_solution_oriented:
+        description: "Understanding, supportive, customer-centric"
+        use_when: "Healthcare B2B, HR services, change management"
+        characteristics: ["reassuring", "sincere", "uses 'you' language"]
+        example: "We know supporting employee wellbeing is challenging..."
+    
+    defaults:
+      formality_range: ["business_casual", "professional"]
+      emotion_range: ["confident", "helpful", "pragmatic"]
+      humor: "sparingly"
+      
+    channel_adjustments:
+      email: "Slightly warmer, personal greeting, conversational"
+      landing_page: "Clear, benefit-focused, supports spoken narrative"
+      linkedin: "Thought leadership, personal voice, storytelling OK"
+      documentation: "Technical, precise, scannable"
+    
+    # Client-specific overrides (set in CLIENT layer)
+    overrides: {}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE LANGUAGE — Optional
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitive_language:
+  # Agent avoids competitor name-dropping if not configured
+  # Uses safe generic comparisons ("Unlike traditional solutions...")
+  
+  allowed_comparisons: []
+  # e.g. "Unlike traditional agencies, we..."
+  
+  disallowed_comparisons: []
+  # e.g. specific competitor names without evidence

@@ -1,0 +1,463 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# LOGIC_07_CAPABILITIES.yaml
+# ══════════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-12-11"
+  purpose: "Capability catalog with maturity levels (SSOT)"
+  notes: "v2.0 - Complete capability dictionary for role assignments"
+  tags: [logic, capabilities, ssot]
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CAPABILITY CATALOG (SSOT)
+# ══════════════════════════════════════════════════════════════════════════════
+
+capability_catalog:
+  description: "Master list of all agent capabilities"
+  
+  capabilities:
+    # Strategic Capabilities
+    strategic_analysis:
+      id: "cap_strategic_analysis"
+      name: "Strategic Analysis"
+      description: "Analyze market, competitive, and business contexts to inform strategy"
+      category: "strategic"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_05_STRATEGIST"
+        - "ROLE_04_ANALYST"
+      outputs:
+        - "Market analysis"
+        - "Competitive intelligence"
+        - "SWOT analysis"
+        - "Strategic recommendations"
+        
+    strategic_planning:
+      id: "cap_strategic_planning"
+      name: "Strategic Planning"
+      description: "Develop comprehensive marketing and campaign strategies"
+      category: "strategic"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_05_STRATEGIST"
+      outputs:
+        - "Marketing strategy"
+        - "Campaign plans"
+        - "Go-to-market plans"
+        - "Brand strategy"
+        
+    # Research Capabilities
+    market_research:
+      id: "cap_market_research"
+      name: "Market Research"
+      description: "Conduct primary and secondary market research"
+      category: "research"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_04_ANALYST"
+      outputs:
+        - "Market reports"
+        - "Industry analysis"
+        - "Trend reports"
+        
+    audience_research:
+      id: "cap_audience_research"
+      name: "Audience Research"
+      description: "Research and develop audience personas and segments"
+      category: "research"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_04_ANALYST"
+        - "ROLE_05_STRATEGIST"
+      outputs:
+        - "Buyer personas"
+        - "Audience segments"
+        - "Customer journey maps"
+        
+    competitive_research:
+      id: "cap_competitive_research"
+      name: "Competitive Research"
+      description: "Analyze competitors and competitive landscape"
+      category: "research"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_04_ANALYST"
+      outputs:
+        - "Competitor profiles"
+        - "Competitive analysis"
+        - "Battlecards"
+        
+    # Content Capabilities
+    copywriting:
+      id: "cap_copywriting"
+      name: "Copywriting"
+      description: "Create persuasive marketing copy across channels"
+      category: "content"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_02_COPYWRITER"
+      outputs:
+        - "Ad copy"
+        - "Website copy"
+        - "Email copy"
+        - "Social media copy"
+        
+    long_form_writing:
+      id: "cap_long_form_writing"
+      name: "Long-Form Writing"
+      description: "Create in-depth articles, guides, and reports"
+      category: "content"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_02_COPYWRITER"
+        - "ROLE_03_EDITOR"
+      outputs:
+        - "Blog posts"
+        - "Whitepapers"
+        - "Case studies"
+        - "Ebooks"
+        
+    content_editing:
+      id: "cap_content_editing"
+      name: "Content Editing"
+      description: "Edit and improve existing content"
+      category: "content"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_03_EDITOR"
+      outputs:
+        - "Edited documents"
+        - "Style corrections"
+        - "Tone adjustments"
+        
+    # Creative Capabilities
+    creative_concepting:
+      id: "cap_creative_concepting"
+      name: "Creative Concepting"
+      description: "Develop creative concepts and campaign ideas"
+      category: "creative"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_06_CREATIVE_DIRECTOR"
+      outputs:
+        - "Creative briefs"
+        - "Campaign concepts"
+        - "Taglines"
+        - "Visual direction"
+        
+    visual_direction:
+      id: "cap_visual_direction"
+      name: "Visual Direction"
+      description: "Provide art direction and visual guidance"
+      category: "creative"
+      maturity: "beta"
+      typical_roles:
+        - "ROLE_06_CREATIVE_DIRECTOR"
+      outputs:
+        - "Mood boards"
+        - "Style guides"
+        - "Visual briefs"
+        
+    image_generation:
+      id: "cap_image_generation"
+      name: "Image Generation"
+      description: "Generate images using AI tools"
+      category: "creative"
+      maturity: "beta"
+      typical_roles:
+        - "ROLE_06_CREATIVE_DIRECTOR"
+      outputs:
+        - "Marketing images"
+        - "Social graphics"
+        - "Concept visualizations"
+      governance: "$ref: LOGIC_17_IMAGE_GENERATION"
+      
+    # Analytical Capabilities
+    data_analysis:
+      id: "cap_data_analysis"
+      name: "Data Analysis"
+      description: "Analyze marketing data and metrics"
+      category: "analytical"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_04_ANALYST"
+      outputs:
+        - "Performance reports"
+        - "Data visualizations"
+        - "Metric dashboards"
+        
+    performance_reporting:
+      id: "cap_performance_reporting"
+      name: "Performance Reporting"
+      description: "Create marketing performance reports"
+      category: "analytical"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_04_ANALYST"
+      outputs:
+        - "Campaign reports"
+        - "Channel reports"
+        - "ROI analysis"
+        
+    # Channel Capabilities
+    social_media:
+      id: "cap_social_media"
+      name: "Social Media"
+      description: "Create and optimize social media content"
+      category: "channel"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_07_SOCIAL_SPECIALIST"
+      outputs:
+        - "Social posts"
+        - "Social calendars"
+        - "Platform strategies"
+        
+    email_marketing:
+      id: "cap_email_marketing"
+      name: "Email Marketing"
+      description: "Create email campaigns and sequences"
+      category: "channel"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_08_EMAIL_SPECIALIST"
+      outputs:
+        - "Email campaigns"
+        - "Nurture sequences"
+        - "Newsletter content"
+        
+    seo_content:
+      id: "cap_seo_content"
+      name: "SEO Content"
+      description: "Create and optimize content for search"
+      category: "channel"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_09_SEO_SPECIALIST"
+      outputs:
+        - "SEO articles"
+        - "Keyword research"
+        - "Content optimization"
+        
+    # Operational Capabilities
+    project_coordination:
+      id: "cap_project_coordination"
+      name: "Project Coordination"
+      description: "Coordinate marketing projects and workflows"
+      category: "operational"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_01_ORCHESTRATOR"
+      outputs:
+        - "Project plans"
+        - "Status updates"
+        - "Coordination notes"
+        
+    quality_review:
+      id: "cap_quality_review"
+      name: "Quality Review"
+      description: "Review and approve marketing outputs"
+      category: "operational"
+      maturity: "stable"
+      typical_roles:
+        - "ROLE_03_EDITOR"
+        - "ROLE_01_ORCHESTRATOR"
+      outputs:
+        - "Review feedback"
+        - "Approval decisions"
+        - "Quality scores"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# MATURITY LEVELS
+# ══════════════════════════════════════════════════════════════════════════════
+
+maturity_levels:
+  description: "Capability readiness classification"
+  
+  levels:
+    stable:
+      description: "Production-ready, fully tested"
+      governance_impact: "Standard governance applies"
+      sla: "Full support"
+      restrictions: []
+      
+    beta:
+      description: "Functional but may have edge cases"
+      governance_impact: "Enhanced logging, may require HITL"
+      sla: "Best effort support"
+      restrictions:
+        - "Flag outputs as beta-generated"
+        - "Additional review recommended"
+        
+    experimental:
+      description: "Early stage, not for production use"
+      governance_impact: "Requires explicit opt-in, high HITL"
+      sla: "No SLA"
+      restrictions:
+        - "Requires explicit activation"
+        - "Not for client deliverables"
+        - "Mandatory human review"
+        
+    deprecated:
+      description: "Being phased out, use alternative"
+      governance_impact: "Logged for migration tracking"
+      sla: "No new development"
+      restrictions:
+        - "Warning on use"
+        - "Migration guidance provided"
+        
+  transitions:
+    experimental_to_beta:
+      criteria:
+        - "Core functionality validated"
+        - "Basic error handling"
+        - "Initial governance review"
+    beta_to_stable:
+      criteria:
+        - "Production testing complete"
+        - "Edge cases documented"
+        - "Full governance review"
+        - "SLA defined"
+    stable_to_deprecated:
+      criteria:
+        - "Replacement capability available"
+        - "Migration path documented"
+        - "Sunset timeline published"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CAPABILITY CATEGORIES
+# ══════════════════════════════════════════════════════════════════════════════
+
+capability_categories:
+  description: "Groupings of related capabilities"
+  
+  categories:
+    strategic:
+      name: "Strategic"
+      description: "High-level strategy and planning"
+      capabilities:
+        - strategic_analysis
+        - strategic_planning
+        
+    research:
+      name: "Research"
+      description: "Market, audience, and competitive research"
+      capabilities:
+        - market_research
+        - audience_research
+        - competitive_research
+        
+    content:
+      name: "Content"
+      description: "Content creation and editing"
+      capabilities:
+        - copywriting
+        - long_form_writing
+        - content_editing
+        
+    creative:
+      name: "Creative"
+      description: "Creative development and visual"
+      capabilities:
+        - creative_concepting
+        - visual_direction
+        - image_generation
+        
+    analytical:
+      name: "Analytical"
+      description: "Data analysis and reporting"
+      capabilities:
+        - data_analysis
+        - performance_reporting
+        
+    channel:
+      name: "Channel"
+      description: "Channel-specific expertise"
+      capabilities:
+        - social_media
+        - email_marketing
+        - seo_content
+        
+    operational:
+      name: "Operational"
+      description: "Coordination and quality"
+      capabilities:
+        - project_coordination
+        - quality_review
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CAPABILITY REQUIREMENTS
+# ══════════════════════════════════════════════════════════════════════════════
+
+capability_requirements:
+  description: "What capabilities require to function"
+  
+  common_requirements:
+    all_capabilities:
+      - "Valid role assignment"
+      - "Appropriate context loaded"
+      - "Quality gate compliance"
+      
+  category_requirements:
+    strategic:
+      knowledge_sources:
+        - "Market data"
+        - "Industry trends"
+        - "Client context"
+      evidence_tier: "tier_2"
+      
+    research:
+      knowledge_sources:
+        - "Research databases"
+        - "Industry reports"
+        - "Competitive data"
+      evidence_tier: "tier_2"
+      
+    content:
+      knowledge_sources:
+        - "Brand guidelines"
+        - "Style guides"
+        - "OPS playbooks"
+      evidence_tier: "tier_3"
+      
+    creative:
+      knowledge_sources:
+        - "Brand assets"
+        - "Visual guidelines"
+        - "Creative briefs"
+      evidence_tier: "tier_3"
+      
+    analytical:
+      knowledge_sources:
+        - "Analytics data"
+        - "Performance metrics"
+        - "Benchmarks"
+      evidence_tier: "tier_1"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CAPABILITY ENABLEMENT
+# ══════════════════════════════════════════════════════════════════════════════
+
+capability_enablement:
+  description: "How capabilities are enabled/disabled"
+  
+  global_enable:
+    description: "Platform-wide capability toggles"
+    source: "$ref: CONFIG_00_INSTANCE#activation.roles_active"
+    default: "all stable capabilities enabled"
+    
+  org_override:
+    description: "Organization-level capability restrictions"
+    source: "ORG.capabilities.enabled | ORG.capabilities.disabled"
+    behavior: "Can restrict but not enable beyond global"
+    
+  client_override:
+    description: "Client-level capability restrictions"
+    source: "CLIENT.capabilities.enabled | CLIENT.capabilities.disabled"
+    behavior: "Can restrict but not enable beyond ORG"
+    
+  resolution:
+    order: ["global", "org", "client"]
+    strategy: "most_restrictive"

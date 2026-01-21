@@ -1,0 +1,407 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# LOGIC_13_INTEGRATION.yaml
+# ══════════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-12-11"
+  purpose: "External system integration patterns (SSOT)"
+  notes: "v2.0 - Integration templates with demo mode simulation"
+  tags: [logic, integration, api, simulation, ssot]
+
+# ══════════════════════════════════════════════════════════════════════════════
+# INTEGRATION CATEGORIES
+# ══════════════════════════════════════════════════════════════════════════════
+
+integration_categories:
+  description: "Types of external system integrations"
+  
+  categories:
+    analytics:
+      description: "Analytics and tracking platforms"
+      examples:
+        - "Google Analytics"
+        - "Adobe Analytics"
+        - "Mixpanel"
+        - "Amplitude"
+      common_operations:
+        - "fetch_metrics"
+        - "fetch_reports"
+        - "create_events"
+        
+    crm:
+      description: "Customer relationship management"
+      examples:
+        - "Salesforce"
+        - "HubSpot"
+        - "Pipedrive"
+        - "Microsoft Dynamics"
+      common_operations:
+        - "fetch_contacts"
+        - "update_contact"
+        - "create_activity"
+        - "fetch_deals"
+        
+    marketing_automation:
+      description: "Marketing automation platforms"
+      examples:
+        - "HubSpot Marketing"
+        - "Marketo"
+        - "Mailchimp"
+        - "ActiveCampaign"
+      common_operations:
+        - "create_campaign"
+        - "fetch_performance"
+        - "update_lists"
+        - "send_email"
+        
+    social_media:
+      description: "Social media platforms"
+      examples:
+        - "LinkedIn"
+        - "Twitter/X"
+        - "Facebook/Meta"
+        - "Instagram"
+      common_operations:
+        - "publish_post"
+        - "fetch_analytics"
+        - "schedule_content"
+        
+    content_management:
+      description: "Content and asset management"
+      examples:
+        - "WordPress"
+        - "Contentful"
+        - "Sanity"
+        - "DAM systems"
+      common_operations:
+        - "create_content"
+        - "update_content"
+        - "fetch_assets"
+        - "publish_content"
+        
+    advertising:
+      description: "Advertising platforms"
+      examples:
+        - "Google Ads"
+        - "LinkedIn Ads"
+        - "Meta Ads"
+        - "Programmatic DSPs"
+      common_operations:
+        - "fetch_performance"
+        - "create_campaign"
+        - "update_targeting"
+        
+    storage:
+      description: "File and document storage"
+      examples:
+        - "Google Drive"
+        - "Dropbox"
+        - "SharePoint"
+        - "S3"
+      common_operations:
+        - "upload_file"
+        - "download_file"
+        - "list_files"
+        - "share_file"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# INTEGRATION TEMPLATE SCHEMA
+# ══════════════════════════════════════════════════════════════════════════════
+
+integration_template:
+  description: "Standard schema for integration definitions"
+  
+  schema:
+    required_fields:
+      id:
+        type: "string"
+        pattern: "int_{category}_{platform}"
+        
+      name:
+        type: "string"
+        
+      category:
+        type: "enum"
+        values: "$ref: #integration_categories.categories"
+        
+      auth:
+        type: "object"
+        properties:
+          method:
+            type: "enum"
+            values: ["oauth2", "api_key", "basic", "jwt"]
+          config_ref:
+            type: "string"
+            description: "Reference to credentials in CLIENT/ORG"
+            
+      base_url:
+        type: "string"
+        format: "uri_template"
+        
+      operations:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            name: "string"
+            method: "enum: GET, POST, PUT, DELETE, PATCH"
+            path: "string"
+            input_schema: "object"
+            output_schema: "object"
+            
+    optional_fields:
+      rate_limits:
+        type: "object"
+        reference: "$ref: LOGIC_10_TOOLS_CORE#rate_limiting"
+        
+      retry_config:
+        type: "object"
+        reference: "$ref: LOGIC_10_TOOLS_CORE#resilience_patterns.retry"
+        
+      demo_mock:
+        type: "object"
+        description: "Mock configuration for demo mode"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# AUTHENTICATION PATTERNS
+# ══════════════════════════════════════════════════════════════════════════════
+
+authentication_patterns:
+  description: "Standard authentication patterns for integrations"
+  
+  patterns:
+    oauth2:
+      description: "OAuth 2.0 authentication"
+      flows:
+        authorization_code:
+          description: "Standard OAuth flow with user consent"
+          use_case: "User-authorized access"
+          
+        client_credentials:
+          description: "Server-to-server authentication"
+          use_case: "Automated system access"
+          
+        refresh_token:
+          description: "Token refresh mechanism"
+          implementation: "Auto-refresh before expiry"
+          
+      token_storage:
+        location: "Secure credential store"
+        encryption: "required"
+        reference: "CLIENT.credentials OR ORG.credentials"
+        
+    api_key:
+      description: "API key authentication"
+      header: "Authorization: Bearer {key} OR X-API-Key: {key}"
+      storage:
+        location: "Environment variable or secret store"
+        never: "Hardcode in configuration"
+        
+    basic:
+      description: "HTTP Basic authentication"
+      header: "Authorization: Basic {base64(user:pass)}"
+      use_case: "Legacy systems, simple APIs"
+      
+    jwt:
+      description: "JWT token authentication"
+      implementation:
+        - "Generate JWT with claims"
+        - "Sign with private key"
+        - "Include in Authorization header"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DEMO MODE SIMULATION
+# ══════════════════════════════════════════════════════════════════════════════
+
+demo_mode_simulation:
+  description: "How integrations behave in demo mode"
+  
+  behavior:
+    when_demo_mode_true:
+      - "No real API calls"
+      - "Use mock responses"
+      - "Simulate latency"
+      - "Track as demo operations"
+      
+    mock_response_sources:
+      1: "Integration-specific demo_mock configuration"
+      2: "DEMO_00_SESSION.integrations.mocks"
+      3: "Generic mock response generator"
+      
+  mock_configuration:
+    schema:
+      operation:
+        type: "string"
+        description: "Operation to mock"
+      response:
+        type: "object"
+        description: "Mock response data"
+      latency_ms:
+        type: "integer"
+        description: "Simulated latency"
+      error_rate:
+        type: "number"
+        description: "Probability of simulated error"
+        
+    example:
+      operation: "fetch_contacts"
+      response:
+        contacts:
+          - id: "demo_001"
+            name: "Demo Contact"
+            email: "demo@example.com"
+      latency_ms: 200
+      error_rate: 0.0
+      
+  simulation_flags:
+    include_in_trace: true
+    mark_as_simulated: true
+    validate_input: true
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ERROR HANDLING
+# ══════════════════════════════════════════════════════════════════════════════
+
+integration_error_handling:
+  description: "Error handling specific to integrations"
+  
+  error_categories:
+    auth_failure:
+      codes: [401, 403]
+      actions:
+        - "Attempt token refresh (if oauth2)"
+        - "Log authentication failure"
+        - "Escalate if refresh fails"
+      recovery: "retry_with_new_token"
+      
+    rate_limit:
+      codes: [429]
+      actions:
+        - "Read Retry-After header"
+        - "Queue for later execution"
+        - "Apply backoff"
+      recovery: "retry_with_backoff"
+      
+    server_error:
+      codes: [500, 502, 503, 504]
+      actions:
+        - "Apply retry pattern"
+        - "Try fallback if available"
+        - "Degrade gracefully"
+      recovery: "$ref: LOGIC_10_TOOLS_CORE#resilience_patterns"
+      
+    client_error:
+      codes: [400, 404, 422]
+      actions:
+        - "Log request details"
+        - "Do not retry"
+        - "Surface error to caller"
+      recovery: "none"
+      
+    timeout:
+      actions:
+        - "Cancel request"
+        - "Apply retry with backoff"
+        - "Try fallback if available"
+      recovery: "$ref: LOGIC_10_TOOLS_CORE#resilience_patterns.retry"
+      
+  fallback_strategies:
+    description: "Fallback behavior when integration fails"
+    
+    strategies:
+      cached_data:
+        description: "Use cached response"
+        applicability: "Read operations"
+        staleness_warning: true
+        
+      degraded_operation:
+        description: "Continue without integration"
+        applicability: "Optional integrations"
+        logging: "enhanced"
+        
+      alternative_integration:
+        description: "Use backup integration"
+        applicability: "When backup configured"
+        
+      human_escalation:
+        description: "Escalate to human"
+        applicability: "Critical operations"
+        
+    selection:
+      order: ["cached_data", "alternative_integration", "degraded_operation", "human_escalation"]
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DATA TRANSFORMATION
+# ══════════════════════════════════════════════════════════════════════════════
+
+data_transformation:
+  description: "Standard patterns for transforming integration data"
+  
+  patterns:
+    normalize:
+      description: "Normalize external data to RAC schema"
+      use_case: "Inbound data from integrations"
+      steps:
+        - "Validate against expected schema"
+        - "Map fields to RAC standard names"
+        - "Apply type coercion"
+        - "Handle missing/null values"
+        
+    denormalize:
+      description: "Transform RAC data to external format"
+      use_case: "Outbound data to integrations"
+      steps:
+        - "Map RAC fields to external names"
+        - "Apply format transformations"
+        - "Validate against external schema"
+        
+    enrich:
+      description: "Add computed fields"
+      use_case: "Derived data"
+      examples:
+        - "Calculate percentages"
+        - "Add timestamps"
+        - "Generate IDs"
+        
+  field_mapping:
+    description: "How to define field mappings"
+    schema:
+      rac_field: "string"
+      external_field: "string"
+      transform: "string (optional)"
+      default: "any (optional)"
+
+# ══════════════════════════════════════════════════════════════════════════════
+# WEBHOOK HANDLING
+# ══════════════════════════════════════════════════════════════════════════════
+
+webhook_handling:
+  description: "Patterns for receiving webhooks from integrations"
+  
+  security:
+    verification:
+      - "Validate signature/HMAC"
+      - "Verify source IP (if applicable)"
+      - "Check timestamp freshness"
+    rate_limiting:
+      enabled: true
+      max_per_minute: 100
+      
+  processing:
+    acknowledgment:
+      - "Return 200 immediately"
+      - "Process asynchronously"
+    idempotency:
+      - "Store event IDs"
+      - "Deduplicate on replay"
+    ordering:
+      - "Handle out-of-order events"
+      - "Use timestamps for sequencing"
+      
+  error_handling:
+    on_processing_failure:
+      - "Queue for retry"
+      - "Log with full payload"
+      - "Alert after max retries"

@@ -1,0 +1,1343 @@
+# PACK_02_WEB_OPTIMIZATION.yaml
+# RAC 2.0 Migration - Capability Pack for Web Optimization Excellence
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-12-15"
+  purpose: "Web optimization expertise pack providing evidence-based SEO, CRO, and LLM optimization tactics"
+  notes: |
+    Migrated from legacy PACK_02_WEB_OPTIMIZATION_EXCELLENCE.yaml
+    Cross-sector capability module applicable to all verticals
+    Integrates technical SEO (Core Web Vitals), conversion optimization (proven lift tactics), 
+    and LLM visibility (GEO methods)
+    Evidence based on 28,304 A/B tests, 680M LLM citations, 57M conversions
+  tags: [packs, web-optimization, seo, cro, llm-optimization, geo, conversion-rate, core-web-vitals]
+  portability: "portable"
+
+# Auto-inherited: base_dependencies per LOGIC_00_INDEX#auto_inheritance
+
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+evidence_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+rag_integration: "$ref: LOGIC_05_RAG_MECHANICS#vector_store"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PACK DEFINITION
+# ═══════════════════════════════════════════════════════════════════════════
+
+pack_definition:
+  id: "PACK_02_WEB_OPTIMIZATION"
+  type: "capability"
+  name: "Web Optimization Excellence Pack"
+  domain: "Digital Marketing / Web Performance"
+  
+  description: |
+    Comprehensive web optimization knowledge pack enabling high-converting, search-visible,
+    AI-discoverable websites. Provides evidence-based frameworks for technical SEO, 
+    conversion rate optimization, and LLM visibility enhancement.
+    
+    Three integrated pillars:
+    - Technical SEO: Core Web Vitals, schema markup, mobile optimization
+    - Conversion Optimization: CTA strategy, form design, social proof
+    - LLM Visibility: GEO tactics (quotations, statistics, citations, answer-first)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# KNOWLEDGE ASSETS
+# ═══════════════════════════════════════════════════════════════════════════
+
+knowledge_assets:
+
+  frameworks:
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # FRAMEWORK: Landing Page Performance Audit
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "framework-landing-page-audit"
+      name: "Landing Page Performance Audit Framework"
+      category: "diagnostic"
+      description: |
+        Comprehensive audit methodology for landing pages covering technical performance,
+        content quality, conversion elements, and analytics infrastructure.
+      
+      objectives:
+        - "Diagnose technical, content, and conversion barriers to optimal performance"
+        - "Quantify improvement opportunities with evidence-based lift estimates"
+        - "Prioritize fixes by impact and effort for maximum ROI"
+      
+      procedure:
+        time_total: "4-6 hours for single landing page comprehensive audit"
+        
+        steps:
+          - step: "Technical Performance Audit"
+            time_estimate: "60-90 minutes"
+            actions:
+              - "Run Google PageSpeed Insights (mobile + desktop)"
+              - "Capture Core Web Vitals (LCP, INP, CLS) with 75th percentile scores"
+              - "Validate mobile responsiveness across breakpoints (320px to 1920px)"
+              - "Check schema markup implementation via Google Rich Results Test"
+              - "Verify robots.txt allows AI crawlers (GPTBot, ClaudeBot, OAI-SearchBot, PerplexityBot, Google-Extended)"
+              - "Audit HTTPS/SSL configuration and certificate validity"
+              - "Test page speed under throttled conditions (Fast 3G network simulation)"
+            tools: ["PageSpeed Insights", "Chrome DevTools", "Google Rich Results Test"]
+            deliverables:
+              - "Technical audit report with findings"
+              - "Core Web Vitals baseline metrics"
+              - "Schema validation results"
+            decision_points:
+              - condition: "LCP > 4s"
+                action: "Flag as critical priority - image optimization, lazy loading, CDN required"
+              - condition: "No schema markup"
+                action: "Flag as high priority - 20-35% rich results opportunity missed"
+            common_errors:
+              - error: "Testing only desktop performance"
+                correction: "Always test mobile first - 58.33% of traffic is mobile"
+              - error: "Ignoring robots.txt AI crawler settings"
+                correction: "Verify GPTBot, ClaudeBot, etc. are not blocked"
+          
+          - step: "Content Quality Audit"
+            time_estimate: "60-90 minutes"
+            actions:
+              - "Test readability using Hemingway App - target 5th-7th grade"
+              - "Evaluate headline against 4-U framework (Useful, Unique, Urgent, Ultra-specific)"
+              - "Check AIDA structure presence (Attention --> Interest --> Desire --> Action)"
+              - "Verify answer-first structure (TL;DR 50-70 words at top)"
+              - "Count FAQ questions (target ≥3 with H2/H3 headers, 30-60 word answers)"
+              - "Audit LLM optimization: count statistics, quotations with attribution, citations with URLs"
+              - "Review E-E-A-T signals (author credentials visible, first-hand experience demonstrated)"
+            tools: ["Hemingway App", "Grammarly", "Manual content checklist"]
+            deliverables:
+              - "Content quality report"
+              - "Readability grade score"
+              - "LLM optimization checklist completion"
+            decision_points:
+              - condition: "Readability > Grade 9"
+                action: "Flag for rewrite - 56% conversion improvement available"
+              - condition: "No LLM optimization tactics"
+                action: "Flag for enhancement - 24-41% visibility improvement available"
+          
+          - step: "Conversion Elements Audit"
+            time_estimate: "45-60 minutes"
+            actions:
+              - "Count CTAs (target: 1 primary only, flag if multiple competing CTAs)"
+              - "Review CTA text (action verbs present: 'Get', 'Start', 'Claim')"
+              - "Count form fields (target: ≤4 fields)"
+              - "Check social proof placement (above/below fold, prominence)"
+              - "Verify video presence if applicable (60-90s length, above fold)"
+              - "Audit mobile UX (touch targets ≥44×44px, express payment options)"
+              - "Review trust signals (testimonials, reviews, badges)"
+            tools: ["Manual visual inspection", "Chrome DevTools mobile emulation"]
+            deliverables:
+              - "CRO audit report"
+              - "Quick wins list with lift estimates"
+              - "Impact × effort matrix"
+            decision_points:
+              - condition: "Multiple competing CTAs"
+                action: "Flag as critical - 371% lift available from single CTA"
+              - condition: "Form > 4 fields"
+                action: "Flag as high priority - 120% lift from form reduction"
+          
+          - step: "Analytics & Measurement Audit"
+            time_estimate: "30-45 minutes"
+            actions:
+              - "Verify Google Analytics 4 tracking (events firing correctly via Tag Assistant)"
+              - "Check conversion goal configuration and test completion"
+              - "Review historical performance data (baseline metrics with date ranges)"
+              - "Calculate traffic volume for A/B test sample size requirements"
+              - "Document funnel drop-off points and abandonment rates"
+              - "Check LLM visibility baseline (HubSpot AI Search Grader or manual queries)"
+            tools: ["Google Analytics 4", "Tag Assistant", "HubSpot AI Search Grader"]
+            deliverables:
+              - "Analytics audit report"
+              - "Baseline metrics documentation"
+              - "A/B test readiness assessment"
+          
+          - step: "Competitive Benchmarking"
+            time_estimate: "45-60 minutes"
+            actions:
+              - "Identify 3-5 competitor landing pages (same conversion goal, similar audience)"
+              - "Audit competitor technical performance via PageSpeed Insights"
+              - "Compare content structure (readability, LLM optimization, answer-first)"
+              - "Evaluate competitor conversion elements (CTAs, forms, social proof)"
+              - "Document white space opportunities"
+            deliverables:
+              - "Competitive analysis matrix"
+              - "White space opportunities list"
+              - "Differentiation strategy recommendations"
+          
+          - step: "Prioritization & Recommendations"
+            time_estimate: "60 minutes"
+            actions:
+              - "Score issues by impact (high/medium/low based on evidence) and effort"
+              - "Create prioritized roadmap: Phase 1 quick wins --> Phase 2 medium-term --> Phase 3 long-term"
+              - "Estimate lift potential for each fix based on evidence library"
+              - "Draft executive summary with top 5 recommendations"
+            deliverables:
+              - "Prioritized roadmap with phases"
+              - "Lift estimates per initiative"
+              - "Executive summary for stakeholders"
+      
+      worked_examples:
+        - example_id: "we-landing-audit-b2b-saas"
+          context: "B2B SaaS landing page for free trial signup. Current conversion rate: 2.1%. Target: 5-7% (top quartile benchmark)."
+          
+          audit_findings:
+            technical:
+              - "LCP: 4.2s mobile (POOR - target ≤2.5s)"
+              - "INP: 315ms (POOR - target ≤200ms)"
+              - "CLS: 0.08 (GOOD)"
+              - "No schema markup (missing 20-35% rich results opportunity)"
+              - "Robots.txt blocks GPTBot and ClaudeBot"
+            content:
+              - "Readability: Grade 11 (target 5-7 for 56% lift)"
+              - "No TL;DR summary (missing 30-40% LLM visibility lift)"
+              - "Headline vague: 'Transform Your Workflow' (fails 4-U test)"
+              - "FAQ section missing"
+              - "LLM optimization: 0 statistics, 0 quotations, 0 citations"
+            conversion:
+              - "3 competing CTAs (eliminating to single = 371% potential)"
+              - "Form: 8 fields (target ≤4 for 120% lift)"
+              - "No social proof above fold (adding 3 testimonials = 34% lift)"
+              - "No video (adding 60-90s explainer = 80-86% lift)"
+              - "Mobile touch targets 30×30px (below 44×44px requirement)"
+          
+          prioritized_recommendations:
+            phase_1_quick_wins:
+              timeline: "Week 1"
+              total_effort: "4 hours"
+              expected_lift: "150-200%"
+              initiatives:
+                - fix: "Reduce to single CTA ('Start Free Trial')"
+                  lift: "371%"
+                  effort: "1 hour"
+                  evidence_ref: "ev-pack02-unbounce-001"
+                - fix: "Add 3 customer testimonials above fold"
+                  lift: "34%"
+                  effort: "2 hours"
+                  evidence_ref: "ev-pack02-wikijob-001"
+                - fix: "Rewrite headline to 4-U framework"
+                  lift: "33-127%"
+                  effort: "1 hour"
+                  evidence_ref: "ev-pack02-headlines-001"
+            
+            phase_2_moderate_effort:
+              timeline: "Weeks 2-3"
+              total_effort: "14 hours"
+              expected_lift: "Additional 100-150%"
+              initiatives:
+                - fix: "Reduce form from 8 to 4 fields"
+                  lift: "120%"
+                  effort: "4 hours"
+                  evidence_ref: "ev-pack02-invesp-001"
+                - fix: "Rewrite to 5th-7th grade readability"
+                  lift: "56%"
+                  effort: "6 hours"
+                  evidence_ref: "ev-pack02-readability-001"
+                - fix: "Add LLM optimization (stats, quotes, citations)"
+                  lift: "24-41% LLM visibility"
+                  effort: "4 hours"
+                  evidence_ref: "ev-pack02-princeton-001"
+            
+            phase_3_technical:
+              timeline: "Weeks 4-6"
+              total_effort: "2-3 weeks"
+              expected_lift: "Additional 40-60%"
+              initiatives:
+                - fix: "Core Web Vitals optimization (LCP 4.2s --> <2.5s)"
+                  lift: "25-30% rankings + 14% conversion"
+                  effort: "2-3 weeks development"
+                  evidence_ref: "ev-pack02-cwv-001"
+          
+          projected_outcomes:
+            conservative:
+              assumptions: "Phase 1 only"
+              current: "2.1%"
+              projected: "5.25%"
+              target_achieved: true
+            moderate:
+              assumptions: "Phase 1 + Phase 2"
+              current: "2.1%"
+              projected: "7.35%"
+              target_achieved: true
+            aggressive:
+              assumptions: "All phases"
+              current: "2.1%"
+              projected: "8.4-9.45%"
+              target_achieved: true
+      
+      quality_checklist:
+        - "All Core Web Vitals captured with 75th percentile mobile scores"
+        - "Readability tested with Hemingway App (grade level documented)"
+        - "CTA count verified (single primary only)"
+        - "Form field count documented"
+        - "Social proof placement audited"
+        - "LLM optimization tactics counted (statistics, quotations, citations)"
+        - "Competitor analysis includes 3-5 pages"
+        - "Prioritization based on evidence-backed lift estimates"
+        - "Executive summary includes top 5 actionable recommendations"
+      
+      common_pitfalls:
+        - pitfall: "Testing desktop only when mobile is 58% of traffic"
+          impact: "Miss mobile-specific issues affecting majority of visitors"
+          prevention: "Always test mobile first, then desktop"
+        - pitfall: "Stopping A/B tests early based on preliminary results"
+          impact: "False positives - 531 of 1,000 A/A tests showed 'significance' at some point"
+          prevention: "Pre-calculate sample size, run minimum 1-2 business cycles"
+        - pitfall: "Recommending multiple CTAs for 'options'"
+          impact: "Miss 371% lift from single CTA focus"
+          prevention: "Enforce single primary CTA rule - evidence is definitive"
+        - pitfall: "Ignoring LLM optimization"
+          impact: "Miss 50%+ of search visibility (AI Overviews)"
+          prevention: "Include statistics, quotations, citations in all content"
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # FRAMEWORK: Landing Page Optimization Workflow
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "framework-landing-page-workflow"
+      name: "Landing Page Optimization Workflow"
+      category: "execution"
+      description: |
+        End-to-end workflow for optimizing landing pages from technical foundation
+        through launch and monitoring.
+      
+      objectives:
+        - "Deliver optimized landing pages meeting all quality gates"
+        - "Achieve top-quartile conversion rates (5-7%+)"
+        - "Maximize LLM visibility alongside traditional SEO"
+      
+      procedure:
+        time_total: "2-3 weeks"
+        mode: "SAM"
+        
+        steps:
+          - step: "Technical Foundation"
+            time_estimate: "2-3 days"
+            actions:
+              - "Core Web Vitals audit and optimization"
+              - "Mobile responsiveness validation"
+              - "Schema markup implementation"
+              - "Robots.txt AI crawler configuration"
+              - "SSL/HTTPS verification"
+              - "Page speed optimization (<3s target)"
+            deliverables:
+              - "Technical audit report with baseline metrics"
+              - "Schema markup JSON-LD code"
+              - "Performance optimization recommendations"
+            gate_exit: "G_WEB_1: Technical Requirements Met"
+            common_errors:
+              - error: "Implementing schema without validation"
+                correction: "Always validate via Google Rich Results Test"
+          
+          - step: "Content Optimization"
+            time_estimate: "2-3 days"
+            actions:
+              - "Readability optimization to 5th-7th grade (Hemingway App)"
+              - "4-U headline framework application"
+              - "AIDA structure implementation"
+              - "Answer-first structure with 50-70 word TL;DR"
+              - "FAQ section (≥3 questions, H2/H3 headers, 30-60 word answers)"
+              - "LLM optimization: ≥3 statistics, ≥2 quotations, ≥3 citations"
+              - "Single CTA copywriting with action verbs"
+              - "Social proof content preparation"
+            deliverables:
+              - "Optimized copy (headline, subheadline, body, CTA)"
+              - "FAQ section with structured Q&A"
+              - "Social proof content ready for design"
+            gate_exit: "G_WEB_2: Content Quality Gate"
+          
+          - step: "Conversion Design"
+            time_estimate: "2-3 days"
+            actions:
+              - "Single CTA implementation"
+              - "Form reduction to ≤4 fields"
+              - "Social proof placement above fold"
+              - "Video integration if available (60-90s above fold)"
+              - "Mobile-first design (touch targets ≥44×44px)"
+              - "Express payment options if e-commerce"
+              - "Visual hierarchy emphasizing outcomes"
+            deliverables:
+              - "Design comps (desktop 1920px + mobile 375px)"
+              - "Interactive prototype"
+              - "Asset specifications"
+            gate_exit: "G_WEB_3: CRO Best Practices Validated"
+          
+          - step: "Measurement Setup"
+            time_estimate: "1-2 days"
+            actions:
+              - "Google Analytics 4 event tracking setup"
+              - "Core Web Vitals monitoring configuration"
+              - "A/B test sample size calculation"
+              - "Baseline performance documentation"
+              - "LLM visibility baseline capture"
+              - "Testing protocol definition"
+            deliverables:
+              - "Analytics tracking plan"
+              - "Baseline metrics report"
+              - "A/B test protocol"
+            gate_exit: "G_WEB_4: Measurement Infrastructure Ready"
+          
+          - step: "Launch & Monitor"
+            time_estimate: "Ongoing"
+            actions:
+              - "Technical implementation coordination"
+              - "QA testing (all gates validated)"
+              - "Launch coordination"
+              - "Daily monitoring (Week 1-2)"
+              - "A/B test initiation (Week 3-4 if traffic supports)"
+              - "Weekly LLM visibility checks"
+            deliverables:
+              - "Live landing page"
+              - "Performance monitoring dashboard"
+              - "Weekly optimization reports"
+            gate_exit: "G_WEB_5: Launch Successful, Monitoring Active"
+      
+      worked_examples:
+        - example_id: "we-workflow-ecommerce"
+          context: "E-commerce product landing page optimization for electronics retailer"
+          timeline: "3-week sprint"
+          
+          week_1_technical_content:
+            technical_fixes:
+              - "LCP reduced from 3.8s to 2.1s via image optimization"
+              - "Schema markup added (Product, Organization, FAQ)"
+              - "Robots.txt updated to allow AI crawlers"
+            content_optimization:
+              - "Readability improved from Grade 10 to Grade 6"
+              - "TL;DR summary added (68 words)"
+              - "FAQ section: 5 questions added"
+          
+          week_2_design_measurement:
+            design_changes:
+              - "Reduced from 3 CTAs to 1 primary ('Add to Cart')"
+              - "Form fields reduced 6 --> 3 (email, name, address)"
+              - "3 customer reviews placed above fold"
+              - "60-second product video added"
+            measurement_setup:
+              - "GA4 enhanced ecommerce tracking"
+              - "Core Web Vitals dashboard in Search Console"
+              - "A/B test protocol: 2,000 visitors per variation"
+          
+          week_3_launch_monitor:
+            results_week_1:
+              - "Conversion rate: 3.2% --> 4.8% (+50%)"
+              - "Bounce rate: 65% --> 52%"
+              - "LLM visibility: Appeared in 3 AI Overview responses"
+      
+      quality_checklist:
+        - "All five quality gates passed before launch"
+        - "Mobile-first design validated on ≥3 physical devices"
+        - "Single CTA rule enforced"
+        - "Form fields ≤4"
+        - "LLM optimization complete (stats, quotes, citations)"
+        - "Analytics tracking verified via Tag Assistant"
+        - "A/B test protocol documented"
+        - "Monitoring schedule active"
+      
+      common_pitfalls:
+        - pitfall: "Skipping measurement setup to meet deadline"
+          impact: "Cannot measure results, prove ROI, or iterate"
+          prevention: "Measurement setup is non-negotiable quality gate"
+        - pitfall: "Adding 'just one more' CTA for stakeholder requests"
+          impact: "371% potential lift sacrificed"
+          prevention: "Cite evidence and enforce single CTA policy"
+        - pitfall: "Launching without mobile QA"
+          impact: "58% of traffic has poor experience"
+          prevention: "Test on actual devices, not just emulators"
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # FRAMEWORK: 4-U Headline Framework
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "framework-4u-headline"
+      name: "4-U Headline Framework"
+      category: "copywriting"
+      description: |
+        Evidence-based headline optimization framework proven to deliver 33-127% engagement improvement.
+        Each headline must satisfy all four U criteria for maximum impact.
+      
+      objectives:
+        - "Create headlines that capture attention and drive action"
+        - "Eliminate vague, generic headlines"
+        - "Maximize click-through and conversion rates"
+      
+      procedure:
+        time_total: "15-30 minutes per headline"
+        
+        steps:
+          - step: "Identify the Useful element"
+            time_estimate: "5 minutes"
+            actions:
+              - "Define the clear benefit to the reader"
+              - "Focus on outcome, not feature"
+              - "Use specific numbers where possible"
+            decision_points:
+              - condition: "Benefit unclear"
+                action: "Interview stakeholders for value proposition clarity"
+            deliverables:
+              - "Benefit statement"
+          
+          - step: "Add the Unique element"
+            time_estimate: "5 minutes"
+            actions:
+              - "Identify differentiator from alternatives"
+              - "Highlight what competitors don't offer"
+              - "Avoid generic claims ('best', 'leading')"
+            deliverables:
+              - "Differentiation statement"
+          
+          - step: "Create Urgency"
+            time_estimate: "5 minutes"
+            actions:
+              - "Add time element creating action pressure"
+              - "Use deadlines, limited availability, or timeframes"
+              - "Avoid false urgency (damages trust)"
+            deliverables:
+              - "Urgency element"
+          
+          - step: "Make it Ultra-specific"
+            time_estimate: "5-10 minutes"
+            actions:
+              - "Add concrete details (numbers, timeframes, specifics)"
+              - "Replace vague words with precise ones"
+              - "Include proof elements where available"
+            deliverables:
+              - "Final headline with all 4-U elements"
+          
+          - step: "Validate and test"
+            time_estimate: "5 minutes"
+            actions:
+              - "Score headline against 4-U checklist"
+              - "Compare to competitor headlines"
+              - "Prepare A/B test variations if traffic supports"
+            deliverables:
+              - "4-U validation score"
+              - "Test variations"
+      
+      worked_examples:
+        - example_id: "we-4u-saas"
+          context: "B2B SaaS lead generation tool"
+          before: "Transform Your Workflow"
+          problems:
+            - "Not Useful: No clear benefit stated"
+            - "Not Unique: Every competitor claims transformation"
+            - "No Urgency: No time element"
+            - "Not Ultra-specific: Completely vague"
+          after: "Get 50% More Leads in 30 Days - Free Trial, No Credit Card"
+          breakdown:
+            useful: "'50% More Leads' - clear, quantified benefit"
+            unique: "'Free Trial, No Credit Card' - differentiator"
+            urgent: "'in 30 Days' - time element"
+            ultra_specific: "'50%', '30 Days', specific offer terms"
+          expected_lift: "33-127% engagement improvement"
+        
+        - example_id: "we-4u-ecommerce"
+          context: "Electronics retailer product page"
+          before: "High-Quality Headphones"
+          after: "Noise-Canceling Headphones: 40-Hour Battery, Free 2-Day Shipping Today Only"
+          breakdown:
+            useful: "'40-Hour Battery' - clear benefit"
+            unique: "'Noise-Canceling' - specific feature"
+            urgent: "'Today Only' - time pressure"
+            ultra_specific: "'40-Hour', '2-Day', specific product attribute"
+      
+      quality_checklist:
+        - "Useful: Clear, quantified benefit present"
+        - "Unique: Differentiator from alternatives stated"
+        - "Urgent: Time element or scarcity included"
+        - "Ultra-specific: Concrete details, no vague language"
+        - "Under 70 characters for mobile display"
+        - "Action-oriented language"
+      
+      common_pitfalls:
+        - pitfall: "Adding false urgency ('Limited time!' with no end date)"
+          impact: "Damages trust, reduces long-term conversion"
+          prevention: "Only use real deadlines and scarcity"
+        - pitfall: "Making up statistics for Ultra-specific"
+          impact: "Credibility damage if challenged"
+          prevention: "Use verified data or remove claim"
+        - pitfall: "Trying to include all features"
+          impact: "Headline becomes cluttered, loses impact"
+          prevention: "Focus on ONE primary benefit"
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # FRAMEWORK: LLM Optimization (GEO Tactics)
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "framework-llm-optimization"
+      name: "LLM Optimization Framework (GEO)"
+      category: "content-optimization"
+      description: |
+        Generative Engine Optimization framework based on Princeton research analyzing 10,000 queries.
+        Proven tactics to improve LLM citation rates and AI search visibility.
+      
+      objectives:
+        - "Improve content visibility in AI-generated responses"
+        - "Increase LLM citation rates by 24-41%"
+        - "Prepare content for AI Overviews and chat-based search"
+      
+      procedure:
+        time_total: "2-4 hours per page"
+        
+        steps:
+          - step: "Add Statistics"
+            time_estimate: "45-60 minutes"
+            actions:
+              - "Replace qualitative statements with quantified data"
+              - "Include specific numbers, percentages, timeframes"
+              - "Cite authoritative sources for all statistics"
+              - "Target: ≥3 statistics per page"
+            deliverables:
+              - "Statistics inventory with sources"
+            common_errors:
+              - error: "Using statistics without sources"
+                correction: "Always cite source, date, and methodology"
+          
+          - step: "Add Expert Quotations"
+            time_estimate: "45-60 minutes"
+            actions:
+              - "Source expert quotations with clear attribution"
+              - "Format: 'According to [Name], [Title] at [Organization], \"[Quote]\"'"
+              - "Obtain written permission for usage"
+              - "Target: ≥2 quotations per page"
+            deliverables:
+              - "Quotation inventory with permissions"
+            common_errors:
+              - error: "Missing attribution details"
+                correction: "Include name, title, and organization"
+          
+          - step: "Add Formal Citations"
+            time_estimate: "30-45 minutes"
+            actions:
+              - "Add academic-style references with URLs"
+              - "Prioritize authoritative domains (.edu, .gov, established publications)"
+              - "Link to primary sources over aggregators"
+              - "Target: ≥3 citations per page"
+            deliverables:
+              - "Citation list with working URLs"
+            common_errors:
+              - error: "Linking to secondary sources"
+                correction: "Always find and cite primary source"
+          
+          - step: "Implement Answer-First Structure"
+            time_estimate: "30-45 minutes"
+            actions:
+              - "Add 50-70 word TL;DR summary at content start"
+              - "Structure FAQ sections with H2/H3 questions"
+              - "Write answers in 30-60 words (optimal citation length)"
+              - "Avoid accordion/tab-hidden content (LLMs can't parse)"
+            deliverables:
+              - "TL;DR summary"
+              - "Restructured FAQ section"
+          
+          - step: "Validate and Monitor"
+            time_estimate: "15-30 minutes"
+            actions:
+              - "Count all GEO elements (stats, quotes, citations)"
+              - "Capture LLM visibility baseline"
+              - "Schedule weekly monitoring checks"
+            deliverables:
+              - "GEO element checklist"
+              - "Monitoring schedule"
+      
+      worked_examples:
+        - example_id: "we-geo-blog-post"
+          context: "B2B blog post about project management"
+          before:
+            statistics: 0
+            quotations: 0
+            citations: 0
+            tldr: "None"
+            llm_visibility: "Not appearing in AI responses"
+          
+          after:
+            statistics_added:
+              - "'Teams using structured project management see 28% higher project success rates (PMI Pulse of the Profession, 2024)'"
+              - "'Remote teams spend 47% less time in meetings with async-first tools (Asana State of Work, 2024)'"
+              - "'Project delays cost enterprises $1.3M per project on average (KPMG Project Management Survey, 2023)'"
+            quotations_added:
+              - "According to Dr. Sarah Chen, Project Management Professor at MIT Sloan, 'The shift to hybrid work has fundamentally changed how successful teams coordinate.'"
+              - "According to Michael Torres, VP of Operations at Acme Corp, 'Implementing structured workflows reduced our delivery time by 35%.'"
+            citations_added:
+              - "[PMI Pulse of the Profession 2024](https://www.pmi.org/pulse)"
+              - "[Asana State of Work Report](https://asana.com/resources/anatomy-of-work)"
+              - "[Harvard Business Review: The Future of Project Management](https://hbr.org/...)"
+            tldr: "TL;DR: Structured project management increases success rates 28%, reduces meeting time 47%, and prevents $1.3M average delay costs. Three key practices: async-first communication, clear milestone tracking, and automated status updates. (68 words)"
+            llm_visibility: "Appearing in 4 of 10 relevant AI queries"
+          
+          measured_improvement:
+            visibility_increase: "+35%"
+            citation_rate: "4/10 relevant queries"
+            time_to_implement: "3 hours"
+      
+      quality_checklist:
+        - "≥3 statistics with sources and dates"
+        - "≥2 expert quotations with full attribution"
+        - "≥3 formal citations with working URLs"
+        - "50-70 word TL;DR at content start"
+        - "FAQ questions as H2/H3 headers"
+        - "Answers 30-60 words each"
+        - "No accordion/tab-hidden content"
+        - "LLM visibility baseline captured"
+        - "Weekly monitoring scheduled"
+      
+      common_pitfalls:
+        - pitfall: "Adding statistics without verifiable sources"
+          impact: "Credibility damage if challenged, potential hallucination amplification"
+          prevention: "Always cite primary source with date"
+        - pitfall: "Using quotations without permission"
+          impact: "Legal risk, potential removal requests"
+          prevention: "Obtain written permission before publication"
+        - pitfall: "Hiding content in accordions/tabs"
+          impact: "LLMs cannot access hidden content"
+          prevention: "Display all content openly, use headings for organization"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TEMPLATES
+  # ─────────────────────────────────────────────────────────────────────────
+  templates:
+    
+    - id: "template-landing-page-brief"
+      name: "Landing Page Optimization Brief"
+      format: "structured"
+      description: "Complete requirements gathering template for landing page projects"
+      content: |
+        # Landing Page Optimization Brief
+        
+        ## 1. Conversion Goal
+        - Primary conversion goal: [Single action only]
+        - Secondary goals (micro-conversions): [List]
+        - Success metric definition: [How we measure conversion]
+        
+        ## 2. Target Metrics
+        - Current conversion rate: [%]
+        - Target conversion rate: [%] (benchmark: 5-7% top quartile, 11.45%+ top 10%)
+        - Traffic volume: [Monthly visitors]
+        - A/B test feasibility: [Sample size calculation]
+        
+        ## 3. Technical Requirements
+        - LCP target: ≤2.5s
+        - INP target: ≤200ms
+        - CLS target: ≤0.1
+        - Schema types required: [Organization, Product, FAQ, etc.]
+        - Mobile requirements: [Responsive, touch targets, express payment]
+        
+        ## 4. Content Requirements
+        - Target keywords: [Primary + 2-5 secondary]
+        - Readability target: Grade 5-7
+        - TL;DR summary: [Required - 50-70 words]
+        - FAQ topics: [≥3 questions]
+        - LLM optimization: [≥3 stats, ≥2 quotes, ≥3 citations]
+        
+        ## 5. Conversion Elements
+        - Primary CTA text: [Single CTA with action verb]
+        - Form fields required: [≤4 fields, list specific]
+        - Social proof available: [Testimonials, reviews, badges]
+        - Video available: [Y/N, if yes: length, format]
+        
+        ## 6. Brand & Design
+        - Brand guidelines: [Link]
+        - Visual examples: [Link to reference designs]
+        - Existing assets: [Logo, images, etc.]
+        
+        ## 7. Timeline & Budget
+        - Launch deadline: [Date]
+        - Budget: [Amount]
+        - Review cycles: [Number of rounds]
+        - Post-launch commitment: [Ongoing vs one-time]
+    
+    - id: "template-web-specs-matrix"
+      name: "Web Asset Specifications Matrix"
+      format: "spreadsheet"
+      description: "Single source of truth for all technical specifications"
+      content: |
+        # Web Asset Specifications Matrix Columns
+        
+        - asset_id: Unique identifier
+        - page_type: landing/blog/product/homepage/category
+        - target_lcp: ≤2.5s mobile (mandatory)
+        - target_inp: ≤200ms (mandatory)
+        - target_cls: ≤0.1 (mandatory)
+        - mobile_first: yes/no (default: yes)
+        - readability_target: Grade 5-7 default
+        - schema_types: Organization, Article, Product, FAQ, etc.
+        - cta_count: 1 primary only
+        - form_fields: ≤4 default, list specific fields
+        - social_proof_placement: above/below fold
+        - video_required: yes/no
+        - video_specs: 60-90s, above fold, explainer format
+        - express_payment: Apple Pay, Google Pay, etc.
+        - analytics_events: conversion + micro-conversions
+        - robots_txt: allow AI crawlers (default: yes)
+        - status: Draft/Review/Approved/Live
+        - due_date: Date
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TERMINOLOGY
+  # ─────────────────────────────────────────────────────────────────────────
+  terminology:
+    core_web_vitals: "Google's metrics for page experience: LCP (Largest Contentful Paint), INP (Interaction to Next Paint), CLS (Cumulative Layout Shift)"
+    lcp: "Largest Contentful Paint - measures loading performance. Target: ≤2.5 seconds"
+    inp: "Interaction to Next Paint - measures interactivity. Target: ≤200ms"
+    cls: "Cumulative Layout Shift - measures visual stability. Target: ≤0.1"
+    cro: "Conversion Rate Optimization - systematic process of increasing visitor conversion percentage"
+    geo: "Generative Engine Optimization - optimizing content for LLM/AI search visibility"
+    serp: "Search Engine Results Page"
+    e_e_a_t: "Experience, Expertise, Authoritativeness, Trustworthiness - Google's quality signals"
+    above_fold: "Content visible without scrolling (typically first 1080px viewport height)"
+    schema_markup: "Structured data (JSON-LD) that helps search engines understand page content"
+    four_u_framework: "Headline optimization: Useful, Unique, Urgent, Ultra-specific"
+    aida: "Content structure: Attention, Interest, Desire, Action"
+    answer_first: "Content structure with TL;DR summary before detailed explanation"
+    ai_overview: "Google's AI-generated search result summaries appearing above organic results"
+    progressive_profiling: "Collecting user data gradually over multiple interactions rather than all at once"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# EVIDENCE VAULT
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_vault:
+  schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+  
+  items:
+    # ─────────────────────────────────────────────────────────────────────────
+    # CONVERSION OPTIMIZATION EVIDENCE
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "ev-pack02-unbounce-001"
+      claim: "Single call-to-action increases conversions 371% compared to multiple competing CTAs"
+      source: "Unbounce Landing Page Conversion Benchmark Report"
+      source_date: "2024-11-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2026-11-01"
+      context: "Analysis of millions of landing pages across industries. Eliminating choice paralysis dramatically improves conversion."
+    
+    - id: "ev-pack02-video-001"
+      claim: "Video on landing pages drives 80-86% conversion increase"
+      source: "Web Optimization Excellence Research (synthesized studies)"
+      source_date: "2024-06-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-06-01"
+      context: "60-90 second explainer videos placed above fold. Works across B2B and B2C. Prioritize for high-traffic pages (10K+ monthly)."
+    
+    - id: "ev-pack02-invesp-001"
+      claim: "Reducing form fields from 11 to 4 generates 120% conversion improvement"
+      source: "Invesp Form Optimization Research"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Each removed field reduces abandonment. Target ≤4 fields, use progressive profiling for additional data post-conversion."
+    
+    - id: "ev-pack02-wikijob-001"
+      claim: "Adding three simple testimonials increases conversions 34%"
+      source: "WikiJob A/B Test Case Study"
+      source_date: "2024-01-01"
+      tier: "tier_2"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Basic social proof implementation. Include full name, title/company, photo if possible."
+    
+    - id: "ev-pack02-figleaves-001"
+      claim: "Products with 20+ reviews see 83.85% conversion increase compared to zero reviews"
+      source: "Figleaves.com Conversion Research"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "User-generated content drives 102-161% increase when properly showcased. Visual UGC generates 114.4% lift."
+    
+    - id: "ev-pack02-pagespeed-001"
+      claim: "One-second page load delay reduces conversions 7%"
+      source: "Multiple Page Speed Conversion Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2026-01-01"
+      context: "Pages loading under 3 seconds achieve 32% higher conversion. Target LCP ≤2.5s, total load <3s."
+    
+    - id: "ev-pack02-readability-001"
+      claim: "Content optimized to 5th-7th grade readability converts 56% better (11.1% vs 5.3%)"
+      source: "Readability Conversion Analysis (57M conversions)"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Accessibility through simplicity outperforms impressive vocabulary. Use Hemingway App for testing."
+    
+    - id: "ev-pack02-headlines-001"
+      claim: "4-U headline framework generates 33-127% engagement improvement"
+      source: "Multiple Headline A/B Testing Studies (186M visits)"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Framework: Useful, Unique, Urgent, Ultra-specific. AIDA structure consistently delivers."
+    
+    - id: "ev-pack02-cta-text-001"
+      claim: "CTA text starting with 'Get' increases conversions 57%"
+      source: "MarketingSherpa CTA Optimization Case Study"
+      source_date: "2024-01-01"
+      tier: "tier_2"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "'Get Deal' vs 'Book It' improved from 6.66% to 10.47%. Use action verbs: Get, Start, Claim, Access."
+    
+    - id: "ev-pack02-mobile-gap-001"
+      claim: "Mobile drives 58.33% traffic but desktop converts 1.9-2× better across all channels"
+      source: "Device Conversion Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Mobile-specific optimization delivers 40% conversion increase. Focus: checkout friction, express payment, touch targets."
+    
+    - id: "ev-pack02-benchmark-001"
+      claim: "Top 10% of websites achieve 11.45%+ conversion rates"
+      source: "Industry Conversion Rate Benchmark Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Benchmarks: e-commerce average 2.35%, B2B 2.9%, top quartile 5-7%."
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # TECHNICAL SEO EVIDENCE
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "ev-pack02-cwv-001"
+      claim: "Core Web Vitals improvements increase traditional rankings 25-30%, boost conversions 7-8% per second"
+      source: "Google Core Web Vitals Research + Conversion Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2026-01-01"
+      context: "Triple benefit: SEO + CRO + LLM optimization. Only 57.8% of sites achieve 'good' LCP scores."
+    
+    - id: "ev-pack02-schema-001"
+      claim: "Schema markup provides 20-35% higher rich results likelihood"
+      source: "Schema Markup Adoption Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Only 12.4% of domains implement schema - competitive advantage. Rich results drive 20-30% higher CTR."
+    
+    - id: "ev-pack02-mobile-traffic-001"
+      claim: "Mobile drives 58.33% of traffic (5× more visitors than desktop)"
+      source: "Device Traffic Distribution Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2026-01-01"
+      context: "Smartphones account for ~77% of retail website visits. Mobile-first indexing is Google default."
+    
+    - id: "ev-pack02-helpful-content-001"
+      claim: "Google's March 2024 helpful content system integration aims to reduce low-quality content 40-45%"
+      source: "Google Official Announcement - Helpful Content System"
+      source_date: "2024-03-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2026-03-01"
+      context: "E-E-A-T now dominant quality signal. Requires author credentials, first-hand experience, authoritative citations."
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # LLM OPTIMIZATION EVIDENCE
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "ev-pack02-princeton-001"
+      claim: "Quotation addition achieves 27-41% LLM visibility improvement"
+      source: "Princeton GEO Research (10,000 query analysis)"
+      source_date: "2025-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2027-01-01"
+      context: "Expert quotations with attribution prioritized by LLMs. Format: 'According to [Name], [Title] at [Organization], \"[Quote]\"'"
+    
+    - id: "ev-pack02-princeton-002"
+      claim: "Statistics addition delivers 25-40% LLM visibility improvement"
+      source: "Princeton GEO Research"
+      source_date: "2025-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2027-01-01"
+      context: "Replace qualitative statements with quantified data. LLMs prioritize factual density."
+    
+    - id: "ev-pack02-princeton-003"
+      claim: "Citation addition generates 24-30% overall improvement, 115% for rank-5 sites"
+      source: "Princeton GEO Research"
+      source_date: "2025-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2027-01-01"
+      context: "Lower-authority domains benefit more from citations. Link to authoritative domains."
+    
+    - id: "ev-pack02-answer-first-001"
+      claim: "Answer-first content structure shows 30-40% higher LLM visibility"
+      source: "LLM Content Structure Optimization Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "50-70 word TL;DR summaries, FAQ with H2/H3 questions, 30-60 word answers (optimal citation length)."
+    
+    - id: "ev-pack02-ai-search-001"
+      claim: "AI-driven search captures 50%+ of Google queries through AI Overviews"
+      source: "Google AI Overviews Usage Data + AI Search Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "60% of AI chatbot searches end without website visits. Traditional SEO alone no longer guarantees visibility."
+    
+    - id: "ev-pack02-llm-monitoring-001"
+      claim: "Weekly LLM monitoring is optimal frequency (40-60% of sources change monthly)"
+      source: "LLM Monitoring Best Practices Research"
+      source_date: "2024-01-01"
+      tier: "tier_2"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Monday/Wednesday/Friday 30-60min reviews = 2-3 hours weekly total."
+    
+    - id: "ev-pack02-llm-gap-001"
+      claim: "Only 61% of agencies offer LLM optimization services despite 89% of consumers using AI for recommendations"
+      source: "Agency Service Adoption Surveys"
+      source_date: "2024-01-01"
+      tier: "tier_2"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "Critical white space opportunity. Current LLMO services command €6K+/month premiums."
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # INTEGRATED OPTIMIZATION EVIDENCE
+    # ─────────────────────────────────────────────────────────────────────────
+    - id: "ev-pack02-integration-001"
+      claim: "Integrated SEO+CRO approaches outperform silos by 40-75% on total revenue lift"
+      source: "Multiple Integrated Optimization Case Studies"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "B"
+      valid_until: "2026-01-01"
+      context: "91% positive SEO impact when CRO integrated from day one. Yet 84% still operate in silos."
+    
+    - id: "ev-pack02-abtesting-001"
+      claim: "Only 20% of CRO experiments reach 95% statistical significance (28,304 A/B tests analyzed)"
+      source: "CXL A/B Testing Analysis"
+      source_date: "2024-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2026-01-01"
+      context: "531 of 1,000 A/A tests (identical variations) showed 'significance' at some point due to variance. Never stop tests early."
+    
+    - id: "ev-pack02-ai-traffic-001"
+      claim: "AI traffic generates 12% higher engagement and 5% better conversion vs non-AI traffic"
+      source: "Adobe LLM Optimizer Data"
+      source_date: "2025-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      valid_until: "2027-01-01"
+      context: "AI awareness role requires multi-touch attribution to capture influence."
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REQUIRED CAPABILITIES
+# ═══════════════════════════════════════════════════════════════════════════
+# Defines what capabilities this PACK requires to function.
+# Orchestrator resolves capabilities to active roles dynamically via
+# $ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution
+
+required_capabilities:
+  resolution: "$ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution"
+  fallback: "If capability not found in any active role, orchestrator flags missing capability and suggests enabling appropriate role"
+  
+  essential:
+    # PACK cannot function without these capabilities present in at least one active role
+    - capability: "copywriting"
+      use_cases:
+        - "Content optimization (readability, headlines, CTAs)"
+        - "LLM optimization (statistics, quotations, citations)"
+        - "Answer-first content structure"
+      workflow_involvement: ["Content Optimization stage", "Blog post creation"]
+    
+    - capability: "visual_design"
+      use_cases:
+        - "Landing page design (single CTA, form reduction, social proof)"
+        - "Mobile-first responsive design"
+        - "Core Web Vitals optimization (visual elements)"
+      workflow_involvement: ["Conversion Design stage", "Technical implementation"]
+    
+    - capability: "technical_seo"
+      use_cases:
+        - "Core Web Vitals optimization (LCP, INP, CLS)"
+        - "Schema markup implementation"
+        - "Robots.txt configuration"
+        - "Mobile responsiveness"
+      workflow_involvement: ["Technical Foundation stage", "Website audit"]
+    
+    - capability: "data_analysis"
+      use_cases:
+        - "Performance measurement and baseline documentation"
+        - "A/B test protocol design and statistical validation"
+        - "Core Web Vitals monitoring"
+        - "LLM visibility tracking"
+      workflow_involvement: ["Measurement Setup stage", "Launch & Monitor stage"]
+    
+    - capability: "strategic_planning"
+      use_cases:
+        - "Web optimization strategy development"
+        - "Conversion goal definition"
+        - "Prioritization of optimization initiatives"
+      workflow_involvement: ["Discovery & Audit stage", "Optimization Planning stage"]
+  
+  optional:
+    # PACK enhanced if these capabilities available, but can function without them
+    - capability: "commercial_packaging"
+      use_cases:
+        - "Results packaging for client deliverables"
+        - "ROI calculation and presentation"
+        - "Case study development"
+      enhancement: "Enables effective communication of web optimization results to stakeholders"
+    
+    - capability: "video_production"
+      use_cases:
+        - "Explainer video creation (60-90 second format)"
+        - "Video testimonials"
+      enhancement: "Unlocks 80-86% conversion lift from video addition"
+    
+    - capability: "project_management"
+      use_cases:
+        - "Launch coordination"
+        - "Cross-capability workflow orchestration"
+        - "Timeline and resource management"
+      enhancement: "Improves execution efficiency and on-time delivery"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CAPABILITY EXTENSIONS
+# ═══════════════════════════════════════════════════════════════════════════
+# Defines what this PACK adds to any role with matching capability.
+# Capability-centric: no hardcoded role IDs for portability across ORG/CLIENT configs.
+
+capability_extensions:
+  enhances_capabilities:
+    
+    - capability: "copywriting"
+      adds_skills:
+        - "SEO copywriting with keyword optimization"
+        - "Readability optimization (5th-7th grade targeting)"
+        - "4-U headline framework application"
+        - "LLM optimization (statistics, quotations, citations)"
+        - "Answer-first content structure"
+        - "CTA copy optimization"
+        - "Meta description optimization"
+      with_knowledge:
+        - "frameworks.framework-4u-headline"
+        - "frameworks.framework-llm-optimization"
+        - "terminology"
+      with_evidence:
+        - "ev-pack02-readability-001"
+        - "ev-pack02-headlines-001"
+        - "ev-pack02-cta-text-001"
+        - "ev-pack02-princeton-001"
+        - "ev-pack02-princeton-002"
+        - "ev-pack02-princeton-003"
+    
+    - capability: "strategic_planning"
+      adds_skills:
+        - "Web optimization strategy development"
+        - "Conversion goal definition and benchmarking"
+        - "Integrated SEO+CRO+LLM strategy"
+        - "Competitive web analysis"
+        - "Prioritization of optimization initiatives"
+      with_knowledge:
+        - "frameworks.framework-landing-page-audit"
+        - "evidence_vault"
+      with_evidence:
+        - "ev-pack02-benchmark-001"
+        - "ev-pack02-integration-001"
+        - "ev-pack02-ai-search-001"
+    
+    - capability: "visual_design"
+      adds_skills:
+        - "Conversion-focused landing page design"
+        - "Single CTA implementation"
+        - "Form optimization (≤4 fields)"
+        - "Social proof placement"
+        - "Mobile-first responsive design"
+        - "Core Web Vitals-compliant visual design"
+      with_knowledge:
+        - "frameworks.framework-landing-page-workflow"
+        - "templates.template-web-specs-matrix"
+      with_evidence:
+        - "ev-pack02-unbounce-001"
+        - "ev-pack02-video-001"
+        - "ev-pack02-invesp-001"
+        - "ev-pack02-wikijob-001"
+        - "ev-pack02-mobile-gap-001"
+    
+    - capability: "technical_seo"
+      adds_skills:
+        - "Core Web Vitals optimization"
+        - "Schema markup implementation (JSON-LD)"
+        - "AI crawler configuration (robots.txt)"
+        - "Mobile-first indexing compliance"
+        - "Page speed optimization"
+      with_knowledge:
+        - "frameworks.framework-landing-page-audit"
+        - "terminology"
+      with_evidence:
+        - "ev-pack02-cwv-001"
+        - "ev-pack02-schema-001"
+        - "ev-pack02-mobile-traffic-001"
+        - "ev-pack02-helpful-content-001"
+    
+    - capability: "data_analysis"
+      adds_skills:
+        - "Core Web Vitals analysis"
+        - "Conversion funnel analysis"
+        - "A/B test design and statistical validation"
+        - "SEO performance measurement"
+        - "LLM visibility tracking"
+      with_knowledge:
+        - "frameworks.framework-landing-page-audit"
+        - "evidence_vault"
+      with_evidence:
+        - "ev-pack02-abtesting-001"
+        - "ev-pack02-llm-monitoring-001"
+        - "ev-pack02-ai-traffic-001"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# RAG CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+rag_configuration:
+  vector_store: "$ref: LOGIC_05_RAG_MECHANICS#vector_store"
+  chunking: "$ref: LOGIC_05_RAG_MECHANICS#chunking"
+  
+  indexing:
+    namespace: "{org_id}_PACK_02_WEB_OPTIMIZATION"
+    chunk_strategy: "$ref: LOGIC_05_RAG_MECHANICS#chunking.by_content_type.pack_frameworks"
+    
+  retrieval:
+    default_top_k: 5
+    filter_by_pack: true
+    boost_evidence_vault: 1.5
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_requirements:
+  evidence_minimum:
+    quantitative_claims: "tier_1"
+    qualitative_claims: "tier_2"
+    
+  freshness:
+    statistics: "< 24 months"
+    frameworks: "No expiry"
+    
+  validation:
+    on_load:
+      - "All evidence items follow evidence_item_schema"
+      - "No expired evidence (past valid_until)"
+      - "Source reliability >= C for all items"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# METRICS
+# ═══════════════════════════════════════════════════════════════════════════
+
+metrics:
+  adoption:
+    - "PACK activated across all RAC instances handling web projects"
+    - "Evidence library referenced in ≥70% of web projects within 2 months"
+    - "Quality gates enforced in 100% of web project launches"
+    - "Templates used in ≥80% of web project briefs"
+    - "Time to complete landing page audit: ≤6 hours"
+    
+  effectiveness:
+    - "Post-launch conversion rates target top quartile (5-7%)"
+    - "Core Web Vitals compliance: ≥90% 'Good' ratings"
+    - "LLM visibility improvement: ≥20% within 90 days"
+    - "A/B test success rate: ≥25% reaching significance"
+    - "Client satisfaction: NPS ≥50 for web projects"
+    
+  quality:
+    - "Evidence tier coverage: 100% quantitative claims backed by Tier 1-2"
+    - "Quality gate first-pass rate: ≥95%"
+    - "False positive prevention: 0% early-stopped A/B tests"
+    - "Framework portability: Works across different RAC configurations"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# IMPLEMENTATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+implementation:
+  onboarding:
+    description: "4-week progressive enablement program"
+    
+    week_1:
+      focus: "Evidence library familiarization"
+      activities:
+        - "Review top evidence items by lift percentage"
+        - "Practice citing evidence with correct IDs"
+        - "Learn evidence lookup workflow"
+      deliverable: "Cite ≥5 evidence items in practice brief"
+    
+    week_2:
+      focus: "Quality gates and workflows"
+      activities:
+        - "Review G_WEB_1 through G_WEB_5 quality gates"
+        - "Walk through landing page optimization workflow"
+        - "Practice quality gate validation"
+      deliverable: "Complete quality gate checklist for sample page"
+    
+    week_3:
+      focus: "Tools mastery"
+      activities:
+        - "Hands-on: PageSpeed Insights, Hemingway App, Rich Results Test"
+        - "Set up GA4 conversion tracking"
+        - "Practice A/B test sample size calculation"
+        - "Execute LLM visibility check protocol"
+      deliverable: "Complete technical audit on sample page"
+    
+    week_4:
+      focus: "First live project"
+      activities:
+        - "Apply framework to real client project"
+        - "Use landing page brief template"
+        - "Enforce quality gates"
+        - "Document lessons learned"
+      deliverable: "Launch first PACK-guided web project"
+  
+  support:
+    - "Weekly Q&A sessions for first 90 days"
+    - "Template library with usage instructions"
+    - "Slack channel for peer learning"
+    - "Monthly evidence update digest"
+  
+  updates:
+    quarterly:
+      - "Refresh conversion benchmarks"
+      - "Update Core Web Vitals thresholds if Google changes"
+      - "Add new case studies (≥5 evidence items)"
+      - "Review tool recommendations"
+    
+    annual:
+      - "Major version increment based on feedback"
+      - "Expand evidence library (50+ new items)"
+      - "Add workflows for emerging use cases"
+      - "Update thought leader references"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DEFINITION OF DONE
+# ═══════════════════════════════════════════════════════════════════════════
+
+dod:
+  - "meta section complete with lowercase tags array"
+  - "pack_definition includes id, type, name, domain, description"
+  - "All frameworks have: objectives, procedure, worked_examples, quality_checklist, common_pitfalls"
+  - "Evidence vault items follow LOGIC_08_QUALITY_GATES#evidence_item_schema"
+  - "All evidence items include: id, claim, source, source_date, tier, source_reliability"
+  - "capability_extensions reference valid ROLE_XX_NAME format"
+  - "rag_configuration includes namespace pattern"
+  - "$ref syntax correct for all SSOT references"
+  - "Terminology section covers all domain-specific terms"
+  - "Templates include all required sections"
+  - "Metrics defined for adoption, effectiveness, quality"
+  - "Implementation includes onboarding, support, updates"
+  - "No legacy schema remnants"
+  - "All quantitative claims backed by Tier 1-2 evidence"

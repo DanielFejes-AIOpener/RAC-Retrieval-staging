@@ -1,0 +1,439 @@
+# ================================================================
+# ROLE_00_BASE_TEMPLATE
+# ================================================================
+# SSOT: 04_ROLES_LAYER_BLUEPRINT.md
+# Purpose: Base template for all ROLE definitions
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Base template for all ROLE definitions"
+  notes: "v2.0 - Added handoff_partners, boundary_notes, evidence_requirements as optional fields"
+  tags: [roles, template, base]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AUTO-INHERITANCE
+# ═══════════════════════════════════════════════════════════════════════════
+# Base dependencies auto-inherited per LOGIC_00_INDEX#auto_inheritance
+# No explicit declaration required
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ROLE-SPECIFIC REFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+interface_standards: "$ref: LOGIC_09_INTERFACE#output_standards"
+hitl_triggers: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
+ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BASE QUALITY GATES (References LOGIC_08 SSOT)
+# ═══════════════════════════════════════════════════════════════════════════
+
+base_quality_gates:
+  source: "$ref: LOGIC_08_QUALITY_GATES"
+  universal_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
+  evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+  
+  layer_additions:
+    entry: []  # ROLES use base universal gates only
+    exit: []   # ROLES use base universal gates only
+    
+  note: "ROLES do not add layer-specific gates; USE_CASES and WORKFLOWS extend gates"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REQUIRED ROLE STRUCTURE
+# ═══════════════════════════════════════════════════════════════════════════
+
+role_template:
+  meta:
+    description: "Required metadata for all ROLE files"
+    fields:
+      - field: "owner"
+        type: "string"
+        required: true
+        example: "AI Opener"
+        
+      - field: "version"
+        type: "string"
+        required: true
+        format: "semver"
+        example: "2.0.0"
+        
+      - field: "last_updated"
+        type: "date"
+        required: true
+        format: "ISO"
+        example: "2025-01-15"
+        
+      - field: "purpose"
+        type: "string"
+        required: true
+        max_length: 100
+        example: "Content writing, messaging, tone adaptation"
+        
+      - field: "notes"
+        type: "string"
+        required: false
+        example: "v2.0 - Added SEO capabilities"
+        
+      - field: "tags"
+        type: "array"
+        required: true
+        validation: "Must be from LOGIC_03_TAXONOMY"
+        example: "[roles, copywriter, content]"
+        
+  role_definition:
+    description: "Core identity of the role"
+    fields:
+      - field: "id"
+        type: "string"
+        required: true
+        pattern: "ROLE_{NN}_{CAPABILITY}"
+        example: "ROLE_04_COPYWRITER"
+        note: "Must match filename"
+        
+      - field: "capability"
+        type: "string"
+        required: true
+        description: "Primary capability name (single word or short phrase)"
+        example: "copywriting"
+        
+      - field: "mission"
+        type: "string"
+        required: true
+        description: "One sentence mission statement"
+        max_length: 150
+        example: "Create compelling, on-brand written content across formats"
+        
+  capabilities:
+    description: "What this role can and cannot do"
+    fields:
+      - field: "primary"
+        type: "array"
+        required: true
+        min_items: 1
+        description: "Core capabilities this role provides"
+        note: "Each capability should be atomic (single responsibility)"
+        
+      - field: "secondary"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "Supporting capabilities (available but not primary focus)"
+        
+      - field: "excluded"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "Explicitly out of scope capabilities"
+        validation: "Cannot overlap with primary"
+        
+  knowledge_sources:
+    description: "Where this role gets its operational knowledge"
+    fields:
+      - field: "ops_files"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "OPS files this role uses"
+        example: "[OPS_00_STANDARDS, OPS_03_COPYWRITING_PLAYBOOK]"
+        
+      - field: "pack_requirements"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "Required PACK knowledge (optional enhancement)"
+        note: "PACK is loaded only if activated in CONFIG"
+        
+  constraints:
+    description: "Operational boundaries for this role"
+    fields:
+      - field: "token_budget"
+        type: "number"
+        required: false
+        default: "System default (4000)"
+        description: "Maximum tokens per response"
+        
+      - field: "requires_approval_for"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "Actions requiring HITL approval"
+        reference: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
+        
+  policy_constraints:
+
+    description: "Optional hooks for ai_policy compliance validation"
+
+    note: "Declaration only -- policy content lives in ORG/CLIENT, enforcement in LOGIC_16"
+
+    fields:
+
+      - field: "requires_human_review_for"
+
+        type: "array"
+
+        required: false
+
+        default: "[]"
+
+        description: "Action categories requiring HITL per policy"
+
+      - field: "disallowed_actions"
+
+        type: "array"
+
+        required: false
+
+        default: "[]"
+
+        description: "Action categories this role must refuse per policy"
+
+      - field: "notes"
+
+        type: "string"
+
+        required: false
+
+        default: ""
+
+        description: "Context or rationale for constraints"
+
+  quality_gates:
+    description: "Entry/exit criteria and Definition of Done"
+    fields:
+      - field: "entry"
+        type: "array"
+        required: true
+        must_include: "$ref: LOGIC_08_QUALITY_GATES#universal_gates.entry.base"
+        description: "Conditions that must be true to start"
+        
+      - field: "exit"
+        type: "array"
+        required: true
+        must_include: "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.base"
+        description: "Conditions that must be true to complete"
+        
+      - field: "dod_checklist"
+        type: "array"
+        required: true
+        min_items: 1
+        description: "Definition of Done items specific to this role"
+
+  handoff_partners:
+    description: "Upstream and downstream role connections for workflow integration"
+    fields:
+      - field: "receives_from"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "Roles/sources that provide inputs to this role"
+        example: |
+          - role: "ROLE_02_STRATEGIST"
+            inputs: ["Strategic direction", "Messaging framework"]
+          - role: "ROLE_08_BRIEF"
+            inputs: ["Requirements", "Constraints"]
+        note: "Can include role IDs, user, or workflow phases"
+        
+      - field: "hands_off_to"
+        type: "array"
+        required: false
+        default: "[]"
+        description: "Roles/destinations that receive outputs from this role"
+        example: |
+          - role: "ROLE_05_DESIGNER"
+            outputs: ["Copy for design integration"]
+          - role: "ROLE_09_TRAFFIC"
+            outputs: ["Deliverables for production"]
+        note: "Can include role IDs, human (escalations), or external"
+        
+  boundary_notes:
+    description: "Clarifications on role boundaries vs related roles"
+    fields:
+      - field: "vs_{role}"
+        type: "string"
+        required: false
+        description: "Boundary clarification against another role"
+        example: |
+          vs_strategist: |
+            Analytics provides data and recommendations.
+            Strategist makes strategic decisions based on that data.
+        note: "Use when role boundaries need explicit clarification"
+
+  evidence_requirements:
+    description: "Role-specific evidence standards beyond universal gates"
+    fields:
+      - field: "reference"
+        type: "string"
+        required: false
+        default: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+        description: "Reference to evidence tier definitions"
+        
+      - field: "role_specific"
+        type: "object"
+        required: false
+        description: "Claim types and their minimum evidence requirements"
+        example: |
+          quantitative_claims:
+            minimum_tier: "tier_1"
+            minimum_reliability: "B"
+        note: "Only define for roles making evidence-backed claims"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VALIDATION RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+validation:
+  required_sections:
+    - "meta"
+    - "role_definition"
+    - "capabilities"
+    - "quality_gates"
+    
+  optional_sections:
+    - "knowledge_sources"
+    - "constraints"
+    - "policy_constraints"
+    - "handoff_partners"
+    - "boundary_notes"
+    - "evidence_requirements"
+    
+  naming_convention:
+    pattern: "ROLE_{NN}_{CAPABILITY}"
+    nn_format: "Two-digit zero-padded number (00-99)"
+    capability_format: "UPPERCASE_SNAKE_CASE"
+    examples:
+      - "ROLE_00_BASE_TEMPLATE"
+      - "ROLE_01_ORCHESTRATOR"
+      - "ROLE_04_COPYWRITER"
+      - "ROLE_11_COMMERCIAL"
+    validation:
+      - "Filename must match role_definition.id"
+      - "NN must be unique across all ROLE files"
+      
+  capability_rules:
+    - rule: "primary capabilities must be non-empty"
+      on_failure: "error"
+      
+    - rule: "excluded capabilities cannot overlap with primary"
+      on_failure: "error"
+      
+    - rule: "each capability should be atomic (single responsibility)"
+      on_failure: "warning"
+      
+    - rule: "capabilities should not reference other ROLES"
+      on_failure: "error"
+      note: "Composition happens in USE_CASES, not ROLES"
+      
+  content_rules:
+    - rule: "No agent names in ROLE files"
+      reason: "Names are defined in CONFIG.agents"
+      on_failure: "error"
+      
+    - rule: "No persona definitions"
+      reason: "Personas are defined in USE_CASES"
+      on_failure: "error"
+      
+    - rule: "No client-specific content"
+      reason: "Client specifics belong in CLIENT layer"
+      on_failure: "error"
+      
+    - rule: "No ai_policy content in ROLE files"
+      reason: "ai_policy lives in ORG/CLIENT"
+      on_failure: "error"
+
+    - rule: "policy_constraints are declaration hooks only"
+      reason: "Validated against active ai_policy at runtime"
+      on_failure: "error"
+
+  structural_rules:
+    - rule: "All ROLE files must include 'extends: ROLE_00_BASE_TEMPLATE'"
+      exception: "ROLE_00_BASE_TEMPLATE itself"
+      on_failure: "error"
+      
+    - rule: "quality_gates.entry must reference universal_gates.entry.base"
+      on_failure: "error"
+      
+    - rule: "quality_gates.exit must reference universal_gates.exit.base"
+      on_failure: "error"
+      
+    - rule: "knowledge_sources.ops_files must reference valid OPS files"
+      on_failure: "error"
+      
+    - rule: "handoff_partners roles must reference valid ROLE IDs"
+      on_failure: "warning"
+      note: "Warning only - allows for future role additions"
+      
+  on_validation_failure:
+    severity: "error"
+    action: "Block role activation"
+    reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.roles"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CAPABILITY REGISTRY PATTERN
+# ═══════════════════════════════════════════════════════════════════════════
+
+capability_registry:
+  description: "How capabilities are discovered and routed"
+  
+  discovery:
+    source: "CONFIG.activation.roles_active + ORG.additional_roles"
+    index: "LOGIC_07_CAPABILITIES"
+    
+    resolution_steps:
+      1: "Read CONFIG.activation.roles_active"
+      2: "Merge ORG.capability_extensions.additional_roles (if present)"
+      3: "For each role_id, load ROLE file"
+      4: "Extract capabilities.primary"
+      5: "Build capability --> role_id map"
+      
+  routing:
+    input: "Required capability"
+    output: "role_id that provides it"
+    fallback: "ROLE_01_ORCHESTRATOR"
+    on_not_found: "Route to orchestrator for re-routing or escalation"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ERROR HANDLING
+# ═══════════════════════════════════════════════════════════════════════════
+
+error_handling:
+  reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.roles"
+  
+  patterns:
+    if_role_missing:
+      severity: "error"
+      action: "Route to ROLE_01_ORCHESTRATOR for re-routing"
+      fallback: "Surface capability gap to user"
+      
+    if_capability_unavailable:
+      severity: "warning"
+      action: "Check for alternative role with secondary capability"
+      fallback: "Escalate to orchestrator"
+      
+    if_knowledge_source_missing:
+      severity: "warning"
+      action: "Proceed with reduced context"
+      fallback: "Use OPS_00_STANDARDS defaults"
+      
+    if_token_budget_exceeded:
+      severity: "warning"
+      action: "Truncate response, note truncation"
+      fallback: "Split into multiple responses"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CANNOT OVERRIDE
+# ═══════════════════════════════════════════════════════════════════════════
+
+immutable_constraints:
+  reference: "$ref: LOGIC_02_RETRIEVAL#override_rules.immutable_paths"
+  note: "ROLES cannot override these paths regardless of configuration"
+  paths:
+    - "LOGIC_12_GOVERNANCE.minimums"
+    - "LOGIC_09_INTERFACE.output_standards.accessibility"
+    - "LOGIC_09_INTERFACE.output_standards.dei_requirements"
+    - "LOGIC_09_INTERFACE.hitl_triggers.human_required"
+    - "LOGIC_08_QUALITY_GATES.evidence_tiers"
+    - "LOGIC_08_QUALITY_GATES.universal_gates"

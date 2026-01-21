@@ -1,0 +1,324 @@
+# USE_CASE_00_BASE_TEMPLATE.yaml
+# RAC 2.0 -- SSOT-aligned base template (authoritative structure)
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2026-01-14"
+  purpose: "Base template for all USE_CASE definitions"
+  notes: "SSOT-aligned: interface, HITL, instantiation, policy enforcement, base quality gates. v2.1.0 adds prohibitions, critical_functions, activation as required blocks."
+  tags: [use_cases, template, base]
+
+# Auto-inherited: base_dependencies per LOGIC_00_INDEX#auto_inheritance
+
+# USE_CASE-specific references (SSOT)
+interface_standards: "$ref: LOGIC_09_INTERFACE#output_standards"
+hitl_triggers: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
+instantiation: "$ref: LOGIC_04_PLATFORM#instantiation"
+ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BASE QUALITY GATES (SSOT)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+base_quality_gates:
+  source: "$ref: LOGIC_08_QUALITY_GATES"
+  universal_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
+  evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+
+  layer_additions:
+    entry:
+      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.entry.use_case_additions"
+    exit:
+      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.use_case_additions"
+
+  policy_gates:
+    description: "`ai_policy` validation integrated into entry/exit gates"
+    enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+    entry:
+      - "Validate request against active ai_policy"
+      - "Check USE_CASE not in ai_policy.prohibited_use_cases"
+      - "Check inputs do not violate ai_policy.data_handling (forbidden inputs)"
+      - "Flag sensitive topics per ai_policy.sensitive_topics"
+
+    exit:
+      - "Validate external communication rules per ai_policy.external_communication (require HITL review prior to delivery if needed)"
+      - "Apply ai_policy.disclosure if required (prior to delivery)"
+      - "Confirm ai_policy.content_restrictions respected"
+
+    outcomes:
+      block: "Refuse USE_CASE action if ai_policy prohibits"
+      redact: "Mask sensitive content per ai_policy.data_handling"
+      require_hitl: "Escalate to human review per $ref: LOGIC_09_INTERFACE#hitl_triggers"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# REQUIRED USE CASE STRUCTURE (schema all USE_CASES must follow)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+use_case_template:
+  meta:
+    owner: "string (required)"
+    version: "string (required, semver)"
+    last_updated: "date (required, ISO)"
+    purpose: "string (required, < 100 chars)"
+    notes: "string (optional)"
+    tags: ["array (required, from LOGIC_03_TAXONOMY)"]
+
+  use_case_definition:
+    id: "USE_CASE_{NN}_{NAME}"
+    name: "Human-readable name"
+    mission: "One sentence mission"
+    typical_mode: "SOM | SAM | Wizard"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PROHIBITIONS (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+  
+  prohibitions:
+    description: "Hard boundaries — activities this agent must NEVER perform"
+    strict_rules:
+      - "NEVER [activity] — that belongs to ROLE_{NN}_{NAME}"
+      - "NEVER [activity] — that belongs to ROLE_{NN}_{NAME}"
+      - "NEVER [produce deliverable type]"
+    enforcement:
+      - "IF user requests prohibited activity → refuse politely + identify correct specialist + offer to route"
+      - "IF agent detects prohibited output in own response → halt + self-correct + route to specialist"
+    allowed_activities:
+      - "[Activity explicitly within this agent's scope]"
+      - "[Activity explicitly within this agent's scope]"
+      - "[Activity explicitly within this agent's scope]"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # CRITICAL FUNCTIONS (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+  
+  critical_functions:
+    _schema:
+      description: "Step-by-step implementations for core capabilities. Minimum 3 functions required."
+      function_template:
+        tier: "CRITICAL | HIGH | MEDIUM"
+        description: "What this function accomplishes"
+        implementation: |
+          STEP 1: [Concrete action with specific details]
+          STEP 2: [Concrete action with specific details]
+          STEP 3: [Concrete action with specific details]
+          
+          ERROR HANDLING:
+            IF [condition]: THEN [fallback action]
+        returns:
+          output_name: "type and description"
+    
+    # Example function (replace with role-specific functions)
+    example_function:
+      tier: "CRITICAL"
+      description: "Example function structure"
+      implementation: |
+        STEP 1: Identify required inputs from context or ask user
+        STEP 2: Load relevant knowledge from OPS/LOGIC files
+        STEP 3: Execute core logic
+        STEP 4: Validate output against quality criteria
+        STEP 5: Format and return result
+        
+        ERROR HANDLING:
+          IF required input missing: Ask user for clarification
+          IF knowledge file unavailable: Use fallback defaults
+      returns:
+        primary_output: "string — the main deliverable"
+        metadata: "object — supporting information"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # ACTIVATION (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+  
+  activation:
+    startup_sequence:
+      1: "Load role-specific knowledge sources"
+      2: "Load client context (if available)"
+      3: "Validate required dependencies available"
+      4: "Initialize prohibition enforcement"
+      5: "Display greeting"
+      6: "Present quick_starts"
+      7: "Wait for user request"
+    
+    post_startup_validation:
+      - "Knowledge sources loaded successfully"
+      - "Client context resolved (or defaults applied)"
+      - "Prohibition enforcement active"
+    
+    error_handling:
+      if_knowledge_fails: "Continue with reduced capabilities + notify user"
+      if_context_missing: "Ask user for required context"
+      if_critical_dependency_unavailable: "HALT and explain limitation"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # CAPABILITIES (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  capabilities_from:
+    - role_id: "ROLE_{NN}_{CAPABILITY}"
+      capabilities_used: ["array of specific capabilities OR $ref to ROLE#capabilities.primary"]
+      weight: "primary | secondary"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # KNOWLEDGE SOURCES (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  knowledge_sources:
+    ops_files: ["array of OPS file references"]
+    packs:
+      mode: "auto | manual"
+      discover_by: ["pack.capability_extensions.enhances_roles contains ROLE_{NN}"]
+    libraries:
+      mode: "auto | manual"
+      preferred_tags: ["array of taxonomy tags"]
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PERSONA (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  persona:
+    communication_style: "Professional | Casual | Technical | Collaborative"
+    defaults:
+      voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profile"
+      tone: "Tone description"
+    language:
+      interaction: "$ref: LOGIC_09_INTERFACE#language_handling.interaction_language"
+      output: "$ref: LOGIC_09_INTERFACE#language_handling.output_language"
+    rules:
+      - "Communication rule 1"
+      - "Communication rule 2"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # RUNTIME UX (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  runtime_ux:
+    base: "$ref: LOGIC_09_INTERFACE#runtime_ux"
+    greeting:
+      base: "$ref: LOGIC_09_INTERFACE#runtime_ux.greeting"
+      variants: {}
+    quick_starts:
+      base: "$ref: LOGIC_09_INTERFACE#runtime_ux.quick_starts"
+      options: []
+    commands:
+      universal: "$ref: LOGIC_09_INTERFACE#runtime_ux.commands.universal"
+      use_case_specific: []
+    voorbeelden:
+      description: "Shown when user types /voorbeelden"
+      items: []
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # INTAKE PATTERNS (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  intake_patterns:
+    description: "Smart context gathering — skip questions when context is available"
+    flow: "$ref: LOGIC_09_INTERFACE#runtime_ux.flow_patterns.stepwise_wizard"
+    fields:
+      required: []
+      optional: []
+    context_disclosure:
+      rule: "When using pre-loaded context, briefly mention it once"
+      template: "Ik gebruik {context_item} uit jullie {source}."
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # OUTPUT PATTERNS (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  output_patterns:
+    structure:
+      default:
+        - section: "content"
+          description: "The actual deliverable"
+        - section: "rationale"
+          description: "1-2 lines explaining key choices"
+          optional: true
+        - section: "follow_up"
+          description: "Available actions"
+    format_by_type: {}
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # QUALITY GATES (required)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  quality_gates:
+    entry:
+      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.entry.base"
+      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.entry.use_case_additions"
+      # append USE_CASE-specific entry checks here (additive)
+    exit:
+      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.base"
+      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.use_case_additions"
+      # append USE_CASE-specific exit checks here (additive)
+    dod_checklist: []
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# VALIDATION RULES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+validation:
+  required_sections:
+    - "meta"
+    - "use_case_definition"
+    - "prohibitions"
+    - "critical_functions"
+    - "activation"
+    - "capabilities_from"
+    - "knowledge_sources"
+    - "persona"
+    - "runtime_ux"
+    - "intake_patterns"
+    - "output_patterns"
+    - "quality_gates"
+
+  naming_convention:
+    pattern: "USE_CASE_{NN}_{NAME}"
+    examples:
+      - "USE_CASE_01_ORCHESTRATOR"
+      - "USE_CASE_02_STRATEGIST"
+      - "USE_CASE_04_COPYWRITER"
+
+  composition_rules:
+    - "capabilities_from must have at least one role"
+    - "All role_ids must exist in CONFIG.activation.roles_active (or ORG.additional_roles)"
+    - "capabilities_used must exist in referenced ROLE's capabilities.primary"
+    - "prohibitions.strict_rules must reference valid ROLE_{NN} that owns prohibited activity"
+    - "critical_functions must contain at least 3 functions"
+    - "Each critical_function must have tier, description, implementation, and returns"
+    - "activation.startup_sequence must end with 'Wait for user request'"
+
+  prohibitions_rules:
+    description: "Rules for valid prohibitions block"
+    rules:
+      - "strict_rules must list at least 2 prohibited activities"
+      - "Each prohibited activity must reference the ROLE that owns it"
+      - "allowed_activities must list at least 2 in-scope activities"
+      - "enforcement must include both user-request and self-detection scenarios"
+
+  critical_functions_rules:
+    description: "Rules for valid critical_functions block"
+    rules:
+      - "Minimum 3 functions required"
+      - "At least 1 function must be tier: CRITICAL"
+      - "implementation must use STEP N: format"
+      - "implementation must include ERROR HANDLING section"
+      - "returns must specify at least 1 output"
+
+  activation_rules:
+    description: "Rules for valid activation block"
+    rules:
+      - "startup_sequence must be numbered list"
+      - "startup_sequence must include knowledge loading step"
+      - "startup_sequence must include greeting display step"
+      - "post_startup_validation must include at least 2 checks"
+      - "error_handling must cover knowledge_fails and context_missing scenarios"
+
+  policy_compliance:
+    description: "USE_CASES must be policy-aware at runtime"
+    rules:
+      - "USE_CASES validate against active ai_policy at entry and exit gates"
+      - "CLIENT ai_policy overrides ORG ai_policy defaults (most-restrictive-wins)"
+      - "LOGIC_12_GOVERNANCE.minimums remain non-overridable"
+      - "ai_policy content lives in ORG/CLIENT -- USE_CASES do not store ai_policy"
+      - "Enforcement handled by LOGIC_16_POLICY_CAPTURE"

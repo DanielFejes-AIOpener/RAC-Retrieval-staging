@@ -1,0 +1,177 @@
+# CLIENT_00_BASE_TEMPLATE.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# TEMPLATE FILE — Copy and replace all {PLACEHOLDER} values for new clients
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "{YYYY-MM-DD}"
+  purpose: "Client-specific configuration for {CLIENT_NAME}"
+  notes: "Replace all {PLACEHOLDER} values before activation"
+  tags: [client, ssot]
+  client_id: "{CLIENT_ID}"
+  client_name: "{CLIENT_NAME}"
+  tier: "{TIER}"  # starter | professional | enterprise
+  engagement_mode: "{ENGAGEMENT_MODE}"  # agency_tenant | in_house_unit
+
+# Auto-inherited: base_dependencies per LOGIC_00_INDEX#auto_inheritance
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT-SPECIFIC REFERENCES (SSOT)
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+evidence_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+ai_policy_schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
+ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+client_identity:
+  name: "{CLIENT_NAME}"
+  display_name: "{CLIENT_DISPLAY_NAME}"
+  industry: "{INDUSTRY}"
+  website: "{WEBSITE}"
+  description: "{CLIENT_DESCRIPTION}"
+  
+  contact:
+    primary:
+      name: "{CONTACT_NAME}"
+      email: "{CONTACT_EMAIL}"
+      role: "{CONTACT_ROLE}"
+    billing:
+      name: "{BILLING_NAME}"
+      email: "{BILLING_EMAIL}"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LIBRARIES (POINTERS ONLY — NO CORPORA IN CLIENT YAML)
+# ═══════════════════════════════════════════════════════════════════════════
+
+libraries:
+  description: "CLIENT-level library pointers/overrides (no corpora stored here)"
+  allowed_library_ids: []
+  library_priority: []
+  blocked_library_ids: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOICE & COMMUNICATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+voice:
+  profile: "{VOICE_PROFILE}"  # Reference OPS_02_VOICES_LIBRARY or: professional | casual | formal
+  overrides:
+    tone: "{TONE}"
+    formality: "{FORMALITY}"
+    personality_traits: []
+    terminology_preferences:
+      prefer: []
+      avoid: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PREFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+preferences:
+  communication:
+    response_format: "concise"  # concise | detailed | structured
+    language:
+      interaction: "{INTERACTION_LANGUAGE}"
+      output: "{OUTPUT_LANGUAGE}"
+      fallback: "en"
+  deliverables:
+    preferred_formats: []
+    max_length_pages: 10
+    naming_convention: "{NAMING_CONVENTION}"
+  review:
+    requires_approval: true
+    approvers: []
+    turnaround_hours: 24
+
+# ═══════════════════════════════════════════════════════════════════════════
+# EVIDENCE VAULT (CLIENT-SPECIFIC FACTS)
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_vault:
+  schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+  precedence_note: "For verified benchmarks, ORG/PACK evidence takes precedence."
+  items: []
+  # Example item structure:
+  # - id: "ev-{CLIENT_ID}-001"
+  #   claim: "Client fact or statistic"
+  #   source: "Source document name"
+  #   source_date: "YYYY-MM-DD"
+  #   tier: "tier_1"
+  #   source_reliability: "A"
+  #   context: "Additional context"
+  #   valid_until: "YYYY-MM-DD"  # Optional
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USE_CASE OVERRIDES
+# ═══════════════════════════════════════════════════════════════════════════
+
+use_cases:
+  description: "Client-specific USE_CASE customizations"
+  conflict_rule: "$ref: LOGIC_02_RETRIEVAL#override_rules.exceptions.use_case_registry_conflict"
+  overrides:
+    description: "Modifications to existing USE_CASES for this client"
+    items: []
+  custom:
+    description: "Client-specific custom USE_CASES (CLIENT wins if same ID in ORG)"
+    items: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AI POLICY OVERRIDES (CAN ONLY ADD RESTRICTIONS)
+# ═══════════════════════════════════════════════════════════════════════════
+
+ai_policy:
+  schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
+  enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+  description: "CLIENT ai_policy extends ORG; can only ADD restrictions (most-restrictive-wins)."
+  
+  overrides:
+    prohibited_use_cases: []
+    blocked_topics: []
+    confidential_keywords: []
+    sensitive_topics: []
+    require_human_review:
+      high_risk_content: true
+      external_communications: false
+      competitor_mentions: false
+    ai_disclosure:
+      required: true
+      format: "footer"
+      text: ""
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CAPABILITY → TOOL ROUTING OVERRIDES (MAPPING ONLY)
+# ═══════════════════════════════════════════════════════════════════════════
+
+tool_routing_overrides:
+  description: "CLIENT overrides routing only; tools remain in LOGIC_10"
+  patch:
+    mappings: {}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CASE LIBRARY (FUTURE / EXPORT-TARGET)
+# ═══════════════════════════════════════════════════════════════════════════
+
+case_library:
+  description: "Client case records (export-target for #case command)"
+  note: "RAC runtime does not store cases; users export manually."
+  permissions:
+    default_scope: "internal"
+    allow_upgrade_to: ["client_ok", "public_ok"]
+  items: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY EXTENSIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_extensions:
+  description: "Client-specific quality gate additions"
+  additional_entry_gates: []
+  additional_exit_gates: []

@@ -1,0 +1,58 @@
+# ORG_02_BRAND_POSITIONING.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG offering, differentiation, and proof points (baseline positioning)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2026-01-06"
+  purpose: "ORG offering, differentiation, and proof points (baseline positioning)"
+  notes: "Phase I required. Uses discovery prompts for client-specific positioning data."
+  tags: [org, ssot, positioning]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OFFERS CATALOG — Core marketing input
+# ═══════════════════════════════════════════════════════════════════════════
+
+offers_catalog:
+  # Essential for content creation - agent will ask if empty and content requires it
+  offers: []
+  # Structure:
+  # - name: "Product/Service Name"
+  #   description: "What it does"
+  #   key_benefit: "Primary value for customer"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DIFFERENTIATORS — Core marketing input
+# ═══════════════════════════════════════════════════════════════════════════
+
+differentiators:
+  # Why customers choose this org over alternatives
+  # Agent uses generic B2B framing if empty
+  items: []
+  # Structure:
+  # - claim: "What we do differently"
+  #   proof: "How we can back this up"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PROOF POINTS — Optional credibility boosters
+# ═══════════════════════════════════════════════════════════════════════════
+
+proof_points:
+  # Testimonials, case studies, metrics, awards
+  # Agent omits social proof if empty rather than making claims
+  items: []
+  # Structure:
+  # - type: "metric | testimonial | case_study | award"
+  #   claim: "The proof point"
+  #   source: "Origin"
+  #   source_date: "YYYY-MM-DD"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRICING — Default: refer to sales
+# ═══════════════════════════════════════════════════════════════════════════
+
+pricing:
+  approach: "refer_to_sales"  # refer_to_sales | show_ranges | do_not_discuss
+  # If show_ranges, populate in CLIENT layer

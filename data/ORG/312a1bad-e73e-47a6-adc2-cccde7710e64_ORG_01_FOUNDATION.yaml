@@ -1,0 +1,74 @@
+# ORG_01_FOUNDATION.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# Legal/org basics + operating context + market context + competitor registry
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2026-01-06"
+  purpose: "Legal/org basics + operating context + market context + competitor registry (ORG baseline)"
+  notes: "Phase I required. Uses discovery prompts for unconfigured client-specific data."
+  tags: [org, ssot, foundation]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG BASICS — Marketing-relevant only
+# ═══════════════════════════════════════════════════════════════════════════
+
+org_basics:
+  # For marketing: only trading_name and website are typically needed
+  # Legal/KVK details only relevant for legal disclaimers (rare)
+  
+  trading_name: ""
+  website: ""
+  
+  # Legal details — rarely needed for marketing, ask only when creating legal disclaimers
+  legal_details:
+    _discovery:
+      trigger: "only_when_legal_disclaimer_needed"
+      fallback_behavior: "skip"
+      prompt: "Voor deze juridische disclaimer heb ik de officiële bedrijfsnaam en KvK-nummer nodig."
+    legal_name: ""
+    kvk_number: ""
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OPERATING CONTEXT — Marketing-relevant defaults
+# ═══════════════════════════════════════════════════════════════════════════
+
+operating_context:
+  # Sensible defaults for NL-based B2B organizations
+  # Override in CLIENT layer if different
+  
+  timezone: "Europe/Amsterdam"
+  languages:
+    - code: "nl"
+      name: "Nederlands"
+      primary: true
+    - code: "en"
+      name: "English"
+      primary: false
+  regions_served: ["Benelux", "DACH"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET CONTEXT — Optional, populate in CLIENT layer
+# ═══════════════════════════════════════════════════════════════════════════
+
+market_context:
+  # These inform targeting but aren't required for basic content creation
+  # Agent proceeds without if not configured
+  segments: []      # e.g. ["Enterprise", "MKB", "Startup"]
+  categories: []    # e.g. ["SaaS", "Professional Services"]
+  regions: []       # e.g. ["Netherlands", "Belgium", "Germany"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITOR REGISTRY — Optional, populate when needed
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitor_registry:
+  # Only relevant for competitive positioning content
+  # Agent skips competitor comparisons if empty
+  competitors: []
+  # Structure when filled:
+  # - name: "Competitor Name"
+  #   website: "https://..."
+  #   positioning: "Brief factual description of their positioning"

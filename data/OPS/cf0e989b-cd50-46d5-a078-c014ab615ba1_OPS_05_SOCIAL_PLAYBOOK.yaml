@@ -1,0 +1,543 @@
+# ================================================================
+# OPS_05_SOCIAL_PLAYBOOK
+# ================================================================
+# SSOT: 03_OPS_LAYER_BLUEPRINT.md
+# Purpose: Cross-platform social media content patterns
+# Note: LinkedIn depth in OPS_04; this covers other platforms
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-12-11"
+  purpose: "Cross-platform social media patterns and execution checklists"
+  notes: "Excludes LinkedIn (see OPS_04); covers X, Facebook, Instagram, etc."
+  tags: [ops, social, content, platforms]
+
+extends: "OPS_00_STANDARDS"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+style_options: "$ref: OPS_01_STYLE_OPTIONS"
+voice_library: "$ref: OPS_02_VOICES_LIBRARY"
+copywriting_playbook: "$ref: OPS_03_COPYWRITING_PLAYBOOK"
+linkedin_playbook: "$ref: OPS_04_LINKEDIN_PLAYBOOK"
+quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PLATFORM PRINCIPLES
+# ═══════════════════════════════════════════════════════════════════════════
+
+platform_principles:
+  description: "Cross-platform social content philosophy for B2B"
+  
+  core_principles:
+    - principle: "Platform-native thinking"
+      detail: "Each platform has unique culture; adapt content, don't just resize"
+      
+    - principle: "Value-first engagement"
+      detail: "Lead with insight or utility; promotion follows value"
+      
+    - principle: "Consistent brand, adapted format"
+      detail: "Voice stays consistent; format adapts to platform norms"
+      
+    - principle: "Evidence integrity everywhere"
+      detail: "Same evidence standards apply; adjust presentation, not truth"
+      
+  b2b_social_positioning:
+    purpose: "Build awareness, credibility, and engagement among professional audiences"
+    tone_range:
+      - "Professional but human"
+      - "Insightful without lecturing"
+      - "Engaging without clickbait"
+    avoid:
+      - "Overly casual language that undermines credibility"
+      - "Corporate jargon that distances audience"
+      - "Promotional content without value wrapper"
+      - "Engagement bait tactics"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PLATFORM-SPECIFIC PATTERNS
+# ═══════════════════════════════════════════════════════════════════════════
+
+platform_patterns:
+  
+  # ─────────────────────────────────────────────────────────────────────────
+  # X/TWITTER
+  # ─────────────────────────────────────────────────────────────────────────
+  x_twitter:
+    description: "Fast-paced, conversational, news-driven"
+    
+    specs:
+      character_limit: 280
+      optimal_length: "180-240 characters for engagement"
+      image_ratio: "16:9 or 1:1"
+      video_max: "2:20 (140 seconds)"
+      hashtags: "1-2 max; more reduces engagement"
+      
+    content_types:
+      single_post:
+        structure:
+          - element: "Hook statement"
+            purpose: "Stop the scroll"
+            length: "40-60 chars"
+          - element: "Core insight/value"
+            purpose: "Deliver payload"
+            length: "80-140 chars"
+          - element: "CTA or question"
+            purpose: "Drive engagement"
+            length: "40-60 chars"
+        example: |
+          Most B2B marketing fails for one reason:
+          
+          They solve problems nobody asked about.
+          
+          Start with the question your buyer is actually asking.
+          
+      thread:
+        when_to_use:
+          - "Explaining complex concepts"
+          - "Sharing frameworks or processes"
+          - "Telling longer stories"
+        structure:
+          tweet_1: "Hook + promise of value (what they'll learn)"
+          tweet_2_n: "Numbered insights (1/, 2/, etc.)"
+          final_tweet: "Summary + CTA + retweet request"
+        best_practices:
+          - "Each tweet should stand alone"
+          - "5-10 tweets optimal; longer loses readers"
+          - "End with a call to engage"
+          
+      quote_tweet:
+        purpose: "Add perspective to industry content"
+        structure: "Context + your take on the quoted content"
+        avoid: "Empty agreement; add value or skip"
+        
+    engagement_patterns:
+      - "Ask genuine questions (not rhetorical)"
+      - "Share contrarian takes with evidence"
+      - "Respond quickly to comments"
+      - "Amplify customer/partner content"
+      
+  # ─────────────────────────────────────────────────────────────────────────
+  # FACEBOOK (BUSINESS/COMPANY PAGES)
+  # ─────────────────────────────────────────────────────────────────────────
+  facebook:
+    description: "Community-oriented, longer-form acceptable, visual-heavy"
+    
+    specs:
+      optimal_post_length: "40-80 characters or 100-250 for storytelling"
+      image_ratio: "1.91:1 or 1:1"
+      video_max: "240 minutes (4 hours)"
+      link_preview: "Automatic; compelling headline critical"
+      hashtags: "0-2; less important than other platforms"
+      
+    content_types:
+      company_update:
+        structure:
+          - element: "Context/story opener"
+            length: "1-2 sentences"
+          - element: "News or update"
+            length: "2-3 sentences"
+          - element: "Why it matters to audience"
+            length: "1-2 sentences"
+          - element: "CTA or discussion prompt"
+            length: "1 sentence"
+        example: |
+          Three months ago, we noticed something in our client data.
+          
+          Companies investing in employer branding saw 43% lower cost-per-hire.
+          
+          Today we're releasing our full research report with actionable frameworks.
+          
+          What's your biggest employer branding challenge? 👇
+          
+      link_share:
+        structure:
+          - element: "Why this matters / your perspective"
+            length: "2-3 sentences"
+          - element: "Key takeaway preview"
+            length: "1 sentence"
+          - element: "Link (auto-previews)"
+        best_practice: "Don't repeat headline; add unique context"
+        
+      video_post:
+        optimal_length: "60-90 seconds for feed; 3-5 min for longer content"
+        caption_required: true
+        first_3_seconds: "Critical; state value immediately"
+        
+    engagement_patterns:
+      - "Reply to all comments (builds community)"
+      - "Ask for opinions, not just likes"
+      - "Use native video over YouTube links"
+      - "Share behind-the-scenes content"
+      
+  # ─────────────────────────────────────────────────────────────────────────
+  # INSTAGRAM (BUSINESS)
+  # ─────────────────────────────────────────────────────────────────────────
+  instagram:
+    description: "Visual-first, mobile-native, discovery-oriented"
+    
+    specs:
+      caption_limit: 2200
+      optimal_caption: "125-150 for feed visibility; longer for saved posts"
+      image_ratio: "1:1 (square) or 4:5 (portrait preferred)"
+      carousel_slides: "Up to 10"
+      hashtags: "5-10 strategic; place in comment or end of caption"
+      
+    content_types:
+      carousel:
+        purpose: "Educational content, step-by-steps, key points"
+        structure:
+          slide_1: "Hook/title slide with clear promise"
+          slides_2_n: "One key point per slide; visual hierarchy"
+          final_slide: "Summary + CTA (save, share, follow)"
+        design_principles:
+          - "Consistent visual template across slides"
+          - "Large readable text (mobile-first)"
+          - "Brand colors/fonts applied"
+          - "Minimal text per slide"
+        example_topics:
+          - "5 signs your employer brand needs work"
+          - "How to structure a case study"
+          - "Marketing metrics that actually matter"
+          
+      single_image:
+        types:
+          quote_card: "Insight/stat on branded background"
+          behind_scenes: "Team, office, process photos"
+          infographic: "Data visualization, simplified"
+          announcement: "News with visual impact"
+        caption_structure:
+          - element: "Hook line"
+            placement: "First 125 chars (shows in feed)"
+          - element: "Expanded value/context"
+            placement: "Revealed on tap"
+          - element: "CTA"
+            placement: "Clear action"
+          - element: "Hashtags"
+            placement: "End of caption or first comment"
+            
+      reels:
+        optimal_length: "15-30 seconds for B2B"
+        purpose:
+          - "Quick tips"
+          - "Trend participation (on-brand)"
+          - "Behind-the-scenes glimpses"
+          - "Myth-busting"
+        structure:
+          hook: "0-3 seconds: immediate value promise"
+          content: "3-25 seconds: deliver insight"
+          close: "25-30 seconds: CTA or recap"
+        b2b_caution: "Stay professional; don't force trendy formats"
+        
+      stories:
+        purpose: "Ephemeral updates, polls, behind-scenes"
+        best_uses:
+          - "Event coverage"
+          - "Quick polls for audience input"
+          - "Countdown to launches"
+          - "Resharing mentions/tags"
+        accessibility: "Always use captions for video"
+        
+    engagement_patterns:
+      - "Use Stories for real-time engagement"
+      - "Reply to DMs promptly"
+      - "Engage with tagged content"
+      - "Create Saves-worthy educational content"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CROSS-PLATFORM CONTENT PATTERNS
+# ═══════════════════════════════════════════════════════════════════════════
+
+cross_platform_patterns:
+  
+  hook_patterns:
+    description: "Opening patterns that work across platforms"
+    
+    patterns:
+      stat_hook:
+        formula: "[Surprising statistic] + implication"
+        example: "73% of candidates research employer brand before applying. Here's what they're finding."
+        evidence_required: "tier_2 minimum"
+        
+      contrarian:
+        formula: "Challenge common belief + new perspective"
+        example: "Stop measuring social media by followers. Here's what actually matters."
+        
+      question:
+        formula: "Direct question about pain point or goal"
+        example: "How long does it take your team to produce one case study?"
+        
+      story_opener:
+        formula: "Specific scenario that creates curiosity"
+        example: "Last week a client asked us why their content wasn't converting. The answer surprised them."
+        
+      list_preview:
+        formula: "Number + specific promise"
+        example: "3 changes that doubled our client's LinkedIn engagement"
+        
+  cta_patterns:
+    description: "Call-to-action patterns for social"
+    
+    engagement_ctas:
+      - pattern: "Question prompt"
+        example: "What's your take? 👇"
+      - pattern: "Share request"
+        example: "Tag someone who needs to see this"
+      - pattern: "Save prompt"
+        example: "Save this for your next planning session"
+      - pattern: "Discussion starter"
+        example: "Agree or disagree? Let's discuss"
+        
+    conversion_ctas:
+      - pattern: "Direct link"
+        example: "Read the full guide --> [link]"
+      - pattern: "Resource offer"
+        example: "DM 'GUIDE' for our free template"
+      - pattern: "Soft conversion"
+        example: "Want the full breakdown? Comment 'yes' below"
+        
+    cta_rules:
+      - "One CTA per post; don't split attention"
+      - "Match CTA to post goal (engagement vs conversion)"
+      - "Use action verbs"
+      - "Make the action easy"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTENT REPURPOSING
+# ═══════════════════════════════════════════════════════════════════════════
+
+content_repurposing:
+  description: "Adapting content across platforms while maintaining quality"
+  
+  repurposing_matrix:
+    blog_post:
+      to_x_thread: "Extract 5-7 key insights; one per tweet"
+      to_instagram_carousel: "Visual summary of main points"
+      to_facebook: "Personal angle + key insight + link"
+      to_linkedin: "See OPS_04; professional insight angle"
+      
+    case_study:
+      to_x: "Single stat + outcome + link"
+      to_instagram: "Before/after visual or key metrics carousel"
+      to_facebook: "Client success story narrative"
+      
+    webinar:
+      to_x_thread: "Top insights summarized"
+      to_instagram_reels: "15-30 second key moment clips"
+      to_facebook: "Full replay announcement + highlight"
+      
+    research_report:
+      to_x: "Individual stats over time; thread for methodology"
+      to_instagram: "Data visualization carousels"
+      to_facebook: "Key finding + why it matters + link"
+      
+  repurposing_rules:
+    maintain:
+      - "Evidence accuracy and attribution"
+      - "Brand voice consistency"
+      - "Core message integrity"
+    adapt:
+      - "Length to platform norms"
+      - "Visual format to platform requirements"
+      - "CTA to platform behavior"
+    avoid:
+      - "Copy-paste across platforms"
+      - "Ignoring platform culture"
+      - "Losing evidence trail in simplification"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ACCESSIBILITY REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+accessibility:
+  description: "Non-negotiable accessibility standards for social"
+  
+  image_alt_text:
+    required: true
+    guidelines:
+      - "Describe informative content of image"
+      - "Include key text shown in image"
+      - "Don't start with 'Image of...'"
+      - "Keep under 125 characters when possible"
+    examples:
+      decorative: "alt=''" # Empty for purely decorative
+      informative: "Bar chart showing 73% of candidates research employer brand"
+      quote_card: "Quote: 'Your employer brand is what people say when you're not in the room' - attribution"
+      
+  video_captions:
+    required: true
+    formats:
+      - "Burned-in captions (auto-play friendly)"
+      - "Platform caption tools (when available)"
+    guidelines:
+      - "Include all spoken content"
+      - "Describe relevant sounds"
+      - "Use readable fonts (sans-serif, high contrast)"
+      
+  hashtag_formatting:
+    rule: "CamelCase for multi-word hashtags"
+    correct: "#EmployerBranding #B2BMarketing"
+    incorrect: "#employerbranding #b2bmarketing"
+    reason: "Screen readers parse CamelCase correctly"
+    
+  link_text:
+    avoid: "Click here, Read more"
+    prefer: "Descriptive link purpose"
+    example: "Read the full employer branding guide"
+    
+  color_contrast:
+    minimum: "4.5:1 for normal text"
+    large_text: "3:1 for 14pt+ bold or 18pt+"
+    tools: "Use contrast checkers before posting graphics"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# EVIDENCE IN SOCIAL
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_in_social:
+  description: "Maintaining evidence standards in short-form content"
+  
+  principles:
+    - "Same evidence tier requirements apply"
+    - "Space constraints don't excuse unsourced claims"
+    - "Link to full source when citing stats"
+    
+  strategies:
+    stat_citation:
+      in_post: "Include source name (e.g., 'LinkedIn data shows...')"
+      in_thread: "Cite source in relevant tweet"
+      link_option: "Add full source link in reply/comment"
+      
+    claim_types:
+      quantitative:
+        requirement: "tier_1 source, reliability B+"
+        format: "[Stat] -- Source Name, Year"
+        example: "50% lower cost-per-hire (LinkedIn Talent, 2023)"
+        
+      qualitative:
+        requirement: "tier_2 source minimum"
+        format: "Attribute opinion clearly"
+        example: "According to Gartner's analysis..."
+        
+      general_principle:
+        requirement: "tier_3 acceptable"
+        format: "No citation needed for widely accepted truths"
+        example: "Marketing works better with clear goals"
+        
+  when_evidence_unavailable:
+    options:
+      - "Reframe as opinion/observation"
+      - "Skip the claim"
+      - "Use qualifiers: 'In our experience...'"
+    never:
+      - "Cite without source"
+      - "Make up statistics"
+      - "Present opinion as fact"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTENT PILLAR BALANCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+content_pillars:
+  description: "Balanced content mix for B2B social presence"
+  
+  pillar_distribution:
+    thought_leadership:
+      percentage: "30-40%"
+      content: "Original insights, industry perspectives, expertise demonstration"
+      goal: "Build authority and differentiation"
+      
+    educational_value:
+      percentage: "30-40%"
+      content: "How-tos, tips, frameworks, resources"
+      goal: "Provide utility and earn trust"
+      
+    social_proof:
+      percentage: "10-15%"
+      content: "Case studies, testimonials, results"
+      goal: "Demonstrate credibility"
+      
+    engagement_community:
+      percentage: "10-15%"
+      content: "Questions, polls, discussions, UGC amplification"
+      goal: "Build relationships and gather insights"
+      
+    promotional:
+      percentage: "5-10%"
+      content: "Direct offers, product updates, CTAs"
+      goal: "Drive conversions"
+      note: "Lowest percentage; earned through value"
+      
+  balance_rules:
+    - "Never exceed promotional percentage"
+    - "Education + Thought Leadership should dominate"
+    - "Engagement content provides variety"
+    - "Social proof validates other content"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY CHECKLIST
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_checklist:
+  description: "Pre-publish checklist for social content"
+  
+  checklist:
+    hook:
+      - "First line creates curiosity or states value"
+      - "Optimized for platform's visible preview length"
+      
+    content:
+      - "One clear main message"
+      - "Value delivered (not just promised)"
+      - "Platform-appropriate length"
+      - "Tone matches voice profile"
+      
+    evidence:
+      - "Statistics sourced (tier_2+ for claims)"
+      - "No unsupported claims"
+      - "Source attribution included or linked"
+      
+    accessibility:
+      - "Alt text for images"
+      - "Captions for video"
+      - "CamelCase hashtags"
+      - "Sufficient color contrast"
+      
+    engagement:
+      - "Clear CTA (one only)"
+      - "Discussion invitation where appropriate"
+      - "Hashtags relevant and limited"
+      
+    brand:
+      - "Voice consistency with OPS_02 profile"
+      - "Visual consistency with brand guidelines"
+      - "No competitor disparagement"
+      
+    compliance:
+      - "No prohibited claims"
+      - "Appropriate disclosures included"
+      - "Platform terms respected"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VALIDATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+validation:
+  file_validation:
+    - "Follows ops_base_template structure"
+    - "All evidence requirements reference LOGIC_08"
+    - "Cross-references OPS_01, OPS_02, OPS_04 appropriately"
+    - "No client-specific content"
+    - "No workflow definitions"
+    - "No role assignments"
+    
+  content_validation:
+    - "Platform specs are current"
+    - "Examples follow stated patterns"
+    - "Accessibility requirements are comprehensive"
+    - "Evidence rules align with OPS_00 standards"

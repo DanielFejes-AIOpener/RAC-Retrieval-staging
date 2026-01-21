@@ -1,0 +1,172 @@
+# WORKFLOW_00_BASE_TEMPLATE.yaml
+# RAC 2.0 – Workflow Base Template (Updated)
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+
+workflow_type: "base_template"
+
+# ------------------------------------------------------------------
+# WORKFLOW-SPECIFIC REFERENCES
+# ------------------------------------------------------------------
+interface_standards_ref: "$ref: LOGIC_09_INTERFACE"
+hitl_triggers_ref: "$ref: LOGIC_12_HITL"
+effort_estimation_ref: "$ref: LOGIC_15_EFFORT"
+governance_ref: "$ref: LOGIC_08_GOVERNANCE"
+ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+tool_registry_ref: "$ref: LOGIC_10_TOOLS_CORE#tool_registry"
+capability_mapping_ref: "$ref: LOGIC_10_TOOLS_CORE#capability_tool_mapping"
+
+# ------------------------------------------------------------------
+# STATE MANAGEMENT
+# ------------------------------------------------------------------
+state_management:
+  checkpointing:
+    enabled: true
+    checkpoint_contents:
+      - field: "workflow_id"
+      - field: "current_phase"
+      - field: "phase_history"
+      - field: "context_snapshot"
+      - field: "trace_context"
+  resume_policy: "resume_from_last_checkpoint"
+  rollback_policy: "rollback_to_previous_checkpoint"
+
+# ------------------------------------------------------------------
+# BASE QUALITY GATES
+# ------------------------------------------------------------------
+base_quality_gates:
+  description: "Default quality and governance gates applied to all workflows."
+  policy_gates:
+    description: "Enforces active ai_policy (CLIENT > ORG > LOGIC) at workflow and phase boundaries."
+    enforcement_actions_ref: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+    outcomes:
+      - allow
+      - block
+      - redact
+      - require_hitl
+
+# ------------------------------------------------------------------
+# WORKFLOW TEMPLATE
+# ------------------------------------------------------------------
+workflow_template:
+  meta:
+    fields:
+      - field: "workflow_id"
+        type: "string"
+        required: true
+      - field: "name"
+        type: "string"
+        required: true
+      - field: "risk_level"
+        type: "string"
+        required: true
+        allowed_values: ["minimal", "limited", "high"]
+      - field: "trace_required"
+        type: "boolean"
+        required: false
+        default: true
+      - field: "trace_fields"
+        type: "array"
+        required: false
+        example:
+          - "sources_consulted"
+          - "guidance_applied"
+          - "conflicts_resolved"
+          - "decisions"
+          - "policy_outcomes"
+
+  phases:
+    item_schema:
+      fields:
+        - field: "phase_id"
+          type: "string"
+          required: true
+        - field: "description"
+          type: "string"
+          required: true
+
+        - field: "entry_gate"
+          type: "object"
+          required: true
+          subfields:
+            - field: "conditions"
+              type: "array"
+              required: false
+            - field: "policy_checks"
+              type: "array"
+              required: true
+              min_items: 1
+              reference: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+        - field: "actions"
+          type: "array"
+          required: true
+          item_schema:
+            one_of:
+              - action_type: "invoke_tool"
+                fields:
+                  - field: "tool_id"
+                    type: "string"
+                    required: false
+                  - field: "capability_key"
+                    type: "string"
+                    required: false
+                  - field: "params"
+                    type: "object"
+                    required: false
+              - action_type: "invoke_use_case"
+                fields:
+                  - field: "use_case_id"
+                    type: "string"
+                    required: true
+                  - field: "inputs"
+                    type: "object"
+                    required: false
+              - action_type: "wait_for_signal"
+                fields:
+                  - field: "signal_id"
+                    type: "string"
+                    required: true
+
+        - field: "exit_gate"
+          type: "object"
+          required: true
+          subfields:
+            - field: "conditions"
+              type: "array"
+              required: false
+            - field: "policy_checks"
+              type: "array"
+              required: true
+              min_items: 1
+              reference: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+        - field: "handoff"
+          type: "object"
+          required: true
+          subfields:
+            - field: "to"
+              type: "string"
+              required: true
+            - field: "contract"
+              type: "string"
+              required: true
+            - field: "context_pass"
+              type: "array"
+              required: false
+              example:
+                - "trace_context"
+                - "context_snapshot"
+
+# ------------------------------------------------------------------
+# VALIDATION RULES
+# ------------------------------------------------------------------
+validation:
+  structural_rules:
+    - rule: "Each phase must define entry_gate and exit_gate with policy_checks."
+    - rule: "If trace_required == true, trace_context must be passed via handoff.context_pass for all non-terminal phases."
+    - rule: "Any referenced tool_id must exist in LOGIC_10_TOOLS_CORE.tool_registry."
+    - rule: "Any referenced capability_key must exist in LOGIC_10_TOOLS_CORE.capability_tool_mapping."

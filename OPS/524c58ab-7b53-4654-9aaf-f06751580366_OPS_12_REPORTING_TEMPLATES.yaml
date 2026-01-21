@@ -1,0 +1,472 @@
+# ================================================================
+# OPS_12_REPORTING_TEMPLATES
+# ================================================================
+# SSOT: 03_OPS_LAYER_BLUEPRINT.md
+# Purpose: Report formats, metrics definitions, and visualization templates
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Standardized report formats and metrics for performance communication"
+  notes: "v2.0 - Migrated from RAC 1.0 OPS_19 and OPS_16"
+  tags: [ops, reporting, metrics, analytics, measurement]
+
+extends: "OPS_00_STANDARDS"
+quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REPORT FORMATS
+# ═══════════════════════════════════════════════════════════════════════════
+
+report_formats:
+  description: "Standardized templates for common report types"
+  
+  campaign_performance:
+    id: "report_campaign_performance"
+    name: "Campaign Performance Report"
+    purpose: "Communicate campaign results to stakeholders"
+    sections:
+      - section: "executive_summary"
+        required: true
+        content:
+          - "Campaign objective (1-2 sentences)"
+          - "Key results vs. targets"
+          - "Top 3 insights"
+          - "Recommended actions"
+        max_length_words: 200
+        
+      - section: "objectives_and_kpis"
+        required: true
+        content:
+          - "Primary objective"
+          - "Secondary objectives"
+          - "KPI definitions with targets"
+          - "Measurement methodology"
+          
+      - section: "performance_data"
+        required: true
+        content:
+          - "KPI actuals vs. targets (table)"
+          - "Period-over-period comparison"
+          - "Benchmark comparison (industry/historical)"
+        visualization: "kpi_dashboard"
+        
+      - section: "channel_breakdown"
+        required: false
+        content:
+          - "Performance by channel"
+          - "Attribution analysis"
+          - "Channel efficiency metrics"
+        visualization: "channel_comparison_chart"
+        
+      - section: "audience_insights"
+        required: false
+        content:
+          - "Audience segment performance"
+          - "Engagement patterns"
+          - "Demographic highlights"
+          
+      - section: "analysis_and_insights"
+        required: true
+        content:
+          - "What worked and why"
+          - "What underperformed and why"
+          - "External factors impact"
+          - "Hypothesis validation"
+        evidence_required: true
+        
+      - section: "recommendations"
+        required: true
+        content:
+          - "Immediate optimizations"
+          - "Strategic recommendations"
+          - "Budget reallocation suggestions"
+          - "Next campaign considerations"
+          
+      - section: "appendix"
+        required: false
+        content:
+          - "Detailed data tables"
+          - "Methodology notes"
+          - "Glossary of terms"
+
+  monthly_analytics:
+    id: "report_monthly_analytics"
+    name: "Monthly Analytics Report"
+    purpose: "Regular performance tracking and trend analysis"
+    cadence: "Monthly"
+    sections:
+      - section: "month_at_a_glance"
+        required: true
+        content:
+          - "North star metric status"
+          - "Traffic summary"
+          - "Engagement summary"
+          - "Conversion summary"
+        visualization: "monthly_scorecard"
+        
+      - section: "trend_analysis"
+        required: true
+        content:
+          - "MoM comparisons"
+          - "YoY comparisons"
+          - "Trend direction indicators"
+          - "Anomaly highlights"
+        visualization: "trend_line_charts"
+        
+      - section: "channel_performance"
+        required: true
+        content:
+          - "Organic performance"
+          - "Paid performance"
+          - "Social performance"
+          - "Email performance"
+          
+      - section: "content_performance"
+        required: true
+        content:
+          - "Top performing content"
+          - "Underperforming content"
+          - "Content type analysis"
+          
+      - section: "action_items"
+        required: true
+        content:
+          - "Optimizations for next month"
+          - "Tests to run"
+          - "Content to create/update"
+
+  roi_report:
+    id: "report_roi"
+    name: "ROI Analysis Report"
+    purpose: "Financial impact and return on investment analysis"
+    sections:
+      - section: "investment_summary"
+        required: true
+        content:
+          - "Total investment"
+          - "Investment breakdown by category"
+          - "Period covered"
+          
+      - section: "returns_analysis"
+        required: true
+        content:
+          - "Revenue attributed"
+          - "Cost savings identified"
+          - "Efficiency gains"
+        evidence_required: true
+        
+      - section: "roi_calculation"
+        required: true
+        content:
+          - "ROI formula used"
+          - "ROI result"
+          - "Confidence level"
+          - "Attribution methodology"
+        visualization: "roi_breakdown_chart"
+        
+      - section: "benchmark_comparison"
+        required: true
+        content:
+          - "Industry benchmarks"
+          - "Historical comparison"
+          - "Competitive context"
+        evidence_required: true
+        
+      - section: "recommendations"
+        required: true
+        content:
+          - "Investment optimization"
+          - "Resource reallocation"
+          - "Scaling opportunities"
+
+  results_package:
+    id: "report_results_package"
+    name: "Results Package"
+    purpose: "Comprehensive deliverable for project/campaign completion"
+    sections:
+      - section: "tldr"
+        required: true
+        content:
+          - "One-paragraph summary"
+          - "Key achievement"
+          - "Primary learning"
+        max_length_words: 100
+        
+      - section: "objectives_review"
+        required: true
+        content:
+          - "Original objectives"
+          - "Achievement status"
+          - "Variance explanation"
+          
+      - section: "key_insights"
+        required: true
+        content:
+          - "Strategic insights"
+          - "Tactical learnings"
+          - "Audience insights"
+        max_items: 5
+        evidence_required: true
+        
+      - section: "visualizations"
+        required: true
+        content:
+          - "Performance dashboard"
+          - "Trend visualizations"
+          - "Comparison charts"
+          
+      - section: "next_steps"
+        required: true
+        content:
+          - "Immediate actions"
+          - "Future recommendations"
+          - "Open questions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# METRICS DEFINITIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+metrics_definitions:
+  description: "Standard metric definitions aligned with OPS_00 KPIs"
+  reference: "$ref: OPS_00_STANDARDS#kpi_framework"
+  
+  north_star:
+    definition_rules:
+      - "Must align with business objective"
+      - "Must be measurable and trackable"
+      - "Must be influenceable by marketing"
+      - "Should be leading indicator when possible"
+    examples:
+      - metric: "Marketing Qualified Leads (MQLs)"
+        business_type: "B2B"
+      - metric: "Customer Acquisition Cost (CAC)"
+        business_type: "B2B/B2C"
+      - metric: "Customer Lifetime Value (CLV)"
+        business_type: "B2C"
+        
+  traffic_metrics:
+    sessions:
+      definition: "Total number of visits to property"
+      source: "GA4"
+      aggregation: "Sum"
+    users:
+      definition: "Unique visitors (deduplicated)"
+      source: "GA4"
+      aggregation: "Count distinct"
+    pageviews:
+      definition: "Total page views across sessions"
+      source: "GA4"
+      aggregation: "Sum"
+    bounce_rate:
+      definition: "Single-page sessions / total sessions"
+      source: "GA4"
+      aggregation: "Percentage"
+      note: "Lower is generally better"
+    avg_session_duration:
+      definition: "Total session time / number of sessions"
+      source: "GA4"
+      aggregation: "Average"
+      format: "MM:SS"
+
+  engagement_metrics:
+    engagement_rate:
+      definition: "(Likes + Comments + Shares + Saves) / Impressions"
+      platforms: [LinkedIn, Instagram, Facebook]
+      benchmark_ranges:
+        low: "< 1%"
+        average: "1-3%"
+        high: "> 3%"
+    click_through_rate:
+      definition: "Clicks / Impressions"
+      abbreviation: "CTR"
+      benchmark_ranges:
+        low: "< 0.5%"
+        average: "0.5-2%"
+        high: "> 2%"
+    time_on_page:
+      definition: "Average time spent on specific page"
+      source: "GA4"
+      format: "MM:SS"
+    scroll_depth:
+      definition: "Percentage of page viewed"
+      source: "GA4"
+      thresholds: [25, 50, 75, 100]
+
+  conversion_metrics:
+    conversion_rate:
+      definition: "Conversions / Sessions (or Clicks)"
+      abbreviation: "CVR"
+      benchmark_ranges:
+        low: "< 1%"
+        average: "1-3%"
+        high: "> 3%"
+    cost_per_lead:
+      definition: "Total spend / Number of leads"
+      abbreviation: "CPL"
+      lower_is_better: true
+    cost_per_acquisition:
+      definition: "Total spend / Number of customers"
+      abbreviation: "CPA"
+      lower_is_better: true
+    return_on_ad_spend:
+      definition: "Revenue / Ad spend"
+      abbreviation: "ROAS"
+      format: "X:1 ratio"
+
+  attribution:
+    models:
+      - model: "last_click"
+        description: "100% credit to last touchpoint"
+        use_case: "Simple, conservative measurement"
+      - model: "first_click"
+        description: "100% credit to first touchpoint"
+        use_case: "Awareness campaign measurement"
+      - model: "linear"
+        description: "Equal credit to all touchpoints"
+        use_case: "Balanced view of journey"
+      - model: "time_decay"
+        description: "More credit to recent touchpoints"
+        use_case: "Short sales cycles"
+      - model: "data_driven"
+        description: "ML-based credit distribution"
+        use_case: "When sufficient data available"
+        
+    event_mapping:
+      description: "Standard KPI to event mappings"
+      mappings:
+        - kpi: "Lead"
+          events: ["form_submit", "contact_request", "demo_request"]
+        - kpi: "Engagement"
+          events: ["scroll_50", "video_play", "download"]
+        - kpi: "Purchase"
+          events: ["purchase", "transaction_complete"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VISUALIZATION TEMPLATES
+# ═══════════════════════════════════════════════════════════════════════════
+
+visualization_templates:
+  description: "Standard chart and dashboard patterns"
+  
+  kpi_dashboard:
+    type: "scorecard"
+    components:
+      - element: "metric_card"
+        shows: ["Current value", "vs. Target", "vs. Previous period"]
+        color_coding:
+          green: "At or above target"
+          yellow: "Within 10% of target"
+          red: "More than 10% below target"
+      - element: "sparkline"
+        shows: "Trend over period"
+        
+  trend_line_charts:
+    type: "line_chart"
+    requirements:
+      - "Clear axis labels"
+      - "Legend for multiple series"
+      - "Benchmark/target line when applicable"
+      - "Annotation for anomalies"
+    time_granularity_rules:
+      daily: "For periods < 30 days"
+      weekly: "For periods 30-90 days"
+      monthly: "For periods > 90 days"
+      
+  channel_comparison_chart:
+    type: "bar_chart"
+    variants:
+      - "Grouped bars for metric comparison"
+      - "Stacked bars for composition"
+    requirements:
+      - "Consistent color coding per channel"
+      - "Value labels on bars"
+      - "Sorted by performance (desc)"
+      
+  roi_breakdown_chart:
+    type: "waterfall_chart"
+    components:
+      - "Starting investment"
+      - "Costs breakdown"
+      - "Returns breakdown"
+      - "Net ROI"
+      
+  funnel_visualization:
+    type: "funnel_chart"
+    stages:
+      - "Awareness (Impressions)"
+      - "Interest (Clicks/Visits)"
+      - "Consideration (Engagement)"
+      - "Intent (Leads)"
+      - "Purchase (Conversions)"
+    requirements:
+      - "Stage-to-stage conversion rates"
+      - "Drop-off percentages"
+      - "Absolute numbers per stage"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# METRICS WORKBOOK TEMPLATE
+# ═══════════════════════════════════════════════════════════════════════════
+
+metrics_workbook:
+  description: "Standard structure for metrics tracking workbooks"
+  
+  sheets:
+    - sheet: "Summary Dashboard"
+      purpose: "At-a-glance performance view"
+      content:
+        - "North star metric current vs. target"
+        - "Top 5 KPIs with status"
+        - "Period selection"
+        
+    - sheet: "Baseline"
+      purpose: "Historical baseline for comparison"
+      content:
+        - "Pre-campaign/pre-period metrics"
+        - "Historical averages"
+        - "Seasonality adjustments"
+        
+    - sheet: "Period Data"
+      purpose: "Raw and calculated metrics per period"
+      content:
+        - "Date/period column"
+        - "Metric columns"
+        - "Calculated fields"
+        - "Notes column"
+        
+    - sheet: "Benchmarks"
+      purpose: "Industry and competitive benchmarks"
+      content:
+        - "Industry benchmark values"
+        - "Source citations"
+        - "Validity dates"
+      evidence_required: true
+      
+    - sheet: "Calculations"
+      purpose: "Formulas and methodology"
+      content:
+        - "Formula definitions"
+        - "Data transformation rules"
+        - "Aggregation methods"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VALIDATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+validation:
+  report_validation:
+    - "All required sections present"
+    - "Evidence-backed insights have citations"
+    - "Metrics use standard definitions"
+    - "Visualizations follow templates"
+    - "Executive summary under word limit"
+    - "Recommendations are actionable"
+    
+  metrics_validation:
+    - "Metric definitions align with OPS_00"
+    - "Benchmark sources cited"
+    - "Attribution model documented"
+    - "Time periods clearly stated"

@@ -1,0 +1,462 @@
+# ================================================================
+# OPS_14_RESEARCH_PROTOCOLS
+# ================================================================
+# SSOT: 03_OPS_LAYER_BLUEPRINT.md
+# Purpose: Research methodology standards and intelligence gathering protocols
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Standard protocols for research and intelligence gathering"
+  notes: "v2.0 - Migrated from RAC 1.0 OPS_12 and OPS_18"
+  tags: [ops, research, protocols, intelligence, methodology]
+
+extends: "OPS_00_STANDARDS"
+
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+
+# REFERENCES
+
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+
+quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
+
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+
+source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# RESEARCH METHODOLOGY
+# ═══════════════════════════════════════════════════════════════════════════
+
+research_methodology:
+  description: "Step-by-step process for conducting research"
+  
+  phases:
+    - phase: "1_scoping"
+      name: "Scope Definition"
+      actions:
+        - action: "Define research question"
+          output: "Clear, answerable question"
+          criteria:
+            - "Specific enough to be actionable"
+            - "Aligned with business objective"
+            - "Measurable or verifiable"
+            
+        - action: "Identify constraints"
+          output: "Documented constraints"
+          considerations:
+            - "Time available"
+            - "Budget (if applicable)"
+            - "Source accessibility"
+            - "Depth required"
+            
+        - action: "Determine deliverable"
+          output: "Expected format and content"
+          options:
+            - "Summary finding"
+            - "Evidence item"
+            - "Research brief"
+            - "Competitive analysis"
+            
+    - phase: "2_discovery"
+      name: "Source Discovery"
+      actions:
+        - action: "Identify potential sources"
+          output: "Source list with tier classification"
+          source_priority:
+            1: "Primary/official sources (Tier 1)"
+            2: "Reputable secondary sources (Tier 2)"
+            3: "Supporting context sources (Tier 3)"
+            
+        - action: "Assess source credibility"
+          output: "Reliability rating per source"
+          criteria:
+            - "Author/publisher authority"
+            - "Publication date"
+            - "Methodology transparency"
+            - "Peer review or editorial process"
+            - "Potential bias indicators"
+            
+    - phase: "3_gathering"
+      name: "Data Gathering"
+      actions:
+        - action: "Collect data from sources"
+          output: "Raw data with source attribution"
+          requirements:
+            - "Full citation captured"
+            - "Access date recorded"
+            - "Original context preserved"
+            - "Page/section references noted"
+            
+        - action: "Document findings"
+          output: "Structured research notes"
+          format:
+            - "Source citation"
+            - "Key finding/claim"
+            - "Supporting details"
+            - "Relevance to research question"
+            
+    - phase: "4_evaluation"
+      name: "Credibility Evaluation"
+      actions:
+        - action: "Apply evidence tier classification"
+          reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+          output: "Tier assignment per finding"
+          
+        - action: "Cross-verify key claims"
+          output: "Verification status"
+          rules:
+            - "Quantitative claims require Tier 1 verification"
+            - "Critical claims need 2+ independent sources"
+            - "Conflicting sources must be noted"
+            
+        - action: "Assess freshness"
+          output: "Freshness status"
+          thresholds:
+            market_data: "< 12 months"
+            statistics: "< 24 months"
+            case_studies: "< 36 months"
+            regulatory: "Current version only"
+            
+    - phase: "5_synthesis"
+      name: "Synthesis"
+      actions:
+        - action: "Synthesize findings"
+          output: "Consolidated analysis"
+          approach:
+            - "Group related findings"
+            - "Identify patterns and themes"
+            - "Note gaps or contradictions"
+            - "Draw supported conclusions"
+            
+        - action: "Create evidence items"
+          output: "Formatted evidence items"
+          schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+          
+        - action: "Document limitations"
+          output: "Limitations statement"
+          include:
+            - "Source limitations"
+            - "Scope limitations"
+            - "Confidence level"
+            - "Areas needing further research"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SOURCE SELECTION GUIDELINES
+# ═══════════════════════════════════════════════════════════════════════════
+
+source_selection:
+  description: "Guidelines for selecting and prioritizing sources"
+  
+  tier_1_sources:
+    description: "Primary sources, peer-reviewed, official"
+    examples:
+      - "Academic journals (peer-reviewed)"
+      - "Government statistics bureaus"
+      - "Official company reports (10-K, annual reports)"
+      - "Industry association official data"
+      - "Central bank publications"
+    when_required:
+      - "Quantitative claims"
+      - "Statistical assertions"
+      - "Regulatory statements"
+      - "Financial data"
+      
+  tier_2_sources:
+    description: "Reputable secondary sources"
+    examples:
+      - "Industry analysts (Gartner, Forrester, McKinsey)"
+      - "Major news outlets (Reuters, Bloomberg, FT)"
+      - "Trade publications (industry-specific)"
+      - "Research firms with transparent methodology"
+    when_acceptable:
+      - "General market claims"
+      - "Trend identification"
+      - "Qualitative insights"
+      - "Competitive context"
+      
+  tier_3_sources:
+    description: "Tertiary sources, opinion, informal"
+    examples:
+      - "Blog posts and op-eds"
+      - "Social media"
+      - "Press releases (without verification)"
+      - "Wikipedia (for context only)"
+    usage_restrictions:
+      - "Background context only"
+      - "Not for claims"
+      - "Requires higher-tier verification for any facts cited"
+      - "Note source limitation when used"
+      
+  reliability_assessment:
+    A_highly_reliable:
+      indicators:
+        - "Established authority in field"
+        - "Transparent methodology"
+        - "Peer review or editorial standards"
+        - "Track record of accuracy"
+      examples: ["Government statistics", "Major academic institutions", "Established research firms"]
+      
+    B_reliable:
+      indicators:
+        - "Reputable organization"
+        - "General accuracy"
+        - "Clear editorial process"
+      examples: ["Major business publications", "Industry analysts", "Trade associations"]
+      
+    C_acceptable:
+      indicators:
+        - "Known source"
+        - "Potential bias acknowledged"
+        - "Verification recommended"
+      examples: ["Company blogs", "Trade press", "Conference presentations"]
+      
+    D_low_reliability:
+      indicators:
+        - "Unknown or questionable source"
+        - "Clear bias potential"
+        - "No editorial oversight"
+      handling: "Requires disclaimer; avoid for claims"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE INTELLIGENCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitive_intelligence:
+  description: "Protocols for competitive analysis and monitoring"
+  
+  intelligence_types:
+    - type: "market_position"
+      description: "Competitor market share and positioning"
+      sources:
+        - "Industry reports"
+        - "Financial filings"
+        - "Market research firms"
+      frequency: "Quarterly"
+      
+    - type: "product_features"
+      description: "Competitor product/service offerings"
+      sources:
+        - "Public product pages"
+        - "Press releases"
+        - "User reviews"
+      frequency: "Monthly"
+      
+    - type: "messaging_strategy"
+      description: "Competitor messaging and positioning"
+      sources:
+        - "Website copy"
+        - "Advertising"
+        - "Social media"
+        - "Content marketing"
+      frequency: "Monthly"
+      
+    - type: "pricing"
+      description: "Competitor pricing structure"
+      sources:
+        - "Public pricing pages"
+        - "Sales intelligence"
+        - "Industry benchmarks"
+      frequency: "Quarterly"
+      note: "Only use publicly available information"
+      
+  ethical_guidelines:
+    allowed:
+      - "Public information gathering"
+      - "Published reports and filings"
+      - "Social media monitoring"
+      - "Industry event attendance"
+      - "Customer feedback analysis"
+      
+    not_allowed:
+      - "Misrepresentation to obtain information"
+      - "Accessing non-public information"
+      - "Breaching confidentiality agreements"
+      - "Purchasing stolen data"
+      - "Social engineering"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TREND ANALYSIS
+# ═══════════════════════════════════════════════════════════════════════════
+
+trend_analysis:
+  description: "Protocols for identifying and evaluating trends"
+  
+  trend_intake_scoring:
+    description: "Framework for evaluating trend significance"
+    
+    dimensions:
+      impact:
+        description: "Potential magnitude of effect"
+        scale: [1, 2, 3, 4, 5]
+        anchors:
+          1: "Minimal impact"
+          3: "Moderate impact"
+          5: "Transformative impact"
+          
+      relevance:
+        description: "Applicability to context/industry"
+        scale: [1, 2, 3, 4, 5]
+        anchors:
+          1: "Tangentially relevant"
+          3: "Moderately relevant"
+          5: "Directly relevant"
+          
+      urgency:
+        description: "Time sensitivity for action"
+        scale: [1, 2, 3, 4, 5]
+        anchors:
+          1: "Long-term (3+ years)"
+          3: "Medium-term (1-3 years)"
+          5: "Immediate (< 1 year)"
+          
+      confidence:
+        description: "Evidence strength for trend"
+        scale: [1, 2, 3, 4, 5]
+        anchors:
+          1: "Speculative"
+          3: "Emerging evidence"
+          5: "Well-documented"
+          
+    scoring_formula: "(Impact × 2) + Relevance + Urgency + Confidence"
+    max_score: 25
+    
+    priority_thresholds:
+      high: ">= 20"
+      medium: "15-19"
+      low: "< 15"
+      
+  trend_documentation:
+    required_fields:
+      - "Trend name/title"
+      - "Description (2-3 sentences)"
+      - "Score breakdown"
+      - "Supporting evidence"
+      - "Implications for client/industry"
+      - "Recommended actions"
+      
+    evidence_requirements:
+      - "Minimum 2 independent sources"
+      - "At least one Tier 1 or Tier 2 source"
+      - "Source date within freshness requirements"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DOCUMENTATION PRACTICES
+# ═══════════════════════════════════════════════════════════════════════════
+
+documentation_practices:
+  description: "Standards for documenting research"
+  
+  source_logging:
+    required_fields:
+      - field: "source_url"
+        note: "Full URL if web source"
+      - field: "source_title"
+        note: "Article/document title"
+      - field: "source_author"
+        note: "Author or organization"
+      - field: "publication_date"
+        format: "YYYY-MM-DD"
+      - field: "access_date"
+        format: "YYYY-MM-DD"
+        note: "Date source was accessed"
+      - field: "tier"
+        values: [tier_1, tier_2, tier_3]
+      - field: "reliability"
+        values: [A, B, C, D]
+        
+  evidence_item_creation:
+    reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+    
+    id_pattern: "ev-{source_type}-{topic}-{nnn}"
+    source_types:
+      - "pack" # From PACK evidence vault
+      - "org"  # From ORG evidence vault
+      - "client" # From CLIENT evidence vault
+      - "research" # From new research
+      
+    required_fields:
+      - "id"
+      - "claim"
+      - "source"
+      - "source_date"
+      - "tier"
+      - "source_reliability"
+      
+  ethical_considerations:
+    - "Proper attribution required"
+    - "No plagiarism--paraphrase and cite"
+    - "Respect copyright and fair use"
+    - "Maintain data privacy compliance"
+    - "Note when AI tools used in research"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STALE EVIDENCE POLICY
+# ═══════════════════════════════════════════════════════════════════════════
+
+stale_evidence_policy:
+  description: "Handling of expired or outdated evidence"
+  
+  freshness_thresholds:
+    market_data:
+      max_age_months: 12
+      action_when_stale: "Flag for refresh; use with date context"
+    statistics:
+      max_age_months: 24
+      action_when_stale: "Use with explicit date notation"
+    regulatory:
+      requirement: "Current version only"
+      action_when_stale: "Do not use; seek current version"
+    case_studies:
+      max_age_months: 36
+      action_when_stale: "Acceptable with date context"
+      
+  stale_evidence_handling:
+    detection:
+      - "Check source_date against current date"
+      - "Check valid_until if present"
+      - "Flag items exceeding thresholds"
+      
+    actions:
+      - action: "soft_flag"
+        condition: "Within 20% of threshold"
+        output: "Warning indicator"
+      - action: "hard_flag"
+        condition: "Exceeds threshold"
+        output: "Stale indicator; requires context"
+      - action: "block"
+        condition: "Regulatory or critical claim"
+        output: "Cannot use; must refresh"
+        
+  refresh_process:
+    - "Identify stale evidence items"
+    - "Attempt to find updated source"
+    - "If found: Create new evidence item, supersede old"
+    - "If not found: Document search attempt, evaluate continued use"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VALIDATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+validation:
+  research_output_validation:
+    - "Research question clearly stated"
+    - "Methodology documented"
+    - "Sources logged with all required fields"
+    - "Evidence items follow schema"
+    - "Tier assignments justified"
+    - "Limitations acknowledged"
+    - "Stale evidence flagged appropriately"
+    
+  evidence_validation:
+    - "All required fields present"
+    - "Tier and reliability consistent with source type"
+    - "Freshness within thresholds or flagged"
+    - "No D-rated sources without disclaimer"

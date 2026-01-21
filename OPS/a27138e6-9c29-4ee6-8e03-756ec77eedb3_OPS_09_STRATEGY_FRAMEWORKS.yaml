@@ -1,0 +1,1286 @@
+# ================================================================
+# OPS_09_STRATEGY_FRAMEWORKS
+# ================================================================
+# SSOT: 03_OPS_LAYER_BLUEPRINT.md
+# Purpose: Strategic analysis frameworks and models
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Strategic analysis frameworks and models"
+  notes: "Frameworks only - no client strategies"
+  tags: [ops, strategy, frameworks, analysis]
+
+extends: "OPS_00_STANDARDS"
+quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# FRAMEWORK CATALOG
+# ═══════════════════════════════════════════════════════════════════════════
+
+framework_catalog:
+  description: "Index of available strategic frameworks"
+  
+  by_purpose:
+    situation_analysis:
+      - "swot"
+      - "pestel"
+      - "five_forces"
+      - "competitive_landscape"
+      
+    goal_setting:
+      - "okr"
+      - "smart"
+      - "bhag"
+      
+    market_analysis:
+      - "segmentation"
+      - "tam_sam_som"
+      - "positioning_map"
+      
+    customer_understanding:
+      - "jtbd"
+      - "customer_journey"
+      - "persona_framework"
+      - "empathy_map"
+      
+    prioritization:
+      - "impact_feasibility"
+      - "moscow"
+      - "rice"
+      - "value_effort"
+      
+    marketing_strategy:
+      - "five_ps"
+      - "ansoff"
+      - "bcg_matrix"
+      - "brand_pyramid"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SITUATION ANALYSIS FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+swot:
+  id: "swot"
+  name: "SWOT Analysis"
+  purpose: "Assess internal strengths/weaknesses and external opportunities/threats"
+  when_to_use:
+    - "Strategic planning kickoff"
+    - "Competitive positioning"
+    - "New market assessment"
+    - "Product/service evaluation"
+    
+  structure:
+    quadrants:
+      strengths:
+        definition: "Internal positive attributes"
+        prompt_questions:
+          - "What do we do well?"
+          - "What unique resources do we have?"
+          - "What do others see as our strengths?"
+          - "What competitive advantages do we hold?"
+        examples:
+          - "Strong brand recognition"
+          - "Proprietary technology"
+          - "Experienced team"
+          
+      weaknesses:
+        definition: "Internal negative attributes"
+        prompt_questions:
+          - "What could we improve?"
+          - "Where do we lack resources?"
+          - "What do competitors do better?"
+          - "What do customers complain about?"
+        examples:
+          - "Limited market presence"
+          - "High cost structure"
+          - "Skills gaps"
+          
+      opportunities:
+        definition: "External positive factors"
+        prompt_questions:
+          - "What trends could we leverage?"
+          - "What market gaps exist?"
+          - "What changes favor our position?"
+          - "What partnerships could we pursue?"
+        examples:
+          - "Emerging market segment"
+          - "Regulatory changes"
+          - "Technology shifts"
+          
+      threats:
+        definition: "External negative factors"
+        prompt_questions:
+          - "What obstacles do we face?"
+          - "What are competitors doing?"
+          - "What regulations could hurt us?"
+          - "What trends threaten our position?"
+        examples:
+          - "New market entrants"
+          - "Economic downturn"
+          - "Changing customer preferences"
+          
+  analysis_patterns:
+    so_strategies: "Use Strengths to capture Opportunities"
+    wo_strategies: "Address Weaknesses to capture Opportunities"
+    st_strategies: "Use Strengths to mitigate Threats"
+    wt_strategies: "Address Weaknesses to avoid Threats"
+    
+  output_format:
+    type: "2x2 matrix with strategic implications"
+    
+pestel:
+  id: "pestel"
+  name: "PESTEL Analysis"
+  purpose: "Scan macro-environmental factors affecting business"
+  when_to_use:
+    - "Market entry planning"
+    - "Long-term strategic planning"
+    - "Risk assessment"
+    - "International expansion"
+    
+  structure:
+    factors:
+      political:
+        definition: "Government and regulatory influences"
+        considerations:
+          - "Government stability"
+          - "Tax policy"
+          - "Trade regulations"
+          - "Political trends"
+        prompt_questions:
+          - "What political factors could affect us?"
+          - "How stable is the regulatory environment?"
+          
+      economic:
+        definition: "Economic conditions and trends"
+        considerations:
+          - "Economic growth"
+          - "Interest rates"
+          - "Exchange rates"
+          - "Inflation"
+          - "Unemployment"
+        prompt_questions:
+          - "What economic factors impact our market?"
+          - "How do economic cycles affect demand?"
+          
+      social:
+        definition: "Social and demographic factors"
+        considerations:
+          - "Demographics"
+          - "Cultural attitudes"
+          - "Lifestyle changes"
+          - "Education levels"
+          - "Health consciousness"
+        prompt_questions:
+          - "What social trends affect our audience?"
+          - "How are consumer behaviors changing?"
+          
+      technological:
+        definition: "Technology trends and disruptions"
+        considerations:
+          - "R&D activity"
+          - "Automation"
+          - "Technology adoption rates"
+          - "Digital transformation"
+        prompt_questions:
+          - "What technologies could disrupt us?"
+          - "What tech opportunities exist?"
+          
+      environmental:
+        definition: "Environmental and ecological factors"
+        considerations:
+          - "Climate change"
+          - "Sustainability requirements"
+          - "Environmental regulations"
+          - "Resource availability"
+        prompt_questions:
+          - "What environmental factors affect our operations?"
+          - "What sustainability expectations exist?"
+          
+      legal:
+        definition: "Legal requirements and changes"
+        considerations:
+          - "Employment law"
+          - "Consumer protection"
+          - "Data protection (GDPR)"
+          - "Industry regulations"
+          - "Competition law"
+        prompt_questions:
+          - "What legal requirements must we meet?"
+          - "What legal changes are coming?"
+          
+  output_format:
+    type: "Factor table with impact assessment (high/medium/low)"
+
+five_forces:
+  id: "five_forces"
+  name: "Porter's Five Forces"
+  purpose: "Analyze industry competitive intensity and attractiveness"
+  attribution: "Michael Porter"
+  when_to_use:
+    - "Industry analysis"
+    - "Market entry decisions"
+    - "Competitive strategy development"
+    
+  structure:
+    forces:
+      competitive_rivalry:
+        definition: "Competition among existing firms"
+        high_when:
+          - "Many competitors of similar size"
+          - "Slow industry growth"
+          - "High fixed costs"
+          - "Low differentiation"
+        assessment_questions:
+          - "How many competitors exist?"
+          - "How similar are offerings?"
+          - "What is industry growth rate?"
+          
+      threat_new_entrants:
+        definition: "Risk of new competitors entering"
+        high_when:
+          - "Low barriers to entry"
+          - "Low capital requirements"
+          - "Easy access to distribution"
+          - "Weak brand loyalty"
+        assessment_questions:
+          - "How easy is market entry?"
+          - "What barriers exist?"
+          - "How would we respond to new entrants?"
+          
+      bargaining_power_suppliers:
+        definition: "Supplier influence on prices/terms"
+        high_when:
+          - "Few suppliers"
+          - "Unique inputs"
+          - "High switching costs"
+          - "Forward integration threat"
+        assessment_questions:
+          - "How many suppliers exist?"
+          - "How unique are their offerings?"
+          - "Could they compete with us?"
+          
+      bargaining_power_buyers:
+        definition: "Customer influence on prices/terms"
+        high_when:
+          - "Few large buyers"
+          - "Standardized products"
+          - "Low switching costs"
+          - "Price sensitivity"
+        assessment_questions:
+          - "How concentrated are customers?"
+          - "How price-sensitive are they?"
+          - "Could they backward integrate?"
+          
+      threat_substitutes:
+        definition: "Risk of alternative solutions"
+        high_when:
+          - "Many alternatives exist"
+          - "Low switching costs"
+          - "Better price-performance ratio"
+          - "Low customer loyalty"
+        assessment_questions:
+          - "What alternatives exist?"
+          - "How do they compare on value?"
+          - "What triggers switching?"
+          
+  output_format:
+    type: "Five-force diagram with intensity ratings (1-5)"
+
+competitive_landscape:
+  id: "competitive_landscape"
+  name: "Competitive Landscape Analysis"
+  purpose: "Map and analyze competitive positioning"
+  when_to_use:
+    - "Market positioning"
+    - "Differentiation strategy"
+    - "Competitive response planning"
+    
+  structure:
+    components:
+      competitor_identification:
+        direct_competitors: "Same product/service, same market"
+        indirect_competitors: "Different product, same need"
+        potential_competitors: "Could enter market"
+        
+      analysis_dimensions:
+        - dimension: "Market position"
+          metrics: [market_share, revenue, growth_rate]
+        - dimension: "Product/Service"
+          metrics: [features, quality, pricing, range]
+        - dimension: "Go-to-market"
+          metrics: [channels, messaging, positioning]
+        - dimension: "Capabilities"
+          metrics: [technology, talent, resources]
+        - dimension: "Strategy"
+          metrics: [focus, differentiation, trajectory]
+          
+      competitor_profile_template:
+        fields:
+          - "Company overview"
+          - "Products/services"
+          - "Target segments"
+          - "Value proposition"
+          - "Strengths"
+          - "Weaknesses"
+          - "Recent moves"
+          - "Likely next moves"
+          
+  output_format:
+    type: "Competitor matrix + positioning map"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GOAL SETTING FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+okr:
+  id: "okr"
+  name: "Objectives and Key Results"
+  purpose: "Set and track ambitious, measurable goals"
+  attribution: "Andy Grove / John Doerr"
+  when_to_use:
+    - "Quarterly planning"
+    - "Team alignment"
+    - "Performance management"
+    - "Strategic execution"
+    
+  structure:
+    objective:
+      definition: "Qualitative, inspirational goal"
+      characteristics:
+        - "Ambitious and stretching"
+        - "Qualitative (no numbers)"
+        - "Time-bound (typically quarterly)"
+        - "Actionable"
+        - "Inspirational"
+      example: "Become the thought leader in employer branding in NL"
+      
+    key_results:
+      definition: "Quantitative measures of progress"
+      characteristics:
+        - "Measurable (with numbers)"
+        - "Specific outcomes, not activities"
+        - "3-5 per objective"
+        - "Ambitious (70% achievement = success)"
+        - "Verifiable"
+      examples:
+        - "Increase LinkedIn followers from 5K to 10K"
+        - "Publish 12 thought leadership articles"
+        - "Achieve 50 speaking engagement requests"
+        - "Generate 100 inbound leads from content"
+        
+  scoring:
+    scale: "0.0 to 1.0"
+    interpretation:
+      - range: "0.0 - 0.3"
+        meaning: "Failed to make progress"
+      - range: "0.4 - 0.6"
+        meaning: "Made progress but missed"
+      - range: "0.7 - 1.0"
+        meaning: "Success (stretch goal)"
+        
+  template:
+    format: |
+      OBJECTIVE: [Qualitative goal statement]
+      
+      KEY RESULTS:
+      1. [Metric] from [baseline] to [target]
+      2. [Metric] from [baseline] to [target]
+      3. [Metric] from [baseline] to [target]
+      
+  output_format:
+    type: "OKR document with scoring tracker"
+
+smart:
+  id: "smart"
+  name: "SMART Goals"
+  purpose: "Create well-defined, achievable objectives"
+  when_to_use:
+    - "Project planning"
+    - "Individual goals"
+    - "Campaign objectives"
+    - "KPI definition"
+    
+  structure:
+    criteria:
+      specific:
+        definition: "Clear and well-defined"
+        questions:
+          - "What exactly will be accomplished?"
+          - "Who is involved?"
+          - "Where will it happen?"
+        test: "Can someone unfamiliar understand exactly what's intended?"
+        
+      measurable:
+        definition: "Quantifiable progress indicators"
+        questions:
+          - "How will we measure success?"
+          - "What metrics will we track?"
+          - "How will we know when it's achieved?"
+        test: "Is there a number attached?"
+        
+      achievable:
+        definition: "Realistic and attainable"
+        questions:
+          - "Is this realistic with available resources?"
+          - "Have similar goals been achieved before?"
+          - "What constraints exist?"
+        test: "Given current resources and constraints, can this be done?"
+        
+      relevant:
+        definition: "Aligned with broader objectives"
+        questions:
+          - "Does this support our strategy?"
+          - "Is this the right time?"
+          - "Does this match our priorities?"
+        test: "Does achieving this matter to the business?"
+        
+      time_bound:
+        definition: "Clear deadline or timeframe"
+        questions:
+          - "When will this be achieved?"
+          - "What is the deadline?"
+          - "What are the milestones?"
+        test: "Is there a specific date?"
+        
+  template:
+    format: "[Action verb] [specific outcome] from [baseline] to [target] by [date] to [business purpose]"
+    example: "Increase website conversion rate from 2.1% to 3.0% by March 31, 2025 to improve lead generation efficiency"
+    
+  cross_reference: "OPS_08_BRIEF_TEMPLATES#smart_objectives"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CUSTOMER UNDERSTANDING FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+jtbd:
+  id: "jtbd"
+  name: "Jobs To Be Done"
+  purpose: "Understand customer motivations through the lens of progress they seek"
+  attribution: "Clayton Christensen"
+  when_to_use:
+    - "Product development"
+    - "Value proposition design"
+    - "Message development"
+    - "Innovation strategy"
+    
+  structure:
+    job_statement:
+      format: "When [situation], I want to [motivation], so I can [outcome]"
+      components:
+        situation: "Context or trigger"
+        motivation: "What they're trying to do"
+        outcome: "Desired end state"
+      example: "When I'm hiring for a critical role, I want to attract top talent quickly, so I can meet project deadlines"
+      
+    job_dimensions:
+      functional:
+        definition: "Practical task to accomplish"
+        example: "Fill open position with qualified candidate"
+        
+      emotional:
+        definition: "How they want to feel"
+        example: "Confident in hiring decision"
+        
+      social:
+        definition: "How they want to be perceived"
+        example: "Seen as building a strong team"
+        
+    forces_of_progress:
+      push:
+        definition: "Problems with current situation"
+        example: "Current recruitment isn't attracting quality candidates"
+        
+      pull:
+        definition: "Attraction of new solution"
+        example: "Employer branding could differentiate us"
+        
+      anxiety:
+        definition: "Concerns about new solution"
+        example: "Will it actually work? Is it worth the investment?"
+        
+      habit:
+        definition: "Comfort with current approach"
+        example: "We've always just posted on job boards"
+        
+  analysis_template:
+    sections:
+      - "Job statement"
+      - "Functional/emotional/social dimensions"
+      - "Current solutions"
+      - "Forces analysis"
+      - "Opportunity areas"
+      
+  output_format:
+    type: "JTBD canvas or job story document"
+
+customer_journey:
+  id: "customer_journey"
+  name: "Customer Journey Map"
+  purpose: "Visualize customer experience across touchpoints"
+  when_to_use:
+    - "Experience design"
+    - "Content planning"
+    - "Touchpoint optimization"
+    - "Campaign planning"
+    
+  structure:
+    stages:
+      awareness:
+        definition: "Customer becomes aware of need/solution"
+        typical_touchpoints:
+          - "Search engines"
+          - "Social media"
+          - "Word of mouth"
+          - "Advertising"
+        customer_questions:
+          - "What's my problem?"
+          - "Who can help?"
+          
+      consideration:
+        definition: "Customer evaluates options"
+        typical_touchpoints:
+          - "Website"
+          - "Content (blogs, whitepapers)"
+          - "Reviews"
+          - "Comparisons"
+        customer_questions:
+          - "What are my options?"
+          - "How do they compare?"
+          
+      decision:
+        definition: "Customer makes purchase decision"
+        typical_touchpoints:
+          - "Sales conversations"
+          - "Proposals"
+          - "Demos"
+          - "References"
+        customer_questions:
+          - "Is this the right choice?"
+          - "What's the risk?"
+          
+      retention:
+        definition: "Customer uses and evaluates"
+        typical_touchpoints:
+          - "Onboarding"
+          - "Support"
+          - "Account management"
+          - "Product updates"
+        customer_questions:
+          - "Am I getting value?"
+          - "Should I continue?"
+          
+      advocacy:
+        definition: "Customer recommends to others"
+        typical_touchpoints:
+          - "Reviews"
+          - "Referrals"
+          - "Case studies"
+          - "Community"
+        customer_questions:
+          - "Would I recommend this?"
+          - "How can I share my experience?"
+          
+    mapping_elements:
+      - element: "Actions"
+        description: "What customer does at each stage"
+      - element: "Thoughts"
+        description: "What customer is thinking"
+      - element: "Emotions"
+        description: "How customer feels"
+      - element: "Touchpoints"
+        description: "Where interactions occur"
+      - element: "Pain points"
+        description: "Frustrations or obstacles"
+      - element: "Opportunities"
+        description: "Chances to improve experience"
+        
+  output_format:
+    type: "Visual journey map with stage columns and element rows"
+
+persona_framework:
+  id: "persona_framework"
+  name: "Buyer Persona Framework"
+  purpose: "Create detailed profiles of target customers"
+  when_to_use:
+    - "Audience definition"
+    - "Content strategy"
+    - "Campaign targeting"
+    - "Product development"
+    
+  structure:
+    persona_components:
+      demographics:
+        fields:
+          - "Name (fictional)"
+          - "Job title"
+          - "Company size"
+          - "Industry"
+          - "Age range"
+          - "Education"
+          - "Location"
+          
+      professional_context:
+        fields:
+          - "Role responsibilities"
+          - "Reports to"
+          - "Team size"
+          - "Decision authority"
+          - "Budget influence"
+          - "Career trajectory"
+          
+      goals_challenges:
+        fields:
+          - "Primary goals"
+          - "Key challenges"
+          - "Success metrics"
+          - "Fears and concerns"
+          
+      behavior_preferences:
+        fields:
+          - "Information sources"
+          - "Content preferences"
+          - "Social media usage"
+          - "Communication style"
+          - "Decision-making process"
+          
+      buying_behavior:
+        fields:
+          - "Buying triggers"
+          - "Evaluation criteria"
+          - "Objections"
+          - "Influencers"
+          - "Timeline expectations"
+          
+    persona_template:
+      sections:
+        - "Photo and name"
+        - "Quote (captures essence)"
+        - "Background summary"
+        - "Goals"
+        - "Challenges"
+        - "How we help"
+        - "Common objections"
+        - "Messaging approach"
+        
+  output_format:
+    type: "1-2 page persona document"
+
+empathy_map:
+  id: "empathy_map"
+  name: "Empathy Map"
+  purpose: "Understand customer perspective holistically"
+  when_to_use:
+    - "Persona development"
+    - "Message testing"
+    - "Experience design"
+    - "Problem framing"
+    
+  structure:
+    quadrants:
+      says:
+        definition: "Direct quotes and statements"
+        prompt: "What have they literally said?"
+        examples:
+          - "We need to hire faster"
+          - "Our brand isn't attracting talent"
+          
+      thinks:
+        definition: "Internal thoughts (may differ from says)"
+        prompt: "What might they be thinking but not saying?"
+        examples:
+          - "Is this really going to work?"
+          - "My job depends on getting this right"
+          
+      does:
+        definition: "Actions and behaviors"
+        prompt: "What actions have you observed?"
+        examples:
+          - "Checks competitor job posts"
+          - "Asks peers for recommendations"
+          
+      feels:
+        definition: "Emotional state"
+        prompt: "What emotions might they experience?"
+        examples:
+          - "Frustrated with slow progress"
+          - "Anxious about talent competition"
+          
+    synthesis:
+      pains:
+        definition: "Frustrations, fears, obstacles"
+        prompt: "What keeps them up at night?"
+        
+      gains:
+        definition: "Wants, needs, measures of success"
+        prompt: "What would make them successful?"
+        
+  output_format:
+    type: "Empathy map canvas"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRIORITIZATION FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+impact_feasibility:
+  id: "impact_feasibility"
+  name: "Impact × Feasibility Matrix"
+  purpose: "Prioritize initiatives based on value and ease"
+  when_to_use:
+    - "Project prioritization"
+    - "Resource allocation"
+    - "Roadmap planning"
+    - "Decision making"
+    
+  structure:
+    axes:
+      impact:
+        definition: "Expected value or benefit"
+        scale: "1-5 or Low/Medium/High"
+        factors:
+          - "Revenue potential"
+          - "Strategic importance"
+          - "Customer value"
+          - "Competitive advantage"
+          
+      feasibility:
+        definition: "Ease of implementation"
+        scale: "1-5 or Low/Medium/High"
+        factors:
+          - "Resource requirements"
+          - "Technical complexity"
+          - "Time to implement"
+          - "Dependencies"
+          - "Risk level"
+          
+    quadrants:
+      quick_wins:
+        position: "High Impact, High Feasibility"
+        action: "Do first"
+        
+      strategic_bets:
+        position: "High Impact, Low Feasibility"
+        action: "Plan carefully, phase if needed"
+        
+      fill_ins:
+        position: "Low Impact, High Feasibility"
+        action: "Do if capacity allows"
+        
+      time_sinks:
+        position: "Low Impact, Low Feasibility"
+        action: "Avoid or deprioritize"
+        
+  scoring_guidance:
+    impact_scoring:
+      - score: 5
+        criteria: "Transformative - significant business outcome"
+      - score: 4
+        criteria: "High - meaningful improvement"
+      - score: 3
+        criteria: "Medium - noticeable benefit"
+      - score: 2
+        criteria: "Low - marginal improvement"
+      - score: 1
+        criteria: "Minimal - negligible benefit"
+        
+    feasibility_scoring:
+      - score: 5
+        criteria: "Easy - can do immediately with current resources"
+      - score: 4
+        criteria: "Manageable - some effort but achievable"
+      - score: 3
+        criteria: "Moderate - requires planning and resources"
+      - score: 2
+        criteria: "Difficult - significant challenges"
+      - score: 1
+        criteria: "Very hard - major obstacles or dependencies"
+        
+  output_format:
+    type: "2×2 matrix with plotted initiatives"
+
+moscow:
+  id: "moscow"
+  name: "MoSCoW Prioritization"
+  purpose: "Categorize requirements by necessity"
+  when_to_use:
+    - "Requirements prioritization"
+    - "Scope management"
+    - "Release planning"
+    - "Resource constraints"
+    
+  structure:
+    categories:
+      must_have:
+        definition: "Non-negotiable requirements"
+        criteria: "Project fails without this"
+        guidance: "Keep to minimum viable"
+        
+      should_have:
+        definition: "Important but not critical"
+        criteria: "High value, can workaround"
+        guidance: "Include if possible"
+        
+      could_have:
+        definition: "Nice to have"
+        criteria: "Enhances but not essential"
+        guidance: "Include if easy, cut first"
+        
+      wont_have:
+        definition: "Out of scope (this time)"
+        criteria: "Agreed exclusions"
+        guidance: "Document for future"
+        
+  application_tips:
+    - "Must-haves should be ~60% of effort"
+    - "Should-haves provide contingency buffer"
+    - "Won't-haves prevent scope creep"
+    
+  output_format:
+    type: "Categorized requirement list"
+
+rice:
+  id: "rice"
+  name: "RICE Scoring"
+  purpose: "Quantitatively prioritize initiatives"
+  attribution: "Intercom"
+  when_to_use:
+    - "Product backlog prioritization"
+    - "Feature decisions"
+    - "Comparing dissimilar initiatives"
+    
+  structure:
+    factors:
+      reach:
+        definition: "How many people affected per time period"
+        measurement: "Users/customers per quarter"
+        example: "500 customers/quarter"
+        
+      impact:
+        definition: "How much this moves the goal"
+        scale:
+          - score: 3
+            label: "Massive"
+          - score: 2
+            label: "High"
+          - score: 1
+            label: "Medium"
+          - score: 0.5
+            label: "Low"
+          - score: 0.25
+            label: "Minimal"
+            
+      confidence:
+        definition: "Certainty in estimates"
+        scale:
+          - score: 1.0
+            label: "High (strong evidence)"
+          - score: 0.8
+            label: "Medium (some evidence)"
+          - score: 0.5
+            label: "Low (gut feel)"
+            
+      effort:
+        definition: "Work required"
+        measurement: "Person-months"
+        example: "2 person-months"
+        
+    formula: "(Reach × Impact × Confidence) / Effort"
+    
+  output_format:
+    type: "Scored and ranked initiative list"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKETING STRATEGY FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+five_ps:
+  id: "five_ps"
+  name: "Marketing Mix (5 Ps)"
+  purpose: "Structure comprehensive marketing strategy"
+  when_to_use:
+    - "Marketing planning"
+    - "GTM strategy"
+    - "Market entry"
+    - "Strategy audits"
+    
+  structure:
+    elements:
+      product:
+        definition: "What we offer"
+        considerations:
+          - "Features and benefits"
+          - "Quality level"
+          - "Branding"
+          - "Packaging"
+          - "Services"
+          - "Differentiation"
+        questions:
+          - "What problem does it solve?"
+          - "How is it different?"
+          - "What's the value proposition?"
+          
+      price:
+        definition: "Pricing strategy"
+        considerations:
+          - "Pricing model"
+          - "Price points"
+          - "Discounting"
+          - "Payment terms"
+          - "Value perception"
+        questions:
+          - "What's the pricing model?"
+          - "How does it compare to competitors?"
+          - "What's the perceived value?"
+          
+      place:
+        definition: "Distribution channels"
+        considerations:
+          - "Channel strategy"
+          - "Distribution partners"
+          - "Market coverage"
+          - "Logistics"
+          - "Digital presence"
+        questions:
+          - "Where do customers buy?"
+          - "How do we reach them?"
+          - "What channels perform best?"
+          
+      promotion:
+        definition: "Communication strategy"
+        considerations:
+          - "Advertising"
+          - "Content marketing"
+          - "PR"
+          - "Social media"
+          - "Sales promotion"
+          - "Direct marketing"
+        questions:
+          - "How will we reach the audience?"
+          - "What messages resonate?"
+          - "What channels work?"
+          
+      people:
+        definition: "Human element"
+        considerations:
+          - "Customer service"
+          - "Sales team"
+          - "Brand ambassadors"
+          - "Training"
+          - "Culture"
+        questions:
+          - "Who represents the brand?"
+          - "What experience do they create?"
+          - "How do we support them?"
+          
+  output_format:
+    type: "5 Ps strategy document"
+
+ansoff:
+  id: "ansoff"
+  name: "Ansoff Growth Matrix"
+  purpose: "Identify growth strategy options"
+  when_to_use:
+    - "Growth planning"
+    - "Strategic options analysis"
+    - "Market expansion decisions"
+    
+  structure:
+    matrix:
+      market_penetration:
+        position: "Existing Products × Existing Markets"
+        strategy: "Grow share in current market"
+        tactics:
+          - "Increase usage"
+          - "Win competitor customers"
+          - "Convert non-users"
+        risk_level: "Lowest"
+        
+      market_development:
+        position: "Existing Products × New Markets"
+        strategy: "Enter new markets with current products"
+        tactics:
+          - "Geographic expansion"
+          - "New segments"
+          - "New channels"
+        risk_level: "Medium"
+        
+      product_development:
+        position: "New Products × Existing Markets"
+        strategy: "New products for current customers"
+        tactics:
+          - "Product extensions"
+          - "New features"
+          - "Adjacent products"
+        risk_level: "Medium"
+        
+      diversification:
+        position: "New Products × New Markets"
+        strategy: "New products for new markets"
+        tactics:
+          - "Related diversification"
+          - "Unrelated diversification"
+          - "Acquisitions"
+        risk_level: "Highest"
+        
+  output_format:
+    type: "2×2 matrix with strategy options"
+
+brand_pyramid:
+  id: "brand_pyramid"
+  name: "Brand Pyramid"
+  purpose: "Structure brand strategy from attributes to purpose"
+  when_to_use:
+    - "Brand strategy development"
+    - "Positioning work"
+    - "Brand refresh"
+    - "Messaging hierarchy"
+    
+  structure:
+    levels:
+      attributes:
+        position: "Base"
+        definition: "Tangible features and facts"
+        example: "20 years experience, 500+ clients"
+        
+      functional_benefits:
+        position: "Level 2"
+        definition: "What attributes do for customer"
+        example: "Faster hiring, better candidates"
+        
+      emotional_benefits:
+        position: "Level 3"
+        definition: "How customer feels"
+        example: "Confident, competitive, proud"
+        
+      personality:
+        position: "Level 4"
+        definition: "Brand character traits"
+        example: "Expert, approachable, innovative"
+        
+      essence:
+        position: "Top"
+        definition: "Core brand idea (2-3 words)"
+        example: "Talent attraction mastery"
+        
+  building_approach:
+    - "Start with attributes (facts)"
+    - "Ask 'so what?' to find functional benefits"
+    - "Ask 'how does that make them feel?' for emotional benefits"
+    - "Define personality as if brand were a person"
+    - "Distill to essence"
+    
+  output_format:
+    type: "Pyramid diagram with level descriptions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET ANALYSIS FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+segmentation:
+  id: "segmentation"
+  name: "Market Segmentation"
+  purpose: "Divide market into actionable segments"
+  when_to_use:
+    - "Target market selection"
+    - "Product positioning"
+    - "Campaign targeting"
+    - "Resource allocation"
+    
+  structure:
+    segmentation_bases:
+      demographic:
+        b2b_factors:
+          - "Company size"
+          - "Industry"
+          - "Geography"
+          - "Revenue"
+        b2c_factors:
+          - "Age"
+          - "Income"
+          - "Education"
+          - "Family status"
+          
+      firmographic:
+        factors:
+          - "Industry vertical"
+          - "Company size (employees)"
+          - "Revenue range"
+          - "Growth stage"
+          - "Technology stack"
+          
+      behavioral:
+        factors:
+          - "Purchase behavior"
+          - "Usage patterns"
+          - "Loyalty status"
+          - "Benefits sought"
+          - "Decision process"
+          
+      psychographic:
+        factors:
+          - "Values"
+          - "Attitudes"
+          - "Interests"
+          - "Pain points"
+          - "Motivations"
+          
+    segment_evaluation_criteria:
+      - criterion: "Measurable"
+        question: "Can we quantify the segment?"
+      - criterion: "Substantial"
+        question: "Is it large enough to be profitable?"
+      - criterion: "Accessible"
+        question: "Can we reach them effectively?"
+      - criterion: "Differentiable"
+        question: "Do they respond differently?"
+      - criterion: "Actionable"
+        question: "Can we serve them effectively?"
+        
+  output_format:
+    type: "Segment profiles with sizing and prioritization"
+
+tam_sam_som:
+  id: "tam_sam_som"
+  name: "TAM SAM SOM"
+  purpose: "Size market opportunity at different levels"
+  when_to_use:
+    - "Market sizing"
+    - "Business planning"
+    - "Investor presentations"
+    - "Growth potential assessment"
+    
+  structure:
+    levels:
+      tam:
+        name: "Total Addressable Market"
+        definition: "Total market demand for product/service"
+        calculation_approaches:
+          - "Top-down: Industry reports, analyst data"
+          - "Bottom-up: # potential customers × average revenue"
+        example: "All companies that could use employer branding services"
+        
+      sam:
+        name: "Serviceable Available Market"
+        definition: "Portion of TAM we could serve"
+        filters:
+          - "Geographic reach"
+          - "Product fit"
+          - "Segment focus"
+        example: "B2B companies in NL/DACH needing employer branding"
+        
+      som:
+        name: "Serviceable Obtainable Market"
+        definition: "Realistic near-term capture"
+        factors:
+          - "Current capabilities"
+          - "Competition"
+          - "Sales capacity"
+          - "Brand awareness"
+        example: "Share we can win in next 2-3 years"
+        
+  calculation_template:
+    tam: "Total potential customers × Average deal value"
+    sam: "TAM × % we can serve (geography, segment, etc.)"
+    som: "SAM × Realistic market share % (typically 1-5% for new entrants)"
+    
+  output_format:
+    type: "Nested circles diagram with values"
+
+positioning_map:
+  id: "positioning_map"
+  name: "Perceptual Positioning Map"
+  purpose: "Visualize competitive positioning on key dimensions"
+  when_to_use:
+    - "Competitive positioning"
+    - "Differentiation strategy"
+    - "Gap identification"
+    - "Repositioning decisions"
+    
+  structure:
+    map_construction:
+      axis_selection:
+        guidance: "Choose dimensions that matter to customers and differentiate competitors"
+        common_b2b_axes:
+          - "Price vs. Quality"
+          - "Specialist vs. Generalist"
+          - "Innovation vs. Reliability"
+          - "Service level vs. Self-service"
+          - "Enterprise vs. SMB focus"
+          
+      plotting_process:
+        steps:
+          - "Select 2 key dimensions"
+          - "Plot competitors based on perception"
+          - "Identify clusters and white space"
+          - "Determine desired position"
+          
+    analysis_outputs:
+      clusters: "Groups of similar competitors"
+      white_space: "Unoccupied positions (opportunity?)"
+      crowded_space: "Highly competitive positions"
+      strategic_position: "Where we should aim"
+      
+  output_format:
+    type: "2-axis scatter plot with competitor positions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# FRAMEWORK SELECTION GUIDE
+# ═══════════════════════════════════════════════════════════════════════════
+
+framework_selection:
+  description: "Guide for choosing appropriate frameworks"
+  
+  by_question:
+    - question: "Where are we now?"
+      frameworks: [swot, pestel, competitive_landscape, five_forces]
+      
+    - question: "Who are our customers?"
+      frameworks: [persona_framework, jtbd, customer_journey, empathy_map, segmentation]
+      
+    - question: "Where do we want to go?"
+      frameworks: [okr, smart, ansoff, tam_sam_som]
+      
+    - question: "How do we differentiate?"
+      frameworks: [positioning_map, brand_pyramid, five_ps, competitive_landscape]
+      
+    - question: "What should we prioritize?"
+      frameworks: [impact_feasibility, moscow, rice, value_effort]
+      
+    - question: "How do we grow?"
+      frameworks: [ansoff, segmentation, tam_sam_som]
+      
+  by_time_available:
+    - time: "< 1 hour"
+      frameworks: [smart, moscow, empathy_map]
+      
+    - time: "1-4 hours"
+      frameworks: [swot, impact_feasibility, persona_framework]
+      
+    - time: "4-8 hours"
+      frameworks: [competitive_landscape, customer_journey, okr]
+      
+    - time: "> 8 hours"
+      frameworks: [pestel, five_forces, segmentation, tam_sam_som]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VALIDATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+validation:
+  framework_usage_rules:
+    - rule: "Frameworks guide analysis, not replace thinking"
+      guidance: "Adapt to context, don't force-fit"
+      
+    - rule: "Document assumptions"
+      guidance: "All frameworks rely on assumptions - make them explicit"
+      
+    - rule: "Validate with data where possible"
+      guidance: "Back up framework inputs with evidence"
+      cross_reference: "OPS_00_STANDARDS#evidence_policy"
+      
+    - rule: "Choose appropriate depth"
+      guidance: "Match framework complexity to decision importance"

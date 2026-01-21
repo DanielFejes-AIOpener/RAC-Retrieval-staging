@@ -1,0 +1,421 @@
+# CLIENT_01_AI_OPENER.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# AI Opener B.V. — Compliant AI Teams Provider
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2026-01-06"
+  purpose: "Client-specific configuration for AI Opener B.V."
+  notes: "Migrated from RAC 1.0 CLIENT_01_AI_OPENER.yaml"
+  tags: [client, ssot, internal]
+  client_id: "AI_OPENER"
+  client_name: "AI Opener B.V."
+  tier: "enterprise"
+  engagement_mode: "in_house_unit"
+
+# Auto-inherited: base_dependencies per LOGIC_00_INDEX#auto_inheritance
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT-SPECIFIC REFERENCES (SSOT)
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+evidence_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+ai_policy_schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
+ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+client_identity:
+  name: "AI Opener B.V."
+  display_name: "AI Opener"
+  industry: "B2B SaaS / AI Platform"
+  website: "https://aiopener.com"
+  description: "Deploy AI teams, not AI tools — zonder compliance keeping you up at night. De eerste GDPR-first synthetic AI team provider voor commerciële afdelingen."
+  
+  brand:
+    mission: "Deploy AI teams, not AI tools — zonder compliance keeping you up at night."
+    vision: "De eerste GDPR-first synthetic AI team provider voor commerciële afdelingen."
+    category_claim: "Compliant AI Teams"
+    tagline: "Deploy AI teams, not AI tools."
+    values:
+      - "Governance-first — compliance is niet optioneel"
+      - "Orchestration over chaos — samenwerken zoals mensen dat doen"
+      - "Speed to value — 2 weken live, niet 6 maanden"
+      - "Economic ROI — vervang bureaus, niet FTE's"
+    hero_statement: "Jouw marketingteam krijgt 10+ AI-specialisten die met je team samenwerken, zonder compliancerisico."
+    
+    differentiation:
+      - "Multi-agent orchestration — niet losse tools, maar een team dat samenwerkt"
+      - "GDPR-first by design — NL-hosted, audit-ready, EU AI Act compliant"
+      - "2-week deployment — niet 6 maanden implementatie zoals bij concurrentie"
+      - "Model-agnostic — beste LLM per taak, geen vendor lock-in"
+      - "Human-in-the-loop — governance gates op elk kritisch moment"
+  
+  contact:
+    primary:
+      name: "Quincy Dagelet"
+      email: "quincy@aiopener.com"
+      role: "CPO"
+    billing:
+      name: "Finance"
+      email: "finance@aiopener.com"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRODUCTS & TIERS
+# ═══════════════════════════════════════════════════════════════════════════
+
+products:
+  rac_marketing_team:
+    name: "RAC Marketing Team"
+    tagline: "Van losse tools naar orkeststratie — 10+ AI-specialisten die samenwerken."
+    description: "Een volledig georkestreerd AI-team dat strategie, creatie, design, copy, social en analytics uitvoert met enterprise-grade governance."
+    core_promise: "Jouw team krijgt toegang tot gespecialiseerde AI-agents die via workflows samenwerken — van brief tot campagne in dagen, niet weken."
+    deployment: "2 weken tot go-live: onboarding, brand DNA-configuratie, workflow setup, eerste campagne draait."
+    
+    tiers:
+      core:
+        price: "€1.500/maand"
+        positioning: "Strategisch brein voor teams die zelf uitvoeren"
+        target: "Teams met uitvoeringscapaciteit, maar zonder strategisch/creatief denken"
+        agents: ["Oscar", "Nora", "Max", "Lynn"]
+        commercial_message: "Voor minder dan één junior medewerker krijg je een strategisch creatief team dat al je campagnes slimmer maakt."
+        
+      pro:
+        price: "€3.000/maand"
+        positioning: "Volledige campagneproductie met marktintelligentie"
+        target: "Marketingteams of bureaus met capaciteitstekort en meerdere campagnes"
+        agents: ["Oscar", "Nora", "Max", "Lynn", "Rick", "Kai", "Vera", "May"]
+        commercial_message: "Eén team dat alles doet van strategie tot social — met realtime marktinzichten ingebouwd."
+        
+      enterprise:
+        price: "€5.000/maand"
+        positioning: "Volledig ontzorgde marketingafdeling met data, governance en salesversnelling"
+        target: "Grotere agencies en ondernemingen die accountability en schaal zoeken"
+        agents: ["Oscar", "Nora", "Max", "Lynn", "Rick", "Kai", "Vera", "May", "Eva", "Rafa", "Tom"]
+        commercial_message: "Een complete marketingafdeling die in 2 weken live is, met audit-trail automation en EU-proof orchestration."
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LIBRARIES (POINTERS ONLY — NO CORPORA IN CLIENT YAML)
+# ═══════════════════════════════════════════════════════════════════════════
+
+libraries:
+  description: "CLIENT-level library pointers/overrides (no corpora stored here)"
+  allowed_library_ids: []
+  library_priority: []
+  blocked_library_ids: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOICE & COMMUNICATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+voice:
+  profile: "thought_leader"
+  overrides:
+    tone: "confident, direct, pragmatic"
+    formality: "business casual with Dutch directness"
+    personality_traits:
+      - "thought leader"
+      - "governance-focused"
+      - "no-nonsense"
+      - "ROI-driven"
+    terminology_preferences:
+      prefer:
+        - "Compliant AI Teams"
+        - "orchestration"
+        - "governance-first"
+        - "GDPR-first"
+        - "deploy"
+        - "2 weken live"
+        - "audit-ready"
+      avoid:
+        - "revolutionair"
+        - "disruptief"
+        - "game-changing"
+        - "AI magic"
+        - "synergy"
+        - "leverage"
+        - "cutting-edge"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PREFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+preferences:
+  communication:
+    response_format: "structured"
+    language:
+      interaction: "nl"
+      output: "nl"
+      fallback: "en"
+  deliverables:
+    preferred_formats: ["docx", "pptx", "pdf", "md"]
+    max_length_pages: 20
+    naming_convention: "AIO_{type}_{date}_{version}"
+  review:
+    requires_approval: true
+    approvers: ["CPO", "CEO"]
+    turnaround_hours: 24
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TARGET SEGMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+segments:
+  b2b_companies:
+    profile: "Groeiende B2B-bedrijven met <50 medewerkers"
+    pain: "Geen budget voor full-service bureau, geen tijd voor DIY tools"
+    tier_fit: "CORE → PRO"
+    pricing: "€1.500-€3.000/maand"
+    
+  studios:
+    profile: "Designstudio's, contentagencies met 10-30 medewerkers"
+    pain: "Capaciteitstekort bij pieken, margin pressure"
+    tier_fit: "PRO → ENTERPRISE"
+    pricing: "€3.000-€5.000/maand"
+    
+  agencies:
+    profile: "Full-service agencies 30+ medewerkers"
+    pain: "Hoge personeelskosten, schaalbaarheid, compliancerisico"
+    tier_fit: "ENTERPRISE + custom"
+    pricing: "€5.000+/maand"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE POSITIONING
+# ═══════════════════════════════════════════════════════════════════════════
+
+competition:
+  positioning_wedge: "AI Opener is niet betere AI tools, het zijn Compliant AI teams (vs self-service platforms)."
+  
+  category_alternatives:
+    ai_tools:
+      examples: ["ChatGPT", "Co-Pilot", "Jasper", "n8n"]
+      weakness: "Disconnected, geen orchestratie, compliance ad-hoc"
+      our_win: "Wij zijn een team, geen tool — governance ingebouwd"
+      
+    human_teams:
+      examples: ["Agencies", "freelancers", "FTE's"]
+      weakness: "Duur (€8K+), langzaam (6+ weken), schaalt niet"
+      our_win: "2 weken live, 80% goedkoper, instant scale"
+  
+  direct_competitors:
+    note: "Geen directe 'Compliant AI Teams' speler in NL/EU markt"
+    opportunity: "Category creation moment — first mover advantage"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# EVIDENCE VAULT (CLIENT-SPECIFIC FACTS)
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_vault:
+  schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+  precedence_note: "For verified benchmarks, ORG/PACK evidence takes precedence."
+  items:
+    # ROI Evidence
+    - id: "ev-aio-roi-001"
+      claim: "80-95% kostenbesparing t.o.v. traditionele bureaus"
+      source: "AI Opener Internal Analysis"
+      source_date: "2025-11-01"
+      tier: "tier_2"
+      source_reliability: "B"
+      context: "Comparison: €3.000/maand RAC PRO vs €8.000-€15.000/maand agency retainer"
+      
+    - id: "ev-aio-roi-002"
+      claim: "€1.500–€5.000/maand vs €8.000+ agency retainer"
+      source: "AI Opener Pricing Model"
+      source_date: "2025-11-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Published pricing tiers"
+      
+    # Speed Evidence
+    - id: "ev-aio-speed-001"
+      claim: "2 weken operationeel (niet 6 maanden)"
+      source: "AI Opener Deployment SLA"
+      source_date: "2025-11-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Standard deployment timeline for all tiers"
+      
+    - id: "ev-aio-speed-002"
+      claim: "3 weken werk → 2 dagen via parallel agent execution"
+      source: "AI Opener Performance Benchmarks"
+      source_date: "2025-10-15"
+      tier: "tier_2"
+      source_reliability: "B"
+      context: "Based on campaign production timeline comparison"
+      
+    # Governance Evidence
+    - id: "ev-aio-gov-001"
+      claim: "GDPR-first, audit-ready, EU AI Act compliant"
+      source: "AI Opener Compliance Documentation"
+      source_date: "2025-11-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "NL-hosted, complete audit trails, Four Eyes Principle"
+      
+    - id: "ev-aio-gov-002"
+      claim: "Audit-ready binnen 48 uur"
+      source: "AI Opener SLA"
+      source_date: "2025-11-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Volledige trace logs + SystemCard-documentatie"
+      
+    # Market Signal Evidence
+    - id: "ev-market-gdpr-001"
+      claim: "€30.5M boete Clearview AI door Nederlandse DPA"
+      source: "Dutch DPA"
+      source_date: "2024-09-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Compliance is niet langer optioneel"
+      
+    - id: "ev-market-shadow-001"
+      claim: "Teams gebruiken 47 AI-tools, IT weet van 12"
+      source: "Gartner"
+      source_date: "2024-06-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Governance gap is reëel en groeit"
+      
+    - id: "ev-market-sprawl-001"
+      claim: "€100K+ per jaar in tool overlap"
+      source: "BCG AI Survey"
+      source_date: "2024-03-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Budgetdruk dwingt tot consolidatie"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# KPIs & TARGETS
+# ═══════════════════════════════════════════════════════════════════════════
+
+kpis:
+  business_metrics:
+    mrr_current: "€20.000"
+    mrr_target_q12026: "€100.000"
+    arpu_target: "€3.000"
+    churn_target: "<5%/maand"
+    ltv_target: "€36.000"
+    
+  marketing_metrics:
+    qualified_leads_month: "15-20"
+    demo_conversion: "40%"
+    trial_to_paid: "60%"
+    organic_traffic_growth: "20%/maand"
+    
+  sales_metrics:
+    deal_cycle: "4-6 weken"
+    close_rate: "35%"
+    expansion_revenue: "30% van new MRR"
+    
+  reporting_frequency: "Maandelijks"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GTM ASSETS
+# ═══════════════════════════════════════════════════════════════════════════
+
+gtm_assets:
+  website_hero:
+    headline: "Deploy AI teams, not AI tools."
+    subheadline: "10+ AI-specialisten die met je team samenwerken — zonder compliancerisico."
+    cta_primary: "Start je 2-week deployment"
+    cta_secondary: "Bekijk hoe het werkt"
+    
+  campaign_themes:
+    economic:
+      hook: "€1.500/maand voor een heel marketingteam. Of €8.000 voor één bureau-retainer."
+      channels: ["LinkedIn Ads", "email nurture"]
+      
+    compliance:
+      hook: "Eerste GDPR-first synthetic AI team. Gebouwd voor bedrijven die het serieus nemen."
+      channels: ["Thought leadership", "webinars"]
+      
+    speed:
+      hook: "2 weken tot go-live. Agencies doen er 6 maanden over."
+      channels: ["Retargeting", "demo flows"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USE_CASE OVERRIDES
+# ═══════════════════════════════════════════════════════════════════════════
+
+use_cases:
+  description: "Client-specific USE_CASE customizations"
+  conflict_rule: "$ref: LOGIC_02_RETRIEVAL#override_rules.exceptions.use_case_registry_conflict"
+  overrides:
+    description: "Modifications to existing USE_CASES for this client"
+    items: []
+  custom:
+    description: "Client-specific custom USE_CASES (CLIENT wins if same ID in ORG)"
+    items: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AI POLICY OVERRIDES (CAN ONLY ADD RESTRICTIONS)
+# ═══════════════════════════════════════════════════════════════════════════
+
+ai_policy:
+  schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
+  enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+  description: "CLIENT ai_policy extends ORG; can only ADD restrictions (most-restrictive-wins)."
+  
+  overrides:
+    prohibited_use_cases: []
+    blocked_topics:
+      - "investor negotiations"
+      - "acquisition discussions"
+      - "unannounced features"
+    confidential_keywords:
+      - "Series A"
+      - "funding round"
+      - "valuation"
+    sensitive_topics:
+      - "competitor pricing details"
+      - "employee compensation"
+      - "customer contracts"
+    require_human_review:
+      high_risk_content: true
+      external_communications: true
+      competitor_mentions: false
+    ai_disclosure:
+      required: true
+      format: "footer"
+      text: "Created with AI Opener RAC"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CAPABILITY → TOOL ROUTING OVERRIDES (MAPPING ONLY)
+# ═══════════════════════════════════════════════════════════════════════════
+
+tool_routing_overrides:
+  description: "CLIENT overrides routing only; tools remain in LOGIC_10"
+  patch:
+    mappings: {}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CASE LIBRARY (FUTURE / EXPORT-TARGET)
+# ═══════════════════════════════════════════════════════════════════════════
+
+case_library:
+  description: "Client case records (export-target for #case command)"
+  note: "RAC runtime does not store cases; users export manually."
+  permissions:
+    default_scope: "internal"
+    allow_upgrade_to: ["client_ok", "public_ok"]
+  items: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY EXTENSIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_extensions:
+  description: "Client-specific quality gate additions"
+  additional_entry_gates:
+    - "Brand voice alignment with 'Compliant AI Teams' positioning"
+  additional_exit_gates:
+    - "No confidential keywords present"
+    - "ROI claims backed by evidence_vault"
+    - "Compliance claims verified"
