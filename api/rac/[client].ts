@@ -10,6 +10,15 @@ const CLIENT_FILE_MAP: Record<string, string> = {
   'demo': 'CLIENT_01_DEMO_CLIENT',
 };
 
+// Client-specific role remapping (old role → new role)
+// Used to redirect legacy role names to client-specific versions
+const CLIENT_ROLE_REMAP: Record<string, Record<string, string>> = {
+  'uhu': {
+    'STRATEGIST': 'EMPLOYER_BRAND_STRATEGIST',
+    'TRAFFIC': 'MEDIA_DISTRIBUTION_STRATEGIST',
+  }
+};
+
 // Layers that get client data attached
 const LAYERS_WITH_CLIENT = ['USE_CASE', 'OPS', 'ORG', 'PACK', 'WORKFLOW'];
 
@@ -62,6 +71,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     } else {
       sectionPath = fileId;
       fileId = 'INSTANCE';
+    }
+  }
+
+  // Apply client-specific role remapping
+  if (layer === 'ROLE' && CLIENT_ROLE_REMAP[clientSlug]) {
+    const remap = CLIENT_ROLE_REMAP[clientSlug];
+    const fileIdUpper = fileId.toUpperCase();
+    if (remap[fileIdUpper]) {
+      fileId = remap[fileIdUpper];
     }
   }
 
