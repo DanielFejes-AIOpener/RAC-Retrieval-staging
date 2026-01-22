@@ -27,7 +27,7 @@ extends: "OPS_00_STANDARDS"
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
-quality_checklists: "$ref: OPS_15_REVIEW_CHECKLISTS#checklists"  # TODO: OPS_15_REVIEW_CHECKLISTS needs checklists section
+quality_checklists: "$ref: OPS_15_REVIEW_CHECKLISTS#universal_checklist"
 
 # ═══════════════════════════════════════════════════════════════════════════
 # HANDOFF CONTRACT

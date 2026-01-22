@@ -231,7 +231,6 @@ platform_constants:
 
 feature_flags:
   description: "Platform feature toggles"
-  source: "$ref: CONFIG_00_INSTANCE#feature_flags"  # TODO: CONFIG needs feature_flags section
   
   flags:
     rag_enabled:

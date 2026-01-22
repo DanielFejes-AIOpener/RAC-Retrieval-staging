@@ -11,9 +11,9 @@ workflow_type: "base_template"
 # WORKFLOW-SPECIFIC REFERENCES
 # ------------------------------------------------------------------
 interface_standards_ref: "$ref: LOGIC_09_INTERFACE"
-hitl_triggers_ref: "$ref: LOGIC_12_HITL"  # TODO: FILE MISSING - LOGIC_12_HITL.yaml
-effort_estimation_ref: "$ref: LOGIC_15_EFFORT"
-governance_ref: "$ref: LOGIC_08_GOVERNANCE"  # TODO: FILE MISSING - LOGIC_08_GOVERNANCE.yaml
+hitl_triggers_ref: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
+effort_estimation_ref: "$ref: LOGIC_15_EFFORT_ESTIMATION"
+governance_ref: "$ref: LOGIC_12_GOVERNANCE"
 ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
 
 tool_registry_ref: "$ref: LOGIC_10_TOOLS_CORE#tool_registry"

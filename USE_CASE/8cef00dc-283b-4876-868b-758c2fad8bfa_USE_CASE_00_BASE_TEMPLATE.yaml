@@ -14,7 +14,12 @@ meta:
 # USE_CASE-specific references (SSOT)
 interface_standards: "$ref: LOGIC_09_INTERFACE#output_standards"
 hitl_triggers: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
-instantiation: "$ref: LOGIC_04_PLATFORM#instantiation"  # TODO: LOGIC_04_PLATFORM needs instantiation section
+instantiation:
+  description: "How this use case gets instantiated"
+  trigger: "User request or orchestrator delegation"
+  requirements:
+    - "Valid client context"
+    - "Required capabilities available"
 ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -180,7 +185,7 @@ use_case_template:
   persona:
     communication_style: "Professional | Casual | Technical | Collaborative"
     defaults:
-      voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profile"
+      voice: "$ref: OPS_02_VOICES_LIBRARY#voice_schema"
       tone: "Tone description"
     language:
       interaction: "$ref: LOGIC_09_INTERFACE#language_handling.interaction_language"

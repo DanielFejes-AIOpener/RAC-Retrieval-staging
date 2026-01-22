@@ -1039,10 +1039,10 @@ evidence_vault:
 # ═══════════════════════════════════════════════════════════════════════════
 # Defines what capabilities this PACK requires to function.
 # Orchestrator resolves capabilities to active roles dynamically via
-# $ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution
+# $ref: LOGIC_06_ORCHESTRATION#orchestrator_contract
 
 required_capabilities:
-  resolution: "$ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution"  # TODO: FILE MISSING - LOGIC_15_ORCHESTRATION_ENGINE.yaml
+  resolution: "$ref: LOGIC_06_ORCHESTRATION#orchestrator_contract"
   fallback: "If capability not found in any active role, orchestrator flags missing capability and suggests enabling appropriate role"
   
   essential:

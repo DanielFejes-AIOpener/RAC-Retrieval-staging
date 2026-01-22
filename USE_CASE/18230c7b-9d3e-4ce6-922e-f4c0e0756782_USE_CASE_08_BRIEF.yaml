@@ -162,7 +162,7 @@ knowledge_sources:
 persona:
   communication_style: "Collaborative"
   defaults:
-    voice: "$ref: OPS_02_VOICES_LIBRARY#friendly_professional"  # TODO: OPS_02_VOICES_LIBRARY needs friendly_professional section
+    voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"
     tone: "Warm, direct, task-focused"
   language:
     interaction: "$ref: LOGIC_09_INTERFACE#language_handling.interaction_language"

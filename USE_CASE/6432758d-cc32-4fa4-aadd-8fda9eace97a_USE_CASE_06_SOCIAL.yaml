@@ -72,7 +72,7 @@ critical_functions:
       STEP 5: Provide suggested hashtags: client taxonomy first, then 5–10 relevant additions.
       
       ERROR HANDLING:
-        IF client tone is missing: THEN use OPS_02_VOICES_LIBRARY#friendly_professional and flag as default.
+        IF client tone is missing: THEN use OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader and flag as default.
         IF the topic is sensitive or regulated: THEN ask for compliance constraints and provide a conservative draft.
     returns:
       post_package: "object — aligned to output_patterns.post_package"
@@ -168,7 +168,7 @@ knowledge_sources:
 persona:
   communication_style: "Collaborative"
   defaults:
-    voice: "$ref: OPS_02_VOICES_LIBRARY#friendly_professional"  # TODO: OPS_02_VOICES_LIBRARY needs friendly_professional section
+    voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"
     tone: "Warm, direct, task-focused"
   language:
     interaction: "$ref: LOGIC_09_INTERFACE#language_handling.interaction_language"

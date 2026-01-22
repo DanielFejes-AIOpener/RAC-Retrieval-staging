@@ -96,7 +96,7 @@ ref_validation:
     examples:
       - "$ref: LOGIC_02_RETRIEVAL#override_rules"
       - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.entry.base"
-      - "$ref: OPS_02_VOICES_LIBRARY#professional_authoritative"  # TODO: OPS_02_VOICES_LIBRARY needs professional_authoritative section
+      - "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.company_authoritative"
       
   validation_rules:
     - rule: "FILE must exist in declared layer directory"

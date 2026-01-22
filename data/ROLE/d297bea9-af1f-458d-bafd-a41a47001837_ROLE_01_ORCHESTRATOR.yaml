@@ -54,7 +54,7 @@ rac_dependencies:
     purpose: "Discover available roles and system structure"
     load_on: "startup"
     
-    orchestration: "LOGIC_15_ORCHESTRATION_ENGINE.yaml"
+    orchestration: "LOGIC_06_ORCHESTRATION.yaml"
     purpose: "Load agent_registry for /s command and capability resolution"
     load_on: "startup"
     critical: true
