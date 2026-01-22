@@ -65,6 +65,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
   }
 
+  // Block access to other clients' data
+  if (layer === 'CLIENT') {
+    // Extract the client name from the file ID being requested
+    const requestedFileId = fileId.toUpperCase();
+    const allowedFileId = clientFileId.replace(/^CLIENT_\d+_/, '');
+    
+    // Only allow access to own client file or BASE_TEMPLATE
+    if (requestedFileId !== allowedFileId && !requestedFileId.includes('BASE_TEMPLATE')) {
+      return res.status(403).json({
+        error: true,
+        code: 'ACCESS_DENIED',
+        message: `Access denied: cannot access other clients' data from /${clientSlug} endpoint`,
+        hint: `You can only access CLIENT/${allowedFileId} or CLIENT/BASE_TEMPLATE`
+      });
+    }
+  }
+
   try {
     // Find file
     let filePath = findFileByPath(layer, fileId);
