@@ -4,10 +4,10 @@ import { resolveRefs } from '../../lib/resolver';
 import { applyInheritance } from '../../lib/merger';
 import { stripMeta, extractSection } from '../../lib/utils';
 
-// Client slug → client_id mapping
-const CLIENT_MAP: Record<string, string> = {
-  'uhu': 'UHU',
-  'demo': 'AI_OPENER',
+// Client slug → client file ID (the part after _NN_)
+const CLIENT_FILE_MAP: Record<string, string> = {
+  'uhu': 'CLIENT_05_UHU',
+  'demo': 'CLIENT_01_DEMO_CLIENT',
 };
 
 // Layers that get client data attached
@@ -26,16 +26,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Get client from URL
   const clientSlug = (req.query.client as string)?.toLowerCase();
   
-  if (!clientSlug || !CLIENT_MAP[clientSlug]) {
+  if (!clientSlug || !CLIENT_FILE_MAP[clientSlug]) {
     return res.status(404).json({
       error: true,
       code: 'UNKNOWN_CLIENT',
       message: `Unknown client: ${clientSlug}`,
-      available_clients: Object.keys(CLIENT_MAP)
+      available_clients: Object.keys(CLIENT_FILE_MAP)
     });
   }
 
-  const clientId = CLIENT_MAP[clientSlug];
+  const clientFileId = CLIENT_FILE_MAP[clientSlug];
 
   // Parse body
   const body: RequestBody = req.body || {};
@@ -128,13 +128,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Attach client data
     if (includeClient && LAYERS_WITH_CLIENT.includes(layer)) {
-      const clientFile = findClientFile(clientId);
+      const clientFile = findClientFileById(clientFileId);
       if (clientFile) {
         let clientContent = loadFile(clientFile);
         clientContent = resolveRefs(clientContent);
         clientContent = stripMeta(clientContent);
         response.client_data = {
-          id: clientId,
+          id: clientSlug,
           ...clientContent
         };
       }
@@ -152,23 +152,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 }
 
-function findClientFile(clientId: string): string | null {
+function findClientFileById(clientFileId: string): string | null {
   const index = getFileIndex();
   
-  // Find by client_id in meta
+  // Find by file ID (e.g., CLIENT_05_UHU)
   for (const [key, filePath] of Object.entries(index)) {
-    if (key.includes('CLIENT') && !key.includes('BASE_TEMPLATE')) {
-      const content = loadFile(filePath);
-      // Check meta.client_id or meta.Client
-      if (content?.meta?.client_id === clientId || content?.meta?.Client === clientId) {
-        return filePath;
-      }
-    }
-  }
-
-  // Find by name in key
-  for (const [key, filePath] of Object.entries(index)) {
-    if (key.includes('CLIENT') && key.toUpperCase().includes(clientId.toUpperCase())) {
+    if (key.includes(clientFileId)) {
       return filePath;
     }
   }
