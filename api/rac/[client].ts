@@ -97,20 +97,54 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!filePath) {
       const index = getFileIndex();
-      const suggestions = Object.keys(index)
-        .filter(k => k.includes(layer))
-        .slice(0, 10)
+      
+      // Get all files in the requested layer
+      const layerFiles = Object.keys(index)
+        .filter(k => k.startsWith(`${layer}_`) || k.startsWith(`${layer}:`))
         .map(k => {
           const m = k.match(/_\d+_(.+)$/);
-          return m ? `${layer}/${m[1]}` : k;
-        });
+          return m ? m[1] : k.replace(`${layer}:`, '');
+        })
+        .filter((v, i, a) => a.indexOf(v) === i); // dedupe
+      
+      // Check if file exists in a different layer
+      const allLayers = ['CONFIG', 'CLIENT', 'LOGIC', 'OPS', 'ORG', 'PACK', 'ROLE', 'USE_CASE', 'WORKFLOW'];
+      let foundInLayer: string | null = null;
+      for (const otherLayer of allLayers) {
+        if (otherLayer === layer) continue;
+        const found = Object.keys(index).find(k => 
+          (k.startsWith(`${otherLayer}_`) || k.startsWith(`${otherLayer}:`)) && 
+          k.toUpperCase().includes(fileId.toUpperCase())
+        );
+        if (found) {
+          foundInLayer = otherLayer;
+          break;
+        }
+      }
 
-      return res.status(404).json({
+      // Find similar files in this layer (fuzzy match)
+      const similar = layerFiles.filter(f => 
+        f.toUpperCase().includes(fileId.toUpperCase()) ||
+        fileId.toUpperCase().includes(f.toUpperCase().substring(0, 4))
+      );
+
+      const errorResponse: any = {
         error: true,
         code: 'NOT_FOUND',
-        message: `Path not found: ${pathString}`,
-        suggestions
-      });
+        message: `Path not found: ${pathString}`
+      };
+
+      if (foundInLayer) {
+        errorResponse.hint = `Did you mean ${foundInLayer}/${fileId}? The file exists in the ${foundInLayer} layer, not ${layer}.`;
+      }
+
+      if (similar.length > 0) {
+        errorResponse.similar = similar.slice(0, 5).map(f => `${layer}/${f}`);
+      }
+
+      errorResponse.available_in_layer = layerFiles.slice(0, 15).map(f => `${layer}/${f}`);
+
+      return res.status(404).json(errorResponse);
     }
 
     // Load & process
