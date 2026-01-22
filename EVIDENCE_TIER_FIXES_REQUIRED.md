@@ -250,3 +250,4 @@ success_metric: "Concepts meeting brief at gate ≥85%; evidence score ≥4 for 
 ---
 
 *Generated: 2026-01-22*
+
