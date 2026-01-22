@@ -14,7 +14,7 @@ meta:
 # USE_CASE-specific references (SSOT)
 interface_standards: "$ref: LOGIC_09_INTERFACE#output_standards"
 hitl_triggers: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
-instantiation: "$ref: LOGIC_04_PLATFORM#instantiation"
+instantiation: "$ref: LOGIC_04_PLATFORM#instantiation"  # TODO: LOGIC_04_PLATFORM needs instantiation section
 ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
 
 # ═══════════════════════════════════════════════════════════════════════════════

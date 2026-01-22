@@ -272,7 +272,7 @@ thought_leadership:
       evidence: "Data and examples supporting framework"
       application: "How reader can apply this"
       forward_look: "Implications and predictions"
-    voice_alignment: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"
+    voice_alignment: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"  # TODO: OPS_02_VOICES_LIBRARY needs voice_profiles section
 
   insight_pattern:
     formula: "[Observation] + [Pattern Recognition] + [Original Take]"

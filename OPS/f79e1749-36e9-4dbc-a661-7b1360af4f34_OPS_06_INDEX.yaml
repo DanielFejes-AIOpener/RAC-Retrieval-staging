@@ -242,7 +242,7 @@ routing_rules:
       
   mode_mapping:
     description: "Content complexity to orchestration mode"
-    reference: "$ref: LOGIC_06_ORCHESTRATION#modes"
+    reference: "$ref: LOGIC_06_ORCHESTRATION#modes"  # TODO: LOGIC_06_ORCHESTRATION needs modes section
     mappings:
       low_complexity: "SOM"
       medium_complexity: "SAM"

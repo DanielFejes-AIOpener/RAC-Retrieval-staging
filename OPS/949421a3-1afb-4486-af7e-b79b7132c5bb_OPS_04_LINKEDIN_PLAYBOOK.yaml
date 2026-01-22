@@ -97,7 +97,7 @@ post_formats:
 
   founder_thought_leader:
     description: "Personal POV from exec/founder"
-    voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"
+    voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"  # TODO: OPS_02_VOICES_LIBRARY needs voice_profiles section
     structure:
       hook: "Personal observation or counterintuitive take"
       story: "Specific experience or example"
@@ -112,7 +112,7 @@ post_formats:
 
   company_post:
     description: "Brand/company page content"
-    voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.company_authoritative"
+    voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.company_authoritative"  # TODO: OPS_02_VOICES_LIBRARY needs voice_profiles section
     structure:
       hook: "Data point, trend, or industry insight"
       context: "Why this matters to audience"

@@ -53,8 +53,8 @@ vector_store:
       connection: "${WEAVIATE_CONNECTION}"
       
   selection:
-    primary: "$ref: CONFIG_00_INSTANCE#vector_store.primary"
-    fallback: "$ref: CONFIG_00_INSTANCE#vector_store.fallback"
+    primary: "$ref: CONFIG_00_INSTANCE#vector_store.primary"  # TODO: CONFIG needs vector_store section
+    fallback: "$ref: CONFIG_00_INSTANCE#vector_store.fallback"  # TODO: CONFIG needs vector_store section
     
   namespace_strategy:
     description: "How to organize vectors by organization and content type"
@@ -123,7 +123,7 @@ embedding_models:
       use_case: "Highest quality, premium"
       
   selection:
-    default: "$ref: CONFIG_00_INSTANCE#embedding.model"
+    default: "$ref: CONFIG_00_INSTANCE#embedding.model"  # TODO: CONFIG needs embedding section
     by_content_type:
       short_text: "voyage-3-lite"
       long_document: "voyage-3"
@@ -132,7 +132,7 @@ embedding_models:
       
   caching:
     enabled: true
-    store: "$ref: CONFIG_00_INSTANCE#embedding.cache_store"
+    store: "$ref: CONFIG_00_INSTANCE#embedding.cache_store"  # TODO: CONFIG needs embedding section
     ttl_days: 30
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -244,7 +244,7 @@ retrieval_pipeline:
         sparse:
           weight: 0.3
           method: "BM25"
-          index: "$ref: CONFIG_00_INSTANCE#sparse_index"
+          index: "$ref: CONFIG_00_INSTANCE#sparse_index"  # TODO: CONFIG needs sparse_index section
       fusion_method: "reciprocal_rank_fusion"
       
     3_filtering:
@@ -271,7 +271,7 @@ retrieval_pipeline:
           
     4_reranking:
       description: "Reorder by relevance using cross-encoder"
-      model: "$ref: CONFIG_00_INSTANCE#reranker.model"
+      model: "$ref: CONFIG_00_INSTANCE#reranker.model"  # TODO: CONFIG needs reranker section
       models_available:
         - "cross-encoder/ms-marco-MiniLM-L-6-v2"
         - "BAAI/bge-reranker-base"
@@ -332,7 +332,7 @@ change_detection:
   reindex_behavior:
     incremental: true
     preserve_history: true
-    version_store: "$ref: CONFIG_00_INSTANCE#version_store"
+    version_store: "$ref: CONFIG_00_INSTANCE#version_store"  # TODO: CONFIG needs version_store section
     
   index_metadata:
     track_fields:

@@ -1042,7 +1042,7 @@ evidence_vault:
 # $ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution
 
 required_capabilities:
-  resolution: "$ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution"
+  resolution: "$ref: LOGIC_15_ORCHESTRATION_ENGINE#capability_resolution"  # TODO: FILE MISSING - LOGIC_15_ORCHESTRATION_ENGINE.yaml
   fallback: "If capability not found in any active role, orchestrator flags missing capability and suggests enabling appropriate role"
   
   essential:
