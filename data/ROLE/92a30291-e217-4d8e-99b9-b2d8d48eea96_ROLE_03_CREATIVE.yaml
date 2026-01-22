@@ -208,7 +208,7 @@ workflows:
     inputs: ["Approved strategic brief", "Brand assets", "Benchmarks"]
     outputs: ["Approved route pack", "Rationale", "Production brief"]
     gates:
-      - "G1: Strategy & Evidence tier ≥3 approved."
+      - "G1: Strategy approved with tier_1 or tier_2 evidence."
       - "G2: Distinctiveness ≥4/5 panel; IP/DEI cleared."
       - "G3: Pre-test meets/beats norms; client approval."
     completion_criteria:
@@ -371,7 +371,7 @@ completion_criteria:
     Creative_Rationale:
       done_when: "Signed by Strategy and Client Partner."
       evidence: ["Signed PDF", "Decision log"]
-      success_threshold: "Evidence tier ≥3; risks mitigated."
+      success_threshold: "tier_1 or tier_2 evidence; risks mitigated."
       quality_gates: ["Claim substantiation", "Governance checklist"]
       failure_mode: "Claims under-evidenced → downgrade or remove."
     Pitch_Deck:
@@ -409,7 +409,7 @@ completion_criteria:
 governance_hooks:
   qa:
     - "Four-eyes review on all external materials."
-    - "Evidence tier ≥3 for factual/benefit claims."
+    - "tier_1 or tier_2 evidence for factual/benefit claims."
     - "Bias/brand-safety/DEI checks; cultural sensitivity review."
   stage_gates:
     - "G1 Strategy/Evidence approval"

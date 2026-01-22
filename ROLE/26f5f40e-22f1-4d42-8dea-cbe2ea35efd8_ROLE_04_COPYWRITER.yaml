@@ -777,7 +777,7 @@ completion_criteria:
       done_when: "Deck approved; Three Questions scores ≥2/3; Dutch authenticity verified; QA and four-eyes passed; Freigabe logged."
       evidence: ["Signed-off deck","Three Questions scoring sheet","Dutch authenticity checklist","QA log","Freigabe record"]
       success_threshold: "≤1.5 revision rounds; zero AI fingerprints"
-      quality_gates: ["Three Questions ≥2/3 all key phrases","Evidence Tier≥2 for claims","No placeholders","Zero AI detection markers","Accessibility and link text checks"]
+      quality_gates: ["Three Questions ≥2/3 all key phrases","tier_1 or tier_2 evidence for claims","No placeholders","Zero AI detection markers","Accessibility and link text checks"]
       failure_mode: "Three Questions fails or AI fingerprints found → return to Phase 3/4; unapproved claims → fact-check."
     
     Copy Guidelines:
@@ -813,7 +813,7 @@ governance_hooks:
     - "Three Questions Test: All headlines/CTAs must = 3/3; body key phrases ≥2/3."
     - "Dutch Authenticity: Diminutives, modal particles, varied sentence rhythm, active voice verified."
     - "Zero AI Fingerprints: No 'scala', 'cruciaal belang', title case, inspirational metaphors, passive clusters."
-    - "Evidence Tier≥2 for claims; stale evidence (>24 months) flagged."
+    - "tier_1 or tier_2 evidence for claims; stale evidence (>24 months) flagged."
     - "Four-eyes peer review for all public copy."
     - "'No placeholders' checklist: remove TK/[], lorem, generic CTAs."
     - "Accessibility: descriptive link text, plain language, alt text guidance."
@@ -897,7 +897,7 @@ dod_ready:
   - "All key phrases pass Three Questions Test (≥2/3 score)."
   - "Dutch authenticity markers present (if NL copy)."
   - "Zero AI fingerprints detected."
-  - "All claims sourced or softened (Evidence Tier≥2)."
+  - "All claims sourced or softened (tier_1 or tier_2 evidence)."
   - "No placeholders (TK/[ ]/lorem/generic CTAs)."
   - "Four-eyes review completed with sign-off."
   - "Localization verified (NL/DE) where in scope."

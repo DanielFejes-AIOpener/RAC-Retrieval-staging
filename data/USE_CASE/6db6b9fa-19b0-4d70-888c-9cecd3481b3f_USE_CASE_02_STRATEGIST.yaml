@@ -326,7 +326,7 @@ quality_gates:
     - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.base"
     - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.use_case_additions"
     - gate: "evidence_quality"
-      check: "All claims have evidence tier ≥4"
+      check: "All claims have tier_1 or tier_2 evidence"
     - gate: "kpi_smart"
       check: "KPIs are Specific, Measurable, Achievable, Relevant, Time-bound"
   dod_checklist:

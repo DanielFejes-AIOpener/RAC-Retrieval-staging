@@ -588,7 +588,7 @@ completion_criteria:
 
 governance_hooks:
   qa:
-    - "Evidence tier ≥3 for client-facing claims"
+    - "tier_1 or tier_2 evidence for client-facing claims"
     - "No truncated y-axes that mislead; documented chart scales"
     - "Accessibility: colorblind-safe palettes; mobile readability"
     - "Industry benchmarks cited with sources from ROLE_07_ANALYST; recency documented"
