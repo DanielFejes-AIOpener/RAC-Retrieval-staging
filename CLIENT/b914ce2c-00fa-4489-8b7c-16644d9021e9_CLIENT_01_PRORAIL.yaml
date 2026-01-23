@@ -50,7 +50,7 @@ client_identity:
 
   brand_essence:
     positioning: "Mission-driven public railway manager connecting the Netherlands"
-    promise: "Nederland elke dag vooruit helpen" (Helping the Netherlands move forward every day)
+    promise: "Nederland elke dag vooruit helpen (Helping the Netherlands move forward every day)"
     employer_brand_tagline: "Elke Dag Vooruit"
 
   key_figures:
@@ -415,7 +415,7 @@ marketing_dna:
       - "Ontdek ProRail"
       - "Lees meer"
       - "Bekijk het verhaal"
-      - "Meld je aan" (for events/talent pools)
+      - "Meld je aan (for events/talent pools)"
       - "Maak een job alert aan"
       - "Volg ons op [kanaal]"
       - "Neem contact op"
@@ -427,37 +427,40 @@ marketing_dna:
 
   banned_phrases:
     cliches_corporate_jargon:
+      # Note: These sound inauthentic and don't fit sincere tone. Be concrete instead.
       - "geen 9-tot-5-mentaliteit"
       - "spin in het web"
       - "wij zijn een dynamisch bedrijf"
-      note: "These sound inauthentic and don't fit sincere tone. Be concrete instead."
 
     exaggerations_unproven_superlatives:
+      # Note: ProRail stays modest and factual; pride is allowed but we don't claim what we can't prove.
+      # Better: 'we work towards sustainable solutions' vs 'we are 100% green'
       - "beste werkgever"
       - "altijd perfecte balans"
       - "100% storingsvrij"
       - "volledig duurzaam"
-      note: "ProRail stays modest and factual; pride is allowed but we don't claim what we can't prove. Better: 'we work towards sustainable solutions' vs 'we are 100% green'"
 
     internal_abbreviations_jargon_without_explanation:
+      # Note: If necessary, always write out in full first with explanation
       - "OMC"
       - "LTB"
-      note: "If necessary, always write out in full first with explanation"
 
     negative_loaded_language_about_workload:
+      # Note: Don't frame work pressure negatively. Show realistic challenge positively
+      # ('houd jij het hoofd koel als...' is acceptable). Show work can be demanding but reward accordingly.
       - "stressvol, want het is hier hectisch"
       - "chaotisch"
       - "moet hard kunnen werken"
-      note: "Don't frame work pressure negatively. Show realistic challenge positively ('houd jij het hoofd koel als...' is acceptable). Show work can be demanding but reward accordingly."
 
     political_controversial_jargon:
+      # Note: ProRail communicates neutral and factual. Politically tinted statements don't fit.
+      # Also avoid comparisons with competition; ProRail speaks for itself.
       - "de miljardenverspilling aan het spoor"
       - "beste van allemaal (vs competition)"
-      note: "ProRail communicates neutral and factual. Politically tinted statements don't fit. Also avoid comparisons with competition; ProRail speaks for itself."
 
     absolute_safety_guarantees:
+      # Note: Inappropriate and untrue. Instead: 'safety has our highest priority'
       - "ongelukken gebeuren hier nooit"
-      note: "Inappropriate and untrue. Instead: 'safety has our highest priority'"
 
   risk_claims_requiring_softening:
     safety:
