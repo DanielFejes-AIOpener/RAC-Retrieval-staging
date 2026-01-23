@@ -1,704 +1,843 @@
-# ORG_05_DELIVERABLE_TEMPLATES.yaml (Phase I — required)
-# ═══════════════════════════════════════════════════════════════════════════
-# Canonical templates for core deliverables (ORG baseline)
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORG_05_DELIVERABLE_TEMPLATES.yaml
+# UHU Productions B.V. - Deliverable Templates & Standards
+# ═══════════════════════════════════════════════════════════════════════════════
+# Version: 2.0.0
+# Last Updated: 2026-01-18
+# Purpose: Canonical templates, structures, and quality criteria for core deliverables
+# Layer: ORG (Organization configuration for AIO ONE platform operator)
+# ═══════════════════════════════════════════════════════════════════════════════
 
 meta:
-  owner: "AI Opener"
+  owner: "UHU Productions B.V."
   version: "2.0.0"
-  last_updated: "2026-01-06"
-  purpose: "Canonical templates for core deliverables (ORG baseline)"
-  notes: "Phase I required. Industry-standard structures from research; CLIENT may fork/override."
-  tags: [org, ssot, templates, deliverables]
+  last_updated: "2026-01-18"
+  purpose: "Standard deliverable templates, structures, quality criteria for UHU's core work"
+  references:
+    - "RAC 1.0 ORG_02_TEMPLATES.yaml (legacy templates)"
+    - "process_dna.md (transformation patterns)"
+  tags: [org, templates, deliverables, quality-criteria, standards]
 
-# ═══════════════════════════════════════════════════════════════════════════
-# TEMPLATES — Deliverable structures and requirements
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# DELIVERABLE CATALOG
+# ═══════════════════════════════════════════════════════════════════════════════
 
-templates:
-  description: "Deliverable templates with industry-standard structures."
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # BLOG POST (SEO-OPTIMIZED)
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  blog_post:
-    id: "template_blog_post"
-    name: "SEO Blog Post"
-    description: "Search-optimized blog article structure"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      length:
-        minimum: 800
-        optimal: "1500-2500"
-        maximum: 3000  # unless "ultimate guide"
-        thin_content_threshold: 300
-      reading_time: "5-10 minutes"
-      
-    structure:
-      - section: "Title (H1)"
-        requirements: "Primary keyword, compelling hook, ~60 characters"
-        
-      - section: "Meta description"
-        requirements: "Primary keyword, value prop, CTA, 150-160 chars"
-        
-      - section: "Introduction"
-        requirements: "Hook, problem statement, what reader will learn"
-        length: "100-150 words"
-        note: "Include primary keyword in first 100 words"
-        
-      - section: "Body sections (H2s)"
-        requirements: "3-5 main sections with descriptive subheadings"
-        subsections:
-          - "H3 subsections as needed"
-          - "Short paragraphs (3-4 sentences max)"
-          - "Bullet points for lists"
-          - "Internal links where relevant"
-          - "Data or examples for credibility"
-          
-      - section: "Conclusion"
-        requirements: "Summary of key insights, actionable takeaway"
-        length: "100-150 words"
-        
-      - section: "CTA"
-        requirements: "Clear next step, relevant to content topic"
-        placement: "End of post; optional mid-post CTA for longer articles"
-        note: "One strong CTA usually most effective"
-    
-    seo_checklist:
-      - "Primary keyword in: title, H1, meta, first 100 words, ≥1 subheading"
-      - "Secondary keywords in H2s and body"
-      - "Internal links: 3-5"
-      - "External links: 1-3 (authoritative sources)"
-      - "Image with alt text (descriptive keywords)"
-      - "URL contains primary keyword"
-      - "Unique meta description"
-      
-    readability:
-      - "Short paragraphs"
-      - "F-pattern scanning optimized (front-load important words)"
-      - "Bullet lists where appropriate"
-      - "Descriptive H2/H3 headings (not generic)"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # CASE STUDY
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  case_study:
-    id: "template_case_study"
-    name: "Customer Case Study"
-    description: "Results-focused customer success story"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      length:
-        minimum: 400
-        optimal: "500-1000"
-        maximum: 1500
-        note: "Short and concise shows real results; avoid marketing fluff"
-      format: ["web_page", "pdf", "slide_deck"]
-    
-    structure:
-      - section: "Title"
-        requirements: "Customer name + key result (if allowed)"
-        example: "How [Customer] achieved [X% result] with [Solution]"
-        
-      - section: "Executive Summary"
-        requirements: "Key challenge, solution, result in 2-3 sentences"
-        length: "50-75 words"
-        
-      - section: "About the Customer"
-        requirements: "Industry, size, context"
-        length: "50-100 words"
-        
-      - section: "Challenge"
-        requirements: "Specific problem, impact, previous attempts"
-        length: "150-200 words"
-        
-      - section: "Solution"
-        requirements: "What was implemented, how, timeline"
-        length: "200-300 words"
-        
-      - section: "Results"
-        requirements: "Quantified outcomes, metrics, quotes"
-        length: "150-200 words"
-        must_include:
-          - "At least 1 quantified metric"
-          - "Customer quote (if available)"
-          
-      - section: "CTA"
-        requirements: "Next step for reader"
-    
-    proof_elements:
-      required:
-        - "At least 1 hard metric (%, €, time saved)"
-        - "Customer approval for publication"
-      recommended:
-        - "Customer quote"
-        - "Before/after comparison"
-        - "Timeline of implementation"
-        - "Customer logo (with permission)"
-        
-    visual_requirements:
-      - "Client logo and photo at top"
-      - "Data visualizations (charts/graphs) for key results"
-      - "Pull quotes or stats in call-out boxes"
-      - "Subheadings and whitespace for readability"
-      - "Two-column layout or sidebars to break up text"
-      
-    design_tips:
-      - "Highlight key stats so they 'pop'"
-      - "Use graphics to explain processes or outcomes"
-      - "Consider 'Before vs After' visual comparison"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # WHITE PAPER
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  white_paper:
-    id: "template_white_paper"
-    name: "White Paper"
-    description: "In-depth thought leadership document"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      length:
-        minimum: 1500
-        optimal: "3000-5000"
-        maximum: 6000
-        technical_white_papers: "4000-6000"
-      pages: "6-12"
-      format: "pdf"
-      gated: true
-    
-    structure:
-      - section: "Title page"
-        requirements: "Title, subtitle, company name/logo, author, date"
-        note: "Attractive cover like a magazine to draw interest"
-        
-      - section: "Executive Summary"
-        requirements: "Purpose, key findings, recommendations, who should read"
-        length: "200-300 words"
-        
-      - section: "Table of Contents"
-        requirements: "For documents >6 pages"
-        
-      - section: "Introduction"
-        requirements: "Problem context, why this matters now, scope, compelling thesis"
-        length: "300-500 words"
-        
-      - section: "Main Body (3-5 chapters)"
-        requirements: "Each chapter addresses one aspect of the topic"
-        per_chapter:
-          - "Chapter heading"
-          - "Key points with evidence"
-          - "Supporting data/research"
-          - "Visuals (charts, diagrams)"
-          
-      - section: "Conclusion & Recommendations"
-        requirements: "Summary, actionable recommendations, implications"
-        length: "300-400 words"
-        
-      - section: "About [Company]"
-        requirements: "Brief company description, CTA"
-        length: "100-150 words"
-        
-      - section: "Sources/References"
-        requirements: "All data sources cited"
-    
-    design_requirements:
-      - "Professional, consistent branded layout"
-      - "Data visualizations for complex info"
-      - "Pull quotes for key insights"
-      - "Sidebars or call-out boxes for definitions"
-      - "Adequate white space"
-      - "Clear hierarchy: large headings, subheadings, bullets"
-      - "Page numbers, logo, footer with website"
-    
-    gating_best_practices:
-      - "Offer compelling enough value to justify email exchange"
-      - "Keep lead capture form short (name, email, +1 qualifier max)"
-      - "Consider HTML preview/teaser for SEO (part visible, rest gated)"
-      - "Immediate delivery via email + thank-you page CTA"
-      - "Include trust signals on landing page"
-      - "Deliver on promise - content must meet expectations"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # EMAIL NEWSLETTER
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  email_newsletter:
-    id: "template_email_newsletter"
-    name: "Email Newsletter"
-    description: "Regular subscriber communication"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      length:
-        optimal: "50-200 words"
-        maximum: 500
-        note: "Readers spend ~51 seconds on email; prioritize skimmable content"
-      format: "html_email"
-      frequency: "weekly | bi-weekly | monthly"
-    
-    structure:
-      - section: "Subject line"
-        requirements: "Compelling, clear, 45-50 chars"
-        
-      - section: "Preview text"
-        requirements: "Extends subject, creates curiosity, 50-80 chars"
-        note: "Don't repeat subject line"
-        
-      - section: "Header"
-        requirements: "Logo, consistent branding"
-        
-      - section: "Opening"
-        requirements: "Personal greeting, hook"
-        length: "2-3 sentences"
-        
-      - section: "Main content"
-        requirements: "1-3 content blocks"
-        variants:
-          single_topic: 
-            description: "One feature article or announcement"
-            best_for: "Big announcements, specific actions"
-          multi_topic:
-            description: "3-5 linked items with summaries"
-            best_for: "Weekly/monthly roundups"
-            format: "Headline + 1-2 sentence description + link per item"
-          mixed: 
-            description: "1 feature + 2-3 quick items"
-            
-      - section: "CTA"
-        requirements: "Clear, singular action"
-        
-      - section: "Footer"
-        requirements: "Unsubscribe, preferences, social links, legal"
-    
-    cta_guidelines:
-      single_vs_multiple: "Single focused CTA gets 371% more clicks"
-      placement: "Above the fold for key action; repeat at end if long"
-      design: "Distinct button, contrasting color"
-      
-    best_practices:
-      - "Mobile-first design"
-      - "Single column layout"
-      - "Scannable format with clear sections"
-      - "Personalization where possible"
-      - "Consistent send time"
-      - "Brief paragraphs (1-2 sentences) or bullets"
-      - "Each content blurb ~30-50 words max"
-      - "Prioritize most important item at top"
-      - "Use divider lines or background blocks to separate sections"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # SOCIAL MEDIA POST SERIES
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  social_series:
-    id: "template_social_series"
-    name: "Social Media Content Series"
-    description: "Themed multi-post content"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      posts_per_series: "4-8"
-      frequency: "1-2 per week per pillar"
-      platforms: ["linkedin", "twitter", "instagram"]
-    
-    content_pillar_approach:
-      description: "3-5 core themes representing key messaging areas"
-      purpose: "Keeps strategy focused, reinforces expertise, balanced mix"
-      
-      example_pillars:
-        - name: "Thought Leadership"
-          content: "Industry insights, trends, expert takes"
-        - name: "Product/Service"
-          content: "Value demonstration, features, use cases"
-        - name: "Culture"
-          content: "Team, values, behind-the-scenes"
-        - name: "Customer Success"
-          content: "Social proof, mini case studies, testimonials"
-        - name: "Educational"
-          content: "How-to, tips, practical guides"
-          
-      distribution: "Rotate pillars throughout week"
-      example_schedule: |
-        4 posts/week with 4 pillars = 1 per pillar weekly
-        Adjust frequency based on pillar importance/content availability
-        
-      recurring_series: "Consider hashtag series like #TipTuesday or #ClientSpotlight"
-    
-    posting_frequency:
-      linkedin: "2-5x per week"
-      note: "Alternating pillars/personas prevents repetitiveness"
-      key_principle: "Consistency outperforms sporadic bursts"
-      monitoring: "Track engagement per pillar; increase high-performers slightly"
-    
-    repurposing_patterns:
-      description: "Content atomization - break big content into micro-content"
-      
-      long_form_sources: 
-        - "White paper"
-        - "Webinar"
-        - "Blog post"
-        - "Report"
-        
-      derivatives:
-        - "5 insightful quotes/stats as separate graphics"
-        - "Thread/carousel breakdown of key points"
-        - "Short video clip (if video source)"
-        - "Infographic summarizing main findings"
-        - "Poll question based on topic"
-        - "One-liner text posts"
-        
-      weekly_tip_series: "Tip #1 this week, Tip #2 next week from same guide"
-      
-      format_variation:
-        - "Same stat as chart image in one post, text quote in another"
-        - "Mix text-only, images, videos, documents"
-        
-    best_practices:
-      - "Include CTA/link guiding to full content"
-      - "One webinar can yield: video clip, infographic, quote image, poll"
-      - "Track which formats get best engagement per pillar"
-      - "Vary formats to keep feed fresh"
-      - "Create anticipation for next installment"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # SALES DECK / PITCH PRESENTATION
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  sales_deck:
-    id: "template_sales_deck"
-    name: "Sales Presentation"
-    description: "B2B pitch/proposal deck"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      slides:
-        optimal: 10  # "10 slides is the optimal number"
-        maximum: 15
-        note: "Human audience can't absorb too many concepts in one meeting"
-      time: "20 minutes presentation (leaves time for discussion)"
-      format: ["pptx", "pdf", "google_slides"]
-      rule: "10/20/30 - 10 slides, 20 minutes, 30-point minimum font"
-    
-    structure:
-      - slide: "Title"
-        content: "Company name, tagline, presenter"
-        purpose: "Set stage, grab attention"
-        
-      - slide: "Problem/Pain Point"
-        content: "Customer's current challenge, market gap"
-        principle: "Make it relatable and urgent; audience should nod in recognition"
-        
-      - slide: "Impact of Problem"
-        content: "Cost of inaction, pain amplification"
-        purpose: "Build urgency before offering relief"
-        
-      - slide: "Solution Overview"
-        content: "How you solve it (high level)"
-        
-      - slide: "How It Works"
-        content: "Process, methodology, approach"
-        count: "1-2 slides"
-        include: "Screenshots or diagram showing solution in action"
-        
-      - slide: "Value Proposition / Why Us"
-        content: "Specific benefits, differentiators"
-        
-      - slide: "Proof/Results"
-        content: "Case studies, metrics, testimonials, client logos"
-        count: "1-3 slides"
-        purpose: "Build credibility with evidence"
-        
-      - slide: "Pricing/Packages (optional)"
-        content: "Options, tiers"
-        note: "Include if appropriate for sales stage"
-        
-      - slide: "Next Steps / CTA"
-        content: "Clear action, timeline, process"
-        purpose: "Make next step obvious and easy"
-        
-      - slide: "Q&A / Contact"
-        content: "Contact details, appendix reference"
-        
-    design_principles:
-      text_density:
-        rule: "No font smaller than 30 points"
-        max_bullets: 6  # 6x6 rule: max 6 bullets
-        words_per_bullet: 6
-        note: "If you need smaller font, you have too much content"
-      
-      layout:
-        - "One idea per slide"
-        - "Strong visuals over text blocks"
-        - "Plenty of white space"
-        - "Consistent template/branding"
-        - "Readable from back of room"
-        - "Charts, icons, images > bullet lists"
-        
-      approach:
-        - "Slides support spoken narrative, not replace it"
-        - "Each slide understandable in few seconds"
-        - "Keep backup/appendix slides for detailed Q&A"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # ONE-PAGER
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  one_pager:
-    id: "template_one_pager"
-    name: "Product/Service One-Pager"
-    description: "Single-page overview document"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      length: "1 page (A4/Letter)"
-      format: ["pdf", "docx"]
-      word_count: "300-500"
-      scan_time: "60-90 seconds to grasp main points"
-    
-    required_sections:
-      - section: "Header with Branding"
-        content: "Company logo, product name, tagline/value statement"
-        purpose: "Immediate identification"
-        
-      - section: "Company/Product Overview"
-        content: "Who you are, what you offer"
-        length: "2-3 sentences"
-        
-      - section: "Problem Statement"
-        content: "Pain point or challenge you address"
-        length: "2-3 sentences"
-        purpose: "Align with customer needs, grab attention"
-        
-      - section: "Solution / Key Benefits"
-        content: "How you solve it, top 3-5 benefits"
-        format: "Bullet points with icons"
-        note: "Focus on USP - what makes your solution valuable"
-        
-      - section: "Social Proof"
-        content: "Testimonial quote, success stat, or client logos"
-        options:
-          - "Customer quote with attribution"
-          - "Key metric (e.g., '95% customer satisfaction')"
-          - "2-3 recognizable client logos"
-        purpose: "Reassure reader others trust you"
-        
-      - section: "Call-to-Action"
-        content: "Clear next step"
-        examples: 
-          - "Schedule a free consultation"
-          - "Sign up for a free trial"
-          - "Contact us for pricing"
-        placement: "Prominent, near bottom"
-        
-      - section: "Contact Information"
-        content: "Website, email, phone"
-        placement: "Footer or near CTA"
-    
-    layout_best_practices:
-      structure: "Header / Body / Footer"
-      body_options:
-        - "Two columns: left for problem/solution, right for image/graphic"
-        - "Single column with clear section breaks"
-      
-      design:
-        - "Bullet points and short sentences (not paragraphs)"
-        - "Bold icons or checkmarks for benefit bullets"
-        - "Ample white space (don't cram)"
-        - "Readable font size (no tiny text)"
-        - "Brand colors and consistent styling"
-        - "One compelling visual (product screenshot, illustration)"
-        
-      footer:
-        - "CTA and contact info"
-        - "Consider colored background strip to stand out"
-        
-    design_approach: "Treat like an infographic - visual hierarchy, icons, maybe infographic-style element for key stat"
-  
-  # ─────────────────────────────────────────────────────────────────────────
-  # JOB POSTING / VACATURE
-  # ─────────────────────────────────────────────────────────────────────────
-  
-  job_posting:
-    id: "template_job_posting"
-    name: "Job Posting (Vacature)"
-    description: "Recruitment advertisement"
-    
-    # Source: Industry-Standard Structures research (2025)
-    
-    specs:
-      length:
-        optimal: "300-600 words"
-        short_posts_stat: "Posts ≤300 words receive more applications"
-        maximum: 800
-        note: "Focus on quality of info, not quantity"
-      format: ["web", "pdf", "linkedin_job"]
-      read_time: "Under 2 minutes"
-    
-    structure:
-      - section: "Job Title"
-        requirements: "Specific, searchable, no internal jargon"
-        examples_good: ["Senior Marketing Analyst", "Software Engineer – B2B SaaS"]
-        examples_bad: ["Marketing Ninja", "Code Guru", "Rockstar Developer"]
-        
-      - section: "Job Summary / Hook"
-        requirements: "Overview of role's purpose, contribution to mission"
-        length: "2-3 sentences"
-        example: "We're seeking a Senior Marketing Analyst to drive data-driven decision making..."
-        
-      - section: "Key Responsibilities"
-        requirements: "Main duties and tasks"
-        format: "5-8 bullets, start with active verb"
-        principle: "Focus on outcomes, not just tasks"
-        
-      - section: "Required Qualifications"
-        requirements: "Must-haves only"
-        format: "5-8 bullets"
-        note: "Clearly separate Required vs Preferred to encourage broader applications"
-        
-      - section: "Preferred Qualifications"
-        requirements: "Nice-to-haves"
-        note: "Studies show underrepresented groups only apply if 100% match; separating helps"
-        
-      - section: "What We Offer / Benefits"
-        requirements: "Perks, culture, growth opportunities"
-        format: "Paragraph or bullets"
-        
-      - section: "Salary Indication"
-        requirements: "Range or indication"
-        note: "EU Pay Transparency Directive coming; increasingly expected"
-        
-      - section: "Company Overview (brief)"
-        requirements: "Industry, mission, values"
-        length: "2-3 sentences"
-        note: "Keep short; avoid lengthy corporate spiel"
-        
-      - section: "Location & Work Arrangement"
-        requirements: "City, remote/hybrid info, employment type"
-        
-      - section: "Application Instructions (CTA)"
-        requirements: "Clear method to apply"
-        examples: ["Apply via careers page", "Email CV to..."]
-        
-      - section: "Inclusive Statement"
-        requirements: "EEO/diversity commitment, accommodations"
-    
-    inclusive_language:
-      stats:
-        - "Gender-neutral wording attracts 42% more responses"
-        - "Clear responsibilities = 14% more applicants"
-        
-      gender_neutral:
-        do:
-          - "Use 'you' or 'they/them' instead of 'he/she'"
-          - "Salesperson instead of Salesman"
-          - "Balance adjective types (avoid only masculine-coded)"
-        avoid:
-          - "Rockstar, ninja, guru"
-          - "Dominant, aggressive" # masculine-coded
-          - "He will lead his team..."
-        tools: "Use Gender Decoder to check for hidden bias"
-        
-      age_inclusive:
-        avoid:
-          - "Young and dynamic team"
-          - "Digital native"
-          - "Ideal for recent grads"
-          - "Inflated years of experience"
-        do:
-          - "Focus on skills, not age"
-          - "All experience levels welcome (if true)"
-          
-      disability_inclusive:
-        include:
-          - "Reasonable accommodations available"
-          - "We welcome applications from candidates of diverse backgrounds"
-        avoid:
-          - "Must be able-bodied" # if function can be met with accommodation
-          
-      clarity:
-        avoid:
-          - "Excessive corporate jargon"
-          - "Internal acronyms"
-          - "KPI ninja for OKR synergy"
-        do:
-          - "Plain language broad audience understands"
-          - "Professional but conversational tone"
-          - "Use 'you' to help candidate envision themselves"
-          
-      barriers:
-        question: "Is this requirement truly necessary?"
-        examples:
-          - "4-year degree when equivalent experience would do"
-          - "Native-level English when moderate proficiency suffices"
-          - "'MBA required' vs 'MBA or equivalent experience preferred'"
-        
-      encouragement:
-        example: "If you meet most requirements but not all, we encourage you to apply. We value diverse skills and backgrounds."
+deliverable_catalog:
+  note: |
+    UHU's core deliverables map to the 5 Delivery Domains: Strategie, Concept,
+    Middelen maken, Distributie, AI toepassingen. This catalog documents standard
+    templates and quality criteria for each deliverable type.
 
-# ═══════════════════════════════════════════════════════════════════════════
-# ACCEPTANCE CRITERIA (Definition of Done)
-# ═══════════════════════════════════════════════════════════════════════════
+  strategie_deliverables:
+    documentation_requirement: "All strategic deliverables must be documented in a written format (PDF, DOCX, or presentation file). Strategic work is not considered complete until formalized in a deliverable document."
+    - deliverable_id: "del_strat_01"
+      name: "EVP Framework"
+      description: "Employer Value Proposition strategisch framework"
+      domain: "Strategie"
+      typical_timeline: "4-6 weken"
 
-acceptance_criteria:
-  description: "Definition-of-done / acceptance criteria for core deliverables."
-  
-  universal:
-    description: "Apply to all deliverables"
-    criteria:
-      - "Brand voice consistent"
-      - "No spelling/grammar errors"
-      - "Fact claims have evidence reference"
-      - "CTAs clear and trackable"
-      - "Reviewed by designated approver"
-      - "No never-say list violations"
-      - "Accessibility requirements met"
-  
-  per_deliverable:
-    blog_post:
-      - "SEO checklist complete"
-      - "Internal links added"
-      - "Featured image with alt text"
-      - "Meta description optimized"
-      
-    case_study:
-      - "Customer approval obtained"
-      - "At least 1 quantified result"
-      - "Customer quote (if available)"
-      
-    white_paper:
-      - "All sources cited"
-      - "Executive summary captures key points"
-      - "Design/layout professional"
-      
-    email_newsletter:
-      - "Preview text optimized"
-      - "Mobile preview checked"
-      - "All links tested"
-      - "Unsubscribe works"
-      
-    sales_deck:
-      - "One idea per slide"
-      - "Presenter notes added"
-      - "Proof points current"
-      
-    job_posting:
-      - "Inclusive language check passed"
-      - "Salary indication included"
-      - "Application process clear"
-  
-  # Custom deliverables not in standard templates
-  # Add to CLIENT layer if needed
-  custom: []
+    - deliverable_id: "del_strat_02"
+      name: "Brand Positioning Document"
+      description: "Employer brand positionering met competitive positioning"
+      domain: "Strategie"
+      typical_timeline: "2-4 weken"
+
+    - deliverable_id: "del_strat_03"
+      name: "Strategic Presentation"
+      description: "Strategische presentatie met inzichten, positionering, roadmap"
+      domain: "Strategie"
+      typical_timeline: "1-3 weken"
+
+    - deliverable_id: "del_strat_04"
+      name: "Research & Insights Report"
+      description: "Doelgroeponderzoek, concurrent analyse, marktinzichten"
+      domain: "Strategie"
+      typical_timeline: "2-4 weken"
+
+  concept_deliverables:
+    - deliverable_id: "del_concept_01"
+      name: "Creative Concept"
+      description: "Creatief concept met narrative, thema, visual direction"
+      domain: "Concept"
+      typical_timeline: "2-3 weken"
+
+    - deliverable_id: "del_concept_02"
+      name: "Treatment"
+      description: "Treatment document: concept → deliverable sets, formats, distributie"
+      domain: "Concept"
+      typical_timeline: "1-2 weken"
+
+    - deliverable_id: "del_concept_03"
+      name: "Campaign Narrative"
+      description: "Verhaal en messaging voor campagne"
+      domain: "Concept"
+      typical_timeline: "1-2 weken"
+
+    - deliverable_id: "del_concept_04"
+      name: "Content Pillars"
+      description: "Content pijlers en messaging frameworks"
+      domain: "Concept"
+      typical_timeline: "1 week"
+
+  middelen_deliverables:
+    - deliverable_id: "del_middel_01"
+      name: "Video Content (All Formats)"
+      description: "Video productie: hero, social cuts, cutdowns (geïntegreerde productie)"
+      domain: "Middelen maken"
+      typical_timeline: "4-8 weken (pre-prod → post)"
+
+    - deliverable_id: "del_middel_02"
+      name: "Employer Brand Film"
+      description: "Flagship employer brand video"
+      domain: "Middelen maken"
+      typical_timeline: "6-10 weken"
+
+    - deliverable_id: "del_middel_03"
+      name: "Testimonial Videos"
+      description: "Employee testimonials, authentic stories"
+      domain: "Middelen maken"
+      typical_timeline: "3-5 weken"
+
+    - deliverable_id: "del_middel_04"
+      name: "Social Content Package"
+      description: "Social-first content (vierkant, stories, reels)"
+      domain: "Middelen maken"
+      typical_timeline: "2-4 weken"
+
+    - deliverable_id: "del_middel_05"
+      name: "Photo Assets"
+      description: "Fotografie voor employer branding gebruik"
+      domain: "Middelen maken"
+      typical_timeline: "1-2 weken"
+
+  distributie_deliverables:
+    - deliverable_id: "del_dist_01"
+      name: "Distribution Plan"
+      description: "Kanaalstrategie, planning, budgetallocatie"
+      domain: "Distributie"
+      typical_timeline: "1-2 weken"
+
+    - deliverable_id: "del_dist_02"
+      name: "Media Strategy"
+      description: "Media planning en buying strategie"
+      domain: "Distributie"
+      typical_timeline: "1-2 weken"
+
+    - deliverable_id: "del_dist_03"
+      name: "Performance Dashboard"
+      description: "Tracking en rapportage setup"
+      domain: "Distributie"
+      typical_timeline: "1 week"
+
+  ai_deliverables:
+    - deliverable_id: "del_ai_01"
+      name: "AI-Augmented Content"
+      description: "Content gecreëerd met AI Content Lab (human + AI)"
+      domain: "AI toepassingen"
+      typical_timeline: "Varieert per project"
+
+    - deliverable_id: "del_ai_02"
+      name: "Personalization at Scale"
+      description: "Gepersonaliseerde content varianten (AI-enabled)"
+      domain: "AI toepassingen"
+      typical_timeline: "2-3 weken"
+
+    - deliverable_id: "del_ai_03"
+      name: "Workflow Optimization Analysis"
+      description: "AI-driven workflow efficiency rapport"
+      domain: "AI toepassingen"
+      typical_timeline: "1-2 weken"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STANDARD TRANSFORMATION PATTERNS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+transformation_patterns:
+  description: |
+    UHU's proprietary transformation patterns - hoe input documenten worden
+    vertaald naar output deliverables. Deze patterns zijn de kern van UHU's
+    'afpellen' methodologie.
+
+  pattern_01_evp_to_narrative:
+    pattern_name: "EVP → Narrative"
+    input: "EVP claim + kernboodschap"
+    transformation: "Vertaling naar overkoepelend verhaalthema"
+    output: "Campaign narrative, content pijlers"
+
+    template_structure:
+      evp_input:
+        - "EVP claim (tagline/positioning statement)"
+        - "Kernwaarden (3-5 core values)"
+        - "Proof points (why believe us)"
+        - "Target audience insights"
+
+      transformation_steps:
+        - step: "Identify core emotional driver from EVP"
+          method: "Afpellen - peel away corporate language to find human truth"
+
+        - step: "Connect to audience aspirations/pain points"
+          method: "Map EVP values to candidate journey moments"
+
+        - step: "Develop narrative arc"
+          method: "Story structure: current reality → transformation → future state"
+
+        - step: "Define content pillars"
+          method: "Break narrative into 3-5 thematic content streams"
+
+      output_deliverable:
+        - "Campaign narrative document"
+        - "Content pillars with messaging"
+        - "Tone and story guidelines"
+
+  pattern_02_persona_to_storyline:
+    pattern_name: "Persona/Driver → Storyline & Content Pijlers"
+    input: "Persona profiles + decision drivers"
+    transformation: "Vertaling naar storylines en channel strategy"
+    output: "Targeted content strategy, proof points, channel selection"
+
+    template_structure:
+      persona_input:
+        - "Persona demographics and psychographics"
+        - "Pain points and aspirations"
+        - "Decision factors and triggers"
+        - "Media consumption habits"
+
+      transformation_steps:
+        - step: "Map persona journey stages"
+          method: "Awareness → Interest → Desire → Action (AIDA)"
+
+        - step: "Identify key message per stage"
+          method: "Match EVP proof points to persona pain points"
+
+        - step: "Select channels and formats"
+          method: "Map media habits to content formats (video, social, longform)"
+
+        - step: "Define tone per persona"
+          method: "Adjust UHU core tone to persona preferences"
+
+      output_deliverable:
+        - "Persona-specific storylines"
+        - "Content pijlers per persona"
+        - "Channel strategy matrix"
+
+  pattern_03_audit_to_positioning:
+    pattern_name: "Audit/UX/Competitor → Positionering & Content Routes"
+    input: "Competitive audit + UX analysis"
+    transformation: "Competitive gaps → positioning strategy → channel routes"
+    output: "Competitive positioning, owned/social/careers content strategy"
+
+    template_structure:
+      audit_input:
+        - "Competitor messaging analysis"
+        - "UX heuristics (career site, application flow)"
+        - "Content gaps and opportunities"
+        - "Editorial positioning chances"
+
+      transformation_steps:
+        - step: "Identify competitive white space"
+          method: "Map competitor messages, find unclaimed territory"
+
+        - step: "Define positioning wedge"
+          method: "UHU's 'afpellen' - what's authentically different?"
+
+        - step: "Map to content channels"
+          method: "Owned (website) vs. Earned (social) vs. Paid strategies"
+
+        - step: "Develop editorial strategy"
+          method: "IA, navigation, content hierarchy for career site"
+
+      output_deliverable:
+        - "Competitive positioning statement"
+        - "Channel content strategy"
+        - "Career site IA and editorial plan"
+
+  pattern_04_plan_to_fasering:
+    pattern_name: "Plan → Fasering & Middelenmix"
+    input: "Strategic plan or treatment"
+    transformation: "Strategie → phased delivery plan → deliverable families"
+    output: "Deliverable sets, variants, specs, channel mapping"
+
+    template_structure:
+      plan_input:
+        - "Campaign objectives and KPIs"
+        - "Budget and timeline constraints"
+        - "Target personas and journey stages"
+
+      transformation_steps:
+        - step: "Define deliverable families"
+          method: "Group by format: video families, photo sets, social packages"
+
+        - step: "Plan variants (geïntegreerde productie)"
+          method: "One shoot → all formats (60s hero, 30s/15s cuts, social square/stories)"
+
+        - step: "Specify technical requirements"
+          method: "Aspect ratios, lengths, subtitle versions, channel specs"
+
+        - step: "Phase delivery"
+          method: "Strategie → Concept → Pre-prod → Productie → Post → Distributie"
+
+      output_deliverable:
+        - "Deliverable family matrix"
+        - "Variant planning (formats, lengths, versions)"
+        - "Technical specifications"
+        - "Phased timeline"
+
+  pattern_05_funnel_mapping:
+    pattern_name: "Funnel-koppeling"
+    input: "Candidate journey stages"
+    transformation: "Journey moments → content formats"
+    output: "Awareness (60s) → Interest/Desire (craft/EVP clips) → Action (conversie)"
+
+    template_structure:
+      funnel_input:
+        - "Journey stages: Awareness → Interest → Desire → Action"
+        - "Persona per stage"
+        - "Content consumption patterns per stage"
+
+      transformation_steps:
+        - step: "Awareness content"
+          format: "60s brand/hero video - broad reach, emotional connection"
+
+        - step: "Interest/Desire content"
+          format: "15-30s clips on specific topics (craft, EVP themes, day-in-life)"
+
+        - step: "Action/Conversion content"
+          format: "Testimonials, how-to-apply, specific role content"
+
+        - step: "Channel mapping"
+          method: "Awareness (YouTube, social ads) → Interest (organic social, website) → Action (career site, email)"
+
+      output_deliverable:
+        - "Funnel content strategy"
+        - "Format-to-stage mapping"
+        - "Channel distribution plan"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CORE DELIVERABLE TEMPLATES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+deliverable_templates:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  template_evp_framework:
+    deliverable_id: "del_strat_01"
+    deliverable_name: "EVP Framework"
+    domain: "Strategie"
+
+    standard_structure:
+      section_01_foundation:
+        title: "1. Foundation & Context"
+        components:
+          - "Organizational overview (mission, vision, culture)"
+          - "Market context (talent landscape, competitive environment)"
+          - "Target talent segments (personas)"
+          - "Current state assessment (employer brand maturity)"
+
+      section_02_research:
+        title: "2. Research & Insights"
+        components:
+          - "Employee research (what current employees value)"
+          - "Candidate research (what prospects seek)"
+          - "Competitive analysis (EVP landscape)"
+          - "Employer brand perception audit"
+
+      section_03_evp_core:
+        title: "3. EVP Core"
+        components:
+          - "EVP claim/tagline (5-10 words)"
+          - "EVP pillars (3-5 core themes)"
+          - "Supporting messages per pillar"
+          - "Proof points (why believe us - concrete evidence)"
+          - "Tone and personality"
+
+      section_04_activation:
+        title: "4. Activation Framework"
+        components:
+          - "Messaging hierarchy (tier 1, 2, 3 messages)"
+          - "Persona-specific messaging"
+          - "Channel guidelines (where/how to use EVP)"
+          - "Do's and Don'ts"
+
+      section_05_roadmap:
+        title: "5. Implementation Roadmap"
+        components:
+          - "Phased rollout plan"
+          - "Priority initiatives"
+          - "Success metrics"
+          - "Governance and stewardship"
+
+    quality_criteria:
+      - criterion: "EVP is authentic (grounded in employee/candidate research)"
+        validation: "Evidence from research findings directly linked to EVP claims"
+
+      - criterion: "EVP is differentiated (distinct from competitors)"
+        validation: "Competitive positioning analysis shows white space"
+
+      - criterion: "EVP is activatable (not abstract concepts)"
+        validation: "Concrete proof points for each pillar, channel-specific guidelines"
+
+      - criterion: "EVP aligns with organizational culture/reality"
+        validation: "Leadership buy-in documented, internal validation completed"
+    # NOTE: Template structure inferred - formalize with actual UHU EVP examples
+
+  # ───────────────────────────────────────────────────────────────────────────
+  template_strategic_presentation:
+    deliverable_id: "del_strat_03"
+    deliverable_name: "Strategic Presentation"
+    domain: "Strategie"
+
+    standard_structure:
+      slide_01_context:
+        title: "Context & Challenge"
+        purpose: "Set the stage - what's the business challenge?"
+        components:
+          - "Market/talent landscape"
+          - "Organizational context"
+          - "The problem/opportunity"
+
+      slide_02_research:
+        title: "Research & Insights"
+        purpose: "What we learned - data-driven foundation"
+        components:
+          - "Key research findings"
+          - "Candidate/employee insights"
+          - "Competitive landscape"
+
+      slide_03_strategy:
+        title: "Strategic Framework"
+        purpose: "Our strategic answer"
+        components:
+          - "EVP or positioning framework"
+          - "Strategic pillars"
+          - "Differentiation"
+
+      slide_04_narrative:
+        title: "Narrative & Messaging"
+        purpose: "The story we'll tell"
+        components:
+          - "Campaign narrative/theme"
+          - "Key messages"
+          - "Tone and voice"
+
+      slide_05_activation:
+        title: "Activation Plan"
+        purpose: "How we bring it to life"
+        components:
+          - "Phased approach (Strategie → Concept → Productie → Distributie)"
+          - "Deliverable overview"
+          - "Channel strategy"
+
+      slide_06_roadmap:
+        title: "Roadmap & Success"
+        purpose: "Timeline and measurement"
+        components:
+          - "Implementation phases"
+          - "KPIs and success metrics"
+          - "Next steps"
+
+    uhu_presentation_principles:
+      - principle: "Start with 'why' (not 'what')"
+        rationale: "Context and insights before solutions"
+
+      - principle: "Visual storytelling"
+        rationale: "UHU is a creative agency - presentations should be visually compelling"
+
+      - principle: "Conversation-driven (not lecture)"
+        rationale: "Aligned with 'gesprekken' positioning - presentations invite dialogue"
+
+      - principle: "Evidence-based claims"
+        rationale: "Every strategic recommendation backed by research/data"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  template_treatment:
+    deliverable_id: "del_concept_02"
+    deliverable_name: "Treatment"
+    domain: "Concept"
+
+    description: |
+      UHU's Treatment is the bridge document between concept and production.
+      It translates strategic/creative concepts into concrete deliverable sets
+      with formats, specs, and distribution plans.
+
+    standard_structure:
+      section_01_concept_recap:
+        title: "1. Concept Recap"
+        components:
+          - "Strategic context (EVP, objectives)"
+          - "Creative concept (theme, narrative)"
+          - "Target audience (personas)"
+
+      section_02_deliverable_families:
+        title: "2. Deliverable Families"
+        description: "Grouped by content type (video families, photo sets, etc.)"
+        components:
+          - "Family 1: Hero/Brand Video"
+          - "Family 2: Craft/Topic Videos (e.g., Engineering, Sales, Culture)"
+          - "Family 3: Social Content (cutdowns, social-first)"
+          - "Family 4: Photo Assets"
+        example_structure:
+          family_name: "Hero Video - 'Day in the Life'"
+          formats:
+            - format: "60s Landscape (YouTube, website)"
+            - format: "30s Landscape (social ads)"
+            - format: "15s Square (Instagram feed)"
+            - format: "9:16 Stories (Instagram/TikTok)"
+          production_notes: "One shoot day, multiple employees, authentic workplace settings"
+
+      section_03_variants:
+        title: "3. Variant Planning (Geïntegreerde Productie)"
+        description: "One shoot → all channel formats"
+        components:
+          - "Aspect ratios (16:9 landscape, 1:1 square, 9:16 vertical)"
+          - "Lengths (60s hero, 30s mid, 15s cutdown, 6s bumper)"
+          - "Subtitle versions (NL, EN, on/off)"
+          - "Channel-specific edits (LinkedIn vs. Instagram tone)"
+
+      section_04_production_specs:
+        title: "4. Production Specifications"
+        components:
+          - "Shoot days required"
+          - "Locations"
+          - "Talent (employees, actors, voice-over)"
+          - "Equipment and crew"
+          - "Shot list overview"
+
+      section_05_distribution:
+        title: "5. Distribution Plan"
+        components:
+          - "Channel mapping (which content on which channels)"
+          - "Funnel alignment (awareness → interest → action content)"
+          - "Timeline (release schedule)"
+          - "KPIs per deliverable"
+
+      section_06_timeline:
+        title: "6. Timeline & Milestones"
+        phases:
+          - "Pre-production (briefing, casting, location scouting): 2-3 weeks"
+          - "Production (shoot days): 1-3 days"
+          - "Post-production (editing, color, sound, versioning): 3-4 weeks"
+          - "Delivery and distribution setup: 1 week"
+
+    quality_criteria:
+      - criterion: "Treatment translates concept to concrete deliverables"
+        validation: "Clear line from strategic concept to each deliverable format"
+
+      - criterion: "Variant planning maximizes production efficiency"
+        validation: "One shoot yields multiple channel-ready formats"
+
+      - criterion: "Distribution plan maps to funnel/journey"
+        validation: "Each deliverable has clear purpose in candidate journey"
+
+      - criterion: "Timeline is realistic and phased"
+        validation: "Phases align with UHU's standard process DNA"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  template_video_content:
+    deliverable_id: "del_middel_01"
+    deliverable_name: "Video Content (All Formats)"
+    domain: "Middelen maken"
+
+    uhu_production_principles:
+      - principle: "Authenticity over polish"
+        application: "Real employees, real workplaces, real stories - no actors unless necessary"
+
+      - principle: "Geïntegreerde productie (one shoot, all formats)"
+        application: "Plan for multiple outputs from single shoot day"
+
+      - principle: "Storytelling first, brand second"
+        application: "Lead with human story, brand integration feels natural"
+
+      - principle: "Visual quality matches brand positioning"
+        application: "Corporate brands: polished but authentic; MKB: more raw/documentary style"
+
+    standard_formats:
+      hero_video:
+        length: "60-90s"
+        aspect_ratio: "16:9 (landscape)"
+        purpose: "Brand/awareness level, emotional connection"
+        distribution: "Website hero, YouTube, LinkedIn video"
+
+      social_ads:
+        length: "15-30s"
+        aspect_ratios: ["16:9 landscape", "1:1 square", "9:16 vertical"]
+        purpose: "Paid social, broad reach, interest generation"
+        distribution: "Facebook/Instagram ads, LinkedIn sponsored"
+
+      organic_social:
+        length: "15-60s"
+        aspect_ratios: ["1:1 square (feed)", "9:16 vertical (stories/reels)"]
+        purpose: "Organic engagement, community building"
+        distribution: "Instagram feed/stories, TikTok, LinkedIn posts"
+
+      website_content:
+        length: "30-60s"
+        aspect_ratio: "16:9 landscape"
+        purpose: "Career site, 'about us', specific role pages"
+        distribution: "Career site embeds, 'Why work here' pages"
+
+      testimonials:
+        length: "60-120s (full), 15-30s (cuts)"
+        aspect_ratio: "16:9 primary, 1:1/9:16 cuts"
+        purpose: "Authentic employee voices, proof of EVP"
+        distribution: "Career site, social, recruitment ads"
+
+    technical_specifications:
+      video_quality:
+        resolution: "4K (3840x2160) master, deliver HD (1920x1080)"
+        frame_rate: "24fps (cinematic) or 25fps (EU standard)"
+        codec: "H.264 for delivery, ProRes for masters"
+
+      audio:
+        requirements: "Clean dialogue, professional VO if needed, music licensed for commercial use"
+        subtitle_versions: ["Dutch (default)", "English (if international)", "On/off versions"]
+
+      branding:
+        logo_placement: "End card (final 3-5s), subtle integration if mid-video"
+        brand_colors: "Per client brand guidelines"
+        # NOTE: UHU's own brand colors not documented - gap for Phase 2
+
+    quality_criteria:
+      - criterion: "Authenticity feels genuine (not staged/scripted)"
+        validation: "Real employees, natural dialogue, actual workplace"
+
+      - criterion: "Story is clear and compelling"
+        validation: "Viewer understands message within first 5 seconds"
+
+      - criterion: "Technical quality is professional"
+        validation: "Crisp visuals, clean audio, smooth editing"
+
+      - criterion: "Brand integration is natural (not forced)"
+        validation: "Brand appears organically, not disruptively"
+
+      - criterion: "Format optimized for channel"
+        validation: "Aspect ratio, length, pacing match channel best practices"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  template_distribution_plan:
+    deliverable_id: "del_dist_01"
+    deliverable_name: "Distribution Plan"
+    domain: "Distributie"
+
+    standard_structure:
+      section_01_objectives:
+        title: "1. Campaign Objectives & KPIs"
+        components:
+          - "Business objectives (hires, applications, awareness)"
+          - "Target KPIs per channel"
+          - "Budget allocation"
+
+      section_02_channel_strategy:
+        title: "2. Channel Strategy Matrix"
+        format: "Table: Channel | Content | Funnel Stage | Budget | KPIs"
+        example_channels:
+          - channel: "LinkedIn (organic)"
+            content: "Thought leadership, company culture, employee stories"
+            funnel_stage: "Awareness + Interest"
+
+          - channel: "LinkedIn (paid)"
+            content: "Video ads (15-30s), sponsored content"
+            funnel_stage: "Awareness + Action"
+
+          - channel: "Instagram (organic)"
+            content: "Behind-the-scenes, visual storytelling, employee takeovers"
+            funnel_stage: "Awareness + Interest"
+
+          - channel: "Career website"
+            content: "Hero video, testimonials, role-specific content"
+            funnel_stage: "Interest + Desire + Action"
+
+          - channel: "YouTube"
+            content: "Long-form content, employer brand films, 'day in life' series"
+            funnel_stage: "Awareness + Interest"
+
+          - channel: "Job boards (VONQ, Indeed)"
+            content: "Job postings with video snippets, company description"
+            funnel_stage: "Action"
+
+      section_03_content_calendar:
+        title: "3. Content Calendar"
+        components:
+          - "Release schedule (phased or simultaneous)"
+          - "Posting frequency per channel"
+          - "Seasonal/event tie-ins"
+
+      section_04_paid_media:
+        title: "4. Paid Media Plan"
+        components:
+          - "Budget breakdown by channel"
+          - "Targeting criteria (demographics, interests, job titles)"
+          - "Ad formats and creative specs"
+          - "A/B testing plan"
+
+      section_05_measurement:
+        title: "5. Measurement & Optimization"
+        components:
+          - "KPI dashboard setup"
+          - "Reporting cadence (weekly, monthly)"
+          - "Optimization triggers (when to adjust)"
+
+    quality_criteria:
+      - criterion: "Channel selection maps to persona media habits"
+        validation: "Persona research informs channel mix"
+
+      - criterion: "Content-to-channel fit is optimized"
+        validation: "Right format/length/tone for each platform"
+
+      - criterion: "Budget allocation reflects priorities"
+        validation: "High-impact channels receive appropriate investment"
+
+      - criterion: "Measurement plan enables optimization"
+        validation: "Clear KPIs, tracking setup, decision rules"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUALITY GATES & DoD (Definition of Done)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality_gates:
+  description: |
+    Quality gates ensure deliverables meet UHU standards before handoff to next
+    phase or client. Based on RAC 1.0 ROLE file DoD criteria and formalized here.
+
+  gate_strategy_to_concept:
+    gate_name: "Strategy → Concept Handoff"
+    trigger: "Strategic deliverable (EVP, positioning, research) complete"
+
+    dod_checklist:
+      - item: "Strategic deliverable documented in written format"
+        validation: "Strategic work formalized in deliverable document (PDF, DOCX, or presentation file)"
+
+      - item: "Strategic framework approved by client"
+        validation: "Written approval (email, signed document)"
+
+      - item: "Research evidence supports strategy"
+        validation: "All strategic claims traceable to research findings"
+
+      - item: "Target personas defined and validated"
+        validation: "Persona documents complete with pain points, triggers"
+
+      - item: "Success metrics agreed"
+        validation: "KPIs documented and client-approved"
+
+      - item: "Budget and timeline confirmed for next phase"
+        validation: "SOW or project plan for concept phase signed"
+
+    handoff_artifacts:
+      - "Strategic presentation (approved version)"
+      - "EVP framework or brand positioning document"
+      - "Persona profiles"
+      - "Research summary"
+      - "Brief for concept phase"
+
+    failure_mode: "If strategy not approved, return to research/refinement. Do NOT proceed to concept."
+
+  gate_concept_to_production:
+    gate_name: "Concept → Production Handoff"
+    trigger: "Creative concept and treatment complete"
+
+    dod_checklist:
+      - item: "Creative concept approved by client"
+        validation: "Concept presentation signed off"
+
+      - item: "Treatment document complete"
+        validation: "Deliverable families, variants, specs documented"
+
+      - item: "Production plan approved"
+        validation: "Timeline, budget, shoot plan confirmed"
+
+      - item: "Talent/locations confirmed"
+        validation: "Employee participants committed, locations scouted/booked"
+
+      - item: "Client understands production process"
+        validation: "Kick-off meeting held, expectations aligned"
+
+    handoff_artifacts:
+      - "Approved creative concept"
+      - "Treatment document"
+      - "Production brief"
+      - "Shot list and storyboards (if applicable)"
+      - "Talent and location confirmations"
+
+    failure_mode: "If concept not approved, revise creative. Do NOT start production without sign-off."
+
+  gate_client_delivery:
+    gate_name: "Final Client Delivery"
+    trigger: "All project deliverables complete"
+
+    dod_checklist:
+      - item: "All contractual deliverables delivered"
+        validation: "SOW checklist 100% complete"
+
+      - item: "Client training/handoff complete (if applicable)"
+        validation: "Asset usage guidelines provided, team trained"
+
+      - item: "Final invoice submitted"
+        validation: "Invoice sent, payment terms clear"
+
+      - item: "Project retrospective completed (internal)"
+        validation: "Learnings documented for future projects"
+
+      - item: "Client satisfaction confirmed"
+        validation: "Positive feedback received, NPS/CSAT score ≥8/10"
+
+    handoff_artifacts:
+      - "Final deliverable package"
+      - "Asset usage guidelines"
+      - "Source files (if contracted)"
+      - "Project close-out report"
+      - "Case study permission request (for portfolio)"
+
+    success_metric: "Client satisfaction ≥8/10, deliverables on time and on budget, portfolio-worthy work"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NAMING & VERSION CONVENTIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+naming_conventions:
+  file_naming:
+    pattern: "[CLIENT]_[DELIVERABLE-TYPE]_[VERSION]_[DATE].[ext]"
+    examples:
+      - "Booking_Treatment_v1.2_20260115.pdf"
+      - "IKEA_HeroVideo_60s_Landscape_Final_20260120.mp4"
+      - "Rabobank_EVP_Framework_v2.0_20260118.pptx"
+
+    rules:
+      - "Client name: Use official brand name (not legal entity)"
+      - "Deliverable type: Short descriptor (Treatment, EVPFramework, HeroVideo)"
+      - "Version: v[major].[minor] (v1.0, v1.1, v2.0) OR Draft/Final"
+      - "Date: YYYYMMDD format"
+      - "No spaces: Use underscores or hyphens"
+
+  video_naming:
+    pattern: "[CLIENT]_[CONTENT-TYPE]_[LENGTH]_[ASPECT-RATIO]_[VERSION].[ext]"
+    examples:
+      - "Pathé_EmployerBrandFilm_60s_16x9_Final.mp4"
+      - "Politie_Testimonial_Engineering_30s_1x1_v2.mp4"
+      - "Booking_SocialCut_15s_9x16_NL-Subs.mp4"
+
+    aspect_ratio_codes:
+      - "16x9: Landscape (YouTube, website)"
+      - "1x1: Square (Instagram feed, Facebook)"
+      - "9x16: Vertical (Stories, Reels, TikTok)"
+
+    version_codes:
+      - "Draft: Work in progress, client review"
+      - "v1, v2: Revision iterations"
+      - "Final: Client-approved, ready for distribution"
+      - "Master: Highest quality source file"
+
+  folder_structure:
+    project_root: "[CLIENT_NAME]_[PROJECT_NAME]"
+
+    subfolders:
+      - "01_Strategy (research, frameworks, presentations)"
+      - "02_Concept (concepts, treatments, narratives)"
+      - "03_Production (assets, raw footage, project files)"
+      - "04_Deliverables (final approved outputs)"
+      - "05_Distribution (channel assets, tracking)"
+      - "06_Admin (contracts, invoices, correspondence)"
+
+    rationale: "Numbered folders ensure consistent order, phase-aligned structure"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# END OF ORG_05_DELIVERABLE_TEMPLATES.yaml
+# ═══════════════════════════════════════════════════════════════════════════════
