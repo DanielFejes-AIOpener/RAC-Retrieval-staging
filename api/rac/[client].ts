@@ -19,6 +19,12 @@ const CLIENT_ROLE_REMAP: Record<string, Record<string, string>> = {
   }
 };
 
+// Client access grants - which sub-clients a parent client can access
+// Format: parent client slug → array of allowed client file IDs (without CLIENT_NN_ prefix)
+const CLIENT_ACCESS_GRANTS: Record<string, string[]> = {
+  'uhu': ['PRORAIL'],  // UHU can access ProRail client data
+};
+
 // Layers that get client data attached
 const LAYERS_WITH_CLIENT = ['USE_CASE', 'OPS', 'ORG', 'PACK', 'WORKFLOW'];
 
@@ -89,13 +95,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const requestedFileId = fileId.toUpperCase();
     const allowedFileId = clientFileId.replace(/^CLIENT_\d+_/, '');
     
-    // Only allow access to own client file or BASE_TEMPLATE
-    if (requestedFileId !== allowedFileId && !requestedFileId.includes('BASE_TEMPLATE')) {
+    // Check if this client has access grants for the requested client
+    const accessGrants = CLIENT_ACCESS_GRANTS[clientSlug] || [];
+    const hasAccessGrant = accessGrants.some(grant => requestedFileId.includes(grant.toUpperCase()));
+    
+    // Only allow access to own client file, BASE_TEMPLATE, or granted sub-clients
+    if (requestedFileId !== allowedFileId && !requestedFileId.includes('BASE_TEMPLATE') && !hasAccessGrant) {
       return res.status(403).json({
         error: true,
         code: 'ACCESS_DENIED',
         message: `Access denied: cannot access other clients' data from /${clientSlug} endpoint`,
-        hint: `You can only access CLIENT/${allowedFileId} or CLIENT/BASE_TEMPLATE`
+        hint: `You can only access CLIENT/${allowedFileId}, CLIENT/BASE_TEMPLATE${accessGrants.length > 0 ? `, or granted sub-clients: ${accessGrants.join(', ')}` : ''}`
       });
     }
   }
