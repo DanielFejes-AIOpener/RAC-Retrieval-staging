@@ -16,7 +16,6 @@ meta:
   engagement_mode: "employer_branding"
 
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
-source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
 evidence_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
 ai_policy_schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
 ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
@@ -492,7 +491,7 @@ marketing_dna:
 
 evidence_vault:
   schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
-  precedence_note: "All evidence from official ProRail sources (Tier 1, Reliability A) unless noted otherwise"
+  precedence_note: "All evidence from official ProRail sources unless noted otherwise"
 
   items:
     # Mission & Identity
@@ -500,40 +499,30 @@ evidence_vault:
       claim: "ProRail mission: 'Wij verbinden mensen, steden en bedrijven per spoor, nu en in de toekomst. Wij maken aangenaam reizen en duurzaam vervoer mogelijk en zorgen dat het op en om het spoor veilig is.'"
       source: "ProRail Jaarverslag 2024 (Over ProRail)"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Official mission statement, core of ProRail's purpose"
 
     - id: "ev-pr-vision-001"
       claim: "ProRail vision: 'Wij geven samen met onze partners invulling aan de groeiende behoefte aan duurzame mobiliteit in Nederland. Wij gaan voor de trein als aantrekkelijke keuze voor reizigers en verladers.'"
       source: "ProRail Jaarverslag 2024 (Onze visie)"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Shows how ProRail positions towards future (train = attractive alternative, partnership central)"
 
     - id: "ev-pr-status-001"
       claim: "ProRail operates as ZBO (Zelfstandig Bestuursorgaan) under direct responsibility of Ministry of Infrastructure and Water Management since 2021. ProRail receives €2 billion in tax money annually."
       source: "ProRail news article 'Van bv naar zbo' (2018)"
       source_date: "2018"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Governance: ProRail operates with public funds under ministerial responsibility, emphasizing public task"
 
     - id: "ev-pr-ownership-001"
       claim: "The Dutch state is, via Railinfratrust B.V., the sole shareholder of ProRail B.V. Shareholding is placed with Ministry of IenW."
       source: "ProRail website - Over ons > Organisatie"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Legal structure (100% state ownership). Relevant for understanding ProRail is not commercial but government entity in corporate form"
 
     - id: "ev-pr-scale-001"
       claim: "ProRail: ~5,000 diverse colleagues maintaining 7,000 kilometers of track - one of the busiest, most reliable and most ingenious rail networks in the world"
       source: "WerkenbijProRail - example vacancy text (Jouw ProRail section)"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Current figures: ~5,000 employees, ~7,000 km track. Also emphasizes pride (one of busiest & most reliable networks worldwide)"
 
     # Culture & Values
@@ -541,32 +530,24 @@ evidence_vault:
       claim: "Culture values: 'Onze bedrijfscultuur is open, betrokken, behulpzaam en inclusief.'"
       source: "WerkenbijProRail - Onze cultuur pagina"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Direct from ProRail: four named core values of culture. Serves as proof for culture claims (EVP and content pillar)"
 
     - id: "ev-pr-culture-002"
       claim: "Family culture & collegiality: 'We doen het hier echt samen. Er heerst een familiegevoel en het zorg-voor-elkaar-gehalte is hoog.'"
       source: "WerkenbijProRail - Onze cultuur (manager quote)"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Illustrates internal experience: people experience culture as close-knit and caring"
 
     - id: "ev-pr-dei-001"
       claim: "D&I statement: 'We bieden graag ruimte aan iedereen. Daarbij zien we talent als basis en diversiteit als kracht om samen betere resultaten te behalen.'"
       source: "Vacaturetekst V&G coördinator"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Standard sentence ProRail includes in vacancies. Shows D&I not just empty words but in recruitment text. Can be used literally for D&I claims (and DEIClaimGuard official phrasing)"
 
     - id: "ev-pr-impact-001"
       claim: "Employee value: 'En het allerbelangrijkste? Jij doet ertoe. Jouw kennis, vaardigheden en talenten maken het verschil voor al die mensen en goederen die elke dag veilig en op tijd op hun bestemming moeten aankomen.'"
       source: "WerkenbijProRail - Onze cultuur"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Strong statement covering EVP-pillars 'impact' and 'appreciation'. Direct proof ProRail communicates this to (new) employees"
 
     # Development & Learning
@@ -574,8 +555,6 @@ evidence_vault:
       claim: "Development & learning: 'Elke dag vooruit betekent namelijk ook: elke dag iets leren. ... Via ons eigen leerplatform ProLeren kun je aan de slag met online trainingen, cursussen... Daarnaast bieden we regelmatig inspiratie in de vorm van workshops, gastsprekers... Summerschool.'"
       source: "WerkenbijProRail - ProRail als werkgever"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Substantiates claims about development opportunities. Specifically named: own learning platform, training activities"
 
     # Benefits & Working Conditions
@@ -583,16 +562,12 @@ evidence_vault:
       claim: "Benefits highlights: Direct permanent contract, annual automatic salary increase of 2.5%, fulltime workweek of 36 hours with part-time option, Individual Choice Budget of 13.61% (includes 8% vacation allowance and 3.25% December bonus), Personal development budget up to €1,000/year"
       source: "WerkenbijProRail - Arbeidsvoorwaarden pagina"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Lists several key benefits (permanent job, salary increase, 36 hours, IKB, development budget). Useful as evidence for BenefitClaimGuard when citing concrete benefits"
 
     - id: "ev-pr-benefits-002"
       claim: "Flexibility & modern benefits: Flexible working hours and in many cases ability to work from home or other location. Option to exchange up to 2 Christian holidays for other (feast)days of choice. 9 weeks paid parental leave (85% salary). Good pension plan at low premium. Bike plan."
       source: "WerkenbijProRail - Arbeidsvoorwaarden"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Shows ProRail has concrete modern working conditions (remote work, diversity in holidays, parental leave etc.). Supports content about 'we offer good secondary conditions'"
 
     # Performance & Metrics
@@ -600,8 +575,6 @@ evidence_vault:
       claim: "Punctuality metric: 'Always striving for better - This is an indication of percentage train journeys with less than 3 minutes delay. Punctuality figure 73.9% (12 January 2026).'"
       source: "ProRail.nl homepage widget"
       source_date: "2026-01-12"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Concretely shows ProRail openly communicates about performance (punctuality). Can serve as proof we stay factual about results, and that 'reliability' is measurable KPI"
 
     # Stakeholders & Collaboration
@@ -609,8 +582,6 @@ evidence_vault:
       claim: "Stakeholder approach: 'ProRail streeft naar een open, betrokken en constructieve relatie met maatschappelijke, bestuurlijke en politieke stakeholders... Transparantie en betrouwbaarheid staan centraal... Onze spoorpartners zijn onder meer (regionale) reizigersvervoerders, goederenvervoerders, verladers, havens, aannemers... We maken prestatieafspraken met hen...'"
       source: "ProRail Jaarverslag 2024 - ESG hoofdstuk (Onze stakeholders)"
       source_date: "2026-01-09"
-      tier: "tier_1"
-      source_reliability: "A"
       context: "Emphasizes ProRail's network of stakeholders and collaboration culture with both market parties and government"
 
 # ═══════════════════════════════════════════════════════════════════════════

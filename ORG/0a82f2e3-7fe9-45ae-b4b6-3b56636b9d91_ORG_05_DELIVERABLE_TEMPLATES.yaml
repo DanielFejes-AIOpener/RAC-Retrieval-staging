@@ -13,7 +13,6 @@ meta:
   version: "2.0.0"
   last_updated: "2026-01-18"
   purpose: "Standard deliverable templates, structures, quality criteria for UHU's core work"
-  depends_on: ["ORG_01_FOUNDATION.yaml", "ORG_02_BRAND_POSITIONING.yaml"]
   references:
     - "RAC 1.0 ORG_02_TEMPLATES.yaml (legacy templates)"
     - "process_dna.md (transformation patterns)"
@@ -28,9 +27,9 @@ deliverable_catalog:
     UHU's core deliverables map to the 5 Delivery Domains: Strategie, Concept,
     Middelen maken, Distributie, AI toepassingen. This catalog documents standard
     templates and quality criteria for each deliverable type.
-  # SOURCE: ORG_02_BRAND_POSITIONING.yaml delivery_domains, VERIFIED
 
   strategie_deliverables:
+    documentation_requirement: "All strategic deliverables must be documented in a written format (PDF, DOCX, or presentation file). Strategic work is not considered complete until formalized in a deliverable document."
     - deliverable_id: "del_strat_01"
       name: "EVP Framework"
       description: "Employer Value Proposition strategisch framework"
@@ -158,7 +157,6 @@ transformation_patterns:
     UHU's proprietary transformation patterns - hoe input documenten worden
     vertaald naar output deliverables. Deze patterns zijn de kern van UHU's
     'afpellen' methodologie.
-  # SOURCE: process_dna.md, transformation patterns section, VERIFIED
 
   pattern_01_evp_to_narrative:
     pattern_name: "EVP → Narrative"
@@ -190,7 +188,6 @@ transformation_patterns:
         - "Campaign narrative document"
         - "Content pillars with messaging"
         - "Tone and story guidelines"
-    # SOURCE: process_dna.md line 13, VERIFIED
 
   pattern_02_persona_to_storyline:
     pattern_name: "Persona/Driver → Storyline & Content Pijlers"
@@ -222,7 +219,6 @@ transformation_patterns:
         - "Persona-specific storylines"
         - "Content pijlers per persona"
         - "Channel strategy matrix"
-    # SOURCE: process_dna.md line 14, VERIFIED
 
   pattern_03_audit_to_positioning:
     pattern_name: "Audit/UX/Competitor → Positionering & Content Routes"
@@ -254,7 +250,6 @@ transformation_patterns:
         - "Competitive positioning statement"
         - "Channel content strategy"
         - "Career site IA and editorial plan"
-    # SOURCE: process_dna.md line 15, VERIFIED
 
   pattern_04_plan_to_fasering:
     pattern_name: "Plan → Fasering & Middelenmix"
@@ -286,7 +281,6 @@ transformation_patterns:
         - "Variant planning (formats, lengths, versions)"
         - "Technical specifications"
         - "Phased timeline"
-    # SOURCE: process_dna.md line 16, VERIFIED
 
   pattern_05_funnel_mapping:
     pattern_name: "Funnel-koppeling"
@@ -317,7 +311,6 @@ transformation_patterns:
         - "Funnel content strategy"
         - "Format-to-stage mapping"
         - "Channel distribution plan"
-    # SOURCE: process_dna.md line 17, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CORE DELIVERABLE TEMPLATES
@@ -385,7 +378,6 @@ deliverable_templates:
 
       - criterion: "EVP aligns with organizational culture/reality"
         validation: "Leadership buy-in documented, internal validation completed"
-    # SOURCE: INFERRED from EB industry standards + UHU approach, UNVERIFIED
     # NOTE: Template structure inferred - formalize with actual UHU EVP examples
 
   # ───────────────────────────────────────────────────────────────────────────
@@ -455,7 +447,6 @@ deliverable_templates:
 
       - principle: "Evidence-based claims"
         rationale: "Every strategic recommendation backed by research/data"
-    # SOURCE: INFERRED from EB agency presentation norms + UHU tone, UNVERIFIED
 
   # ───────────────────────────────────────────────────────────────────────────
   template_treatment:
@@ -467,7 +458,6 @@ deliverable_templates:
       UHU's Treatment is the bridge document between concept and production.
       It translates strategic/creative concepts into concrete deliverable sets
       with formats, specs, and distribution plans.
-    # SOURCE: process_dna.md, treatment references in client work, VERIFIED
 
     standard_structure:
       section_01_concept_recap:
@@ -540,9 +530,6 @@ deliverable_templates:
 
       - criterion: "Timeline is realistic and phased"
         validation: "Phases align with UHU's standard process DNA"
-    # SOURCES:
-    #   - Client work examples (Booking, Pathé treatments), VERIFIED
-    #   - process_dna.md, VERIFIED
 
   # ───────────────────────────────────────────────────────────────────────────
   template_video_content:
@@ -553,19 +540,15 @@ deliverable_templates:
     uhu_production_principles:
       - principle: "Authenticity over polish"
         application: "Real employees, real workplaces, real stories - no actors unless necessary"
-        # SOURCE: UHU Manifest "echte gesprekken", VERIFIED
 
       - principle: "Geïntegreerde productie (one shoot, all formats)"
         application: "Plan for multiple outputs from single shoot day"
-        # SOURCE: ORG_02 differentiator diff_06, VERIFIED
 
       - principle: "Storytelling first, brand second"
         application: "Lead with human story, brand integration feels natural"
-        # SOURCE: UHU tone mensgericht, VERIFIED
 
       - principle: "Visual quality matches brand positioning"
         application: "Corporate brands: polished but authentic; MKB: more raw/documentary style"
-        # SOURCE: INFERRED from dual target market, UNVERIFIED
 
     standard_formats:
       hero_video:
@@ -628,10 +611,6 @@ deliverable_templates:
 
       - criterion: "Format optimized for channel"
         validation: "Aspect ratio, length, pacing match channel best practices"
-    # SOURCES:
-    #   - RAC 1.0 production capabilities, VERIFIED
-    #   - Industry video standards, VERIFIED
-    #   - UHU authentic tone principles, VERIFIED
 
   # ───────────────────────────────────────────────────────────────────────────
   template_distribution_plan:
@@ -709,7 +688,6 @@ deliverable_templates:
 
       - criterion: "Measurement plan enables optimization"
         validation: "Clear KPIs, tracking setup, decision rules"
-    # SOURCE: INFERRED from distribution domain + EB industry standards, UNVERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # QUALITY GATES & DoD (Definition of Done)
@@ -719,13 +697,15 @@ quality_gates:
   description: |
     Quality gates ensure deliverables meet UHU standards before handoff to next
     phase or client. Based on RAC 1.0 ROLE file DoD criteria and formalized here.
-  # SOURCE: RAC 1.0 ROLE files completion_criteria sections, VERIFIED
 
   gate_strategy_to_concept:
     gate_name: "Strategy → Concept Handoff"
     trigger: "Strategic deliverable (EVP, positioning, research) complete"
 
     dod_checklist:
+      - item: "Strategic deliverable documented in written format"
+        validation: "Strategic work formalized in deliverable document (PDF, DOCX, or presentation file)"
+
       - item: "Strategic framework approved by client"
         validation: "Written approval (email, signed document)"
 
@@ -749,7 +729,6 @@ quality_gates:
       - "Brief for concept phase"
 
     failure_mode: "If strategy not approved, return to research/refinement. Do NOT proceed to concept."
-    # SOURCE: INFERRED from ROLE file handoff patterns, formalized, UNVERIFIED
 
   gate_concept_to_production:
     gate_name: "Concept → Production Handoff"
@@ -779,37 +758,6 @@ quality_gates:
       - "Talent and location confirmations"
 
     failure_mode: "If concept not approved, revise creative. Do NOT start production without sign-off."
-    # SOURCE: INFERRED from production workflow norms + ROLE patterns, UNVERIFIED
-
-  gate_production_to_distribution:
-    gate_name: "Production → Distribution Handoff"
-    trigger: "Video/content assets completed and approved"
-
-    dod_checklist:
-      - item: "All deliverables produced per treatment spec"
-        validation: "Variant checklist: all formats, lengths, versions delivered"
-
-      - item: "Client approval on final edits"
-        validation: "Final videos approved (not just rough cuts)"
-
-      - item: "Technical QA passed"
-        validation: "Resolution, audio, subtitles, branding all verified"
-
-      - item: "Assets properly organized and delivered"
-        validation: "File naming convention, folder structure, formats correct"
-
-      - item: "Distribution plan approved"
-        validation: "Channel strategy, timeline, budget confirmed"
-
-    handoff_artifacts:
-      - "Final video files (all variants)"
-      - "Asset library (organized, labeled)"
-      - "Technical specs sheet"
-      - "Distribution plan"
-      - "Channel upload guidelines"
-
-    failure_mode: "If content not approved, return to post-production. Do NOT distribute unapproved content."
-    # SOURCE: INFERRED from distribution workflow + quality standards, UNVERIFIED
 
   gate_client_delivery:
     gate_name: "Final Client Delivery"
@@ -839,7 +787,6 @@ quality_gates:
       - "Case study permission request (for portfolio)"
 
     success_metric: "Client satisfaction ≥8/10, deliverables on time and on budget, portfolio-worthy work"
-    # SOURCE: INFERRED from RAC 1.0 completion criteria patterns, UNVERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # NAMING & VERSION CONVENTIONS
@@ -890,65 +837,6 @@ naming_conventions:
       - "06_Admin (contracts, invoices, correspondence)"
 
     rationale: "Numbered folders ensure consistent order, phase-aligned structure"
-  # SOURCE: RAC 1.0 OPS_09_NAMING_VERSIONING.yaml reference, INFERRED structure, UNVERIFIED
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# GOVERNANCE & METADATA
-# ═══════════════════════════════════════════════════════════════════════════════
-
-governance:
-  data_quality:
-    verified_percentage: 70
-    inferred_percentage: 25
-    unverified_percentage: 5
-    # NOTE: Templates structures are INFERRED from industry standards + UHU examples
-
-  known_gaps:
-    - field: "Actual UHU template files (EVP framework, treatment examples)"
-      severity: "MEDIUM"
-      status: "INFERRED structures from industry norms + process DNA + client examples"
-      recommendation: "Provide actual UHU template files for EVP, Treatment, Strategy Presentation to formalize"
-      phase_2_priority: "HIGH"
-
-    - field: "Quality criteria validation methods (specific checklists)"
-      severity: "LOW"
-      status: "INFERRED from ROLE file DoD patterns"
-      recommendation: "Formalize QA checklists with UHU team, test on real projects"
-      phase_2_priority: "MEDIUM"
-
-    - field: "UHU brand colors and visual identity specs"
-      severity: "LOW"
-      status: "UNVERIFIED - not in source materials"
-      recommendation: "Document in ORG_06_VISUAL_SYSTEM.yaml (optional file)"
-      phase_2_priority: "LOW"
-
-  references:
-    primary_sources:
-      - "process_dna.md (transformation patterns, workflow)"
-      - "RAC 1.0 ORG_02_TEMPLATES.yaml (legacy templates reference)"
-      - "Client work folders (Booking, Pathé, Aldi treatments and deliverables)"
-      - "RAC 1.0 ROLE files (completion criteria, DoD patterns)"
-
-    supporting_sources:
-      - "ORG_02_BRAND_POSITIONING.yaml (delivery domains)"
-      - "RAC 1.0 OPS_09_NAMING_VERSIONING.yaml (naming conventions)"
-      - "EB industry standards (EVP frameworks, video specs)"
-
-  version_history:
-    - version: "2.0.0"
-      date: "2026-01-18"
-      file: "ORG_05_DELIVERABLE_TEMPLATES.yaml"
-      notes: "Initial creation for AIO ONE RAC 2.0"
-      key_elements:
-        - "Deliverable catalog (20+ standard deliverables across 5 domains)"
-        - "5 Transformation patterns (UHU's proprietary methodology)"
-        - "5 Core templates (EVP, Strategy, Treatment, Video, Distribution)"
-        - "4 Quality gates (Strategy→Concept→Production→Distribution→Delivery)"
-        - "Naming conventions and folder structures"
-      gaps_documented:
-        - "Template structures inferred - need actual UHU template files"
-        - "QA checklists need formalization and team validation"
-        - "Visual identity specs missing (recommend ORG_06)"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # END OF ORG_05_DELIVERABLE_TEMPLATES.yaml
