@@ -1,58 +1,555 @@
-# ORG_02_BRAND_POSITIONING.yaml (Phase I — required)
-# ═══════════════════════════════════════════════════════════════════════════
-# ORG offering, differentiation, and proof points (baseline positioning)
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORG_02_BRAND_POSITIONING.yaml
+# UHU Productions B.V. - Brand Positioning & Service Offerings
+# ═══════════════════════════════════════════════════════════════════════════════
+# Version: 2.0.0
+# Last Updated: 2026-01-18
+# Purpose: Service offerings, differentiators, proof points, pricing approach
+# Layer: ORG (Organization configuration for AIO ONE platform operator)
+# ═══════════════════════════════════════════════════════════════════════════════
 
 meta:
-  owner: "AI Opener"
+  owner: "UHU Productions B.V."
   version: "2.0.0"
-  last_updated: "2026-01-06"
-  purpose: "ORG offering, differentiation, and proof points (baseline positioning)"
-  notes: "Phase I required. Uses discovery prompts for client-specific positioning data."
-  tags: [org, ssot, positioning]
+  last_updated: "2026-01-18"
+  purpose: "Brand positioning, service architecture, differentiators, pricing, and proof points"
+  depends_on: ["ORG_01_FOUNDATION.yaml"]
+  tags: [org, positioning, services, differentiators, pricing, manifest, employer-branding]
 
-# ═══════════════════════════════════════════════════════════════════════════
-# OFFERS CATALOG — Core marketing input
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# CORE BRAND POSITIONING
+# ═══════════════════════════════════════════════════════════════════════════════
 
-offers_catalog:
-  # Essential for content creation - agent will ask if empty and content requires it
-  offers: []
-  # Structure:
-  # - name: "Product/Service Name"
-  #   description: "What it does"
-  #   key_benefit: "Primary value for customer"
+brand_essence:
+  taglines:
+    legacy: "Creativity in Motion"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 77, VERIFIED
 
-# ═══════════════════════════════════════════════════════════════════════════
-# DIFFERENTIATORS — Core marketing input
-# ═══════════════════════════════════════════════════════════════════════════
+    manifest: "Echte gesprekken, niet standaardverhalen"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, UHU Manifest, VERIFIED
+
+    current_primary: "Arbeidsmarktcommunicatie en transformatie"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, positioning header, VERIFIED
+
+  positioning_statement: |
+    UHU is een bureau voor arbeidsmarktcommunicatie en transformatie dat zich richt op
+    Top 500 corporate bedrijven en groot MKB.
+
+    Wij geloven niet in standaardverhalen. Wij geloven in echte gesprekken.
+
+    Door af te pellen wat voor iedere organisatie essentieel is en te bouwen op menselijke
+    authenticiteit, transformeren wij hoe organisaties en talent met elkaar verbinden.
+    AI is daarbij geen trucje, maar een hulpmiddel om scherper te kijken, dieper te
+    begrijpen en bewuster te kiezen.
+
+    Van daaruit creëren wij geen campagnes, maar ecosystemen waarin de juiste mensen
+    zich herkennen en elkaar vinden.
+  # SOURCES:
+  #   - UHU ORG INPUT JAN 2026.docx, positioning and manifest sections, VERIFIED
+  #   - UHU Competitive Analysis Jan2026.docx, positioning statements, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UHU MANIFEST (Core Philosophy)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+manifest:
+  title: "Het UHU-manifest"
+  # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest section header, VERIFIED
+
+  core_beliefs:
+    - belief: "Wij geloven niet in standaardverhalen. Wij geloven in echte gesprekken."
+      implication: "Authenticity and human connection over templated marketing"
+
+    - belief: "Wij geloven niet dat technologie de mens vervangt. Wij geloven dat technologie de mens zichtbaarder maakt."
+      implication: "AI as human-amplification, not replacement"
+
+    - belief: "Wij werken in dezelfde markt als iedereen. Met dezelfde tools, dezelfde kanalen en dezelfde doelgroepen. En toch geloven wij dat verschil mogelijk is."
+      implication: "Differentiation through human perspective, not just capabilities"
+
+    - belief: "Niet door harder te schreeuwen. Niet door mooier te doen dan je bent. Maar door beter te luisteren."
+      implication: "Deep understanding over superficial polish"
+
+    - belief: "Arbeidsmarktcommunicatie gaat voor ons niet over vacatures. Het gaat over mensen die zich ergens in herkennen."
+      implication: "Recognition and belonging over transactional recruitment"
+
+    - belief: "Wij beginnen niet bij middelen. Wij beginnen bij de mens. Bij twijfel, ambitie, frictie en verlangen."
+      implication: "Human needs drive creative, not vice versa"
+
+    - belief: "AI is voor ons geen trucje. Het is een hulpmiddel om scherper te kijken, dieper te begrijpen en bewuster te kiezen."
+      implication: "AI for insight and precision, not automation"
+
+    - belief: "Wij pellen af. Totdat de kern zichtbaar wordt. En bouwen van daaruit opnieuw op."
+      implication: "Essence-finding methodology at core of approach"
+
+    - belief: "Want uiteindelijk is arbeidsmarktcommunicatie geen systeem. Het is een relatie."
+      implication: "Ongoing connection over one-time campaigns"
+  # SOURCE: UHU ORG INPUT JAN 2026.docx, "Het UHU-manifest" section, VERIFIED
+
+  brand_character:
+    - "UHU is hands-on"
+    - "UHU is dichtbij"
+    - "UHU is mensgericht, nieuwsgierig en in beweging"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest closing, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SERVICE ARCHITECTURE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+service_model:
+  approach: "Gesprekken → Inzichten → Concrete resultaten"
+  # SOURCE: UHU ORG INPUT JAN 2026.docx, service description, VERIFIED
+
+  strategic_conversation_themes:
+    description: |
+      UHU gaat met opdrachtgevers het gesprek aan over de volgende thema's.
+      Deze gesprekken, waaruit inzichten komen, leiden tot concrete en gezamenlijk
+      gedragen inspanning en resultaten.
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, conversation themes intro, VERIFIED
+
+    themes:
+      - id: "theme_01"
+        name: "The Future of Work"
+        focus: "Toekomst van werk, veranderende arbeidsrelaties, hybride werken, organisatie-inrichting"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+      - id: "theme_02"
+        name: "Werkgever-positionering"
+        focus: "Relevante doelgroepen, employer value proposition, merkdifferentiatie"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+      - id: "theme_03"
+        name: "Zichtbaarheid in een AI-gedreven wereld"
+        focus: "Vindbaarheid, reputatie management, AI-impact op talent sourcing"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+      - id: "theme_04"
+        name: "Van (creatieve) campagnes naar een arbeidsmarktcommunicatie-ecosysteem"
+        focus: "Journey-denken, altijd-aan benadering, geïntegreerde touchpoints"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+      - id: "theme_05"
+        name: "Content & productie (mens + AI)"
+        focus: "AI-augmented creative, efficiency zonder kwaliteitsverlies, schaalbare personalisatie"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+      - id: "theme_06"
+        name: "Werkenbij-ervaring & candidate journey"
+        focus: "Pre-boarding, onboarding, employee experience, talent lifecycle"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+      - id: "theme_07"
+        name: "Organisatie & verandercapaciteit"
+        focus: "Change management, cultural transformation, leadership alignment"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, theme list, VERIFIED
+
+  delivery_domains:
+    description: "Deze gesprekken leiden tot concrete resultaten in de volgende domeinen"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, delivery domains intro, VERIFIED
+
+    domains:
+      - domain: "Strategie"
+        description: "EVP ontwikkeling, employer brand positionering, doelgroepanalyse, competitive positioning"
+        deliverables: ["EVP frameworks", "Brand positioning documents", "Strategic presentations", "Research & insights"]
+        # SOURCES:
+        #   - UHU ORG INPUT JAN 2026.docx, VERIFIED
+        #   - RAC 1.0 ORG_00_PROFILE.yaml creatieve_capaciteiten, VERIFIED
+
+      - domain: "Concept"
+        description: "Creatieve conceptontwikkeling, narrative building, campagnethema's, content pijlers"
+        deliverables: ["Creatieve concepten", "Campagnethema's", "Narratives", "Storyboards"]
+        # SOURCES:
+        #   - UHU ORG INPUT JAN 2026.docx, VERIFIED
+        #   - Client work examples (Booking, Aldi, Pathé treatments), VERIFIED
+
+      - domain: "Middelen maken"
+        description: "Volledige videoproductie, content creatie, geïntegreerde productie (one shoot, all formats)"
+        deliverables: ["Video content (alle formaten)", "Foto's", "Employer brand films", "Testimonials", "Social content"]
+        capabilities:
+          - "In-house productie: script tot post-productie"
+          - "Geïntegreerde aanpak: één productie → alle kanalen (vierkant, landscape, GIFs, cutdowns)"
+          - "Flexibele regisseurs pool voor unieke signatures"
+        # SOURCES:
+        #   - UHU ORG INPUT JAN 2026.docx, VERIFIED
+        #   - RAC 1.0 ORG_00_PROFILE.yaml, lines 54-62, VERIFIED
+
+      - domain: "Distributie"
+        description: "Kanaalplanning, content distributie, recruitment marketing, media strategy"
+        deliverables: ["Distributieplannen", "Kanaalstrategieën", "Media planning", "Performance tracking"]
+        partnerships: ["VONQ (programmatic job marketing)", "MrWork (recruitment automation)"]
+        # SOURCES:
+        #   - UHU ORG INPUT JAN 2026.docx, VERIFIED
+        #   - UHU Competitive Analysis Jan2026.docx section 1.4 (tech platforms), VERIFIED
+
+      - domain: "AI toepassingen"
+        description: "AI Content Lab toepassingen, human + AI collaboration, workflow optimization"
+        deliverables: ["AI-augmented content", "Personalized at scale", "Workflow optimization", "Data-driven insights"]
+        differentiator: "AI als human-amplification tool, niet als vervanging"
+        # SOURCES:
+        #   - UHU ORG INPUT JAN 2026.docx, VERIFIED
+        #   - RAC 1.0 ORG_00_PROFILE.yaml AI Content Lab section, VERIFIED
+
+  legacy_capabilities:
+    note: "Additional capabilities from RAC 1.0 still relevant but integrated into new framework"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, creatieve_capaciteiten section, VERIFIED
+
+    - capability: "Interactieve video"
+      description: "Interactieve elementen voor betrokkenheid en data, real-time optimalisatie"
+      domain_mapping: "Middelen maken + AI toepassingen"
+
+    - capability: "Audio en online media"
+      description: "Podcasts, webinars, livestreams als onderdeel van storytelling"
+      domain_mapping: "Middelen maken"
+
+    - capability: "Employee journey content"
+      description: "Pre-boarding, onboarding, offboarding video's voor employee lifecycle"
+      domain_mapping: "Werkenbij-ervaring & candidate journey theme"
+
+    - capability: "Activaties en evenementen"
+      description: "Indien nodig: activaties, evenementen, radio/print-uitingen"
+      domain_mapping: "Distributie"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DIFFERENTIATORS
+# ═══════════════════════════════════════════════════════════════════════════════
 
 differentiators:
-  # Why customers choose this org over alternatives
-  # Agent uses generic B2B framing if empty
-  items: []
-  # Structure:
-  # - claim: "What we do differently"
-  #   proof: "How we can back this up"
+  strategic_differentiators:
+    - id: "diff_01"
+      name: "Transformatie-focus vs. Campagne-focus"
+      description: "Bureau voor arbeidsmarktcommunicatie én transformatie - niet alleen communicatie maar organisatieverandering"
+      competitive_context: "Meeste EB bureaus zijn campagne-gedreven; UHU positioneert op ecosysteem en transformatie"
+      proof_points: ["7 strategic conversation themes framework", "Organisatie & verandercapaciteit expertise"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, positioning shift, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx section 3.3 white space, VERIFIED
 
-# ═══════════════════════════════════════════════════════════════════════════
-# PROOF POINTS — Optional credibility boosters
-# ═══════════════════════════════════════════════════════════════════════════
+    - id: "diff_02"
+      name: "'Gesprekken' benadering vs. standaardverhalen"
+      description: "Echte gesprekken die tot inzichten leiden, versus standaard EB templates"
+      competitive_context: "UNIEK - geen concurrent gebruikt deze framing"
+      proof_points: ["UHU Manifest", "Conversation-driven service model"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, manifest, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx section 3.3, VERIFIED
+
+    - id: "diff_03"
+      name: "Human-amplification AI vs. efficiency-focused AI"
+      description: "'AI maakt de mens zichtbaarder' filosofie - niet automation maar amplification"
+      competitive_context: "Meeste agencies positioneren AI op efficiency; UHU op human-centricity"
+      proof_points: ["AI Content Lab", "Mens + AI collaboration model"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, AI philosophy, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx section 3.4, VERIFIED
+
+    - id: "diff_04"
+      name: "'Afpellen' methodologie"
+      description: "Systematisch afpellen tot de kern zichtbaar is, dan opnieuw opbouwen"
+      competitive_context: "Proprietary approach - geen directe concurrenten met vergelijkbare taal"
+      proof_points: ["UHU Manifest", "Client work process DNA"]
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest "Wij pellen af", VERIFIED
+
+  operational_differentiators:
+    - id: "diff_05"
+      name: "End-to-end in-house (strategie + creatie + productie)"
+      description: "Alle disciplines onder één dak - van strategie tot post-productie"
+      competitive_context: "Meeste bureaus outsourcen productie; UHU heeft alles in-house"
+      proof_points: ["In-house videoproductie capability", "One-stop-shop model"]
+      # SOURCES:
+      #   - RAC 1.0 ORG_00_PROFILE.yaml, line 89, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx section 3.3, VERIFIED
+
+    - id: "diff_06"
+      name: "Geïntegreerde contentproductie (one shoot, all channels)"
+      description: "Unieke aanpak: één productie traject → content voor alle kanalen en formaten"
+      competitive_context: "Efficiency en consistentie voordeel - weinig bureaus bieden dit"
+      proof_points: ["Variant management methodology", "Cost efficiency through integrated production"]
+      # SOURCES:
+      #   - RAC 1.0 ORG_00_PROFILE.yaml, line 90, VERIFIED
+      #   - process_dna.md, variant explosion note, VERIFIED
+
+    - id: "diff_07"
+      name: "Flexibel regisseurs netwerk"
+      description: "Pool van ervaren regisseurs met unieke stijlen - per project de juiste creative match"
+      competitive_context: "Allows diverse creative signatures vs. single house style"
+      proof_points: ["Director network", "Diverse client work portfolios"]
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, lines 92-93, VERIFIED
+
+  market_positioning_differentiators:
+    - id: "diff_08"
+      name: "Specialistische EB-focus (vs. generalist agencies)"
+      description: "Diepgaande employer branding expertise als core vs. EB als one-of-many services"
+      competitive_context: "Think Yellow (EB binnen full-service) vs. UHU (EB-specialized)"
+      proof_points: ["EB client base", "7 EB-specific conversation themes"]
+      # SOURCES:
+      #   - RAC 1.0 ORG_00_PROFILE.yaml, line 88, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx, Think Yellow comparison, VERIFIED
+
+    - id: "diff_09"
+      name: "Ecosysteem-denken vs. campagne-denken"
+      description: "Van campagnes naar arbeidsmarktcommunicatie-ecosysteem met always-on touchpoints"
+      competitive_context: "Goals heeft journey-focus; UHU gaat verder met ecosystem framing"
+      proof_points: ["Theme 04: van campagnes naar ecosysteem", "Candidate journey expertise"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, theme 04, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx, Goals comparison, VERIFIED
+
+    - id: "diff_10"
+      name: "Persoonlijke, betrokken aanpak ('smooth ride')"
+      description: "Samenwerking en lange termijn relaties - fijne partners vs. transactioneel"
+      competitive_context: "Cultural differentiator - boutique feel with full-service capability"
+      proof_points: ["Client testimonials", "Long-term client relationships (Booking, Rabobank, IKEA)"]
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 93, VERIFIED
+
+  competitive_advantage_summary:
+    positioning_quadrant: "AI/Tech-Augmented + Transformation/Ecosystem (white space)"
+    # SOURCE: UHU Competitive Analysis Jan2026.docx, positioning map, VERIFIED
+
+    closest_competitors_and_advantages:
+      - competitor: "SteamTalmark"
+        uhu_advantages: ["Transformation focus", "Stronger AI positioning", "'Gesprekken' framing"]
+
+      - competitor: "Goals"
+        uhu_advantages: ["AI Content Lab", "Integrated production", "Transformation consulting depth"]
+
+      - competitor: "Think Yellow"
+        uhu_advantages: ["Specialist focus", "Transformation depth", "AI-human philosophy"]
+
+      - competitor: "ACE"
+        uhu_advantages: ["EB specialization", "Human-amplification AI vs. efficiency-focus"]
+    # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1 competitor profiles, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PRICING & BUSINESS MODEL
+# ═══════════════════════════════════════════════════════════════════════════════
+
+pricing_approach:
+  evolution:
+    legacy_model: "Project-based pricing"
+    # SOURCE: UHU MAILS 2.0.docx, VERIFIED
+
+    current_model: "Transitioning to annual retainer + exclusivity options"
+    # SOURCE: UHU MAILS 2.0.docx, VERIFIED
+
+    transition_timeline: "2026 (80-90% expected to be retainer-based)"
+    # SOURCE: UHU MAILS 2.0.docx, implementation section, VERIFIED
+
+  service_tiers:
+    tier_1_uhu_es:
+      name: "UHU ES (Bureau Human Agent - BHA)"
+      description: "Klanten worden ingeladen in de UHU ES-omgeving, waarna UHU de projecten via het systeem oppakt"
+      target: "Standard agency partnerships, ongoing arbeidsmarktcommunicatie needs"
+      pricing_model: "Monthly/annual fee voor strategie en concepturen"
+      pricing_specifics: "Monthly fee indicatie + pricing voor exclusiviteit (specifics UNVERIFIED - requires client input)"
+      transparency: "UHU is transparant over deze interne tool"
+      expected_volume: "80-90% van de flow"
+      # SOURCE: UHU MAILS 2.0.docx, section 1, VERIFIED
+
+    tier_2_tailor_made:
+      name: "Tailor Made (Eigen Omgeving)"
+      description: "Consultancy-dienst waarbij UHU eigen omgevingen voor de opdrachtgever bouwt"
+      target: "(Grotere) klanten die een bepaalde potentie hebben"
+      pricing_model: "Calculation-based (op basis van calculatie)"
+      approach: "Start met UHU ES interne omgeving, dan later eigen omgeving"
+      # SOURCE: UHU MAILS 2.0.docx, section 2, VERIFIED
+
+  partnership_model:
+    structure: "Standaard partnerovereenkomst met vaste commissie structuur"
+    # SOURCE: UHU MAILS 2.0.docx, aanvullende zaken, VERIFIED
+
+    integrations_planned:
+      - integration: "LLM vindbaarheid/reputatie management tool"
+        partner: "Bryan (from context)"
+        # SOURCE: UHU MAILS 2.0.docx, integraties section, VERIFIED
+
+      - integration: "Intelligence Group doelgroepdata koppeling"
+        purpose: "Data-driven talent insights"
+        # SOURCE: UHU MAILS 2.0.docx, integraties section, VERIFIED
+
+  value_justification:
+    retainer_benefits:
+      - "Ongoing partnership vs. projectmatig"
+      - "Proactieve arbeidsmarktcommunicatie vs. reactief"
+      - "Ecosystem-benadering met always-on touchpoints"
+      - "Strategische transformatie-gesprekken (7 themes)"
+      - "AI-augmented workflow efficiency"
+    # SOURCE: INFERRED from service model and market trends, UNVERIFIED
+    # GAP: Requires formalization of value prop for retainer model
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROOF POINTS & CREDENTIALS
+# ═══════════════════════════════════════════════════════════════════════════════
 
 proof_points:
-  # Testimonials, case studies, metrics, awards
-  # Agent omits social proof if empty rather than making claims
-  items: []
-  # Structure:
-  # - type: "metric | testimonial | case_study | award"
-  #   claim: "The proof point"
-  #   source: "Origin"
-  #   source_date: "YYYY-MM-DD"
+  client_portfolio:
+    tier_1_corporate:
+      description: "Top 500 corporate bedrijven met complexe EB uitdagingen"
+      examples:
+        - client: "Booking.com"
+          sector: "Tech/Travel"
+          work_type: "Competitor audit, Personas & journeys, Treatment"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# PRICING — Default: refer to sales
-# ═══════════════════════════════════════════════════════════════════════════
+        - client: "Rabobank"
+          sector: "Financial Services"
+          work_type: "Employer branding campaigns"
 
-pricing:
-  approach: "refer_to_sales"  # refer_to_sales | show_ranges | do_not_discuss
-  # If show_ranges, populate in CLIENT layer
+        - client: "IKEA"
+          sector: "Retail"
+          work_type: "Employer branding"
+
+        - client: "Bosch"
+          sector: "Manufacturing/Technology"
+          work_type: "Employer branding"
+
+        - client: "DHL"
+          sector: "Logistics"
+          work_type: "Employer branding"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml + client work folders, VERIFIED
+
+    tier_2_government:
+      description: "Overheid en publieke sector met grote werkgeversmerkuitdagingen"
+      examples:
+        - client: "Politie (Nederlandse politie)"
+          sector: "Law Enforcement"
+          work_type: "Employer branding campaigns"
+
+        - client: "Gemeente Den Haag"
+          sector: "Local Government"
+          work_type: "Employer branding"
+
+        - client: "ProRail"
+          sector: "Infrastructure"
+          work_type: "Employer branding"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, VERIFIED
+
+    tier_3_specialized:
+      description: "Healthcare, science, en gespecialiseerde sectoren"
+      examples:
+        - client: "Sanquin"
+          sector: "Healthcare/Blood Services"
+          work_type: "Employer branding"
+
+        - client: "TNO"
+          sector: "Research/Innovation"
+          work_type: "Employer branding"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, VERIFIED
+
+  documented_case_studies:
+    note: "Extensive client work folders provide methodology evidence"
+    # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/, VERIFIED
+
+    available_examples:
+      - client: "Pathé"
+        deliverables: ["Branding strategy", "EVP presentation"]
+        demonstrates: ["EVP development", "Strategic positioning"]
+
+      - client: "Aldi"
+        deliverables: ["Brand guide", "Strategy presentation"]
+        demonstrates: ["Retail sector expertise", "Brand framework development"]
+
+      - client: "Gemeente Zoetermeer"
+        deliverables: ["EVP en Story"]
+        demonstrates: ["Government sector", "Narrative development"]
+
+      - client: "RET (Rotterdam public transport)"
+        deliverables: ["Multiple materials"]
+        demonstrates: ["Public sector", "Integrated campaigns"]
+
+      - client: "Vermaat"
+        deliverables: ["Input and presentations"]
+        demonstrates: ["Hospitality sector"]
+
+      - client: "Youwe"
+        deliverables: ["Input and presentations"]
+        demonstrates: ["Tech/Digital sector"]
+
+  innovation_credentials:
+    - credential: "AI Content Lab"
+      description: "Intern lab voor AI + human collaboration in content productie"
+      evidence: "Hyper-gepersonaliseerde video's, real-time feedback loops, VR/AR integratie"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, innovaties section, VERIFIED
+
+    - credential: "Geïntegreerde productie methodologie"
+      description: "Proprietary one-shoot, all-channels production approach"
+      evidence: "Kostenvoordeel en consistentie across touchpoints"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml + process_dna.md, VERIFIED
+
+    - credential: "7 Strategic Conversation Themes framework"
+      description: "Gestructureerde aanpak tot transformation consulting"
+      evidence: "UHU ORG INPUT JAN 2026 framework"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, VERIFIED
+
+  thought_leadership:
+    note: "UHU positioneert zich als thought leader op arbeidsmarktcommunicatie en AI"
+
+    planned_initiatives:
+      - initiative: "Event op AIO locatie"
+        description: "Corporate klanten meenemen in mogelijkheden van AIO x UHU op gebied van arbeidsmarktcommunicatie"
+        goal: "Thought leader positionering"
+        # SOURCE: UHU MAILS 2.0.docx, marketing/events section, VERIFIED
+
+    existing_assets:
+      - asset: "Research PDFs (9. Research folder)"
+        topics: ["Employee brand audit frameworks", "Agency efficiency metrics", "KPI benchmarks Western Europe"]
+        # SOURCE: 9. Research folder inventory, VERIFIED
+
+      - asset: "Thought leadership panel (RAC 1.0)"
+        description: "Panel van experts voor content en credibility"
+        # SOURCE: RAC 1.0 ORG_06_THOUGHT_LEADERS.yaml, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GOVERNANCE & METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+governance:
+  data_quality:
+    verified_percentage: 80
+    inferred_percentage: 15
+    unverified_percentage: 5
+    # NOTE: Pricing specifics are INFERRED/UNVERIFIED
+
+  known_gaps:
+    - field: "Pricing specifics (monthly fee ranges, exclusivity pricing)"
+      severity: "MEDIUM"
+      status: "INFERRED - transition to retainer model confirmed, specifics unclear"
+      recommendation: "Document pricing tiers and fee structures"
+      phase_2_priority: "HIGH"
+
+    - field: "Retainer value proposition (formalized)"
+      severity: "LOW"
+      status: "INFERRED - benefits implied but not formally documented"
+      recommendation: "Create formal retainer value prop document"
+      phase_2_priority: "MEDIUM"
+
+    - field: "Case study permissions and ROI metrics"
+      severity: "LOW"
+      status: "UNVERIFIED - client work exists but publication permissions unknown"
+      recommendation: "Secure case study permissions, document ROI where available"
+      phase_2_priority: "MEDIUM"
+
+  references:
+    primary_sources:
+      - "UHU ORG INPUT JAN 2026.docx (positioning, manifest, conversation themes)"
+      - "UHU MAILS 2.0.docx (business model, pricing approach)"
+      - "RAC 1.0 ORG_00_PROFILE.yaml (legacy capabilities, differentiators)"
+      - "UHU Competitive Analysis Jan2026.docx (competitive differentiation)"
+
+    supporting_sources:
+      - "process_dna.md (operational differentiators)"
+      - "Client work folders (proof points)"
+      - "RAC 1.0 ORG_06_THOUGHT_LEADERS.yaml (thought leadership)"
+
+  version_history:
+    - version: "2.0.0"
+      date: "2026-01-18"
+      file: "ORG_02_BRAND_POSITIONING.yaml"
+      notes: "Initial creation for AIO ONE RAC 2.0"
+      key_elements:
+        - "UHU Manifest (complete 9-point philosophy)"
+        - "7 Strategic Conversation Themes + 5 Delivery Domains"
+        - "10 Differentiators (strategic, operational, market positioning)"
+        - "Dual service tier model (UHU ES + Tailor Made)"
+        - "Proof points from major client portfolio"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# END OF ORG_02_BRAND_POSITIONING.yaml
+# ═══════════════════════════════════════════════════════════════════════════════

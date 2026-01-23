@@ -1,239 +1,639 @@
-# ORG_03_AUDIENCE_MESSAGING.yaml (Phase I — required)
-# ═══════════════════════════════════════════════════════════════════════════
-# ORG audience definitions and messaging canon (baseline)
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORG_03_AUDIENCE_MESSAGING.yaml
+# UHU Productions B.V. - Audience, Messaging & Voice
+# ═══════════════════════════════════════════════════════════════════════════════
+# Version: 2.0.0
+# Last Updated: 2026-01-18
+# Purpose: Target audiences, messaging canon, tone of voice, competitive messaging
+# Layer: ORG (Organization configuration for AIO ONE platform operator)
+# ═══════════════════════════════════════════════════════════════════════════════
 
 meta:
-  owner: "AI Opener"
+  owner: "UHU Productions B.V."
   version: "2.0.0"
-  last_updated: "2026-01-06"
-  purpose: "ORG audience definitions and messaging canon (baseline)"
-  notes: "Phase I required. Combines discovery prompts (client-specific) with industry defaults (research-based)."
-  tags: [org, ssot, messaging, audience]
+  last_updated: "2026-01-18"
+  purpose: "Audience definition, messaging frameworks, tone of voice, and competitive positioning messaging"
+  depends_on: ["ORG_01_FOUNDATION.yaml", "ORG_02_BRAND_POSITIONING.yaml"]
+  tags: [org, audience, messaging, tone-of-voice, positioning, communication]
 
-# ═══════════════════════════════════════════════════════════════════════════
-# AUDIENCES — ICPs and Personas
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# TARGET AUDIENCES
+# ═══════════════════════════════════════════════════════════════════════════════
 
-audiences:
-  # Agent uses generic B2B professional targeting if empty
-  icps: []
-  # Structure:
-  # - name: "Scale-up Marketing Team"
-  #   company_size: "50-250 employees"
-  #   industries: ["SaaS", "Tech"]
-  #   pain_points: ["Capacity", "Costs", "Consistency"]
-  
-  personas: []
-  # Structure:
-  # - name: "Marketing Manager"
-  #   goals: ["Deliver more", "Prove ROI"]
-  #   frustrations: ["Budget", "Tools"]
+target_audiences:
+  primary_segments:
+    - segment_id: "seg_01"
+      name: "Top 500 Corporate Nederland"
+      description: "Large enterprise organizations with established brands and complex organizational structures"
+      size: "Top 500 companies in Netherlands"
+      characteristics:
+        - "Multiple layers of decision-making"
+        - "Established employer brands needing evolution"
+        - "Budget for transformation initiatives"
+        - "Complex talent challenges across multiple roles/locations"
+      employer_branding_maturity: "Medium to High - have existing EB but need transformation"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, target market definition, VERIFIED
 
-# ═══════════════════════════════════════════════════════════════════════════
-# MESSAGING (Client-specific — discovery prompts)
-# ═══════════════════════════════════════════════════════════════════════════
-# MESSAGING — Key messages and CTAs
-# ═══════════════════════════════════════════════════════════════════════════
+    - segment_id: "seg_02"
+      name: "Groot MKB"
+      description: "Medium-large enterprises, growth-oriented, increasingly sophisticated EB needs"
+      characteristics:
+        - "Professionalizing HR/EB function"
+        - "Competing for talent with larger organizations"
+        - "Budget conscious but willing to invest in quality"
+        - "Often first or second major EB initiative"
+      employer_branding_maturity: "Low to Medium - building EB capability"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, target market definition, VERIFIED
 
-messaging:
-  # Client-specific key messages - agent uses value-focused framing if empty
-  key_messages: []
-  # Structure:
-  # - message: "Primary value proposition"
-  #   supporting_points: ["Point 1", "Point 2"]
-  
-  ctas:
-    # Source: B2B Marketing Messaging Best Practices research (2025)
-    
-    high_converting_phrases:
-      description: "Action-oriented, benefit-focused CTAs that convert"
-      awareness:
-        - "Learn More"
-        - "Read the Full Guide"
-        - "Discover [Topic]"
-        - "Watch Webinar"
-        - "Explore Solutions"
-        - "Download the Report"
-      consideration:
-        - "View Pricing"
-        - "See a Live Demo"
-        - "Get a Free Quote"
-        - "Compare Plans"
-        - "How It Works"
-        - "Take a Product Tour"
-        - "Download Case Study"
-      decision:
-        - "Start Your Free Trial"
-        - "Request a Demo"
-        - "Contact Sales"
-        - "Get Started Now"
-        - "Schedule a 15-Minute Call"
-        - "Sign Up Today"
-    
-    phrases_to_avoid:
-      description: "Generic or demotivating CTAs that underperform"
-      items:
-        - "Submit"  # bland, no context or incentive
-        - "Send"  # no motivation
-        - "Click Here"  # too generic, bad for accessibility
-        - "'Learn More' as primary CTA"  # too weak for decision stage
-        - "'Buy Now' for high-ticket B2B"  # too aggressive for research stage
-      note: "Button text should be part of the call-to-action itself"
-    
-    best_practices:
-      - "Use strong verbs: Get, Start, Explore, Claim, Download"
-      - "Add value hint: 'See It in Action', 'Claim Your Free Ebook'"
-      - "Add urgency when appropriate: 'Book your spot – Limited seats'"
-      - "Match CTA to buyer's stage readiness"
-      - "One primary CTA per page/email performs best"
-      - "Make next step clear: user should know what happens after click"
+  buyer_personas:
+    note: |
+      IMPORTANT: These buyer personas are INFERRED from client base and industry norms.
+      Detailed buyer persona research not documented in source materials.
+      Phase 2 priority: Stakeholder interview with Nigaio Wijnen for validation.
+    # SOURCE: Phase 1 Discovery Report, gap documentation, VERIFIED
 
-# ═══════════════════════════════════════════════════════════════════════════
-# CONSTRAINTS — NEVER-SAY LIST (Industry defaults + client additions)
-# ═══════════════════════════════════════════════════════════════════════════
+    persona_01_chro:
+      title: "Chief Human Resources Officer (CHRO)"
+      alternative_titles: ["Chief People Officer", "VP Human Resources", "HR Director"]
+      seniority: "C-suite / Executive"
+      organization_type: "Top 500 corporate"
 
-constraints:
-  description: "Never-say list, claims boundaries, tone constraints."
-  
-  never_say:
-    description: "Words and phrases to avoid in all content."
-    
-    # Source: B2B Marketing Messaging Best Practices research (2025)
-    
-    buzzwords_to_avoid:
-      description: "88% of B2B decision-makers say buzzwords make companies less trustworthy"
-      items:
-        - "revolutionair"
-        - "disruptief"
-        - "game-changing"
-        - "cutting-edge"
-        - "world-class"
-        - "best-in-class"
-        - "bleeding-edge"
-        - "industry-leading"
-        - "innovative"  # everyone claims this, buyers don't trust it
-        - "synergy"
-        - "leverage"
-        - "paradigm shift"
-        - "move the needle"
-        - "circle back"
-        - "low-hanging fruit"
-        - "boiling the ocean"
-        - "awesome"
-        - "amazing"
-    
-    vague_claims_to_avoid:
-      description: "Subjective/unverifiable claims that trigger skepticism"
-      items:
-        - "de beste"
-        - "marktleider"
-        - "leading provider"
-        - "uniek"
-        - "nummer 1"
-        - "toonaangevend"
-        - "we try to provide"  # weak, non-committal
-        - "I think our product is"  # undermines confidence
-        - "some of the best"  # invites doubt
-      note: "These require evidence to use; without proof, avoid or rephrase"
-    
-    legal_risk_phrases:
-      description: "EU/NL advertising regulations prohibit misleading claims"
-      source: "Dutch Advertising Code (Nederlandse Reclame Code)"
-      items:
-        - "gegarandeerd"
-        - "100% zeker"
-        - "100% effective"
-        - "altijd"
-        - "nooit"
-        - "bewezen"  # without source
-        - "de enige"  # the only - unless verifiable
-        - "gratis"  # if not truly free
-        - "free"  # if hidden costs exist
-        - "#1"  # without substantiation
-        - "fastest"  # without benchmark data
-        - "award-winning"  # if outdated or misleading
-      note: "Puffery (obvious exaggeration) is tolerated, but specific claims require proof"
-    
-    dutch_eu_specific_avoid:
-      description: "Language that doesn't translate well to NL/EU audiences"
-      items:
-        - "klantjes"
-        - "probleempje"
-        - "even snel"
-        - "makkelijk"  # often underestimates complexity
-        - "Fortune 500"  # US-centric reference
-        - "awesome"  # US hype doesn't land in EU
-        - "amazing"  # seen as embellishment
-        - "the best ever"  # comes across as arrogant
-      note: "Europeans appreciate modest, straightforward tone over US-style enthusiasm"
-    
-    # Client-specific additions (override in CLIENT layer)
-    client_additions: []
-  
-  must_include:
-    # Mandatory elements for compliance (e.g., disclaimers, legal texts)
-    # Most marketing content doesn't need this - skip if empty
-    items: []
+      demographics:
+        experience_level: "15-25 years in HR/People"
+        education: "University degree, often MBA or HR certification"
+        # SOURCE: INFERRED from corporate market norms, UNVERIFIED
 
-  tone_constraints:
-    description: "Boundaries for tone of voice."
-    
-    # Source: B2B Marketing Messaging Best Practices research (2025)
-    
-    tone_profiles:
-      description: "Common B2B tone options - choose based on brand and audience"
-      
-      professional_authoritative:
-        description: "Formal, no-nonsense, expertise-focused"
-        use_when: "Finance, legal, enterprise IT, consulting"
-        characteristics: ["clear", "confident", "fact-focused", "logical"]
-        example: "Research shows that... Our analysis indicates..."
-        
-      conversational_friendly:
-        description: "Relaxed, personable, yet professional"
-        use_when: "SaaS, creative industries, startups"
-        characteristics: ["warm", "approachable", "human", "uses contractions"]
-        example: "We get it - compliance is complicated. That's why we..."
-        brands_example: "Slack, Mailchimp"
-        
-      technical_informative:
-        description: "Precise, detailed, expert-oriented"
-        use_when: "IT, engineering, scientific products"
-        characteristics: ["accurate", "terminology-rich", "detailed"]
-        example: "The API supports RESTful endpoints with OAuth 2.0..."
-        brands_example: "Cisco documentation"
-        
-      empathetic_solution_oriented:
-        description: "Understanding, supportive, customer-centric"
-        use_when: "Healthcare B2B, HR services, change management"
-        characteristics: ["reassuring", "sincere", "uses 'you' language"]
-        example: "We know supporting employee wellbeing is challenging..."
-    
-    defaults:
-      formality_range: ["business_casual", "professional"]
-      emotion_range: ["confident", "helpful", "pragmatic"]
-      humor: "sparingly"
-      
-    channel_adjustments:
-      email: "Slightly warmer, personal greeting, conversational"
-      landing_page: "Clear, benefit-focused, supports spoken narrative"
-      linkedin: "Thought leadership, personal voice, storytelling OK"
-      documentation: "Technical, precise, scannable"
-    
-    # Client-specific overrides (set in CLIENT layer)
-    overrides: {}
+      pain_points:
+        - pain: "Talent scarcity in tight Dutch labor market"
+          urgency: "HIGH - ongoing recruitment challenges"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# COMPETITIVE LANGUAGE — Optional
-# ═══════════════════════════════════════════════════════════════════════════
+        - pain: "Employer brand differentiation vs. competitors"
+          urgency: "MEDIUM-HIGH - pressure from board/CEO"
 
-competitive_language:
-  # Agent avoids competitor name-dropping if not configured
-  # Uses safe generic comparisons ("Unlike traditional solutions...")
-  
-  allowed_comparisons: []
-  # e.g. "Unlike traditional agencies, we..."
-  
-  disallowed_comparisons: []
-  # e.g. specific competitor names without evidence
+        - pain: "Cultural transformation and change management"
+          urgency: "MEDIUM - long-term strategic priority"
+
+        - pain: "Measuring EB ROI and proving impact"
+          urgency: "MEDIUM - budget justification"
+      # SOURCE: INFERRED from service offerings and market context, UNVERIFIED
+
+      buying_triggers:
+        - "Persistent recruitment challenges (vacancies open >6 months)"
+        - "CEO/Board mandate for cultural transformation"
+        - "Merger/acquisition requiring culture integration"
+        - "Competitive threat (losing talent to specific competitor)"
+        - "Annual HR budget planning cycle"
+      # SOURCE: INFERRED from EB industry buying patterns, UNVERIFIED
+
+      decision_criteria:
+        - "Strategic depth - not just creative execution"
+        - "Transformation capability - organizational change experience"
+        - "Proven track record with similar organizations"
+        - "End-to-end capability (strategy through execution)"
+        - "Cultural fit - 'fijne partners' (pleasant partners)"
+      # SOURCE: INFERRED from UHU differentiators and manifest, UNVERIFIED
+
+      uhu_resonance:
+        why_uhu_fits: "Transformation focus + end-to-end capability + 'gesprekken' approach addresses strategic need beyond just campaigns"
+        messaging_focus: ["7 conversation themes", "Transformation track record", "Strategic partnership model"]
+      # SOURCE: INFERRED from positioning analysis, UNVERIFIED
+
+    persona_02_head_eb:
+      title: "Head of Employer Branding / Talent Acquisition"
+      alternative_titles: ["Employer Brand Manager", "Director Talent Acquisition", "Head of Recruitment Marketing"]
+      seniority: "Director / Senior Manager"
+      organization_type: "Top 500 corporate + Groot MKB"
+
+      demographics:
+        experience_level: "8-15 years in EB/TA/Marketing"
+        education: "University degree in Marketing, Communications, or HR"
+        # SOURCE: INFERRED from EB profession norms, UNVERIFIED
+
+      pain_points:
+        - pain: "Campaign fatigue - traditional EB campaigns not performing"
+          urgency: "HIGH - pressure to show results"
+
+        - pain: "Authenticity vs. polish - candidates see through overproduced content"
+          urgency: "HIGH - credibility at stake"
+
+        - pain: "Measuring EB impact beyond vanity metrics"
+          urgency: "MEDIUM - proving value to leadership"
+
+        - pain: "Keeping up with AI/tech trends while maintaining human touch"
+          urgency: "MEDIUM - professional relevance"
+      # SOURCE: INFERRED from UHU Manifest themes and market trends, UNVERIFIED
+
+      buying_triggers:
+        - "Budget allocated for EB refresh/relaunch"
+        - "Recruitment targets consistently unmet"
+        - "Rebranding initiative (corporate or employer brand)"
+        - "New leadership demanding EB strategy"
+        - "Competitive EB campaigns making them look outdated"
+      # SOURCE: INFERRED from EB industry buying patterns, UNVERIFIED
+
+      decision_criteria:
+        - "Creative excellence - portfolio that inspires"
+        - "EB expertise - not just general marketing agency"
+        - "Speed and efficiency - integrated production model"
+        - "Modern approach - AI/tech savvy without losing human touch"
+        - "Collaborative process - 'hands-on, dichtbij'"
+      # SOURCE: INFERRED from UHU brand character and differentiators, UNVERIFIED
+
+      uhu_resonance:
+        why_uhu_fits: "Specialist EB focus + authentic 'echte gesprekken' philosophy + AI Content Lab addresses authenticity and innovation needs"
+        messaging_focus: ["Portfolio of authentic work", "Afpellen methodology", "Human-amplification AI", "Integrated production efficiency"]
+      # SOURCE: INFERRED from positioning analysis, UNVERIFIED
+
+    persona_03_cmo:
+      title: "CMO / Marketing Director"
+      alternative_titles: ["Chief Marketing Officer", "Marketing Director", "Head of Brand"]
+      seniority: "C-suite / Director"
+      organization_type: "Top 500 corporate (especially dual EB/consumer brands)"
+
+      pain_points:
+        - pain: "Brand consistency across employer brand and consumer brand"
+          urgency: "MEDIUM-HIGH - brand integrity"
+
+        - pain: "Internal communications vs. external marketing alignment"
+          urgency: "MEDIUM - organizational silos"
+
+        - pain: "Proving marketing ROI including EB investments"
+          urgency: "MEDIUM - budget optimization"
+      # SOURCE: INFERRED from dual EB/marketing positioning, UNVERIFIED
+
+      buying_triggers:
+        - "Corporate brand refresh requiring EB alignment"
+        - "Integrated campaign need (consumer + employer brand)"
+        - "CEO priority on talent/culture as competitive advantage"
+      # SOURCE: INFERRED from corporate marketing dynamics, UNVERIFIED
+
+      decision_criteria:
+        - "Brand alignment - employer brand fits corporate brand architecture"
+        - "Full-service capability - don't want to manage multiple agencies"
+        - "Strategic thinking - partners who understand brand positioning"
+      # SOURCE: INFERRED from UHU end-to-end positioning, UNVERIFIED
+
+      uhu_resonance:
+        why_uhu_fits: "Legacy in both EB and marketing + brand consistency through integrated production"
+        messaging_focus: ["Brand architecture expertise", "Integrated campaigns", "Consistent narrative across touchpoints"]
+      # SOURCE: INFERRED from dual brand history, UNVERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TONE OF VOICE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+tone_of_voice:
+  core_characteristics:
+    primary: "Informeel, toegankelijk en mensgericht"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 78, VERIFIED
+
+    dimensions:
+      - dimension: "Informeel (vs. formeel)"
+        description: "Conversational zonder corporate jargon, je-vorm gebruikend"
+        examples:
+          do: ["Wij geloven in echte gesprekken", "Laten we afpellen wat voor jouw organisatie essentieel is"]
+          dont: ["Wij faciliteren dialogen", "Wij optimaliseren uw employer value proposition"]
+        # SOURCES:
+        #   - UHU ORG INPUT JAN 2026.docx, manifest language, VERIFIED
+        #   - RAC 1.0 ORG_00_PROFILE.yaml, tone description, VERIFIED
+
+      - dimension: "Toegankelijk (vs. expert-talk)"
+        description: "Helder en direct zonder onnodige complexiteit"
+        examples:
+          do: ["AI maakt de mens zichtbaarder", "Wij pellen af tot de kern zichtbaar wordt"]
+          dont: ["We deployen AI-augmented workflows voor human capital optimization"]
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest accessible language, VERIFIED
+
+      - dimension: "Mensgericht (vs. systeem/proces-gericht)"
+        description: "Focus op mensen, relaties en authenticiteit"
+        examples:
+          do: ["Bij twijfel, ambitie, frictie en verlangen", "Arbeidsmarktcommunicatie is geen systeem. Het is een relatie."]
+          dont: ["Wij optimaliseren uw recruitment funnel", "Onze methodologie maximaliseert conversie"]
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest human-centric language, VERIFIED
+
+      - dimension: "Samenwerkingsgericht (vs. expert-autoriteit)"
+        description: "Partner die samen ontdekt vs. expert die voorschrijft"
+        examples:
+          do: ["We are UHU. But more importantly, who are you?", "Samen afpellen wat essentieel is"]
+          dont: ["Onze expertise garandeert succes", "Wij weten wat werkt"]
+        # SOURCES:
+        #   - RAC 1.0 ORG_00_PROFILE.yaml, narratief section, VERIFIED
+        #   - UHU ORG INPUT JAN 2026.docx, approach description, VERIFIED
+
+  formality_guidelines:
+    pronoun_use:
+      internal_communications: "je-vorm (informal)"
+      client_communications: "je-vorm (informal, tenzij klant anders aangeeft)"
+      marketing_materials: "je-vorm (informal)"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml + manifest language analysis, VERIFIED
+
+    sentence_structure:
+      preference: "Korte, krachtige zinnen. Geen lange corporate paragrafen."
+      examples:
+        do: ["Wij geloven niet in standaardverhalen. Wij geloven in echte gesprekken."]
+        dont: ["Wij zijn van mening dat traditionele narratieven in de arbeidsmarktcommunicatie niet langer effectief zijn, en dat authentieke dialogen de voorkeur verdienen."]
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest writing style, VERIFIED
+
+  vocabulary_guidance:
+    preferred_terms:
+      - term: "Gesprekken (conversations)"
+        context: "vs. 'campagnes' or 'communicatie-uitingen'"
+
+      - term: "Afpellen (peeling away)"
+        context: "UHU's methodology - proprietary language"
+
+      - term: "Ecosysteem (ecosystem)"
+        context: "vs. 'campagne' or 'systeem'"
+
+      - term: "Transformatie (transformation)"
+        context: "Organizational change, not just communication"
+
+      - term: "Mens (human/person)"
+        context: "vs. 'talent', 'resources', 'assets'"
+
+      - term: "Zichtbaarder maken (make visible)"
+        context: "AI's role - amplification, not replacement"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, key terminology analysis, VERIFIED
+
+    avoided_terms_never_say_list:
+      note: |
+        IMPORTANT: Formal never-say list not documented in source materials.
+        This list is INFERRED from UHU Manifest's anti-corporate, anti-standard stance.
+        Phase 2 priority: Formalize with stakeholder input.
+      # SOURCE: Gap documentation from Phase 1 Discovery, VERIFIED
+
+      corporate_jargon:
+        - term: "Synergy"
+          reason: "Overused corporate speak, tegen 'standaardverhalen' filosofie"
+
+        - term: "Best-in-class"
+          reason: "Generic superlative, not authentic"
+
+        - term: "Leverage"
+          reason: "Corporate jargon, use 'gebruiken' or 'benutten'"
+
+        - term: "Touch base"
+          reason: "Anglo corporate-speak, use 'contact opnemen'"
+
+        - term: "Circling back"
+          reason: "Corporate euphemism, use 'terugkomen op'"
+      # SOURCE: INFERRED from manifest's anti-standardverhalen stance, UNVERIFIED
+
+      employer_branding_cliches:
+        - term: "Authentiek storytelling"
+          reason: "Cliché in EB - if you say 'authentic', it's probably not"
+          alternative: "Show authenticity through real conversations, don't claim it"
+
+        - term: "Employer of choice"
+          reason: "Every EB agency uses this - empty claim"
+
+        - term: "Talent is our greatest asset"
+          reason: "Commodifies people - tegen 'mensgericht' principe"
+          alternative: "Focus on specific human experiences"
+
+        - term: "Join our journey"
+          reason: "Overused recruitment cliché"
+
+        - term: "Fast-paced environment"
+          reason: "Every job posting says this - meaningless"
+      # SOURCE: INFERRED from UHU's anti-standard positioning + EB industry norms, UNVERIFIED
+
+      ai_tech_buzzwords:
+        - term: "AI-driven"
+          reason: "Implies AI leads, humans follow - against UHU philosophy"
+          alternative: "AI-augmented, mens + AI"
+
+        - term: "Disruption"
+          reason: "Overused tech buzzword"
+
+        - term: "Innovation" (as standalone claim)
+          reason: "Empty without context - show don't tell"
+          alternative: "Describe specific innovations, don't claim 'innovative'"
+
+        - term: "Game-changer"
+          reason: "Marketing hyperbole"
+      # SOURCE: INFERRED from human-amplification AI philosophy, UNVERIFIED
+
+      tone_violations:
+        - term: "We are the experts"
+          reason: "Tegen samenwerkingsgerichte toon - sounds arrogant"
+          alternative: "Emphasize partnership: 'Samen ontdekken we...'"
+
+        - term: "Our proprietary methodology guarantees..."
+          reason: "Overconfident claim, not modest/collaborative"
+
+        - term: "Industry-leading"
+          reason: "Self-promotional without substance"
+      # SOURCE: INFERRED from samenwerkingsgerichte tone principle, UNVERIFIED
+
+  brand_voice_personality:
+    if_uhu_were_a_person:
+      characteristics:
+        - "Thoughtful listener who asks good questions"
+        - "Curious and intellectually engaged"
+        - "Hands-on and practical, not just theoretical"
+        - "Modest confidence - knows their craft but not arrogant"
+        - "Dutch directness without bluntness"
+      # SOURCE: INFERRED from 'hands-on, dichtbij, mensgericht, nieuwsgierig' brand character, UNVERIFIED
+
+    writing_style_examples:
+      manifesto_style:
+        pattern: "Short declarative statements. Contrasts. Belief-driven."
+        example: "Wij geloven niet in standaardverhalen. Wij geloven in echte gesprekken."
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest structure, VERIFIED
+
+      conversational_style:
+        pattern: "Questions that provoke thought. Invitations to dialogue."
+        example: "We are UHU. But more importantly, who are you?"
+        # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, narratief, VERIFIED
+
+      descriptive_style:
+        pattern: "Concrete, sensory language. Human experiences, not abstractions."
+        example: "Bij twijfel, ambitie, frictie en verlangen."
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# KEY MESSAGES & MESSAGING PILLARS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+messaging_framework:
+  core_narrative:
+    headline: "Echte gesprekken, niet standaardverhalen"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest opening, VERIFIED
+
+    supporting_narrative: |
+      In een markt waar iedereen dezelfde tools, kanalen en doelgroepen gebruikt,
+      ontstaat verschil niet door harder te schreeuwen of mooier te doen dan je bent.
+
+      Verschil ontstaat door beter te luisteren.
+
+      UHU pelt af tot de kern van wat jouw organisatie écht is. Van daaruit bouwen
+      wij geen campagnes, maar ecosystemen waarin de juiste mensen zich herkennen
+      en elkaar vinden. Met AI als hulpmiddel om de mens zichtbaarder te maken,
+      niet te vervangen.
+
+      Want arbeidsmarktcommunicatie is geen systeem. Het is een relatie.
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, manifest synthesized, VERIFIED
+
+  messaging_pillars:
+    pillar_01_transformation:
+      pillar_name: "Transformatie, niet alleen communicatie"
+      core_message: "Wij beginnen niet bij middelen, maar bij organisatieverandering"
+      supporting_points:
+        - "7 strategische gespreksthema's - van Future of Work tot verandercapaciteit"
+        - "Arbeidsmarktcommunicatie én transformatie in één aanpak"
+        - "Niet alleen wat je zegt, maar wie je wordt"
+      proof_points: ["Theme 07: Organisatie & verandercapaciteit", "Corporate transformation clients"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, positioning, VERIFIED
+      #   - ORG_02 differentiator diff_01, VERIFIED
+
+    pillar_02_conversations:
+      pillar_name: "Gesprekken, niet campagnes"
+      core_message: "Echte inzichten komen uit dialoog, niet uit templates"
+      supporting_points:
+        - "Elk project begint met een goed gesprek - open verkenning van verwachtingen"
+        - "Afpellen wat voor iedere organisatie essentieel is"
+        - "Van inzichten naar ecosystemen, niet one-off campagnes"
+      proof_points: ["Conversation-driven service model", "Theme 04: Van campagnes naar ecosysteem"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, approach description, VERIFIED
+      #   - ORG_02 differentiator diff_02, VERIFIED
+
+    pillar_03_human_ai:
+      pillar_name: "AI maakt de mens zichtbaarder"
+      core_message: "Technologie als amplificatie, niet als vervanging"
+      supporting_points:
+        - "AI Content Lab voor human + AI collaboration"
+        - "Scherper kijken, dieper begrijpen, bewuster kiezen"
+        - "Hyper-personalisatie zonder verlies van authenticiteit"
+      proof_points: ["AI Content Lab", "Theme 05: Content & productie (mens + AI)"]
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, AI philosophy, VERIFIED
+      #   - ORG_02 differentiator diff_03, VERIFIED
+
+    pillar_04_integrated:
+      pillar_name: "End-to-end onder één dak"
+      core_message: "Van strategie tot scherm, zonder handoff tax"
+      supporting_points:
+        - "Strategie, concept, productie - alles in-house"
+        - "Eén productie → alle kanalen (one shoot, all formats)"
+        - "Snelheid en consistentie door geïntegreerde aanpak"
+      proof_points: ["In-house production capability", "Integrated production methodology"]
+      # SOURCES:
+      #   - RAC 1.0 ORG_00_PROFILE.yaml, differentiators, VERIFIED
+      #   - ORG_02 differentiators diff_05, diff_06, VERIFIED
+
+  message_hierarchy:
+    tier_1_always_communicate:
+      - "Echte gesprekken, niet standaardverhalen"
+      - "Arbeidsmarktcommunicatie én transformatie"
+      - "AI maakt de mens zichtbaarder"
+    # SOURCE: Core positioning from UHU ORG INPUT JAN 2026, VERIFIED
+
+    tier_2_differentiation:
+      - "Afpellen tot de kern zichtbaar wordt"
+      - "Van campagnes naar ecosystemen"
+      - "End-to-end in-house"
+    # SOURCE: Key differentiators from ORG_02, VERIFIED
+
+    tier_3_proof_points:
+      - "7 strategische gespreksthema's"
+      - "AI Content Lab"
+      - "Top clients: Booking, Rabobank, IKEA, Politie"
+    # SOURCE: Service framework and client proof points, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COMPETITIVE POSITIONING MESSAGES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+competitive_positioning:
+  positioning_statements:
+    vs_traditional_eb_agencies:
+      statement: |
+        In tegenstelling tot traditionele employer branding bureaus die campagnes creëren
+        die talent aanspreken, creëert UHU gesprekken die transformeren hoe organisaties
+        en mensen verbinden. Wij geloven dat jouw employer brand geen marketing is -
+        het is je organisatiecapaciteit voor verandering, zichtbaar gemaakt.
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, positioning statement vs traditional, VERIFIED
+
+      key_differentiators: ["Transformation focus", "Conversation-driven", "Organizational change capability"]
+      use_when: "Competing against SteamTalmark, Goals, Think Yellow"
+
+    vs_campaign_focused_agencies:
+      statement: |
+        Waar anderen succes meten in campagne-impressies, meet UHU het in organisationele
+        transformatie. Wij zijn er niet om herrie te maken - wij creëren ecosystemen waar
+        de juiste mensen op natuurlijke wijze hun weg naar je vinden.
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, positioning statement vs campaign-focused, VERIFIED
+
+      key_differentiators: ["Ecosystem thinking", "Always-on vs. campaign bursts", "Sustainable transformation"]
+      use_when: "Competing against campaign-first agencies like RRAARR, Brandmannen"
+
+    vs_tech_efficiency_players:
+      statement: |
+        Waar anderen AI gebruiken om mensen te automatiseren, gebruikt UHU's AI Content Lab
+        AI om te versterken wat jouw mensen onvervangbaar maakt. Technologie zou de mens
+        zichtbaarder moeten maken, niet onzichtbaar.
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, positioning statement vs tech/efficiency, VERIFIED
+
+      key_differentiators: ["Human-amplification AI", "Not efficiency-focused", "Authenticity at scale"]
+      use_when: "Competing against ACE Ai.Studio, tech platforms, automation-focused players"
+
+    vs_research_advisory_firms:
+      statement: |
+        Strategie zonder executie is alleen maar slideware. UHU combineert transformatie-advies
+        met in-house creatieve productie - één dak, één visie, échte resultaten. Van inzicht
+        tot impact, zonder de handoff tax.
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, positioning statement vs research/advisory, VERIFIED
+
+      key_differentiators: ["End-to-end capability", "Strategy + execution integrated", "No agency handoffs"]
+      use_when: "Competing against Universum, Cielo, pure consultancies"
+
+  when_prospects_say:
+    objection_we_need_campaign:
+      prospect_statement: "We need a campaign to attract talent now"
+      uhu_response: |
+        Campaigns kunnen attention genereren, maar ecosystemen creëren connectie.
+        Laten we praten over hoe we jouw organisatie zichtbaar maken op een manier
+        die talent niet alleen aantrekt, maar ook herkent en kiest. Dat begint met
+        afpellen wat jullie écht zijn.
+      reframe: "Van 'we need a campaign' naar 'we need sustainable talent attraction'"
+      # SOURCE: INFERRED from ecosystem vs. campaign positioning, UNVERIFIED
+
+    objection_already_have_eb:
+      prospect_statement: "We already have an employer brand/EVP"
+      uhu_response: |
+        De vraag is niet of je een EVP hebt, maar of het leeft in je organisatie.
+        Wij helpen niet alleen met wat je zegt, maar met wie je wordt. Transformatie,
+        niet alleen communicatie.
+      reframe: "From 'EVP document' to 'lived employer brand as organizational change'"
+      # SOURCE: INFERRED from transformation positioning, UNVERIFIED
+
+    objection_need_speed:
+      prospect_statement: "We need content quickly / We have a deadline"
+      uhu_response: |
+        Onze geïntegreerde productie (one shoot, all formats) is gebouwd voor snelheid
+        én kwaliteit. Maar snelheid zonder de juiste kern is verspilling. Laten we
+        eerst afpellen wat essentieel is - dan leveren we snel én impactvol.
+      reframe: "Speed through integrated production, not through shortcuts"
+      # SOURCE: INFERRED from integrated production differentiator, UNVERIFIED
+
+    objection_ai_concerns:
+      prospect_statement: "We're concerned AI will make our content less authentic"
+      uhu_response: |
+        Wij ook - daarom gebruiken wij AI anders. Niet om mensen te vervangen, maar
+        om ze zichtbaarder te maken. AI helpt ons scherper kijken naar wat authentiek
+        is en het op schaal te brengen zonder de menselijkheid te verliezen.
+      reframe: "AI as authenticity enabler, not authenticity threat"
+      # SOURCE: INFERRED from human-amplification AI philosophy, UNVERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CHANNEL-SPECIFIC MESSAGING ADAPTATIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+channel_adaptations:
+  note: |
+    Channel-specific guidelines limited in source materials.
+    This section provides high-level adaptations based on tone of voice principles.
+    For detailed channel playbooks, see ORG_04_CHANNEL_PLAYBOOKS.yaml.
+  # SOURCE: Gap noted in Phase 1 Discovery (ORG_04 40% readiness), VERIFIED
+
+  website:
+    tone_adaptation: "Thoughtful, manifesto-driven. Room for longer-form philosophy."
+    message_priority: ["Manifest", "7 Conversation Themes", "Portfolio proof"]
+    example_headlines:
+      - "Echte gesprekken, niet standaardverhalen"
+      - "Arbeidsmarktcommunicatie is geen systeem. Het is een relatie."
+    # SOURCE: INFERRED from UHU ORG INPUT reference to website updates, UNVERIFIED
+
+  linkedin:
+    tone_adaptation: "Professional but informal. Thought leadership posture."
+    message_priority: ["Transformation insights", "AI + Human perspective", "Industry trends"]
+    content_types: ["POV posts on Future of Work", "Behind-the-scenes of projects", "Thought leadership on AI in creative"]
+    # SOURCE: INFERRED from thought leadership positioning + LinkedIn norms, UNVERIFIED
+
+  instagram:
+    tone_adaptation: "Visual storytelling. Human-centric, behind-the-scenes."
+    message_priority: ["Production process", "Client work showcases", "Team/culture"]
+    content_types: ["Production BTS", "Client testimonials (visual)", "Team spotlights"]
+    # SOURCE: INFERRED from visual production capability + Instagram medium, UNVERIFIED
+
+  client_presentations:
+    tone_adaptation: "Collaborative, question-driven. Strategic depth."
+    message_priority: ["Afpellen methodology", "7 Themes framework", "Integrated approach"]
+    structure: "Start with questions, not solutions. Co-discovery posture."
+    # SOURCE: INFERRED from samenwerkingsgerichte tone + EB pitch norms, UNVERIFIED
+
+  proposals:
+    tone_adaptation: "Clear, structured, but warm. No corporate jargon."
+    message_priority: ["Understanding of their context", "Tailored approach", "Proof of similar work"]
+    structure: "Problem → Insight → Approach → Team → Investment"
+    # SOURCE: INFERRED from EB agency proposal norms + UHU tone, UNVERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GOVERNANCE & METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+governance:
+  data_quality:
+    verified_percentage: 60
+    inferred_percentage: 30
+    unverified_percentage: 10
+    # NOTE: Buyer personas, never-say list, and competitive messaging responses are INFERRED
+
+  known_gaps:
+    - field: "Buyer personas (detailed validation)"
+      severity: "MEDIUM"
+      status: "INFERRED from client base and EB industry norms"
+      recommendation: "Stakeholder interview with Nigaio Wijnen to validate persona pain points, buying triggers, decision criteria"
+      phase_2_priority: "HIGH"
+
+    - field: "Never-say list (formalized)"
+      severity: "MEDIUM"
+      status: "INFERRED from anti-standardverhalen manifest stance"
+      recommendation: "Workshop with UHU team to formalize never-say terms and alternatives"
+      phase_2_priority: "HIGH"
+
+    - field: "Competitive objection handling (sales messaging)"
+      severity: "LOW"
+      status: "INFERRED from positioning - not documented sales scripts"
+      recommendation: "Develop formal sales enablement messaging with sales/BD team input"
+      phase_2_priority: "MEDIUM"
+
+    - field: "Channel-specific messaging guidelines"
+      severity: "LOW"
+      status: "INFERRED from general principles - limited channel-specific data"
+      recommendation: "Document in ORG_04_CHANNEL_PLAYBOOKS.yaml with actual examples"
+      phase_2_priority: "MEDIUM"
+
+  references:
+    primary_sources:
+      - "UHU ORG INPUT JAN 2026.docx (manifest, tone, core messages)"
+      - "RAC 1.0 ORG_00_PROFILE.yaml (tone of voice, brand voice)"
+      - "UHU Competitive Analysis Jan2026.docx (competitive positioning statements)"
+
+    supporting_sources:
+      - "ORG_01_FOUNDATION.yaml (target market definition)"
+      - "ORG_02_BRAND_POSITIONING.yaml (messaging pillars from differentiators)"
+      - "Phase 1 Discovery Report (gap documentation)"
+
+  version_history:
+    - version: "2.0.0"
+      date: "2026-01-18"
+      file: "ORG_03_AUDIENCE_MESSAGING.yaml"
+      notes: "Initial creation for AIO ONE RAC 2.0"
+      key_elements:
+        - "3 Buyer personas (INFERRED - requires validation)"
+        - "Tone of voice framework (from manifest and RAC 1.0)"
+        - "Never-say list (INFERRED - requires formalization)"
+        - "4 Messaging pillars from core positioning"
+        - "Competitive positioning statements (from analysis)"
+      gaps_documented:
+        - "Buyer personas need stakeholder validation"
+        - "Never-say list needs team workshop"
+        - "Channel adaptations need detailed guidelines (ORG_04)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# END OF ORG_03_AUDIENCE_MESSAGING.yaml
+# ═══════════════════════════════════════════════════════════════════════════════

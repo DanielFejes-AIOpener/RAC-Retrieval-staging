@@ -1,74 +1,584 @@
-# ORG_01_FOUNDATION.yaml (Phase I — required)
-# ═══════════════════════════════════════════════════════════════════════════
-# Legal/org basics + operating context + market context + competitor registry
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORG_01_FOUNDATION.yaml
+# UHU Productions B.V. - Organizational Foundation
+# ═══════════════════════════════════════════════════════════════════════════════
+# Version: 2.0.0
+# Last Updated: 2026-01-18
+# Purpose: Legal entity, market positioning, operating context, competitive landscape
+# Layer: ORG (Organization configuration for AIO ONE platform operator)
+# ═══════════════════════════════════════════════════════════════════════════════
 
 meta:
-  owner: "AI Opener"
+  owner: "UHU Productions B.V."
   version: "2.0.0"
-  last_updated: "2026-01-06"
-  purpose: "Legal/org basics + operating context + market context + competitor registry (ORG baseline)"
-  notes: "Phase I required. Uses discovery prompts for unconfigured client-specific data."
-  tags: [org, ssot, foundation]
+  last_updated: "2026-01-18"
+  purpose: "Foundational organization profile for UHU - legal entity, market positioning, operating context, and competitive landscape"
+  supersedes: "RAC 1.0 ORG_00_PROFILE.yaml"
+  tags: [org, foundation, identity, positioning, competitive-landscape, netherlands, employer-branding, arbeidsmarktcommunicatie]
 
-# ═══════════════════════════════════════════════════════════════════════════
-# ORG BASICS — Marketing-relevant only
-# ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════════
+# LEGAL ENTITY & REGISTRATION
+# ═══════════════════════════════════════════════════════════════════════════════
 
-org_basics:
-  # For marketing: only trading_name and website are typically needed
-  # Legal/KVK details only relevant for legal disclaimers (rare)
-  
-  trading_name: ""
-  website: ""
-  
-  # Legal details — rarely needed for marketing, ask only when creating legal disclaimers
-  legal_details:
-    _discovery:
-      trigger: "only_when_legal_disclaimer_needed"
-      fallback_behavior: "skip"
-      prompt: "Voor deze juridische disclaimer heb ik de officiële bedrijfsnaam en KvK-nummer nodig."
-    legal_name: ""
-    kvk_number: ""
+legal_entity:
+  juridische_naam: "UHU Productions B.V."
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 15, VERIFIED
 
-# ═══════════════════════════════════════════════════════════════════════════
-# OPERATING CONTEXT — Marketing-relevant defaults
-# ═══════════════════════════════════════════════════════════════════════════
+  merknaam: "UHU"
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 16, VERIFIED
+
+  kvk_nummer: "68413955"
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 21, VERIFIED
+
+  opgericht: "2014"
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 17, VERIFIED
+
+  oprichter: "Nigaio Wijnen"
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 71, VERIFIED
+
+  branche: "Arbeidsmarktcommunicatie en transformatie / Creative content production"
+  # SOURCES:
+  #   - UHU ORG INPUT JAN 2026.docx (new positioning), VERIFIED
+  #   - RAC 1.0 ORG_00_PROFILE.yaml, line 19 (legacy), VERIFIED
+
+  rechtsvorm: "Besloten Vennootschap (B.V.)"
+  # SOURCE: Legal name suffix, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PHYSICAL & DIGITAL PRESENCE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+locatie:
+  hoofdkantoor:
+    adres: "Rotsoord 3a"
+    postcode: "3523 CL"
+    stad: "Utrecht"
+    land: "Nederland"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 20, VERIFIED
+
+  geographic_scope:
+    primary_market: "Nederland"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 18; UHU ORG INPUT JAN 2026.docx, VERIFIED
+
+    secondary_markets: ["België", "Duitsland"]
+    # SOURCE: Competitors.xlsx shows presence tracking in BE/DE, INFERRED
+    # Note: Secondary market activity level unclear - mark for client confirmation
+
+    languages:
+      primary: "Nederlands"
+      secondary: ["Engels"]
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml content language; website evidence, VERIFIED
+
+contact:
+  telefoon: "+31 30 207 2443"
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 24, VERIFIED
+
+  email: "info@uhu-productions.com"
+  # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 23, VERIFIED
+
+  website:
+    primary: "https://www.uhu.nl"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 26, VERIFIED
+
+    productions: "https://www.uhu-productions.com"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx (dual brand strategy mentioned), INFERRED
+
+  social:
+    linkedin: "https://www.linkedin.com/company/uhu-productions/"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 27, VERIFIED
+
+    instagram: "https://www.instagram.com/uhuproductions"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 28, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MARKET POSITIONING & OPERATING CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+positionering:
+  evolution:
+    legacy_positioning: "Creatieve contentpartner gespecialiseerd in employer branding en marketing & advertising"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 33, VERIFIED
+
+    current_positioning: "Bureau voor arbeidsmarktcommunicatie en transformatie"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, first paragraph, VERIFIED
+
+    positioning_shift_date: "2026-01"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx document date, VERIFIED
+
+    key_shift: "Van campagnebureau naar transformatie-adviseur met geïntegreerde executie"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx + UHU Manifest analysis, VERIFIED
+
+  kernpositie:
+    tagline_legacy: "Creativity in Motion"
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 77, VERIFIED
+
+    manifest_tagline: "Echte gesprekken, niet standaardverhalen"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, UHU Manifest opening line, VERIFIED
+
+    value_proposition: |
+      UHU helpt organisaties (Top 500 corporate en groot MKB) met het strategisch en
+      praktisch neerzetten van hun arbeidsmarktcommunicatie. Door middel van gesprekken
+      - niet campagnes - creëren wij ecosystemen waarin de juiste mensen elkaar vinden.
+
+      Wij geloven dat AI de mens zichtbaarder maakt, niet vervangt. Door af te pellen
+      wat echt is en te bouwen op menselijke authenticiteit, transformeren wij hoe
+      organisaties en talent met elkaar verbinden.
+    # SOURCES:
+    #   - UHU ORG INPUT JAN 2026.docx, positioning section, VERIFIED
+    #   - UHU Manifest, philosophy sections, VERIFIED
+    #   - UHU Competitive Analysis Jan2026.docx, positioning statements, VERIFIED
 
 operating_context:
-  # Sensible defaults for NL-based B2B organizations
-  # Override in CLIENT layer if different
-  
-  timezone: "Europe/Amsterdam"
-  languages:
-    - code: "nl"
-      name: "Nederlands"
-      primary: true
-    - code: "en"
-      name: "English"
-      primary: false
-  regions_served: ["Benelux", "DACH"]
+  target_market:
+    primary_segments:
+      - segment: "Top 500 corporate bedrijven Nederland"
+        characteristics: "Large enterprise organizations, established brands, complex organizational structures"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, first paragraph, VERIFIED
 
-# ═══════════════════════════════════════════════════════════════════════════
-# MARKET CONTEXT — Optional, populate in CLIENT layer
-# ═══════════════════════════════════════════════════════════════════════════
+      - segment: "Groot MKB"
+        characteristics: "Medium-large enterprises, growth-oriented, increasingly sophisticated EB needs"
+        # SOURCE: UHU ORG INPUT JAN 2026.docx, first paragraph, VERIFIED
 
-market_context:
-  # These inform targeting but aren't required for basic content creation
-  # Agent proceeds without if not configured
-  segments: []      # e.g. ["Enterprise", "MKB", "Startup"]
-  categories: []    # e.g. ["SaaS", "Professional Services"]
-  regions: []       # e.g. ["Netherlands", "Belgium", "Germany"]
+    buyer_personas:
+      # Note: Detailed buyer personas not documented in source materials
+      # These are INFERRED from client list and industry norms
+      - title: "Chief Human Resources Officer (CHRO)"
+        seniority: "C-suite"
+        pain_points: ["Talent scarcity", "Employer brand differentiation", "Change management"]
+        buying_triggers: ["Recruitment challenges", "Cultural transformation", "Leadership mandate"]
+        # SOURCE: INFERRED from client base (large corporate focus), UNVERIFIED
+        # GAP: Requires stakeholder interview for validation
 
-# ═══════════════════════════════════════════════════════════════════════════
-# COMPETITOR REGISTRY — Optional, populate when needed
-# ═══════════════════════════════════════════════════════════════════════════
+      - title: "Head of Employer Branding / Talent Acquisition"
+        seniority: "Director/VP level"
+        pain_points: ["Campaign fatigue", "Authenticity vs. polish", "Measuring EB impact"]
+        buying_triggers: ["Budget allocated", "Recruitment targets unmet", "Rebranding initiative"]
+        # SOURCE: INFERRED from service offerings and EB industry norms, UNVERIFIED
+        # GAP: Requires stakeholder interview for validation
 
-competitor_registry:
-  # Only relevant for competitive positioning content
-  # Agent skips competitor comparisons if empty
-  competitors: []
-  # Structure when filled:
-  # - name: "Competitor Name"
-  #   website: "https://..."
-  #   positioning: "Brief factual description of their positioning"
+      - title: "CMO / Marketing Director"
+        seniority: "C-suite / Director"
+        pain_points: ["Brand consistency across EB and consumer", "Internal vs. external alignment"]
+        buying_triggers: ["Brand refresh", "Integrated campaign need", "CEO priority"]
+        # SOURCE: INFERRED from dual EB/marketing legacy, UNVERIFIED
+        # GAP: Requires stakeholder interview for validation
+
+  market_dynamics:
+    trends:
+      - "Tight Dutch labor market driving employer brand urgency"
+      - "Shift from campaign-thinking to ecosystem/journey-thinking"
+      - "AI adoption in creative work (opportunity and threat)"
+      - "Demand for transformation consulting beyond communication"
+      - "Retainer/partnership models replacing project-based"
+      # SOURCES:
+      #   - UHU Competitive Analysis Jan2026.docx, section 3.7, VERIFIED
+      #   - UHU ORG INPUT JAN 2026.docx, strategic themes, VERIFIED
+
+    market_size:
+      description: "Dutch employer branding market estimated at 48+ active agencies (NL/BE/DE)"
+      # SOURCE: Competitors.xlsx total count; UHU Competitive Analysis Jan2026.docx, VERIFIED
+
+      competitive_intensity: "HIGH - crowded traditional positioning, emerging white space in transformation focus"
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, section 2 positioning map, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COMPETITIVE LANDSCAPE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+competitors:
+  positioning_framework:
+    description: "2x2 positioning map: Campaign vs. Transformation (X-axis) and Traditional vs. AI-Augmented (Y-axis)"
+    uhu_position: "Upper-right quadrant: AI/Tech-Augmented + Transformation/Ecosystem-Driven"
+    white_space: "True - Most competitors cluster in traditional campaign-driven execution"
+    # SOURCE: UHU Competitive Analysis Jan2026.docx, section 2, VERIFIED
+
+  direct_competitors:
+    tier_1_closest:
+      - name: "SteamTalmark"
+        website: "steamtalmark.nl"
+        location: "Amsterdam & Utrecht"
+        size: "~48 employees"
+        positioning: "Irresistible Employer Branding - Full-service EVP to career sites"
+        overlap: "VERY HIGH - Similar full-service model, government clients, Utrecht presence"
+        key_clients: ["Ministerie van Defensie", "Politie Nederland", "Belastingdienst", "PostNL", "Schiphol"]
+        uhu_advantage: "More transformation-focused, stronger AI positioning, 'gesprekken' framing"
+        their_advantage: "Stronger in website development, more established government relationships"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.1, VERIFIED
+
+      - name: "Goals"
+        website: "goals.nl"
+        location: "Nederland"
+        positioning: "Non-stop Employer Branding - Journey/ecosystem focus"
+        overlap: "HIGH - Journey thinking similar to UHU's ecosystem approach"
+        uhu_advantage: "AI Content Lab, integrated production, transformation consulting depth"
+        their_advantage: "Established methodology branding, longer market presence"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.1, VERIFIED
+
+      - name: "Think Yellow"
+        website: "thinkyellow.nl"
+        location: "Utrecht"
+        recognition: "#1 large full-service marketing agency (FONK150)"
+        positioning: "Full-service marketing with strong EB vertical"
+        key_clients: ["Domino's", "Havenbedrijf Rotterdam", "Randstad Global", "ABN AMRO"]
+        overlap: "MEDIUM-HIGH - EB one of many services vs. UHU's focused positioning"
+        uhu_advantage: "Specialist focus, transformation depth, AI-human philosophy"
+        their_advantage: "Scale, diversified services, strong digital marketing"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.1, VERIFIED
+
+      - name: "RRAARR"
+        website: "rraarr.nl"
+        location: "Utrecht"
+        positioning: "Bullshit-free strategie - Creative-first, anti-corporate"
+        overlap: "MEDIUM - Similar Utrecht roots and creative emphasis"
+        uhu_advantage: "Comprehensive service offering, transformation consulting, AI Lab"
+        their_advantage: "Boutique positioning, edgy brand appeal"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.1, VERIFIED
+
+      - name: "Magnos Employer Branding"
+        website: "magnos.nl"
+        positioning: "Strategic EB programs with proprietary models (Trinitas Valor, HEBPIE)"
+        key_clients: ["Broekman Logistics", "Koppert Biological Systems", "Oliver"]
+        overlap: "MEDIUM - Consultancy-focused, less creative production"
+        uhu_advantage: "Integrated creative execution, in-house production, AI capabilities"
+        their_advantage: "Methodology IP, interim management offering"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.1, VERIFIED
+
+    adjacent_competitors:
+      - name: "ACE"
+        website: "ace.nl"
+        location: "Amsterdam"
+        size: "11 agencies under one roof"
+        positioning: "For brands of tomorrow - Tech and culture intersection"
+        ai_positioning: "ACE Ai.Studio - Strong AI innovation practice"
+        key_clients: ["ABN AMRO", "YoungCapital", "Rijksmuseum", "WE Fashion"]
+        threat_level: "MEDIUM-HIGH - Strong AI innovation could attract tech-forward clients"
+        uhu_advantage: "EB specialization, human-amplification AI philosophy vs. efficiency focus"
+        their_advantage: "Scale, tech innovation depth, broader digital capabilities"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.2, VERIFIED
+
+      - name: "DEPT"
+        website: "deptagency.com"
+        location: "Global (HQ Netherlands)"
+        size: "2500+ employees globally"
+        positioning: "Pioneering tech and marketing - Enterprise digital"
+        overlap: "LOW - Different target segment (global enterprise)"
+        uhu_advantage: "EB specialization, Dutch market nuance, transformation depth"
+        their_advantage: "Global scale, enterprise infrastructure, tech integration"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.2, VERIFIED
+
+      - name: "Brandmannen"
+        website: "brandmannen.nl"
+        positioning: "Video content and jobmarketing focus"
+        overlap: "MEDIUM - Creative focus, video production overlap"
+        uhu_advantage: "Strategic/transformation orientation, AI Lab, ecosystem approach"
+        their_advantage: "Specialized video production, jobmarketing dashboards"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.2, VERIFIED
+
+    international_players:
+      - name: "Universum"
+        website: "universumglobal.com"
+        location: "Stockholm (50+ countries)"
+        positioning: "Global leader in EB research and advisory - Data-led approach"
+        overlap: "LOW - Research/strategy vs. UHU's creative/production strength"
+        relationship: "Potential partner - Universum strategy → UHU execution"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.3, VERIFIED
+
+      - name: "Cielo"
+        website: "cielotalent.com"
+        location: "USA (global)"
+        positioning: "RPO integration with EB strategy - Enterprise operations"
+        overlap: "LOW - Different market segment and service model"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.3, VERIFIED
+
+    tech_platforms:
+      note: "Not direct competitors but distribution/technology partners or potential threats"
+      - name: "VONQ"
+        website: "vonq.com"
+        location: "Rotterdam"
+        positioning: "Programmatic job marketing platform"
+        relationship: "Complementary - UHU creates, VONQ distributes"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.4, VERIFIED
+
+      - name: "MrWork"
+        website: "mrwork.nl"
+        positioning: "Recruitment marketing automation"
+        relationship: "Complementary - Distribution focus vs. UHU's creative focus"
+        # SOURCE: UHU Competitive Analysis Jan2026.docx, section 1.4, VERIFIED
+
+  competitive_insights:
+    crowded_positioning:
+      - "Full-service employer branding bureau (generic claim)"
+      - "Integrated approach / strategy + creative + execution (table-stakes)"
+      - "EVP expertise (every EB agency claims this)"
+      - "Authentic storytelling (overused)"
+      - "Data-driven (becoming generic)"
+      - "Campaign-focused creative execution (commoditized)"
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, section 3.2, VERIFIED
+
+    white_space_opportunities:
+      - "Transformation/change consulting integrated with creative execution (UHU's direction)"
+      - "Human-centric AI positioning (vs. efficiency-focused AI)"
+      - "'Gesprekken' (conversations) over campaigns framing (unique language)"
+      - "End-to-end production truly under one roof (most outsource)"
+      - "AI as human-amplification tool vs. automation/replacement"
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, section 3.3, VERIFIED
+
+    strategic_watch_list:
+      - competitor: "SteamTalmark"
+        reason: "Closest competitor, strong government relationships, expanding AI positioning"
+        threat_level: "HIGH"
+
+      - competitor: "ACE Ai.Studio"
+        reason: "More aggressive AI innovation; could attract tech-forward clients"
+        threat_level: "MEDIUM-HIGH"
+
+      - trend: "AI commoditization"
+        reason: "As AI tools become standard, differentiation window narrows"
+        threat_level: "MEDIUM"
+        mitigation: "Emphasize 'human amplification' philosophy vs. efficiency messaging"
+
+      - trend: "Enterprise players expanding locally"
+        reason: "Cielo, Universum may partner with Dutch execution agencies"
+        threat_level: "LOW-MEDIUM"
+      # SOURCE: UHU Competitive Analysis Jan2026.docx, section 5 WATCH, VERIFIED
+
+  market_total:
+    agencies_tracked: 48
+    # SOURCE: Competitors.xlsx row count, VERIFIED
+
+    breakdown:
+      nederland: "Primary competitive set"
+      belgie: "Secondary market tracking"
+      duitsland: "Tertiary market awareness"
+      # SOURCE: Competitors.xlsx 'Land' column analysis, VERIFIED
+
+    database_last_updated: "2026-01"
+    # SOURCE: Competitors.xlsx upload date; UHU Competitive Analysis Jan2026.docx date, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BRAND SYMBOLISM & IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+merkidentiteit:
+  naam_symboliek:
+    dier: "Oehoe (Eurasian eagle-owl)"
+    kenmerken:
+      - "Uitzonderlijk scherp zicht"
+      - "360° visie - volledig overzicht"
+      - "Vermogen om in slow motion te zien - detail én totaalbeeld"
+      - "Nachtvogel - ziet wat anderen niet zien"
+    betekenis: |
+      De oehoe symboliseert UHU's brede perspectief, scherpe blik en het vermogen
+      om zowel het totaaloverzicht als de details te beheersen tijdens het creatieve proces.
+    # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, line 82, VERIFIED
+
+  dual_brand_strategy:
+    note: "UHU onderhoudt twee merkposities voor verschillende doelgroepen"
+
+    uhu_primary:
+      target: "Corporate bedrijven en groot MKB die transformatie zoeken"
+      positioning: "Arbeidsmarktcommunicatie en transformatie"
+      url: "uhu.nl"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, positioning section, VERIFIED
+
+    uhu_productions:
+      target: "Agencies die content productie zoeken"
+      positioning: "Marketing content producties voor agencies"
+      note: "Click here if you're an agency"
+      url: "uhu-productions.com"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx, dual brand mention, VERIFIED
+
+  visual_style_references:
+    inspiration:
+      - name: "Mild"
+        url: "https://www.mild.se/en/"
+        note: "Scandinavian minimalism, clean typography, strong imagery"
+
+      - name: "IW Agency"
+        url: "https://iwagency.com/"
+        note: "Bold creative, dynamic layouts"
+
+      - name: "The Agency Berlin"
+        url: "https://www.theagencyberlin.com/"
+        note: "Modern, sophisticated, European design sensibility"
+    # SOURCE: UHU ORG INPUT JAN 2026.docx, STIJL section, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROOF POINTS & CREDENTIALS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+track_record:
+  major_clients:
+    corporate_enterprise:
+      - "Booking.com"
+      - "Rabobank"
+      - "IKEA"
+      - "Bosch"
+      - "DHL"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, lines 39-48, VERIFIED
+
+    government_public:
+      - "Politie (Nederlandse politie)"
+      - "Gemeente Den Haag"
+      - "ProRail"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, lines 39-48, VERIFIED
+
+    healthcare_science:
+      - "Sanquin"
+      - "TNO"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, lines 39-48, VERIFIED
+
+  project_examples:
+    note: "Extensive client work documented in 1. CLIENT INPUT/2. UHU | Various Input/"
+
+    documented_clients:
+      - client: "Booking.com"
+        deliverables: ["Competitor audit", "Personas & journeys", "Treatment presentation"]
+        folder: "AI Agent/Booking/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/Booking/, VERIFIED
+
+      - client: "Aldi"
+        deliverables: ["Brand guide", "Strategy presentation"]
+        folder: "AI Agent/Aldi/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/Aldi/, VERIFIED
+
+      - client: "Pathé"
+        deliverables: ["Branding strategy", "EVP presentation"]
+        folder: "AI Agent/Pathé/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/Pathé/, VERIFIED
+
+      - client: "Gemeente Zoetermeer"
+        deliverables: ["EVP en Story"]
+        folder: "AI Agent/Gemeente Zoetermeer/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/Gemeente Zoetermeer/, VERIFIED
+
+      - client: "RET"
+        deliverables: ["Multiple materials"]
+        folder: "AI Agent/RET/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/RET/, VERIFIED
+
+      - client: "Vermaat"
+        deliverables: ["Input and presentations"]
+        folder: "AI Agent/Vermaat/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/Vermaat/, VERIFIED
+
+      - client: "Youwe"
+        deliverables: ["Input and presentations"]
+        folder: "AI Agent/Youwe/"
+        # SOURCE: 1. CLIENT INPUT/2. UHU | Various Input/AI Agent/Youwe/, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EVOLUTION & TRANSFORMATION
+# ═══════════════════════════════════════════════════════════════════════════════
+
+organizational_evolution:
+  milestones:
+    - year: "2014"
+      event: "Founded by Nigaio Wijnen"
+      # SOURCE: RAC 1.0 ORG_00_PROFILE.yaml, lines 17, 71, VERIFIED
+
+    - year: "2025"
+      event: "Development of AI Content Lab and RAC 1.0 system"
+      # SOURCE: RAC 1.0 file dates and structure, VERIFIED
+
+    - year: "2026-01"
+      event: "Strategic repositioning: van campagnes naar transformatie"
+      positioning_shift: "From creative agency to transformation consultancy"
+      # SOURCE: UHU ORG INPUT JAN 2026.docx date and content, VERIFIED
+
+  current_transformation:
+    business_model:
+      from: "Project-based pricing"
+      to: "Annual retainer fees + exclusivity options"
+      # SOURCE: UHU MAILS 2.0.docx, business model section, VERIFIED
+
+    service_architecture:
+      model_1:
+        name: "UHU ES (Bureau Human Agent - BHA)"
+        description: "Internal AI system for client service delivery"
+        target: "Standard agency partnerships"
+        pricing: "Monthly/annual fee model for strategy and concept"
+        rollout: "80-90% of expected workflow"
+        # SOURCE: UHU MAILS 2.0.docx, section 1, VERIFIED
+
+      model_2:
+        name: "Tailor Made"
+        description: "Custom environments built for larger clients"
+        target: "Enterprise clients with high potential"
+        pricing: "Calculation-based"
+        approach: "Start with UHU ES, upgrade to custom environment"
+        # SOURCE: UHU MAILS 2.0.docx, section 2, VERIFIED
+
+    technology_strategy:
+      platform: "AIO ONE integration for AI-augmented workflows"
+      positioning: "AI as human-amplification, not replacement"
+      differentiator: "'AI maakt de mens zichtbaarder' vs. efficiency-focused competitors"
+      # SOURCES:
+      #   - UHU ORG INPUT JAN 2026.docx, AI philosophy, VERIFIED
+      #   - UHU Competitive Analysis Jan2026.docx, AI positioning insights, VERIFIED
+      #   - 8. AIO Scope of work folder, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GOVERNANCE & METADATA
+# ═══════════════════════════════════════════════════════════════════════════════
+
+governance:
+  data_quality:
+    verified_percentage: 85
+    inferred_percentage: 10
+    unverified_percentage: 5
+    # SOURCE: Phase 1 Discovery Report analysis, VERIFIED
+
+  known_gaps:
+    - field: "Buyer personas (detailed)"
+      severity: "MEDIUM"
+      status: "INFERRED from client base and industry norms"
+      recommendation: "Stakeholder interview with Nigaio Wijnen for validation"
+      phase_2_priority: "HIGH"
+
+    - field: "Geographic expansion plans (Belgium, Germany)"
+      severity: "LOW"
+      status: "UNVERIFIED - unclear if active secondary markets or tracking only"
+      recommendation: "Clarify geographic strategy"
+      phase_2_priority: "MEDIUM"
+
+    - field: "Team structure and headcount"
+      severity: "LOW"
+      status: "UNVERIFIED - not critical for ORG files but useful context"
+      recommendation: "Document for operational planning"
+      phase_2_priority: "LOW"
+
+  references:
+    primary_sources:
+      - "UHU ORG INPUT JAN 2026.docx (official positioning brief from founder)"
+      - "UHU MAILS 2.0.docx (business model documentation)"
+      - "RAC 1.0 ORG_00_PROFILE.yaml (legacy organization profile)"
+      - "UHU Competitive Analysis Jan2026.docx (comprehensive competitive research)"
+      - "Competitors.xlsx (48 agency database)"
+
+    supporting_sources:
+      - "process_dna.md (workflow and transformation patterns)"
+      - "Client work folders (7 clients with deliverable examples)"
+      - "RAC 1.0 ROLE and OPS files (operational infrastructure)"
+
+  version_history:
+    - version: "1.0.0"
+      date: "2025-11-11"
+      file: "RAC 1.0 ORG_00_PROFILE.yaml"
+      notes: "Original organization profile"
+
+    - version: "2.0.0"
+      date: "2026-01-18"
+      file: "ORG_01_FOUNDATION.yaml"
+      notes: "Complete rebuild for AIO ONE RAC 2.0 with updated positioning, competitive landscape, and transformation strategy"
+      changes:
+        - "New positioning: arbeidsmarktcommunicatie en transformatie"
+        - "Comprehensive competitive landscape (48 agencies analyzed)"
+        - "Dual brand strategy (UHU + UHU Productions)"
+        - "Business model evolution (retainer-based)"
+        - "AI Content Lab and human-amplification philosophy"
+        - "7 strategic conversation themes framework"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# END OF ORG_01_FOUNDATION.yaml
+# ═══════════════════════════════════════════════════════════════════════════════
