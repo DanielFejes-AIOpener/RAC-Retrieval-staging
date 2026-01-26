@@ -50,51 +50,45 @@ knowledge_sources:
 
 rac_dependencies:
   core_discovery:
-    index: "LOGIC_00_RAC_INDEX.yaml"
-    purpose: "Discover available roles and system structure"
-    load_on: "startup"
-    
-    orchestration: "LOGIC_06_ORCHESTRATION.yaml"
-    purpose: "Load agent_registry for /s command and capability resolution"
-    load_on: "startup"
-    critical: true
-    
-    routing_rules: "LOGIC_02_RETRIEVAL_RULES.yaml"
-    purpose: "Determine SOM/SAM/Wizard modes and complexity thresholds"
-    load_on: "startup"
-    
-    interface: "LOGIC_16_INTERFACE.yaml"
-    purpose: "Numbered menu patterns and conversation flows"
-    load_on: "startup"
+    - file: "LOGIC_00_RAC_INDEX.yaml"
+      purpose: "Discover available roles and system structure"
+      load_on: "startup"
+    - file: "LOGIC_06_ORCHESTRATION.yaml"
+      purpose: "Load agent_registry for /s command and capability resolution"
+      load_on: "startup"
+      critical: true
+    - file: "LOGIC_02_RETRIEVAL_RULES.yaml"
+      purpose: "Determine SOM/SAM/Wizard modes and complexity thresholds"
+      load_on: "startup"
+    - file: "LOGIC_16_INTERFACE.yaml"
+      purpose: "Numbered menu patterns and conversation flows"
+      load_on: "startup"
   
   workflow_discovery:
-    workflows: "OPS_20_WORKFLOWS.yaml"
-    purpose: "Load sector-specific workflow patterns and stages"
-    load_on: "demand"
-    
-    handoffs: "OPS_18_HANDOFF_*.yaml and OPS_19_HANDOFF_*.yaml"
-    purpose: "HITL touchpoints and handoff protocols for stage transitions"
-    load_on: "demand"
-    note: "Load specific handoff files based on workflow requirements"
+    - file: "OPS_20_WORKFLOWS.yaml"
+      purpose: "Load sector-specific workflow patterns and stages"
+      load_on: "demand"
+    - file: "OPS_18_HANDOFF_*.yaml and OPS_19_HANDOFF_*.yaml"
+      purpose: "HITL touchpoints and handoff protocols for stage transitions"
+      load_on: "demand"
+      note: "Load specific handoff files based on workflow requirements"
   
   quality_enforcement:
-    gates: "LOGIC_06_QA_REVIEW_GATES.yaml"
-    purpose: "DoD criteria and quality gate definitions"
-    load_on: "demand"
-    
-    governance: "LOGIC_07_GOVERNANCE_MINIMUMS.yaml"
-    purpose: "Compliance rules and evidence requirements"
-    load_on: "demand"
+    - file: "LOGIC_06_QA_REVIEW_GATES.yaml"
+      purpose: "DoD criteria and quality gate definitions"
+      load_on: "demand"
+    - file: "LOGIC_07_GOVERNANCE_MINIMUMS.yaml"
+      purpose: "Compliance rules and evidence requirements"
+      load_on: "demand"
   
   tools_integration:
-    registry: "LOGIC_09_TOOLS_REGISTRY.yaml"
-    purpose: "Available tool capabilities"
-    load_on: "startup"
-    critical: true
-    
-    router: "LOGIC_10_TOOLS_ROUTER.yaml"
-    purpose: "Tool routing and fallback strategies"
-    load_on: "startup"
+    - file: "LOGIC_09_TOOLS_REGISTRY.yaml"
+      purpose: "Available tool capabilities"
+      load_on: "startup"
+      critical: true
+    - file: "LOGIC_10_TOOLS_ROUTER.yaml"
+      purpose: "Tool routing and fallback strategies"
+      load_on: "startup"
 
   loading_strategy:
     startup_critical: ["LOGIC_15", "LOGIC_00", "LOGIC_02", "LOGIC_16", "LOGIC_09", "LOGIC_10"]
