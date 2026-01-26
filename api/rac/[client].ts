@@ -11,6 +11,7 @@ const CLIENT_FILE_MAP: Record<string, string> = {
   'fixico': 'CLIENT_01_FIXICO',
   'msn': 'CLIENT_01_MSN',
   'reducate': 'CLIENT_02_PO_ONLINE',
+  'aaa': 'CLIENT_01_AAA',  // No CLIENT file yet, but ORG/LIBRARY overrides exist
 };
 
 // Client-specific role remapping (old role → new role)

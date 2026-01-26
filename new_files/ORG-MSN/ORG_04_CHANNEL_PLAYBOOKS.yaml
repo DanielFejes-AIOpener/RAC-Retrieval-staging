@@ -1,0 +1,126 @@
+# ORG_04_CHANNEL_PLAYBOOKS.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG per-channel constraints and output rules (baseline)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "MSG per-channel list and priority formats"
+  notes: "Phase 1 onboarding - ORG layer. Channel list complete, detailed playbooks missing (GAP-M-002)."
+  tags: [org, ssot, channels, playbook, msg]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ACTIVE CHANNELS
+# ═══════════════════════════════════════════════════════════════════════════
+
+active_channels:
+  description: "Channels actively used by MSG/MSN"
+  # SOURCE: Onboarding CSV "Welke kanalen gebruiken jullie actief?", VERIFIED
+
+  primary_channels:
+    - channel: "Email"
+      status: "active"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - channel: "LinkedIn"
+      status: "active"
+      priority: "high"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - channel: "Website"
+      url: "www.milieuservicenederland.nl"
+      status: "active"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - channel: "Ads"
+      status: "active"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - channel: "Blog"
+      status: "active"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - channel: "Nieuwsbrief (Newsletter)"
+      status: "active"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - channel: "Presentaties (Presentations)"
+      status: "active"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+  secondary_channels:
+    - channel: "Facebook"
+      status: "active"
+      priority: "secondary"
+      # SOURCE: Onboarding CSV "Beschrijf welke kanalen nog meer", VERIFIED
+
+    - channel: "Instagram"
+      status: "active"
+      priority: "secondary"
+      # SOURCE: Onboarding CSV "Beschrijf welke kanalen nog meer", VERIFIED
+
+    - channel: "Internal SharePoint platform"
+      status: "active"
+      context: "Internal news"
+      # SOURCE: Onboarding CSV "Beschrijf welke kanalen nog meer", VERIFIED
+
+    - channel: "Partner/external websites"
+      status: "active"
+      context: "Publications through collaborations"
+      # SOURCE: Onboarding CSV "Beschrijf welke kanalen nog meer", VERIFIED
+
+    - channel: "Offline events/trade shows"
+      status: "active"
+      context: "In-person marketing"
+      # SOURCE: Onboarding CSV "Beschrijf welke kanalen nog meer", VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRIORITY FORMATS
+# ═══════════════════════════════════════════════════════════════════════════
+
+priority_formats:
+  description: "Formats that need immediate excellence (3-5 selected)"
+  # SOURCE: Onboarding CSV "Kies 3–5 formats die meteen goed moeten zijn", VERIFIED
+
+  immediate_priority:
+    - format: "Landing page"
+      status: "high_priority"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - format: "LinkedIn post"
+      status: "high_priority"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - format: "Ad copy"
+      status: "high_priority"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - format: "Newsletter"
+      status: "high_priority"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+    - format: "Blog"
+      status: "high_priority"
+      # SOURCE: Onboarding CSV, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CHANNEL PLAYBOOKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+channel_playbooks:
+  status: "incomplete"
+  # GAP-M-002: Channel-specific guidelines, best practices, constraints not provided
+  # IMPACT: ORG_04 partial - channel list only, missing detailed playbooks
+  # SEARCHED: Onboarding CSV, Corporate Presentation, Brand Manual v8
+  # RESOLUTION: Document channel-specific requirements (3-5 hours estimated)
+
+  notes: |
+    Active channels and priority formats identified.
+    Detailed channel-specific playbooks to be added in Phase 2:
+    - LinkedIn specifications and best practices
+    - Newsletter formatting and frequency
+    - Blog structure and SEO requirements
+    - Landing page components and conversion elements
+    - Ad copy guidelines per platform

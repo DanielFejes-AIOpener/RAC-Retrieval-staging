@@ -1,0 +1,292 @@
+# ORG_04_CHANNEL_PLAYBOOKS.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Fixico - Per-channel specifications, KPIs, and best practices
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Fixico channel playbooks - LinkedIn, website, Instagram, internal channels"
+  org_id: "FIXICO"
+  tags: [org, ssot, channels, playbook, kpis]
+  # SOURCE: Generated during onboarding
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ACTIVE CHANNELS
+# ═══════════════════════════════════════════════════════════════════════════
+
+active_channels:
+  primary:
+    - "LinkedIn (B2B primary)"
+    - "Website (fixico.com)"
+  secondary:
+    - "Instagram (in development)"
+  internal:
+    - "Slack"
+    - "Gmail"
+  # SOURCE: 2511 - Content goals and KPIs.docx + Fixico notes.docx, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LINKEDIN
+# ═══════════════════════════════════════════════════════════════════════════
+
+channels:
+  linkedin:
+    description: "Primary B2B channel for thought leadership and awareness"
+    # SOURCE: 2511 - Content goals and KPIs.docx, VERIFIED
+
+    kpis:
+      post_metrics:
+        impressions_target: 3300
+        unique_impressions_target: 2000
+        reactions_target: 60
+        # SOURCE: 2511 - Content goals and KPIs.docx, VERIFIED
+
+      follower_growth:
+        target: "2% QoQ (quarter-over-quarter)"
+        # SOURCE: 2511 - Content goals and KPIs.docx, VERIFIED
+
+    productivity_targets:
+      current_output: "2 LinkedIn posts per week"
+      ai_enhanced_target: "4 LinkedIn posts per week"
+      efficiency_gain: "2x productivity increase"
+      # SOURCE: Fixico notes - 5 nov 2025.docx, VERIFIED
+
+      presentation_creation:
+        current_time: "4 hours"
+        target_time: "30 minutes"
+        # SOURCE: Fixico notes - 5 nov 2025.docx, VERIFIED
+
+    content_strategy:
+      thought_leadership:
+        goal: "Show thought leadership in automotive aftersales"
+        challenge: "Combat perception of being 'small new player'"
+        approach: "Demonstrate expertise and market position"
+        # SOURCE: Fixico notes.docx, VERIFIED
+
+      ceo_channel:
+        name: "Derek"
+        role: "CEO as thought leadership channel"
+        note: "Very active on LinkedIn, uses ChatGPT for content"
+        # SOURCE: Fixico notes.docx, VERIFIED
+
+    content_quality:
+      feedback_mechanisms:
+        - "Internal review (Derek provides feedback on posts)"
+        - "Avoid 'ChatGPT tone' - authentic voice required"
+        # SOURCE: Fixico notes.docx - Derek feedback example, VERIFIED
+
+      brand_consistency:
+        requirement: "Balance tech passion with professional B2B tone"
+        # SOURCE: INFERRED from tone of voice guidelines + workshop discussions
+
+    # Use industry best practices from reference template for:
+    # - Character limits
+    # - Image specs
+    # - Video specs
+    # - Posting times
+    # - Engagement tactics
+    # GAP: GAP-M-004 - Detailed LinkedIn playbook not documented
+
+  # ───────────────────────────────────────────────────────────────────────
+  # WEBSITE
+  # ───────────────────────────────────────────────────────────────────────
+
+  website:
+    primary_site: "https://fixico.com"
+    # SOURCE: Workshop notes, VERIFIED
+
+    legacy_site:
+      url: "https://fixico.nl"
+      status: "Being phased out (B2C)"
+      note: "fixico.com is B2B focus"
+      # SOURCE: Fixico notes.docx, VERIFIED
+
+    language_preference: "British English (not American English)"
+    # SOURCE: 2511 - Tone of voice.pdf + Workshop notes, VERIFIED
+
+    kpis:
+      traffic:
+        weekday_visits: 120
+        weekend_visits: 50
+        # SOURCE: 2511 - Content goals and KPIs.docx, VERIFIED
+
+      conversions:
+        demand_side_forms: "4 per month"
+        supply_side_forms: "15 per month"
+        # SOURCE: 2511 - Content goals and KPIs.docx, VERIFIED
+
+    # GAP: GAP-M-005 - Detailed website content guidelines not documented
+
+  # ───────────────────────────────────────────────────────────────────────
+  # INSTAGRAM
+  # ───────────────────────────────────────────────────────────────────────
+
+  instagram:
+    status: "To be determined (TBD)"
+    # SOURCE: 2511 - Content goals and KPIs.docx, VERIFIED
+
+    notes: "Mentioned as channel to add but not yet active with defined strategy"
+    # SOURCE: Fixico notes.docx, VERIFIED
+
+  # ───────────────────────────────────────────────────────────────────────
+  # INTERNAL CHANNELS
+  # ───────────────────────────────────────────────────────────────────────
+
+  internal:
+    slack:
+      purpose: "Team communication and collaboration"
+      note: "Integration capability available for AIO platform testing"
+      # SOURCE: Fixico notes.docx, VERIFIED
+
+    gmail:
+      purpose: "Email communication"
+      note: "Integration capability available"
+      # SOURCE: Fixico notes.docx, VERIFIED
+
+    internal_branding:
+      importance: "High - ensure everyone can explain what Fixico does"
+      example_project: "Hyperfocus (dashboard in hallway for quick AI-powered updates)"
+      goal: "Consistent messaging across all team members"
+      context: "Platform positioning - 'we are our platform'"
+      # SOURCE: Fixico notes.docx, VERIFIED
+
+  # ───────────────────────────────────────────────────────────────────────
+  # EMPLOYER BRANDING
+  # ───────────────────────────────────────────────────────────────────────
+
+  employer_branding:
+    note: "Active focus on employer branding activities"
+    # SOURCE: Fixico notes.docx + TRANSCRIPT discussions, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTENT PRODUCTION GOALS
+# ═══════════════════════════════════════════════════════════════════════════
+
+content_goals:
+  productivity_goal:
+    description: "From 1 FTE to 2 FTE output - double productivity with AI"
+    measurement: "Output quantity (e.g., posts per week, presentation speed)"
+    # SOURCE: Fixico notes.docx, VERIFIED
+
+  quality_goal:
+    description: "Better engagement per post"
+    measurement: "Increased engagement metrics on social posts"
+    note: "Specific metrics to be defined"
+    # SOURCE: Fixico notes.docx - goals discussion, VERIFIED
+
+  mindset_goal:
+    description: "Ready to scale to international markets"
+    vision: "Turn on France, Italy, etc. markets with localized content at scale"
+    # SOURCE: Fixico notes.docx + TRANSCRIPT 1, VERIFIED
+
+  localization_readiness:
+    challenge: "Very difficult to find right people for each market"
+    ai_solution: "Use AI for localization instead of hiring market-specific marketers"
+    markets: "NL, DE, UK are focus; FR, IT, ES, DK, BE are expansion targets"
+    # SOURCE: TRANSCRIPT 1, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MULTILANGUAGE CONTENT REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+multilanguage:
+  primary_markets:
+    - language: "en-GB"
+      market: "United Kingdom"
+      priority: "High"
+
+    - language: "de-DE"
+      market: "Germany"
+      priority: "High"
+      note: "Much more formal tone required"
+
+    - language: "nl-NL"
+      market: "Netherlands"
+      priority: "High"
+
+  secondary_markets:
+    - language: "nl-BE"
+      market: "Belgium (Flemish)"
+      note: "Nuances vs. Netherlands Dutch"
+
+    - language: "fr-BE"
+      market: "Belgium (French)"
+
+    - language: "es-ES"
+      market: "Spain"
+
+    - language: "it-IT"
+      market: "Italy"
+
+    - language: "da-DK"
+      market: "Denmark"
+
+  # SOURCE: 2511 - Glossary B2B.xlsx + Workshop discussions, VERIFIED
+
+  localization_approach:
+    principle: "Not one-size-fits-all"
+    requirement: "Cultural adaptation beyond translation"
+    complexity: "Each market has unique tone, formality, and communication preferences"
+    # SOURCE: TRANSCRIPT 1, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DELIVERABLE TYPES
+# ═══════════════════════════════════════════════════════════════════════════
+
+core_deliverables:
+  social_media:
+    - "LinkedIn posts (2-4 per week)"
+    - "Instagram content (TBD)"
+    - "Testimonials (multi-language)"
+    # SOURCE: Fixico notes.docx, VERIFIED
+
+  presentations:
+    - "Sales presentations"
+    - "Internal presentations"
+    - "Partner presentations"
+    tools:
+      - "Google Slides (existing templates)"
+      - "Gamma (preferred for new content)"
+    # SOURCE: Fixico notes.docx, VERIFIED
+    # GAP: GAP-H-005 - Actual template files not provided
+
+  marketing_materials:
+    - "Product presentations"
+    - "Thought leadership content"
+    - "Internal branding materials"
+    # SOURCE: INFERRED from workshop discussions
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TREND WATCHING & COMPETITIVE MONITORING
+# ═══════════════════════════════════════════════════════════════════════════
+
+monitoring:
+  competitive_intelligence:
+    goal: "Automated overview of competitor activities"
+    desired_output: "What are competitors doing?"
+    format: "Internal newsletter"
+    requirement: "Accurate information with source verification critical"
+    # SOURCE: Fixico notes.docx, VERIFIED
+
+  trend_watching:
+    purpose: "Stay current on automotive aftersales trends"
+    challenge: "Information must be accurate and properly sourced"
+    # SOURCE: Fixico notes.docx, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONSTRAINTS & REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+constraints:
+  platform_specific:
+    fixico_platform: "Must be consistent and clear - we are our platform"
+    requirement: "All content must accurately represent platform capabilities"
+    audience: "Sales teams, users, partners all need clear, consistent messaging"
+    # SOURCE: Fixico notes.docx - Oscar agent discussion, VERIFIED
+
+  brand_consistency:
+    requirement: "Eenduidig (unambiguous/consistent) messaging across all channels"
+    importance: "Critical for platform business model"
+    # SOURCE: Fixico notes.docx, VERIFIED
