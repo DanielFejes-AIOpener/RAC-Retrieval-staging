@@ -129,8 +129,8 @@ juridisch:
   characteristics:
     pronouns:
       formal: "u / uw"
-      third_person: "de Influencer", "de Opdrachtgever"
-      example: "De Influencer verplicht zich tot..." (The Influencer commits to...)
+      third_person: ["de Influencer", "de Opdrachtgever"]
+      example: "De Influencer verplicht zich tot... (The Influencer commits to...)"
 
     structure:
       - "Numbered articles and sub-articles"
