@@ -155,7 +155,7 @@ example_sentences:
   perfect_fit:
     - "Geen enkele onderneming is hetzelfde: daarom stemmen wij onze oplossingen af op jouw situatie."
     - "Wij zorgen dat de afvalinzameling past bij jouw manier van werken."
-    note: "These sentences exemplify the right tone and positioning"
+    # Note: These sentences exemplify the right tone and positioning
 
   never_use:
     - sentence: "Met MSN wordt 100 procent van al het afval gerecycled, volledig circulair en CO2-neutraal."

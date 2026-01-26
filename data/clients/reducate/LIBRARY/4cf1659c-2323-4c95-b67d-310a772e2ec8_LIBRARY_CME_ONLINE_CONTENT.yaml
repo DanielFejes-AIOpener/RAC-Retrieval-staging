@@ -185,7 +185,7 @@ newsletter_format:
       pattern: "Featured course with description + CTA"
       headline_style: "Bold, benefit-focused"
       body_length: "50-80 words"
-      cta: "Bekijk de cursus >" or "Lees meer >"
+      cta: "Bekijk de cursus > or Lees meer >"
 
     blog_promotion:
       pattern: "Similar to advertorial format (shortened)"
