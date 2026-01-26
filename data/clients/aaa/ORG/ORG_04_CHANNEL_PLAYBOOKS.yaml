@@ -24,8 +24,6 @@ channels:
 
   instagram:
     description: "Instagram content formats for influencer campaigns"
-    # SOURCE: "Reach outs voorbeelden.docx" - multiple campaign briefs, VERIFIED
-    # SOURCE: "Schrijfstijl_briefing agent.docx" - briefing formats, VERIFIED
 
     content_formats:
       reels:
@@ -34,7 +32,6 @@ channels:
         duration_recommended: "15-60 seconds"
         aspect_ratio: "9:16"
         placement: "Reels feed"
-        # SOURCE: "Reach outs voorbeelden.docx" - NPL, bol, IKEA, Multi-Gyn campaigns, VERIFIED
 
       carousels:
         description: "Multi-image swipeable posts"
@@ -42,7 +39,6 @@ channels:
         images_recommended: "3-5"
         aspect_ratio: "1:1 or 4:5"
         placement: "Main feed"
-        # SOURCE: "Reach outs voorbeelden.docx" - NPL campaign "3 carousels", VERIFIED
 
       stories:
         description: "Ephemeral 24-hour content in 3-frame sets"
@@ -50,7 +46,6 @@ channels:
         duration_per_frame: "3-5 seconds"
         aspect_ratio: "9:16"
         placement: "Stories feed"
-        # SOURCE: "Reach outs voorbeelden.docx" - NPL "2 x 3-frame Stories", VERIFIED
         note: "AAA standard: Stories delivered as 3-frame sets"
 
     best_practices:
@@ -79,7 +74,6 @@ channels:
 
   tiktok:
     description: "TikTok video content for influencer campaigns"
-    # SOURCE: "Reach outs voorbeelden.docx" - TikTok mentioned across campaigns, VERIFIED
 
     content_formats:
       video:
@@ -113,27 +107,22 @@ channels:
 
 tools:
   description: "Technology and platforms used for campaign management and compliance"
-  # SOURCE: "Reach outs voorbeelden.docx" + "Schrijfstijl_briefing agent.docx", VERIFIED
 
   project_management:
     - name: "Monday.com"
       purpose: "Campaign planning, task tracking, timeline management"
-      # SOURCE: "Reach outs voorbeelden.docx" - LEGO campaign mentions Monday, VERIFIED
 
   influencer_discovery:
     - name: "Kolsquare"
       purpose: "Influencer discovery, vetting, analytics"
-      # SOURCE: "Reach outs voorbeelden.docx" - LEGO campaign "via Kolsquare", VERIFIED
 
   contract_management:
     - name: "HelloSign"
       purpose: "Digital signature for influencer contracts"
-      # SOURCE: "Reach outs voorbeelden.docx" - NPL campaign "via HelloSign", VERIFIED
 
   collaboration:
     - name: "Google Workspace"
       purpose: "Briefing documents, shared folders, presentations"
-      # SOURCE: "Schrijfstijl_briefing agent.docx" - Google Slides format, VERIFIED
       components:
         - "Google Slides (briefings)"
         - "Google Sheets (reporting)"
@@ -146,7 +135,6 @@ tools:
 
 compliance:
   description: "Regulatory and legal frameworks for influencer marketing in Netherlands/EU"
-  # SOURCE: "Reach outs voorbeelden.docx" - compliance clauses across multiple campaigns, VERIFIED
 
   # ─────────────────────────────────────────────────────────────────────────
   # EXCLUSIVITY CLAUSES
@@ -154,25 +142,20 @@ compliance:
 
   exclusivity:
     description: "Campaign exclusivity requirements for influencers"
-    # SOURCE: "Reach outs voorbeelden.docx" - appears in multiple campaigns, VERIFIED
 
     standard_clauses:
       - campaign: "NPL (Nationale Postcode Loterij)"
         exclusivity: "No competitor lottery brands during campaign + 3 months after"
-        # SOURCE: NPL reach-out example, VERIFIED
 
       - campaign: "bol Wonen"
         exclusivity: "No other e-commerce platforms (Wehkamp, Coolblue) during campaign"
-        # SOURCE: bol reach-out example, VERIFIED
 
       - campaign: "IKEA"
         exclusivity: "No competitor furniture brands during campaign"
         competitors_listed: ["Puma", "L'Oréal"]
-        # SOURCE: IKEA reach-out example, VERIFIED
 
       - campaign: "Multi-Gyn"
         exclusivity: "No competitor feminine healthcare brands for 6 months"
-        # SOURCE: Multi-Gyn reach-out example, VERIFIED
 
   # ─────────────────────────────────────────────────────────────────────────
   # AGE RESTRICTIONS
@@ -180,13 +163,11 @@ compliance:
 
   age_restrictions:
     description: "Audience age requirements for specific product categories"
-    # SOURCE: "Reach outs voorbeelden.docx" - NPL campaign, VERIFIED
 
     npl_lottery:
       requirement: "Follower base must be <25% under 18 years old"
       rationale: "Legal age requirement for lottery products in Netherlands"
       verification: "Check Instagram Insights or TikTok Analytics"
-      # SOURCE: NPL reach-out "Belangrijke voorwaarde: je volgersbestand mag niet meer dan 25% NPL (<18) bevatten", VERIFIED
 
   # ─────────────────────────────────────────────────────────────────────────
   # KOAG APPROVAL
@@ -194,7 +175,6 @@ compliance:
 
   koag_approval:
     description: "Dutch Advertising Code Committee review for regulated products"
-    # SOURCE: "Reach outs voorbeelden.docx" - Multi-Gyn campaign, VERIFIED
 
     process:
       - step: "Submit campaign concept to KOAG"
@@ -207,7 +187,6 @@ compliance:
       - "Regulated claims"
 
     example: "Multi-Gyn campaign requires KOAG approval for medical product claims"
-    # SOURCE: Multi-Gyn reach-out mentions KOAG, VERIFIED
 
   # ─────────────────────────────────────────────────────────────────────────
   # INFLUENCER REGISTER
@@ -215,7 +194,6 @@ compliance:
 
   influencer_register:
     description: "Dutch influencer registration requirement"
-    # SOURCE: "Reach outs voorbeelden.docx" - mentioned across campaigns, VERIFIED
 
     requirement: "Influencers must be registered in official Dutch influencer register"
     verification: "Check registration status before contracting"
@@ -228,7 +206,6 @@ compliance:
 
   brand_safety:
     description: "Brand safety and content moderation standards"
-    # SOURCE: Industry standard practice, INFERRED from professional context
 
     vetting_process:
       - "Review influencer content history"
@@ -247,7 +224,6 @@ compliance:
       description: "Legal disclosure of paid partnerships"
       netherlands_standard: "Use #ad or #samenwerking hashtags"
       platform_native: "Use Instagram/TikTok paid partnership labels"
-      # SOURCE: Industry standard + Dutch market practice, INFERRED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # DELIVERABLE SPECIFICATIONS — Standard campaign outputs
@@ -255,7 +231,6 @@ compliance:
 
 deliverable_specs:
   description: "Standard deliverable formats and quantities for influencer campaigns"
-  # SOURCE: "Reach outs voorbeelden.docx" - campaign deliverable structures, VERIFIED
 
   campaign_structures:
     standard_instagram:
@@ -264,7 +239,6 @@ deliverable_specs:
         - "1-3 Carousels"
         - "1-2 Stories sets (3 frames each)"
       duration: "1-2 weeks"
-      # SOURCE: NPL, bol, IKEA campaign patterns, VERIFIED
 
     tiktok_focused:
       components:
@@ -277,7 +251,6 @@ deliverable_specs:
         - "Instagram: Reels + Stories"
         - "TikTok: 2-3 videos"
       duration: "2-4 weeks"
-      # SOURCE: LEGO campaign structure "jaarcampagne 2026", VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # GLOBAL CONSTRAINTS (Cross-channel defaults)

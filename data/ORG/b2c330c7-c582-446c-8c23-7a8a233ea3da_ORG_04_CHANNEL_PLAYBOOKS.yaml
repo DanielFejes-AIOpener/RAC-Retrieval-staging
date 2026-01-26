@@ -25,7 +25,6 @@ channels:
   linkedin:
     description: "LinkedIn specifications and best practices for B2B"
     
-    # Source: B2B Marketing Channel Specs research (2025)
     
     character_limits:
       post: 3000
@@ -121,7 +120,6 @@ channels:
   email:
     description: "Email marketing specifications and best practices"
     
-    # Source: B2B Marketing Channel Specs research (2025)
     
     character_limits:
       subject_line_max: 60
@@ -207,7 +205,6 @@ channels:
   google_ads:
     description: "Google Ads specifications (Search + Display)"
     
-    # Source: B2B Marketing Channel Specs research (2025)
     
     search_ads:
       responsive_search:
@@ -303,7 +300,6 @@ channels:
   meta:
     description: "Meta platform specifications (Facebook/Instagram)"
     
-    # Source: B2B Marketing Channel Specs research (2025)
     
     b2b_relevance: |
       Meta platforms are secondary for B2B but valuable for:
@@ -383,7 +379,6 @@ channels:
   landing_pages:
     description: "Landing page best practices"
     
-    # Source: B2B Marketing Channel Specs research (2025)
     
     above_the_fold:
       description: "Make-or-break elevator pitch area"
@@ -468,7 +463,6 @@ channels:
   website_blog:
     description: "Website and blog content specifications"
     
-    # Source: B2B Marketing Channel Specs research (2025)
     
     seo:
       content_length:

@@ -17,7 +17,6 @@ meta:
 
 reach_out_templates:
   description: "Real campaign reach-out examples from AAA projects"
-  # SOURCE: "Reach outs voorbeelden.docx" - 5 complete examples, VERIFIED
 
   # ─────────────────────────────────────────────────────────────────────────
   # TEMPLATE 1: NPL (NATIONALE POSTCODE LOTERIJ)
@@ -26,7 +25,6 @@ reach_out_templates:
   template_npl:
     campaign: "Nationale Postcode Loterij"
     sector: "Lottery & Gaming"
-    # SOURCE: "Reach outs voorbeelden.docx" - NPL example, VERIFIED
 
     structure:
       greeting: "Hoi [Name]!"
@@ -66,7 +64,6 @@ reach_out_templates:
   template_bol:
     campaign: "bol Wonen"
     sector: "E-commerce (Home & Interior)"
-    # SOURCE: "Reach outs voorbeelden.docx" - bol example, VERIFIED
 
     structure:
       greeting: "Hoi [Name]!"
@@ -102,7 +99,6 @@ reach_out_templates:
   template_ikea:
     campaign: "IKEA Keuken"
     sector: "Home Furnishings"
-    # SOURCE: "Reach outs voorbeelden.docx" - IKEA example, VERIFIED
 
     structure:
       greeting: "Hoi [Name]!"
@@ -138,7 +134,6 @@ reach_out_templates:
   template_multigyn:
     campaign: "Multi-Gyn"
     sector: "Healthcare (Feminine Care)"
-    # SOURCE: "Reach outs voorbeelden.docx" - Multi-Gyn example, VERIFIED
 
     structure:
       greeting: "Hoi [Name]!"
@@ -177,7 +172,6 @@ reach_out_templates:
   template_lego:
     campaign: "LEGO Jaarcampagne 2026"
     sector: "Toys & Entertainment"
-    # SOURCE: "Reach outs voorbeelden.docx" - LEGO example, VERIFIED
 
     structure:
       greeting: "Hoi [Name]!"
@@ -216,8 +210,6 @@ reach_out_templates:
 
 contract_template:
   description: "Standard influencer contract structure"
-  # SOURCE: "Schrijfstijl_briefing agent.docx" - contract references, VERIFIED
-  # SOURCE: "Reach outs voorbeelden.docx" - HelloSign mentioned, VERIFIED
 
   format: "PDF via HelloSign (digital signature)"
   tone: "Juridisch (formal legal Dutch)"
@@ -299,7 +291,6 @@ contract_template:
 
 standard_reach_out_format:
   description: "Generic template structure for any campaign"
-  # SOURCE: Pattern analysis from 5 examples, VERIFIED
 
   template: |
     Hoi [Name]!
@@ -356,7 +347,6 @@ standard_reach_out_format:
 
 tone_transformation_patterns:
   description: "How to transform formal brand language to jij-vorm for creators"
-  # SOURCE: "Schrijfstijl_briefing agent.docx" - transformation examples, VERIFIED
 
   formal_to_jij:
     - formal: "Het merk positioneert zich als marktleider"

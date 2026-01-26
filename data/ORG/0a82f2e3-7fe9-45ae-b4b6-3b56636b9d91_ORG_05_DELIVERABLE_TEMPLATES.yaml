@@ -27,7 +27,6 @@ templates:
     name: "SEO Blog Post"
     description: "Search-optimized blog article structure"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       length:
@@ -91,7 +90,6 @@ templates:
     name: "Customer Case Study"
     description: "Results-focused customer success story"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       length:
@@ -163,7 +161,6 @@ templates:
     name: "White Paper"
     description: "In-depth thought leadership document"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       length:
@@ -236,7 +233,6 @@ templates:
     name: "Email Newsletter"
     description: "Regular subscriber communication"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       length:
@@ -305,7 +301,6 @@ templates:
     name: "Social Media Content Series"
     description: "Themed multi-post content"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       posts_per_series: "4-8"
@@ -380,7 +375,6 @@ templates:
     name: "Sales Presentation"
     description: "B2B pitch/proposal deck"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       slides:
@@ -460,7 +454,6 @@ templates:
     name: "Product/Service One-Pager"
     description: "Single-page overview document"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       length: "1 page (A4/Letter)"
@@ -536,7 +529,6 @@ templates:
     name: "Job Posting (Vacature)"
     description: "Recruitment advertisement"
     
-    # Source: Industry-Standard Structures research (2025)
     
     specs:
       length:

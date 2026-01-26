@@ -44,7 +44,6 @@ messaging:
   #   supporting_points: ["Point 1", "Point 2"]
   
   ctas:
-    # Source: B2B Marketing Messaging Best Practices research (2025)
     
     high_converting_phrases:
       description: "Action-oriented, benefit-focused CTAs that convert"
@@ -99,7 +98,6 @@ constraints:
   never_say:
     description: "Words and phrases to avoid in all content."
     
-    # Source: B2B Marketing Messaging Best Practices research (2025)
     
     buzzwords_to_avoid:
       description: "88% of B2B decision-makers say buzzwords make companies less trustworthy"
@@ -179,7 +177,6 @@ constraints:
   tone_constraints:
     description: "Boundaries for tone of voice."
     
-    # Source: B2B Marketing Messaging Best Practices research (2025)
     
     tone_profiles:
       description: "Common B2B tone options - choose based on brand and audience"

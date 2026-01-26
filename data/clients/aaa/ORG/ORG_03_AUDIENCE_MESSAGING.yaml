@@ -26,7 +26,6 @@ audiences:
         - "Multi-channel social media presence"
         - "Campaign-based marketing (launches, seasonal, always-on)"
       sectors: ["E-commerce", "FMCG", "Beauty", "Sportswear", "Toys", "Travel"]
-      # SOURCE: Client roster analysis (bol.com, Unilever, L'Oréal, Puma, LEGO, Sunny Cars), INFERRED
 
     - name: "Regulated Industry Brands"
       description: "Brands in sectors with complex compliance requirements"
@@ -38,7 +37,6 @@ audiences:
         - "Age-restricted audience targeting"
       sectors: ["Lottery & Gaming", "Healthcare", "Children's Products"]
       compliance_needs: true
-      # SOURCE: NPL (age restrictions), Multi-Gyn (KOAG), LEGO (child safety), VERIFIED
 
     - name: "Multi-Market Brands (Benelux/EU)"
       description: "Brands operating across multiple European markets"
@@ -48,7 +46,6 @@ audiences:
         - "Need for cross-border campaigns"
         - "Multi-language content requirements"
       regions: ["Netherlands", "Belgium", "Germany", "EU-wide"]
-      # SOURCE: LEGO Benelux, international clients, Vera EU/NL focus, VERIFIED
 
   # NOTE: Detailed personas can be developed in Phase II
   # Current ICPs derived from 11-client roster analysis
@@ -61,7 +58,6 @@ audiences:
 
 voice_and_tone:
   description: "AAA's distinctive voice varies by audience and deliverable type"
-  # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
 
   for_creators_influencers:
     form: "Jij-vorm (informal you in Dutch)"
@@ -70,12 +66,10 @@ voice_and_tone:
       - "Make creators feel personally addressed"
       - "Transform strategic language into relatable creator language"
       - "Keep briefings clear, concise, and engaging so creators read fully"
-    # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
 
     transformation_example:
       strategy_language: "Met deze campagne willen we middels Instagram content awareness creëren voor de nieuwste producten van Lidl"
       creator_language: "Jij gaat met leuke content op Instagram jouw volgers vertellen over de nieuwste producten van Lidl"
-      # SOURCE: "Schrijfstijl_briefing agent.docx", exact example, VERIFIED
 
   for_contracts_legal:
     form: "Juridisch (formal legal Dutch)"
@@ -84,7 +78,6 @@ voice_and_tone:
       - "Legally precise and unambiguous"
       - "All information included explicitly"
       - "Template-based for consistency"
-    # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
 
   for_clients_professional:
     form: "Professional business Dutch"
@@ -93,7 +86,6 @@ voice_and_tone:
       - "Clear campaign information"
       - "Detailed deliverables and timings"
       - "Transparent about requirements and constraints"
-    # SOURCE: Reach-out examples show consistent professional tone, INFERRED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # MESSAGING — Key themes
@@ -101,7 +93,6 @@ voice_and_tone:
 
 messaging:
   tagline: "Creators at the core, data in the details."
-  # SOURCE: User provided, VERIFIED
 
   core_themes:
     - theme: "Authenticity"
@@ -110,7 +101,6 @@ messaging:
         - "Gen Y & Gen Z specialist expertise"
         - "Creator-first approach (&.talent sister label)"
         - "Real voices, real impact"
-      # SOURCE: Web research positioning, VERIFIED
 
     - theme: "Data-Driven Excellence"
       message: "Evidence-based strategies backed by proprietary ROInfluence platform"
@@ -118,7 +108,6 @@ messaging:
         - "NATO codes & Evidence Tiers for research quality"
         - "Competitive trope audits before creative"
         - "KPI-guaranteed delivery"
-      # SOURCE: Vera methodology + web research, VERIFIED
 
     - theme: "Compliance Expertise"
       message: "Navigate complex regulatory requirements with confidence"
@@ -126,7 +115,6 @@ messaging:
         - "Proven track record in regulated industries"
         - "Age restrictions, legal checklists, brand safety"
         - "KOAG approval, influencer register management"
-      # SOURCE: Reach-out examples with compliance frameworks, VERIFIED
 
     - theme: "Full-Service Integration"
       message: "Strategy through execution through measurement - all under one roof"
@@ -134,7 +122,6 @@ messaging:
         - "Three specialized labels (&.agency, &.talent, &.format)"
         - "60+ professionals across disciplines"
         - "End-to-end campaign management"
-      # SOURCE: Web research + agent capabilities, VERIFIED
 
   # NOTE: Detailed messaging canon can be developed through brand workshops
   key_messages: []

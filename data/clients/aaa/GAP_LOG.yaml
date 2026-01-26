@@ -57,7 +57,6 @@ closed_gaps:
       kvk_number: "83799648"
       entity_type: "Besloten Vennootschap (B.V.)"
       business_type: "Holding- en financieringsactiviteiten"
-      # SOURCE: User-provided KVK data, VERIFIED
 
     impact: "Enables contract templates, legal document generation"
     file_updated: "ORG_01_FOUNDATION.yaml"
@@ -78,7 +77,6 @@ closed_gaps:
 
     discovered_data:
       tagline: "Amplifying authentic voices that resonate with Gen Y and Gen Z"
-      # SOURCE: Web research - official positioning statement, VERIFIED
       source_url: "https://and-media.group/"
 
     impact: "Core brand positioning now documented"
@@ -117,7 +115,6 @@ closed_gaps:
         - "Unilever"
         - "Sonos, Inc."
         - "Moët & Chandon"
-      # SOURCE: Multiple verified sources, VERIFIED
 
     impact: "Provides campaign context, sector diversity evidence"
     file_updated: "ORG_01_FOUNDATION.yaml"
@@ -151,7 +148,6 @@ closed_gaps:
         - "KOAG approval (healthcare)"
         - "Influencer register"
         - "Brand safety"
-      # SOURCE: "Reach outs voorbeelden.docx" + "Schrijfstijl_briefing agent.docx", VERIFIED
 
     impact: "Enables accurate channel playbooks and deliverable specs"
     file_updated: "ORG_04_CHANNEL_PLAYBOOKS.yaml"
@@ -177,7 +173,6 @@ closed_gaps:
       creative_briefs: "12-part structure (May agent)"
       intelligence_reports: "Sheets/Docs/Chat formats (Vera agent)"
       concept_routes: "2-3 platforms (Max agent)"
-      # SOURCE: Multiple source documents, VERIFIED
 
     impact: "Provides concrete templates for all core workflows"
     file_updated: "ORG_05_DELIVERABLE_TEMPLATES.yaml"
@@ -212,7 +207,6 @@ closed_gaps:
           capabilities: 6
           systems: ["NATO codes", "Evidence Tiers 1-2"]
           output: "Intelligence reports (Sheets/Docs/Chat)"
-      # SOURCE: User discovery request specifications, VERIFIED
 
     impact: "Enables workflow automation with specialist agents"
     file_updated: "LIBRARY_AAA_AGENT_CAPABILITIES.yaml"
@@ -237,7 +231,6 @@ closed_gaps:
         - "juridisch (formal legal Dutch for contracts)"
       transformation_system: "Formal to jij-vorm conversion patterns"
       context_mapping: "Audience-specific tone application"
-      # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
 
     impact: "Ensures consistent, appropriate tone across all communications"
     file_updated: "LIBRARY_AAA_VOICE_TONE.yaml"
@@ -323,7 +316,6 @@ open_gaps:
         - "IMA"
         - "LIS The Agency"
         - "Scooperz"
-      # SOURCE: Web research, not yet verified in depth
 
     workaround: "General influencer marketing best practices"
     file_to_update: "ORG_01_FOUNDATION.yaml"

@@ -17,18 +17,15 @@ meta:
 
 voice_tone_system:
   description: "AAA uses context-specific voice and tone based on audience"
-  # SOURCE: "Schrijfstijl_briefing agent.docx" - explicit jij-vorm for creators, juridisch for contracts, VERIFIED
 
   primary_voices:
     - voice: "jij-vorm"
       context: "Creator communications"
       description: "Informal Dutch 'you' form - friendly, personal, authentic"
-      # SOURCE: "Schrijfstijl_briefing agent.docx" - "we gebruiken de jij-vorm", VERIFIED
 
     - voice: "juridisch"
       context: "Contracts and legal documents"
       description: "Formal legal Dutch - precise, professional, binding"
-      # SOURCE: "Schrijfstijl_briefing agent.docx" - "Juridisch" for contracts, VERIFIED
 
     - voice: "professional"
       context: "Client communications"
@@ -40,7 +37,6 @@ voice_tone_system:
 
 jij_vorm:
   description: "Informal Dutch 'you' form for influencer and creator communications"
-  # SOURCE: "Schrijfstijl_briefing agent.docx" - "voor creators gebruiken we de jij-vorm", VERIFIED
 
   context:
     use_for:
@@ -49,7 +45,6 @@ jij_vorm:
       - "Informal emails to creators"
       - "Social media DMs"
       - "Campaign updates to influencers"
-    # SOURCE: "Schrijfstijl_briefing agent.docx" + reach-out examples, VERIFIED
 
     do_not_use_for:
       - "Contracts"
@@ -122,7 +117,6 @@ jij_vorm:
 
 juridisch:
   description: "Formal legal Dutch for contracts and binding documents"
-  # SOURCE: "Schrijfstijl_briefing agent.docx" - "Juridisch" for contracts, VERIFIED
 
   context:
     use_for:
@@ -200,7 +194,6 @@ juridisch:
 
 transformation_guide:
   description: "How to transform formal brand language into jij-vorm for creators"
-  # SOURCE: "Schrijfstijl_briefing agent.docx" - "transformeren van formele merktaal naar jij-vorm", VERIFIED
 
   transformation_principles:
     - "Convert passive to active voice"
@@ -404,7 +397,6 @@ platform_adaptations:
   google_slides_briefing:
     tone: "jij-vorm for creator briefings"
     structure: "Visual-first, bullet points, conversational headings"
-    # SOURCE: "Schrijfstijl_briefing agent.docx" - Google Slides format for briefs, VERIFIED
 
   google_docs_contract:
     tone: "juridisch"

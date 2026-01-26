@@ -17,50 +17,37 @@ meta:
 
 org_basics:
   trading_name: "AndAgencyAmsterdam"
-  # SOURCE: Multiple documents, filenames, email signatures, VERIFIED
 
   website: "https://and-media.group/"
-  # SOURCE: User provided + web research confirmed, VERIFIED
 
   brand_aliases:
     - "&.agency"
     - "AAA"
-  # SOURCE: CSV filename uses "AAA", web research shows "&.agency" as label, VERIFIED
 
   parent_company: "&.media group"
-  # SOURCE: Web research - "60+ professionals working for three labels: &.agency, &.talent and &.format", VERIFIED
-  # SOURCE: https://and-media.group/nl/about-us
 
   sister_labels:
     - name: "&.talent"
       focus: "Talent management"
     - name: "&.format"
       focus: "Content production"
-  # SOURCE: Web research about &.media group structure, VERIFIED
 
   # Legal details — for disclaimers and formal documentation
   legal_details:
     legal_name: "AndAgencyAmsterdam"
-    # SOURCE: User provided via KVK lookup, VERIFIED
 
     kvk_number: "83799648"
-    # SOURCE: User provided via KVK lookup, VERIFIED
 
     business_type: "Holding- en financieringsactiviteiten"
-    # SOURCE: User provided via KVK lookup, VERIFIED
 
     entity_type: "Besloten Vennootschap (B.V.)"
-    # SOURCE: User provided via KVK lookup, VERIFIED
 
   leadership:
     - name: "Britt Hogenhuis"
       role: "Co-founder & Co-CEO"
-      # SOURCE: Web research - LinkedIn profile, VERIFIED
-      # SOURCE: https://www.linkedin.com/in/britt-hogenhuis-825ab1b/
 
     - name: "Sophie van der Schaft"
       role: "Co-founder & Co-CEO"
-      # SOURCE: Web research - "&.media group launched by Britt Hogenhuis and Sophie van der Schaft", VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # OPERATING CONTEXT — Marketing-relevant defaults
@@ -68,31 +55,24 @@ org_basics:
 
 operating_context:
   headquarters: "Amsterdam, Netherlands"
-  # SOURCE: Company name + web research confirms Amsterdam location, VERIFIED
 
   team_size: "60+"
-  # SOURCE: Web research - "&.media group with a team of 60+ professionals", VERIFIED
 
   timezone: "Europe/Amsterdam"
-  # SOURCE: Netherlands-based operations, VERIFIED
 
   languages:
     - code: "nl"
       name: "Nederlands"
       primary: true
-      # SOURCE: All source documents in Dutch, VERIFIED
 
     - code: "en"
       name: "English"
       primary: false
-      # SOURCE: International clients (Puma, L'Oréal), bilingual operations inferred, INFERRED
 
   regions_served:
     - "Netherlands"
     - "Benelux"
     - "European Union"
-  # SOURCE: Vera agent specs mention "EU/NL-relevantie", VERIFIED
-  # SOURCE: International brand clients suggest EU reach, INFERRED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # MARKET CONTEXT — Target markets and segments
@@ -103,7 +83,6 @@ market_context:
     - "Consumer Brands (B2C)"
     - "Regulated Industries"
     - "Multi-market Brands"
-  # SOURCE: Client roster analysis - bol.com (B2C), NPL/Multi-Gyn (regulated), LEGO (multi-market), INFERRED
 
   categories:
     - "E-commerce"
@@ -114,19 +93,16 @@ market_context:
     - "Travel & Hospitality"
     - "Lottery & Gaming"
     - "Healthcare"
-  # SOURCE: Client roster across 8+ sectors, VERIFIED from reach-out examples
 
   regions:
     - "Netherlands"
     - "Belgium"
     - "Germany"
     - "European Union"
-  # SOURCE: Operating context + international client base, INFERRED
 
   generational_focus:
     - "Gen Y (Millennials)"
     - "Gen Z"
-  # SOURCE: Web research - "amplifies authentic voices that resonate with Gen Y and Gen Z", VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CLIENT ROSTER — Major brands served
@@ -134,55 +110,40 @@ market_context:
 
 client_roster:
   description: "A-list consumer brands across diverse sectors requiring influencer marketing and creative campaigns"
-  # SOURCE: Web research mentions "A-list clients", VERIFIED
 
   clients:
     - name: "Nationale Postcode Loterij"
       sector: "Lottery & Gaming"
-      # SOURCE: "Reach outs voorbeelden.docx", full campaign brief, VERIFIED
 
     - name: "bol.com"
       sector: "E-commerce"
-      # SOURCE: "Reach outs voorbeelden.docx", bol Wonen campaign, VERIFIED
-      # SOURCE: Web research confirms as client, VERIFIED
 
     - name: "IKEA"
       sector: "Home Furnishings"
-      # SOURCE: "Reach outs voorbeelden.docx", kitchen campaign, VERIFIED
 
     - name: "Multi-Gyn"
       sector: "Healthcare"
-      # SOURCE: "Reach outs voorbeelden.docx", medical product campaign, VERIFIED
 
     - name: "The LEGO Group"
       sector: "Toys & Entertainment"
-      # SOURCE: "Reach outs voorbeelden.docx", year campaign 2026, VERIFIED
-      # SOURCE: "LEGO Groups Girls strategy.pptx", strategy deck, VERIFIED
 
     - name: "Sunny Cars"
       sector: "Travel & Car Rental"
-      # SOURCE: File names "Sunny Cars_strategie.pptx" and briefing deck, VERIFIED
 
     - name: "Puma"
       sector: "Sportswear"
-      # SOURCE: "Reach outs voorbeelden.docx", mentioned in IKEA reach-out, VERIFIED
-      # SOURCE: Web research confirms "PUMA Group" as client, VERIFIED
 
     - name: "L'Oréal"
       sector: "Beauty & Cosmetics"
-      # SOURCE: "Reach outs voorbeelden.docx", mentioned in IKEA reach-out, VERIFIED
 
     - name: "Unilever"
       sector: "FMCG/Consumer Goods"
-      # SOURCE: Web research - listed as A-list client, VERIFIED
 
     - name: "Sonos, Inc."
       sector: "Consumer Electronics"
-      # SOURCE: Web research - listed as A-list client, VERIFIED
 
     - name: "Moët & Chandon"
       sector: "Luxury Goods/Beverages"
-      # SOURCE: Web research - listed as A-list client, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # COMPETITOR REGISTRY — Optional, can be populated via Vera agent

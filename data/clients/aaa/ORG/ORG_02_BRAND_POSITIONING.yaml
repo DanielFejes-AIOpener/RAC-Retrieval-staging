@@ -17,7 +17,6 @@ meta:
 
 brand_identity:
   tagline: "Creators at the core, data in the details."
-  # SOURCE: User provided, VERIFIED
 
   core_values:
     - "Excellence is at the core of everything we do"
@@ -25,10 +24,8 @@ brand_identity:
     - "Enterprising and resourceful"
     - "Driven and intuitive"
     - "Ambitious for success - for ourselves and our clients"
-  # SOURCE: User provided brand statement, VERIFIED
 
   positioning_statement: "Full-service media & content company amplifying authentic voices that resonate with Gen Y and Gen Z through data-driven influencer marketing, creative strategy, and market intelligence."
-  # SOURCE: Web research combined with agent capabilities, VERIFIED + INFERRED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # OFFERS CATALOG — Core services
@@ -45,7 +42,6 @@ offers_catalog:
         - "Creator briefings and contracts"
         - "Content production oversight"
         - "Performance tracking and ROI measurement"
-      # SOURCE: Workshop docs, reach-out examples, agent capabilities, VERIFIED
 
     - name: "Creative Strategy & Concept Development"
       description: "Evidence-based creative concepts that emotionally resonate and drive business results"
@@ -57,7 +53,6 @@ offers_catalog:
         - "2-3 concept routes with mock scenes"
         - "Creative rationale and pitch decks"
         - "Quality gates (G1/G2/G3)"
-      # SOURCE: Max (Creative Director) agent capabilities, VERIFIED
 
     - name: "Market Intelligence & Trend Research"
       description: "On-demand evidence-based research with NATO codes and tiered source validation"
@@ -68,22 +63,18 @@ offers_catalog:
         - "Regulatory research (GDPR, EU AI Act)"
         - "Market analysis"
         - "Deliverables: Sheets, Docs, or Chat format"
-      # SOURCE: Vera (Trendwatcher) agent capabilities, VERIFIED
 
     - name: "Talent Management"
       description: "Creator and influencer representation and career development"
       key_benefit: "Professional talent management through &.talent sister label"
-      # SOURCE: Web research - &.talent label, VERIFIED
 
     - name: "Content Production"
       description: "Social-first content creation and production"
       key_benefit: "Native content through &.format sister label"
-      # SOURCE: Web research - &.format label, VERIFIED
 
     - name: "PR & Communications"
       description: "Integrated PR and communication services"
       key_benefit: "Holistic brand storytelling across earned media"
-      # SOURCE: Web research - services list, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # DIFFERENTIATORS — What makes AAA unique
@@ -94,30 +85,24 @@ differentiators:
     - claim: "AI-First Agency Operations"
       proof: "Three proprietary AI agents (May, Max, Vera) automating workflow from brief to concept to research"
       evidence_file: "$ref: LIBRARY_AAA_AGENT_CAPABILITIES"
-      # SOURCE: Core offering - all agent capabilities documents, VERIFIED
 
     - claim: "Evidence-Based Creative"
       proof: "NATO Admiralty Codes + Evidence Tiers (1-2) for all research; competitive trope audits before concepts"
       evidence: "Vera methodology requires ≥B2 reliability, 90% Tier 1-2 sources"
-      # SOURCE: Vera agent capabilities, quality gates, VERIFIED
 
     - claim: "Compliance Expertise for Regulated Industries"
       proof: "Successfully manage campaigns for lottery (NPL), healthcare (Multi-Gyn), children's brands (LEGO)"
       evidence: "Documented frameworks: age restrictions, KOAG approval, influencer register, role model checklists"
-      # SOURCE: Reach-out examples showing compliance requirements, VERIFIED
 
     - claim: "Data-Driven ROInfluence Platform"
       proof: "Proprietary platform driving strategies across paid, earned, and owned channels"
-      # SOURCE: Web research, VERIFIED
 
     - claim: "Gen Y & Gen Z Expertise"
       proof: "Specialist focus on authentic voices resonating with Millennial and Gen Z audiences"
-      # SOURCE: Web research positioning, VERIFIED
 
     - claim: "60+ Team Across 3 Specialized Labels"
       proof: "&.agency (campaigns), &.talent (representation), &.format (production)"
       evidence: "&.media group structure with integrated capabilities"
-      # SOURCE: Web research - organizational structure, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # PROOF POINTS — Client roster and credentials
@@ -140,29 +125,24 @@ proof_points:
         - "Unilever (FMCG)"
         - "Sonos (Consumer Electronics)"
         - "Moët & Chandon (Luxury)"
-      # SOURCE: Reach-out examples + web research, VERIFIED
 
     - type: "sector_diversity"
       claim: "Proven expertise across highly regulated and competitive sectors"
       proof: "E-commerce, FMCG, Beauty, Sportswear, Toys, Travel, Lottery, Healthcare, Luxury"
-      # SOURCE: Client roster analysis, VERIFIED
 
     - type: "organizational_credibility"
       claim: "60+ professionals, co-founded by Britt Hogenhuis & Sophie van der Schaft"
       source: "LinkedIn, company website"
-      # SOURCE: Web research, VERIFIED
 
     - type: "campaign_example"
       claim: "LEGO 2026 year campaign with attendance events"
       source: "Reach outs voorbeelden.docx"
       details: "Multi-touch campaign: 4-5 IG posts, store opening, LEGO World attendance"
-      # SOURCE: LEGO reach-out + strategy deck, VERIFIED
 
     - type: "campaign_example"
       claim: "NPL PostcodeKanjer campaign with strict age compliance"
       source: "Reach outs voorbeelden.docx"
       details: "Complex regulatory requirements: <25% under-25 audience, influencer register, role model checklist"
-      # SOURCE: NPL reach-out, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # PRICING — Approach
@@ -170,23 +150,19 @@ proof_points:
 
 pricing:
   approach: "show_ranges"
-  # SOURCE: Multiple reach-out examples show pricing structure, VERIFIED
 
   model_description: "Agency fee inclusive + CPM-based performance guarantees"
-  # SOURCE: Multi-Gyn reach-out, "incl. agency fee", "CPM aanhouden van maximaal €30", VERIFIED
 
   structure:
     - "Creator fees (inclusive of agency commission)"
     - "KPI-guaranteed delivery (impression-based)"
     - "CPM threshold management (e.g., max €30 CPM)"
     - "Optional buy-out fees for paid amplification"
-  # SOURCE: Reach-out examples show consistent structure, VERIFIED
 
   typical_deliverables:
     - deliverable: "1x IG Reel"
       kpi_example: "15,000-35,000 impressies"
       fee_range: "€500-€1,100 incl. agency fee"
-      # SOURCE: Multi-Gyn reach-out examples, VERIFIED
 
     - deliverable: "1x IG Carousel"
       note: "Part of multi-deliverable packages"
@@ -196,6 +172,5 @@ pricing:
 
     - deliverable: "Buy-out (per content piece, per week)"
       fee_example: "€750/week on META"
-      # SOURCE: Reach-out template, buy-out pricing, VERIFIED
 
   notes: "Final pricing varies by creator reach, campaign complexity, and client budget"
