@@ -5,9 +5,17 @@
     {
       "src": "api/**/*.ts",
       "use": "@vercel/node"
+    },
+    {
+      "src": "explorer.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/explorer",
+      "dest": "/explorer.html"
+    },
     {
       "src": "/api/rac/([a-z]+)",
       "dest": "/api/rac/[client].ts?client=$1"
