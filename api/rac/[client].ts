@@ -27,6 +27,7 @@ const CLIENT_ROLE_REMAP: Record<string, Record<string, string>> = {
 // Format: parent client slug → array of allowed client file IDs (without CLIENT_NN_ prefix)
 const CLIENT_ACCESS_GRANTS: Record<string, string[]> = {
   'uhu': ['PRORAIL'],  // UHU can access ProRail client data
+  'reducate': ['CME-ONLINE', 'PO_ONLINE'],  // Reducate can access both CME-Online and PO-Online
 };
 
 // Layers that get client data attached
