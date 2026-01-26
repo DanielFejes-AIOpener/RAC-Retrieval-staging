@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAC API Explorer</title>
+  <style>
+    :root {
+      --bg-primary: #1a1a2e;
+      --bg-secondary: #16213e;
+      --bg-tertiary: #0f3460;
+      --text-primary: #eaeaea;
+      --text-secondary: #a0a0a0;
+      --accent: #e94560;
+      --accent-hover: #ff6b6b;
+      --border: #2a2a4a;
+      --success: #4ade80;
+      --error: #f87171;
+      --json-key: #7dd3fc;
+      --json-string: #86efac;
+      --json-number: #fcd34d;
+      --json-bool: #c4b5fd;
+      --json-null: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h1::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.5rem;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .panel-header {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    select, input[type="text"], textarea {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+      font-size: 0.9375rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    select:focus, input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 1.125rem;
+      height: 1.125rem;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .checkbox-group label {
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.875rem 1.5rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+
+    .btn-small {
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+    }
+
+    .request-display {
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+
+    .request-method {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .request-url {
+      color: var(--json-key);
+    }
+
+    .request-body {
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .response-container {
+      position: relative;
+    }
+
+    .response-output {
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      overflow: auto;
+      max-height: 500px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .response-output.loading {
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .response-output.error {
+      color: var(--error);
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background: var(--bg-tertiary);
+    }
+
+    .status-indicator.success {
+      color: var(--success);
+    }
+
+    .status-indicator.error {
+      color: var(--error);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    textarea.system-prompt {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid var(--text-secondary);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .file-loading {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+    }
+
+    /* JSON Syntax Highlighting */
+    .json-key { color: var(--json-key); }
+    .json-string { color: var(--json-string); }
+    .json-number { color: var(--json-number); }
+    .json-bool { color: var(--json-bool); }
+    .json-null { color: var(--json-null); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RAC API Explorer</h1>
+
+    <!-- Query Builder Panel -->
+    <div class="panel">
+      <div class="panel-header">Query Builder</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="client">Client</label>
+          <select id="client">
+            <option value="uhu">uhu</option>
+            <option value="demo">demo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="layer">Layer</label>
+          <select id="layer">
+            <option value="CONFIG">CONFIG</option>
+            <option value="CLIENT">CLIENT</option>
+            <option value="LOGIC">LOGIC</option>
+            <option value="OPS">OPS</option>
+            <option value="ORG">ORG</option>
+            <option value="PACK">PACK</option>
+            <option value="ROLE" selected>ROLE</option>
+            <option value="USE_CASE">USE_CASE</option>
+            <option value="WORKFLOW">WORKFLOW</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="file">File</label>
+          <select id="file">
+            <option value="">Loading...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="section">Section (optional)</label>
+          <input type="text" id="section" placeholder="e.g., universal_gates">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-group">
+            <input type="checkbox" id="includeClient" checked>
+            <label for="includeClient">Include client data</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn" id="executeBtn" onclick="executeQuery()">
+            Execute Query
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Request Panel -->
+    <div class="panel">
+      <div class="panel-header">Request</div>
+      <div class="request-display" id="requestDisplay">
+        <span class="request-method">POST</span> <span class="request-url" id="requestUrl">/api/rac/uhu</span>
+        <div class="request-body" id="requestBody">{"path":"ROLE/"}</div>
+      </div>
+    </div>
+
+    <!-- Response Panel -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>Response</span>
+        <span class="status-indicator" id="statusIndicator" style="display: none;">
+          <span class="status-dot"></span>
+          <span id="statusText">200 OK</span>
+        </span>
+      </div>
+      <div class="response-container">
+        <button class="btn btn-secondary btn-small copy-btn" onclick="copyResponse()">Copy JSON</button>
+        <div class="response-output" id="responseOutput">
+          Select options and click "Execute Query" to see results.
+        </div>
+      </div>
+    </div>
+
+    <!-- System Prompt Panel -->
+    <div class="panel">
+      <div class="panel-header">System Prompt</div>
+      <div class="form-group">
+        <textarea class="system-prompt" id="systemPrompt" placeholder="Enter your system prompt or notes here..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'https://rac-retrieval.vercel.app/api/rac';
+    
+    // Cache for file lists per layer
+    const fileCache = {};
+    
+    // Elements
+    const clientSelect = document.getElementById('client');
+    const layerSelect = document.getElementById('layer');
+    const fileSelect = document.getElementById('file');
+    const sectionInput = document.getElementById('section');
+    const includeClientCheckbox = document.getElementById('includeClient');
+    const requestUrl = document.getElementById('requestUrl');
+    const requestBody = document.getElementById('requestBody');
+    const responseOutput = document.getElementById('responseOutput');
+    const statusIndicator = document.getElementById('statusIndicator');
+    const statusText = document.getElementById('statusText');
+    const executeBtn = document.getElementById('executeBtn');
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadFilesForLayer(layerSelect.value);
+      updateRequestDisplay();
+    });
+
+    // Event listeners
+    clientSelect.addEventListener('change', updateRequestDisplay);
+    layerSelect.addEventListener('change', () => {
+      loadFilesForLayer(layerSelect.value);
+      updateRequestDisplay();
+    });
+    fileSelect.addEventListener('change', updateRequestDisplay);
+    sectionInput.addEventListener('input', updateRequestDisplay);
+    includeClientCheckbox.addEventListener('change', updateRequestDisplay);
+
+    // Load files for a layer from the API
+    async function loadFilesForLayer(layer) {
+      // Check cache first
+      if (fileCache[layer]) {
+        populateFileSelect(fileCache[layer]);
+        return;
+      }
+
+      fileSelect.innerHTML = '<option value="">Loading...</option>';
+      fileSelect.disabled = true;
+
+      try {
+        // Make a probe request with an invalid file to get available_in_layer
+        const response = await fetch(`${API_BASE}/${clientSelect.value}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path: `${layer}/__PROBE__` })
+        });
+
+        const data = await response.json();
+        
+        if (data.available_in_layer && Array.isArray(data.available_in_layer)) {
+          // Extract file names from paths like "ROLE/STRATEGIST"
+          const files = data.available_in_layer.map(path => {
+            const parts = path.split('/');
+            return parts[parts.length - 1];
+          });
+          
+          fileCache[layer] = files;
+          populateFileSelect(files);
+        } else {
+          // Fallback: show empty
+          fileSelect.innerHTML = '<option value="">No files found</option>';
+        }
+      } catch (error) {
+        console.error('Error loading files:', error);
+        fileSelect.innerHTML = '<option value="">Error loading files</option>';
+      } finally {
+        fileSelect.disabled = false;
+      }
+    }
+
+    function populateFileSelect(files) {
+      fileSelect.innerHTML = files.map(file => 
+        `<option value="${file}">${file}</option>`
+      ).join('');
+      updateRequestDisplay();
+    }
+
+    function updateRequestDisplay() {
+      const client = clientSelect.value;
+      const layer = layerSelect.value;
+      const file = fileSelect.value;
+      const section = sectionInput.value.trim();
+      const includeClient = includeClientCheckbox.checked;
+
+      let path = `${layer}/${file}`;
+      if (section) {
+        path += `/${section}`;
+      }
+
+      requestUrl.textContent = `/api/rac/${client}`;
+      
+      const body = { path };
+      if (!includeClient) {
+        body.include_client = false;
+      }
+      requestBody.textContent = JSON.stringify(body);
+    }
+
+    async function executeQuery() {
+      const client = clientSelect.value;
+      const layer = layerSelect.value;
+      const file = fileSelect.value;
+      const section = sectionInput.value.trim();
+      const includeClient = includeClientCheckbox.checked;
+
+      if (!file) {
+        responseOutput.textContent = 'Please select a file first.';
+        responseOutput.className = 'response-output error';
+        return;
+      }
+
+      let path = `${layer}/${file}`;
+      if (section) {
+        path += `/${section}`;
+      }
+
+      const body = { path };
+      if (!includeClient) {
+        body.include_client = false;
+      }
+
+      // Show loading state
+      executeBtn.disabled = true;
+      executeBtn.innerHTML = '<span class="loading-spinner"></span> Loading...';
+      responseOutput.textContent = 'Loading...';
+      responseOutput.className = 'response-output loading';
+      statusIndicator.style.display = 'none';
+
+      try {
+        const response = await fetch(`${API_BASE}/${client}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        // Update status indicator
+        statusIndicator.style.display = 'inline-flex';
+        if (response.ok) {
+          statusIndicator.className = 'status-indicator success';
+          statusText.textContent = `${response.status} OK`;
+        } else {
+          statusIndicator.className = 'status-indicator error';
+          statusText.textContent = `${response.status} ${response.statusText || 'Error'}`;
+        }
+
+        // Display formatted JSON
+        responseOutput.innerHTML = syntaxHighlight(JSON.stringify(data, null, 2));
+        responseOutput.className = 'response-output';
+
+      } catch (error) {
+        statusIndicator.style.display = 'inline-flex';
+        statusIndicator.className = 'status-indicator error';
+        statusText.textContent = 'Network Error';
+        
+        responseOutput.textContent = `Error: ${error.message}`;
+        responseOutput.className = 'response-output error';
+      } finally {
+        executeBtn.disabled = false;
+        executeBtn.innerHTML = 'Execute Query';
+      }
+    }
+
+    function syntaxHighlight(json) {
+      // Escape HTML
+      json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      
+      // Apply syntax highlighting
+      return json.replace(
+        /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+        function (match) {
+          let cls = 'json-number';
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              cls = 'json-key';
+            } else {
+              cls = 'json-string';
+            }
+          } else if (/true|false/.test(match)) {
+            cls = 'json-bool';
+          } else if (/null/.test(match)) {
+            cls = 'json-null';
+          }
+          return '<span class="' + cls + '">' + match + '</span>';
+        }
+      );
+    }
+
+    function copyResponse() {
+      const text = responseOutput.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 1500);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+      });
+    }
+  </script>
+</body>
+</html>
