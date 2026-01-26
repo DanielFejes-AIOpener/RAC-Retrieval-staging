@@ -177,70 +177,6 @@ templates:
       - clause: "Influencer Register"
         content: "Confirmation of registration in Dutch influencer register"
 
-  # ─────────────────────────────────────────────────────────────────────────
-  # INFLUENCER BRIEFING
-  # ─────────────────────────────────────────────────────────────────────────
-
-  influencer_briefing:
-    id: "template_influencer_briefing"
-    name: "Influencer Briefing Document"
-    description: "Detailed creative briefing for influencer content creation"
-
-    specs:
-      format: "Google Slides"
-      tone: "jij-vorm (informal Dutch)"
-      length: "8-15 slides"
-      delivery: "Shared via Google Drive link"
-
-    structure:
-      - slide: "Title Slide"
-        content: "Campaign name, brand logo, influencer name"
-
-      - slide: "About the Brand"
-        content: "Brand story, values, products"
-        length: "1-2 slides"
-
-      - slide: "Campaign Goal"
-        content: "Objective, target audience, key message"
-
-      - slide: "Deliverable Overview"
-        content: "Content formats, quantities, timeline"
-        format: "Visual timeline or checklist"
-
-      - slide: "Creative Direction"
-        content: "Mood, tone, visual style, examples"
-        includes:
-          - "Mood board"
-          - "Example content"
-          - "Do's and Don'ts"
-
-      - slide: "Key Messages"
-        content: "Must-include talking points"
-        format: "Bulleted list"
-
-      - slide: "Brand Guidelines"
-        content: "Logo usage, product shots, hashtags"
-
-      - slide: "Legal & Compliance"
-        content: "Disclosure requirements, exclusivity, approvals"
-
-      - slide: "Timeline & Deadlines"
-        content: "Content submission, approval, posting dates"
-
-      - slide: "Contact & Next Steps"
-        content: "Point of contact, questions, approval process"
-
-    tone_transformation:
-      description: "Transform formal brand briefs to jij-vorm for creators"
-
-      before: "Het merk positioneert zich als..."
-      after: "Jij gaat werken met een merk dat..."
-
-      before: "De doelgroep bestaat uit..."
-      after: "Je bereikt vooral..."
-
-      before: "De deliverables omvatten..."
-      after: "Wat jij gaat maken:"
 
   # ─────────────────────────────────────────────────────────────────────────
   # CREATIVE BRIEF (INTERNAL / CLIENT)
@@ -252,9 +188,9 @@ templates:
     description: "Internal/client brief for campaign strategy and execution"
 
     specs:
-      format: "Google Slides or Google Doc"
+      format: "Google Doc"
       audience: "Internal team + client stakeholders"
-      length: "10-20 slides or 5-10 pages"
+      length: "5-10 pages"
 
     structure:
 
@@ -324,7 +260,7 @@ templates:
     description: "Market intelligence, trend analysis, and insights"
 
     specs:
-      format: "Google Sheets / Google Docs / Google Chat"
+      format: "Google Sheets / Google Docs"
       output_types:
         - "Dashboard (Sheets)"
         - "Narrative report (Docs)"
@@ -361,22 +297,6 @@ templates:
       - section: "Appendix"
         content: "Raw data, sources, methodology notes"
 
-    nato_intelligence_codes:
-      description: "Source reliability and information credibility coding"
-      source_reliability:
-        - "A: Completely reliable"
-        - "B: Usually reliable"
-        - "C: Fairly reliable"
-        - "D: Not usually reliable"
-        - "E: Unreliable"
-        - "F: Reliability cannot be judged"
-      information_credibility:
-        - "1: Confirmed by other sources"
-        - "2: Probably true"
-        - "3: Possibly true"
-        - "4: Doubtful"
-        - "5: Improbable"
-        - "6: Truth cannot be judged"
 
     evidence_tiers:
       tier_1: "Primary sources, official data, verified reports"
@@ -391,34 +311,6 @@ templates:
     name: "Creative Concept Routes"
     description: "2-3 strategic creative directions for campaign"
 
-    specs:
-      format: "Google Slides presentation"
-      routes: "2-3 distinct concepts"
-      length: "3-5 slides per route"
-      presentation_context: "Client presentation, internal review"
-
-    structure_per_route:
-      - slide: "Route Title & Tagline"
-        content: "Concept name, one-line description"
-
-      - slide: "Core Idea"
-        content: "Central creative concept, insight connection"
-
-      - slide: "Visual Direction"
-        content: "Mood board, color palette, visual style"
-
-      - slide: "Platform Adaptation"
-        content: "How concept translates across 2-3 platforms"
-        platforms:
-          - "Instagram (Reels, Stories, Carousels)"
-          - "TikTok"
-          - "Optional: YouTube, other"
-
-      - slide: "Emotional Journey"
-        content: "Emotional arc for audience"
-
-      - slide: "Example Execution"
-        content: "Sample content storyboard or mock-up"
 
     concept_development:
       approach: "Multiple routes for client choice"
@@ -467,7 +359,6 @@ acceptance_criteria:
       - "Legal review complete"
 
     influencer_briefing:
-      - "Google Slides format"
       - "jij-vorm transformation complete"
       - "Visual mood board included"
       - "Timeline clear and specific"
@@ -481,7 +372,6 @@ acceptance_criteria:
       - "Success metrics identified (G1.3)"
 
     intelligence_report:
-      - "NATO codes assigned to sources"
       - "Evidence tier classifications included"
       - "EU/NL relevance confirmed"
       - "Actionable recommendations provided"

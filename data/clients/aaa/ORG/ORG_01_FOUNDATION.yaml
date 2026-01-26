@@ -145,15 +145,3 @@ client_roster:
     - name: "Moët & Chandon"
       sector: "Luxury Goods/Beverages"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# COMPETITOR REGISTRY — Optional, can be populated via Vera agent
-# ═══════════════════════════════════════════════════════════════════════════
-
-competitor_registry:
-  # NOTE: Can be populated via Vera (Trendwatcher) agent research
-  # Web research identified several NL influencer marketing agencies:
-  # - We Are First, IMA, LIS The Agency, Scooperz (from web search)
-  # Detailed competitive analysis recommended as Phase II enhancement
-
-  competitors: []
-  # STATUS: GAP-M-003 - Can be populated via competitive intelligence research

@@ -47,10 +47,6 @@ audiences:
         - "Multi-language content requirements"
       regions: ["Netherlands", "Belgium", "Germany", "EU-wide"]
 
-  # NOTE: Detailed personas can be developed in Phase II
-  # Current ICPs derived from 11-client roster analysis
-  personas: []
-  # STATUS: GAP-M-001 - Can be developed through client interviews/workshops
 
 # ═══════════════════════════════════════════════════════════════════════════
 # VOICE & TONE — Writing guidelines
@@ -137,7 +133,6 @@ constraints:
     # NOTE: Can be expanded through brand workshops and client feedback
 
     general_avoidances:
-      - "Traditional agency"  # AAA is AI-first, modern
       - "Just another influencer agency"  # AAA has unique data-driven + compliance positioning
       - "Cheap" or "budget-friendly"  # Premium positioning with A-list clients
       - "Guaranteed viral"  # No agency can guarantee virality
@@ -154,8 +149,7 @@ constraints:
     can_claim:
       - "60+ team professionals"  # Verified
       - "11 A-list clients across 8+ sectors"  # Documented
-      - "Proprietary AI agents (May, Max, Vera)"  # Core offering
-      - "Evidence Tier 1-2 sources, NATO ≥B2"  # Vera methodology
+      - "Evidence Tier 1-2 sources"  # Vera methodology
       - "Compliance expertise for regulated industries"  # Proven track record
 
     requires_evidence:
