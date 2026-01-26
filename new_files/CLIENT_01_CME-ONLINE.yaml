@@ -1,0 +1,487 @@
+# CLIENT_01_CME-ONLINE.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# CME-Online VVT Sector Client Configuration
+# Created: 2026-01-18
+# Organization: Reducate (E-Wise)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-18"
+  # SOURCE: Generated during onboarding, VERIFIED
+
+  purpose: "Client-specific configuration for CME-Online VVT sector"
+  # SOURCE: Basisdocument VVT.docx title + Section 1, VERIFIED
+
+  notes: "CME-Online provides online continuing education (nascholing) for healthcare professionals. This CLIENT file focuses on VVT (Verpleging, Verzorging & Thuiszorg) sector targeting."
+  # SOURCE: Basisdocument VVT.docx p.1, VERIFIED
+
+  tags: [client, ssot, healthcare-education, vvt]
+  # SOURCE: tags derived from industry and sector focus, VERIFIED
+
+  client_id: "CME-ONLINE"
+  # SOURCE: User confirmed 2026-01-18, VERIFIED
+
+  client_name: "CME-Online VVT"
+  # SOURCE: Basisdocument VVT.docx title "Basisdocument CME-Online -- VVT", VERIFIED
+
+  tier: "professional"
+  # SOURCE: User confirmed 2026-01-18, VERIFIED
+
+  engagement_mode: "agency_tenant"
+  # SOURCE: Inferred from email domain (amber.van.veggel@e-wise.nl indicates E-Wise/Reducate operates platform for CME-Online), INFERRED
+
+# Auto-inherited: base_dependencies per LOGIC_00_INDEX#auto_inheritance
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT-SPECIFIC REFERENCES (SSOT)
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+evidence_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+ai_policy_schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
+ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+client_identity:
+  name: "CME-Online"
+  # SOURCE: Basisdocument VVT.docx p.1, Styleguide CME-Online 2026 Q1 cover, all materials, VERIFIED
+
+  display_name: "CME-Online"
+  # SOURCE: Consistent across all 50+ marketing materials, VERIFIED
+
+  legal_entity: ""
+  # GAP-B-001: Legal entity name not found in provided documents
+  # Requires: KvK registration or contract documentation
+  # Status: Accepted as non-blocking, proceed with brand name
+
+  industry: "Healthcare Education / Online Continuing Education (Nascholing)"
+  # SOURCE: Basisdocument VVT.docx p.1 "online nascholing", VERIFIED
+
+  sector_focus: "VVT (Verpleging, Verzorging & Thuiszorg)"
+  # SOURCE: Basisdocument VVT.docx title + Section 1, VERIFIED
+
+  website: "https://www.cme-online.nl"
+  # SOURCE: Multiple advertorials, DM materials, brochures with URLs, VERIFIED
+
+  headquarters:
+    city: "Utrecht"
+    country: "Netherlands"
+    # SOURCE: DM brief CME-Online nov 2025 header "Utrecht, november 2025", VERIFIED
+
+  description: |
+    CME-Online provides online continuing education (nascholing) for healthcare professionals across 18 specialties with 750+ courses.
+
+    For the VVT (Nursing Homes & Home Care) sector specifically, CME-Online offers 300+ accredited courses targeting care professionals from level N1 (Zorghulp) through N6 (Wijkverpleegkundige).
+
+    Primary business model: Subscription-based unlimited access with both individual and organizational/team subscriptions. Focus is on B2B organizational subscriptions to decision-making units (L&D, HR, Training Managers) within VVT care institutions.
+
+    Key differentiators: Own teachers, own studio (full quality control), strong microlearning focus, practice-oriented content with recognizable scenarios (herkenbare praktijksituaties).
+    # SOURCE: Basisdocument VVT.docx Section 1, VVT Brochure Jan 2026 p.3-5, VERIFIED
+
+  contact:
+    primary:
+      name: "Amber van Veggel"
+      # SOURCE: User provided 2026-01-18, VERIFIED
+
+      email: "amber.van.veggel@e-wise.nl"
+      # SOURCE: User provided 2026-01-18, VERIFIED
+
+      role: "Marketing Contact (Reducate/E-Wise)"
+      # SOURCE: Inferred from email domain and user provision context, INFERRED
+
+      phone: "030-26 44 100"
+      # SOURCE: DM brief CME-Online nov 2025 contact information, VERIFIED
+      # NOTE: This is CME-Online general contact number, not Amber's direct line
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LIBRARIES (POINTERS ONLY — NO CORPORA IN CLIENT YAML)
+# ═══════════════════════════════════════════════════════════════════════════
+
+libraries:
+  description: "CLIENT-level library pointers/overrides (no corpora stored here)"
+
+  allowed_library_ids:
+    - "LIB_CME_ONLINE_BRAND"
+    - "LIB_CME_ONLINE_CONTENT"
+    - "LIB_CME_ONLINE_MARKET"
+    - "LIB_CME_ONLINE_PRODUCT"
+    # SOURCE: Created during onboarding Phase 4, VERIFIED
+
+    - "PACK_03_HEALTHCARE_VVT_NL"
+    # SOURCE: Proposed and approved during onboarding Phase 3, when created will be available, VERIFIED
+
+  library_priority:
+    - "LIB_CME_ONLINE_BRAND"      # Voice, visual identity, tagline - highest priority
+    - "LIB_CME_ONLINE_CONTENT"    # Content examples, writing patterns
+    - "LIB_CME_ONLINE_PRODUCT"    # Course catalog, subscription model
+    - "LIB_CME_ONLINE_MARKET"     # DMU insights, competitive landscape
+    - "PACK_03_HEALTHCARE_VVT_NL" # Sector knowledge (when created)
+    # SOURCE: Priority based on frequency of use and criticality for voice/brand consistency, INFERRED
+
+  blocked_library_ids: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOICE & COMMUNICATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+voice:
+  profile: "Direct, accessible, practice-oriented, supportive"
+  # SOURCE: Synthesized from analysis of 19 advertorials + 6 newsletters + DM campaigns + LinkedIn posts, INFERRED
+  # Pattern: Consistently helpful tone, focus on ease and practical value, reassuring language
+
+  overrides:
+    tone: "helpful, practical, reassuring; focuses on ease, flexibility, and professional support"
+    # SOURCE: Content pattern analysis across all materials, INFERRED
+    # Examples: "Even vergeten hoe het ook alweer moet?" (Advertorial Nov 2025), "Gemak en flexibiliteit" (Basisdocument p.1)
+
+    formality: "je-form"
+    # SOURCE: 100% of content examples use je/jij/jouw (informal Dutch direct address), VERIFIED
+    # Examples from Advertorials: "Lees de blog", "ontdek je", "je helpen"
+    # Examples from Newsletters: "wensen we jullie"
+    # Examples from DM: "Laat je scholingsverlanglijstje achter"
+
+    cadence: "short sentences, scannable structure, question-led headlines"
+    # SOURCE: Advertorial patterns (150-250 words, headline+body+CTA structure), INFERRED
+
+    personality_traits:
+      - "Approachable (not corporate)"
+      - "Confidence-building (addresses professional doubts)"
+      - "Time-conscious (acknowledges busy healthcare professionals)"
+      - "Practice-first (theory follows practice, not vice versa)"
+      # SOURCE: Voice patterns across materials, INFERRED
+
+    terminology_preferences:
+      prefer:
+        - term: "nascholing"
+          context: "Continuing education / professional development"
+          instead_of: "training, cursus (when referring to professional education)"
+          source: "Basisdocument VVT.docx p.1, consistent across all materials, VERIFIED"
+
+        - term: "zorgprofessional / medewerker"
+          context: "Healthcare workers"
+          instead_of: "werknemer, personeel"
+          source: "Brochure p.3, advertorials, VERIFIED"
+
+        - term: "praktijkgericht / herkenbare praktijksituaties"
+          context: "Practice-based learning approach"
+          instead_of: "theoretical, academic"
+          source: "Basisdocument p.1, Brochure p.3 - key brand differentiator, VERIFIED"
+
+        - term: "flexibel / altijd en overal"
+          context: "Access convenience"
+          instead_of: "online only"
+          source: "Brochure p.5 value proposition, VERIFIED"
+
+        - term: "microlearning"
+          context: "Short-form learning modules"
+          instead_of: "short courses"
+          source: "Basisdocument p.1, Microlearning brochure, strong brand focus, VERIFIED"
+
+        - term: "geaccrediteerd / accreditatiepunten"
+          context: "Accreditation points for reregistration"
+          instead_of: "CE credits"
+          source: "Basisdocument Section 2, Brochure p.4, VERIFIED"
+
+        - term: "herregistratie"
+          context: "Reregistration in quality register"
+          instead_of: "recertification"
+          source: "Basisdocument Section 2, VERIFIED"
+
+      avoid:
+        - term: "goedkoop / laagste prijs"
+          reason: "Price is acknowledged competitive challenge; not positioned on cost"
+          source: "Basisdocument Section 4 'Prijs (CME-Online is niet de goedkoopste aanbieder)', VERIFIED"
+
+        - term: "complex / moeilijk"
+          reason: "Brand promises ease and accessibility"
+          source: "Brand messaging pattern across materials emphasizing 'gemak', INFERRED"
+
+        - term: "beperkt aanbod"
+          reason: "Competitor positioning acknowledges smaller catalog, but frame positively (curated, quality-focused)"
+          source: "Basisdocument Section 4 challenge 'Beperkt aanbod t.o.v. sommige concurrenten', VERIFIED"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PREFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+preferences:
+  communication:
+    response_format: "concise"
+    # SOURCE: Advertorial format (150-250 words), DM structure (1-page letters), INFERRED
+
+    language:
+      interaction: "nl"
+      output: "nl"
+      fallback: "en"
+      # SOURCE: All materials in Dutch (Nederlands), VERIFIED
+
+  deliverables:
+    preferred_formats:
+      - "advertorial (150-250 words, blog-promo style)"
+      - "newsletter_section (course highlight + CTA)"
+      - "dm_letter (1-page B2B formal-friendly)"
+      - "linkedin_organic (max 150 words, emoji-friendly)"
+      - "linkedin_paid (carousel ads, awareness/consideration/conversion tiers)"
+      # SOURCE: Format patterns from content examples, VERIFIED
+
+    max_length_pages: 2
+    # SOURCE: Longest format is DM letter (1-page), INFERRED
+
+    naming_convention: "kebab-case with campaign UTM structure"
+    # SOURCE: URL pattern in advertorials with UTM parameters, INFERRED
+
+  review:
+    requires_approval: true
+    # SOURCE: Standard practice for client content, INFERRED
+
+    approvers:
+      - "Amber van Veggel (Reducate/E-Wise)"
+      # SOURCE: User provided as primary contact, INFERRED
+
+    turnaround_hours: 24
+    # SOURCE: Not specified, using template default, UNVERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# EVIDENCE VAULT (CLIENT-SPECIFIC FACTS)
+# ═══════════════════════════════════════════════════════════════════════════
+
+evidence_vault:
+  schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+  precedence_note: "For verified benchmarks, ORG/PACK evidence takes precedence."
+
+  items:
+    - id: "ev-cme-online-001"
+      claim: "CME-Online offers 750+ online courses across 18 specialties"
+      source: "Basisdocument VVT.docx p.1"
+      source_date: "2026-01-05"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Primary brand claim, official strategic document"
+
+    - id: "ev-cme-online-002"
+      claim: "CME-Online offers 300+ courses specifically for VVT sector"
+      source: "VVT Brochure January 2026, p.3"
+      source_date: "2026-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "VVT-specific offering size"
+
+    - id: "ev-cme-online-003"
+      claim: "Target VVT professional levels: N1 (Zorghulp), N2 (Helpende), N3 (Helpende Plus/Verzorgende), N5 (Verzorgende IG/Verpleegkundige), N6 (Wijkverpleegkundige)"
+      source: "Basisdocument VVT.docx p.1, Section 1"
+      source_date: "2026-01-05"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Official target audience specification"
+
+    - id: "ev-cme-online-004"
+      claim: "Accreditation: Unlimited points for N1-N3, N5; Maximum 16 points per year for N6"
+      source: "Basisdocument VVT.docx p.1, Section 1"
+      source_date: "2026-01-05"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Accreditation point limits by professional level"
+
+    - id: "ev-cme-online-005"
+      claim: "Kwaliteitsregister V&V reregistration requirement: 184 points in 5 years (minimum 80 accredited for verpleegkundigen, 60 for verzorgenden)"
+      source: "Basisdocument VVT.docx Section 2"
+      source_date: "2026-01-05"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Regulatory context for VVT sector"
+
+    - id: "ev-cme-online-006"
+      claim: "Seasonality: High activity September-May, low activity in summer (vacations)"
+      source: "Basisdocument VVT.docx Section 2"
+      source_date: "2026-01-05"
+      tier: "tier_2"
+      source_reliability: "A"
+      context: "Marketing planning consideration"
+
+    - id: "ev-cme-online-007"
+      claim: "CME-Online acquired VVT target groups from E-learning Made Easy (EME) approximately 3 years ago"
+      source: "Basisdocument VVT.docx Section 1"
+      source_date: "2026-01-05"
+      tier: "tier_2"
+      source_reliability: "A"
+      context: "Company history, explains legacy content references"
+
+    - id: "ev-cme-online-008"
+      claim: "Key differentiators: Own teachers, own studio (full quality control), strong microlearning focus"
+      source: "Basisdocument VVT.docx p.1, Section 1"
+      source_date: "2026-01-05"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Competitive positioning - unique selling points"
+
+    - id: "ev-cme-online-009"
+      claim: "Primary target: DMU (L&D, HR, Training Manager, Teammanager, Directie) for organizational subscriptions"
+      source: "Basisdocument VVT.docx Section 3, Section 4"
+      source_date: "2026-01-05"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "B2B targeting strategy"
+
+    - id: "ev-cme-online-010"
+      claim: "DMU buying objections: Price (not cheapest), limited course offering vs competitors, limited customization"
+      source: "Basisdocument VVT.docx Section 4"
+      source_date: "2026-01-05"
+      tier: "tier_2"
+      source_reliability: "A"
+      context: "Sales challenges to address in messaging"
+
+    - id: "ev-cme-online-011"
+      claim: "2026 Ambitions: Understand DMU via market research, sharpen positioning, more problem-focused (vs product-focused) communication"
+      source: "Basisdocument VVT.docx Section 5"
+      source_date: "2026-01-05"
+      tier: "tier_2"
+      source_reliability: "A"
+      context: "Strategic direction for 2026"
+
+    - id: "ev-cme-online-012"
+      claim: "Brand tagline: 'Goede zorg, daar doe je het voor'"
+      source: "Styleguide CME-Online 2026 Q1, p.27, p.29"
+      source_date: "2026-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Official brand tagline"
+
+    - id: "ev-cme-online-013"
+      claim: "Primary brand color: CME Blue #00549F"
+      source: "Styleguide CME-Online 2026 Q1, p.23"
+      source_date: "2026-01-01"
+      tier: "tier_1"
+      source_reliability: "A"
+      context: "Visual brand identity"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USE_CASE OVERRIDES
+# ═══════════════════════════════════════════════════════════════════════════
+
+use_cases:
+  description: "Client-specific USE_CASE customizations"
+  conflict_rule: "$ref: LOGIC_02_RETRIEVAL#override_rules.exceptions.use_case_registry_conflict"
+
+  overrides:
+    description: "Modifications to existing USE_CASES for this client"
+    items: []
+
+  custom:
+    description: "Client-specific custom USE_CASES (CLIENT wins if same ID in ORG)"
+    items:
+      - use_case_id: "USE_CASE_CME_ONLINE_VVT_ADVERTORIAL"
+        status: "proposed"
+        description: "Educational advertorials for VVT trade media (Nursing, V&VN, Skipr, Floor)"
+        composes:
+          - "ROLE_04_COPYWRITER (primary)"
+          - "ROLE_02_STRATEGIST (secondary)"
+        knowledge_from:
+          - "OPS_03_COPYWRITING_PLAYBOOK"
+          - "PACK_03_HEALTHCARE_VVT_NL"
+          - "LIB_CME_ONLINE_BRAND"
+          - "LIB_CME_ONLINE_CONTENT"
+          - "LIB_CME_ONLINE_PRODUCT"
+        # SOURCE: Proposed during onboarding Phase 3, user approved 2026-01-18, VERIFIED
+
+      - use_case_id: "USE_CASE_CME_ONLINE_DMU_CONTENT"
+        status: "proposed"
+        description: "B2B content for decision-makers (L&D, HR, Training Managers) with consultative tone"
+        composes:
+          - "ROLE_04_COPYWRITER (primary)"
+          - "ROLE_02_STRATEGIST (primary)"
+        knowledge_from:
+          - "OPS_03_COPYWRITING_PLAYBOOK"
+          - "OPS_09_STRATEGY_FRAMEWORKS"
+          - "PACK_03_HEALTHCARE_VVT_NL"
+          - "LIB_CME_ONLINE_BRAND"
+          - "LIB_CME_ONLINE_CONTENT"
+          - "LIB_CME_ONLINE_MARKET"
+        # SOURCE: Proposed during onboarding Phase 3, user approved 2026-01-18, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AI POLICY OVERRIDES (CAN ONLY ADD RESTRICTIONS)
+# ═══════════════════════════════════════════════════════════════════════════
+
+ai_policy:
+  schema: "$ref: LOGIC_12_GOVERNANCE#ai_policy_schema"
+  enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
+  description: "CLIENT ai_policy extends ORG; can only ADD restrictions (most-restrictive-wins)."
+
+  overrides:
+    prohibited_use_cases: []
+
+    blocked_topics:
+      - "Competitor pricing comparisons"
+      - "Negative framing of course catalog size"
+      # SOURCE: Based on Basisdocument Section 4 competitive challenges to avoid amplifying, INFERRED
+
+    confidential_keywords:
+      - "EME acquisition"
+      - "internal pricing structure"
+      - "legacy content timeline"
+      # SOURCE: Based on Basisdocument content that should not be public-facing, INFERRED
+
+    sensitive_topics:
+      - "Healthcare professional regulatory compliance"
+      - "Kwaliteitsregister V&V requirements"
+      - "Accreditation point calculations"
+      # SOURCE: Healthcare sector sensitivity, requires accuracy, INFERRED
+
+    require_human_review:
+      high_risk_content: true
+      external_communications: true
+      competitor_mentions: true
+      # SOURCE: Standard client safeguards, INFERRED
+
+    ai_disclosure:
+      required: true
+      format: "footer"
+      text: "💙 Generated with AI Opener"
+      # SOURCE: Standard disclosure, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CAPABILITY → TOOL ROUTING OVERRIDES (MAPPING ONLY)
+# ═══════════════════════════════════════════════════════════════════════════
+
+tool_routing_overrides:
+  description: "CLIENT overrides routing only; tools remain in LOGIC_10"
+  patch:
+    mappings: {}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CASE LIBRARY (FUTURE / EXPORT-TARGET)
+# ═══════════════════════════════════════════════════════════════════════════
+
+case_library:
+  description: "Client case records (export-target for #case command)"
+  note: "RAC runtime does not store cases; users export manually."
+  permissions:
+    default_scope: "internal"
+    allow_upgrade_to: ["client_ok", "public_ok"]
+  items: []
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY EXTENSIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_extensions:
+  description: "Client-specific quality gate additions"
+
+  additional_entry_gates:
+    - "Healthcare terminology verified for accuracy (nascholing, accreditatiepunten, herregistratie, etc.)"
+    - "Professional level (N1-N6) correctly identified when applicable"
+    - "Accreditation point values accurate per Basisdocument Section 2"
+    # SOURCE: Healthcare sector requires factual accuracy, INFERRED
+
+  additional_exit_gates:
+    - "Je-form (informal Dutch) consistently applied"
+    - "Practice-oriented framing maintained (avoid overly theoretical tone)"
+    - "UTM parameters included in all URLs for tracking"
+    - "Brand tagline used appropriately (not mandatory, but available)"
+    # SOURCE: Brand voice requirements from content analysis, INFERRED

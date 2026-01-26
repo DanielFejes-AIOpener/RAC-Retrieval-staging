@@ -1,0 +1,164 @@
+# ORG_01_FOUNDATION.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Fixico - Legal/org basics + operating context + market context + competitor registry
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Fixico foundation - legal entity, operating context, market positioning, competitor registry"
+  org_id: "FIXICO"
+  tags: [org, ssot, foundation, automotive, b2b]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG BASICS
+# ═══════════════════════════════════════════════════════════════════════════
+
+org_basics:
+  trading_name: "Fixico"
+
+  website: "https://fixico.com"
+  # NOTE: fixico.nl (B2C) is being phased out; fixico.com is B2B focus
+
+  legal_details:
+    legal_name: "Fixico International B.V."
+
+    kvk_number: ""
+    # GAP: GAP-H-001 - KvK number not found in provided documents
+
+    headquarters: "Weteringschans 85E, 1017 RZ Amsterdam"
+
+    contact_email: "info@fixico.nl"
+
+    contact_phone: "+31 20 261 07 20"
+
+    founded_year: 2014
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OPERATING CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+operating_context:
+  timezone: "Europe/Amsterdam"
+
+  languages:
+    - code: "en-GB"
+      name: "British English"
+      primary: true
+
+    - code: "nl"
+      name: "Nederlands"
+      primary: true
+
+    - code: "de"
+      name: "Deutsch"
+      primary: false
+
+    - code: "nl-BE"
+      name: "Nederlands (België)"
+      primary: false
+
+    # Additional supported languages from glossary
+    - code: "fr-BE"
+      name: "Français (Belgique)"
+      primary: false
+
+    - code: "es"
+      name: "Español"
+      primary: false
+
+    - code: "it"
+      name: "Italiano"
+      primary: false
+
+    - code: "da"
+      name: "Dansk"
+      primary: false
+
+    - code: "en-ZA"
+      name: "English (South Africa)"
+      primary: false
+
+  regions_served:
+    - "Western Europe"
+    - "Netherlands"
+    - "Belgium"
+    - "Germany"
+    - "United Kingdom"
+    - "France"
+    - "Spain"
+    - "Italy"
+    - "Denmark"
+    # NOTE: 11 countries total, 10 with repairer network coverage
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+market_context:
+  industry: "Automotive Aftersales Services Technology"
+
+  categories:
+    - "B2B SaaS Platform"
+    - "Digital Marketplace"
+    - "Fleet Management Technology"
+    - "Insurance Technology"
+
+  segments:
+    - "Rental Companies"
+    - "Service/Last Mile Delivery Fleets"
+    - "Fleet Intermediaries"
+    - "Insurance Companies"
+    - "Leasing Companies"
+    - "Corporate Fleets"
+
+  regions:
+    primary:
+      - "United Kingdom"
+      - "Belgium"
+      - "Germany"
+
+    secondary:
+      - "Netherlands"
+      - "France"
+      - "Spain"
+      - "Italy"
+      - "Denmark"
+
+  market_position:
+    unique_value: "First international platform to unify accident repair and RMT (Repair, Maintenance & Tyres) in one data-driven environment"
+
+    market_entry: "2014 as B2C body repair platform"
+
+    business_pivot: "2018 transition from B2C to B2B"
+
+    innovation: "2025 expanded to include RMT services, combining traditionally separated repair streams"
+
+    network_scale: "4,000+ repairers across 10 European countries"
+
+  strategic_vision:
+    long_term: "Become an operating system for the automotive aftersales service market in Europe"
+    # NOTE: Referenced "net als Windows" (like Windows) analogy
+
+    geographic_expansion: "Europe first, then global expansion"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITOR REGISTRY
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitor_registry:
+  # GAP: GAP-H-002 - Competitor names and detailed positioning not documented in analyzed materials
+  # NOTE: Large PDF files exist but not yet analyzed:
+  #   - 2511 - Competitor Analysis_ Body repair report 2025.pdf (17.5MB)
+  #   - 2511 - Competitor Analysis_ RMT report.pdf (8MB)
+
+  competitive_differentiation:
+    - "First platform to combine accident repair AND RMT services"
+
+    - "Traditionally separated markets: body/glass repair shops vs. dealer garages/service chains/tyre fitters"
+
+    - "Fixico is first international platform to unify both streams"
+
+  competitors: []
+  # To be populated after analyzing competitor analysis PDFs in Phase II

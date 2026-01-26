@@ -1,0 +1,290 @@
+# ORG_04_CHANNEL_PLAYBOOKS.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG per-channel constraints and output rules (baseline)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "ORG per-channel constraints and output rules for AndAgencyAmsterdam"
+  notes: "Phase I required. Influencer marketing channels, platforms, and compliance frameworks."
+  tags: [org, ssot, channels, playbook, aaa, influencer-marketing]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CHANNELS — Per-channel specifications and best practices
+# ═══════════════════════════════════════════════════════════════════════════
+
+channels:
+  description: "Influencer marketing channels and platform-specific content formats"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # INSTAGRAM
+  # ─────────────────────────────────────────────────────────────────────────
+
+  instagram:
+    description: "Instagram content formats for influencer campaigns"
+
+    content_formats:
+      reels:
+        description: "Short-form video content"
+        duration_max: "90 seconds"
+        duration_recommended: "15-60 seconds"
+        aspect_ratio: "9:16"
+        placement: "Reels feed"
+
+      carousels:
+        description: "Multi-image swipeable posts"
+        images_max: 10
+        images_recommended: "3-5"
+        aspect_ratio: "1:1 or 4:5"
+        placement: "Main feed"
+
+      stories:
+        description: "Ephemeral 24-hour content in 3-frame sets"
+        frame_sets: "3-frame standard format"
+        duration_per_frame: "3-5 seconds"
+        aspect_ratio: "9:16"
+        placement: "Stories feed"
+        note: "AAA standard: Stories delivered as 3-frame sets"
+
+    best_practices:
+      posting_frequency: "Varies by campaign agreement"
+      engagement_window: "First 48 hours critical"
+      caption_best_practices:
+        - "Hook in first line"
+        - "Clear CTA for brand"
+        - "Natural integration, not hard-sell"
+        - "Hashtags relevant to content"
+
+    dos:
+      - "Align with influencer's authentic voice"
+      - "Use platform-native features (music, effects)"
+      - "Provide creative freedom within brand guardrails"
+      - "Include clear deliverable count in contracts"
+
+    donts:
+      - "Over-script creator content"
+      - "Ignore platform trends"
+      - "Generic brand messaging"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TIKTOK
+  # ─────────────────────────────────────────────────────────────────────────
+
+  tiktok:
+    description: "TikTok video content for influencer campaigns"
+
+    content_formats:
+      video:
+        description: "Short-form vertical video"
+        duration_max: "10 minutes"
+        duration_recommended: "15-60 seconds"
+        duration_optimal: "21-34 seconds (highest engagement)"
+        aspect_ratio: "9:16"
+        placement: "For You Page (FYP)"
+
+    best_practices:
+      hook: "First 3 seconds determine watch-through"
+      trends: "Leverage trending sounds and formats"
+      authenticity: "Platform rewards genuine, unpolished content"
+      captions: "80% watch with sound off - use captions"
+
+    dos:
+      - "Align with trending challenges/sounds"
+      - "Native, authentic creator style"
+      - "Quick cuts and visual variety"
+      - "Clear brand integration without disrupting flow"
+
+    donts:
+      - "Corporate/polished production style"
+      - "Ignore For You Page algorithm signals"
+      - "Hard-sell approaches"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TOOLS & PLATFORMS — Operational technology stack
+# ═══════════════════════════════════════════════════════════════════════════
+
+tools:
+  description: "Technology and platforms used for campaign management and compliance"
+
+  project_management:
+    - name: "Monday.com"
+      purpose: "Campaign planning, task tracking, timeline management"
+
+  influencer_discovery:
+    - name: "Kolsquare"
+      purpose: "Influencer discovery, vetting, analytics"
+
+  contract_management:
+    - name: "HelloSign"
+      purpose: "Digital signature for influencer contracts"
+
+  collaboration:
+    - name: "Google Workspace"
+      purpose: "Briefing documents, shared folders, presentations"
+      components:
+        - "Google Slides (briefings)"
+        - "Google Sheets (reporting)"
+        - "Google Docs (contracts, reach-outs)"
+        - "Google Chat (team communication)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPLIANCE FRAMEWORKS — Legal and regulatory requirements
+# ═══════════════════════════════════════════════════════════════════════════
+
+compliance:
+  description: "Regulatory and legal frameworks for influencer marketing in Netherlands/EU"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # EXCLUSIVITY CLAUSES
+  # ─────────────────────────────────────────────────────────────────────────
+
+  exclusivity:
+    description: "Campaign exclusivity requirements for influencers"
+
+    standard_clauses:
+      - campaign: "NPL (Nationale Postcode Loterij)"
+        exclusivity: "No competitor lottery brands during campaign + 3 months after"
+
+      - campaign: "bol Wonen"
+        exclusivity: "No other e-commerce platforms (Wehkamp, Coolblue) during campaign"
+
+      - campaign: "IKEA"
+        exclusivity: "No competitor furniture brands during campaign"
+        competitors_listed: ["Puma", "L'Oréal"]
+
+      - campaign: "Multi-Gyn"
+        exclusivity: "No competitor feminine healthcare brands for 6 months"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # AGE RESTRICTIONS
+  # ─────────────────────────────────────────────────────────────────────────
+
+  age_restrictions:
+    description: "Audience age requirements for specific product categories"
+
+    npl_lottery:
+      requirement: "Follower base must be <25% under 18 years old"
+      rationale: "Legal age requirement for lottery products in Netherlands"
+      verification: "Check Instagram Insights or TikTok Analytics"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # KOAG APPROVAL
+  # ─────────────────────────────────────────────────────────────────────────
+
+  koag_approval:
+    description: "Dutch Advertising Code Committee review for regulated products"
+
+    process:
+      - step: "Submit campaign concept to KOAG"
+      - step: "Await approval before execution"
+      - step: "Use only approved language/claims"
+
+    applies_to:
+      - "Healthcare products"
+      - "Medical devices"
+      - "Regulated claims"
+
+    example: "Multi-Gyn campaign requires KOAG approval for medical product claims"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # INFLUENCER REGISTER
+  # ─────────────────────────────────────────────────────────────────────────
+
+  influencer_register:
+    description: "Dutch influencer registration requirement"
+
+    requirement: "Influencers must be registered in official Dutch influencer register"
+    verification: "Check registration status before contracting"
+    purpose: "Regulatory compliance for commercial partnerships"
+    note: "Standard check in AAA contracting process"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # BRAND SAFETY
+  # ─────────────────────────────────────────────────────────────────────────
+
+  brand_safety:
+    description: "Brand safety and content moderation standards"
+
+    vetting_process:
+      - "Review influencer content history"
+      - "Check for controversial posts"
+      - "Verify values alignment"
+      - "Monitor for brand risk"
+
+    content_restrictions:
+      avoid:
+        - "Controversial political statements"
+        - "Offensive language"
+        - "Unsafe product usage"
+        - "Competitor mentions (per exclusivity)"
+
+    disclosure_requirements:
+      description: "Legal disclosure of paid partnerships"
+      netherlands_standard: "Use #ad or #samenwerking hashtags"
+      platform_native: "Use Instagram/TikTok paid partnership labels"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DELIVERABLE SPECIFICATIONS — Standard campaign outputs
+# ═══════════════════════════════════════════════════════════════════════════
+
+deliverable_specs:
+  description: "Standard deliverable formats and quantities for influencer campaigns"
+
+  campaign_structures:
+    standard_instagram:
+      components:
+        - "1-2 Reels"
+        - "1-3 Carousels"
+        - "1-2 Stories sets (3 frames each)"
+      duration: "1-2 weeks"
+
+    tiktok_focused:
+      components:
+        - "2-4 TikTok videos"
+        - "Optional Instagram cross-post"
+      duration: "1-2 weeks"
+
+    multi_platform:
+      components:
+        - "Instagram: Reels + Stories"
+        - "TikTok: 2-3 videos"
+      duration: "2-4 weeks"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GLOBAL CONSTRAINTS (Cross-channel defaults)
+# ═══════════════════════════════════════════════════════════════════════════
+
+global_constraints:
+  description: "Cross-channel defaults for influencer marketing campaigns"
+
+  do:
+    - "Clear contractual deliverable counts"
+    - "Exclusivity clauses appropriate to brand/sector"
+    - "Age verification for regulated products"
+    - "KOAG approval for healthcare/medical"
+    - "Influencer register check"
+    - "Authentic creator voice within brand guardrails"
+    - "Platform-native content styles"
+    - "Legal disclosure requirements (#ad, paid partnership labels)"
+
+  dont:
+    - "Over-script creator content"
+    - "Ignore platform-specific trends"
+    - "Skip compliance checks"
+    - "Generic brand messaging"
+    - "Competitor mentions during exclusivity"
+
+  campaign_management:
+    timeline:
+      - "Outreach: 2-4 weeks before campaign"
+      - "Contract: HelloSign digital signature"
+      - "Brief: Google Slides + supporting materials"
+      - "Approval: Review draft content before posting"
+      - "Monitoring: Track engagement first 48 hours"
+      - "Reporting: Post-campaign analytics"
+
+  _client_override:
+    description: "CLIENT may tighten these constraints but not loosen them."
+    override_rule: "$ref: LOGIC_02_RETRIEVAL#override_rules"

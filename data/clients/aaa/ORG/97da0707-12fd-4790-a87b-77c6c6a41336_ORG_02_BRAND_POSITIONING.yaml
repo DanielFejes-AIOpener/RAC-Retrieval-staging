@@ -1,0 +1,176 @@
+# ORG_02_BRAND_POSITIONING.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG offering, differentiation, and proof points (baseline positioning)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "AndAgencyAmsterdam offering, differentiation, and proof points"
+  notes: "Phase I onboarding - Brand positioning layer"
+  tags: [org, ssot, positioning, aaa]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BRAND IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+brand_identity:
+  tagline: "Creators at the core, data in the details."
+
+  core_values:
+    - "Excellence is at the core of everything we do"
+    - "Relentless in pursuit of excellence"
+    - "Enterprising and resourceful"
+    - "Driven and intuitive"
+    - "Ambitious for success - for ourselves and our clients"
+
+  positioning_statement: "Full-service media & content company amplifying authentic voices that resonate with Gen Y and Gen Z through data-driven influencer marketing, creative strategy, and market intelligence."
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OFFERS CATALOG — Core services
+# ═══════════════════════════════════════════════════════════════════════════
+
+offers_catalog:
+  offers:
+    - name: "Influencer Marketing Campaigns"
+      description: "End-to-end influencer campaign management from strategy through execution to measurement"
+      key_benefit: "Authentic brand storytelling through verified creator partnerships with compliance expertise"
+      components:
+        - "Campaign strategy and planning"
+        - "Influencer search and selection (via Kolsquare)"
+        - "Creator briefings and contracts"
+        - "Content production oversight"
+        - "Performance tracking and ROI measurement"
+
+    - name: "Creative Strategy & Concept Development"
+      description: "Evidence-based creative concepts that emotionally resonate and drive business results"
+      key_benefit: "Breakthrough concepts backed by competitive intelligence and emotional journey design"
+      components:
+        - "Strategic brief development (May agent)"
+        - "Competitive trope audits"
+        - "Big Idea generation with frameworks"
+        - "2-3 concept routes with mock scenes"
+        - "Creative rationale and pitch decks"
+        - "Quality gates (G1/G2/G3)"
+
+    - name: "Market Intelligence & Trend Research"
+      description: "On-demand evidence-based research with NATO codes and tiered source validation"
+      key_benefit: "Actionable intelligence with guaranteed source quality (Tier 1-2, NATO ≥B2)"
+      components:
+        - "Competitive intelligence"
+        - "Trend scanning (EU/NL focus)"
+        - "Regulatory research (GDPR, EU AI Act)"
+        - "Market analysis"
+        - "Deliverables: Sheets, Docs, or Chat format"
+
+    - name: "Talent Management"
+      description: "Creator and influencer representation and career development"
+      key_benefit: "Professional talent management through &.talent sister label"
+
+    - name: "Content Production"
+      description: "Social-first content creation and production"
+      key_benefit: "Native content through &.format sister label"
+
+    - name: "PR & Communications"
+      description: "Integrated PR and communication services"
+      key_benefit: "Holistic brand storytelling across earned media"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DIFFERENTIATORS — What makes AAA unique
+# ═══════════════════════════════════════════════════════════════════════════
+
+differentiators:
+  items:
+    - claim: "AI-First Agency Operations"
+      proof: "Three proprietary AI agents (May, Max, Vera) automating workflow from brief to concept to research"
+      evidence_file: "$ref: LIBRARY_AAA_AGENT_CAPABILITIES"
+
+    - claim: "Evidence-Based Creative"
+      proof: "NATO Admiralty Codes + Evidence Tiers (1-2) for all research; competitive trope audits before concepts"
+      evidence: "Vera methodology requires ≥B2 reliability, 90% Tier 1-2 sources"
+
+    - claim: "Compliance Expertise for Regulated Industries"
+      proof: "Successfully manage campaigns for lottery (NPL), healthcare (Multi-Gyn), children's brands (LEGO)"
+      evidence: "Documented frameworks: age restrictions, KOAG approval, influencer register, role model checklists"
+
+    - claim: "Data-Driven ROInfluence Platform"
+      proof: "Proprietary platform driving strategies across paid, earned, and owned channels"
+
+    - claim: "Gen Y & Gen Z Expertise"
+      proof: "Specialist focus on authentic voices resonating with Millennial and Gen Z audiences"
+
+    - claim: "60+ Team Across 3 Specialized Labels"
+      proof: "&.agency (campaigns), &.talent (representation), &.format (production)"
+      evidence: "&.media group structure with integrated capabilities"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PROOF POINTS — Client roster and credentials
+# ═══════════════════════════════════════════════════════════════════════════
+
+proof_points:
+  items:
+    - type: "client_roster"
+      claim: "11 A-list consumer brands across 8+ sectors"
+      source: "Active client roster"
+      clients:
+        - "Nationale Postcode Loterij (Lottery & Gaming)"
+        - "bol.com (E-commerce)"
+        - "IKEA (Home Furnishings)"
+        - "Multi-Gyn (Healthcare)"
+        - "The LEGO Group (Toys & Entertainment)"
+        - "Sunny Cars (Travel)"
+        - "Puma (Sportswear)"
+        - "L'Oréal (Beauty)"
+        - "Unilever (FMCG)"
+        - "Sonos (Consumer Electronics)"
+        - "Moët & Chandon (Luxury)"
+
+    - type: "sector_diversity"
+      claim: "Proven expertise across highly regulated and competitive sectors"
+      proof: "E-commerce, FMCG, Beauty, Sportswear, Toys, Travel, Lottery, Healthcare, Luxury"
+
+    - type: "organizational_credibility"
+      claim: "60+ professionals, co-founded by Britt Hogenhuis & Sophie van der Schaft"
+      source: "LinkedIn, company website"
+
+    - type: "campaign_example"
+      claim: "LEGO 2026 year campaign with attendance events"
+      source: "Reach outs voorbeelden.docx"
+      details: "Multi-touch campaign: 4-5 IG posts, store opening, LEGO World attendance"
+
+    - type: "campaign_example"
+      claim: "NPL PostcodeKanjer campaign with strict age compliance"
+      source: "Reach outs voorbeelden.docx"
+      details: "Complex regulatory requirements: <25% under-25 audience, influencer register, role model checklist"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRICING — Approach
+# ═══════════════════════════════════════════════════════════════════════════
+
+pricing:
+  approach: "show_ranges"
+
+  model_description: "Agency fee inclusive + CPM-based performance guarantees"
+
+  structure:
+    - "Creator fees (inclusive of agency commission)"
+    - "KPI-guaranteed delivery (impression-based)"
+    - "CPM threshold management (e.g., max €30 CPM)"
+    - "Optional buy-out fees for paid amplification"
+
+  typical_deliverables:
+    - deliverable: "1x IG Reel"
+      kpi_example: "15,000-35,000 impressies"
+      fee_range: "€500-€1,100 incl. agency fee"
+
+    - deliverable: "1x IG Carousel"
+      note: "Part of multi-deliverable packages"
+
+    - deliverable: "IGS Story Set (3 frames)"
+      note: "Often bundled with Reel or Carousel"
+
+    - deliverable: "Buy-out (per content piece, per week)"
+      fee_example: "€750/week on META"
+
+  notes: "Final pricing varies by creator reach, campaign complexity, and client budget"

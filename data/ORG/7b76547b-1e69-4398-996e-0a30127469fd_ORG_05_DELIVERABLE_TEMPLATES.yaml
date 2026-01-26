@@ -1,0 +1,271 @@
+# ORG_05_DELIVERABLE_TEMPLATES.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Fixico - Writing style rules, grammar guidelines, deliverable requirements
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Fixico deliverable templates - writing rules, style guidelines, template requirements"
+  org_id: "FIXICO"
+  tags: [org, ssot, templates, deliverables, writing-style]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# WRITING STYLE RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+writing_style:
+  core_principles:
+    - principle: "Short"
+      description: "Write short and clear sentences"
+      rules:
+        - "Get rid of needless words"
+        - "Get right to the point"
+      example: "Short sentences are easy to read and understand, especially on-screen."
+
+    - principle: "Simple"
+      description: "Avoid unnecessarily long and complex words"
+      good_example: "Use our platform to handle repairs more quickly."
+      bad_example: "Utilise our platform to enable a significant reduction in handling time."
+
+    - principle: "Active"
+      description: "Use active verbs and direct forms of speech"
+      good_example: "Use templates to create quotes within seconds."
+      bad_example: "Templates can be used to create quotes in a faster way."
+
+    - principle: "Empowering"
+      description: "Users are capable, clever, and good at their job"
+      rules:
+        - "Never imply users are helpless without the software"
+      good_example: "Use the new dashboard to manage all your available reports easily."
+      bad_example: "Do you have trouble managing your reports? Don't worry..."
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GRAMMAR GUIDELINES
+# ═══════════════════════════════════════════════════════════════════════════
+
+grammar_guidelines:
+  language: "British English"
+
+  british_english_conventions:
+    spelling_rules:
+      - rule: "Use -ise endings (not -ize)"
+        examples: ["digitalise", "customise", "prioritise"]
+
+      - rule: "Use longer word forms"
+        examples: ["humour (not humor)", "colour (not color)"]
+
+  capitalization:
+    rule: "Sentence case only"
+    guidelines:
+      - "Only capitalise first word and proper nouns"
+      - "Never capitalise full words for emphasis"
+    exception: "Follow standard German Kapitalisierung rules for German content"
+
+  exclamation_marks:
+    rule: "Only use when something would be shouted enthusiastically"
+    do_not_use_in:
+      - "Error messages"
+      - "Disclaimers"
+      - "Alerts"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TERMINOLOGY REFERENCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+terminology:
+  glossary_reference: "$ref: LIBRARY_FIXICO_GLOSSARY"
+
+  status: "To be reviewed and updated"
+
+  coverage: "100+ automotive repair and fleet management terms across 9 languages"
+
+  languages_supported:
+    - "en_UK (British English)"
+    - "nl_NL (Nederlands)"
+    - "nl_BE (Nederlands België)"
+    - "de_DE (Deutsch)"
+    - "fr_BE (Français Belgique)"
+    - "es_ES (Español)"
+    - "it_IT (Italiano)"
+    - "da_DK (Dansk)"
+    - "en_ZA (English South Africa)"
+
+  key_terms:
+    uk_vs_us: "Quote (UK) = Estimate (US) = Offerte (NL)"
+    rmt: "Repair, Maintenance & Tyres"
+    tcr: "Total Cost of Repair"
+    adas: "Advanced Driver Assistance Systems"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CORE DELIVERABLE TYPES
+# ═══════════════════════════════════════════════════════════════════════════
+
+deliverable_types:
+  social_media:
+    linkedin_posts:
+      frequency: "2-4 posts per week"
+      current_output: "2 per week"
+      ai_target: "4 per week"
+
+      kpis:
+        impressions: 3300
+        unique_impressions: 2000
+        reactions: 60
+
+      quality_standards:
+        - "Avoid 'ChatGPT tone' - authentic voice required"
+        - "CEO (Derek) reviews and provides feedback"
+        - "Must align with thought leadership goals"
+
+    instagram:
+      status: "In development (TBD)"
+
+    testimonials:
+      languages: "Multi-language (German, Dutch, English as priorities)"
+
+  presentations:
+    tools_used:
+      primary: "Gamma (preferred)"
+      secondary: "Google Slides (existing templates)"
+
+    types:
+      - "Sales presentations"
+      - "Internal presentations"
+      - "Partner presentations"
+      - "Product presentations"
+
+    productivity_target:
+      current_time: "4 hours per presentation"
+      ai_target: "30 minutes per presentation"
+
+    # GAP: GAP-H-005 - Actual template files not provided in discovery materials
+    note: "Template files exist but not included in onboarding materials"
+
+  marketing_materials:
+    types:
+      - "Product presentations"
+      - "Thought leadership content"
+      - "Internal branding materials (e.g., Hyperfocus project)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LOCALIZATION REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+localization:
+  principle: "All content must be adaptable for multiple markets"
+
+  approach: "Not one-size-fits-all - cultural adaptation beyond translation"
+
+  language_markets:
+    primary:
+      - language: "en-GB"
+        market: "United Kingdom"
+        notes: "Primary focus market, British English required"
+
+      - language: "de-DE"
+        market: "Germany"
+        notes: "Much more formal tone required, significant market opportunity"
+
+      - language: "nl-NL"
+        market: "Netherlands"
+        notes: "Home market"
+
+    secondary:
+      - language: "nl-BE"
+        market: "Belgium (Flemish)"
+        notes: "Nuances vs. Netherlands Dutch - not interchangeable"
+
+      - language: "fr-BE"
+        market: "Belgium (French)"
+
+      - language: "es-ES"
+        market: "Spain"
+
+      - language: "it-IT"
+        market: "Italy"
+
+      - language: "da-DK"
+        market: "Denmark"
+
+      - language: "en-ZA"
+        market: "South Africa"
+
+  cultural_adaptations:
+    german:
+      tone: "More formal"
+      approach: "Professional, structured communication"
+      requirement: "Cannot use direct NL/UK translations"
+
+    belgian_flemish:
+      tone: "Nuanced vs. Netherlands Dutch"
+      requirement: "Requires specific adaptation"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VISUAL ASSETS & IMAGE REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+visual_assets:
+  image_bank:
+    status: "Needed - not yet comprehensive"
+    # GAP: GAP-M-007 - Visual asset library not organized
+
+    desired_content:
+      - "Automotive photography (various angles)"
+      - "Car damage documentation"
+      - "Repair process imagery"
+      - "Platform screenshots"
+      - "Infographics"
+
+    use_cases:
+      - "Social media posts"
+      - "Presentations"
+      - "Website content"
+      - "Marketing materials"
+
+  # GAP: Actual image library organization and cataloging needed
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY STANDARDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_standards:
+  tone_consistency:
+    requirement: "All content must reflect Fixico brand voice: Bright, Reliable, Bold"
+
+  audience_adaptation:
+    requirement: "Adapt tone per audience without changing core personality"
+    audiences:
+      - "B2C: Familiar and warm"
+      - "BRS (repair shops): Collaborative, respect expertise"
+      - "B2B: Formal and professional yet fresh"
+      - "Internal: Friendly and empowering"
+
+  platform_consistency:
+    requirement: "Must be eenduidig (unambiguous/consistent) - we are our platform"
+    importance: "Critical for platform business model"
+
+  writing_checklist:
+    - "Short sentences and clear language"
+    - "Simple words over complex alternatives"
+    - "Active voice preferred"
+    - "Empowering tone (users are capable)"
+    - "British English spelling conventions"
+    - "Sentence case capitalization"
+    - "Appropriate for target audience"
+    - "Consistent with brand voice"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TEMPLATE STRUCTURE REFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+template_references:
+  note: "Use industry-standard templates from ORG reference library where Fixico-specific templates not provided"
+  # Templates for: blog posts, LinkedIn posts, emails, landing pages, etc.
+
+  fixico_specific:
+    status: "Templates exist but not provided in discovery materials"
+    tools: "Gamma, Google Slides"
+    # GAP: GAP-H-005 - Template files need to be collected
+    action_needed: "Collect actual template files for Phase II"

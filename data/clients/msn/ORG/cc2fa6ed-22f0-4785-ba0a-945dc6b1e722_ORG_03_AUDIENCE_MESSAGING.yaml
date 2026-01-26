@@ -1,0 +1,320 @@
+# ORG_03_AUDIENCE_MESSAGING.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG audience definitions and messaging canon (baseline)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "MSG audience definitions and messaging canon (baseline)"
+  notes: "Phase 1 onboarding - ORG layer. Comprehensive ICPs, personas, messaging, and terminology."
+  tags: [org, ssot, messaging, audience, msg]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AUDIENCES — ICPs and Personas
+# ═══════════════════════════════════════════════════════════════════════════
+
+audiences:
+  icps:
+    - name: "MKB (Small-Medium Business)"
+      description: "Mkb-bedrijven die een praktische oplossing zoeken voor afvalinzameling"
+      characteristics:
+        - "Beperkte tijd en behoefte aan kostenbesparing"
+        - "Focus op gemak en ontzorging"
+        - "Geen dedicated facilities team"
+
+    - name: "Grootzakelijk (Enterprise)"
+      description: "Grotere organisaties met soms meerdere locaties en complexere afvalstromen"
+      characteristics:
+        - "Meerdere locaties mogelijk"
+        - "Meer focus op uniformiteit en rapportage"
+        - "Aantoonbare verduurzaming belangrijk"
+
+    - name: "Facilitair (Facilities Management)"
+      description: "Facilitaire dienstverleners en facilitair beheerders die MSN inhuren als onderaannemer"
+      characteristics:
+        - "Sturen op continuïteit, veiligheid, servicelevels"
+        - "Naleving en heldere processen belangrijk"
+        - "Vaak locatieoverstijgend"
+
+    - name: "Vastgoed (Real Estate/Property Management)"
+      description: "Vastgoedorganisaties en -beheerders die afvalmanagement willen inrichten voor panden en huurders"
+      characteristics:
+        - "Aandacht voor inzamelmiddelen, ruimte, logistiek"
+        - "Prestaties per locatie belangrijk"
+        - "ESG/BREEAM/GRESB compliance"
+
+  personas:
+    - name: "De Ondernemer (MKB)"
+      role: "Eigenaar/directeur mkb-bedrijf"
+
+      pain_points:
+        - "Druk door stijgende bedrijfskosten, wil niet te veel betalen voor afvalinzameling"
+        - "Wil geen kostbare bedrijfsruimte opofferen aan inzamelmiddelen of opslag van afval"
+        - "Weinig tijd voor randzaken, wil dat afvalinzameling zonder gedoe en snel geregeld wordt"
+        - "Wil zekerheid dat containers op tijd worden geleegd (gemiste lediging = directe overlast en verstoring)"
+        - "Wil fouten in aanbieden of scheiden voorkomen die leiden tot boetes of extra kosten vanuit gemeente"
+
+      goals:
+        - "Focus houden op core business, zo min mogelijk tijd kwijt zijn aan randzaken rondom afval"
+        - "Kosten voor afvalinzameling zo laag mogelijk houden en alleen betalen voor wat echt nodig is"
+        - "Aanvragen en wijzigingen snel geregeld, zonder ingewikkelde stappen of lange wachttijden"
+        - "Afval vlot afgevoerd, zodat de werkplek schoon blijft en processen doorlopen"
+        - "Zekerheid en rust, zodat afvalinzameling geen zorgen, verrassingen of gedoe oplevert"
+
+      objections:
+        - "Of de prijs echt scherp blijft, of dat er later extra kosten bijkomen (toeslagen, extra ledigingen, vervuilingskosten)"
+        - "Of de inzameling betrouwbaar genoeg is (niet geleegde container = stress, klachten, verstoring bedrijfsvoering)"
+        - "Of afvalstromen en scheidingsregels niet te ingewikkeld worden waardoor fouten ontstaan met mogelijke boetes"
+        - "Of servicevragen snel genoeg worden opgepakt, zeker bij spoed, wijziging of onverwachte situatie"
+
+    - name: "De Facility Manager (Grootzakelijk/Facilitair)"
+      role: "Facility manager bij grote organisatie of facility service provider"
+
+      pain_points:
+        - "Druk door wet- en regelgeving, wil voorkomen dat organisatie niet voldoet aan geldende eisen"
+        - "Wil zeker weten dat duurzaamheidsambities behaald worden, zoekt aanpak die aantoonbaar resultaat oplevert"
+        - "Wil voorkomen dat organisatie achterblijft op concurrenten (duurzaamheid steeds vaker selectiecriterium)"
+        - "Wil geen fouten maken die bedrijfsvoering verstoren (administratieve missers, verkeerde afstemming, afval dat blijft staan)"
+
+      goals:
+        - "Afvalstromen efficiënt organiseren met financieel aantrekkelijke aanpak die milieubewust blijft"
+        - "Zorgeloos proces met zo min mogelijk impact op dagelijkse bedrijfsvoering"
+        - "Duurzaamheidsdoelen aantoonbaar behalen door afvalstromen te optimaliseren en beter te scheiden"
+        - "Grip houden op afspraken, prestaties en kosten, zodat bijsturen snel en onderbouwd kan"
+        - "Aanpak die schaalbaar is over locaties, zodat processen en resultaten overal consistent blijven"
+
+      objections:
+        - "Of rapportages en inzichten sterk genoeg zijn om duurzaamheidsdoelen aantoonbaar te maken"
+        - "Of organisatie aantoonbaar aan relevante regels blijft voldoen, zonder extra administratieve lasten"
+        - "Of overstap soepel verloopt, zonder verstoring van processen op locatie of in administratie"
+        - "Of wijzigingen en uitzonderingen snel worden opgepakt, zodat bedrijfsvoering blijft doorlopen"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging:
+  key_messages:
+    - message: "Milieu Service Nederland is de ondernemende afvalpartner voor zakelijk Nederland en helpt jouw organisatie verduurzamen, zodat een circulaire economie bereikbaar wordt"
+      supporting_points:
+        - "Restafval minimaliseren, beter scheiden en grondstoffen hergebruiken"
+        - "Concrete stappen richting zero waste"
+
+    - message: "Ons afvalplatform brengt inzameling, verwerking en data bij elkaar en geeft schaalbare, real time inzichten"
+      supporting_points:
+        - "Inzicht over locaties, leveranciers en afvalstromen"
+        - "Rapportages voor CSRD-gerelateerde behoeften"
+
+    - message: "Een hybride model zorgt voor flexibiliteit en maatwerk"
+      supporting_points:
+        - "Eigen inzamelmiddelen, eigen logistieke uitvoering"
+        - "Groot partnernetwerk (100+)"
+        - "Ook bij meerdere locaties en complexe afvalstromen"
+
+    - message: "Service blijft persoonlijk en pragmatisch"
+      supporting_points:
+        - "Digitale selfservice via MijnMSN"
+        - "Ondersteuning door collega's die snel en oplossingsgericht handelen"
+
+    - message: "We bieden hoge service tegen een scherpe prijs"
+      supporting_points:
+        - "Volledige ontzorging"
+        - "Schaalvoordelen van ons afvalplatform"
+
+  example_perfect_fit:
+    - "Geen enkele onderneming is hetzelfde: daarom stemmen wij onze oplossingen af op jouw situatie."
+    - "Wij zorgen dat de afvalinzameling past bij jouw manier van werken."
+
+  example_never_use:
+    - "Met MSN wordt 100 procent van al het afval gerecycled, volledig circulair en CO2-neutraal."
+    - "Het ingezamelde afval gaat altijd naar vaste verwerkingsroutes en wordt daar hoogwaardig gerecycled tot hetzelfde product."
+    # REASON: Overstates reality, false claims about processing routes
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONSTRAINTS — NEVER-SAY LIST
+# ═══════════════════════════════════════════════════════════════════════════
+
+constraints:
+  never_say:
+    client_specific_terminology:
+      description: "MSN-specific terminology rules"
+
+      abbreviations_never_use:
+        - term: "MSN"
+          use_instead: "Milieu Service Nederland (voluit)"
+          exception: "MijnMSN (naam self-service omgeving mag wel)"
+          reason: "Voorkomt verwarring met andere betekenissen van MSN, borgt consistente merkherkenning"
+
+        - term: "MSG"
+          use_instead: "Milieu Service Groep (voluit)"
+          reason: "Consistente merkherkenning"
+
+      role_descriptions_avoid:
+        - term: "afvalinzamelaar"
+          use_instead: "afvalpartner, afvalplatform"
+          context: "Voor MSN's rol"
+          reason: "Bewaakt positionering als regisseur via platform, voorkomt dat MSN als uitvoerder in één schakel wordt gezien"
+          note: "Partners mogen wél inzamelaars en verwerkers heten"
+
+        - term: "afvalverwerker"
+          use_instead: "afvalpartner, afvalplatform"
+          context: "Voor MSN's rol"
+          reason: "Bewaakt positionering als regisseur"
+
+      generic_terms_prefer_specific:
+        - term: "afvalbeheer"
+          use_instead: "afvalmanagement"
+          exception: "Bij tekenlimieten (meta descriptions, koppen) is afvalbeheer toegestaan"
+          reason: "Afvalmanagement past beter bij rol als regisseur en partner, afvalbeheer klinkt uitvoerend en generiek"
+
+        - term: "hoogwaardige recycling"
+          use_instead: "zero waste, circulair"
+          exception: "Alleen gebruiken als aantoonbaar zo te definiëren"
+          reason: "Specifieke claim vereist bewijs"
+
+        - term: "bak, afvalbak"
+          use_instead: "rolcontainer, perscontainer"
+          reason: "Bak is te informeel en minder precies"
+
+      product_naming_conventions:
+        - product: "Multi Afval Container"
+          first_mention: "Multi Afval Container (MAC)"
+          subsequent: "MAC"
+          reason: "Consistente schrijfwijze, doorzoekbaar, herbruikbaar"
+
+        - product: "Miniperscontainer"
+          format: "Altijd voluit met hoofdletter"
+          reason: "Productnaam, consistente schrijfwijze"
+
+      waste_stream_naming:
+        - stream: "Organisch afval"
+          prefer: "Organisch afval"
+          avoid: ["Bio", "bio-afval", "GFT"]
+          context: "B2B context"
+          exception: "Swill alleen voor etensresten uit bedrijfskeukens/horeca (categorie 3 afval), nooit in marketingcommunicatie"
+
+        - stream: "Papier en karton"
+          prefer: "Papier en karton"
+          avoid: ["Oudpapier", "Papier/karton", "Karton afval"]
+          reason: "Consistente schrijfwijze"
+
+    client_specific_claims:
+      description: "MSN-specific claim restrictions"
+
+      guarantee_words_avoid:
+        items: ["altijd", "nooit", "gegarandeerd"]
+        exception: "Behalve als contractueel hard te maken"
+        reason: "Voorkomt discussies met klanten en ongewenste claims bij dienstverlening afhankelijk van omstandigheden"
+
+      sustainability_claims_require_evidence:
+        items:
+          - "volledig circulair"
+          - "zero waste gegarandeerd"
+          - "CO2-neutraal"
+          - "duurzaam (zonder specificatie)"
+          - "groen (zonder specificatie)"
+          - "milieuvriendelijk (zonder specificatie)"
+        rule: "Tenzij onderbouwing, definities en scope expliciet zijn"
+        reason: "Zware duurzaamheidsclaims zonder afbakening klinken als greenwashing of sluiten niet aan op wat je werkelijk meet"
+
+      zero_waste_definition:
+        term: "zero waste"
+        msn_definition: "Zero waste betekent dat klanten ondernemen zonder restafval"
+        usage: "Formuleer als doel of richting, tenzij de prompter expliciet een harde claim met bewijs geeft"
+
+      numbers_require_source:
+        rule: "Noem nooit percentages, besparingen of milieuwinst zonder onderbouwing"
+        process: "Check cijfers altijd bij de prompter, gebruik ze pas als er bron, meetkader of rapportage is aangeleverd"
+        reason: "Cijfers worden snel als harde belofte geïnterpreteerd en kloppen zonder context niet voor iedere situatie"
+
+      comparative_claims:
+        rule: "Gebruik vergelijkende claims alleen als de vergelijking eerlijk en controleerbaar is"
+        requirement: "Noem altijd het referentiepunt (bijv. 'ten opzichte van vorige situatie') en onder welke voorwaarden"
+        reason: "Zonder referentie blijft onduidelijk wat precies vergeleken wordt"
+
+      processing_routes:
+        rule: "Doe geen uitspraken over verwerkingsroutes"
+        action: "Haal details over specifieke routes of eindbestemmingen uit communicatie"
+        reason: "Verwerkingsroutes kunnen verschillen per afvalstroom en situatie, onjuiste aannames leiden tot verkeerde of niet toegestane claims"
+
+      service_promises:
+        rule: "Noem geen doorlooptijden of harde servicebeloftes"
+        examples: ["binnen 24 uur geplaatst", "binnen één werkdag een gesprek"]
+        exception: "Tenzij dit expliciet is aangeleverd en toegestaan in de context"
+        reason: "Doorlooptijden hangen af van locatie en omstandigheden, harde beloftes creëren verwachtingen die niet altijd waargemaakt kunnen worden"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TONE CONSTRAINTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+tone_constraints:
+    overrides:
+      profile: "MSN 4-pijler model"
+
+      pillars:
+        - pillar: "Overtuigend (Convincing)"
+          description: "We weten waar we over praten en waar we voor staan. We hebben diepgaande kennis van de markt, wet- en regelgeving en de behoeften van onze klanten. Deze kennis zetten we in om onze klanten verder te helpen."
+
+        - pillar: "Ondernemend (Entrepreneurial)"
+          description: "We zijn gedreven en zitten vol energie om onszelf, onze oplossingen en onze relatie met de klant te verbeteren. We communiceren niet hoog-over, maar maken het graag pragmatisch en concreet."
+
+        - pillar: "Ondersteunend (Supportive)"
+          description: "We staan dicht bij onze klanten en begrijpen ze. We zijn er voor hen! Daarom zijn we niet pusherig in onze communicatie."
+
+        - pillar: "Oplossingsgericht (Solution-focused)"
+          description: "We zijn pragmatisch en regelen dingen graag snel. Daarom vertellen we hoe we de klant direct verder kunnen helpen, zonder het complex of langdradig te maken."
+
+      formality:
+        value: "professional_je_vorm"
+        description: "Iets meer formeel dan informeel, persoonlijk met professionele ondertoon, precies tussen luchtig en serieus in"
+
+      writing_style:
+        value: "actief_concreet_direct"
+        description: "Actieve, concrete en directe schrijfwijze (vermijd passieve formuleringen of het gebruik van onnodige hulpwerkwoorden)"
+
+      accessibility:
+        value: "toegankelijk"
+        description: "Iedereen die op niveau Nederlands spreekt, moet kunnen begrijpen wat we zeggen"
+
+      examples_do:
+        - context: "Formality balance"
+          good: "Wij helpen jouw organisatie met duurzaam afvalmanagement."
+          bad: "Hey ondernemer! Laat ons je helpen met duurzaam afvalmanagement."
+
+        - context: "Personal yet professional"
+          good: "Wij helpen jouw organisatie met duurzame oplossingen voor al je afvalstromen."
+          bad: "De experts van Milieu Service Nederland verwerken het afval op een efficiënte en milieuvriendelijke manier."
+
+        - context: "Between light and serious"
+          good: "Afval scheiden ingewikkeld? Wij helpen je hier graag bij! Samen werken we aan een circulaire economie in Nederland."
+          bad: "Afval saai? Niet met ons! We maken afvalbeheer leuk en gemakkelijk, zodat jij kunt bijdragen aan een schonere wereld."
+
+        - context: "Accessible"
+          good: "Ken jij de nieuwe regels rondom afval voor beursgenoteerde bedrijven al? Wij delen onze kennis graag met je."
+          bad: "Onze geavanceerde afvalsorteertechnieken met state-of-the-art technologie garanderen milieuvriendelijke verwerking."
+
+        - context: "Convincing"
+          good: "Wij zijn trots op onze Kiyoh-beoordeling van 9,1. Sluit je aan bij ons platform voor duurzaam afvalmanagement."
+          bad: "Afval scheiden? Daar ben jij als pandbeheerder vast goed in ;-)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE LANGUAGE
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitive_language:
+  policy: "never_name_competitors"
+
+  rule: "Milieu Service Nederland vergelijkt zichzelf nooit expliciet met concurrenten in externe communicatie en noemt geen namen"
+
+  allowed: "Uitspraken over de markt en marktontwikkelingen zijn toegestaan, zolang dit feitelijk blijft en niet gebruikt wordt om andere partijen impliciet als 'slechter' neer te zetten"
+
+  allowed_comparisons:
+    - "Unlike traditional solutions..."
+    - "In contrast to conventional approaches..."
+    - "Where others focus on X, we prioritize Y..."
+
+  disallowed_comparisons:
+    - "Competitor names"
+    - "Implicit negative comparisons to identifiable competitors"

@@ -1,0 +1,145 @@
+# ORG_02_BRAND_POSITIONING.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG offering, differentiation, and proof points (baseline positioning)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "MSG offering, differentiation, and proof points (baseline positioning)"
+  notes: "Phase 1 onboarding - ORG layer. Comprehensive service catalog and differentiators."
+  tags: [org, ssot, positioning, msg]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OFFERS CATALOG
+# ═══════════════════════════════════════════════════════════════════════════
+
+offers_catalog:
+  offers:
+    - name: "Afvalinzameling (Waste Collection)"
+      description: "Inzameling van afval en grondstoffen via afvalplatform met landelijk partnernetwerk"
+      key_benefit: "Efficiënte afvalinzameling met één aanspreekpunt, factuur en rapportage"
+
+    - name: "Inzamelmiddelen (Collection Equipment)"
+      description: "Rolcontainers, perscontainers, ondergrondse containers, Miniperscontainer en Multi Afval Container (MAC)"
+      key_benefit: "450+ inzameloplossingen passend bij locatie en afvalstroom"
+
+    - name: "Duurzame verwerking (Sustainable Processing)"
+      description: "Verwerking van ingezamelde stromen met focus op hergebruik en circulaire toepassing"
+      key_benefit: "Maximale hergebruik van grondstoffen richting circulaire economie"
+
+    - name: "Circulair advies (Circular Advice)"
+      description: "Advies over duurzaam afvalmanagement met circulaire adviestrajecten en optimalisatie van afvalstromen"
+      key_benefit: "Concrete stappen richting zero waste met aantoonbare duurzaamheidsdoelen"
+
+    - name: "Gedragsverandering en activatie (Behavioral Change)"
+      description: "Tools en materialen voor gedragsverandering rondom afvalscheiding (Afval Experience, Zero Waste Game, training)"
+      key_benefit: "Afvalscheiding van strategie naar dagelijkse praktijk op de werkvloer"
+
+    - name: "MijnMSN Platform"
+      description: "Selfservice-omgeving voor afvalkalender, inzichten, facturen, aanvullende ledigingen en rapportages"
+      key_benefit: "Real-time inzicht en digitale ontzorging 24/7"
+
+  service_tiers:
+    - tier: "Basis"
+      includes:
+        - "Afvalanalyse"
+        - "Inzamelmiddelenplan"
+        - "Rapportage"
+
+    - tier: "Premium"
+      includes:
+        - "Alles van Basis"
+        - "Circulair advies"
+        - "Advies/compliancy ESG"
+
+    - tier: "Premium Plus"
+      includes:
+        - "Alles van Premium"
+        - "Stimulering gedragsverandering"
+        - "Bezoek Afval Experience"
+        - "Training & gedragsverandering"
+        - "Zero Waste Game (optioneel)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DIFFERENTIATORS
+# ═══════════════════════════════════════════════════════════════════════════
+
+differentiators:
+  items:
+    - claim: "Onafhankelijke rol als afvalketenregisseur"
+      proof: "Organiseert hele keten zonder vast te zitten aan één inzamelstructuur of verwerker, waardoor per klant en afvalstroom beste oplossing mogelijk is"
+
+    - claim: "Hybride platformmodel als praktische kracht"
+      proof: "Combinatie van digitaal afvalplatform, groot partnernetwerk (100+) en eigen uitvoering maakt dienstverlening schaalbaar én wendbaar"
+
+    - claim: "Datagedreven afvalmanagement"
+      proof: "Platform biedt real-time inzichten en rapportages die aansluiten op CSRD-rapportageverplichtingen"
+
+    - claim: "Van strategie naar gedrag op de werkvloer"
+      proof: "Naast uitvoering levert MSN circulair advies en ondersteuning voor gedragsverandering, zodat afvalscheiding zichtbaar en werkbaar wordt in dagelijkse praktijk"
+
+    - claim: "Persoonlijk contact als vaste basis"
+      proof: "Vaste aanspreekpunten en korte lijnen zorgen dat afstemming snel verloopt en dienstverlening aansluit op praktijk"
+
+    - claim: "Volledige ontzorging voor de scherpste prijs"
+      proof: "Collectieve inkoopafspraken met partners en geautomatiseerd WIN-platform combineren scherpe tarieven met directe kostenbesparing door minder restafval"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PROOF POINTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+proof_points:
+  items:
+    - type: "metric"
+      claim: "Kiyoh-beoordeling van 9,1"
+      source: "https://www.kiyoh.com/reviews/1064828/milieu_service_nederland"
+      source_date: "2026-01"
+
+    - type: "metric"
+      claim: "20.000+ organisaties beheren afval via MSN platform in Nederland"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+
+    - type: "metric"
+      claim: "100+ logistieke partners - grootste afvalnetwerk van Nederland"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+
+    - type: "metric"
+      claim: "450+ inzameloplossingen beschikbaar"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+
+    - type: "metric"
+      claim: "35+ afvalstromen beheerd"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+
+    - type: "metric"
+      claim: "35+ jaar ervaring sinds 1986"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+
+    - type: "testimonial"
+      claim: "Milieu Service Nederland combineert flexibiliteit, duurzaamheid en maatwerk in afvalbeheer. Hun klantgerichte aanpak en prioriteit voor kernactiviteiten, zoals kunsttransport, geven vertrouwen in een duurzame samenwerking."
+      source: "Victor Seignette, Stichting Stedelijk Museum Amsterdam"
+      source_date: "2025"
+
+    - type: "case_study"
+      claim: "Klantcases beschikbaar"
+      source: "https://www.milieuservicenederland.nl/kenniscentrum/klantverhalen/"
+      source_date: "2026-01"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRICING
+# ═══════════════════════════════════════════════════════════════════════════
+
+pricing:
+  approach: "refer_to_sales"
+
+  pricing_messaging: "Hoge service tegen een scherpe prijs"
+  # NOTE: Messaging emphasizes value equation without specific pricing
+
+  pricing_strategy_notes: "Volledige ontzorging combineren met schaalvoordelen van afvalplatform"

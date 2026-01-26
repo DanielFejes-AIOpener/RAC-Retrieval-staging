@@ -1,0 +1,147 @@
+# ORG_01_FOUNDATION.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# Legal/org basics + operating context + market context + competitor registry
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Legal/org basics + operating context + market context for AndAgencyAmsterdam"
+  notes: "Phase I onboarding - ORG layer foundation. Part of &.media group."
+  tags: [org, ssot, foundation, aaa]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG BASICS — Marketing-relevant details
+# ═══════════════════════════════════════════════════════════════════════════
+
+org_basics:
+  trading_name: "AndAgencyAmsterdam"
+
+  website: "https://and-media.group/"
+
+  brand_aliases:
+    - "&.agency"
+    - "AAA"
+
+  parent_company: "&.media group"
+
+  sister_labels:
+    - name: "&.talent"
+      focus: "Talent management"
+    - name: "&.format"
+      focus: "Content production"
+
+  # Legal details — for disclaimers and formal documentation
+  legal_details:
+    legal_name: "AndAgencyAmsterdam"
+
+    kvk_number: "83799648"
+
+    business_type: "Holding- en financieringsactiviteiten"
+
+    entity_type: "Besloten Vennootschap (B.V.)"
+
+  leadership:
+    - name: "Britt Hogenhuis"
+      role: "Co-founder & Co-CEO"
+
+    - name: "Sophie van der Schaft"
+      role: "Co-founder & Co-CEO"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OPERATING CONTEXT — Marketing-relevant defaults
+# ═══════════════════════════════════════════════════════════════════════════
+
+operating_context:
+  headquarters: "Amsterdam, Netherlands"
+
+  team_size: "60+"
+
+  timezone: "Europe/Amsterdam"
+
+  languages:
+    - code: "nl"
+      name: "Nederlands"
+      primary: true
+
+    - code: "en"
+      name: "English"
+      primary: false
+
+  regions_served:
+    - "Netherlands"
+    - "Benelux"
+    - "European Union"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET CONTEXT — Target markets and segments
+# ═══════════════════════════════════════════════════════════════════════════
+
+market_context:
+  segments:
+    - "Consumer Brands (B2C)"
+    - "Regulated Industries"
+    - "Multi-market Brands"
+
+  categories:
+    - "E-commerce"
+    - "FMCG/Consumer Goods"
+    - "Beauty & Cosmetics"
+    - "Sportswear & Apparel"
+    - "Toys & Entertainment"
+    - "Travel & Hospitality"
+    - "Lottery & Gaming"
+    - "Healthcare"
+
+  regions:
+    - "Netherlands"
+    - "Belgium"
+    - "Germany"
+    - "European Union"
+
+  generational_focus:
+    - "Gen Y (Millennials)"
+    - "Gen Z"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CLIENT ROSTER — Major brands served
+# ═══════════════════════════════════════════════════════════════════════════
+
+client_roster:
+  description: "A-list consumer brands across diverse sectors requiring influencer marketing and creative campaigns"
+
+  clients:
+    - name: "Nationale Postcode Loterij"
+      sector: "Lottery & Gaming"
+
+    - name: "bol.com"
+      sector: "E-commerce"
+
+    - name: "IKEA"
+      sector: "Home Furnishings"
+
+    - name: "Multi-Gyn"
+      sector: "Healthcare"
+
+    - name: "The LEGO Group"
+      sector: "Toys & Entertainment"
+
+    - name: "Sunny Cars"
+      sector: "Travel & Car Rental"
+
+    - name: "Puma"
+      sector: "Sportswear"
+
+    - name: "L'Oréal"
+      sector: "Beauty & Cosmetics"
+
+    - name: "Unilever"
+      sector: "FMCG/Consumer Goods"
+
+    - name: "Sonos, Inc."
+      sector: "Consumer Electronics"
+
+    - name: "Moët & Chandon"
+      sector: "Luxury Goods/Beverages"
+

@@ -1,0 +1,352 @@
+# ORG_07_MARKETING_COMPLIANCE.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# AI policy, data handling, compliance frameworks for marketing operations
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "Marketing compliance rules, AI policy, and data handling requirements for MSN"
+  notes: "Based on AI Policy PDF - governs AI tool use, data handling, and compliance requirements"
+  tags: [org, ssot, compliance, ai-policy, governance]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AI POLICY - CORE RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+ai_policy:
+  policy_name: "Milieu Service Nederland AI Gebruik Policy"
+  effective_date: "2024"
+  scope: "All employees using AI tools for marketing, content creation, and business operations"
+
+  guiding_principle:
+    description: "AI ondersteunt menselijk werk, vervangt het niet"
+    translation: "AI supports human work, does not replace it"
+
+  primary_approved_platform:
+    name: "AI Opener"
+    status: "Primary approved AI platform"
+    usage: "Text generation, content creation, brainstorming, research support"
+
+  additional_tools_policy:
+    rule: "Written approval required from management"
+    description: "Additional AI tools beyond AI Opener require explicit written approval"
+    approval_authority: "Marketing Manager or IT/System Administrator"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PROHIBITED USE CASES
+# ═══════════════════════════════════════════════════════════════════════════
+
+prohibited_use_cases:
+  unsafe_tools:
+    description: "Geen gebruik van AI-tools zonder adequate beveiliging"
+    translation: "No use of AI tools without adequate security"
+    examples:
+      - "Unverified AI platforms"
+      - "Tools without privacy policies"
+      - "Beta/experimental tools with unclear data handling"
+
+  sensitive_data_entry:
+    description: "Geen vertrouwelijke of persoonlijke gegevens invoeren"
+    translation: "No confidential or personal data entry"
+    prohibited_data_types:
+      - "NAW-gegevens (Naam, Adres, Woonplaats / Name, Address, City)"
+      - "Financial data (bank accounts, payment details)"
+      - "Customer contract details"
+      - "Employee personal information"
+      - "Proprietary business intelligence"
+      - "Trade secrets"
+      - "Internal financial reports"
+
+  autonomous_decisions:
+    description: "AI mag nooit zelfstandig beslissingen nemen"
+    translation: "AI may never make autonomous decisions"
+    prohibited_actions:
+      - "Publishing content without human review"
+      - "Making financial decisions"
+      - "Customer service decisions without human verification"
+      - "Hiring/firing decisions"
+      - "Contract approvals"
+
+  unethical_content:
+    description: "Geen onethische content genereren"
+    translation: "No unethical content generation"
+    prohibited_content:
+      - "Misleading claims about waste reduction"
+      - "False sustainability metrics"
+      - "Plagiarized content"
+      - "Discriminatory messaging"
+      - "Greenwashing"
+
+  security_circumvention:
+    description: "AI niet gebruiken om beveiligingsmaatregelen te omzeilen"
+    translation: "Do not use AI to circumvent security measures"
+    prohibited_actions:
+      - "Bypassing access controls"
+      - "Extracting protected information"
+      - "Generating fake credentials"
+      - "Social engineering attacks"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DATA HANDLING RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+data_handling:
+  allowed_data_types:
+    - name: "General market information"
+      examples: ["Industry trends", "Public statistics", "Market research summaries"]
+
+    - name: "Public company information"
+      examples: ["Published brand values", "Website content", "Public sustainability reports"]
+
+    - name: "Non-sensitive content drafts"
+      examples: ["Blog topic ideas", "Social media concepts", "General educational content"]
+
+    - name: "Anonymous aggregated data"
+      examples: ["Industry benchmarks", "General waste stream trends", "Anonymous usage patterns"]
+
+  prohibited_data_types:
+    - name: "Persoonsgegevens (Personal data - AVG/GDPR protected)"
+      examples: ["Customer NAW", "Employee records", "Contact databases"]
+      rationale: "AVG/GDPR compliance - personal data may not be processed through third-party AI"
+
+    - name: "Bedrijfsgevoelige informatie (Business-sensitive information)"
+      examples: ["Pricing strategies", "Supplier contracts", "Financial projections", "M&A discussions"]
+      rationale: "Competitive advantage protection"
+
+    - name: "Vertrouwelijke klantgegevens (Confidential customer data)"
+      examples: ["Contract terms", "Custom pricing", "Waste audit reports", "Client communications"]
+      rationale: "Client confidentiality and trust"
+
+    - name: "Inloggegevens (Credentials)"
+      examples: ["Passwords", "API keys", "Access tokens", "System credentials"]
+      rationale: "Security risk"
+
+  data_minimization:
+    principle: "Gebruik alleen data die strikt noodzakelijk is"
+    translation: "Use only data that is strictly necessary"
+    description: "When using AI, input the minimum amount of data needed to accomplish the task"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# APPROVAL REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+approval_requirements:
+  platform_approval:
+    ai_opener: "Pre-approved for marketing team use"
+
+    additional_tools:
+      rule: "Require written management approval"
+      process:
+        - "Submit tool request to Marketing Manager"
+        - "Include: tool name, vendor, use case, data handling policy"
+        - "Await written approval before use"
+        - "CC: systeembeheer@milieuservice.nl on approval"
+
+  use_case_approval:
+    high_risk_applications:
+      description: "High-stakes or sensitive applications require pre-approval"
+      examples:
+        - "Customer-facing automated responses"
+        - "Legal document generation"
+        - "Financial content"
+        - "Press releases"
+        - "Crisis communications"
+      approval_authority: "Marketing Manager + Legal (if applicable)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HUMAN CONTROL REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+human_control:
+  human_in_the_loop:
+    principle: "Mens blijft altijd in controle"
+    translation: "Human always remains in control"
+    requirements:
+      - "Human reviews all AI outputs before use"
+      - "Human makes final decisions"
+      - "Human takes responsibility for published content"
+      - "AI is a tool, not a decision-maker"
+
+  review_requirements:
+    mandatory_review:
+      - "All customer-facing content"
+      - "Social media posts"
+      - "Blog articles"
+      - "Email campaigns"
+      - "Website content"
+      - "Marketing materials"
+    review_criteria:
+      - "Factual accuracy"
+      - "Brand voice alignment"
+      - "Tone appropriateness"
+      - "Legal compliance"
+      - "No sensitive data disclosure"
+
+  editorial_responsibility:
+    rule: "De gebruiker die AI gebruikt is verantwoordelijk voor de output"
+    translation: "The user using AI is responsible for the output"
+    implications:
+      - "Cannot blame AI for errors"
+      - "Must verify all facts and claims"
+      - "Must ensure brand compliance"
+      - "Accountable for published content"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OUTPUT VERIFICATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+output_verification:
+  verification_mandate:
+    rule: "Controleer AI-output altijd zelf"
+    translation: "Always verify AI output yourself"
+
+  verification_checklist:
+    factual_accuracy:
+      - "Verify statistics and data points"
+      - "Confirm sources are real and reputable"
+      - "Check that claims are current and accurate"
+      - "Validate technical details"
+
+    brand_compliance:
+      - "Tone matches MSN brand voice"
+      - "Visual elements follow brand guidelines"
+      - "Messaging aligns with positioning"
+      - "No prohibited competitor mentions"
+
+    legal_compliance:
+      - "No copyright infringement"
+      - "No false advertising claims"
+      - "AVG/GDPR compliant"
+      - "No misleading statements"
+
+    quality_standards:
+      - "Grammar and spelling correct"
+      - "Logical flow and structure"
+      - "Appropriate length and depth"
+      - "Professional presentation"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TRANSPARENCY REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+transparency:
+  disclosure_policy:
+    internal:
+      rule: "Note when AI substantially contributed to content"
+      format: "Add note in internal documentation: 'Conceptueel ondersteund door AI'"
+      translation: "'Conceptually supported by AI'"
+
+    external:
+      rule: "No obligation to disclose AI use externally"
+      rationale: "After human review and approval, content is human-authored"
+      exception: "If legally required or industry standards change, follow updated guidance"
+
+  attribution_policy:
+    rule: "Do not attribute content to AI ('geschreven door AI')"
+    correct_attribution: "Content is attributed to human author who reviewed and approved it"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# INCIDENT RESPONSE
+# ═══════════════════════════════════════════════════════════════════════════
+
+incident_response:
+  reportable_incidents:
+    types:
+      - "Accidental sensitive data input to AI"
+      - "Unauthorized AI tool use"
+      - "Publication of unverified AI content"
+      - "Data breach via AI platform"
+      - "AI-generated content causing brand/legal issues"
+
+  reporting_procedure:
+    contact: "systeembeheer@milieuservice.nl"
+    timeline: "Report immediately upon discovery"
+    information_required:
+      - "What happened (incident description)"
+      - "Which AI tool was involved"
+      - "What data was involved"
+      - "When it occurred"
+      - "Potential impact"
+
+  investigation_process:
+    - "IT/System admin reviews incident"
+    - "Assess data exposure risk"
+    - "Determine if breach notification required (AVG/GDPR)"
+    - "Implement corrective measures"
+    - "Update policy if needed"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPLIANCE FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+compliance_frameworks:
+  avg_gdpr:
+    full_name: "Algemene Verordening Gegevensbescherming / General Data Protection Regulation"
+    jurisdiction: "European Union"
+    key_requirements:
+      - "No personal data in AI tools without legal basis"
+      - "Data processor agreements required for AI vendors"
+      - "Right to erasure applies to AI-processed data"
+      - "Data breach notification within 72 hours"
+    msn_application: "Prohibits entering customer/employee personal data into AI tools"
+
+  ai_act_eu:
+    full_name: "EU AI Act (Artificial Intelligence Act)"
+    status: "Adopted 2024, phased implementation"
+    risk_category: "Limited Risk"
+    requirements:
+      - "Transparency obligations for AI-generated content"
+      - "Human oversight requirements"
+      - "Risk management systems"
+      - "Accuracy and robustness standards"
+    msn_application: "Human-in-the-loop policy ensures compliance with AI Act oversight requirements"
+
+  internal_governance:
+    policy_owner: "IT/System Administration + Marketing Management"
+    review_frequency: "Annual or when regulations change"
+    training_requirement: "All marketing team members must review AI policy annually"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TRAINING & AWARENESS
+# ═══════════════════════════════════════════════════════════════════════════
+
+training_awareness:
+  onboarding:
+    requirement: "All new marketing team members review AI policy before tool access"
+
+  ongoing_training:
+    frequency: "Annual refresher"
+    topics:
+      - "AI policy updates"
+      - "Data handling best practices"
+      - "Verification techniques"
+      - "Incident examples and lessons learned"
+
+  resources:
+    - "AI Policy PDF (primary reference)"
+    - "AI Opener platform documentation"
+    - "Marketing compliance channel (internal)"
+    - "Contact: systeembeheer@milieuservice.nl for questions"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GOVERNANCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+governance:
+  policy_authority:
+    primary_owner: "IT/System Administration (systeembeheer@milieuservice.nl)"
+    co_owner: "Marketing Manager"
+
+  policy_updates:
+    trigger_events:
+      - "New regulations (AI Act phases, AVG updates)"
+      - "Incident learnings"
+      - "New AI tools/capabilities"
+      - "Business needs changes"
+    notification_method: "Email to all platform users + internal communication channels"
+
+  exceptions:
+    process: "Request via Marketing Manager, requires written approval from IT/System Admin"
+    documentation: "All exceptions logged and reviewed quarterly"

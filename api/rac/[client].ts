@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { loadFile, findFileByPath, getFileIndex } from '../../lib/loader';
+import { loadFile, findFileByPath, findFileByPathForClient, getFileIndex } from '../../lib/loader';
 import { resolveRefs } from '../../lib/resolver';
 import { applyInheritance } from '../../lib/merger';
 import { stripMeta, extractSection } from '../../lib/utils';
@@ -8,6 +8,10 @@ import { stripMeta, extractSection } from '../../lib/utils';
 const CLIENT_FILE_MAP: Record<string, string> = {
   'uhu': 'CLIENT_05_UHU',
   'demo': 'CLIENT_01_DEMO_CLIENT',
+  'fixico': 'CLIENT_01_FIXICO',
+  'msn': 'CLIENT_01_MSN',
+  'reducate': 'CLIENT_02_PO_ONLINE',
+  'aaa': 'CLIENT_01_AAA',  // No CLIENT file yet, but ORG/LIBRARY overrides exist
 };
 
 // Client-specific role remapping (old role → new role)
@@ -111,14 +115,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // Find file
-    let filePath = findFileByPath(layer, fileId);
+    // Find file (uses client-specific override for supported layers)
+    let filePath = findFileByPathForClient(layer, fileId, clientSlug);
     
     // Auto-correct full ID to short name
     if (!filePath && fileId) {
       const match = fileId.match(/^[A-Z_]+_\d+_(.+)$/);
       if (match) {
-        filePath = findFileByPath(layer, match[1]);
+        filePath = findFileByPathForClient(layer, match[1], clientSlug);
         if (filePath) fileId = match[1];
       }
     }
@@ -207,7 +211,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Attach client data
     if (includeClient && LAYERS_WITH_CLIENT.includes(layer)) {
-      const clientFile = findClientFileById(clientFileId);
+      const clientFile = findClientFileById(clientFileId, clientSlug);
       if (clientFile) {
         let clientContent = loadFile(clientFile);
         clientContent = resolveRefs(clientContent);
@@ -231,12 +235,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 }
 
-function findClientFileById(clientFileId: string): string | null {
+function findClientFileById(clientFileId: string, clientSlug?: string): string | null {
   const index = getFileIndex();
   
-  // Find by file ID (e.g., CLIENT_05_UHU)
+  // First check client-specific folder if we have a slug
+  if (clientSlug) {
+    for (const [key, filePath] of Object.entries(index)) {
+      if (key.startsWith(`clients:${clientSlug}:`) && key.includes(clientFileId)) {
+        return filePath;
+      }
+    }
+  }
+  
+  // Fall back to shared CLIENT folder
   for (const [key, filePath] of Object.entries(index)) {
-    if (key.includes(clientFileId)) {
+    if (key.includes(clientFileId) && !key.startsWith('clients:')) {
       return filePath;
     }
   }

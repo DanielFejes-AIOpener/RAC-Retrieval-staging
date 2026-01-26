@@ -1,0 +1,389 @@
+# ORG_05_DELIVERABLE_TEMPLATES.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# Canonical templates for core deliverables (ORG baseline)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Canonical templates for core deliverables for AndAgencyAmsterdam"
+  notes: "Phase I required. Influencer marketing templates: reach-outs, contracts, briefs, reports, concepts."
+  tags: [org, ssot, templates, deliverables, aaa, influencer-marketing]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TEMPLATES — Deliverable structures and requirements
+# ═══════════════════════════════════════════════════════════════════════════
+
+templates:
+  description: "Core deliverable templates for influencer marketing campaigns"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # REACH-OUT TEMPLATE (INFLUENCER OUTREACH)
+  # ─────────────────────────────────────────────────────────────────────────
+
+  reach_out:
+    id: "template_reach_out"
+    name: "Influencer Reach-Out"
+    description: "Initial outreach to influencers for campaign participation"
+
+    specs:
+      format: "Google Doc or email"
+      tone: "jij-vorm (informal Dutch 'you')"
+      length: "300-500 words"
+      read_time: "Under 2 minutes"
+
+    structure:
+      - section: "Personal Greeting"
+        requirements: "Use influencer's name, reference their content"
+        example: "Hoi [Name]! We zijn fan van je content over [topic]"
+        length: "2-3 sentences"
+
+      - section: "About the Brand"
+        requirements: "Brief brand intro, campaign context"
+        length: "2-4 sentences"
+        example: "We werken voor [Brand], die [brand mission/product]"
+
+      - section: "Campaign Brief"
+        requirements: "Campaign goal, content format, timeline"
+        length: "3-5 sentences"
+        components:
+          - "Campaign objective"
+          - "Deliverable formats (Reels, Stories, Carousels, TikTok)"
+          - "Timeline/posting dates"
+          - "Creative freedom level"
+
+      - section: "Deliverable Details"
+        requirements: "Specific content quantities and platforms"
+        format: "Bulleted list"
+        example: |
+          - 1 Reel
+          - 2 x 3-frame Stories
+          - 3 Carousels
+
+      - section: "Compliance & Requirements"
+        requirements: "Any legal/brand requirements"
+        may_include:
+          - "Exclusivity clause"
+          - "Age restrictions (NPL <25%)"
+          - "KOAG approval (healthcare)"
+          - "Influencer register check"
+          - "Brand safety guidelines"
+
+      - section: "Next Steps"
+        requirements: "Clear CTA for response"
+        example: "Lijkt dit wat? Laat het ons weten!"
+
+      - section: "Contact Details"
+        requirements: "Contact person, agency info"
+        includes:
+          - "Name and role"
+          - "Email/phone"
+          - "Agency name (AndAgencyAmsterdam)"
+
+    tone_guidelines:
+      voice: "jij-vorm (informal, friendly)"
+      approach:
+        - "Enthusiastic but not over-eager"
+        - "Personalized to influencer's content"
+        - "Transparent about brand requirements"
+        - "Conversational, not corporate"
+      examples:
+        good: ["Hoi!", "Lijkt dit wat?", "We zijn fan", "Laat het ons weten"]
+        avoid: ["Zeer geachte", "Hoogachtend", "Wij verzoeken u", "Formele aanhef"]
+
+    campaign_examples:
+
+      - campaign: "NPL (Nationale Postcode Loterij)"
+        deliverables:
+          - "1 Reel"
+          - "2 x 3-frame Stories"
+          - "3 Carousels"
+        requirements:
+          - "Follower base <25% under 18"
+          - "No competitor lottery brands during campaign + 3 months"
+          - "Contract via HelloSign"
+
+      - campaign: "bol Wonen"
+        deliverables:
+          - "Instagram content (format flexible)"
+        requirements:
+          - "No Wehkamp, Coolblue during campaign"
+          - "Home/interior content focus"
+
+      - campaign: "IKEA Keuken"
+        deliverables:
+          - "Content showcasing IKEA kitchen"
+        requirements:
+          - "No competitor furniture brands"
+          - "Previous brand partners: Puma, L'Oréal mentioned"
+
+      - campaign: "Multi-Gyn"
+        deliverables:
+          - "Educational content about product"
+        requirements:
+          - "KOAG approval required"
+          - "No competitor healthcare brands for 6 months"
+          - "Medical claims must be approved"
+
+      - campaign: "LEGO Jaarcampagne 2026"
+        deliverables:
+          - "Year-long campaign structure"
+          - "Multiple touchpoints"
+        requirements:
+          - "Sourced via Kolsquare"
+          - "Campaign tracked in Monday.com"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # CONTRACT TEMPLATE
+  # ─────────────────────────────────────────────────────────────────────────
+
+  contract:
+    id: "template_contract"
+    name: "Influencer Contract"
+    description: "Legal agreement for influencer campaign participation"
+
+    specs:
+      format: "PDF via HelloSign (digital signature)"
+      tone: "Juridisch (legal Dutch)"
+      language: "Nederlands"
+      signature_method: "HelloSign"
+
+    standard_clauses:
+      - clause: "Parties"
+        content: "AndAgencyAmsterdam B.V. (agency) + Influencer (creator)"
+
+      - clause: "Campaign Scope"
+        content: "Deliverable specifications, timeline, brand"
+
+      - clause: "Compensation"
+        content: "Fee, payment terms, expenses"
+
+      - clause: "Exclusivity"
+        content: "Competitor restrictions during and post-campaign"
+
+      - clause: "Content Rights"
+        content: "Usage rights, licensing, brand approval"
+
+      - clause: "Compliance"
+        content: "Legal disclosure (#ad), platform guidelines, KOAG (if applicable)"
+
+      - clause: "Termination"
+        content: "Termination conditions, notice period"
+
+      - clause: "Confidentiality"
+        content: "NDA for campaign details"
+
+      - clause: "Influencer Register"
+        content: "Confirmation of registration in Dutch influencer register"
+
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # CREATIVE BRIEF (INTERNAL / CLIENT)
+  # ─────────────────────────────────────────────────────────────────────────
+
+  creative_brief:
+    id: "template_creative_brief"
+    name: "Creative Campaign Brief (12-Part Structure)"
+    description: "Internal/client brief for campaign strategy and execution"
+
+    specs:
+      format: "Google Doc"
+      audience: "Internal team + client stakeholders"
+      length: "5-10 pages"
+
+    structure:
+
+      - section: "1. Campaign Context"
+        content: "Background, market situation, business challenge"
+        questions:
+          - "Why this campaign now?"
+          - "What's the business/brand challenge?"
+
+      - section: "2. Campaign Objective"
+        content: "SMART goals, KPIs, success metrics"
+
+      - section: "3. Target Audience"
+        content: "Demographics, psychographics, behaviors"
+        includes:
+          - "Gen Y / Gen Z focus (AAA specialty)"
+          - "Platform preferences"
+          - "Content consumption habits"
+
+      - section: "4. Insight"
+        content: "Consumer or cultural insight driving strategy"
+
+      - section: "5. Key Message"
+        content: "Single-minded proposition (SMP)"
+
+      - section: "6. Tone of Voice"
+        content: "Brand voice, personality, communication style"
+
+      - section: "7. Creative Direction"
+        content: "Visual and narrative approach"
+
+      - section: "8. Influencer Strategy"
+        content: "Influencer selection criteria, tiers, fit"
+        includes:
+          - "Follower size tiers"
+          - "Content style fit"
+          - "Brand safety considerations"
+
+      - section: "9. Content Formats & Deliverables"
+        content: "Platform-specific content plan"
+        breakdown:
+          - "Instagram: Reels, Stories, Carousels"
+          - "TikTok: Video formats"
+          - "Quantities and timeline"
+
+      - section: "10. Timeline & Phases"
+        content: "Campaign rollout plan"
+
+      - section: "11. Budget & Resources"
+        content: "Budget allocation, team roles"
+
+      - section: "12. Success Metrics & Reporting"
+        content: "KPIs, measurement plan, reporting cadence"
+
+    quality_gates:
+      - "G1.1: Evidence-backed claims"
+      - "G1.2: Clear audience definition"
+      - "G1.3: Measurable objectives"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # INTELLIGENCE REPORT (VERA AGENT)
+  # ─────────────────────────────────────────────────────────────────────────
+
+  intelligence_report:
+    id: "template_intelligence_report"
+    name: "Trend & Intelligence Report"
+    description: "Market intelligence, trend analysis, and insights"
+
+    specs:
+      format: "Google Sheets / Google Docs"
+      output_types:
+        - "Dashboard (Sheets)"
+        - "Narrative report (Docs)"
+        - "Quick insights (Chat)"
+      length: "Varies by format (1-page to 10-page)"
+
+    structure:
+      - section: "Executive Summary"
+        content: "Key findings, implications, recommendations"
+        length: "1 paragraph"
+
+      - section: "Methodology"
+        content: "Data sources, analysis approach, timeframe"
+        includes:
+          - "NATO intelligence codes (A1-F6)"
+          - "Evidence tier classification (1-2)"
+
+      - section: "Trend Analysis"
+        content: "Emerging trends, platform changes, cultural shifts"
+        focus:
+          - "Gen Y / Gen Z behaviors"
+          - "EU/NL market relevance"
+
+      - section: "Competitive Intelligence"
+        content: "Competitor activity, industry benchmarks"
+
+      - section: "Influencer Landscape"
+        content: "Creator trends, platform shifts, engagement patterns"
+
+      - section: "Recommendations"
+        content: "Actionable insights for campaigns"
+        format: "Prioritized list with evidence"
+
+      - section: "Appendix"
+        content: "Raw data, sources, methodology notes"
+
+
+    evidence_tiers:
+      tier_1: "Primary sources, official data, verified reports"
+      tier_2: "Secondary analysis, industry publications, curated insights"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # CONCEPT ROUTE (MAX AGENT)
+  # ─────────────────────────────────────────────────────────────────────────
+
+  concept_route:
+    id: "template_concept_route"
+    name: "Creative Concept Routes"
+    description: "2-3 strategic creative directions for campaign"
+
+
+    concept_development:
+      approach: "Multiple routes for client choice"
+      rationale: "Provides strategic options, demonstrates range"
+      selection_criteria:
+        - "Alignment with brief"
+        - "Creative ambition"
+        - "Platform fit"
+        - "Production feasibility"
+
+    quality_gates:
+      - "G1: Evidence-backed strategy"
+      - "G2: Creative originality"
+      - "G3: Platform appropriateness"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ACCEPTANCE CRITERIA (Definition of Done)
+# ═══════════════════════════════════════════════════════════════════════════
+
+acceptance_criteria:
+  description: "Definition-of-done / acceptance criteria for core deliverables."
+
+  universal:
+    description: "Apply to all deliverables"
+    criteria:
+      - "Brand voice consistent with AAA style"
+      - "No spelling/grammar errors (Nederlands or English)"
+      - "Compliance requirements addressed"
+      - "Platform specifications followed"
+      - "Reviewed by designated approver"
+      - "Legal disclosure requirements met"
+
+  per_deliverable:
+    reach_out:
+      - "Personalized to influencer's content"
+      - "jij-vorm tone throughout"
+      - "Clear deliverable count"
+      - "Compliance requirements stated"
+      - "Clear CTA for response"
+
+    contract:
+      - "All standard clauses included"
+      - "HelloSign signature fields configured"
+      - "Exclusivity terms specific to campaign"
+      - "Influencer register requirement stated"
+      - "Legal review complete"
+
+    influencer_briefing:
+      - "jij-vorm transformation complete"
+      - "Visual mood board included"
+      - "Timeline clear and specific"
+      - "Contact information provided"
+
+    creative_brief:
+      - "All 12 sections complete"
+      - "SMART objectives defined"
+      - "Evidence-backed claims (G1.1)"
+      - "Audience clearly defined (G1.2)"
+      - "Success metrics identified (G1.3)"
+
+    intelligence_report:
+      - "Evidence tier classifications included"
+      - "EU/NL relevance confirmed"
+      - "Actionable recommendations provided"
+      - "Sources documented"
+
+    concept_route:
+      - "2-3 distinct routes presented"
+      - "Platform adaptation shown (2-3 platforms)"
+      - "Emotional journey mapped"
+      - "Visual direction clear"
+      - "Feasibility assessed"
+
+  # Custom deliverables not in standard templates
+  # Add to CLIENT layer if needed
+  custom: []
