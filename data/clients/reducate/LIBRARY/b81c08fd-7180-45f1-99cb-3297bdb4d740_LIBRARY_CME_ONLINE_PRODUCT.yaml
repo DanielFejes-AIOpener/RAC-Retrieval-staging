@@ -1,0 +1,958 @@
+# ================================================================
+# LIBRARY_CME_ONLINE_PRODUCT.yaml
+# Standalone Library: CME-Online VVT Product Catalog & Offering
+# ================================================================
+# Created: 2026-01-26
+# Owner: CLIENT (CME-Online VVT)
+# Format: Standalone structured knowledge extraction (no folder dependencies)
+# ================================================================
+
+meta:
+  library_id: "LIB_CME_ONLINE_PRODUCT"
+  owner_type: "CLIENT"
+  org_id: "REDUCATE"
+  client_id: "CME-ONLINE"
+  title: "CME-Online VVT Product Catalog & Offering"
+  version: "1.0.0"
+  last_updated: "2026-01-26"
+
+  description: |
+    Comprehensive product offering details for CME-Online VVT sector, extracted and structured
+    from official brochures (January 2026). All knowledge codified within this YAML structure.
+
+    Contains:
+    - Complete course catalog (300+ VVT courses, N1-N6 levels)
+    - Subscription models and pricing structures
+    - Accreditation details by professional level
+    - Feature set and value propositions
+    - Microlearning specifications
+    - Product differentiators
+
+  sensitivity: "confidential"
+
+  provenance_note: |
+    Extracted from:
+    - cme-online-vvt-brochure-januari-2026-hq.pdf
+    - cme-online-ghz-brochure-januari-2026-hq.pdf
+    - brochure-CME-VVT-GHZ-microlearnings-2025.pdf
+
+    All content represents current product offering as of January 2026.
+    Confidential pricing and customization details should not be disclosed publicly.
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ORGANIZATIONAL CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+organizational_context:
+  total_platform_scope:
+    total_courses: "750+ online courses"
+    specialties: "18 different healthcare specialties"
+    experience: "Decades of experience in online continuing education"
+    # SOURCE: VVT Brochure p.4, VERIFIED
+
+  vvt_sector_scope:
+    total_vvt_courses: "300+ courses for VVT sector"
+    target_sector: "Verpleeg- en verzorgingshuizen en thuiszorg (VVT)"
+    recent_expansion: "Expanded course offering for elderly care (levels N1-N6)"
+    # SOURCE: VVT Brochure p.1, p.4, VERIFIED
+
+  strategic_positioning:
+    market_position: "Market leader in online continuing education"
+    unique_capability: "Own professional team, own studio, own teachers"
+    quality_guarantee: "Best teachers from science and practice"
+    # SOURCE: VVT Brochure p.4, p.5, VERIFIED
+
+  acquisition_history:
+    legacy_acquisition: "Acquired VVT target groups from E-learning Made Easy (EME) approximately 3 years ago"
+    content_status: "Legacy content being renewed"
+    # SOURCE: LIBRARY_CME_ONLINE_PRODUCT MANIFEST original notes, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COURSE CATALOG - VVT SECTOR
+# ═══════════════════════════════════════════════════════════════════════════
+
+course_catalog_vvt:
+  overview:
+    total_courses: "300+ courses specifically for VVT sector"
+    continuously_updated: true
+    update_frequency: "Ongoing: content continuously updated and expanded with new topics"
+    # SOURCE: VVT Brochure p.1, p.5, VERIFIED
+
+  professional_levels:
+    n1_zorghulp:
+      level_code: "N1"
+      level_name: "Zorghulp"
+      accreditation_points: "No formal accreditation point system"
+      course_duration_format: "Hours (e.g., 0.5 uur, 1 uur, 1.5 uur, 2 uur, 3 uur)"
+      total_courses_in_brochure: "33 courses listed"
+      # SOURCE: VVT Brochure p.6-7, VERIFIED
+
+      course_categories:
+        - category: "Communicatie en Zorgplan"
+          courses:
+            - {name: "Aardig assertief", duration: "1 uur"}
+            - {name: "Cultuursensitief werken", duration: "1 uur"}
+            - {name: "AI in de zorg", duration: "1 uur"}
+            - {name: "Omaha System in Beeld", duration: "1 uur"}
+            - {name: "Rapporteren", duration: "0.5 uur"}
+            - {name: "Samenwerken met de mantelzorger", duration: "1 uur"}
+            - {name: "Signaleren", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.6, VERIFIED
+
+        - category: "Huishoudelijke zorg"
+          courses:
+            - {name: "Droge reiniging", duration: "1 uur"}
+            - {name: "Hygiënisch werken", duration: "1 uur"}
+            - {name: "Natte reiniging", duration: "1 uur"}
+            - {name: "Professioneel schoonmaken", duration: "1 uur"}
+            - {name: "Schoonmaken bij longproblemen", duration: "0.5 uur"}
+            - {name: "Textielverzorging", duration: "0.5 uur"}
+            - {name: "Vraaggericht werken en zelfredzaamheid", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.6, VERIFIED
+
+        - category: "Omgaan met ziektebeelden"
+          courses:
+            - {name: "Omgaan met COPD", duration: "1 uur"}
+            - {name: "Omgaan met CVA", duration: "1 uur"}
+            - {name: "Omgaan met dementie", duration: "1 uur"}
+            - {name: "Omgaan met depressie", duration: "1 uur"}
+            - {name: "Omgaan met hartfalen", duration: "1 uur"}
+            - {name: "Omgaan met MS", duration: "1 uur"}
+            - {name: "Omgaan met parkinson", duration: "1 uur"}
+            - {name: "Omgaan met slaapapneu", duration: "1 uur"}
+            - {name: "Omgaan met slikproblemen", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.7, VERIFIED
+
+        - category: "Veiligheid"
+          courses:
+            - {name: "Arbo en veiligheid", duration: "0.5 uur"}
+            - {name: "ELH - Verslikken, verstikken en reanimeren", duration: "1 uur"}
+            - {name: "Ergonomisch en veilig werken", duration: "2 uur"}
+            - {name: "Hitteprotocol: zorg bij zomerse hitte", duration: "1 uur"}
+            - {name: "Omgaan met agressie", duration: "1 uur"}
+            - {name: "Schoonmaakmaterialen", duration: "1 uur"}
+            - {name: "Veilig tillen en verplaatsen: kennis en richtlijnen", duration: "1 uur"}
+            - {name: "Veilig tillen en verplaatsen: toepassing en casuïstiek", duration: "1 uur"}
+            - {name: "Veilig werken met cytostatica", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.7, VERIFIED
+
+        - category: "Welzijn"
+          courses:
+            - {name: "Rouw en verlies", duration: "1.5 uur"}
+            - {name: "Zorgtechnologie", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.7, VERIFIED
+
+        - category: "Wetgeving"
+          courses:
+            - {name: "Basiscursus Wet zorg en dwang", duration: "1 uur"}
+            - {name: "Dataveiligheid / AVG", duration: "1 uur"}
+            - {name: "HACCP / Voedselhygiëne", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.7, VERIFIED
+
+        - category: "Zorg rond het sterven"
+          courses:
+            - {name: "Proactieve zorgplanning", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.7, VERIFIED
+
+    n2_helpende:
+      level_code: "N2"
+      level_name: "Helpende"
+      accreditation_points: "No formal accreditation point system"
+      course_duration_format: "Hours (uur)"
+      total_courses_in_brochure: "46 courses listed"
+      # SOURCE: VVT Brochure p.8-9, VERIFIED
+
+      key_additions_vs_n1:
+        - "Basiszorg category (8 courses: Aankleden, Mondzorg, Steunkousen, etc.)"
+        - "Medicatie category (2 courses: medication administration basics)"
+        - "Additional disease management courses"
+        # SOURCE: VVT Brochure p.8-9, INFERRED from comparison
+
+      course_categories:
+        - category: "Basiszorg"
+          courses:
+            - {name: "Aankleden", duration: "1 uur"}
+            - {name: "Mondzorg", duration: "1 uur"}
+            - {name: "Steunkousen", duration: "1 uur"}
+            - {name: "Toiletgang", duration: "1 uur"}
+            - {name: "Uiterlijke verzorging", duration: "1 uur"}
+            - {name: "Voeding en vocht", duration: "3 uur"}
+            - {name: "Voetzorg", duration: "1 uur"}
+            - {name: "Wassen, douchen, baden", duration: "1 uur"}
+          # SOURCE: VVT Brochure p.8, VERIFIED
+
+        - category: "Medicatie"
+          courses:
+            - {name: "Medicatie toedienen", duration: "2 uur"}
+            - {name: "Medicatieveiligheid: klaarzetten, aanreiken, toedienen", duration: "3 uur"}
+          # SOURCE: VVT Brochure p.8, VERIFIED
+
+    n3_helpende_plus_verzorgende:
+      level_code: "N3"
+      level_name: "Helpende plus / Verzorgende"
+      accreditation_system: "V&VN Kwaliteitsregister - Accreditation points (punten)"
+      accreditation_points_per_year: "Unlimited accreditation points possible"
+      course_duration_format: "Accreditation points (1-5 punten per course)"
+      total_courses_in_brochure: "59 courses listed"
+      # SOURCE: VVT Brochure p.10-11, VERIFIED
+
+      accreditation_note: |
+        Voor niveau N1, N2, N3, N5: Onbeperkt accreditatiepunten per jaar mogelijk.
+        Voor niveau N6 (Wijkverpleegkundige): Maximum 16 accreditatiepunten per jaar.
+        Accrediterende instantie: V&VN (Verpleegkundigen & Verzorgenden Nederland)
+        Register: Kwaliteitsregister Verpleegkundigen & Verzorgenden (V&V)
+      # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+      key_additions_vs_n2:
+        - "Formal V&VN accreditation points begin at this level"
+        - "Advanced courses: Klinisch Redeneren met Omaha System (5 punten)"
+        - "Gezond gedrag stimuleren (2 punten)"
+        - "Stagiairs coachen en begeleiden (1 punt)"
+        # SOURCE: VVT Brochure p.10, INFERRED
+
+      sample_courses:
+        - category: "Communicatie en Zorgplan"
+          featured_course:
+            name: "Klinisch Redeneren met Omaha System"
+            points: "5 punten"
+            description: |
+              Teaches healthcare professional how to create proper care plan using clinical reasoning
+              with Omaha System. Covers starting point and follow-up steps. Emphasizes care plan,
+              care problems, and reporting alignment (inspectie requirement).
+            # SOURCE: VVT Brochure p.10, p.16, VERIFIED
+
+    n5_vig_verpleegkundige:
+      level_code: "N5"
+      level_name: "VIG / Verpleegkundige (Verzorgende IG / Verpleegkundige)"
+      accreditation_system: "V&VN Kwaliteitsregister - Accreditation points"
+      accreditation_points_per_year: "Unlimited accreditation points possible"
+      course_duration_format: "Accreditation points (1-5 punten per course)"
+      total_courses_in_brochure: "67 courses listed"
+      # SOURCE: VVT Brochure p.12-13, VERIFIED
+
+      key_additions_vs_n3:
+        - "Voorbehouden handelingen category (30+ reserved procedures)"
+        - "Advanced disease management courses"
+        - "Palliatieve pijnbestrijding (3 punten)"
+        # SOURCE: VVT Brochure p.12-13, INFERRED
+
+      voorbehouden_handelingen_examples:
+        - {name: "ACT zwachtelen", points: "2 punten"}
+        - {name: "Basiswondzorg", points: "1 punt"}
+        - {name: "Blaaskatheterisatie man", points: "1 punt"}
+        - {name: "Blaaskatheterisatie vrouw", points: "1 punt"}
+        - {name: "Diabetes en bloedglucose meten", points: "1 punt"}
+        - {name: "Diabetes en insuline injecteren", points: "1 punt"}
+        - {name: "Injecteren kun je leren!", points: "1 punt"}
+        - {name: "Intramusculair injecteren", points: "1 punt"}
+        - {name: "Subcutaan injecteren", points: "1 punt"}
+        - {name: "Tracheotomie en tracheostoma", points: "2 punten"}
+        - {name: "Vitale functies: meten is weten!", points: "2 punten"}
+        - {name: "Wonden behandelen", points: "1 punt"}
+        - {name: "Zuurstof toedienen", points: "2 punten"}
+        # SOURCE: VVT Brochure p.13, VERIFIED (sample)
+
+    n6_wijkverpleegkundige:
+      level_code: "N6"
+      level_name: "Wijkverpleegkundige"
+      accreditation_system: "V&VN Kwaliteitsregister - Accreditation points"
+      accreditation_points_per_year: "Maximum 16 accreditation points per year"
+      accreditation_restriction_note: |
+        CRITICAL DIFFERENCE: N6 has a maximum of 16 accreditation points per year,
+        unlike N1-N5 which have unlimited points.
+      # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+      course_duration_format: "Accreditation points (1-10 punten per course)"
+      total_courses_in_brochure: "55 courses listed"
+      # SOURCE: VVT Brochure p.14-15, VERIFIED
+
+      signature_course:
+        name: "Vakbekwaam indiceren met Omaha System"
+        points: "10 punten"
+        description: |
+          Comprehensive 6-module e-learning with complex case and exam. Replaces full classroom course.
+          Upon completion, meets ALL training requirements to perform formal indication assessment.
+
+          Learning outcomes:
+          - Establish transparent and valid indication where client autonomy and network play central role
+          - Apply Omaha System
+          - Name key characteristics of legislation and financing in elderly care
+          - Involve client and informal caregiver in care plan development
+        structure: "6 modules + complex case + exam"
+        # SOURCE: VVT Brochure p.15, p.16, VERIFIED
+
+    specialist_levels:
+      fysiotherapeut:
+        offered: true
+        total_courses: "100+ geaccrediteerde online cursussen"
+        note: "Available but not detailed in VVT brochure (separate offering)"
+        # SOURCE: VVT Brochure p.20-23, VERIFIED
+
+      specialist_ouderengeneeskunde:
+        offered: true
+        total_courses: "55+ geaccrediteerde online cursussen"
+        note: "Available for elderly care specialists"
+        # SOURCE: VVT Brochure p.24-25, VERIFIED
+
+      verpleegkundig_specialist:
+        offered: true
+        total_courses: "35+ geaccrediteerde online cursussen"
+        # SOURCE: VVT Brochure p.26-27, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MICROLEARNINGS
+# ═══════════════════════════════════════════════════════════════════════════
+
+microlearnings:
+  concept:
+    definition: "Korte online modules van 3 tot 10 minuten, die steeds één specifiek onderwerp behandelen"
+    format: "Visual and clear structure, step-by-step explanation with recognizable cases"
+    use_case: "Quick knowledge refresh for specific procedures or situations"
+    # SOURCE: Microlearnings Brochure p.1, p.3, VERIFIED
+
+  key_characteristics:
+    duration: "3 to 10 minutes per module"
+    focus: "Always one topic or procedure per module"
+    visual_design: "Visueel & begrijpelijk: stapsgewijze uitleg en herkenbare casussen"
+    protocol_compliance: "Developed according to Vilans protocols for uniform and safe work"
+    accessibility: "Deployable in rotating schedules and busy shifts"
+    management_friendly: "Easy to manage and make visible in reports"
+    # SOURCE: Microlearnings Brochure p.3, VERIFIED
+
+  value_proposition:
+    positioning: |
+      Microlearning does NOT replace regular online continuing education courses,
+      but offers a practical supplement. It helps healthcare professionals in new
+      or unexpected situations to act quickly, and supports organizations in
+      securing quality and safety.
+    auto_update: "All microlearnings automatically updated when Vilans protocols change. No manual tracking needed."
+    # SOURCE: Microlearnings Brochure p.3, VERIFIED
+
+  practical_examples:
+    vig_medication_safety:
+      role: "Verzorgende IG"
+      situation: "About to administer medication to client with adjusted schedule, doubts about correct administration form"
+      solution: "Microlearning quickly checks guidelines, prevents error, continues with confidence"
+      # SOURCE: Microlearnings Brochure p.4, VERIFIED
+
+    verpleegkundige_catheter_care:
+      role: "Verpleegkundige"
+      situation: "Assigned client with catheter, hasn't performed procedure in a while"
+      solution: "Via microlearning reviews protocols and can provide care carefully and error-free"
+      # SOURCE: Microlearnings Brochure p.4, VERIFIED
+
+    wijkverpleegkundige_wound_care:
+      role: "Wijkverpleegkundige"
+      situation: "Takes over client from colleague during vacation, wound treatment needed that isn't performed daily"
+      solution: "Microlearning refreshes correct steps in few minutes, can perform treatment safely and according to protocol"
+      # SOURCE: Microlearnings Brochure p.4, VERIFIED
+
+  themes_and_modules:
+    injecteren:
+      - "Intramusculair injecteren (rangeertechniek)"
+      - "Intramusculair injecteren (stretchtechniek)"
+      - "Subcutaan injecteren (loodrechttechniek)"
+      # SOURCE: Microlearnings Brochure p.6, VVT Brochure p.19, VERIFIED
+
+    katheterisatie:
+      - "Blaaskatheterisatie man – No-touchtechniek - eenmalig"
+      - "Blaaskatheterisatie man – No-touchtechniek – verblijfskatheter"
+      - "Blaaskatheterisatie man – Steriele techniek – eenmalig"
+      - "Blaaskatheterisatie vrouw – No-touchtechniek – eenmalig"
+      - "Blaaskatheterisatie vrouw – No-touchtechniek – verblijfskatheter"
+      - "Blaaskatheterisatie vrouw – Steriele techniek – eenmalig"
+      - "Suprapubische verblijfskatheter verwijderen/verwisselen/verzorgen (multiple variants)"
+      # SOURCE: Microlearnings Brochure p.6, VVT Brochure p.19, VERIFIED
+
+    veiligheid_tillen_verplaatsen:
+      - "Tillen en verplaatsen - Stalift gebruiken"
+      - "Tillen en verplaatsen - Aantrekhulpmiddel steunkousen (Doff 'N Donner)"
+      - "Tillen en verplaatsen - Draaien met een glijdeken (maat L/M variants)"
+      - "Tillen en verplaatsen - Steunkousen aantrekken/uitrekken"
+      - "Tillen en verplaatsen - Tilband aanbrengen/weghalen"
+      - "Tillen en verplaatsen - Various transfer techniques (20+ specific microlearnings)"
+      # SOURCE: VVT Brochure p.19, VERIFIED
+
+    welzijn_vitale_functies:
+      - "Bloeddruk meten"
+      - "Hartfrequentie meten"
+      - "Saturatie meten"
+      - "Temperatuur meten (via het oor)"
+      # SOURCE: VVT Brochure p.19, VERIFIED
+
+  continuously_expanding:
+    note: "Het aanbod van onze microlearnings wordt continu geüpdatet. Bekijk de website voor het actuele cursusaanbod."
+    # SOURCE: VVT Brochure p.19, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OMAHA SYSTEM COURSES
+# ═══════════════════════════════════════════════════════════════════════════
+
+omaha_system_courses:
+  overview:
+    description: |
+      CME-Online offers online courses about Omaha System, tailored to level and job responsibilities
+      of healthcare professional. Healthcare professionals meet key requirements for correct
+      documentation according to Kwaliteitskader.
+    # SOURCE: VVT Brochure p.16, VERIFIED
+
+  n1_n2_level:
+    course_name: "Omaha System in beeld"
+    target_levels: ["N1 - Zorghulp", "N2 - Helpende"]
+    focus: "Omaha in general; classification system where everyone uses same language"
+    # SOURCE: VVT Brochure p.16, VERIFIED
+
+  n3_n5_level:
+    course_name: "Klinisch redeneren met het Omaha System"
+    target_levels: ["N3 - Helpende plus/Verzorgende", "N5 - VIG/Verpleegkundige"]
+    accreditation: "5 punten"
+    focus: |
+      How to create proper care plan using clinical reasoning with Omaha System.
+      What is starting point and what are follow-up steps? Important to have clear picture
+      of start and end point of care plan, especially since inspectie checks if care/nursing plan,
+      care problems, and reporting align. This course brings diligence to working with care plan.
+    # SOURCE: VVT Brochure p.16, VERIFIED
+
+  n6_wijkverpleegkundige:
+    course_name: "Vakbekwaam indiceren met Omaha System"
+    target_level: "N6 - Wijkverpleegkundige"
+    accreditation: "10 punten"
+    format: "Comprehensive online course replacing full classroom course"
+    certification_outcome: "After completing this course, meets ALL training requirements to perform indication assessment"
+    structure: "6 modules + complex case + exam"
+    learning_outcomes:
+      - "Establish transparent and valid indication where autonomy and network of care recipient play central role"
+      - "Apply Omaha System"
+      - "Name key characteristics around legislation and financing in elderly care"
+      - "Involve care recipient and informal caregiver in establishing care plan"
+    # SOURCE: VVT Brochure p.15, p.16, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SOFT SKILLS COURSES
+# ═══════════════════════════════════════════════════════════════════════════
+
+soft_skills:
+  overview:
+    description: |
+      Develop not only your professional knowledge with CME-Online, but also your personal skills!
+      More than 15 soft skill courses now added to this package. By deepening topics like stress
+      reduction and assertiveness, you gain much knowledge that supports you in daily life.
+      Improve your skills and create positive change, both professionally and personally.
+    total_courses: "15+ soft skill courses"
+    # SOURCE: VVT Brochure p.17, VERIFIED
+
+  featured_course_example:
+    name: "Assertiviteit: met meer zelfvertrouwen communiceren"
+    instructor: "Iris Ooms (specialist in personal growth, wellbeing and assertiveness)"
+    duration: "1 uur"
+    description: |
+      Assertiveness is ability to clearly communicate to others in confident and direct manner
+      what you want and don't want, while considering both your own interests and those of others.
+      Iris Ooms teaches how to become more assertive in work and personal situations using
+      four steps: willen (want), kunnen (can), durven (dare), and doen (do).
+      Learn how to overcome obstacles and put assertive behavior into practice.
+    # SOURCE: VVT Brochure p.17, VERIFIED
+
+  sample_courses:
+    - {name: "Adem in, stress uit: innerlijke rust door ademhaling", instructors: "Niels Scholten, Marcel Vos", duration: "1 uur"}
+    - {name: "Assertiviteit: met meer zelfvertrouwen communiceren", instructor: "Iris Ooms", duration: "1 uur"}
+    - {name: "Creativiteit ontwikkelen", instructor: "Marcel Stolk", duration: "1 uur"}
+    - {name: "De kracht van empathie", instructor: "Yvonne Valkenburg", duration: "1 uur"}
+    - {name: "Durf en doe: meer zelfvertrouwen ontwikkelen", instructor: "Maarten Vogelaar", duration: "1 uur"}
+    - {name: "Grensoverschrijdend gedrag: hoe spreek je iemand aan?", instructor: "dr. Florien Cramwinckel", duration: "1 uur"}
+    - {name: "Grip op je inbox", instructor: "Karen Visser", duration: "1 uur"}
+    - {name: "Menopauze: goed zorgen voor jezelf", instructor: "Leen Steyaert", duration: "1 uur"}
+    - {name: "Veerkracht: de sleutel tot succes in veranderende tijden", instructor: "Thorsten Bakker", duration: "1 uur"}
+    # SOURCE: VVT Brochure p.17, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SUBSCRIPTION MODEL & PRICING
+# ═══════════════════════════════════════════════════════════════════════════
+
+subscription_model:
+  core_principle:
+    model: "Subscription-based unlimited access"
+    description: |
+      With CME-Online subscription, each professional gets unlimited access to entire online
+      course offering within chosen package. Can continuously train, at any time and any device.
+    pricing_structure: "Fixed annual price per professional level"
+    # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+  base_pricing_individual:
+    currency: "EUR"
+    price_period: "per person per year"
+
+    packages:
+      zorghulp:
+        level: "N1 - Zorghulp"
+        points_per_year: "Not applicable (no accreditation system)"
+        price_eur: 49
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      helpende:
+        level: "N2 - Helpende"
+        points_per_year: "Not applicable (no accreditation system)"
+        price_eur: 54
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      helpende_plus_verzorgende:
+        level: "N3 - Helpende plus / Verzorgende"
+        points_per_year: "Onbeperkt (unlimited accreditation points)"
+        price_eur: 62
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      vig_verpleegkundige:
+        level: "N5 - VIG / Verpleegkundige"
+        points_per_year: "Onbeperkt (unlimited accreditation points)"
+        price_eur: 70
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      fysiotherapeut_basis:
+        level: "Fysiotherapeut Basis"
+        points_per_year: "16 punten"
+        price_eur: 558
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      fysiotherapeut_plus:
+        level: "Fysiotherapeut Plus"
+        points_per_year: "24 punten"
+        price_eur: 671
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      wijkverpleegkundige:
+        level: "N6 - Wijkverpleegkundige"
+        points_per_year: "16 punten"
+        price_eur: 410
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      verpleegkundig_specialist:
+        level: "Verpleegkundig specialist"
+        points_per_year: "20 punten"
+        price_eur: 671
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+      specialist_ouderengeneeskunde:
+        level: "Specialist ouderengeneeskunde"
+        points_per_year: "25 punten"
+        price_eur: 783
+        # SOURCE: VVT Brochure p.28, VERIFIED
+
+  contract_durations:
+    options:
+      - {duration: "1 jaar", description: "1 year contract"}
+      - {duration: "3 jaar", description: "3 year contract"}
+      - {duration: "5 jaar", description: "5 year contract"}
+    note: "Longer contracts eligible for volume discounts (staffelkorting)"
+    # SOURCE: VVT Brochure p.29, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+  volume_discounts:
+    description: |
+      Joining with entire organization can yield up to 50% discount.
+      Discount depends on total number of healthcare professionals joining
+      and number of years contract is signed.
+    discount_calculation: "Based on number of professionals AND contract duration"
+    # SOURCE: VVT Brochure p.29, VERIFIED
+
+    discount_table:
+      applicable_packages: ["Zorghulp", "Helpende", "Helpende plus / Verzorgende", "VIG / Verpleegkundige"]
+
+      tiers:
+        - professionals: "1 t/m 5"
+          discount_1yr: "0%"
+          discount_3yr: "5%"
+          discount_5yr: "15%"
+
+        - professionals: "6 t/m 15"
+          discount_1yr: "5%"
+          discount_3yr: "10%"
+          discount_5yr: "20%"
+
+        - professionals: "16 t/m 25"
+          discount_1yr: "10%"
+          discount_3yr: "15%"
+          discount_5yr: "25%"
+
+        - professionals: "26 t/m 100"
+          discount_1yr: "20%"
+          discount_3yr: "25%"
+          discount_5yr: "35%"
+
+        - professionals: "101 t/m 250"
+          discount_1yr: "30%"
+          discount_3yr: "35%"
+          discount_5yr: "45%"
+
+        - professionals: "251 t/m 500"
+          discount_1yr: "35%"
+          discount_3yr: "45%"
+          discount_5yr: "50%"
+
+        - professionals: "vanaf 501"
+          note: "Vraag een offerte op maat aan"
+      # SOURCE: VVT Brochure p.29, VERIFIED
+
+  custom_quotes:
+    availability: "Offerte op maat is altijd mogelijk!"
+    contact: "Service desk via 030 26 44 100 or info@cme-online.nl"
+    use_cases: "Non-standard needs or entire organization joining"
+    # SOURCE: VVT Brochure p.29, VERIFIED
+
+  organizational_fees:
+    lms_service_hosting:
+      name: "LMS: succes monitoren"
+      description: |
+        Learning Management System (LMS) to monitor all continuing education activities.
+        Results provide insight into user efforts.
+      annual_fee_eur: 208
+      fee_structure: "per organization per year"
+      includes: "Service, hosting, ICT-support, learning management system"
+      # SOURCE: VVT Brochure p.30, VERIFIED
+
+    lti_integration:
+      name: "LTI-koppeling: ons aanbod koppelen aan je LMS"
+      description: |
+        Learning Tool Interoperability (LTI) connection to integrate all courses
+        into existing LMS. Find continuing education directly in own environment.
+      one_time_fee_eur: 779
+      fee_structure: "one-time per organization"
+      fee_name: "Installation costs"
+      # SOURCE: VVT Brochure p.30, VERIFIED
+
+    afas_integration:
+      name: "AFAS-koppeling: deelnemerbeheer in je HRM-systeem"
+      description: |
+        All participant changes automatically updated from AFAS. Connection automatically
+        retrieves data from all participants. No need to send manual lists with
+        registrations/deregistrations. Easily manage who gets access to which subscription.
+      annual_fee_eur: 363
+      fee_structure: "per organization per year"
+      includes: "Service and ICT-support"
+      note: "Other HRM systems: ask account manager for possibilities"
+      # SOURCE: VVT Brochure p.30, VERIFIED
+
+  cme_totaal_platform:
+    name: "CME-Totaal: een eigen leerplatform"
+    description: |
+      Within week, have working learning platform as epicenter of everything related
+      to professionalization of your team. One place to compose learning path,
+      one place to see exactly how team is doing, one place where development
+      of all employees comes together.
+
+    setup_fee_eur: 519
+    annual_fee_per_user_eur: 21
+    minimum_users: 30
+
+    key_features:
+      - "Feel at home in own learning environment with own house style"
+      - "Everyone has access to CME-Online course offering"
+      - "Plan meetings yourself and develop learning paths"
+      - "Build knowledge base by adding own content"
+      - "Always insight into professionalization of your team"
+
+    implementation_speed: "Working platform within one week"
+    customization: "Self-adjust font, house style colors, logo, and photos"
+
+    contact: "Call 030 26 44 100 or visit cme-online.nl/cme-totaal for demo"
+    # SOURCE: VVT Brochure p.31, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRODUCT FEATURES & VALUE PROPOSITIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+product_features:
+  content_quality:
+    practice_based_scenarios:
+      feature: "Herkenbare en contextgebonden praktijksituaties en casuïstiek"
+      description: |
+        Providing care is complex and consists of more than just performing procedures
+        according to protocol. Online courses developed with recognizable and context-bound
+        practical situations and casuistry.
+      benefit: "Employees always have right knowledge at hand, tailored to their work"
+      # SOURCE: VVT Brochure p.3, VERIFIED
+
+    own_teachers:
+      feature: "Eigen docenten uit de wetenschap en de praktijk"
+      description: "Best teachers from science and practice"
+      benefit: "Guaranteed high quality through collaboration with field experts"
+      # SOURCE: VVT Brochure p.4, p.5, VERIFIED
+
+    own_studio:
+      feature: "Eigen studio (volledige kwaliteits- en contentcontrole)"
+      description: "Professional team, own studio, reputation as market leader"
+      benefit: "Able to bind best teachers, guarantee highest quality"
+      # SOURCE: VVT Brochure p.5, VERIFIED
+
+    current_protocols:
+      feature: "Actuele protocollen en richtlijnen"
+      description: "Important and current themes like autonomy, hygiene, safety, and legislation covered"
+      benefit: "Team always aligned with latest professional standards"
+      # SOURCE: VVT Brochure p.3, VERIFIED
+
+    continuous_updates:
+      feature: "Doorlopend geactualiseerd en aangevuld"
+      description: "Offering continuously updated and supplemented with new topics"
+      benefit: "Never outdated knowledge; always current with field developments"
+      # SOURCE: VVT Brochure p.5, VERIFIED
+
+  learning_formats:
+    comprehensive_courses:
+      format: "Uitgebreide online cursussen"
+      typical_duration: "1-5 hours (or 1-10 accreditation points)"
+      target: "In-depth knowledge building and accreditation"
+      # SOURCE: VVT Brochure p.6-27, INFERRED
+
+    microlearning_modules:
+      format: "Microlearning modules"
+      duration: "3-10 minutes"
+      focus: "Quick refresh of specific procedure or topic"
+      unique_benefit: "Fits in busy schedules and rotating shifts"
+      # SOURCE: VVT Brochure p.18-19, Microlearnings Brochure, VERIFIED
+
+    soft_skills_training:
+      format: "Soft skills cursussen"
+      typical_duration: "1 hour"
+      focus: "Personal development (assertiveness, stress management, communication)"
+      benefit: "Supports both professional and personal growth"
+      # SOURCE: VVT Brochure p.17, VERIFIED
+
+  accessibility:
+    any_device:
+      feature: "Toegankelijk op ieder device"
+      description: "Online courses can be followed anytime, anywhere, on any device"
+      # SOURCE: VVT Brochure p.1, p.5, VERIFIED
+
+    flexible_learning:
+      feature: "Flexibel leren (altijd en overal)"
+      description: "Each employee follows courses at their own pace"
+      benefit: "Training becomes not only more enjoyable, but also easier"
+      # SOURCE: VVT Brochure p.5, VERIFIED
+
+    self_paced:
+      feature: "Op eigen tempo"
+      description: "No fixed schedules; learn when it suits the individual"
+      # SOURCE: VVT Brochure p.5, VERIFIED
+
+value_propositions:
+  for_professionals:
+    ease_and_flexibility:
+      value: "Gemak en flexibiliteit"
+      description: "Learn anytime, anywhere, at own pace on any device"
+      # SOURCE: VVT Brochure p.1, p.5, INFERRED
+
+    practice_oriented_content:
+      value: "Praktijkgerichte content"
+      description: "Recognizable situations and case studies directly applicable to daily work"
+      # SOURCE: VVT Brochure p.3, INFERRED
+
+    accredited_offering:
+      value: "Geaccrediteerd aanbod"
+      description: "Courses meet V&VN quality register requirements for reregistration"
+      # SOURCE: VVT Brochure p.28, INFERRED
+
+    current_guidelines:
+      value: "Actuele richtlijnen"
+      description: "Always aligned with latest protocols and professional standards"
+      # SOURCE: VVT Brochure p.3, INFERRED
+
+  for_organizations:
+    quality_audits_support:
+      value: "Ondersteunt kwaliteitsaudits"
+      description: "Documentation and accreditation meet inspection requirements"
+      # SOURCE: VVT Brochure p.16, INFERRED
+
+    herregistratie_compliance:
+      value: "Herregistratie compliance"
+      description: |
+        Healthcare professionals can meet reregistration requirements:
+        - N1-N3, N5: Unlimited accreditation points available
+        - N6: 16 accreditation points available (matching annual maximum)
+      # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+    staff_development_at_scale:
+      value: "Personele ontwikkeling op schaal"
+      description: "Entire team can train simultaneously without logistical challenges"
+      # SOURCE: INFERRED from subscription model
+
+    unlimited_access_model:
+      value: "Onbeperkt toegang model (voorspelbare kosten)"
+      description: "Fixed annual price per employee, unlimited course access"
+      benefit: "Predictable training budget, maximum learning value"
+      # SOURCE: VVT Brochure p.28, VERIFIED
+
+    volume_discounts:
+      value: "Staffelkorting tot 50%"
+      description: "Significant cost savings for organizational subscriptions"
+      # SOURCE: VVT Brochure p.29, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ACCREDITATION SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════
+
+accreditation:
+  accrediting_body:
+    organization: "V&VN (Verpleegkundigen & Verzorgenden Nederland)"
+    register: "Kwaliteitsregister Verpleegkundigen & Verzorgenden (V&V)"
+    legal_status: "Not legally required, but industry quality standard"
+    # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VERIFIED
+
+  reregistration_requirements:
+    total_points_5_years: "184 points in 5 years"
+    accredited_minimums:
+      verpleegkundigen: "80 points minimum accredited continuing education"
+      verzorgenden: "60 points minimum accredited continuing education"
+    # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VERIFIED
+
+  annual_point_limits_by_level:
+    n1_zorghulp:
+      level: "N1 - Zorghulp"
+      annual_limit: "Not applicable (no formal accreditation system at this level)"
+      # SOURCE: VVT Brochure p.6-7, VERIFIED
+
+    n2_helpende:
+      level: "N2 - Helpende"
+      annual_limit: "Not applicable (no formal accreditation system at this level)"
+      # SOURCE: VVT Brochure p.8-9, VERIFIED
+
+    n3_helpende_plus_verzorgende:
+      level: "N3 - Helpende plus / Verzorgende"
+      annual_limit: "Onbeperkt (unlimited accreditation points per year)"
+      # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+    n5_vig_verpleegkundige:
+      level: "N5 - VIG / Verpleegkundige"
+      annual_limit: "Onbeperkt (unlimited accreditation points per year)"
+      # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+    n6_wijkverpleegkundige:
+      level: "N6 - Wijkverpleegkundige"
+      annual_limit: "Maximum 16 accreditatiepunten per jaar"
+      critical_note: |
+        IMPORTANT DISTINCTION: Only N6 has annual cap of 16 points.
+        CME-Online subscription for N6 provides exactly 16 points worth of courses.
+      # SOURCE: VVT Brochure p.28, LIBRARY_CME_ONLINE_PRODUCT MANIFEST, VERIFIED
+
+  urgency_driver:
+    primary_stakeholder: "Organizations (HR/L&D), not individual professionals"
+    motivation: "Quality audits, reregistration requirements, compliance"
+    # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE DIFFERENTIATORS
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitive_positioning:
+  strengths:
+    own_teachers:
+      differentiator: "Eigen docenten (kwaliteitscontrole)"
+      description: "Own teachers from science and practice ensure quality control"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VVT Brochure p.5, VERIFIED
+
+    own_studio:
+      differentiator: "Eigen studio (volledige contentcontrole)"
+      description: "Full content control through own production studio"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VVT Brochure p.5, VERIFIED
+
+    microlearning_focus:
+      differentiator: "Sterke microlearning focus"
+      description: "Strong emphasis on short, practical microlearning modules (3-10 min)"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, Microlearnings Brochure, VERIFIED
+
+    practice_oriented:
+      differentiator: "Praktijkgerichte content (herkenbare praktijksituaties)"
+      description: "Practice-focused content with recognizable workplace situations"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VVT Brochure p.3, VERIFIED
+
+    market_leadership:
+      differentiator: "Marktleider in online nascholing"
+      description: "Decades of experience, 750+ courses across 18 specialties"
+      # SOURCE: VVT Brochure p.4, p.5, VERIFIED
+
+  acknowledged_limitations:
+    pricing:
+      challenge: "CME-Online is niet de goedkoopste optie"
+      positioning: "Quality and practice-focus over lowest price"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VERIFIED
+
+    catalog_size:
+      challenge: "Smaller course catalog vs some competitors"
+      note: "300+ VVT courses vs competitors with potentially larger catalogs"
+      positioning: "Depth and quality over breadth"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VERIFIED
+
+    customization:
+      challenge: "Limited customization capabilities"
+      note: "Organizations request extensive demos and customization (often not possible)"
+      # SOURCE: LIBRARY_CME_ONLINE_MARKET MANIFEST, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USAGE NOTES FOR CONTENT GENERATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging_guidelines:
+  product_description_templates:
+    short_description: |
+      CME-Online biedt 300+ online nascholingscursussen voor de VVT sector,
+      van N1 (Zorghulp) tot N6 (Wijkverpleegkundige). Praktijkgericht,
+      geaccrediteerd en altijd toegankelijk.
+
+    medium_description: |
+      Met CME-Online beschikt jouw organisatie over een relevant en kwalitatief
+      online nascholingsaanbod voor zorgprofessionals van alle niveaus. Onze cursussen
+      zijn ontwikkeld met herkenbare praktijksituaties en casuïstiek. Belangrijke en
+      actuele thema's komen aan bod, zodat je medewerkers altijd de juiste kennis
+      bij de hand hebben, afgestemd op hun werkzaamheden.
+
+    value_proposition_focus: |
+      - Onbeperkt nascholen voor alle niveaus
+      - Praktijkgericht en direct toepasbaar
+      - 300+ cursussen toegankelijk op ieder device
+      - Geaccrediteerd volgens V&VN Kwaliteitsregister
+      - Ontwikkeld door beste docenten uit wetenschap en praktijk
+
+  microlearning_messaging:
+    tagline: "Snel kennis opfrissen, veilig volgens protocol handelen"
+
+    key_benefits:
+      - "Altijd volgens Vilans-protocollen"
+      - "Minder fouten, meer kwaliteit"
+      - "Direct toepasbaar in de praktijk"
+      - "Korte duur: binnen enkele minuten actuele kennis opgefrist"
+      - "Flexibel: inzetbaar in wisselende roosters en drukke diensten"
+
+    use_case_pattern: |
+      [Role] encounters [situation requiring quick knowledge refresh].
+      Via microlearning, [action taken] in enkele minuten.
+      Result: [safe protocol-compliant care delivered].
+
+  accreditation_messaging:
+    key_points:
+      - "Geaccrediteerd door V&VN Kwaliteitsregister"
+      - "N1-N3, N5: Onbeperkt accreditatiepunten per jaar"
+      - "N6: 16 accreditatiepunten per jaar (matching annual maximum)"
+      - "Voldoet aan herregistratie-eisen"
+
+  pricing_messaging:
+    transparency_note: "Fixed annual price per professional level"
+    volume_discount_highlight: "Tot 50% korting bij organisatie-abonnementen"
+    custom_quote_availability: "Offerte op maat altijd mogelijk"
+    contact_cta: "Neem contact op: 030 26 44 100 of info@cme-online.nl"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CHANGE LOG & VERSION CONTROL
+# ═══════════════════════════════════════════════════════════════════════════
+
+version_history:
+  v1_0_0:
+    date: "2026-01-26"
+    changes: "Initial creation - extracted all product knowledge from brochures into standalone YAML structure"
+    source_documents:
+      - "cme-online-vvt-brochure-januari-2026-hq.pdf"
+      - "brochure-CME-VVT-GHZ-microlearnings-2025.pdf"
+    methodology: "Manual extraction with SOURCE citations for every claim"
+    traceability: "All sections cite page numbers and verification status"
+
+retention_policy: |
+  Update when new course catalog or pricing model released.
+  Retain previous versions for 1 year.
+  This structured YAML should be regenerated from updated brochures
+  when new editions are published.

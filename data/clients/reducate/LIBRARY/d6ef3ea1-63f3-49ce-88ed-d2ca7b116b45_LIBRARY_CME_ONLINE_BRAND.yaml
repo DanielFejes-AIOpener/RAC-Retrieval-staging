@@ -1,0 +1,492 @@
+# LIBRARY_CME_ONLINE_BRAND.yaml
+# ================================================================
+# Structured Library: CME-Online Brand Guidelines & Visual Identity
+# ================================================================
+# Created: 2026-01-18
+# Owner: CLIENT (CME-Online VVT)
+# Source: Styleguide CME-Online 2026 (Q1) - Extracted & Codified
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-18"
+
+library:
+  library_id: "LIB_CME_ONLINE_BRAND"
+  owner_type: "CLIENT"
+  org_id: "REDUCATE"
+  client_id: "CME-ONLINE"
+  title: "CME-Online Brand Guidelines & Visual Identity"
+  description: |
+    Codified brand guidelines and visual identity system for CME-Online.
+    All content extracted from official Styleguide CME-Online 2026 (Q1).
+
+  tags: [libraries, brand, visual-identity, style-guide, healthcare-education, vvt]
+  doc_types: [reference]
+  sensitivity: "confidential"
+
+  provenance_note: |
+    Extracted and structured from Styleguide CME-Online 2026 (Q1).
+    Official brand guidelines provided during client onboarding January 2026.
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BRAND IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+brand_identity:
+  organization_description: |
+    CME-Online verzorgt online nascholing voor zorgprofessionals, waaronder apothekers,
+    fysiotherapeuten, tandartsen, verpleegkundigen en vele anderen.
+    # SOURCE: Styleguide p.1, VERIFIED
+
+  tagline:
+    primary: "GOEDE ZORG, DAAR DOE JE HET VOOR"
+    # SOURCE: Styleguide p.27, p.29, VERIFIED
+    usage: "Prominente titels in communicatie-uitingen"
+    context: "Brand positioning around care quality and professional motivation"
+
+  brand_promise: "Kwalitatief hoogwaardig aanbod van vakinhoudelijke én praktijkgerichte cursussen"
+    # SOURCE: Basisdocument context + Styleguide brand positioning, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VISUAL IDENTITY
+# ═══════════════════════════════════════════════════════════════════════════
+
+visual_identity:
+
+  logo:
+    description: "CME-Online logo with specific usage guidelines"
+    # SOURCE: Styleguide p.21-22 (Logo section with DO's and DON'Ts), VERIFIED
+    dos_and_donts:
+      - "Maintain clear space around logo"
+      - "Use approved color versions only"
+      - "Preserve proportions"
+      - "DO NOT: Rotate, distort, or recolor logo"
+      - "DO NOT: Place on busy backgrounds without clearance"
+    # SOURCE: Styleguide p.22 "DO's and DON'Ts", VERIFIED
+
+  color_palette:
+    primary_colors:
+      cme_blue:
+        name: "CME Blue"
+        hex: "#00549F"
+        rgb:
+          r: 0
+          g: 84
+          b: 159
+        cmyk:
+          c: 100
+          m: 75
+          y: 5
+          k: 0
+        usage: "Primary brand color - headers, key elements"
+        # SOURCE: Styleguide p.23 "Kleurenpallet", VERIFIED
+
+      cme_magenta:
+        name: "CME Magenta"
+        hex: "#B71770"
+        rgb:
+          r: 183
+          g: 23
+          b: 112
+        cmyk:
+          c: 22
+          m: 100
+          y: 21
+          k: 7
+        usage: "Accent color - highlights, CTAs"
+        # SOURCE: Styleguide p.23, VERIFIED
+
+      cme_teal:
+        name: "CME Teal"
+        hex: "#47B5B7"
+        rgb:
+          r: 71
+          g: 181
+          b: 183
+        cmyk:
+          c: 67
+          m: 6
+          y: 31
+          k: 0
+        usage: "Secondary accent - supporting elements"
+        # SOURCE: Styleguide p.23, VERIFIED
+
+    neutral_colors:
+      black:
+        name: "Black"
+        hex: "#0A0203"
+        rgb:
+          r: 10
+          g: 2
+          b: 3
+        cmyk:
+          c: 30
+          m: 30
+          y: 30
+          k: 100
+        usage: "Text, strong contrast"
+        # SOURCE: Styleguide p.23, VERIFIED
+
+      gray:
+        name: "Gray"
+        hex: "#676A6B"
+        rgb:
+          r: 103
+          g: 106
+          b: 107
+        cmyk:
+          c: 53
+          m: 43
+          y: 42
+          k: 28
+        usage: "Secondary text, borders"
+        # SOURCE: Styleguide p.23, VERIFIED
+
+      white:
+        name: "White"
+        hex: "#FFFFFF"
+        rgb:
+          r: 255
+          g: 255
+          b: 255
+        cmyk:
+          c: 0
+          m: 0
+          y: 0
+          k: 0
+        usage: "Backgrounds, negative space"
+        # SOURCE: Styleguide p.23, VERIFIED
+
+    background_colors:
+      light_blue_1:
+        name: "Light Blue 1"
+        hex: "#D7E6F6"
+        rgb:
+          r: 215
+          g: 230
+          b: 246
+        cmyk:
+          c: 14
+          m: 4
+          y: 0
+          k: 0
+        usage: "Light backgrounds, subtle sections"
+        # SOURCE: Styleguide p.24, VERIFIED
+
+      light_blue_2:
+        name: "Light Blue 2"
+        hex: "#F4F7FC"
+        rgb:
+          r: 244
+          g: 247
+          b: 252
+        cmyk:
+          c: 3
+          m: 1
+          y: 0
+          k: 0
+        usage: "Very light backgrounds, alternating sections"
+        # SOURCE: Styleguide p.24, VERIFIED
+
+    tints:
+      note: "Kleurtinten available at 50%, 40%, 30%, 20%, 10% opacity"
+      # SOURCE: Styleguide p.25, VERIFIED
+      cme_blue_tints:
+        - "50% opacity for subtle overlays"
+        - "40% opacity for secondary elements"
+        - "30% opacity for backgrounds"
+        - "20% opacity for very light touches"
+        - "10% opacity for minimal emphasis"
+      cme_magenta_tints:
+        - "Same opacity scale as blue for accent variations"
+
+  typography:
+    print:
+      primary:
+        family: "Clan OT"
+        weights:
+          heading: "Clan OT Bold"
+          subheading: "Clan OT Medium"
+          body: "Clan OT News"
+        usage: "All print materials (brochures, flyers, DM)"
+        # SOURCE: Styleguide p.26 "Fonts", VERIFIED
+
+      hero_titles:
+        family: "Owners Narrow"
+        usage: "Prominente titels in communicatie-uitingen van het drukwerk"
+        example: "GOEDE ZORG, DAAR DOE JE HET VOOR"
+        # SOURCE: Styleguide p.27, VERIFIED
+
+    digital:
+      alternative:
+        family: "Open Sans"
+        weights:
+          heading: "Open Sans Bold"
+          subheading: "Open Sans Semibold"
+          body: "Open Sans Regular"
+        usage: "Voornamelijk online (website, email, social media)"
+        # SOURCE: Styleguide p.26, VERIFIED
+
+    hierarchy:
+      h1:
+        font: "Clan OT Bold (print) / Open Sans Bold (digital)"
+        use_for: "Main page titles, primary headlines"
+      h2:
+        font: "Clan OT Medium (print) / Open Sans Semibold (digital)"
+        use_for: "Section headers, subheadings"
+      body:
+        font: "Clan OT News (print) / Open Sans Regular (digital)"
+        use_for: "All body text, paragraphs, descriptions"
+      # SOURCE: Styleguide p.26-27, typography hierarchy implied, INFERRED
+
+  photography_guidelines:
+    style:
+      - "Authentic healthcare professionals"
+      - "Real care situations (not overly staged)"
+      - "Warm, approachable tone"
+      - "Focus on interaction and care moments"
+    # SOURCE: Styleguide p.28 "Fotografie", visual examples analyzed, INFERRED
+
+    avoid:
+      - "Stock photo clichés"
+      - "Overly clinical/sterile environments"
+      - "Artificial poses"
+    # SOURCE: Photography examples suggest natural, authentic approach, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LAYOUT & COMPOSITION
+# ═══════════════════════════════════════════════════════════════════════════
+
+layout_guidelines:
+
+  website_structure:
+    header:
+      - "Logo placement: top left"
+      - "Navigation: horizontal menu"
+      - "Key visual: hero image or graphic"
+    # SOURCE: Styleguide p.30 "Website" layout example, VERIFIED
+
+    content_blocks:
+      main_header:
+        element: "H1 title, prominent"
+        style: "Clan OT Bold / Open Sans Bold"
+
+      key_visual:
+        element: "Hero image or illustration"
+        placement: "Below header or integrated"
+
+      boodschap:
+        element: "Main message/value proposition"
+        format: "Bullet points with checkmarks"
+        example_content:
+          - "Onbeperkt nascholen dankzij abonnementsvorm"
+          - "Meer dan 55 online cursussen"
+          - "Herkenbare praktijksituaties en casuïstiek"
+        # SOURCE: Styleguide p.29 layout example, VERIFIED
+
+      call_to_action:
+        element: "CTA button"
+        example: "Vraag een gratis demo aan"
+        style: "Prominent, contrasting color (magenta or teal)"
+        # SOURCE: Styleguide p.29, VERIFIED
+
+      disclaimer:
+        element: "Footer text"
+        style: "Small, gray text"
+        placement: "Bottom of page"
+
+  print_materials:
+    structure:
+      - "Hero title (Owners Narrow) for impact"
+      - "Key visual (authentic photography)"
+      - "Bulleted benefits/features"
+      - "Clear CTA"
+      - "Brand consistency with color palette"
+    # SOURCE: Styleguide layout examples p.28-30, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING PRINCIPLES
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging:
+
+  core_principles:
+    - principle: "Practice-oriented"
+      description: "Emphasize practical application over theory"
+      keywords: ["praktijkgericht", "herkenbare praktijksituaties", "casuïstiek"]
+      # SOURCE: Consistent across all materials, VERIFIED
+
+    - principle: "Ease and flexibility"
+      description: "Highlight accessibility and convenience"
+      keywords: ["gemak", "flexibiliteit", "altijd en overal", "onbeperkt"]
+      # SOURCE: Basisdocument value proposition + content patterns, VERIFIED
+
+    - principle: "Quality and expertise"
+      description: "Own teachers, own studio, full control"
+      keywords: ["kwalitatief hoogwaardig", "beste docenten", "eigen studio"]
+      # SOURCE: Basisdocument Section 1 differentiators, VERIFIED
+
+    - principle: "Professional support"
+      description: "Support healthcare professionals in their development"
+      keywords: ["vakbekwaam", "deskundigheid", "nascholing", "ontwikkeling"]
+      # SOURCE: Brand positioning context, INFERRED
+
+  voice_characteristics:
+    tone: "Direct, accessible, supportive"
+    formality: "Je-form (informal Dutch)"
+    personality:
+      - "Approachable (not corporate)"
+      - "Confidence-building"
+      - "Time-conscious"
+      - "Practice-first"
+    # SOURCE: Content pattern analysis across materials, INFERRED
+
+  terminology_guidelines:
+    prefer:
+      - term: "nascholing"
+        over: "training, cursus (for professional education)"
+      - term: "praktijkgericht"
+        over: "theoretical"
+      - term: "zorgprofessional"
+        over: "werknemer, personeel"
+      - term: "microlearning"
+        over: "short courses"
+
+    avoid:
+      - term: "goedkoop"
+        reason: "Not positioned on price"
+      - term: "complex, moeilijk"
+        reason: "Brand promises ease"
+    # SOURCE: Content analysis + Basisdocument competitive positioning, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USAGE EXAMPLES
+# ═══════════════════════════════════════════════════════════════════════════
+
+usage_examples:
+
+  headline_formulas:
+    question_led:
+      - "Even vergeten hoe het ook alweer moet?"
+      - "Even opfrissen: wat mag jij als zorgprofessional?"
+      # SOURCE: Advertorials Nov 2025, VERIFIED
+
+    benefit_focused:
+      - "Goede zorg, daar doe je het voor"
+      - "Online nascholing voor zorgprofessionals"
+
+    practice_oriented:
+      - "Herkenbare praktijksituaties"
+      - "Praktijkgerichte content"
+
+  cta_patterns:
+    soft_cta:
+      - "Lees de blog >"
+      - "Ontdek het aanbod >"
+      - "Bekijk de cursus >"
+
+    conversion_cta:
+      - "Vraag een gratis demo aan"
+      - "Start vandaag"
+      - "Probeer gratis"
+
+  value_proposition_structure:
+    format: "Bullet points met checkmarks (✓)"
+    examples:
+      - "✓ Onbeperkt nascholen dankzij abonnementsvorm"
+      - "✓ Meer dan 750 online cursussen"
+      - "✓ Herkenbare praktijksituaties en casuïstiek"
+      - "✓ Geaccrediteerd aanbod"
+      - "✓ Altijd en overal beschikbaar"
+    # SOURCE: Styleguide p.29 + Brochures, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BRAND APPLICATIONS BY CHANNEL
+# ═══════════════════════════════════════════════════════════════════════════
+
+channel_applications:
+
+  print:
+    brochures:
+      typography: "Clan OT family"
+      hero_title: "Owners Narrow for main title"
+      layout: "Key visual + bullet benefits + CTA"
+      colors: "Full palette, emphasis on CME Blue"
+
+    direct_mail:
+      typography: "Clan OT family"
+      format: "1-page letter format"
+      header: "Logo top, tagline optional"
+      signature: "Personal sign-off"
+
+    magazine_ads:
+      typography: "Owners Narrow for headline, Clan OT for body"
+      layout: "Bold headline + key visual + minimal text + CTA"
+      colors: "High contrast (Blue + Magenta)"
+
+  digital:
+    website:
+      typography: "Open Sans family"
+      layout: "Header + Key visual + Boodschap (bullets) + CTA + Disclaimer"
+      colors: "Light Blue backgrounds, Blue/Magenta accents"
+      # SOURCE: Styleguide p.30, VERIFIED
+
+    email:
+      typography: "Open Sans Regular (web-safe)"
+      format: "Clean, scannable, mobile-friendly"
+      cta_style: "Button (magenta background, white text)"
+
+    social_media:
+      typography: "Open Sans Bold for headings"
+      image_overlays: "Blue or Teal tints (50% opacity)"
+      text_on_image: "White or Black for maximum contrast"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY STANDARDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_standards:
+
+  visual_consistency:
+    - "Always use approved color codes (hex/rgb/cmyk)"
+    - "Maintain logo clear space and proportions"
+    - "Use official typography (Clan OT for print, Open Sans for digital)"
+    - "Follow DO's and DON'Ts for logo usage"
+
+  messaging_consistency:
+    - "Use je-form consistently (not u-vorm)"
+    - "Emphasize practice-orientation in all content"
+    - "Include 'gemak en flexibiliteit' messaging where relevant"
+    - "Reference 'eigen docenten, eigen studio' as differentiator"
+
+  accessibility:
+    - "Ensure sufficient color contrast for readability"
+    - "Use clear, legible typography at appropriate sizes"
+    - "Provide alt text for images"
+    - "Ensure mobile responsiveness for digital materials"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# METADATA FOR RETRIEVAL
+# ═══════════════════════════════════════════════════════════════════════════
+
+metadata:
+  last_style_guide_update: "2026-01-01"
+  style_guide_version: "Q1 2026"
+  applicable_sectors:
+    - "VVT (Verpleging, Verzorging & Thuiszorg)"
+    - "GHZ (Gehandicaptenzorg)"
+    - "All CME-Online specialties"
+
+  primary_use_cases:
+    - "Content creation (advertorials, newsletters, DM)"
+    - "Social media content"
+    - "Website copy"
+    - "Print materials (brochures, flyers)"
+    - "Visual design direction"
+
+  update_triggers:
+    - "New styleguide release"
+    - "Brand refresh or repositioning"
+    - "Major visual identity changes"

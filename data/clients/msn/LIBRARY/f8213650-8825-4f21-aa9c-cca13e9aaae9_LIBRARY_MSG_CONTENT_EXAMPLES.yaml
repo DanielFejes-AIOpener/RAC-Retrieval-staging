@@ -1,0 +1,416 @@
+---
+# LIBRARY_MSG_CONTENT_EXAMPLES.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Self-contained content examples library for MSG
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  library_id: "LIB_MSG_CONTENT_EXAMPLES"
+  version: "1.0.0"
+  created_date: "2026-01-26"
+  last_updated: "2026-01-26"
+  status: "active_phase2_placeholder"
+  provenance: "Structure created from ORG_03 examples, full content to be added in Phase 2"
+
+library_metadata:
+  title: "MSG Content Examples & Templates"
+  description: "Content examples, templates, and real-world messaging samples demonstrating proper application of MSG brand voice, terminology, and constraints"
+  tags: [content, examples, templates, messaging, samples]
+  keywords: [content examples, messaging samples, tone examples, copy templates, best practices]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AUDIENCES & PERSONAS
+# ═══════════════════════════════════════════════════════════════════════════
+
+audiences:
+  icps:
+    - name: "MKB (Small-Medium Business)"
+      description: "Mkb-bedrijven die een praktische oplossing zoeken voor afvalinzameling"
+      characteristics:
+        - "Beperkte tijd en behoefte aan kostenbesparing"
+        - "Focus op gemak en ontzorging"
+        - "Geen dedicated facilities team"
+      messaging_focus:
+        - "Simplicity and ease"
+        - "Cost efficiency"
+        - "Quick setup"
+        - "Reliability"
+
+    - name: "Grootzakelijk (Enterprise)"
+      description: "Grotere organisaties met soms meerdere locaties en complexere afvalstromen"
+      characteristics:
+        - "Meerdere locaties mogelijk"
+        - "Meer focus op uniformiteit en rapportage"
+        - "Aantoonbare verduurzaming belangrijk"
+      messaging_focus:
+        - "Scalability"
+        - "Reporting and insights"
+        - "Sustainability proof"
+        - "Consistency across locations"
+
+    - name: "Facilitair (Facilities Management)"
+      description: "Facilitaire dienstverleners en facilitair beheerders die MSN inhuren als onderaannemer"
+      characteristics:
+        - "Sturen op continuïteit, veiligheid, servicelevels"
+        - "Naleving en heldere processen belangrijk"
+        - "Vaak locatieoverstijgend"
+      messaging_focus:
+        - "Compliance and standards"
+        - "Process clarity"
+        - "Service levels"
+        - "Risk management"
+
+    - name: "Vastgoed (Real Estate/Property Management)"
+      description: "Vastgoedorganisaties en -beheerders die afvalmanagement willen inrichten voor panden en huurders"
+      characteristics:
+        - "Aandacht voor inzamelmiddelen, ruimte, logistiek"
+        - "Prestaties per locatie belangrijk"
+        - "ESG/BREEAM/GRESB compliance"
+      messaging_focus:
+        - "Space optimization"
+        - "ESG compliance"
+        - "Per-location performance"
+        - "Tenant satisfaction"
+
+  personas:
+    - name: "De Ondernemer (MKB)"
+      role: "Eigenaar/directeur mkb-bedrijf"
+
+      pain_points:
+        - "Druk door stijgende bedrijfskosten, wil niet te veel betalen voor afvalinzameling"
+        - "Wil geen kostbare bedrijfsruimte opofferen aan inzamelmiddelen of opslag van afval"
+        - "Weinig tijd voor randzaken, wil dat afvalinzameling zonder gedoe en snel geregeld wordt"
+        - "Wil zekerheid dat containers op tijd worden geleegd (gemiste lediging = directe overlast en verstoring)"
+        - "Wil fouten in aanbieden of scheiden voorkomen die leiden tot boetes of extra kosten vanuit gemeente"
+
+      goals:
+        - "Focus houden op core business, zo min mogelijk tijd kwijt zijn aan randzaken rondom afval"
+        - "Kosten voor afvalinzameling zo laag mogelijk houden en alleen betalen voor wat echt nodig is"
+        - "Aanvragen en wijzigingen snel geregeld, zonder ingewikkelde stappen of lange wachttijden"
+        - "Afval vlot afgevoerd, zodat de werkplek schoon blijft en processen doorlopen"
+        - "Zekerheid en rust, zodat afvalinzameling geen zorgen, verrassingen of gedoe oplevert"
+
+      objections:
+        - "Of de prijs echt scherp blijft, of dat er later extra kosten bijkomen (toeslagen, extra ledigingen, vervuilingskosten)"
+        - "Of de inzameling betrouwbaar genoeg is (niet geleegde container = stress, klachten, verstoring bedrijfsvoering)"
+        - "Of afvalstromen en scheidingsregels niet te ingewikkeld worden waardoor fouten ontstaan met mogelijke boetes"
+        - "Of servicevragen snel genoeg worden opgepakt, zeker bij spoed, wijziging of onverwachte situatie"
+
+      messaging_strategy:
+        tone: "Direct, practical, reassuring"
+        focus: "Speed, simplicity, cost-effectiveness, reliability"
+        avoid: "Complex sustainability jargon, lengthy processes"
+
+    - name: "De Facility Manager (Grootzakelijk/Facilitair)"
+      role: "Facility manager bij grote organisatie of facility service provider"
+
+      pain_points:
+        - "Druk door wet- en regelgeving, wil voorkomen dat organisatie niet voldoet aan geldende eisen"
+        - "Wil zeker weten dat duurzaamheidsambities behaald worden, zoekt aanpak die aantoonbaar resultaat oplevert"
+        - "Wil voorkomen dat organisatie achterblijft op concurrenten (duurzaamheid steeds vaker selectiecriterium)"
+        - "Wil geen fouten maken die bedrijfsvoering verstoren (administratieve missers, verkeerde afstemming, afval dat blijft staan)"
+
+      goals:
+        - "Afvalstromen efficiënt organiseren met financieel aantrekkelijke aanpak die milieubewust blijft"
+        - "Zorgeloos proces met zo min mogelijk impact op dagelijkse bedrijfsvoering"
+        - "Duurzaamheidsdoelen aantoonbaar behalen door afvalstromen te optimaliseren en beter te scheiden"
+        - "Grip houden op afspraken, prestaties en kosten, zodat bijsturen snel en onderbouwd kan"
+        - "Aanpak die schaalbaar is over locaties, zodat processen en resultaten overal consistent blijven"
+
+      objections:
+        - "Of rapportages en inzichten sterk genoeg zijn om duurzaamheidsdoelen aantoonbaar te maken"
+        - "Of organisatie aantoonbaar aan relevante regels blijft voldoen, zonder extra administratieve lasten"
+        - "Of overstap soepel verloopt, zonder verstoring van processen op locatie of in administratie"
+        - "Of wijzigingen en uitzonderingen snel worden opgepakt, zodat bedrijfsvoering blijft doorlopen"
+
+      messaging_strategy:
+        tone: "Professional, data-driven, solution-focused"
+        focus: "Compliance, reporting, scalability, sustainability proof"
+        avoid: "Vague claims, oversimplification"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTENT EXAMPLES - TONE & MESSAGING
+# ═══════════════════════════════════════════════════════════════════════════
+
+content_examples:
+  good_examples:
+    - category: "Perfect fit (from onboarding)"
+      examples:
+        - text: "Geen enkele onderneming is hetzelfde: daarom stemmen wij onze oplossingen af op jouw situatie."
+          reason: "Demonstrates customization, uses appropriate tone, avoids absolutes"
+        - text: "Wij zorgen dat de afvalinzameling past bij jouw manier van werken."
+          reason: "Customer-centric, practical, clear"
+
+    - category: "Formality balance"
+      examples:
+        - text: "Wij helpen jouw organisatie met duurzaam afvalmanagement."
+          reason: "Professional yet personal ('jouw'), uses correct terminology"
+        - avoid: "Hey ondernemer! Laat ons je helpen met duurzaam afvalmanagement."
+          reason: "Too casual, lacks professional tone"
+
+    - category: "Personal yet professional"
+      examples:
+        - text: "Wij helpen jouw organisatie met duurzame oplossingen voor al je afvalstromen."
+          reason: "Personal connection without being informal"
+        - avoid: "De experts van Milieu Service Nederland verwerken het afval op een efficiënte en milieuvriendelijke manier."
+          reason: "Too formal, uses prohibited term 'verwerker', lacks personal touch"
+
+    - category: "Between light and serious"
+      examples:
+        - text: "Afval scheiden ingewikkeld? Wij helpen je hier graag bij! Samen werken we aan een circulaire economie in Nederland."
+          reason: "Approachable yet purposeful, balances accessibility with mission"
+        - avoid: "Afval saai? Niet met ons! We maken afvalbeheer leuk en gemakkelijk, zodat jij kunt bijdragen aan een schonere wereld."
+          reason: "Too casual, trivializes sustainability, uses wrong term 'afvalbeheer'"
+
+    - category: "Accessible"
+      examples:
+        - text: "Ken jij de nieuwe regels rondom afval voor beursgenoteerde bedrijven al? Wij delen onze kennis graag met je."
+          reason: "Clear, helpful, demonstrates expertise without jargon"
+        - avoid: "Onze geavanceerde afvalsorteertechnieken met state-of-the-art technologie garanderen milieuvriendelijke verwerking."
+          reason: "Too technical, uses 'garanderen' (absolute claim), generic jargon"
+
+    - category: "Convincing"
+      examples:
+        - text: "Wij zijn trots op onze Kiyoh-beoordeling van 9,1. Sluit je aan bij ons platform voor duurzaam afvalmanagement."
+          reason: "Evidence-based, demonstrates value, clear CTA"
+        - avoid: "Afval scheiden? Daar ben jij als pandbeheerder vast goed in ;-)"
+          reason: "Flippant, lacks conviction, inappropriate winking emoticon"
+
+  bad_examples:
+    - category: "Never use (from onboarding)"
+      examples:
+        - text: "Met MSN wordt 100 procent van al het afval gerecycled, volledig circulair en CO2-neutraal."
+          violations:
+            - "Uses 'MSN' abbreviation"
+            - "Absolute claim (100 procent, altijd)"
+            - "Unsupported sustainability claims"
+            - "Overstates reality"
+        - text: "Het ingezamelde afval gaat altijd naar vaste verwerkingsroutes en wordt daar hoogwaardig gerecycled tot hetzelfde product."
+          violations:
+            - "Uses 'altijd' (absolute)"
+            - "Claims about processing routes (prohibited)"
+            - "Overpromises on recycling outcomes"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTENT TEMPLATES (PHASE 2 - STRUCTURE READY)
+# ═══════════════════════════════════════════════════════════════════════════
+
+content_templates:
+  note: "Phase 2 will populate these sections with full templates"
+
+  website_copy:
+    hero_sections:
+      placeholder: "Phase 2: Add hero section examples"
+      structure:
+        - "Headline (H1)"
+        - "Subheadline"
+        - "CTA"
+        - "Supporting text"
+
+    service_pages:
+      placeholder: "Phase 2: Add service page copy examples"
+      structure:
+        - "Service overview"
+        - "Benefits by persona"
+        - "How it works"
+        - "CTA"
+
+    about_page:
+      placeholder: "Phase 2: Add about page copy"
+
+  social_media:
+    linkedin:
+      placeholder: "Phase 2: Add LinkedIn post examples"
+      types:
+        - "Thought leadership"
+        - "Service announcements"
+        - "Sustainability insights"
+        - "Customer stories"
+
+    facebook:
+      placeholder: "Phase 2: Add Facebook post examples"
+
+  email_marketing:
+    newsletters:
+      placeholder: "Phase 2: Add newsletter examples"
+
+    nurture_campaigns:
+      placeholder: "Phase 2: Add nurture email examples"
+
+  blog_articles:
+    placeholder: "Phase 2: Add blog article structures and examples"
+    types:
+      - "Educational content"
+      - "Industry insights"
+      - "Sustainability topics"
+      - "How-to guides"
+
+  ads:
+    google_ads:
+      placeholder: "Phase 2: Add Google Ads examples"
+
+    linkedin_ads:
+      placeholder: "Phase 2: Add LinkedIn Ads examples"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING BY CONTEXT (PHASE 2 - STRUCTURE READY)
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging_by_context:
+  note: "Phase 2 will populate with context-specific messaging"
+
+  sustainability_messaging:
+    placeholder: "Phase 2: Add sustainability messaging examples"
+    topics:
+      - "Zero waste journey"
+      - "Circular economy"
+      - "CSRD compliance"
+      - "ESG reporting"
+
+  service_messaging:
+    placeholder: "Phase 2: Add service-specific messaging"
+    services:
+      - "Afvalinzameling"
+      - "Afvalscheiding"
+      - "MijnMSN platform"
+      - "Rapportages"
+
+  problem_solution_messaging:
+    placeholder: "Phase 2: Add problem-solution frameworks"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DO'S AND DON'TS QUICK REFERENCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+dos_and_donts:
+  terminology:
+    do:
+      - "Use 'Milieu Service Nederland' (full name)"
+      - "Use 'afvalmanagement' over 'afvalbeheer'"
+      - "Use 'afvalpartner' or 'afvalplatform' for MSN's role"
+      - "Use 'rolcontainer' or 'perscontainer' instead of 'bak'"
+      - "Use 'Papier en karton' (full, consistent)"
+      - "Use 'Organisch afval' (B2B context)"
+
+    dont:
+      - "Never use 'MSN' as abbreviation (except 'MijnMSN')"
+      - "Never use 'MSG' as abbreviation"
+      - "Never call MSN 'afvalinzamelaar' or 'afvalverwerker'"
+      - "Avoid 'bak' or 'afvalbak'"
+      - "Avoid 'Bio', 'bio-afval', 'GFT' in B2B"
+      - "Avoid 'Oudpapier', 'Papier/karton'"
+
+  claims:
+    do:
+      - "Provide evidence for sustainability claims"
+      - "Use 'zero waste' as a direction/goal, not guarantee"
+      - "Include source for all statistics"
+      - "Specify reference point for comparisons"
+      - "Formulate claims that can be verified"
+
+    dont:
+      - "Never use 'altijd', 'nooit', 'gegarandeerd' without contractual basis"
+      - "Never claim 'volledig circulair' without proof"
+      - "Never make absolute processing route claims"
+      - "Never promise specific doorlooptijden without approval"
+      - "Never cite percentages without sources"
+
+  tone:
+    do:
+      - "Be convincing (show expertise)"
+      - "Be entrepreneurial (pragmatic, concrete)"
+      - "Be supportive (not pushy)"
+      - "Be solution-focused (direct help)"
+      - "Use active, concrete language"
+
+    dont:
+      - "Don't be too casual or use slang"
+      - "Don't be overly formal or distant"
+      - "Don't use complex jargon"
+      - "Don't be pushy or salesy"
+      - "Don't use passive voice excessively"
+
+  competitors:
+    do:
+      - "Talk about market trends generally"
+      - "Use generic comparisons ('traditional approaches')"
+      - "Focus on MSN's unique value"
+
+    dont:
+      - "Never name competitors"
+      - "Never make implicit negative comparisons to identifiable competitors"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USAGE NOTES
+# ═══════════════════════════════════════════════════════════════════════════
+
+usage_notes: |
+  This library contains content examples and templates for MSG messaging.
+
+  CURRENT STATUS: Phase 2 Placeholder
+  - Audience and persona definitions: COMPLETE
+  - Good/bad examples from onboarding: COMPLETE
+  - Do's and don'ts quick reference: COMPLETE
+  - Content templates structure: READY (to be populated in Phase 2)
+  - Messaging by context: READY (to be populated in Phase 2)
+
+  PRIMARY USE CASES:
+  - Reference audience pain points, goals, objections
+  - Check tone examples before creating content
+  - Use do's and don'ts as quick validation
+  - (Phase 2) Access ready-to-use content templates
+
+  HOW TO USE PERSONAS:
+  1. Identify target persona (Ondernemer or Facility Manager)
+  2. Review their pain points
+  3. Align messaging to their goals
+  4. Address their objections proactively
+  5. Apply persona-specific messaging strategy
+
+  HOW TO USE EXAMPLES:
+  - Study "good_examples" for tone reference
+  - Avoid patterns shown in "bad_examples"
+  - Check violations listed for each bad example
+  - Apply learnings to new content
+
+  QUICK VALIDATION:
+  Use "dos_and_donts" section for rapid content checks:
+  1. Terminology: Correct terms used?
+  2. Claims: Evidence-based, no absolutes?
+  3. Tone: Balanced, professional yet personal?
+  4. Competitors: No names, generic comparisons only?
+
+  PHASE 2 ROADMAP:
+  - Populate website copy templates
+  - Add social media post examples
+  - Create email marketing templates
+  - Develop blog article structures
+  - Build ads copy examples
+  - Expand messaging by context sections
+
+  FOR CONTENT CREATORS:
+  - Always start with persona (who am I writing for?)
+  - Reference good examples for tone
+  - Check dos and donts before publishing
+  - Validate against terminology and claim rules
+
+  FOR AI SYSTEMS:
+  - Use personas to personalize content
+  - Apply tone examples in generation
+  - Validate output against dos and donts
+  - Flag violations automatically
+
+related_libraries:
+  - "LIB_MSG_TERMINOLOGY"
+  - "LIB_MSG_BRAND_ASSETS"
+  - "LIB_MSG_AI_POLICY"
+
+provenance_details:
+  source_file: "ORG_03_AUDIENCE_MESSAGING.yaml"
+  original_sources:
+    - "Onboarding CSV (Phase 1)"
+    - "Brand Manual v8"
+  extraction_date: "2026-01-26"
+  verified: true
+  phase: "Phase 1 complete, Phase 2 structure ready"
+---

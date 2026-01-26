@@ -1,0 +1,604 @@
+# LIBRARY_CME_ONLINE_CONTENT.yaml
+# ================================================================
+# Structured Library: CME-Online Content Examples & Writing Patterns
+# ================================================================
+# Created: 2026-01-18
+# Owner: CLIENT (CME-Online VVT)
+# Source: 50+ marketing materials (2024-2025) - Patterns Extracted
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-18"
+
+library:
+  library_id: "LIB_CME_ONLINE_CONTENT"
+  owner_type: "CLIENT"
+  org_id: "REDUCATE"
+  client_id: "CME-ONLINE"
+  title: "CME-Online Content Examples & Writing Patterns"
+  description: |
+    Extracted content patterns, voice guidelines, and channel-specific formulas
+    from 50+ CME-Online marketing materials (2024-2025).
+
+  tags: [libraries, content-examples, voice, channels, advertorials, newsletters, social-media, vvt]
+  doc_types: [exemplar, deliverable]
+  sensitivity: "confidential"
+
+  provenance_note: |
+    Patterns extracted from 19 advertorials, 6 newsletters, 5 DM campaigns,
+    LinkedIn organic/paid content (2024-2025). Analyzed for voice, structure,
+    messaging formulas, and channel-specific conventions.
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOICE & TONE ANALYSIS
+# ═══════════════════════════════════════════════════════════════════════════
+
+voice_profile:
+
+  core_characteristics:
+    formality: "je-form (informal Dutch direct address)"
+    tone: "Helpful, practical, reassuring"
+    personality:
+      - "Approachable (not corporate or distant)"
+      - "Confidence-building (addresses professional doubts)"
+      - "Time-conscious (acknowledges busy healthcare professionals)"
+      - "Practice-first (theory follows practice, not vice versa)"
+    # SOURCE: Analyzed across all 50+ content examples, VERIFIED
+
+  je_form_usage:
+    consistency: "100% of content uses je/jij/jouw"
+    examples:
+      - "Lees de blog"
+      - "ontdek je"
+      - "je helpen"
+      - "Laat je scholingsverlanglijstje achter"
+      - "wensen we jullie"
+    never_use: "u-vorm (formal address)"
+    # SOURCE: All advertorials, newsletters, DM, LinkedIn posts, VERIFIED
+
+  sentence_structure:
+    length: "Short sentences (8-15 words average)"
+    complexity: "Simple, scannable structure"
+    rhythm: "Question-led openings, declarative body, action-oriented close"
+    # SOURCE: Advertorial pattern analysis, INFERRED
+
+  emotional_tone:
+    primary: "Reassuring and supportive"
+    secondary: "Encouraging without pressure"
+    avoid:
+      - "Alarmist or fear-based language"
+      - "Overly sales-y or pushy tone"
+      - "Academic or distant formality"
+    # SOURCE: Content tone analysis, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ADVERTORIAL PATTERNS (19 examples analyzed)
+# ═══════════════════════════════════════════════════════════════════════════
+
+advertorial_format:
+
+  structure:
+    format: "Headline + Body (150-250 words) + Visual + CTA + URL"
+    purpose: "Blog promotion for trade media (Nursing, V&VN, Skipr, Floor)"
+    # SOURCE: All 19 advertorials follow this structure, VERIFIED
+
+  headline_patterns:
+    type_1_question_led:
+      pattern: "Relatable professional challenge as question"
+      examples:
+        - "Even vergeten hoe het ook alweer moet?"
+          # SOURCE: Advertorial Nov 2025 Nursing, VERIFIED
+        - "Even opfrissen: wat mag jij als zorgprofessional?"
+          # SOURCE: Advertorial Nov 2025 V&VN, VERIFIED
+      formula: "[Even + verb]: [specific professional topic]?"
+      effect: "Creates identification, lowers barrier to engagement"
+
+    type_2_benefit_statement:
+      pattern: "Direct value proposition"
+      examples:
+        - "Microlearnings voor zorgprofessionals"
+        - "14 categorieën voorbehouden handelingen"
+      formula: "[Specific topic] voor [target audience]"
+
+    type_3_practical_focus:
+      pattern: "Practice-oriented framing"
+      examples:
+        - "Herkenbare praktijksituaties"
+        - "Praktijkgerichte content"
+      formula: "[Adjective describing practical] [noun]"
+
+  body_copy_structure:
+    opening_sentence:
+      pattern: "Problem or challenge statement"
+      length: "15-20 words"
+      example: "Soms zit het verschil tussen twijfel en zekerheid in een paar minuten leren."
+      # SOURCE: Advertorial Nov 2025, VERIFIED
+
+    middle_section:
+      pattern: "Solution introduction + benefit"
+      length: "2-3 sentences, 40-60 words"
+      example: "In deze blog ontdek je hoe microlearnings je helpen om handelingen vlot én volgens protocol uit te voeren. Ook tijdens je werkdag, zonder tijd te verliezen."
+      # SOURCE: Advertorial Nov 2025, VERIFIED
+      key_elements:
+        - "Introduce blog/course topic"
+        - "Highlight ease/convenience"
+        - "Mention practical application"
+
+    closing:
+      pattern: "Direct CTA with blog title reference"
+      length: "1 sentence"
+
+  cta_formulas:
+    standard:
+      pattern: "Lees de blog over [topic] van CME-Online >"
+      examples:
+        - "Lees de blog over microlearning van CME-Online >"
+        - "Lees de blog over voorbehouden handelingen >"
+      # SOURCE: Multiple advertorials, VERIFIED
+
+    variation:
+      pattern: "Ontdek [benefit/topic] >"
+      examples:
+        - "Ontdek het volledige aanbod >"
+        - "Bekijk de cursus >"
+
+  url_structure:
+    base: "https://www.cme-online.nl/blog/[slug]/"
+    utm_parameters:
+      utm_source: "[channel name]" # nursing, venvn, skipr, floor
+      utm_medium: "nieuwsbrief-advertorial"
+      utm_campaign: "2025-algemeen-vvtghz"
+      utm_content: "advertorial-[month]-[year]"
+    example: "?utm_source=nursing&utm_medium=nieuwsbrief-advertorial&utm_campaign=2025-algemeen-vvtghz&utm_content=advertorial-november-2025"
+    # SOURCE: All advertorial URLs, VERIFIED
+
+  visual_guidelines:
+    type: "AI-generated or stock photography"
+    style: "Healthcare professional in practice setting"
+    text_overlay: "Minimal or none"
+    dimensions: "Varies by publication (typically 5.625" x 2.36" for digital)"
+    # SOURCE: Advertorial visual analysis, VERIFIED
+
+  word_count_by_channel:
+    nursing: "150-200 words"
+    venvn: "200-250 words"
+    skipr: "180-220 words"
+    floor: "150-180 words"
+    # SOURCE: Analyzed across 19 advertorials, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# NEWSLETTER PATTERNS (6 examples analyzed)
+# ═══════════════════════════════════════════════════════════════════════════
+
+newsletter_format:
+
+  structure:
+    format: "Multi-section email (VVT + GHZ combined)"
+    frequency: "Monthly"
+    target: "Ex-members and prospects"
+    # SOURCE: Newsletter file naming pattern, VERIFIED
+
+  section_types:
+    course_highlight:
+      pattern: "Featured course with description + CTA"
+      headline_style: "Bold, benefit-focused"
+      body_length: "50-80 words"
+      cta: "Bekijk de cursus >" or "Lees meer >"
+
+    blog_promotion:
+      pattern: "Similar to advertorial format (shortened)"
+      headline_style: "Question-led or topic-focused"
+      body_length: "40-60 words"
+      cta: "Lees de blog >"
+
+    news_update:
+      pattern: "Company news or sector updates"
+      tone: "Informative, professional"
+      length: "60-100 words"
+
+    seasonal_message:
+      pattern: "Holiday greetings or milestone celebrations"
+      tone: "Warm, appreciative"
+      example_context: "Feestdagen, end-of-year reflections"
+      # SOURCE: Dec 2025 newsletter example, VERIFIED
+
+  email_structure:
+    header:
+      - "CME-Online logo"
+      - "Newsletter title (VVT + GHZ)"
+      - "Month + Year"
+
+    body:
+      - "3-5 content sections"
+      - "Visual breaks between sections"
+      - "Each section: headline + visual + text + CTA"
+
+    footer:
+      - "Unsubscribe link"
+      - "Contact information"
+      - "Social media links"
+
+  tone_variations:
+    informative_sections: "Professional, clear, helpful"
+    course_promotions: "Encouraging, benefit-focused"
+    seasonal_messages: "Warm, community-oriented, appreciative"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DIRECT MAIL PATTERNS (5 examples analyzed)
+# ═══════════════════════════════════════════════════════════════════════════
+
+direct_mail_format:
+
+  structure:
+    format: "1-page business letter"
+    target: "DMU decision-makers (L&D, HR, Training Managers)"
+    tone: "Formal-friendly (je-form maintained but more professional)"
+    frequency: "2x per year (typically May and November)"
+    # SOURCE: DM files dated Nov 2024, May 2025, Nov 2025, VERIFIED
+
+  letter_components:
+    header:
+      - "CME-Online logo"
+      - "Date and location (Utrecht, [month] [year])"
+      - "Recipient address (or 'Beste zorgprofessional')"
+      # SOURCE: DM brief Nov 2025 header, VERIFIED
+
+    opening:
+      pattern: "Personal greeting + context-setting"
+      formality: "Je-form but more consultative than advertorial"
+      example_opening: "Beste zorgprofessional,"
+      length: "2-3 sentences"
+
+    body:
+      structure:
+        - "Problem or challenge (organizational perspective)"
+        - "CME-Online solution (value proposition)"
+        - "Key benefits (3-5 bullet points)"
+        - "Differentiatiors (own teachers, own studio, microlearning)"
+      tone: "Professional, value-focused, consultative"
+      length: "200-300 words total"
+
+    closing:
+      pattern: "Invitation to action (demo, contact, exploration)"
+      cta_style: "Soft, invitational (not pushy)"
+      example: "Laat je scholingsverlanglijstje achter"
+      # SOURCE: DM brief Nov 2025, VERIFIED
+
+    signature:
+      - "Nilufer Akpinar, Directeur"
+      - "Contact details (phone: 030-26 44 100, email: info@cme-online.nl)"
+      # SOURCE: DM brief Nov 2025, VERIFIED
+
+  key_messaging_differences_from_advertorials:
+    focus: "Organizational benefits (not individual professional benefits)"
+    language: "More business-oriented (quality, compliance, scalability)"
+    tone: "Consultative (advisor positioning, not seller)"
+    cta: "Demo/consultation (not blog reading)"
+    # SOURCE: Comparative analysis of DM vs advertorials, INFERRED
+
+  visual_elements:
+    included: "Optional flyer or brochure attachment"
+    examples:
+      - "flyer-vvt-dm-a5-2025.pdf"
+      - "brochure-vvt-dm-a5-2025.pdf"
+    # SOURCE: DM folder contents, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LINKEDIN ORGANIC PATTERNS (documented library analyzed)
+# ═══════════════════════════════════════════════════════════════════════════
+
+linkedin_organic_format:
+
+  structure:
+    format: "Social post (max 150 words recommended)"
+    tone: "Warm, community-building, engaging"
+    emoji_usage: "Yes, strategic (💙 for brand, 🔹 for bullet points)"
+    hashtag_usage: "Minimal to none in analyzed examples"
+    # SOURCE: LinkedIn posts VVT organisch.docx, VERIFIED
+
+  post_types:
+    milestone_celebration:
+      pattern: "Celebrate achievement or landmark"
+      example_topic: "1,000,000 cursussen afgerond"
+      tone: "Appreciative, proud, community-focused"
+      structure: "Headline (emoji) + context + bullet highlights + closing"
+      # SOURCE: LinkedIn post Dec 2025, VERIFIED
+
+    appreciation_post:
+      pattern: "Recognize healthcare professionals"
+      example_topic: "Dag van de Mantelzorger"
+      tone: "Warm, supportive, recognition-focused"
+      structure: "Hook + context + call for nominations/engagement"
+      # SOURCE: LinkedIn post Nov 2025, VERIFIED
+
+    course_highlight:
+      pattern: "Feature specific course or topic"
+      tone: "Educational, invitational"
+      structure: "Question/hook + course value + link + emoji"
+
+  engagement_tactics:
+    - "Ask for nominations or tagging"
+    - "Pose questions to audience"
+    - "Share relatable professional moments"
+    - "Celebrate community achievements"
+
+  formatting_conventions:
+    bold_text_usage: "Yes (𝗯𝗼𝗹𝗱 𝗨𝗻𝗶𝗰𝗼𝗱𝗲 characters for emphasis)"
+    emoji_placement: "Beginning of post (💙) or as bullet points (🔹)"
+    line_breaks: "Frequent, for scanability"
+    link_placement: "Mid-post or end, never beginning"
+    # SOURCE: LinkedIn organic posts structure, VERIFIED
+
+  example_post_structure:
+    opening_line:
+      pattern: "Emoji + Bold statement or question"
+      example: "💙 1.000.000 keer leren, met één doel: betere zorg"
+
+    body:
+      pattern: "Context + emotion/appreciation + specific details"
+      length: "3-5 sentences, 60-100 words"
+
+    bullet_section:
+      pattern: "Emoji bullets (🔹) + links"
+      example:
+        - "🔹 Omgaan met dementie: → [link]"
+        - "🔹 Dataveiligheid / AVG → [link]"
+        - "🔹 Wet zorg en dwang → [link]"
+
+    closing:
+      pattern: "Call to action or well-wishes"
+      example: "Namens CME-Online wensen we jullie alvast fijne feestdagen en een leerzaam nieuw jaar!"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LINKEDIN PAID PATTERNS (campaign creative analyzed)
+# ═══════════════════════════════════════════════════════════════════════════
+
+linkedin_paid_format:
+
+  campaign_structure:
+    tiers:
+      awareness:
+        objective: "Brand introduction, broad reach"
+        content_focus: "CME-Online value proposition"
+        cta_type: "Learn more, explore"
+        example_month: "Juli 2025 - naamsbekendheid"
+        # SOURCE: LinkedIn paid folder structure, VERIFIED
+
+      consideration:
+        objective: "Course value, click-through focus"
+        content_focus: "Specific course benefits, practice-orientation"
+        cta_type: "View courses, read more"
+        example_month: "September 2025 - overweging (doel = klikken)"
+        # SOURCE: LinkedIn paid folder structure, VERIFIED
+
+      conversion:
+        objective: "Brochure download, demo request"
+        content_focus: "Concrete offer, organizational benefits"
+        cta_type: "Download brochure, request demo"
+        example_month: "November 2025 - conversie (download brochure)"
+        # SOURCE: LinkedIn paid folder structure, VERIFIED
+
+  creative_format:
+    type: "Carousel ads (multi-image)"
+    structure: "3 parts/slides per ad (deel 1 van 3, deel 2 van 3, deel 3 van 3)"
+    # SOURCE: LinkedIn paid file naming, VERIFIED
+
+    slide_progression:
+      slide_1: "Hook or problem statement"
+      slide_2: "Solution or benefit details"
+      slide_3: "CTA with clear action"
+
+  visual_style:
+    design: "Brand colors (Blue, Magenta, Teal backgrounds)"
+    text_overlay: "Bold headlines + key benefits"
+    imagery: "Healthcare professionals or abstract illustrations"
+    branding: "CME-Online logo consistently placed"
+
+  ad_copy_length:
+    headline: "5-10 words"
+    description: "30-50 words"
+    cta_button: "1-3 words (Download, Bekijk, Ontdek)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CROSS-CHANNEL CONTENT FORMULAS
+# ═══════════════════════════════════════════════════════════════════════════
+
+content_formulas:
+
+  opening_hooks:
+    question_led:
+      - "Even vergeten hoe het ook alweer moet?"
+      - "Wist je dat...?"
+      - "Herken je dit?"
+      - "Hoe zorg je ervoor dat...?"
+
+    statement_led:
+      - "Soms zit het verschil tussen [A] en [B] in [solution]"
+      - "[Number] zorgprofessionals gebruiken al..."
+      - "De meeste [professionals] ervaren..."
+
+    empathy_led:
+      - "Als [professional] weet je hoe belangrijk [topic] is"
+      - "In je dagelijkse werk kom je regelmatig..."
+      - "Je wilt natuurlijk dat..."
+
+  benefit_articulation:
+    ease_convenience:
+      - "Altijd en overal beschikbaar"
+      - "Flexibel inzetbaar"
+      - "Ook tijdens je werkdag"
+      - "Zonder tijd te verliezen"
+
+    practice_oriented:
+      - "Herkenbare praktijksituaties"
+      - "Praktijkgerichte casuïstiek"
+      - "Direct toepasbaar in de praktijk"
+      - "Volgens de meest recente protocollen"
+
+    quality_expertise:
+      - "Eigen docenten uit wetenschap en praktijk"
+      - "Eigen studio voor volledige kwaliteitscontrole"
+      - "Kwalitatief hoogwaardig aanbod"
+      - "Geaccrediteerd door [body]"
+
+    accreditation:
+      - "Onbeperkt accreditatiepunten"
+      - "Geaccrediteerd aanbod"
+      - "Telt mee voor je herregistratie"
+      - "[X] punten voor je BIG/V&V registratie"
+
+  closing_formulas:
+    soft_cta:
+      - "Lees de blog >"
+      - "Ontdek het aanbod >"
+      - "Bekijk de cursus >"
+      - "Meer informatie >"
+
+    conversion_cta:
+      - "Vraag een gratis demo aan"
+      - "Download de brochure"
+      - "Start vandaag"
+      - "Probeer gratis"
+
+    invitational_cta:
+      - "Laat je scholingsverlanglijstje achter"
+      - "Neem contact op voor meer informatie"
+      - "Plan een vrijblijvend gesprek"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TERMINOLOGY STANDARDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+terminology:
+
+  preferred_terms:
+    nascholing:
+      use_for: "Continuing professional education"
+      not: "training, cursus (when referring to professional development)"
+      context: "Core offering, always use this term"
+      # SOURCE: Consistent across all materials, VERIFIED
+
+    praktijkgericht:
+      use_for: "Practice-based, practical application"
+      not: "theoretical, academic"
+      context: "Key differentiator, frequently emphasize"
+
+    zorgprofessional:
+      use_for: "Healthcare professional"
+      not: "werknemer, personeel, medewerker (in formal contexts)"
+      context: "Respectful, professional framing"
+
+    microlearning:
+      use_for: "Short-form learning modules"
+      not: "short courses, mini-cursussen"
+      context: "Brand differentiator, use prominently"
+
+    herkenbare_praktijksituaties:
+      use_for: "Recognizable practice situations"
+      not: "examples, cases"
+      context: "Practice-orientation messaging"
+
+    accreditatiepunten:
+      use_for: "Accreditation points"
+      not: "CE credits, scholingspunten"
+      context: "Official terminology for V&V register"
+
+    herregistratie:
+      use_for: "Reregistration (in quality register)"
+      not: "recertification, renewal"
+      context: "Kwaliteitsregister V&V context"
+
+  terms_to_avoid:
+    goedkoop:
+      reason: "Not positioned on price (acknowledged competitive challenge)"
+      alternative: "Focus on value, quality, flexibility"
+
+    beperkt_aanbod:
+      reason: "Competitive weakness (smaller catalog than some competitors)"
+      alternative: "Focus on quality, curation, specific needs met"
+
+    complex_moeilijk:
+      reason: "Brand promises ease and accessibility"
+      alternative: "eenvoudig, toegankelijk, flexibel"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY STANDARDS FOR CONTENT CREATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_standards:
+
+  voice_consistency_checklist:
+    - "Je-form used consistently (never u-vorm)"
+    - "Practice-oriented framing throughout"
+    - "Gemak en flexibiliteit mentioned where relevant"
+    - "Short, scannable sentences (avg 8-15 words)"
+    - "Warm, supportive tone (not corporate or distant)"
+
+  structural_requirements:
+    advertorials:
+      - "150-250 words total"
+      - "Question-led or benefit headline"
+      - "Blog title clearly stated"
+      - "UTM parameters in URL"
+
+    newsletters:
+      - "Multiple sections (3-5)"
+      - "Visual breaks between sections"
+      - "Each section: headline + visual + text + CTA"
+      - "Mix of course highlights, blog promos, news"
+
+    direct_mail:
+      - "1-page letter format"
+      - "Organizational benefits focus (not just individual)"
+      - "Demo/consultation CTA (not blog reading)"
+      - "Professional yet approachable tone"
+
+    linkedin_organic:
+      - "Max 150 words"
+      - "Emoji usage strategic (💙 brand, 🔹 bullets)"
+      - "Engagement-focused (questions, nominations, tagging)"
+      - "Community-building tone"
+
+  factual_accuracy_requirements:
+    - "Healthcare terminology correct (nascholing, accreditatiepunten, etc.)"
+    - "Professional levels accurate (N1-N6)"
+    - "Accreditation point values correct per level"
+    - "Course numbers accurate (750+ total, 300+ VVT)"
+    - "Regulatory references correct (Kwaliteitsregister V&V, V&VN)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# METADATA FOR RETRIEVAL
+# ═══════════════════════════════════════════════════════════════════════════
+
+metadata:
+  content_types_covered:
+    - "Advertorials (19 examples)"
+    - "Newsletters (6 examples)"
+    - "Direct Mail (5 examples)"
+    - "LinkedIn Organic (documented library)"
+    - "LinkedIn Paid (campaign creative)"
+
+  channels_documented:
+    - "Nursing magazine"
+    - "V&VN magazine"
+    - "Skipr magazine"
+    - "Floor magazine"
+    - "Email newsletters"
+    - "LinkedIn (organic + paid)"
+    - "Direct mail campaigns"
+
+  date_range: "2024-01-01 to 2025-12-31"
+
+  primary_use_cases:
+    - "USE_CASE_CME_ONLINE_VVT_ADVERTORIAL"
+    - "USE_CASE_CME_ONLINE_DMU_CONTENT"
+    - "USE_CASE_04_COPYWRITER"
+    - "USE_CASE_06_SOCIAL"
+
+  update_triggers:
+    - "New content campaigns launched"
+    - "Voice/tone adjustments"
+    - "Channel strategy changes"
+    - "Performance insights require pattern updates"

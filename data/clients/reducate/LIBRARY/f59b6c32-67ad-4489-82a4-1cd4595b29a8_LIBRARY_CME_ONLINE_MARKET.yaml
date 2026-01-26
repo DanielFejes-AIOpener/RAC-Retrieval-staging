@@ -1,0 +1,551 @@
+# LIBRARY_CME_ONLINE_MARKET.yaml
+# ================================================================
+# Structured Library: CME-Online VVT Market Intelligence
+# ================================================================
+# Created: 2026-01-18
+# Owner: CLIENT (CME-Online VVT)
+# Source: Basisdocument VVT + Competitive Analysis - Structured
+# ================================================================
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-18"
+
+library:
+  library_id: "LIB_CME_ONLINE_MARKET"
+  owner_type: "CLIENT"
+  org_id: "REDUCATE"
+  client_id: "CME-ONLINE"
+  title: "CME-Online VVT Market Intelligence"
+  description: |
+    Strategic market intelligence, DMU insights, competitive landscape,
+    and regulatory context for CME-Online VVT sector. Extracted and structured
+    from Basisdocument VVT (January 2026).
+
+  tags: [libraries, market-intelligence, dmu, competitive, strategy, vvt, healthcare-education]
+  doc_types: [reference, archive]
+  sensitivity: "confidential"
+
+  provenance_note: |
+    Extracted from Basisdocument VVT (January 2026) strategic analysis.
+    Contains DMU behavior, competitive positioning, regulatory requirements,
+    market dynamics, and 2026 strategic ambitions. Confidential strategic intelligence.
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DMU (DECISION-MAKING UNIT) ANALYSIS
+# ═══════════════════════════════════════════════════════════════════════════
+
+dmu_intelligence:
+
+  composition:
+    decision_makers:
+      - role: "L&D (Learning & Development)"
+        influence: "High - Training strategy ownership"
+        priorities: ["Employee development", "Compliance", "Quality"]
+        # SOURCE: Basisdocument Section 4, VERIFIED
+
+      - role: "Opleidingsmanager (Training Manager)"
+        influence: "High - Operational training decisions"
+        priorities: ["Course quality", "Accreditation", "Practical value"]
+
+      - role: "HR"
+        influence: "Medium-High - Budget and workforce development"
+        priorities: ["Staff retention", "Compliance", "Cost efficiency"]
+
+      - role: "Teammanager"
+        influence: "Medium - Frontline training needs"
+        priorities: ["Practical application", "Team skill development", "Time efficiency"]
+
+      - role: "Directie (Management/Director)"
+        influence: "High - Final approval, budget"
+        priorities: ["Quality assurance", "Audit readiness", "ROI"]
+        # SOURCE: Basisdocument Section 4, VERIFIED
+
+    decision_level: "Organizational"
+    note: "Decisions made at organization level, not individual professional level"
+    # SOURCE: Basisdocument Section 4, VERIFIED
+
+  buying_behavior:
+    process_characteristics:
+      - characteristic: "Long decision-making cycle"
+        implication: "Expect 3-6+ month sales cycles"
+        strategy: "Nurture relationships, provide ongoing value"
+        # SOURCE: Basisdocument Section 4 "Lange besluitvorming", VERIFIED
+
+      - characteristic: "Multiple stakeholders involved"
+        implication: "Need consensus across L&D, HR, Management"
+        strategy: "Multi-touchpoint engagement, stakeholder-specific messaging"
+        # SOURCE: Basisdocument Section 4 "Veel stakeholders", VERIFIED
+
+      - characteristic: "Request extensive demos"
+        implication: "DMU wants to see platform before committing"
+        strategy: "Demo-ready positioning, showcase key features and ease of use"
+        # SOURCE: Basisdocument Section 4 "Behoefte aan uitgebreide demo's", VERIFIED
+
+      - characteristic: "Ask for customization (often not possible)"
+        implication: "Gap between DMU expectations and CME-Online offering"
+        strategy: "Manage expectations early, emphasize quality over customization"
+        # SOURCE: Basisdocument Section 4 "Vraag naar maatwerk (niet altijd mogelijk)", VERIFIED
+
+  buying_objections:
+    price:
+      objection: "CME-Online is not the cheapest option"
+      # SOURCE: Basisdocument Section 4 "Prijs (CME-Online is niet de goedkoopste aanbieder)", VERIFIED
+      counter_strategies:
+        - "Emphasize quality over cost (own teachers, own studio)"
+        - "Highlight predictable unlimited access model"
+        - "Focus on organizational ROI (audit readiness, compliance)"
+        - "Demonstrate value per employee vs total cost"
+      avoid_messaging:
+        - "Never position on 'cheap' or 'affordable'"
+        - "Don't apologize for pricing"
+        - "Avoid direct price comparisons"
+
+    limited_offering:
+      objection: "Smaller course catalog compared to some competitors"
+      # SOURCE: Basisdocument Section 4 "Beperkt aanbod t.o.v. sommige concurrenten", VERIFIED
+      counter_strategies:
+        - "Frame as 'curated quality' not 'limited quantity'"
+        - "Emphasize 300+ VVT courses (still substantial)"
+        - "Highlight practice-orientation over catalog size"
+        - "Focus on 'right courses' not 'most courses'"
+      avoid_messaging:
+        - "Don't draw attention to catalog size"
+        - "Never say 'comprehensive' (invites comparison)"
+        - "Avoid catalog size claims without context"
+
+    limited_customization:
+      objection: "Limited customization capabilities"
+      # SOURCE: Basisdocument Section 4 "Beperkte maatwerkmogelijkheden", VERIFIED
+      counter_strategies:
+        - "Emphasize benefit of standardization (quality control, immediate access)"
+        - "Position own studio as flexibility advantage (rapid updates)"
+        - "Offer within-platform customization (playlists, learning paths if available)"
+      avoid_messaging:
+        - "Don't promise customization that can't be delivered"
+        - "Set expectations early in sales process"
+
+  decision_unknowns:
+    note: "Client acknowledges these as gaps requiring market research (2026)"
+    # SOURCE: Basisdocument Section 4 "Onbekende factoren", VERIFIED
+
+    unknown_initiator:
+      question: "Who initiates the purchase process within organizations?"
+      impact: "Don't know which role to target first"
+      current_assumption: "Varies by organization size and structure"
+      research_needed: true
+
+    unknown_decisive_factors:
+      question: "What is decisive in the final purchase decision?"
+      impact: "Unclear which benefits to emphasize most"
+      current_assumptions:
+        - "Quality and accreditation likely important"
+        - "Ease of use for administrators"
+        - "Practice-orientation for content credibility"
+      research_needed: true
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE LANDSCAPE
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitive_intelligence:
+
+  cme_online_positioning:
+    market_position: "Quality-focused, practice-oriented e-learning provider"
+    target_segment: "VVT organizations seeking quality, accredited, practice-based training"
+    price_positioning: "Mid-to-premium (not cheapest, not most expensive)"
+    # SOURCE: Basisdocument competitive context, INFERRED
+
+  differentiators:
+    strengths:
+      - differentiator: "Own teachers (eigen docenten)"
+        value: "Quality control, expertise from science and practice"
+        messaging: "Taught by the best teachers from both science and practice"
+        # SOURCE: Basisdocument Section 1, VERIFIED
+
+      - differentiator: "Own studio (eigen studio)"
+        value: "Full control over content quality, updates, and format"
+        messaging: "Full control means faster updates, consistent quality, current protocols"
+        # SOURCE: Basisdocument Section 1, VERIFIED
+
+      - differentiator: "Strong microlearning focus"
+        value: "Time-efficient, bite-sized learning fits busy healthcare schedules"
+        messaging: "Learn in minutes, not hours - fits into your workday"
+        # SOURCE: Basisdocument Section 1, VERIFIED
+
+      - differentiator: "Practice-oriented content (herkenbare praktijksituaties)"
+        value: "Immediately applicable, recognizable scenarios"
+        messaging: "Recognizable practice situations, not just theory"
+        # SOURCE: Basisdocument Section 1, VERIFIED
+
+  competitive_challenges:
+    price:
+      challenge: "Not the cheapest in market"
+      impact: "Price-sensitive organizations may choose competitors"
+      mitigation: "Position on value, not cost; emphasize quality ROI"
+
+    catalog_size:
+      challenge: "Smaller offering than some competitors (300+ vs competitors with 500+, 1000+)"
+      impact: "Organizations seeking 'everything in one place' may prefer larger catalogs"
+      mitigation: "Emphasize curation, quality, practice-focus; 300+ is still substantial"
+
+    customization:
+      challenge: "Limited customization options vs competitors with bespoke content"
+      impact: "Large organizations with specific needs may seek custom solutions"
+      mitigation: "Emphasize benefits of standardization (quality, speed, cost efficiency)"
+
+  competitor_landscape:
+    note: "Competitor list exists but limited detail in current materials"
+    # SOURCE: Lijst concurrenten + websites VVT.xlsx (names + URLs only), VERIFIED
+
+    known_competitors:
+      - "Various VVT e-learning providers (names in competitor list file)"
+
+    competitive_gaps_in_knowledge:
+      - "Detailed feature comparisons not available"
+      - "Competitor pricing not documented"
+      - "Win/loss analysis not available"
+      - "Market share data not available"
+
+    recommendation: "Competitive deep-dive needed for enhanced positioning"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REGULATORY & INDUSTRY CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+regulatory_context:
+
+  quality_register:
+    name: "Kwaliteitsregister Verpleegkundigen & Verzorgenden (V&V)"
+    governing_body: "V&VN (Verpleegkundigen & Verzorgenden Nederland)"
+    status: "Not legally required (unlike BIG-register), but seen as quality standard by many care institutions"
+    # SOURCE: Basisdocument Section 2, VERIFIED
+
+  reregistration_requirements:
+    total_points_required: "184 points in 5 years"
+    # SOURCE: Basisdocument Section 2, VERIFIED
+
+    accredited_minimums:
+      verpleegkundigen:
+        minimum_accredited: "80 points (of 184 total)"
+        remaining: "104 points from other activities (intervision, literature, etc.)"
+        # SOURCE: Basisdocument Section 2, VERIFIED
+
+      verzorgenden:
+        minimum_accredited: "60 points (of 184 total)"
+        remaining: "124 points from other activities"
+        # SOURCE: Basisdocument Section 2, VERIFIED
+
+    other_point_sources:
+      - "Intervision (peer consultation)"
+      - "Professional literature (vakliteratuur)"
+      - "Other professional development activities"
+      # SOURCE: Basisdocument Section 2, VERIFIED
+
+  consequences_of_non_compliance:
+    - "No (or delayed) reregistration in Kwaliteitsregister V&V"
+    - "Reduced demonstrability of professional competence to employer and regulators"
+    - "Potential impact on employment eligibility in quality-focused institutions"
+    # SOURCE: Basisdocument Section 2, VERIFIED
+
+  urgency_dynamics:
+    primary_driver: "Organizations (HR, L&D, training managers)"
+    reason: "Quality audits, herregistratie requirements, institutional compliance"
+    # SOURCE: Basisdocument Section 2, VERIFIED
+
+    individual_motivation:
+      n1_n3:
+        level: "Low intrinsic motivation"
+        reason: "No hard personal points requirement (organization-driven)"
+        # SOURCE: Basisdocument Section 2, VERIFIED
+
+      n5_n6:
+        level: "Medium to high motivation"
+        reason: "Professional standards expectations, career development"
+
+    organizational_drivers:
+      - "Quality assurance and audits"
+      - "Herregistratie compliance for staff"
+      - "Reputation and accreditation standards"
+      - "Regulatory preparedness"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET DYNAMICS
+# ═══════════════════════════════════════════════════════════════════════════
+
+market_dynamics:
+
+  seasonality:
+    high_activity_period:
+      months: "September to May"
+      characteristics:
+        - "Increased website traffic"
+        - "More demo requests"
+        - "Higher training activity"
+      drivers:
+        - "Back to work after summer"
+        - "Annual training planning cycles"
+        - "Pre-summer push to complete training"
+      # SOURCE: Basisdocument Section 2, VERIFIED
+
+    low_activity_period:
+      months: "Summer (June, July, August)"
+      characteristics:
+        - "Lower website traffic"
+        - "Fewer demo requests"
+        - "Reduced training activity"
+      drivers:
+        - "Vacation periods (professionals and decision-makers)"
+        - "Reduced staffing levels in care institutions"
+      marketing_implications:
+        - "Lower ad spend or shift to awareness vs conversion"
+        - "Focus on content/nurture vs hard selling"
+        - "Prepare for September activation"
+      # SOURCE: Basisdocument Section 2 "Zomerperiode kenmerkt zich door lager websiteverkeer, minder aanvragen en minder scholing (vakanties)", VERIFIED
+
+  target_audience_segments:
+    primary_segment:
+      name: "DMU within VVT organizations"
+      description: "Decision-makers for organizational/team subscriptions"
+      priority: "High - largest volume and impact"
+      focus_rationale: "Organizational subscriptions drive most revenue"
+      # SOURCE: Basisdocument Section 1 "Vanuit CME-Online ligt hier nadrukkelijk de focus", VERIFIED
+
+    secondary_segment:
+      name: "Individual VVT professionals"
+      description: "End users seeking personal professional development"
+      priority: "Low-Medium"
+      challenge: "Low intrinsic motivation for N1-N3"
+      opportunity: "N5-N6 have higher motivation (professional standards)"
+
+  market_structure:
+    vvt_organization_types:
+      - "Verpleeghuizen (nursing homes)"
+      - "Verzorgingshuizen (care homes)"
+      - "Thuiszorg (home care organizations)"
+      - "Mixed care institutions"
+
+    organization_sizes:
+      small: "< 50 care staff"
+      medium: "50-200 care staff"
+      large: "> 200 care staff"
+      note: "Larger organizations = more complex DMU, longer sales cycles"
+      # SOURCE: Basisdocument DMU context, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STRATEGIC CHALLENGES & AMBITIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+strategic_context:
+
+  current_challenges:
+    dmu_reach:
+      challenge: "Difficult to reach DMU effectively"
+      manifestation:
+        - "Unclear which channels work best"
+        - "Low demo request volume"
+        - "Long sales cycles without clear path"
+      # SOURCE: Basisdocument Section 5, VERIFIED
+
+    dmu_understanding:
+      challenge: "Insufficient insight into DMU triggers and motivations"
+      manifestation:
+        - "Don't know who initiates purchase process"
+        - "Unclear what is decisive in final decision"
+        - "Lack of detailed DMU personas"
+      # SOURCE: Basisdocument Section 5, VERIFIED
+
+    communication_approach:
+      challenge: "Too product-driven, not problem-focused enough"
+      manifestation:
+        - "Messaging emphasizes features over solutions"
+        - "Not addressing DMU pain points effectively"
+      desired_shift: "From product features → problem solutions"
+      # SOURCE: Basisdocument Section 5 "Te productgedreven communicatie, te weinig probleemgericht", VERIFIED
+
+    channel_effectiveness:
+      challenge: "Uncertainty about effective DMU channels"
+      manifestation:
+        - "Unclear ROI on various marketing channels"
+        - "No clear KPIs for marketing effectiveness"
+      note: "Currently no concrete marketing KPIs like lead goals or conversion rates"
+      # SOURCE: Basisdocument Section 3 "Er zijn momenteel geen concrete marketing-KPI's", VERIFIED
+
+    positioning_clarity:
+      challenge: "Lack of sharp positioning for CME-Online VVT"
+      manifestation:
+        - "No clear differentiation statement"
+        - "Unclear how to compete on non-price factors"
+      # SOURCE: Basisdocument Section 5, VERIFIED
+
+  2026_ambitions:
+    understand_dmu:
+      goal: "Truly understand the DMU via market research"
+      approach: "Planned market research in 2026"
+      expected_outcomes:
+        - "Detailed DMU personas"
+        - "Understanding of needs, pain points, decision criteria"
+        - "Identification of purchase process initiators"
+        - "Clarity on decisive factors in final decisions"
+      # SOURCE: Basisdocument Section 5, VERIFIED
+
+    sharpen_proposition:
+      goal: "Sharpen the proposition for CME-Online VVT"
+      approach: "Refine value proposition based on DMU insights"
+      expected_outcomes:
+        - "Clearer differentiation"
+        - "Stronger non-price positioning"
+        - "Compelling organizational value story"
+
+    develop_positioning:
+      goal: "Develop clear positioning for CME-Online VVT"
+      approach: "Define unique market position and messaging"
+      expected_outcomes:
+        - "Sharp positioning statement"
+        - "Competitive differentiation clarity"
+        - "Consistent market presence"
+
+    improve_communication:
+      goal: "More effective, problem-focused marketing communication"
+      approach: "Shift from product features to DMU problem solutions"
+      expected_outcomes:
+        - "Problem-led messaging"
+        - "DMU pain point addressing"
+        - "Solution-oriented content"
+
+    optimize_channels:
+      goal: "More effective channel selection for DMU"
+      approach: "Identify and prioritize high-performing DMU channels"
+      expected_outcomes:
+        - "Clear channel strategy"
+        - "ROI-driven channel mix"
+        - "Effective DMU touchpoints"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ORGANIZATIONAL CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+organizational_context:
+
+  cme_online_structure:
+    vvt_team_composition:
+      - role: "1 marketeer (VVT)"
+        responsibilities: ["Marketing strategy", "Campaign execution", "Content creation"]
+      - role: "1 salesperson (VVT)"
+        responsibilities: ["Demo management", "Lead follow-up", "Deal closing"]
+      - role: "2 editorial staff (VVT)"
+        responsibilities: ["Course development", "Content updates", "Quality assurance"]
+      # SOURCE: Basisdocument Section 3, VERIFIED
+
+    shared_functions:
+      - "Finance (organization-wide)"
+      - "Studio (organization-wide)"
+      - "IT (organization-wide)"
+
+  marketing_sales_approach:
+    lead_generation:
+      primary_lead_form: "Demo request"
+      current_volume: "Limited (beperkt aantal demo-aanvragen)"
+      crm_tool: "Zoho CRM"
+      follow_up: "Demo requests followed up via Zoho"
+      # SOURCE: Basisdocument Section 3, VERIFIED
+
+    kpi_status:
+      sales_targets: "Yes - sales target exists"
+      marketing_kpis: "No - currently no concrete marketing KPIs like lead goals or conversion rates"
+      # SOURCE: Basisdocument Section 3, VERIFIED
+      implication: "Marketing effectiveness hard to measure, optimization challenging"
+
+  historical_context:
+    eme_acquisition:
+      event: "CME-Online acquired VVT target groups from E-learning Made Easy (EME)"
+      timeframe: "Approximately 3 years ago (circa 2022-2023)"
+      impact:
+        - "Many e-learnings still in 'old style' (not developed by CME-Online internal team)"
+        - "Renewal process ongoing (takes time)"
+        - "Legacy content quality perception may affect brand"
+      # SOURCE: Basisdocument Section 1, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TACTICAL INSIGHTS FOR CONTENT CREATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+tactical_insights:
+
+  messaging_dos:
+    for_dmu:
+      - "Emphasize organizational benefits (quality, compliance, audit readiness)"
+      - "Address long decision cycles with nurture content"
+      - "Offer demos early and prominently"
+      - "Speak to multiple stakeholder priorities (L&D, HR, Management)"
+      - "Focus on problem-solving, not product features"
+
+    for_differentiation:
+      - "Lead with quality (own teachers, own studio)"
+      - "Emphasize practice-orientation (herkenbare praktijksituaties)"
+      - "Highlight microlearning focus (time efficiency)"
+      - "Position on value, never on price"
+
+    for_credibility:
+      - "Reference accreditation (V&VN, Kwaliteitsregister V&V)"
+      - "Cite course numbers (750+ total, 300+ VVT)"
+      - "Mention current protocols and guidelines"
+      - "Include herregistratie compliance messaging"
+
+  messaging_donts:
+    avoid_topics:
+      - "Price comparisons or 'affordable' positioning"
+      - "Catalog size claims (invites unfavorable comparison)"
+      - "Customization promises (can't deliver)"
+      - "Overstating EME acquisition positively (legacy quality issues)"
+
+    avoid_framing:
+      - "Product feature laundry lists (too product-driven)"
+      - "Aggressive sales language (long decision cycles need nurture)"
+      - "Generic e-learning claims (no differentiation)"
+
+  channel_strategy_insights:
+    for_dmu:
+      channels:
+        - "Advertorials in Skipr (DMU-focused)"
+        - "LinkedIn Ads (targeting decision-maker titles)"
+        - "Direct mail (2x per year)"
+        - "Own events for decision-makers"
+        - "Trade shows (Zorg & Facility beurs)"
+      # SOURCE: Basisdocument Section 3, VERIFIED
+
+    for_professionals:
+      channels:
+        - "Advertorials in Nursing, V&VN, Floor"
+        - "Monthly newsletters"
+        - "Organic LinkedIn"
+        - "SEO blogs (search-driven)"
+      # SOURCE: Basisdocument Section 3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# METADATA FOR RETRIEVAL
+# ═══════════════════════════════════════════════════════════════════════════
+
+metadata:
+  source_document: "Basisdocument CME-Online -- VVT (January 2026)"
+  intelligence_type: "Strategic market analysis, DMU behavior, competitive positioning"
+
+  primary_use_cases:
+    - "USE_CASE_CME_ONLINE_DMU_CONTENT (B2B messaging)"
+    - "USE_CASE_02_STRATEGIST (positioning refinement)"
+    - "USE_CASE_07_ANALYST (market research support)"
+
+  update_triggers:
+    - "2026 market research completion (DMU insights)"
+    - "Competitive landscape changes"
+    - "New positioning developed"
+    - "KPI framework established"
+    - "Channel effectiveness data available"
+
+  knowledge_gaps_to_address:
+    - "Detailed competitor feature/pricing comparison"
+    - "Win/loss analysis data"
+    - "DMU persona details (awaiting 2026 research)"
+    - "Marketing KPI baselines"
+    - "Channel ROI data"

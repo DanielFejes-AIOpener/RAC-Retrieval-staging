@@ -1,0 +1,553 @@
+---
+# LIBRARY_MSG_BRAND_ASSETS.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Self-contained brand assets library for MSG visual system
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  library_id: "LIB_MSG_BRAND_ASSETS"
+  version: "1.0.0"
+  created_date: "2026-01-26"
+  last_updated: "2026-01-26"
+  status: "active"
+  provenance: "Sourced from ORG_06_VISUAL_SYSTEM.yaml (Brand Manual v8)"
+
+library_metadata:
+  title: "MSG Brand Assets & Visual System"
+  description: "Complete visual identity system including colors, typography, logos, imagery guidelines, icons, and design standards for Milieu Service Nederland"
+  tags: [brand, visual, design, colors, typography, logo, imagery]
+  keywords: [brand colors, MSN groen, Ubuntu font, logo system, visual identity, design system]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BRAND COLORS
+# ═══════════════════════════════════════════════════════════════════════════
+
+brand_colors:
+  primary:
+    name: "MSN Groen (Primary Green)"
+    hex: "#009d3d"
+    rgb: "0, 157, 61"
+    usage: "Primary brand color, headings, CTAs, key brand touchpoints"
+    application_areas:
+      - "Logo primary color"
+      - "Primary buttons and CTAs"
+      - "Headings and key messages"
+      - "Brand accent elements"
+    notes: "This is the main MSN brand green, used across all brand applications"
+
+  secondary:
+    - name: "Licht Groen (Light Green)"
+      hex: "#cbedd8"
+      rgb: "203, 237, 216"
+      usage: "Backgrounds, subtle highlights, secondary brand elements"
+      application_areas:
+        - "Background sections"
+        - "Subtle highlights"
+        - "Secondary brand elements"
+        - "Light overlays"
+
+    - name: "MSN Blauw (Blue)"
+      hex: "#0073b7"
+      rgb: "0, 115, 183"
+      usage: "Secondary accent, digital applications"
+      application_areas:
+        - "Secondary accents"
+        - "Digital UI elements"
+        - "Links and interactive elements"
+        - "Supporting graphics"
+
+  neutrals:
+    - name: "Donker Grijs (Dark Gray)"
+      hex: "#58595b"
+      rgb: "88, 89, 91"
+      usage: "Body text, primary text content"
+      application_areas:
+        - "Body copy"
+        - "Paragraph text"
+        - "Long-form content"
+        - "Text overlays"
+
+    - name: "Licht Grijs (Light Gray)"
+      hex: "#d9d9d6"
+      rgb: "217, 217, 214"
+      usage: "Borders, dividers, subtle backgrounds"
+      application_areas:
+        - "Border lines"
+        - "Dividers"
+        - "Subtle backgrounds"
+        - "Separation elements"
+
+    - name: "Wit (White)"
+      hex: "#ffffff"
+      rgb: "255, 255, 255"
+      usage: "Backgrounds, negative space, text on dark backgrounds"
+      application_areas:
+        - "Page backgrounds"
+        - "Card backgrounds"
+        - "Text on dark backgrounds"
+        - "Negative space"
+
+  accent:
+    name: "Oranje (Recruitment Orange)"
+    hex: "#ff6600"
+    rgb: "255, 102, 0"
+    usage: "Recruitment campaigns only (Werken bij MSN)"
+    context: "recruitment"
+    restriction: "Only used for recruitment/employment branding materials"
+    application_areas:
+      - "Werken bij MSN campaigns"
+      - "Job postings"
+      - "Recruitment materials"
+    notes: "NEVER use in general brand communications, only for HR/recruitment context"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# WASTE STREAM COLOR SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════
+
+waste_stream_colors:
+  description: "Color-coded system for 8 primary waste streams - use consistently across all communications"
+
+  streams:
+    - stream: "Restafval (Residual Waste)"
+      color_hex: "#58595b"
+      color_name: "Donker Grijs (Dark Gray)"
+      rgb: "88, 89, 91"
+      usage: "All residual waste communications, container labels, infographics"
+
+    - stream: "Papier & Karton (Paper & Cardboard)"
+      color_hex: "#0073b7"
+      color_name: "Blauw (Blue)"
+      rgb: "0, 115, 183"
+      usage: "Paper and cardboard waste stream identification"
+
+    - stream: "PMD (Plastic, Metal, Drinks cartons)"
+      color_hex: "#ff6600"
+      color_name: "Oranje (Orange)"
+      rgb: "255, 102, 0"
+      usage: "PMD waste stream identification (note: same as recruitment orange but different context)"
+
+    - stream: "GFT (Organic Waste)"
+      color_hex: "#009d3d"
+      color_name: "Groen (Green)"
+      rgb: "0, 157, 61"
+      usage: "Organic waste stream identification (note: same as primary brand green)"
+
+    - stream: "Glas (Glass)"
+      color_hex: "#cbedd8"
+      color_name: "Licht Groen (Light Green)"
+      rgb: "203, 237, 216"
+      usage: "Glass waste stream identification"
+
+    - stream: "Hout (Wood)"
+      color_hex: "#8b4513"
+      color_name: "Bruin (Brown)"
+      rgb: "139, 69, 19"
+      usage: "Wood waste stream identification"
+
+    - stream: "Puin (Rubble/Construction Waste)"
+      color_hex: "#d9d9d6"
+      color_name: "Licht Grijs (Light Gray)"
+      rgb: "217, 217, 214"
+      usage: "Construction waste stream identification"
+
+    - stream: "Gevaarlijk Afval (Hazardous Waste)"
+      color_hex: "#ff0000"
+      color_name: "Rood (Red)"
+      rgb: "255, 0, 0"
+      usage: "Hazardous waste stream identification"
+
+  usage_notes:
+    - "Use these colors consistently across all waste stream communications"
+    - "Apply to container labels, diagrams, infographics, and educational materials"
+    - "Colors aid in quick recognition and sorting guidance"
+    - "Do not deviate from assigned colors for waste streams"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TYPOGRAPHY
+# ═══════════════════════════════════════════════════════════════════════════
+
+typography:
+  primary_font:
+    family: "Ubuntu"
+    type: "sans-serif"
+    fallback: "Arial, sans-serif"
+    source: "Google Fonts"
+    license: "Open Font License"
+
+    variants:
+      - weight: "Bold"
+        font_weight: "700"
+        usage: "Headings (H1-H6), emphasis, CTAs"
+        application_areas:
+          - "All heading levels"
+          - "Call-to-action buttons"
+          - "Key messages"
+          - "Emphasis text"
+
+      - weight: "Regular"
+        font_weight: "400"
+        usage: "Body text, paragraphs, general content"
+        application_areas:
+          - "Body copy"
+          - "Paragraph text"
+          - "Navigation"
+          - "Supporting text"
+
+  typography_rules:
+    - "Ubuntu is the exclusive brand font for all MSN materials"
+    - "Use Bold variant for all headings and key messages"
+    - "Use Regular variant for body copy and supporting text"
+    - "Never use other font families in brand materials"
+    - "Fallback to Arial only when Ubuntu unavailable (email clients, etc.)"
+
+  web_implementation:
+    google_fonts_link: "https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+    css_usage: |
+      h1, h2, h3, h4, h5, h6, .heading, .cta {
+        font-family: 'Ubuntu', Arial, sans-serif;
+        font-weight: 700;
+      }
+      body, p, .body-text {
+        font-family: 'Ubuntu', Arial, sans-serif;
+        font-weight: 400;
+      }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LOGO SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════
+
+logo_system:
+  standard_logo:
+    name: "MSN Logo met schaduw (with shadow)"
+    description: "Primary logo with shadow effect for added depth and visibility"
+
+    variants:
+      - type: "Positief (Positive)"
+        usage: "Light backgrounds, white backgrounds"
+        description: "Standard green logo with shadow effect on light backgrounds"
+        file_naming: "MSN_Logo_Positive_Shadow"
+        color: "MSN Groen (#009d3d)"
+        background: "Light backgrounds (white, light gray)"
+
+      - type: "Diapositief (Negative)"
+        usage: "Dark backgrounds, green backgrounds"
+        description: "White logo with shadow effect on dark backgrounds"
+        file_naming: "MSN_Logo_Negative_Shadow"
+        color: "White (#ffffff)"
+        background: "Dark backgrounds (dark gray, green, photos)"
+
+  shadow_free_logo:
+    name: "MSN Logo zonder schaduw (shadow-free)"
+    description: "Clean logo without shadow for specific applications"
+
+    variants:
+      - type: "Positief (Positive)"
+        usage: "Clean applications, digital icons, small sizes"
+        description: "Green logo without shadow for clean appearance"
+        file_naming: "MSN_Logo_Positive_NoShadow"
+        color: "MSN Groen (#009d3d)"
+        use_cases:
+          - "Small sizes (favicons, app icons)"
+          - "Clean minimalist applications"
+          - "Digital UI elements"
+
+      - type: "Diapositief (Negative)"
+        usage: "Dark backgrounds when shadow-free version needed"
+        description: "White logo without shadow"
+        file_naming: "MSN_Logo_Negative_NoShadow"
+        color: "White (#ffffff)"
+        use_cases:
+          - "Dark UI backgrounds"
+          - "Photo overlays (clean)"
+
+  logo_constraints:
+    prohibited_modifications:
+      - modification: "Changing logo colors"
+        rule: "Only use approved MSN Groen (#009d3d) or White (#ffffff)"
+      - modification: "Tilting or rotating the logo"
+        rule: "Logo must always be horizontal and upright"
+      - modification: "Applying custom shadows or effects"
+        rule: "Only use provided shadow versions"
+      - modification: "Distorting proportions"
+        rule: "Never stretch, squash, or distort logo proportions"
+      - modification: "Separating logo elements"
+        rule: "Logo elements must remain together as designed"
+
+    minimum_clearspace:
+      description: "Maintain clear space around logo equal to height of 'M' in logo"
+      measurement: "Use capital 'M' height as clearspace unit"
+      application: "Apply clearspace on all sides of logo"
+
+    minimum_size:
+      digital:
+        height: "30px"
+        context: "Web, digital applications, screens"
+      print:
+        height: "10mm"
+        context: "Print materials, physical applications"
+      rationale: "Ensures legibility and brand recognition"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SLOGAN & TAGLINE
+# ═══════════════════════════════════════════════════════════════════════════
+
+slogan_system:
+  primary_slogan:
+    text: "De ondernemende afvalpartner"
+    translation: "The entrepreneurial waste partner"
+    usage: "Primary brand slogan, hero sections, brand materials"
+    placement:
+      - "Hero sections"
+      - "Brand presentations"
+      - "Marketing materials"
+      - "Below logo (when appropriate)"
+
+  supporting_messages:
+    - message: "Samen maken we impact"
+      usage: "Campaign messaging, sustainability communications"
+
+    - message: "Duurzaam afvalmanagement"
+      usage: "Service descriptions, category messaging"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# IMAGERY GUIDELINES
+# ═══════════════════════════════════════════════════════════════════════════
+
+imagery:
+  photography:
+    source_policy:
+      rule: "Internal photography only (eigen fotografie)"
+      prohibited: "Stock photography is NOT allowed"
+      rationale: "Authentic brand representation requires real MSN imagery"
+
+    processing:
+      tool: "Adobe Lightroom"
+      preset: "MSN Lightroom Preset (provided by Marketing)"
+      requirement: "All photos must be processed with official MSN preset for consistent look"
+      contact: "Request preset from Marketing team"
+
+    content_requirements:
+      allowed_subjects:
+        - "MSN employees in action"
+        - "Real MSN containers and equipment"
+        - "Actual MSN facilities and operations"
+        - "Authentic customer interactions"
+      style: "Professional, authentic, documentary-style imagery"
+      prohibited_subjects:
+        - "Stock photos of generic waste"
+        - "Stock photos of people (non-MSN)"
+        - "Competitor equipment or branding"
+        - "Staged or artificial scenarios"
+
+    legal_requirements:
+      consent_forms: true
+      description: "All photographed individuals must sign consent forms (toestemmingsformulieren)"
+      storage: "Consent forms must be stored with photo files"
+      contact: "Obtain forms from HR or Marketing"
+
+  web_imagery:
+    border_radius: "5px"
+    description: "All web images use 5px rounded corners for consistent brand feel"
+    application:
+      - "Blog post images"
+      - "Service images"
+      - "Team photos"
+      - "Case study images"
+    css_implementation: "border-radius: 5px;"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ILLUSTRATION STYLE
+# ═══════════════════════════════════════════════════════════════════════════
+
+illustration:
+  custom_illustrations:
+    name: "MSN Custom Illustrations"
+    description: "Custom-designed illustrations in MSN brand style"
+    usage: "Explainer content, process visualizations, concept illustrations"
+    source: "Created by Marketing team or approved designers"
+
+  illustration_characteristics:
+    style: "Clean, modern, simplified"
+    color_palette: "MSN brand colors only"
+    line_weight: "Consistent, medium weight"
+    detail_level: "Simplified but recognizable"
+
+  constraints:
+    prohibited:
+      - "Generic stock illustrations"
+      - "Clipart"
+      - "Non-brand illustrations"
+      - "Canva default illustrations"
+      - "Microsoft Office clipart"
+    requirement: "All illustrations must be custom-created in MSN visual style"
+    approval: "New illustrations require Marketing approval"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ICON SYSTEM
+# ═══════════════════════════════════════════════════════════════════════════
+
+icon_system:
+  custom_icon_font:
+    name: "MSN Custom Icon Font"
+    description: "Proprietary icon font with MSN-specific symbols and indicators"
+    usage: "All UI icons, waste stream indicators, service icons"
+    access: "Available through Marketing team"
+
+  icon_characteristics:
+    style: "Line-based, consistent stroke width"
+    size: "Scalable vector format"
+    color: "Single color (adaptable to brand colors)"
+
+  prohibited_sources:
+    - source: "Microsoft Office icons"
+      reason: "Generic, not brand-aligned"
+    - source: "Canva icons"
+      reason: "Generic, not brand-aligned"
+    - source: "Generic icon libraries"
+      reason: "Not consistent with MSN style"
+    - source: "Font Awesome"
+      exception: "Unless specifically approved by Marketing"
+
+  request_process:
+    - "Check if icon exists in MSN custom font"
+    - "If not available, request new icon from Marketing"
+    - "Provide clear description and use case"
+    - "Wait for custom design and approval"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRINT STANDARDS
+# ═══════════════════════════════════════════════════════════════════════════
+
+print_standards:
+  sustainability_requirements:
+    paper:
+      recycled_content: "100%"
+      certification: "CO2-neutraal papier"
+      description: "All print materials must use 100% recycled, CO2-neutral paper"
+      verification: "Request certification from printer"
+
+    ink:
+      type: "Bio-inkt (Bio-based ink)"
+      description: "All printing must use bio-based inks"
+      verification: "Confirm with printer before production"
+
+  rationale: "Print standards align with MSN's sustainability mission and circular economy values"
+  compliance: "Non-negotiable for all MSN print materials"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTAINER & LOGISTICS STICKERS
+# ═══════════════════════════════════════════════════════════════════════════
+
+container_stickers:
+  design_system:
+    text_style: "CAPITAL LETTERS (HOOFDLETTERS)"
+    background: "White (Wit)"
+    shape: "Rounded corners (Afgeronde hoeken)"
+    description: "All container labels use white rounded stickers with capital letter text"
+    font: "Ubuntu Bold in capitals"
+
+  content_requirements:
+    required_elements:
+      - "Waste stream name in capitals"
+      - "MSN logo"
+      - "Sorting instructions (if applicable)"
+      - "Contact information"
+    hierarchy:
+      primary: "Waste stream name (largest)"
+      secondary: "Sorting instructions"
+      tertiary: "Contact info, MSN logo"
+
+  purpose: "High visibility and professional appearance on containers in the field"
+  durability: "Weather-resistant, UV-stable materials"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VISUAL SYSTEM GOVERNANCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+governance:
+  approval_authority:
+    primary: "Marketing Manager"
+    contact: "marketing@milieuservice.nl"
+
+  exceptions:
+    description: "All deviations from visual system require written approval from Marketing"
+    process:
+      - "Submit exception request to Marketing Manager"
+      - "Include rationale and proposed alternative"
+      - "Await written approval before proceeding"
+      - "Document approved exceptions"
+
+  updates:
+    frequency: "As needed when Brand Manual is updated"
+    notification: "Marketing team announces visual system changes"
+    implementation: "Grace period provided for existing materials"
+
+  asset_requests:
+    contact: "Marketing team for logos, fonts, presets"
+    turnaround: "Typically 2-5 business days"
+    formats: "Specify required formats (PNG, SVG, EPS, etc.)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# USAGE NOTES
+# ═══════════════════════════════════════════════════════════════════════════
+
+usage_notes: |
+  This library contains all visual identity guidelines for MSG brand applications.
+
+  PRIMARY USE CASES:
+  - Design web pages, marketing materials, presentations
+  - Select correct colors for brand applications
+  - Apply logo correctly across media
+  - Process photography for brand consistency
+  - Create or source appropriate imagery
+
+  CRITICAL RULES:
+  1. ONLY use MSN Groen (#009d3d) or White for logos
+  2. NEVER use stock photography - internal photos only
+  3. ALWAYS process photos with MSN Lightroom preset
+  4. ONLY use Ubuntu font family
+  5. NEVER use generic icons - MSN custom icons only
+  6. ONLY use recruitment orange (#ff6600) for HR materials
+
+  COLOR QUICK REFERENCE:
+  - Primary: MSN Groen #009d3d
+  - Secondary: Licht Groen #cbedd8, MSN Blauw #0073b7
+  - Text: Donker Grijs #58595b
+  - Backgrounds: Wit #ffffff, Licht Grijs #d9d9d6
+  - Recruitment ONLY: Oranje #ff6600
+
+  LOGO QUICK REFERENCE:
+  - Light backgrounds: Positive version (green)
+  - Dark backgrounds: Negative version (white)
+  - Small sizes/clean look: Shadow-free version
+  - Minimum size: 30px digital, 10mm print
+
+  TYPOGRAPHY QUICK REFERENCE:
+  - Headings: Ubuntu Bold
+  - Body: Ubuntu Regular
+  - Fallback: Arial
+
+  FOR DESIGNERS:
+  - Request assets from Marketing team
+  - Use only approved brand elements
+  - Follow minimum size/clearspace rules
+  - Submit exceptions for approval
+
+  FOR DEVELOPERS:
+  - Implement color variables in CSS
+  - Load Ubuntu from Google Fonts
+  - Apply 5px border radius to images
+  - Use waste stream colors consistently
+
+related_libraries:
+  - "LIB_MSG_TERMINOLOGY"
+  - "LIB_MSG_AI_POLICY"
+  - "LIB_MSG_CONTENT_EXAMPLES"
+
+provenance_details:
+  source_file: "ORG_06_VISUAL_SYSTEM.yaml"
+  original_sources:
+    - "Brand Manual v8"
+  extraction_date: "2026-01-26"
+  verified: true
+---
