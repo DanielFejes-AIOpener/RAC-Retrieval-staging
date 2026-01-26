@@ -1,0 +1,419 @@
+# LIBRARY_AAA_VOICE_TONE.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# AndAgencyAmsterdam voice & tone library: jij-vorm, juridisch, transformations
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Voice & tone library for AndAgencyAmsterdam communications"
+  notes: "Discovery-sourced from writing style guide and campaign examples"
+  tags: [libraries, aaa, voice-tone, jij-vorm, juridisch]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOICE & TONE SYSTEM — Context-Dependent Communication Styles
+# ═══════════════════════════════════════════════════════════════════════════
+
+voice_tone_system:
+  description: "AAA uses context-specific voice and tone based on audience"
+  # SOURCE: "Schrijfstijl_briefing agent.docx" - explicit jij-vorm for creators, juridisch for contracts, VERIFIED
+
+  primary_voices:
+    - voice: "jij-vorm"
+      context: "Creator communications"
+      description: "Informal Dutch 'you' form - friendly, personal, authentic"
+      # SOURCE: "Schrijfstijl_briefing agent.docx" - "we gebruiken de jij-vorm", VERIFIED
+
+    - voice: "juridisch"
+      context: "Contracts and legal documents"
+      description: "Formal legal Dutch - precise, professional, binding"
+      # SOURCE: "Schrijfstijl_briefing agent.docx" - "Juridisch" for contracts, VERIFIED
+
+    - voice: "professional"
+      context: "Client communications"
+      description: "Professional but approachable - clear, strategic"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# JIJ-VORM — Informal Creator Voice
+# ═══════════════════════════════════════════════════════════════════════════
+
+jij_vorm:
+  description: "Informal Dutch 'you' form for influencer and creator communications"
+  # SOURCE: "Schrijfstijl_briefing agent.docx" - "voor creators gebruiken we de jij-vorm", VERIFIED
+
+  context:
+    use_for:
+      - "Influencer reach-outs"
+      - "Creator briefings (Google Slides)"
+      - "Informal emails to creators"
+      - "Social media DMs"
+      - "Campaign updates to influencers"
+    # SOURCE: "Schrijfstijl_briefing agent.docx" + reach-out examples, VERIFIED
+
+    do_not_use_for:
+      - "Contracts"
+      - "Legal documents"
+      - "Formal client communications"
+
+  characteristics:
+    pronouns:
+      you: "jij / je"
+      your: "jouw / je"
+      example: "Wat jij gaat maken" (What you will create)
+
+    greeting:
+      informal: ["Hoi!", "Hey!", "Hallo!"]
+      avoid: ["Geachte", "Zeer geachte"]
+
+    closing:
+      informal: ["Groetjes", "Liefs", "Cheers", "Tot snel"]
+      avoid: ["Hoogachtend", "Met vriendelijke groet"]
+
+    sentence_structure:
+      - "Short, conversational sentences"
+      - "Contractions common (we're, je bent, dat's)"
+      - "Exclamation points for enthusiasm (but not excessive)"
+      - "Questions to create dialogue"
+
+    vocabulary:
+      friendly:
+        - "Super leuk!"
+        - "Echt tof"
+        - "We zijn fan"
+        - "Lijkt dit wat?"
+        - "Laat het ons weten"
+        - "Zin om samen te werken?"
+        - "Klinkt dit goed?"
+      avoid_formal:
+        - "Wij verzoeken u"
+        - "Derhalve"
+        - "Aldus"
+        - "Met betrekking tot"
+        - "Hoogachtend"
+
+  tone_attributes:
+    - "Enthusiastic but authentic"
+    - "Friendly but professional"
+    - "Transparent and honest"
+    - "Respectful of creator autonomy"
+    - "Conversational, not corporate"
+
+  examples:
+    greeting:
+      good: "Hoi Lisa! We zijn echt fan van je interior content."
+      avoid: "Geachte mevrouw [Lastname], wij verzoeken u kennis te nemen van..."
+
+    campaign_intro:
+      good: "We werken voor bol.com en zoeken creators die hun styling skills willen delen."
+      avoid: "Het geëerde bureau werkt in opdracht van bol.com N.V. en wenst creativiteitsdragers te contracteren."
+
+    deliverables:
+      good: "Wat jij gaat maken: 2 Reels en 3 Stories."
+      avoid: "De deliverables omvatten twee Instagram Reels-content en drie Stories-sets."
+
+    cta:
+      good: "Lijkt dit wat voor jou? Laat het ons weten!"
+      avoid: "Indien u interesse heeft, verzoeken wij u contact op te nemen."
+
+# ═══════════════════════════════════════════════════════════════════════════
+# JURIDISCH — Formal Legal Voice
+# ═══════════════════════════════════════════════════════════════════════════
+
+juridisch:
+  description: "Formal legal Dutch for contracts and binding documents"
+  # SOURCE: "Schrijfstijl_briefing agent.docx" - "Juridisch" for contracts, VERIFIED
+
+  context:
+    use_for:
+      - "Influencer contracts"
+      - "NDAs"
+      - "Terms & conditions"
+      - "Legal notices"
+      - "Formal agreements"
+
+  characteristics:
+    pronouns:
+      formal: "u / uw"
+      third_person: "de Influencer", "de Opdrachtgever"
+      example: "De Influencer verplicht zich tot..." (The Influencer commits to...)
+
+    structure:
+      - "Numbered articles and sub-articles"
+      - "Defined terms (capitalized)"
+      - "Precise, unambiguous language"
+      - "No contractions"
+      - "Complete sentences only"
+
+    vocabulary:
+      legal_terms:
+        - "Partijen"
+        - "Opdracht"
+        - "Vergoeding"
+        - "Exclusiviteit"
+        - "Vertrouwelijkheid"
+        - "Aansprakelijkheid"
+        - "Beëindiging"
+        - "Geschillen"
+        - "Toepasselijk recht"
+
+    formatting:
+      - "Artikel 1. [Title]"
+      - "1.1 [Subsection]"
+      - "Defined terms in Title Case"
+      - "Clear section breaks"
+
+  example_clauses:
+    parties: |
+      Artikel 1. Partijen
+
+      1.1 AndAgencyAmsterdam B.V., gevestigd te Amsterdam en ingeschreven
+      bij de Kamer van Koophandel onder nummer 83799648 ("Opdrachtgever").
+
+      1.2 [Influencer Name], handelend onder [Business Name], ingeschreven
+      bij de Kamer van Koophandel onder nummer [KVK], ("Influencer").
+
+    exclusivity: |
+      Artikel 4. Exclusiviteit
+
+      4.1 Influencer verplicht zich om gedurende de looptijd van deze
+      overeenkomst en voor een periode van [X] maanden daarna geen
+      soortgelijke content te creëren voor of samen te werken met
+      concurrerende merken.
+
+      4.2 Als concurrerend worden aangemerkt: [List of competitors].
+
+    disclosure: |
+      Artikel 6. Compliance
+
+      6.1 Influencer verplicht zich te voldoen aan alle relevante wet- en
+      regelgeving, waaronder de Nederlandse Reclame Code en platform-specifieke
+      richtlijnen.
+
+      6.2 Influencer dient alle content te voorzien van duidelijke
+      sponsoraanduiding (#ad) en gebruik te maken van het betaald-partnership
+      label van het betreffende social media platform.
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TRANSFORMATION GUIDE — Formal to jij-vorm
+# ═══════════════════════════════════════════════════════════════════════════
+
+transformation_guide:
+  description: "How to transform formal brand language into jij-vorm for creators"
+  # SOURCE: "Schrijfstijl_briefing agent.docx" - "transformeren van formele merktaal naar jij-vorm", VERIFIED
+
+  transformation_principles:
+    - "Convert passive to active voice"
+    - "Replace 'u' with 'jij/je'"
+    - "Simplify sentence structure"
+    - "Use friendly vocabulary"
+    - "Add personality and warmth"
+    - "Maintain clarity and transparency"
+
+  examples:
+    # ───────────────────────────────────────────────────────────────────────
+    # BRAND POSITIONING
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Brand positioning"
+      formal: "Het merk positioneert zich als marktleider in duurzame mode."
+      jij_vorm: "Het merk waar je mee gaat werken is marktleider in duurzame mode."
+      transformation: "Third-person → Second-person, active voice"
+
+    - category: "Brand positioning"
+      formal: "De organisatie streeft naar maximale klantentevredenheid."
+      jij_vorm: "Het merk wil dat klanten echt blij zijn."
+      transformation: "Formal → Conversational, simplified"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # AUDIENCE
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Audience"
+      formal: "De doelgroep bestaat uit 18-35 jarige stedelijke professionals."
+      jij_vorm: "Je bereikt vooral mensen tussen de 18-35 die in de stad wonen en werken."
+      transformation: "Impersonal → Personal, simplified"
+
+    - category: "Audience"
+      formal: "Het segment vertoont affiniteit met lifestyle- en wellnessthema's."
+      jij_vorm: "Je volgers zijn geïnteresseerd in lifestyle en wellness."
+      transformation: "Corporate jargon → Natural language"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # CAMPAIGN OBJECTIVES
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Objectives"
+      formal: "De campagnedoelstelling is merkbekendheid te vergroten met 25%."
+      jij_vorm: "We willen dat 25% meer mensen het merk leren kennen."
+      transformation: "Objective statement → Conversational goal"
+
+    - category: "Objectives"
+      formal: "De strategie beoogt conversie-optimalisatie middels authentieke testimonials."
+      jij_vorm: "Jouw authentieke verhaal helpt mensen om het product te proberen."
+      transformation: "Corporate → Personal impact framing"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # DELIVERABLES
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Deliverables"
+      formal: "De deliverables omvatten drie Instagram Reels-content van 60 seconden."
+      jij_vorm: "Wat jij gaat maken: 3 Instagram Reels van 60 seconden."
+      transformation: "Passive list → Active, you-focused"
+
+    - category: "Deliverables"
+      formal: "De contentproductie dient te voldoen aan merkkwaliteitsnormen."
+      jij_vorm: "Je content past natuurlijk bij het merk (maar blijft echt jouw stijl!)."
+      transformation: "Requirement → Collaborative guideline"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # COMPENSATION
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Compensation"
+      formal: "Het budget bedraagt €2.500 exclusief BTW."
+      jij_vorm: "Je ontvangt €2.500 (excl. BTW) voor deze campagne."
+      transformation: "Budget line → Personal payment"
+
+    - category: "Compensation"
+      formal: "Betaling geschiedt binnen 30 dagen na facturering."
+      jij_vorm: "We betalen binnen 30 dagen nadat je factuur hebt gestuurd."
+      transformation: "Passive → Active, personal"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # EXCLUSIVITY
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Exclusivity"
+      formal: "De exclusiviteitsclausule verbiedt samenwerking met concurrerende merken."
+      jij_vorm: "Tijdens de campagne geen content voor [competitor types], please!"
+      transformation: "Legal clause → Friendly request"
+
+    - category: "Exclusivity"
+      formal: "De restrictie geldt voor een periode van 90 dagen."
+      jij_vorm: "Dit geldt tijdens de campagne en nog 3 maanden erna."
+      transformation: "Formal duration → Natural timeframe"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # TIMELINE
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Timeline"
+      formal: "Publicatie dient plaats te vinden tussen 1 en 7 maart."
+      jij_vorm: "Je post tussen 1 en 7 maart (exacte datum mag je zelf kiezen)."
+      transformation: "Directive → Flexible guideline"
+
+    - category: "Timeline"
+      formal: "Content approval is vereist binnen 48 uur voor publicatie."
+      jij_vorm: "We checken je content 48 uur voor je post (voor de zekerheid)."
+      transformation: "Requirement → Collaborative process"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # CREATIVE DIRECTION
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Creative direction"
+      formal: "De visuele identiteit dient overeen te komen met merkrichtlijnen."
+      jij_vorm: "Hier zijn de merkrichtlijnen - maar maak het vooral op jouw manier!"
+      transformation: "Restrictive → Empowering"
+
+    - category: "Creative direction"
+      formal: "Authentieke narratieven worden geprefereerd boven generieke productclaims."
+      jij_vorm: "Vertel het verhaal op jouw manier - geen saai productpraatje!"
+      transformation: "Corporate preference → Enthusiastic guidance"
+
+    # ───────────────────────────────────────────────────────────────────────
+    # LEGAL REQUIREMENTS
+    # ───────────────────────────────────────────────────────────────────────
+
+    - category: "Legal"
+      formal: "Naleving van de Nederlandse Reclame Code is verplicht."
+      jij_vorm: "Vergeet niet #ad te gebruiken en het betaald-partnership label (moet van de wet)."
+      transformation: "Legal obligation → Friendly reminder with context"
+
+    - category: "Legal"
+      formal: "Registratie in het Influencer Register is vereist voorafgaand aan contractering."
+      jij_vorm: "Ben je al geregistreerd in het Influencer Register? Dat moet wel voordat we kunnen starten."
+      transformation: "Requirement → Conversational check-in"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# WRITING BEST PRACTICES
+# ═══════════════════════════════════════════════════════════════════════════
+
+writing_best_practices:
+  description: "Best practices for AAA communication style"
+
+  jij_vorm_dos:
+    - "Start with 'Hoi [Name]!' for personal touch"
+    - "Reference specific content the creator has made"
+    - "Use 'jij/je' consistently throughout"
+    - "Keep sentences short and conversational"
+    - "Use exclamation points for enthusiasm (in moderation)"
+    - "Ask questions to create dialogue"
+    - "End with friendly, actionable CTA"
+    - "Sign off warmly: 'Groetjes', 'Liefs', 'Cheers'"
+
+  jij_vorm_donts:
+    - "Don't switch between jij-vorm and u-vorm"
+    - "Don't use corporate jargon"
+    - "Don't write long, complex sentences"
+    - "Don't be overly formal"
+    - "Don't use excessive exclamation points (looks desperate)"
+    - "Don't be vague about deliverables or compensation"
+
+  juridisch_dos:
+    - "Use precise, unambiguous language"
+    - "Number all articles and subsections"
+    - "Define key terms in capitals"
+    - "Include all standard clauses"
+    - "Reference specific laws and regulations"
+    - "Use passive voice where appropriate for legal effect"
+
+  juridisch_donts:
+    - "Don't use informal language"
+    - "Don't leave terms undefined"
+    - "Don't use ambiguous phrasing"
+    - "Don't skip standard legal protections"
+
+  tone_consistency:
+    rule: "Match tone to audience and document type"
+    examples:
+      - context: "Reach-out to influencer"
+        tone: "jij-vorm"
+      - context: "Contract with influencer"
+        tone: "juridisch"
+      - context: "Briefing for influencer"
+        tone: "jij-vorm"
+      - context: "Internal brief"
+        tone: "professional (neutral)"
+      - context: "Client presentation"
+        tone: "professional (neutral)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PLATFORM-SPECIFIC ADAPTATIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+platform_adaptations:
+  description: "How tone adapts for different platforms"
+
+  email:
+    tone: "jij-vorm for creators, professional for clients"
+    structure: "Clear subject line, short paragraphs, single CTA"
+
+  google_slides_briefing:
+    tone: "jij-vorm for creator briefings"
+    structure: "Visual-first, bullet points, conversational headings"
+    # SOURCE: "Schrijfstijl_briefing agent.docx" - Google Slides format for briefs, VERIFIED
+
+  google_docs_contract:
+    tone: "juridisch"
+    structure: "Numbered articles, formal sections, legal language"
+
+  google_chat:
+    tone: "Very informal jij-vorm"
+    structure: "Short messages, quick responses, emoji OK"
+
+  social_media_dm:
+    tone: "Casual jij-vorm"
+    structure: "Very short, friendly, quick ask or update"

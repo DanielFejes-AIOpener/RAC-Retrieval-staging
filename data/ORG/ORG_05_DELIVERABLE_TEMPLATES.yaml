@@ -75,7 +75,9 @@ grammar_guidelines:
 # ═══════════════════════════════════════════════════════════════════════════
 
 terminology:
+  glossary_reference: "$ref: LIBRARY_FIXICO_GLOSSARY"
 
+  status: "To be reviewed and updated"
 
   coverage: "100+ automotive repair and fleet management terms across 9 languages"
 
@@ -119,6 +121,9 @@ deliverable_types:
 
     instagram:
       status: "In development (TBD)"
+
+    testimonials:
+      languages: "Multi-language (German, Dutch, English as priorities)"
 
   presentations:
     tools_used:
@@ -250,3 +255,17 @@ quality_standards:
     - "Sentence case capitalization"
     - "Appropriate for target audience"
     - "Consistent with brand voice"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TEMPLATE STRUCTURE REFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
+template_references:
+  note: "Use industry-standard templates from ORG reference library where Fixico-specific templates not provided"
+  # Templates for: blog posts, LinkedIn posts, emails, landing pages, etc.
+
+  fixico_specific:
+    status: "Templates exist but not provided in discovery materials"
+    tools: "Gamma, Google Slides"
+    # GAP: GAP-H-005 - Template files need to be collected
+    action_needed: "Collect actual template files for Phase II"

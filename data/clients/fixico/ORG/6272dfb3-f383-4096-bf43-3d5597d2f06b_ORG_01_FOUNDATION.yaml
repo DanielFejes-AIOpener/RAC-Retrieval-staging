@@ -10,7 +10,6 @@ meta:
   purpose: "Fixico foundation - legal entity, operating context, market positioning, competitor registry"
   org_id: "FIXICO"
   tags: [org, ssot, foundation, automotive, b2b]
-  # SOURCE: Generated during onboarding
 
 # ═══════════════════════════════════════════════════════════════════════════
 # ORG BASICS
@@ -18,30 +17,23 @@ meta:
 
 org_basics:
   trading_name: "Fixico"
-  # SOURCE: 2511 - Company profile Fixico.pdf, p.1, VERIFIED
 
   website: "https://fixico.com"
-  # SOURCE: Fixico notes - 5 nov 2025.docx, workshop discussion, VERIFIED
   # NOTE: fixico.nl (B2C) is being phased out; fixico.com is B2B focus
 
   legal_details:
     legal_name: "Fixico International B.V."
-    # SOURCE: 2511 - Tone of voice and communication guidelines.pdf, p.1, VERIFIED
 
     kvk_number: ""
     # GAP: GAP-H-001 - KvK number not found in provided documents
 
     headquarters: "Weteringschans 85E, 1017 RZ Amsterdam"
-    # SOURCE: 2511 - Tone of voice.pdf, p.1, VERIFIED
 
     contact_email: "info@fixico.nl"
-    # SOURCE: 2511 - Tone of voice.pdf, p.1, VERIFIED
 
     contact_phone: "+31 20 261 07 20"
-    # SOURCE: 2511 - Tone of voice.pdf, p.1, VERIFIED
 
     founded_year: 2014
-    # SOURCE: 2511 - Company profile Fixico.pdf, p.2, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # OPERATING CONTEXT
@@ -49,29 +41,23 @@ org_basics:
 
 operating_context:
   timezone: "Europe/Amsterdam"
-  # SOURCE: INFERRED from headquarters location (Netherlands)
 
   languages:
     - code: "en-GB"
       name: "British English"
       primary: true
-      # SOURCE: 2511 - Tone of voice.pdf, p.7, VERIFIED
-      # SOURCE: Workshop notes - explicit preference for British vs American English, VERIFIED
 
     - code: "nl"
       name: "Nederlands"
       primary: true
-      # SOURCE: 2511 - Glossary B2B.xlsx, VERIFIED (extensive NL translations)
 
     - code: "de"
       name: "Deutsch"
       primary: false
-      # SOURCE: TRANSCRIPT 1 + Glossary, VERIFIED - German market is focus market
 
     - code: "nl-BE"
       name: "Nederlands (België)"
       primary: false
-      # SOURCE: Glossary + Workshop discussion of Belgian nuances, VERIFIED
 
     # Additional supported languages from glossary
     - code: "fr-BE"
@@ -104,7 +90,6 @@ operating_context:
     - "Spain"
     - "Italy"
     - "Denmark"
-    # SOURCE: 2511 - Company profile.pdf + Glossary language coverage, VERIFIED
     # NOTE: 11 countries total, 10 with repairer network coverage
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -113,14 +98,12 @@ operating_context:
 
 market_context:
   industry: "Automotive Aftersales Services Technology"
-  # SOURCE: 2511 - Company profile Fixico.pdf, p.2, VERIFIED
 
   categories:
     - "B2B SaaS Platform"
     - "Digital Marketplace"
     - "Fleet Management Technology"
     - "Insurance Technology"
-  # SOURCE: 2511 - Company profile.pdf + Product overview.docx, VERIFIED
 
   segments:
     - "Rental Companies"
@@ -129,14 +112,12 @@ market_context:
     - "Insurance Companies"
     - "Leasing Companies"
     - "Corporate Fleets"
-  # SOURCE: 2511 - Product overview.docx, target companies section, VERIFIED
 
   regions:
     primary:
       - "United Kingdom"
       - "Belgium"
       - "Germany"
-    # SOURCE: Fixico notes - 5 nov 2025.docx, VERIFIED
 
     secondary:
       - "Netherlands"
@@ -144,31 +125,23 @@ market_context:
       - "Spain"
       - "Italy"
       - "Denmark"
-    # SOURCE: INFERRED from glossary language support + company profile statements
 
   market_position:
     unique_value: "First international platform to unify accident repair and RMT (Repair, Maintenance & Tyres) in one data-driven environment"
-    # SOURCE: 2511 - Company profile Fixico.pdf, p.1, VERIFIED (direct quote)
 
     market_entry: "2014 as B2C body repair platform"
-    # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     business_pivot: "2018 transition from B2C to B2B"
-    # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     innovation: "2025 expanded to include RMT services, combining traditionally separated repair streams"
-    # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     network_scale: "4,000+ repairers across 10 European countries"
-    # SOURCE: 2511 - Company profile.pdf, p.1, VERIFIED
 
   strategic_vision:
     long_term: "Become an operating system for the automotive aftersales service market in Europe"
-    # SOURCE: TRANSCRIPT 1 - Alignment Roadmap, INFERRED from stakeholder discussion
     # NOTE: Referenced "net als Windows" (like Windows) analogy
 
     geographic_expansion: "Europe first, then global expansion"
-    # SOURCE: TRANSCRIPT 1, INFERRED from strategic discussion
 
 # ═══════════════════════════════════════════════════════════════════════════
 # COMPETITOR REGISTRY
@@ -182,13 +155,10 @@ competitor_registry:
 
   competitive_differentiation:
     - "First platform to combine accident repair AND RMT services"
-      # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     - "Traditionally separated markets: body/glass repair shops vs. dealer garages/service chains/tyre fitters"
-      # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     - "Fixico is first international platform to unify both streams"
-      # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
   competitors: []
   # To be populated after analyzing competitor analysis PDFs in Phase II

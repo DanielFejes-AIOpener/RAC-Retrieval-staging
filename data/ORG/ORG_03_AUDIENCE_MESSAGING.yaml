@@ -213,9 +213,9 @@ constraints:
           - "volledig circulair"
           - "zero waste gegarandeerd"
           - "CO2-neutraal"
-          - "duurzaam (zonder specificatie)"
-          - "groen (zonder specificatie)"
-          - "milieuvriendelijk (zonder specificatie)"
+          - "duurzaam" (zonder specificatie)
+          - "groen" (zonder specificatie)
+          - "milieuvriendelijk" (zonder specificatie)
         rule: "Tenzij onderbouwing, definities en scope expliciet zijn"
         reason: "Zware duurzaamheidsclaims zonder afbakening klinken als greenwashing of sluiten niet aan op wat je werkelijk meet"
 
@@ -249,7 +249,8 @@ constraints:
 # TONE CONSTRAINTS
 # ═══════════════════════════════════════════════════════════════════════════
 
-tone_constraints:
+constraints:
+  tone_constraints:
     overrides:
       profile: "MSN 4-pijler model"
 
@@ -266,17 +267,14 @@ tone_constraints:
         - pillar: "Oplossingsgericht (Solution-focused)"
           description: "We zijn pragmatisch en regelen dingen graag snel. Daarom vertellen we hoe we de klant direct verder kunnen helpen, zonder het complex of langdradig te maken."
 
-      formality:
-        value: "professional_je_vorm"
-        description: "Iets meer formeel dan informeel, persoonlijk met professionele ondertoon, precies tussen luchtig en serieus in"
+      formality: "professional_je_vorm"
+      description: "Iets meer formeel dan informeel, persoonlijk met professionele ondertoon, precies tussen luchtig en serieus in"
 
-      writing_style:
-        value: "actief_concreet_direct"
-        description: "Actieve, concrete en directe schrijfwijze (vermijd passieve formuleringen of het gebruik van onnodige hulpwerkwoorden)"
+      writing_style: "actief_concreet_direct"
+      description: "Actieve, concrete en directe schrijfwijze (vermijd passieve formuleringen of het gebruik van onnodige hulpwerkwoorden)"
 
-      accessibility:
-        value: "toegankelijk"
-        description: "Iedereen die op niveau Nederlands spreekt, moet kunnen begrijpen wat we zeggen"
+      accessibility: "toegankelijk"
+      description: "Iedereen die op niveau Nederlands spreekt, moet kunnen begrijpen wat we zeggen"
 
       examples_do:
         - context: "Formality balance"

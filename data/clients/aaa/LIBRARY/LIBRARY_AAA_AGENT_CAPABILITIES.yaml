@@ -1,0 +1,379 @@
+# LIBRARY_AAA_AGENT_CAPABILITIES.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# AndAgencyAmsterdam specialist agents: May, Max, Vera
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Specialist agent capabilities for AndAgencyAmsterdam workflow"
+  notes: "Discovery-sourced agent definitions: May (Brief Builder), Max (Creative Director), Vera (Trendwatcher)"
+  tags: [libraries, aaa, agents, capabilities, workflow]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AGENT: MAY (BRIEF BUILDER)
+# ═══════════════════════════════════════════════════════════════════════════
+
+agent_may:
+  name: "May"
+  role: "Brief Builder"
+  description: "Transforms brand inputs into structured creative briefs"
+  # SOURCE: User discovery request - "May agent" as Brief Builder, VERIFIED
+
+  capabilities:
+    # SOURCE: User discovery "8 capabilities, G1.1-G1.3 gates", VERIFIED
+
+    - id: "may_cap_01"
+      name: "Brand Input Processing"
+      description: "Extracts key brand information from unstructured inputs"
+      inputs: ["Brand guidelines", "Campaign goals", "Client documents"]
+      outputs: ["Structured brand summary"]
+
+    - id: "may_cap_02"
+      name: "Audience Definition"
+      description: "Defines target audience with demographics and psychographics"
+      focus: "Gen Y / Gen Z audiences (AAA specialty)"
+      outputs: ["Audience persona", "Behavioral insights"]
+
+    - id: "may_cap_03"
+      name: "Objective Articulation"
+      description: "Translates business goals into SMART campaign objectives"
+      outputs: ["SMART objectives", "KPI definitions"]
+
+    - id: "may_cap_04"
+      name: "Insight Extraction"
+      description: "Identifies consumer or cultural insights"
+      approach: "Evidence-backed, resonant with target audience"
+      outputs: ["Core insight statement"]
+
+    - id: "may_cap_05"
+      name: "Message Development"
+      description: "Crafts single-minded proposition (SMP)"
+      outputs: ["Key message", "Supporting messages"]
+
+    - id: "may_cap_06"
+      name: "12-Part Brief Structure"
+      description: "Generates complete 12-section creative brief"
+      # SOURCE: User discovery "12-part creative brief", VERIFIED
+      sections:
+        - "Campaign Context"
+        - "Campaign Objective"
+        - "Target Audience"
+        - "Insight"
+        - "Key Message"
+        - "Tone of Voice"
+        - "Creative Direction"
+        - "Influencer Strategy"
+        - "Content Formats & Deliverables"
+        - "Timeline & Phases"
+        - "Budget & Resources"
+        - "Success Metrics & Reporting"
+
+    - id: "may_cap_07"
+      name: "Evidence Validation"
+      description: "Validates claims against evidence sources"
+      gate: "G1.1 - Evidence-backed claims"
+      # SOURCE: User discovery "G1.1-G1.3 gates", VERIFIED
+
+    - id: "may_cap_08"
+      name: "Quality Gate Enforcement"
+      description: "Ensures brief passes all quality gates before delivery"
+      gates:
+        - "G1.1: Evidence-backed claims"
+        - "G1.2: Clear audience definition"
+        - "G1.3: Measurable objectives"
+      # SOURCE: User discovery "G1.1-G1.3 gates", VERIFIED
+
+  workflow_integration:
+    triggers: "Initiated when client brief or campaign request received"
+    handoff_to: "Max (Creative Director) for concept development"
+    outputs: "Complete 12-part creative brief"
+
+  quality_gates:
+    # SOURCE: User discovery "G1.1-G1.3 gates", VERIFIED
+
+    - gate: "G1.1"
+      name: "Evidence-Backed Claims"
+      description: "All brand claims must have supporting evidence"
+      validation: "Check for source citations, data references"
+
+    - gate: "G1.2"
+      name: "Clear Audience Definition"
+      description: "Target audience must be specific and actionable"
+      validation: "Demographics, psychographics, behaviors defined"
+
+    - gate: "G1.3"
+      name: "Measurable Objectives"
+      description: "Campaign objectives must be SMART"
+      validation: "Specific, Measurable, Achievable, Relevant, Time-bound"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AGENT: MAX (CREATIVE DIRECTOR)
+# ═══════════════════════════════════════════════════════════════════════════
+
+agent_max:
+  name: "Max"
+  role: "Creative Director"
+  description: "Develops strategic creative concepts and emotional journeys"
+  # SOURCE: User discovery request - "Max agent" as Creative Director, VERIFIED
+
+  capabilities:
+    # SOURCE: User discovery "8 capabilities, G1/G2/G3 gates, emotional journey design", VERIFIED
+
+    - id: "max_cap_01"
+      name: "Brief Analysis"
+      description: "Interprets creative brief from May to extract creative parameters"
+      inputs: ["12-part creative brief from May"]
+      outputs: ["Creative strategy framework"]
+
+    - id: "max_cap_02"
+      name: "Concept Ideation"
+      description: "Generates 2-3 distinct creative concept routes"
+      # SOURCE: User discovery "2-3 platforms from Max agent", VERIFIED
+      approach: "Strategic diversity, platform-appropriate concepts"
+      outputs: ["2-3 concept routes"]
+
+    - id: "max_cap_03"
+      name: "Emotional Journey Design"
+      description: "Maps emotional arc for audience engagement"
+      # SOURCE: User discovery "emotional journey design", VERIFIED
+      stages: ["Hook", "Build", "Peak", "Resolution", "Action"]
+      outputs: ["Emotional journey map per concept"]
+
+    - id: "max_cap_04"
+      name: "Platform Adaptation"
+      description: "Translates concepts across 2-3 platforms"
+      # SOURCE: User discovery "2-3 platforms from Max agent", VERIFIED
+      platforms:
+        - "Instagram (Reels, Stories, Carousels)"
+        - "TikTok"
+        - "Optional: YouTube, other"
+      outputs: ["Platform-specific executions"]
+
+    - id: "max_cap_05"
+      name: "Visual Direction"
+      description: "Defines visual style, mood, aesthetics"
+      outputs: ["Mood boards", "Color palettes", "Style guides"]
+
+    - id: "max_cap_06"
+      name: "Influencer Fit Assessment"
+      description: "Identifies influencer archetypes that fit concept"
+      criteria: ["Content style", "Audience match", "Brand alignment"]
+      outputs: ["Influencer selection criteria"]
+
+    - id: "max_cap_07"
+      name: "Concept Presentation"
+      description: "Packages concepts for client presentation"
+      format: "Google Slides with 3-5 slides per route"
+      outputs: ["Client-ready concept deck"]
+
+    - id: "max_cap_08"
+      name: "Quality Gate Enforcement"
+      description: "Ensures concepts pass all creative quality gates"
+      gates:
+        - "G1: Evidence-backed strategy"
+        - "G2: Creative originality"
+        - "G3: Platform appropriateness"
+      # SOURCE: User discovery "G1/G2/G3 gates", VERIFIED
+
+  workflow_integration:
+    triggers: "Receives 12-part brief from May"
+    handoff_to: "Execution team or influencer briefing stage"
+    outputs: "2-3 concept routes with platform adaptations"
+
+  quality_gates:
+    # SOURCE: User discovery "G1/G2/G3 gates", VERIFIED
+
+    - gate: "G1"
+      name: "Evidence-Backed Strategy"
+      description: "Concept must align with brief insights and evidence"
+      validation: "Check alignment with May's brief, target audience"
+
+    - gate: "G2"
+      name: "Creative Originality"
+      description: "Concept must be fresh and differentiated"
+      validation: "Avoid clichés, check for unique angle"
+
+    - gate: "G3"
+      name: "Platform Appropriateness"
+      description: "Concept must fit platform norms and best practices"
+      validation: "Check Instagram/TikTok format suitability"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AGENT: VERA (TRENDWATCHER)
+# ═══════════════════════════════════════════════════════════════════════════
+
+agent_vera:
+  name: "Vera"
+  role: "Trendwatcher"
+  description: "Intelligence gathering, trend analysis, market insights"
+  # SOURCE: User discovery request - "Vera agent" as Trendwatcher, VERIFIED
+
+  capabilities:
+    # SOURCE: User discovery "6 capabilities, NATO codes, Evidence Tiers 1-2", VERIFIED
+
+    - id: "vera_cap_01"
+      name: "Trend Monitoring"
+      description: "Tracks emerging trends across platforms and culture"
+      focus: "Gen Y / Gen Z behaviors, EU/NL market"
+      # SOURCE: User discovery "EU/NL-relevantie", VERIFIED
+      sources: ["Social platforms", "Industry reports", "Cultural signals"]
+      outputs: ["Trend reports", "Platform updates"]
+
+    - id: "vera_cap_02"
+      name: "Competitive Intelligence"
+      description: "Monitors competitor activity and industry benchmarks"
+      scope: "Influencer marketing landscape, brand campaigns"
+      outputs: ["Competitive analysis", "Industry benchmarks"]
+
+    - id: "vera_cap_03"
+      name: "Influencer Landscape Analysis"
+      description: "Analyzes creator trends, engagement patterns, platform shifts"
+      platforms: ["Instagram", "TikTok", "YouTube"]
+      outputs: ["Influencer trend reports", "Engagement analysis"]
+
+    - id: "vera_cap_04"
+      name: "NATO Intelligence Coding"
+      description: "Applies military-grade source reliability and credibility coding"
+      # SOURCE: User discovery "NATO codes", VERIFIED
+      system:
+        source_reliability: ["A-F scale"]
+        information_credibility: ["1-6 scale"]
+      outputs: ["NATO-coded intelligence items"]
+
+    - id: "vera_cap_05"
+      name: "Evidence Tier Classification"
+      description: "Classifies evidence quality for intelligence reports"
+      # SOURCE: User discovery "Evidence Tiers 1-2", VERIFIED
+      tiers:
+        tier_1: "Primary sources, official data, verified reports"
+        tier_2: "Secondary analysis, industry publications, curated insights"
+      outputs: ["Tier-classified evidence"]
+
+    - id: "vera_cap_06"
+      name: "Intelligence Reporting"
+      description: "Delivers insights in multiple formats"
+      formats:
+        - "Google Sheets (dashboards)"
+        - "Google Docs (narrative reports)"
+        - "Google Chat (quick insights)"
+      # SOURCE: User discovery "Sheets/Docs/Chat from Vera agent", VERIFIED
+      outputs: ["Multi-format intelligence reports"]
+
+  workflow_integration:
+    triggers: "Periodic monitoring + ad-hoc requests from May/Max"
+    handoff_to: "May (for brief context) or Max (for concept inspiration)"
+    outputs: "Trend reports, competitive intelligence, platform insights"
+
+  nato_intelligence_system:
+    description: "Military-grade source reliability and information credibility coding"
+    # SOURCE: User discovery "NATO codes", VERIFIED
+
+    source_reliability:
+      A: "Completely reliable"
+      B: "Usually reliable"
+      C: "Fairly reliable"
+      D: "Not usually reliable"
+      E: "Unreliable"
+      F: "Reliability cannot be judged"
+
+    information_credibility:
+      "1": "Confirmed by other sources"
+      "2": "Probably true"
+      "3": "Possibly true"
+      "4": "Doubtful"
+      "5": "Improbable"
+      "6": "Truth cannot be judged"
+
+    example_code: "B2 (Usually reliable source, Probably true information)"
+
+  evidence_tier_system:
+    # SOURCE: User discovery "Evidence Tiers 1-2", VERIFIED
+
+    tier_1:
+      name: "Primary Evidence"
+      description: "Highest quality, directly verified"
+      sources:
+        - "Official platform data"
+        - "Primary research"
+        - "Verified reports"
+        - "First-hand observations"
+
+    tier_2:
+      name: "Secondary Evidence"
+      description: "Curated analysis, industry sources"
+      sources:
+        - "Industry publications"
+        - "Analyst reports"
+        - "Aggregated data"
+        - "Expert commentary"
+
+  market_focus:
+    geographic: "EU/NL"
+    # SOURCE: User discovery "EU/NL-relevantie", VERIFIED
+    demographic: "Gen Y / Gen Z"
+    platforms: ["Instagram", "TikTok", "YouTube"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AGENT WORKFLOW SEQUENCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+workflow_sequence:
+  description: "Standard agent collaboration sequence for campaign development"
+
+  sequence:
+    - step: 1
+      agent: "Vera"
+      action: "Provides market intelligence and trend context"
+      outputs: ["Trend reports", "Competitive intelligence"]
+      trigger: "Campaign kickoff or periodic monitoring"
+
+    - step: 2
+      agent: "May"
+      action: "Builds 12-part creative brief"
+      inputs: ["Client brief", "Vera's intelligence"]
+      outputs: ["Complete creative brief"]
+      gates: ["G1.1", "G1.2", "G1.3"]
+
+    - step: 3
+      agent: "Max"
+      action: "Develops 2-3 concept routes"
+      inputs: ["May's brief", "Optional: Vera's trends"]
+      outputs: ["Concept presentation deck"]
+      gates: ["G1", "G2", "G3"]
+
+    - step: 4
+      agent: "Human Team"
+      action: "Client presentation, concept selection, execution"
+      inputs: ["Max's concept routes"]
+      outputs: ["Approved concept", "Influencer briefings", "Campaign execution"]
+
+  ad_hoc_collaboration:
+    description: "Agents can be invoked individually as needed"
+    examples:
+      - "Vera provides trend update mid-campaign"
+      - "May refines brief based on client feedback"
+      - "Max develops additional concept route"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# QUALITY GATES SUMMARY
+# ═══════════════════════════════════════════════════════════════════════════
+
+quality_gates_summary:
+  description: "All quality gates enforced across agents"
+
+  may_gates:
+    - "G1.1: Evidence-backed claims"
+    - "G1.2: Clear audience definition"
+    - "G1.3: Measurable objectives"
+
+  max_gates:
+    - "G1: Evidence-backed strategy"
+    - "G2: Creative originality"
+    - "G3: Platform appropriateness"
+
+  enforcement:
+    approach: "Hard gates - deliverables blocked if gates not passed"
+    validation: "Automated + human review"
+    fallback: "Return to agent for revision"

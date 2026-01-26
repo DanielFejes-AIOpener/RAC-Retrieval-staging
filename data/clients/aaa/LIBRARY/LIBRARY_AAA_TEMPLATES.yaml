@@ -1,0 +1,394 @@
+# LIBRARY_AAA_TEMPLATES.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# AndAgencyAmsterdam template library: reach-outs, contracts, standard formats
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Template library for AndAgencyAmsterdam influencer marketing"
+  notes: "Discovery-sourced templates from real campaign examples"
+  tags: [libraries, aaa, templates, reach-outs, contracts]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# REACH-OUT TEMPLATES — 5 Campaign Examples
+# ═══════════════════════════════════════════════════════════════════════════
+
+reach_out_templates:
+  description: "Real campaign reach-out examples from AAA projects"
+  # SOURCE: "Reach outs voorbeelden.docx" - 5 complete examples, VERIFIED
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TEMPLATE 1: NPL (NATIONALE POSTCODE LOTERIJ)
+  # ─────────────────────────────────────────────────────────────────────────
+
+  template_npl:
+    campaign: "Nationale Postcode Loterij"
+    sector: "Lottery & Gaming"
+    # SOURCE: "Reach outs voorbeelden.docx" - NPL example, VERIFIED
+
+    structure:
+      greeting: "Hoi [Name]!"
+      personalization: "Reference to influencer's content style"
+
+      brand_intro: |
+        We werken voor de Nationale Postcode Loterij, een loterij met een
+        missie: goed doen door goed te doen. 50% van de inleg gaat direct
+        naar goede doelen.
+
+      campaign_brief: |
+        We zijn op zoek naar creators die authentiek kunnen delen waarom
+        zij de NPL supporten. Dit is geen hard-sell campagne, maar een
+        verhaal over impact en community.
+
+      deliverables:
+        - "1 Reel (60 seconden)"
+        - "2 x 3-frame Stories"
+        - "3 Carousels (max 5 slides each)"
+
+      requirements:
+        age_restriction: "Je volgersbestand mag niet meer dan 25% NPL (<18) bevatten"
+        exclusivity: "Geen concurrerende loterijen tijdens campagne + 3 maanden na"
+        disclosure: "#ad en betaald-partnership label"
+        contract: "Contract via HelloSign"
+
+      timeline: "Posting week van [datum]"
+
+      cta: "Lijkt dit wat voor jou? Laat het ons weten!"
+
+      contact: "Team AndAgencyAmsterdam | [email] | [phone]"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TEMPLATE 2: BOL.COM WONEN
+  # ─────────────────────────────────────────────────────────────────────────
+
+  template_bol:
+    campaign: "bol Wonen"
+    sector: "E-commerce (Home & Interior)"
+    # SOURCE: "Reach outs voorbeelden.docx" - bol example, VERIFIED
+
+    structure:
+      greeting: "Hoi [Name]!"
+      personalization: "Je interior content is echt tof - we zijn fan!"
+
+      brand_intro: |
+        We werken voor bol.com, specifiek voor hun Wonen-categorie.
+        Van meubels tot decoratie, alles voor het huis.
+
+      campaign_brief: |
+        We zoeken creators die hun huis stylen met bol.com producten
+        en dit op een natuurlijke manier delen met hun community.
+
+      deliverables:
+        - "Instagram content (format in overleg: Reel, Carousel, of Stories)"
+        - "Focus op styling tips en product showcase"
+
+      requirements:
+        exclusivity: "Geen Wehkamp, Coolblue of vergelijkbare e-commerce tijdens campagne"
+        disclosure: "#ad en betaald-partnership label"
+        content_rights: "bol.com mag content hergebruiken voor social ads"
+
+      timeline: "Campagne loopt [periode]"
+
+      cta: "Zin om samen te werken? Laat het weten!"
+
+      contact: "Team AndAgencyAmsterdam | [email]"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TEMPLATE 3: IKEA KEUKEN
+  # ─────────────────────────────────────────────────────────────────────────
+
+  template_ikea:
+    campaign: "IKEA Keuken"
+    sector: "Home Furnishings"
+    # SOURCE: "Reach outs voorbeelden.docx" - IKEA example, VERIFIED
+
+    structure:
+      greeting: "Hoi [Name]!"
+      personalization: "We zien dat je al content hebt gemaakt voor merken als Puma en L'Oréal"
+
+      brand_intro: |
+        We werken voor IKEA, specifiek voor hun keukencollectie.
+        IKEA staat voor toegankelijk design voor iedereen.
+
+      campaign_brief: |
+        We zijn op zoek naar creators die hun IKEA keuken laten zien
+        in actie - koken, styling, dagelijks gebruik.
+
+      deliverables:
+        - "Content format in overleg (Reel, Carousel, TikTok)"
+        - "Focus op functionality + aesthetics"
+
+      requirements:
+        exclusivity: "Geen concurrerende meubelmerken tijdens campagne"
+        disclosure: "#ad en betaald-partnership label"
+        approval: "Content approval voor posting"
+
+      timeline: "[Periode]"
+
+      cta: "Interesse? Laat het ons weten!"
+
+      contact: "Team AndAgencyAmsterdam | [email]"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TEMPLATE 4: MULTI-GYN
+  # ─────────────────────────────────────────────────────────────────────────
+
+  template_multigyn:
+    campaign: "Multi-Gyn"
+    sector: "Healthcare (Feminine Care)"
+    # SOURCE: "Reach outs voorbeelden.docx" - Multi-Gyn example, VERIFIED
+
+    structure:
+      greeting: "Hoi [Name]!"
+      personalization: "Je openheid over vrouwengezondheid is inspirerend"
+
+      brand_intro: |
+        We werken voor Multi-Gyn, een merk dat vrouwen ondersteunt
+        met intieme gezondheidszorg. Evidence-based producten voor
+        veelvoorkomende klachten.
+
+      campaign_brief: |
+        We zoeken creators die op een open en educational manier
+        kunnen praten over intieme gezondheid. Geen taboe, wel
+        respectvol en informatief.
+
+      deliverables:
+        - "Educational content (format in overleg)"
+        - "Focus op destigmatisering en empowerment"
+
+      requirements:
+        koag_approval: "Content moet KOAG-goedkeuring krijgen (Dutch Advertising Code)"
+        exclusivity: "Geen concurrerende feminine care merken voor 6 maanden"
+        disclosure: "#ad en betaald-partnership label"
+        medical_claims: "Alleen approved claims gebruiken"
+
+      timeline: "[Periode, met KOAG-approval buffer]"
+
+      cta: "Voel je dit? Laat het weten!"
+
+      contact: "Team AndAgencyAmsterdam | [email]"
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TEMPLATE 5: LEGO JAARCAMPAGNE 2026
+  # ─────────────────────────────────────────────────────────────────────────
+
+  template_lego:
+    campaign: "LEGO Jaarcampagne 2026"
+    sector: "Toys & Entertainment"
+    # SOURCE: "Reach outs voorbeelden.docx" - LEGO example, VERIFIED
+
+    structure:
+      greeting: "Hoi [Name]!"
+      personalization: "Je family content en creatieve approach passen perfect bij LEGO"
+
+      brand_intro: |
+        We werken voor The LEGO Group aan een jaarcampagne voor 2026.
+        LEGO stimuleert creativiteit en spelend leren voor alle leeftijden.
+
+      campaign_brief: |
+        We zoeken creators voor een langlopende samenwerking waarbij
+        jullie LEGO integreren in jullie content op natuurlijke wijze.
+        Denk aan family moments, creative builds, storytelling.
+
+      deliverables:
+        - "Meerdere touchpoints over het jaar"
+        - "Mix van Instagram (Reels, Stories, Carousels) en optioneel TikTok"
+        - "Details per fase in overleg"
+
+      requirements:
+        sourcing: "Via Kolsquare platform"
+        project_management: "Campaign tracked in Monday.com"
+        exclusivity: "Geen concurrerende speelgoedmerken tijdens jaarcampagne"
+        disclosure: "#ad en betaald-partnership labels"
+        long_term: "Commitment voor 2026 (meerdere activaties)"
+
+      timeline: "2026 - meerdere fasen"
+
+      cta: "Interesse in een langere samenwerking? Let's talk!"
+
+      contact: "Team AndAgencyAmsterdam | [email]"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTRACT TEMPLATE STRUCTURE
+# ═══════════════════════════════════════════════════════════════════════════
+
+contract_template:
+  description: "Standard influencer contract structure"
+  # SOURCE: "Schrijfstijl_briefing agent.docx" - contract references, VERIFIED
+  # SOURCE: "Reach outs voorbeelden.docx" - HelloSign mentioned, VERIFIED
+
+  format: "PDF via HelloSign (digital signature)"
+  tone: "Juridisch (formal legal Dutch)"
+  language: "Nederlands"
+
+  standard_sections:
+    - section: "1. Partijen"
+      content: |
+        - AndAgencyAmsterdam B.V. (KVK 83799648)
+        - [Influencer Name], handelend onder [Business Name / BTW nummer]
+
+    - section: "2. Opdracht"
+      content: |
+        - Brand: [Client Brand]
+        - Campaign: [Campaign Name]
+        - Deliverables: [Specific list from reach-out]
+        - Timeline: [Start - End dates]
+
+    - section: "3. Vergoeding"
+      content: |
+        - Fee: € [Amount] excl. BTW
+        - Payment terms: [30 days / upon delivery]
+        - Expenses: [Included / Excluded]
+
+    - section: "4. Exclusiviteit"
+      content: |
+        - Competitor restrictions: [Specific brands/categories]
+        - Duration: [Campaign period + X months]
+        - Penalty clause for breach
+
+    - section: "5. Contentrechten"
+      content: |
+        - Usage rights: [Platform-specific / All media]
+        - Duration: [1 year / Perpetual]
+        - Brand approval: [Required before posting]
+        - Repurposing: [Ad usage rights]
+
+    - section: "6. Compliance"
+      content: |
+        - Legal disclosure: #ad hashtag + platform paid partnership label
+        - Platform guidelines: Must comply with Instagram/TikTok policies
+        - KOAG approval: [If applicable - healthcare products]
+        - Influencer register: Confirmation of registration
+
+    - section: "7. Intellectuele Eigendom"
+      content: |
+        - Ownership: Influencer retains ownership
+        - License: Brand receives usage license per terms
+
+    - section: "8. Vertrouwelijkheid"
+      content: |
+        - NDA: Campaign details confidential until launch
+        - Fee disclosure: Do not share compensation publicly
+
+    - section: "9. Aansprakelijkheid"
+      content: |
+        - Liability limitations
+        - Indemnification clauses
+
+    - section: "10. Beëindiging"
+      content: |
+        - Termination conditions
+        - Notice period: [X days]
+        - Force majeure
+
+    - section: "11. Geschillen"
+      content: |
+        - Governing law: Dutch law
+        - Jurisdiction: Amsterdam courts
+
+    - section: "12. Ondertekening"
+      content: |
+        - Digital signature via HelloSign
+        - Date of agreement
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STANDARD REACH-OUT FORMAT
+# ═══════════════════════════════════════════════════════════════════════════
+
+standard_reach_out_format:
+  description: "Generic template structure for any campaign"
+  # SOURCE: Pattern analysis from 5 examples, VERIFIED
+
+  template: |
+    Hoi [Name]!
+
+    [PERSONALIZATION - 2-3 zinnen over hun content]
+
+    [BRAND INTRO - 2-4 zinnen over het merk en missie]
+
+    [CAMPAIGN BRIEF - 3-5 zinnen over campagne doel en aanpak]
+
+    [DELIVERABLES - Bullet list]
+    - [Format 1]
+    - [Format 2]
+    - [Format 3]
+
+    [REQUIREMENTS - Als van toepassing]
+    - Exclusiviteit: [Details]
+    - Leeftijdsrestrictie: [Als relevant]
+    - KOAG-goedkeuring: [Als relevant]
+    - Disclosure: #ad en betaald-partnership label
+    - Contract via HelloSign
+
+    [TIMELINE]
+    Campagne loopt [periode/datum]
+
+    [CTA]
+    Lijkt dit wat voor jou? Laat het ons weten!
+
+    [CONTACT]
+    Team AndAgencyAmsterdam
+    [Email] | [Phone]
+
+  tone_requirements:
+    - "jij-vorm (informal Dutch)"
+    - "Enthusiastic but authentic"
+    - "Personalized, not templated"
+    - "Clear and transparent"
+    - "Respectful of creator's autonomy"
+
+  required_elements:
+    - "Personal greeting"
+    - "Content-specific personalization"
+    - "Brand context"
+    - "Campaign goal"
+    - "Specific deliverables"
+    - "Compliance requirements"
+    - "Clear timeline"
+    - "Actionable CTA"
+    - "Contact information"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TONE & STYLE TRANSFORMATION PATTERNS
+# ═══════════════════════════════════════════════════════════════════════════
+
+tone_transformation_patterns:
+  description: "How to transform formal brand language to jij-vorm for creators"
+  # SOURCE: "Schrijfstijl_briefing agent.docx" - transformation examples, VERIFIED
+
+  formal_to_jij:
+    - formal: "Het merk positioneert zich als marktleider"
+      jij_vorm: "Het merk waar jij mee gaat werken is marktleider"
+
+    - formal: "De doelgroep bestaat uit 18-35 jarigen"
+      jij_vorm: "Je bereikt vooral mensen tussen de 18-35"
+
+    - formal: "De campagnedoelstelling is merkbekendheid vergroten"
+      jij_vorm: "We willen dat meer mensen het merk leren kennen"
+
+    - formal: "De deliverables omvatten drie Instagram Reels"
+      jij_vorm: "Wat jij gaat maken: 3 Instagram Reels"
+
+    - formal: "Het budget bedraagt €X exclusief BTW"
+      jij_vorm: "Je ontvangt €X (excl. BTW)"
+
+    - formal: "De exclusiviteitsclausule verbiedt samenwerking met concurrenten"
+      jij_vorm: "Tijdens de campagne geen content voor [competitor types]"
+
+  avoid_formal_phrases:
+    - "Geachte"
+    - "Hoogachtend"
+    - "Wij verzoeken u"
+    - "Derhalve"
+    - "Aldus"
+    - "Met betrekking tot"
+
+  use_informal_phrases:
+    - "Hoi!"
+    - "Super leuk!"
+    - "Lijkt dit wat?"
+    - "Laat het ons weten"
+    - "We zijn fan"
+    - "Zin om samen te werken?"

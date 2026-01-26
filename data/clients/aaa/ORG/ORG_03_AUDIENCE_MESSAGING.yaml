@@ -1,0 +1,184 @@
+# ORG_03_AUDIENCE_MESSAGING.yaml (Phase I — required)
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG audience definitions and messaging canon (baseline)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "AndAgencyAmsterdam audience definitions and messaging canon"
+  notes: "Phase I onboarding - Audience and messaging layer"
+  tags: [org, ssot, messaging, audience, aaa]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AUDIENCES — ICPs (Ideal Client Profiles)
+# ═══════════════════════════════════════════════════════════════════════════
+
+audiences:
+  icps:
+    - name: "National/International Consumer Brands"
+      description: "Large consumer brands requiring influencer marketing at scale"
+      company_type: "B2C brands, product companies, service providers"
+      indicators:
+        - "Need for Gen Y/Gen Z audience reach"
+        - "Existing or planned influencer marketing budgets"
+        - "Multi-channel social media presence"
+        - "Campaign-based marketing (launches, seasonal, always-on)"
+      sectors: ["E-commerce", "FMCG", "Beauty", "Sportswear", "Toys", "Travel"]
+      # SOURCE: Client roster analysis (bol.com, Unilever, L'Oréal, Puma, LEGO, Sunny Cars), INFERRED
+
+    - name: "Regulated Industry Brands"
+      description: "Brands in sectors with complex compliance requirements"
+      company_type: "Companies requiring specialized legal/regulatory expertise"
+      indicators:
+        - "Lottery/gaming licenses"
+        - "Healthcare product regulations (KOAG approval)"
+        - "Children's brand safety requirements"
+        - "Age-restricted audience targeting"
+      sectors: ["Lottery & Gaming", "Healthcare", "Children's Products"]
+      compliance_needs: true
+      # SOURCE: NPL (age restrictions), Multi-Gyn (KOAG), LEGO (child safety), VERIFIED
+
+    - name: "Multi-Market Brands (Benelux/EU)"
+      description: "Brands operating across multiple European markets"
+      company_type: "International brands with regional operations"
+      indicators:
+        - "Benelux or EU market presence"
+        - "Need for cross-border campaigns"
+        - "Multi-language content requirements"
+      regions: ["Netherlands", "Belgium", "Germany", "EU-wide"]
+      # SOURCE: LEGO Benelux, international clients, Vera EU/NL focus, VERIFIED
+
+  # NOTE: Detailed personas can be developed in Phase II
+  # Current ICPs derived from 11-client roster analysis
+  personas: []
+  # STATUS: GAP-M-001 - Can be developed through client interviews/workshops
+
+# ═══════════════════════════════════════════════════════════════════════════
+# VOICE & TONE — Writing guidelines
+# ═══════════════════════════════════════════════════════════════════════════
+
+voice_and_tone:
+  description: "AAA's distinctive voice varies by audience and deliverable type"
+  # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
+
+  for_creators_influencers:
+    form: "Jij-vorm (informal you in Dutch)"
+    tone: "Personal, engaging, clear"
+    characteristics:
+      - "Make creators feel personally addressed"
+      - "Transform strategic language into relatable creator language"
+      - "Keep briefings clear, concise, and engaging so creators read fully"
+    # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
+
+    transformation_example:
+      strategy_language: "Met deze campagne willen we middels Instagram content awareness creëren voor de nieuwste producten van Lidl"
+      creator_language: "Jij gaat met leuke content op Instagram jouw volgers vertellen over de nieuwste producten van Lidl"
+      # SOURCE: "Schrijfstijl_briefing agent.docx", exact example, VERIFIED
+
+  for_contracts_legal:
+    form: "Juridisch (formal legal Dutch)"
+    tone: "Complete, comprehensive, no gray zones"
+    characteristics:
+      - "Legally precise and unambiguous"
+      - "All information included explicitly"
+      - "Template-based for consistency"
+    # SOURCE: "Schrijfstijl_briefing agent.docx", VERIFIED
+
+  for_clients_professional:
+    form: "Professional business Dutch"
+    tone: "Structured, detailed, friendly-professional"
+    characteristics:
+      - "Clear campaign information"
+      - "Detailed deliverables and timings"
+      - "Transparent about requirements and constraints"
+    # SOURCE: Reach-out examples show consistent professional tone, INFERRED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING — Key themes
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging:
+  tagline: "Creators at the core, data in the details."
+  # SOURCE: User provided, VERIFIED
+
+  core_themes:
+    - theme: "Authenticity"
+      message: "Authentic brand storytelling through verified creator partnerships"
+      supporting_points:
+        - "Gen Y & Gen Z specialist expertise"
+        - "Creator-first approach (&.talent sister label)"
+        - "Real voices, real impact"
+      # SOURCE: Web research positioning, VERIFIED
+
+    - theme: "Data-Driven Excellence"
+      message: "Evidence-based strategies backed by proprietary ROInfluence platform"
+      supporting_points:
+        - "NATO codes & Evidence Tiers for research quality"
+        - "Competitive trope audits before creative"
+        - "KPI-guaranteed delivery"
+      # SOURCE: Vera methodology + web research, VERIFIED
+
+    - theme: "Compliance Expertise"
+      message: "Navigate complex regulatory requirements with confidence"
+      supporting_points:
+        - "Proven track record in regulated industries"
+        - "Age restrictions, legal checklists, brand safety"
+        - "KOAG approval, influencer register management"
+      # SOURCE: Reach-out examples with compliance frameworks, VERIFIED
+
+    - theme: "Full-Service Integration"
+      message: "Strategy through execution through measurement - all under one roof"
+      supporting_points:
+        - "Three specialized labels (&.agency, &.talent, &.format)"
+        - "60+ professionals across disciplines"
+        - "End-to-end campaign management"
+      # SOURCE: Web research + agent capabilities, VERIFIED
+
+  # NOTE: Detailed messaging canon can be developed through brand workshops
+  key_messages: []
+  # STATUS: GAP-M-002 - Can be developed in Phase II
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONSTRAINTS — Never-say list & boundaries
+# ═══════════════════════════════════════════════════════════════════════════
+
+constraints:
+  never_say:
+    description: "Words and phrases to avoid in AAA communications"
+    # NOTE: Can be expanded through brand workshops and client feedback
+
+    general_avoidances:
+      - "Traditional agency"  # AAA is AI-first, modern
+      - "Just another influencer agency"  # AAA has unique data-driven + compliance positioning
+      - "Cheap" or "budget-friendly"  # Premium positioning with A-list clients
+      - "Guaranteed viral"  # No agency can guarantee virality
+      - "Fake engagement" or "bought followers"  # Quality focus
+
+    compliance_sensitivities:
+      - "Never promise regulatory approval"  # KOAG, age restrictions are external decisions
+      - "Never claim to bypass compliance"  # Expertise is IN navigating, not avoiding
+      - "Never guarantee specific KPIs without data"  # Be realistic with CPM/impression forecasts
+
+  claims_boundaries:
+    description: "What AAA can and cannot claim"
+
+    can_claim:
+      - "60+ team professionals"  # Verified
+      - "11 A-list clients across 8+ sectors"  # Documented
+      - "Proprietary AI agents (May, Max, Vera)"  # Core offering
+      - "Evidence Tier 1-2 sources, NATO ≥B2"  # Vera methodology
+      - "Compliance expertise for regulated industries"  # Proven track record
+
+    requires_evidence:
+      - "Any specific performance metrics"  # Must cite campaign data
+      - "Any client testimonials"  # Must have written permission
+      - "Any award claims"  # Must be verifiable
+      - "Any market leadership claims"  # Must have third-party validation
+
+  tone_constraints:
+    - "Never overpromise or use hyperbole"
+    - "Be direct and transparent (especially about pricing and timelines)"
+    - "Maintain professionalism even in informal creator communications"
+    - "When uncertain, ask rather than assume"

@@ -331,26 +331,6 @@ training_awareness:
     - "Contact: systeembeheer@milieuservice.nl for questions"
 
 # ═══════════════════════════════════════════════════════════════════════════
-# POLICY ENFORCEMENT
-# ═══════════════════════════════════════════════════════════════════════════
-
-enforcement:
-  violations:
-    examples:
-      - "Using unapproved AI tools"
-      - "Entering prohibited data types"
-      - "Publishing unverified AI content"
-      - "Failing to report incidents"
-    consequences: "Subject to internal disciplinary procedures"
-
-  monitoring:
-    approach: "Trust-based with periodic audits"
-    audit_triggers:
-      - "Incident reports"
-      - "Quality issues in published content"
-      - "Compliance spot checks"
-
-# ═══════════════════════════════════════════════════════════════════════════
 # GOVERNANCE
 # ═══════════════════════════════════════════════════════════════════════════
 

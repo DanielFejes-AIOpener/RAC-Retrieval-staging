@@ -10,7 +10,6 @@ meta:
   purpose: "Fixico brand positioning - offerings, differentiators, value proposition"
   org_id: "FIXICO"
   tags: [org, ssot, positioning, b2b, automotive]
-  # SOURCE: Generated during onboarding
 
 # ═══════════════════════════════════════════════════════════════════════════
 # BRAND POSITIONING STATEMENTS
@@ -18,19 +17,14 @@ meta:
 
 brand_statements:
   vision: "Envision a future where car repair is a seamless, digitally driven experience. Where vehicles find their perfect service match through the power of AI, and repairs are efficient, precise, and tailored to meet the unique needs of each vehicle owner. Our technology brings supply and demand together, ensuring an optimal service experience without delay. Our vision is clear: a future where car repair is specialised, connected, and sustainable - all at the click of a button."
-  # SOURCE: 2511 - Company profile Fixico.pdf, p.1, VERIFIED (verbatim)
 
   mission: "We are a tech company with a mission to shape the future of car repair by creating a transparent and digitally connected platform & marketplace that allows our partners to process repair & maintenance cases faster, better and more cost efficient."
-  # SOURCE: 2511 - Company profile Fixico.pdf, p.1, VERIFIED (verbatim)
 
   brand_promise: "Fixico makes accident repair and RMT management faster, better and cost efficient for our customers, repairers and other platform users."
-  # SOURCE: 2511 - Company profile Fixico.pdf, p.1, VERIFIED (verbatim)
 
   tagline: "Car repair, digitalised."
-  # SOURCE: 2511 - Tone of voice.pdf, p.1, VERIFIED
 
   brand_memorandum: "Fixico is reshaping how the automotive industry manages vehicle repairs and maintenance. Acting as both a digital management platform and a dynamic marketplace, Fixico brings together all stakeholders in one seamless environment — claim handlers, fleet managers, drivers, repairers and more. With Fixico, everything is centralised. Relevant data is securely stored, communication flows smoothly, and workflows are optimised for cost, time and convenience. The result? An efficient, transparent and convenient experience for everyone involved."
-  # SOURCE: 2511 - Company profile Fixico.pdf, p.1, VERIFIED (verbatim)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # OFFERS CATALOG
@@ -44,7 +38,6 @@ offers_catalog:
       services_included:
         - "Body repair"
         - "Glass repair"
-      # SOURCE: 2511 - Product overview.docx, VERIFIED
 
     - name: "RMT Management (Repair, Maintenance & Tyres)"
       description: "Comprehensive management for mechanical repairs, scheduled maintenance, and tyre services"
@@ -53,30 +46,20 @@ offers_catalog:
         - "Mechanical repairs"
         - "Scheduled maintenance"
         - "Tyre services"
-      # SOURCE: 2511 - Product overview.docx, VERIFIED
 
     - name: "Intelligent Repairer Network Access"
       description: "Curated marketplace of 4,000+ repairers across 10 European countries with smart allocation"
       key_benefit: "Optimal service match based on cost, availability, distance, specialization, and SLA requirements"
-      # SOURCE: 2511 - Company profile.pdf + Product overview.docx, VERIFIED
 
     - name: "White Label Platform"
       description: "Platform can be offered as white label solution to customers and their customers"
       key_benefit: "Direct extension of customer proposition with full branding flexibility"
-      # SOURCE: 2511 - Product overview.docx, VERIFIED
-
-    - name: "API & Webhook Integrations"
-      description: "Connect existing systems via API or webhook for seamless data flow"
-      key_benefit: "Integration with existing tech stack without manual data entry"
-      # SOURCE: 2511 - Product overview.docx, VERIFIED
-
 # ═══════════════════════════════════════════════════════════════════════════
 # VALUE PROPOSITION FRAMEWORK
 # ═══════════════════════════════════════════════════════════════════════════
 
 value_proposition:
   core_promise: "Faster, Better, Cost Efficient"
-  # SOURCE: 2511 - Product overview.docx + Company profile.pdf, VERIFIED
 
   faster:
     headline: "Faster repairs"
@@ -85,7 +68,6 @@ value_proposition:
       - "Reduced handling times through automation"
       - "Reduced lead times via intelligent allocation"
       - "Lower operational costs"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   better:
     headline: "Better repairs"
@@ -93,7 +75,6 @@ value_proposition:
       - "Intelligent allocation connects most suitable repairer to each unique case"
       - "Smart matchmaking considers specializations, certifications, SLA requirements"
       - "Philosophy: repair what is possible, replace what is needed"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   cost_efficient:
     headline: "Cost efficient repairs"
@@ -101,7 +82,6 @@ value_proposition:
       - "Marketplace dynamics allow comparison between multiple repairers (tendering)"
       - "Total Cost of Repair (TCR) approach combines operational + direct repair costs"
       - "TCR includes: administration, productivity loss, replacement vehicles, invoice"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # PLATFORM CAPABILITIES
@@ -113,33 +93,28 @@ platform_capabilities:
     - "Centralized data storage - all documentation secure and accessible"
     - "Smooth communication flows between all stakeholders"
     - "Optimized workflows for cost, time, and convenience"
-    # SOURCE: 2511 - Product overview.docx + Company profile.pdf, VERIFIED
 
   intelligent_network:
     - "Connects repair cases to 4,000+ repairers intelligently"
     - "Considers: costs, availability, distance, specializations/certifications, SLA specifics"
     - "Flexibility: onboard trusted suppliers OR use curated marketplace"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   real_time_insights:
     - "Case specifics: severity, costs, type"
     - "Vehicle status tracking throughout repair"
     - "Repairer performance: repair times, reviews"
     - "Lead time breakdown analysis"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   central_management:
     - "Consolidate multiple stations in one country"
     - "Consolidate multiple countries"
     - "International fleet management from single platform"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   connectivity:
     - "Demand side: fleet operators, insurance companies"
     - "Supply side: repairer network access"
     - "Email integration: captures documentation from non-platform users"
     - "API/webhook connections available"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   process_coverage:
     intake:
@@ -159,13 +134,11 @@ platform_capabilities:
     insights:
       - "Reporting"
       - "Reviews"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
   additional_services:
     - "Batch repairs (large quantities in short timeframes)"
     - "Towing process management"
     - "Customer support"
-    # SOURCE: 2511 - Product overview.docx, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # DIFFERENTIATORS
@@ -176,32 +149,26 @@ differentiators:
     - claim: "First international platform to unify accident repair and RMT services"
       proof: "Traditionally separated: body/glass repair shops vs. dealer garages/service chains/tyre fitters. Fixico combines both in one data-driven environment as of 2025."
       significance: "Especially valuable for international fleets managing their own repairs"
-      # SOURCE: 2511 - Company profile Fixico.pdf, p.1-2, VERIFIED
 
     - claim: "Largest pan-European repairer network"
       proof: "4,000+ repairers across 10 European countries"
       significance: "Scale enables coverage for international fleet operations"
-      # SOURCE: 2511 - Company profile.pdf, p.1, VERIFIED
 
     - claim: "Flexible integration: trusted suppliers OR marketplace"
       proof: "Platform supports onboarding customer's existing trusted suppliers alongside access to curated marketplace"
       significance: "Customers not forced to change existing relationships"
-      # SOURCE: 2511 - Company profile.pdf, p.1, VERIFIED
 
     - claim: "Total Cost of Repair (TCR) approach"
       proof: "Combines operational costs (administration, productivity loss, replacement vehicles) with direct repair invoice"
       significance: "More accurate cost picture than invoice-only approaches"
-      # SOURCE: 2511 - Product overview.docx, VERIFIED
 
     - claim: "Intelligent workshop allocation"
       proof: "Smart matchmaking based on: costs, availability, distance, specializations, certifications, SLA requirements"
       significance: "Optimal repair match for each unique case"
-      # SOURCE: 2511 - Product overview.docx + Company profile.pdf, VERIFIED
 
     - claim: "White label capability"
       proof: "Platform can be offered to customers and their customers as white label solution"
       significance: "Direct extension of customer proposition, seamless branding"
-      # SOURCE: 2511 - Product overview.docx, VERIFIED
 
 # ═══════════════════════════════════════════════════════════════════════════
 # PROOF POINTS
@@ -213,44 +180,37 @@ proof_points:
       claim: "4,000+ repairers in network"
       source: "Company profile + Product overview"
       source_date: "2025"
-      # SOURCE: 2511 - Company profile.pdf, p.1, VERIFIED
 
     - type: "metric"
       claim: "10 European countries with repairer network coverage"
       source: "Company profile"
       source_date: "2025"
-      # SOURCE: 2511 - Company profile.pdf, p.1, VERIFIED
 
     - type: "metric"
       claim: "11 countries operational presence"
       source: "Workshop notes"
       source_date: "2025"
-      # SOURCE: Fixico notes - 5 nov 2025.docx, VERIFIED
 
     - type: "metric"
       claim: "250 clients"
       source: "Workshop transcript"
       source_date: "2025"
-      # SOURCE: TRANSCRIPT 1, INFERRED from discussion
       # NOTE: GAP-H-003 - More detailed client metrics not documented
 
     - type: "milestone"
       claim: "Founded 2014 as B2C body repair platform"
       source: "Company profile"
       source_date: "2014"
-      # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     - type: "milestone"
       claim: "2018 pivot from B2C to B2B"
       source: "Company profile"
       source_date: "2018"
-      # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
     - type: "milestone"
       claim: "2025 first platform to combine accident repair + RMT"
       source: "Company profile"
       source_date: "2025"
-      # SOURCE: 2511 - Company profile.pdf, p.2, VERIFIED
 
   # GAP: GAP-M-002 - Case studies exist but not yet analyzed (202510 Wagenpark 25 PDF)
   # GAP: GAP-L-001 - Formal testimonials not documented
@@ -262,4 +222,3 @@ proof_points:
 pricing:
   approach: "refer_to_sales"
   # GAP: GAP-M-003 - Pricing model/rates not documented in provided materials
-  # SOURCE: No pricing information found in discovery materials

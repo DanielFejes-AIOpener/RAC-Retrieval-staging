@@ -134,6 +134,14 @@ slogan_system:
 
 imagery:
   photography:
+    source_policy: "Internal photography only (eigen fotografie)"
+    # CONSTRAINT: No stock photography allowed
+
+    processing:
+      tool: "Adobe Lightroom"
+      preset: "MSN Lightroom Preset (provided by Marketing)"
+      description: "All photos must be processed with official MSN preset for consistent look"
+
     content_requirements:
       subjects:
         - "MSN employees in action"
@@ -142,7 +150,14 @@ imagery:
         - "Authentic customer interactions"
       style: "Professional, authentic, documentary-style imagery"
 
-    
+    legal_requirements:
+      consent_forms: true
+      description: "All photographed individuals must sign consent forms (toestemmingsformulieren)"
+
+  web_imagery:
+    border_radius: "5px"
+    description: "All web images use 5px rounded corners for consistent brand feel"
+
 # ═══════════════════════════════════════════════════════════════════════════
 # ILLUSTRATION STYLE
 # ═══════════════════════════════════════════════════════════════════════════
