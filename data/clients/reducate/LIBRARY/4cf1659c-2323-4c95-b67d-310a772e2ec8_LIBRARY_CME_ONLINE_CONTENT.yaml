@@ -158,7 +158,7 @@ advertorial_format:
     type: "AI-generated or stock photography"
     style: "Healthcare professional in practice setting"
     text_overlay: "Minimal or none"
-    dimensions: "Varies by publication (typically 5.625" x 2.36" for digital)"
+    dimensions: "Varies by publication (typically 5.625in x 2.36in for digital)"
     # SOURCE: Advertorial visual analysis, VERIFIED
 
   word_count_by_channel:
