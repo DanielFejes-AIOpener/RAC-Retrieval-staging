@@ -163,6 +163,12 @@ export function findFileByPathForClient(
       return index[clientKey];
     }
     
+    // Try full cleanId format: clients:{slug}:{LAYER}_{NAME} (for files without _NN_ pattern)
+    const clientCleanKey = `clients:${clientSlug}:${layer}_${fileId}`;
+    if (index[clientCleanKey]) {
+      return index[clientCleanKey];
+    }
+    
     // Try scanning for client-specific matches
     for (const [key, filePath] of Object.entries(index)) {
       if (key.startsWith(`clients:${clientSlug}:`) && 
