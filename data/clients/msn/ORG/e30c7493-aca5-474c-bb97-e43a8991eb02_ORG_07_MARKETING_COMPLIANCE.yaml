@@ -1,0 +1,424 @@
+# ORG_07_MARKETING_COMPLIANCE.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# AI policy, data handling, compliance frameworks for marketing operations
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "Marketing compliance rules, AI policy, and data handling requirements for MSN"
+  notes: "Based on AI Policy PDF - governs AI tool use, data handling, and compliance requirements"
+  tags: [org, ssot, compliance, ai-policy, governance]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AI POLICY - CORE RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+ai_policy:
+  policy_name: "Milieu Service Nederland AI Gebruik Policy"
+  effective_date: "2024"
+  scope: "All employees using AI tools for marketing, content creation, and business operations"
+  # SOURCE: AI Policy PDF section 1, VERIFIED
+
+  guiding_principle:
+    description: "AI ondersteunt menselijk werk, vervangt het niet"
+    translation: "AI supports human work, does not replace it"
+    # SOURCE: AI Policy PDF section 2, VERIFIED
+
+  primary_approved_platform:
+    name: "AI Opener"
+    status: "Primary approved AI platform"
+    usage: "Text generation, content creation, brainstorming, research support"
+    # SOURCE: AI Policy PDF section 3, VERIFIED
+
+  additional_tools_policy:
+    rule: "Written approval required from management"
+    description: "Additional AI tools beyond AI Opener require explicit written approval"
+    approval_authority: "Marketing Manager or IT/System Administrator"
+    # SOURCE: AI Policy PDF section 3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PROHIBITED USE CASES
+# ═══════════════════════════════════════════════════════════════════════════
+
+prohibited_use_cases:
+  unsafe_tools:
+    description: "Geen gebruik van AI-tools zonder adequate beveiliging"
+    translation: "No use of AI tools without adequate security"
+    examples:
+      - "Unverified AI platforms"
+      - "Tools without privacy policies"
+      - "Beta/experimental tools with unclear data handling"
+    # SOURCE: AI Policy PDF section 4.1, VERIFIED
+
+  sensitive_data_entry:
+    description: "Geen vertrouwelijke of persoonlijke gegevens invoeren"
+    translation: "No confidential or personal data entry"
+    prohibited_data_types:
+      - "NAW-gegevens (Naam, Adres, Woonplaats / Name, Address, City)"
+      - "Financial data (bank accounts, payment details)"
+      - "Customer contract details"
+      - "Employee personal information"
+      - "Proprietary business intelligence"
+      - "Trade secrets"
+      - "Internal financial reports"
+    # SOURCE: AI Policy PDF section 4.2, VERIFIED
+
+  autonomous_decisions:
+    description: "AI mag nooit zelfstandig beslissingen nemen"
+    translation: "AI may never make autonomous decisions"
+    prohibited_actions:
+      - "Publishing content without human review"
+      - "Making financial decisions"
+      - "Customer service decisions without human verification"
+      - "Hiring/firing decisions"
+      - "Contract approvals"
+    # SOURCE: AI Policy PDF section 4.3, VERIFIED
+
+  unethical_content:
+    description: "Geen onethische content genereren"
+    translation: "No unethical content generation"
+    prohibited_content:
+      - "Misleading claims about waste reduction"
+      - "False sustainability metrics"
+      - "Plagiarized content"
+      - "Discriminatory messaging"
+      - "Greenwashing"
+    # SOURCE: AI Policy PDF section 4.4, VERIFIED
+
+  security_circumvention:
+    description: "AI niet gebruiken om beveiligingsmaatregelen te omzeilen"
+    translation: "Do not use AI to circumvent security measures"
+    prohibited_actions:
+      - "Bypassing access controls"
+      - "Extracting protected information"
+      - "Generating fake credentials"
+      - "Social engineering attacks"
+    # SOURCE: AI Policy PDF section 4.5, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DATA HANDLING RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+data_handling:
+  allowed_data_types:
+    - name: "General market information"
+      examples: ["Industry trends", "Public statistics", "Market research summaries"]
+      # SOURCE: AI Policy PDF section 5.1, VERIFIED
+
+    - name: "Public company information"
+      examples: ["Published brand values", "Website content", "Public sustainability reports"]
+      # SOURCE: AI Policy PDF section 5.1, VERIFIED
+
+    - name: "Non-sensitive content drafts"
+      examples: ["Blog topic ideas", "Social media concepts", "General educational content"]
+      # SOURCE: AI Policy PDF section 5.1, VERIFIED
+
+    - name: "Anonymous aggregated data"
+      examples: ["Industry benchmarks", "General waste stream trends", "Anonymous usage patterns"]
+      # SOURCE: AI Policy PDF section 5.1, VERIFIED
+
+  prohibited_data_types:
+    - name: "Persoonsgegevens (Personal data - AVG/GDPR protected)"
+      examples: ["Customer NAW", "Employee records", "Contact databases"]
+      rationale: "AVG/GDPR compliance - personal data may not be processed through third-party AI"
+      # SOURCE: AI Policy PDF section 5.2, VERIFIED
+
+    - name: "Bedrijfsgevoelige informatie (Business-sensitive information)"
+      examples: ["Pricing strategies", "Supplier contracts", "Financial projections", "M&A discussions"]
+      rationale: "Competitive advantage protection"
+      # SOURCE: AI Policy PDF section 5.2, VERIFIED
+
+    - name: "Vertrouwelijke klantgegevens (Confidential customer data)"
+      examples: ["Contract terms", "Custom pricing", "Waste audit reports", "Client communications"]
+      rationale: "Client confidentiality and trust"
+      # SOURCE: AI Policy PDF section 5.2, VERIFIED
+
+    - name: "Inloggegevens (Credentials)"
+      examples: ["Passwords", "API keys", "Access tokens", "System credentials"]
+      rationale: "Security risk"
+      # SOURCE: AI Policy PDF section 5.2, VERIFIED
+
+  data_minimization:
+    principle: "Gebruik alleen data die strikt noodzakelijk is"
+    translation: "Use only data that is strictly necessary"
+    description: "When using AI, input the minimum amount of data needed to accomplish the task"
+    # SOURCE: AI Policy PDF section 5.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# APPROVAL REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+approval_requirements:
+  platform_approval:
+    ai_opener: "Pre-approved for marketing team use"
+    # SOURCE: AI Policy PDF section 6.1, VERIFIED
+
+    additional_tools:
+      rule: "Require written management approval"
+      process:
+        - "Submit tool request to Marketing Manager"
+        - "Include: tool name, vendor, use case, data handling policy"
+        - "Await written approval before use"
+        - "CC: systeembeheer@milieuservice.nl on approval"
+      # SOURCE: AI Policy PDF section 6.2, VERIFIED
+
+  use_case_approval:
+    high_risk_applications:
+      description: "High-stakes or sensitive applications require pre-approval"
+      examples:
+        - "Customer-facing automated responses"
+        - "Legal document generation"
+        - "Financial content"
+        - "Press releases"
+        - "Crisis communications"
+      approval_authority: "Marketing Manager + Legal (if applicable)"
+      # SOURCE: AI Policy PDF section 6.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HUMAN CONTROL REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+human_control:
+  human_in_the_loop:
+    principle: "Mens blijft altijd in controle"
+    translation: "Human always remains in control"
+    requirements:
+      - "Human reviews all AI outputs before use"
+      - "Human makes final decisions"
+      - "Human takes responsibility for published content"
+      - "AI is a tool, not a decision-maker"
+    # SOURCE: AI Policy PDF section 7.1, VERIFIED
+
+  review_requirements:
+    mandatory_review:
+      - "All customer-facing content"
+      - "Social media posts"
+      - "Blog articles"
+      - "Email campaigns"
+      - "Website content"
+      - "Marketing materials"
+    review_criteria:
+      - "Factual accuracy"
+      - "Brand voice alignment"
+      - "Tone appropriateness"
+      - "Legal compliance"
+      - "No sensitive data disclosure"
+    # SOURCE: AI Policy PDF section 7.2, VERIFIED
+
+  editorial_responsibility:
+    rule: "De medewerker die AI gebruikt is verantwoordelijk voor de output"
+    translation: "The employee using AI is responsible for the output"
+    implications:
+      - "Cannot blame AI for errors"
+      - "Must verify all facts and claims"
+      - "Must ensure brand compliance"
+      - "Accountable for published content"
+    # SOURCE: AI Policy PDF section 7.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OUTPUT VERIFICATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+output_verification:
+  verification_mandate:
+    rule: "Controleer AI-output altijd zelf"
+    translation: "Always verify AI output yourself"
+    # SOURCE: AI Policy PDF section 8.1, VERIFIED
+
+  verification_checklist:
+    factual_accuracy:
+      - "Verify statistics and data points"
+      - "Confirm sources are real and reputable"
+      - "Check that claims are current and accurate"
+      - "Validate technical details"
+      # SOURCE: AI Policy PDF section 8.2, VERIFIED
+
+    brand_compliance:
+      - "Tone matches MSN brand voice"
+      - "Visual elements follow brand guidelines"
+      - "Messaging aligns with positioning"
+      - "No prohibited competitor mentions"
+      # SOURCE: AI Policy PDF section 8.2, VERIFIED
+
+    legal_compliance:
+      - "No copyright infringement"
+      - "No false advertising claims"
+      - "AVG/GDPR compliant"
+      - "No misleading statements"
+      # SOURCE: AI Policy PDF section 8.2, VERIFIED
+
+    quality_standards:
+      - "Grammar and spelling correct"
+      - "Logical flow and structure"
+      - "Appropriate length and depth"
+      - "Professional presentation"
+      # SOURCE: AI Policy PDF section 8.2, VERIFIED
+
+  hallucination_awareness:
+    description: "AI kan 'hallucineren' - onjuiste info als feit presenteren"
+    translation: "AI can 'hallucinate' - present incorrect info as fact"
+    mitigation: "Always fact-check AI outputs, especially statistics, quotes, and technical claims"
+    # SOURCE: AI Policy PDF section 8.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TRANSPARENCY REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+transparency:
+  disclosure_policy:
+    internal:
+      rule: "Note when AI substantially contributed to content"
+      format: "Add note in internal documentation: 'Conceptueel ondersteund door AI'"
+      translation: "'Conceptually supported by AI'"
+      # SOURCE: AI Policy PDF section 9.1, VERIFIED
+
+    external:
+      rule: "No obligation to disclose AI use externally"
+      rationale: "After human review and approval, content is human-authored"
+      exception: "If legally required or industry standards change, follow updated guidance"
+      # SOURCE: AI Policy PDF section 9.2, VERIFIED
+
+  attribution_policy:
+    rule: "Do not attribute content to AI ('geschreven door AI')"
+    correct_attribution: "Content is attributed to human author who reviewed and approved it"
+    # SOURCE: AI Policy PDF section 9.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# INCIDENT RESPONSE
+# ═══════════════════════════════════════════════════════════════════════════
+
+incident_response:
+  reportable_incidents:
+    types:
+      - "Accidental sensitive data input to AI"
+      - "Unauthorized AI tool use"
+      - "Publication of unverified AI content"
+      - "Data breach via AI platform"
+      - "AI-generated content causing brand/legal issues"
+    # SOURCE: AI Policy PDF section 10.1, VERIFIED
+
+  reporting_procedure:
+    contact: "systeembeheer@milieuservice.nl"
+    timeline: "Report immediately upon discovery"
+    information_required:
+      - "What happened (incident description)"
+      - "Which AI tool was involved"
+      - "What data was involved"
+      - "When it occurred"
+      - "Potential impact"
+    # SOURCE: AI Policy PDF section 10.2, VERIFIED
+
+  investigation_process:
+    - "IT/System admin reviews incident"
+    - "Assess data exposure risk"
+    - "Determine if breach notification required (AVG/GDPR)"
+    - "Implement corrective measures"
+    - "Update policy if needed"
+    # SOURCE: AI Policy PDF section 10.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPLIANCE FRAMEWORKS
+# ═══════════════════════════════════════════════════════════════════════════
+
+compliance_frameworks:
+  avg_gdpr:
+    full_name: "Algemene Verordening Gegevensbescherming / General Data Protection Regulation"
+    jurisdiction: "European Union"
+    key_requirements:
+      - "No personal data in AI tools without legal basis"
+      - "Data processor agreements required for AI vendors"
+      - "Right to erasure applies to AI-processed data"
+      - "Data breach notification within 72 hours"
+    msn_application: "Prohibits entering customer/employee personal data into AI tools"
+    # SOURCE: AI Policy PDF section 11.1, VERIFIED
+
+  ai_act_eu:
+    full_name: "EU AI Act (Artificial Intelligence Act)"
+    status: "Adopted 2024, phased implementation"
+    risk_category: "Limited Risk"
+    requirements:
+      - "Transparency obligations for AI-generated content"
+      - "Human oversight requirements"
+      - "Risk management systems"
+      - "Accuracy and robustness standards"
+    msn_application: "Human-in-the-loop policy ensures compliance with AI Act oversight requirements"
+    # SOURCE: AI Policy PDF section 11.2, VERIFIED
+
+  internal_governance:
+    policy_owner: "IT/System Administration + Marketing Management"
+    review_frequency: "Annual or when regulations change"
+    training_requirement: "All marketing team members must review AI policy annually"
+    # SOURCE: AI Policy PDF section 11.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# TRAINING & AWARENESS
+# ═══════════════════════════════════════════════════════════════════════════
+
+training_awareness:
+  onboarding:
+    requirement: "All new marketing team members review AI policy before tool access"
+    # SOURCE: AI Policy PDF section 12.1, VERIFIED
+
+  ongoing_training:
+    frequency: "Annual refresher"
+    topics:
+      - "AI policy updates"
+      - "Data handling best practices"
+      - "Verification techniques"
+      - "Incident examples and lessons learned"
+    # SOURCE: AI Policy PDF section 12.2, VERIFIED
+
+  resources:
+    - "AI Policy PDF (primary reference)"
+    - "AI Opener platform documentation"
+    - "Marketing compliance channel (internal)"
+    - "Contact: systeembeheer@milieuservice.nl for questions"
+    # SOURCE: AI Policy PDF section 12.3, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# POLICY ENFORCEMENT
+# ═══════════════════════════════════════════════════════════════════════════
+
+enforcement:
+  violations:
+    examples:
+      - "Using unapproved AI tools"
+      - "Entering prohibited data types"
+      - "Publishing unverified AI content"
+      - "Failing to report incidents"
+    consequences: "Subject to internal disciplinary procedures"
+    # SOURCE: AI Policy PDF section 13.1, VERIFIED
+
+  monitoring:
+    approach: "Trust-based with periodic audits"
+    audit_triggers:
+      - "Incident reports"
+      - "Quality issues in published content"
+      - "Compliance spot checks"
+    # SOURCE: AI Policy PDF section 13.2, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GOVERNANCE
+# ═══════════════════════════════════════════════════════════════════════════
+
+governance:
+  policy_authority:
+    primary_owner: "IT/System Administration (systeembeheer@milieuservice.nl)"
+    co_owner: "Marketing Manager"
+    # SOURCE: AI Policy PDF document metadata, VERIFIED
+
+  policy_updates:
+    trigger_events:
+      - "New regulations (AI Act phases, AVG updates)"
+      - "Incident learnings"
+      - "New AI tools/capabilities"
+      - "Business needs changes"
+    notification_method: "Email to all platform users + internal communication channels"
+    # SOURCE: AI Policy PDF section 14, VERIFIED
+
+  exceptions:
+    process: "Request via Marketing Manager, requires written approval from IT/System Admin"
+    documentation: "All exceptions logged and reviewed quarterly"
+    # SOURCE: AI Policy PDF section 14, VERIFIED

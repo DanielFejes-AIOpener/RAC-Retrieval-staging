@@ -5,6 +5,10 @@ import * as yaml from 'yaml';
 // Data directory - relative to project root
 const DATA_DIR = path.join(process.cwd(), 'data');
 
+// Layers that can have client-specific overrides
+// Other layers (LOGIC, OPS, USE_CASE, WORKFLOW) are always shared
+const CLIENT_OVERRIDE_LAYERS = ['CLIENT', 'CONFIG', 'ORG', 'PACK', 'ROLE', 'LIBRARY'];
+
 // File index cache
 let fileIndex: Record<string, string> | null = null;
 
@@ -13,8 +17,9 @@ let fileIndex: Record<string, string> | null = null;
  */
 export function buildFileIndex(): Record<string, string> {
   const index: Record<string, string> = {};
-  const layers = ['CONFIG', 'CLIENT', 'LOGIC', 'OPS', 'ORG', 'PACK', 'ROLE', 'USE_CASE', 'WORKFLOW'];
+  const layers = ['CONFIG', 'CLIENT', 'LOGIC', 'OPS', 'ORG', 'PACK', 'ROLE', 'USE_CASE', 'WORKFLOW', 'LIBRARY'];
   
+  // Index shared files from data/{LAYER}/
   for (const layer of layers) {
     const layerPath = path.join(DATA_DIR, layer);
     if (!fs.existsSync(layerPath)) continue;
@@ -38,6 +43,44 @@ export function buildFileIndex(): Record<string, string> {
           const layerKey = `${layer}:${shortName}`;
           if (!index[layerKey]) {
             index[layerKey] = fullPath;
+          }
+        }
+      }
+    }
+  }
+  
+  // Index client-specific files from data/clients/{slug}/{LAYER}/
+  const clientsDir = path.join(DATA_DIR, 'clients');
+  if (fs.existsSync(clientsDir)) {
+    const clientSlugs = fs.readdirSync(clientsDir).filter(f => {
+      const stat = fs.statSync(path.join(clientsDir, f));
+      return stat.isDirectory();
+    });
+    
+    for (const clientSlug of clientSlugs) {
+      for (const layer of CLIENT_OVERRIDE_LAYERS) {
+        const clientLayerPath = path.join(clientsDir, clientSlug, layer);
+        if (!fs.existsSync(clientLayerPath)) continue;
+        
+        const files = fs.readdirSync(clientLayerPath).filter(f => f.endsWith('.yaml'));
+        
+        for (const file of files) {
+          const match = file.match(/^[a-f0-9-]+_(.+)\.yaml$/);
+          if (match) {
+            const cleanId = match[1];
+            const fullPath = path.join(clientLayerPath, file);
+            
+            // Index with client prefix: clients:{slug}:{layer}:{shortName}
+            const shortMatch = cleanId.match(/^[A-Z_]+_\d+_(.+)$/);
+            if (shortMatch) {
+              const shortName = shortMatch[1];
+              const clientKey = `clients:${clientSlug}:${layer}:${shortName}`;
+              index[clientKey] = fullPath;
+            }
+            
+            // Also index by full clean ID with client prefix
+            const clientCleanKey = `clients:${clientSlug}:${cleanId}`;
+            index[clientCleanKey] = fullPath;
           }
         }
       }
@@ -98,6 +141,45 @@ export function findFileByPath(layer: string, fileId: string): string | null {
   }
   
   return null;
+}
+
+/**
+ * Find a file by layer and file ID, with client-specific override support.
+ * For layers in CLIENT_OVERRIDE_LAYERS, checks client folder first, then falls back to shared.
+ * For other layers (LOGIC, OPS, USE_CASE, WORKFLOW), always returns shared version.
+ */
+export function findFileByPathForClient(
+  layer: string,
+  fileId: string,
+  clientSlug?: string
+): string | null {
+  const index = getFileIndex();
+  
+  // For layers that support overrides, check client folder first
+  if (clientSlug && CLIENT_OVERRIDE_LAYERS.includes(layer)) {
+    // Try client-specific key: clients:{slug}:{layer}:{shortName}
+    const clientKey = `clients:${clientSlug}:${layer}:${fileId}`;
+    if (index[clientKey]) {
+      return index[clientKey];
+    }
+    
+    // Try scanning for client-specific matches
+    for (const [key, filePath] of Object.entries(index)) {
+      if (key.startsWith(`clients:${clientSlug}:`) && 
+          filePath.includes(`/${layer}/`) && 
+          key.endsWith(`:${fileId}`)) {
+        return filePath;
+      }
+      // Also match by clean ID pattern
+      if (key.startsWith(`clients:${clientSlug}:${layer}_`) && 
+          key.endsWith(`_${fileId}`)) {
+        return filePath;
+      }
+    }
+  }
+  
+  // Fall back to shared file
+  return findFileByPath(layer, fileId);
 }
 
 /**

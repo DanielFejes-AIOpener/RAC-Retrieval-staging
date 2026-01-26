@@ -1,0 +1,173 @@
+# ORG_01_FOUNDATION.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Legal/org basics + operating context + market context + competitor registry
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "Legal/org basics + operating context + market context + competitor registry for Milieu Service Groep"
+  notes: "Phase 1 onboarding - ORG layer. Competitor registry empty (GAP-H-001)."
+  tags: [org, ssot, foundation, msg]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG BASICS
+# ═══════════════════════════════════════════════════════════════════════════
+
+org_basics:
+  trading_name: "Milieu Service Nederland"
+  # SOURCE: Onboarding CSV field "Bedrijfsnaam", Brand Manual v8 p.4, VERIFIED
+  # NOTE: Primary external brand is "Milieu Service Nederland" though parent is "Milieu Service Groep"
+
+  website: "www.milieuservicenederland.nl"
+  # SOURCE: Onboarding CSV field "Website URL", VERIFIED
+
+  legal_details:
+    legal_name: "Milieu Service Groep"
+    # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+    # NOTE: MSG is parent organization of all brands
+
+    kvk_number: ""
+    # GAP-H-001: KvK number not provided in source materials
+    # Searched: Onboarding CSV, Brand Manual, Corporate Presentation
+
+  additional_brands:
+    - name: "Bedrijfsafval.nl"
+      description: "Self-service, online-focused price-competitive brand"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "TH Containers"
+      description: "Logistics hub and waste container services, local expert in East Netherlands"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "Paridon Containers"
+      description: "Logistics hub and waste container services, local expert in Amsterdam/Gooi region"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "MSG Online"
+      description: "Parent of online waste container webshops"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "Praxis-kluscontainer.nl"
+      description: "Partnership with Praxis hardware store, DIY/construction focus"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "Puincontainershop.nl"
+      description: "Low-price online container shop"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "Containerhuren.nl"
+      description: "SEO-focused container rental website"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+    - name: "Regiocontainer.nl"
+      description: "Regional focus for repeat customers and contractors"
+      # SOURCE: Onboarding CSV field "Graag alle clients/labels", VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OPERATING CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+operating_context:
+  timezone: "Europe/Amsterdam"
+  # SOURCE: Netherlands-based organization (Onboarding CSV, Corporate Presentation), VERIFIED
+
+  languages:
+    - code: "nl"
+      name: "Nederlands"
+      primary: true
+      # SOURCE: Onboarding CSV field "Gewenste output-taal" = "Nederlands", all materials in Dutch, VERIFIED
+
+  regions_served:
+    - "Netherlands"
+    # SOURCE: Corporate Presentation slide 6 "20.000+ organisaties in heel Nederland", VERIFIED
+    # SOURCE: Onboarding CSV field "Korte bio" mentions "landelijk netwerk", VERIFIED
+
+  established: "1986"
+  # SOURCE: Corporate Presentation slide 7 "Sinds 1986", VERIFIED
+
+  years_in_operation: "35+"
+  # SOURCE: Corporate Presentation slide 7, VERIFIED
+
+  industry_classification:
+    primary: "Logistics"
+    # SOURCE: Onboarding CSV field "Sector", VERIFIED
+
+    secondary:
+      - "Waste Management"
+      - "Circular Economy"
+      - "Environmental Services"
+    # SOURCE: Onboarding CSV field "Licht kort toe in welke sector/sectoren jullie actief in zijn"
+    # SOURCE: Corporate Presentation slides 5-7 (circular economy positioning), VERIFIED
+
+  organization_scale:
+    customers_served: "20,000+"
+    # SOURCE: Corporate Presentation slide 6 "Meer dan 20.000 organisaties", VERIFIED
+
+    partner_network: "100+"
+    # SOURCE: Corporate Presentation slide 6 "100+ logistieke partners", VERIFIED
+    # SOURCE: Onboarding CSV "meer dan 100 inzamel- en verwerkingspartners", VERIFIED
+
+    collection_solutions: "450+"
+    # SOURCE: Corporate Presentation slide 6, VERIFIED
+
+    waste_streams_managed: "35+"
+    # SOURCE: Corporate Presentation slide 6, Onboarding CSV, VERIFIED
+
+  team_size:
+    platform_users: "6-10"
+    # SOURCE: Onboarding CSV field "Hoeveel mensen gaat ongeveer met het platform werken?", VERIFIED
+
+    primary_roles:
+      - "Marketing"
+      # SOURCE: Onboarding CSV field "Welke rollen gaan er vooral mee werken?", VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MARKET CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════
+
+market_context:
+  segments:
+    - "MKB (Small-Medium Business)"
+    - "Grootzakelijk (Enterprise)"
+    - "Facilitair (Facilities Management)"
+    - "Vastgoed (Real Estate/Property Management)"
+  # SOURCE: Onboarding CSV "Doelgroep 1" and "Doelgroep 2"
+  # SOURCE: Corporate Presentation slides 13-25 (four target segments), VERIFIED
+
+  categories:
+    - "B2B Waste Management"
+    - "Circular Economy Services"
+    - "Sustainability Consulting"
+  # SOURCE: Corporate Presentation slides 5-7, Onboarding CSV positioning, VERIFIED
+
+  regions:
+    - "Netherlands (nationwide/landelijk)"
+  # SOURCE: Corporate Presentation slide 6, Brand Manual p.4, VERIFIED
+
+  market_positioning: "Toonaangevend in duurzaam afvalmanagement"
+  # TRANSLATION: "Leading in sustainable waste management"
+  # SOURCE: Corporate Presentation slide 7, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITOR REGISTRY
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitor_registry:
+  competitors: []
+  # GAP-H-001: No competitor information provided in source materials
+  # IMPACT: Cannot populate competitor registry, limits competitive positioning content
+  # SEARCHED: Onboarding CSV, Corporate Presentation, Brand Manual v8
+  # RESOLUTION: Request competitor list from Marketing Manager
+
+  competitive_positioning_policy:
+    never_name_competitors: true
+    # SOURCE: Onboarding CSV "Communicatie rondom concurrenten", VERIFIED
+    # RULE: "Milieu Service Nederland vergelijkt zichzelf nooit expliciet met concurrenten
+    #        in externe communicatie en noemt geen namen"
+
+    allowed_market_statements: true
+    # SOURCE: Onboarding CSV "Communicatie rondom concurrenten", VERIFIED
+    # RULE: "Wel is het toegestaan om uitspraken te doen over de markt en marktontwikkelingen,
+    #        zolang dit feitelijk blijft"

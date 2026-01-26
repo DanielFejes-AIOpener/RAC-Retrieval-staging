@@ -1,0 +1,416 @@
+# ORG_03_AUDIENCE_MESSAGING.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# Fixico - Audience definitions, brand voice, messaging canon
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-22"
+  purpose: "Fixico audience definitions, brand voice, messaging framework"
+  org_id: "FIXICO"
+  tags: [org, ssot, messaging, audience, voice, b2b]
+  # SOURCE: Generated during onboarding
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AUDIENCES — ICPs and Personas
+# ═══════════════════════════════════════════════════════════════════════════
+
+audiences:
+  icps:
+    - name: "Rental Companies"
+      description: "Car rental companies managing accident repair and RMT for rental fleet"
+      company_characteristics:
+        - "Rental car operations (short-term, long-term, corporate)"
+        - "High vehicle turnover and damage frequency"
+        - "Multiple locations/hubs across countries"
+        - "Both accident repair and RMT needs"
+      pain_points:
+        - "Continuous cost increases in total cost of repairs (direct + operational + productivity loss)"
+        - "Partly digital or fully manual processes based on simple supplier agreements"
+        - "No/limited control due to lack of transparency and overview"
+        - "Vehicle downtime impacts revenue"
+      # SOURCE: 2511 - Product overview.docx, Additional segmentation + challenges, VERIFIED
+
+    - name: "Service/Last Mile Delivery Fleets"
+      description: "Commercial fleets with no dedicated drivers (e.g., delivery vans, logistics vehicles)"
+      company_characteristics:
+        - "Last mile delivery operations"
+        - "Service fleet management"
+        - "No dedicated drivers (multiple drivers per vehicle)"
+        - "High mileage and utilization"
+      pain_points:
+        - "Continuous cost increases in total cost of repairs"
+        - "Manual processes impacting operational efficiency"
+        - "Lack of transparency in repair process"
+        - "Downtime directly impacts business operations"
+      # SOURCE: 2511 - Product overview.docx, VERIFIED
+
+    - name: "Fleet Intermediaries"
+      description: "Companies providing fleet management or claims handling services to fleet operators"
+      company_characteristics:
+        - "Provide fleet management services"
+        - "Provide claims handling services"
+        - "Service multiple fleet operator clients"
+        - "Need scalable, efficient processes"
+      pain_points:
+        - "Continuous pressure from customers to manage costs"
+        - "Pressure to improve process efficiency"
+        - "Pressure to improve driver satisfaction"
+        - "Need to demonstrate value to clients"
+      # SOURCE: 2511 - Product overview.docx, VERIFIED
+
+    - name: "Insurance Companies"
+      description: "Insurance providers managing accident repair claims"
+      company_characteristics:
+        - "Process accident and damage claims"
+        - "Work with damage assessors and repair networks"
+        - "Focus on claims management efficiency"
+      pain_points:
+        - "Continuous pressure to offset insurance premium increases"
+        - "High damage ratios"
+        - "Need for efficient claims processing"
+        - "Coordination with multiple stakeholders"
+      # SOURCE: 2511 - Product overview.docx, VERIFIED
+
+    - name: "Leasing Companies"
+      description: "Vehicle leasing companies managing both accident repair and RMT"
+      company_characteristics:
+        - "Long-term vehicle leasing"
+        - "Manage full lifecycle of leased vehicles"
+        - "Both accident repair and maintenance needs"
+      # SOURCE: 2511 - Product overview.docx, VERIFIED
+
+    - name: "Corporate Fleets"
+      description: "Companies with dedicated driver fleets (e.g., sales teams, field services)"
+      company_characteristics:
+        - "Dedicated drivers for company vehicles"
+        - "Mix of accident repair and scheduled maintenance"
+        - "Internal fleet management"
+      # SOURCE: 2511 - Product overview.docx, VERIFIED
+
+  decision_making_units:
+    primary_decision_makers:
+      - "Insurance manager"
+      - "Operations manager"
+      - "Finance manager"
+      - "General manager"
+    influencers:
+      - "Procurement manager"
+    end_users:
+      - "Claims manager"
+      - "Damage manager"
+      - "RMT manager"
+      - "Fleet manager"
+      - "Drivers (business drivers or consumers for insurance)"
+    # SOURCE: 2511 - Product overview.docx, Additional segmentation criteria, VERIFIED
+
+  personas: []
+  # GAP: GAP-H-004 - Formal personas not created
+  # NOTE: Workshop notes indicate preference for "jobs to be done" framework over traditional personas
+  # SOURCE: Fixico notes - 5 nov 2025.docx, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# BRAND VOICE
+# ═══════════════════════════════════════════════════════════════════════════
+
+brand_voice:
+  core_characteristics:
+    - characteristic: "Bright"
+      description: "Young and tech-savvy"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+    - characteristic: "Reliable"
+      description: "Resourceful and honest"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+    - characteristic: "Bold"
+      description: "Confident and ambitious"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+  tone_adaptation:
+    principle: "Adapt communication to audience without changing core personality"
+    # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+    b2c:
+      tone: "Familiar and warm, yet still professional"
+      approach:
+        - "Offer a helping hand"
+        - "Speak with empathy"
+        - "Use ordinary words"
+      note: "B2C operations being phased out (fixico.nl transitioning)"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3 + Workshop notes, VERIFIED
+
+    brs:
+      audience: "Body Repair Shops"
+      tone: "Familiar and collaborative, reflects strong business relationship"
+      approach:
+        - "Use ordinary words"
+        - "Always respect their expertise or craftsmanship"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+    b2b:
+      audience: "Business partners (fleet operators, insurance, intermediaries)"
+      tone: "Formal and professional, yet still fresh"
+      approach:
+        - "Speak with courtesy"
+        - "Never hide passion for tech"
+        - "Use industry language when it fits the narrative"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+    internal:
+      audience: "(New) Colleagues"
+      tone: "Friendly and empowering without taking itself too seriously"
+      approach:
+        - "Use ordinary words"
+        - "Speak directly and keep it fun"
+      # SOURCE: 2511 - Tone of voice.pdf, p.3, VERIFIED
+
+  communication_style:
+    short:
+      principle: "Write short and clear sentences"
+      rules:
+        - "Get rid of needless words"
+        - "Get right to the point"
+      example: "Short sentences are easy to read and understand, especially on-screen."
+      # SOURCE: 2511 - Tone of voice.pdf, p.5-6, VERIFIED
+
+    simple:
+      principle: "Avoid unnecessarily long and complex words"
+      good_example: "Use our platform to handle repairs more quickly."
+      bad_example: "Utilise our platform to enable a significant reduction in handling time."
+      # SOURCE: 2511 - Tone of voice.pdf, p.5-6, VERIFIED
+
+    active:
+      principle: "Use active verbs and direct forms of speech"
+      good_example: "Use templates to create quotes within seconds."
+      bad_example: "Templates can be used to create quotes in a faster way."
+      # SOURCE: 2511 - Tone of voice.pdf, p.5-6, VERIFIED
+
+    empowering:
+      principle: "Users are capable, clever, and good at their job"
+      rules:
+        - "Never imply users are helpless without the software"
+      good_example: "Use the new dashboard to manage all your available reports easily."
+      bad_example: "Do you have trouble managing your reports? Don't worry..."
+      # SOURCE: 2511 - Tone of voice.pdf, p.5-6, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GRAMMAR & LANGUAGE RULES
+# ═══════════════════════════════════════════════════════════════════════════
+
+grammar_rules:
+  language_preference: "British English"
+  # SOURCE: 2511 - Tone of voice.pdf, p.7, VERIFIED
+  # SOURCE: Workshop notes - explicit preference confirmed, VERIFIED
+
+  british_english_rules:
+    spelling:
+      use_ise: true  # digitalise, customise, prioritise
+      use_longer_forms: true  # humour, colour
+      # SOURCE: 2511 - Tone of voice.pdf, p.7, VERIFIED
+
+  capitalization:
+    rule: "Sentence case only"
+    guidelines:
+      - "Only capitalise first word and proper nouns"
+      - "Never capitalise full words"
+    exception: "Follow standard German Kapitalisierung rules for German content"
+    # SOURCE: 2511 - Tone of voice.pdf, p.7, VERIFIED
+
+  exclamation_marks:
+    rule: "Only use when something would be shouted enthusiastically"
+    avoid:
+      - "Error messages"
+      - "Disclaimers"
+      - "Alerts"
+    # SOURCE: 2511 - Tone of voice.pdf, p.7, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging:
+  key_messages:
+    - message: "First platform to unify accident repair and RMT services"
+      supporting_points:
+        - "Traditionally separated: body/glass repair vs. dealer garages/service chains"
+        - "Single data-driven environment for all repair types"
+        - "Especially valuable for international fleets"
+      # SOURCE: 2511 - Company profile.pdf, p.1-2, VERIFIED
+
+    - message: "Faster, Better, Cost Efficient repairs"
+      supporting_points:
+        - "Digital intake and automation reduce handling times"
+        - "Intelligent allocation matches optimal repairer to each case"
+        - "Total Cost of Repair approach includes operational + direct costs"
+      # SOURCE: 2511 - Product overview.docx + Company profile.pdf, VERIFIED
+
+    - message: "Everything centralised in one seamless environment"
+      supporting_points:
+        - "All stakeholders connected: claim handlers, fleet managers, drivers, repairers"
+        - "Relevant data securely stored"
+        - "Communication flows smoothly"
+        - "Workflows optimized for cost, time, convenience"
+      # SOURCE: 2511 - Company profile.pdf, p.1, VERIFIED
+
+    - message: "4,000+ repairers across 10 European countries"
+      supporting_points:
+        - "Largest pan-European repairer network"
+        - "Intelligent workshop allocation based on multiple criteria"
+        - "Flexibility: use trusted suppliers OR marketplace"
+      # SOURCE: 2511 - Company profile.pdf + Product overview.docx, VERIFIED
+
+    - message: "Real-time insights and full transparency"
+      supporting_points:
+        - "Track case status, costs, severity in real-time"
+        - "Monitor repairer performance"
+        - "Lead time breakdown"
+        - "Data-driven decision making"
+      # SOURCE: 2511 - Product overview.docx, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MESSAGING CHALLENGES & STRATEGY
+# ═══════════════════════════════════════════════════════════════════════════
+
+messaging_challenges:
+  market_context:
+    traditional_mindset: "Automotive aftermarket operates with 1980s-90s era mindset"
+    resistance_factors:
+      - "Workers feel threatened by technology/automation"
+      - "Fear of job loss or becoming obsolete"
+      - "Change-resistant culture"
+    # SOURCE: TRANSCRIPT 1 - Alignment Roadmap, INFERRED from stakeholder discussion
+
+  dual_messaging_strategy:
+    management_level:
+      focus:
+        - "Cost savings"
+        - "Time savings"
+        - "Efficiency gains"
+        - "Productivity improvements"
+      tone: "Value and ROI-focused"
+      # SOURCE: TRANSCRIPT 1, INFERRED from discussion
+
+    operational_level:
+      focus:
+        - "Empowerment (not replacement)"
+        - "Better work experience"
+        - "Tools that help, not threaten"
+        - "Making jobs easier/more effective"
+      tone: "Supportive and empowering"
+      message_frame: "This helps you do your work better, not replace you"
+      # SOURCE: TRANSCRIPT 1, INFERRED from discussion
+
+  thought_leadership:
+    goals:
+      - "Show thought leadership in automotive aftersales"
+      - "Combat perception of being 'small new player'"
+      - "Demonstrate expertise and market position"
+    challenges:
+      - "Need to prove 'faster, better, cheaper than competitors'"
+      - "Building awareness in traditional market"
+    channels:
+      - "CEO (Derek) as thought leadership channel"
+      - "LinkedIn primary channel"
+    # SOURCE: Fixico notes - 5 nov 2025.docx, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LOCALIZATION REQUIREMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+localization:
+  principle: "No one-size-fits-all - cultural and language nuances are critical"
+  # SOURCE: TRANSCRIPT 1, VERIFIED
+
+  priority_markets:
+    - market: "United Kingdom"
+      language: "en-GB (British English)"
+      notes: "Primary focus market"
+
+    - market: "Germany"
+      language: "de-DE (Deutsch)"
+      formality: "Much more formal than Netherlands"
+      notes: "Primary focus market - large opportunity"
+
+    - market: "Belgium"
+      language: "nl-BE (Flemish) / fr-BE (French)"
+      notes: "Nuances vs. Netherlands Dutch - not interchangeable"
+  # SOURCE: TRANSCRIPT 1 + Fixico notes.docx + Glossary, VERIFIED
+
+  supported_languages:
+    primary:
+      - "en-GB (British English)"
+      - "nl-NL (Nederlands)"
+      - "de-DE (Deutsch)"
+    secondary:
+      - "nl-BE (Nederlands België)"
+      - "fr-BE (Français Belgique)"
+      - "es-ES (Español)"
+      - "it-IT (Italiano)"
+      - "da-DK (Dansk)"
+      - "en-ZA (English South Africa)"
+  # SOURCE: 2511 - Glossary B2B.xlsx, VERIFIED
+
+  cultural_considerations:
+    german_market:
+      - "More formal communication required"
+      - "Professional, structured approach"
+      - "Text adaptation beyond translation needed"
+    belgian_vs_dutch:
+      - "Flemish has nuances vs. Netherlands Dutch"
+      - "Cannot use identical copy"
+    # SOURCE: TRANSCRIPT 1, INFERRED from discussion
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONSTRAINTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+constraints:
+  terminology:
+    note: "Extensive B2B glossary available with translations in 9 languages"
+    glossary_reference: "$ref: LIBRARY_FIXICO_GLOSSARY"
+    # SOURCE: 2511 - Glossary B2B.xlsx, VERIFIED
+
+    key_terms:
+      uk_vs_us:
+        quote: "Estimate (US) = Quote (UK)"
+        # SOURCE: Glossary, VERIFIED
+
+      core_concepts:
+        rmt: "Repair, Maintenance & Tyres"
+        tcr: "Total Cost of Repair"
+        adas: "Advanced Driver Assistance Systems"
+        # SOURCE: Glossary + Product overview, VERIFIED
+
+  never_say:
+    items: []
+    # Use industry defaults from reference template
+    # Client-specific additions can be added as identified
+
+  tone_constraints:
+    selected_profile: "conversational_friendly with b2b_professionalism"
+    characteristics:
+      - "Professional yet fresh"
+      - "Tech-savvy but not excluding"
+      - "Confident but not arrogant"
+      - "Warm but business-appropriate"
+    # SOURCE: INFERRED from Tone of voice.pdf characteristics (Bright, Reliable, Bold)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPETITIVE LANGUAGE
+# ═══════════════════════════════════════════════════════════════════════════
+
+competitive_language:
+  # GAP: GAP-H-002 - Specific competitor names not documented
+  # NOTE: Competitor analysis PDFs exist but not yet analyzed
+
+  allowed_comparisons:
+    - "Unlike traditional repair management processes..."
+    - "Where traditional solutions separate accident repair and RMT, Fixico unifies both..."
+    - "Traditional approaches based on hourly rates and simple supplier agreements..."
+    # SOURCE: INFERRED from Company profile competitive differentiation statements
+
+  disallowed_comparisons:
+    # To be populated after competitor analysis PDF review
+    items: []

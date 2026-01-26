@@ -1,0 +1,171 @@
+# ORG_02_BRAND_POSITIONING.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+# ORG offering, differentiation, and proof points (baseline positioning)
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta:
+  owner: "AI Opener"
+  version: "1.0.0"
+  last_updated: "2026-01-19"
+  purpose: "MSG offering, differentiation, and proof points (baseline positioning)"
+  notes: "Phase 1 onboarding - ORG layer. Comprehensive service catalog and differentiators."
+  tags: [org, ssot, positioning, msg]
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OFFERS CATALOG
+# ═══════════════════════════════════════════════════════════════════════════
+
+offers_catalog:
+  offers:
+    - name: "Afvalinzameling (Waste Collection)"
+      description: "Inzameling van afval en grondstoffen via afvalplatform met landelijk partnernetwerk"
+      key_benefit: "Efficiënte afvalinzameling met één aanspreekpunt, factuur en rapportage"
+      # SOURCE: Onboarding CSV "Wat verkopen jullie?", Corporate Presentation slide 26, VERIFIED
+
+    - name: "Inzamelmiddelen (Collection Equipment)"
+      description: "Rolcontainers, perscontainers, ondergrondse containers, Miniperscontainer en Multi Afval Container (MAC)"
+      key_benefit: "450+ inzameloplossingen passend bij locatie en afvalstroom"
+      # SOURCE: Onboarding CSV "Wat verkopen jullie?", Corporate Presentation slide 26, VERIFIED
+
+    - name: "Duurzame verwerking (Sustainable Processing)"
+      description: "Verwerking van ingezamelde stromen met focus op hergebruik en circulaire toepassing"
+      key_benefit: "Maximale hergebruik van grondstoffen richting circulaire economie"
+      # SOURCE: Onboarding CSV "Wat verkopen jullie?", Corporate Presentation slides 5-6, VERIFIED
+
+    - name: "Circulair advies (Circular Advice)"
+      description: "Advies over duurzaam afvalmanagement met circulaire adviestrajecten en optimalisatie van afvalstromen"
+      key_benefit: "Concrete stappen richting zero waste met aantoonbare duurzaamheidsdoelen"
+      # SOURCE: Onboarding CSV "Wat verkopen jullie?", Corporate Presentation slide 27, VERIFIED
+
+    - name: "Gedragsverandering en activatie (Behavioral Change)"
+      description: "Tools en materialen voor gedragsverandering rondom afvalscheiding (Afval Experience, Zero Waste Game, training)"
+      key_benefit: "Afvalscheiding van strategie naar dagelijkse praktijk op de werkvloer"
+      # SOURCE: Onboarding CSV "Wat verkopen jullie?", Corporate Presentation slide 34, VERIFIED
+
+    - name: "MijnMSN Platform"
+      description: "Selfservice-omgeving voor afvalkalender, inzichten, facturen, aanvullende ledigingen en rapportages"
+      key_benefit: "Real-time inzicht en digitale ontzorging 24/7"
+      # SOURCE: Onboarding CSV "Wat verkopen jullie?", Corporate Presentation slide 35, VERIFIED
+
+  service_tiers:
+    - tier: "Basis"
+      includes:
+        - "Afvalanalyse"
+        - "Inzamelmiddelenplan"
+        - "Rapportage"
+      # SOURCE: Corporate Presentation slide 33, VERIFIED
+
+    - tier: "Premium"
+      includes:
+        - "Alles van Basis"
+        - "Circulair advies"
+        - "Advies/compliancy ESG"
+      # SOURCE: Corporate Presentation slide 33, VERIFIED
+
+    - tier: "Premium Plus"
+      includes:
+        - "Alles van Premium"
+        - "Stimulering gedragsverandering"
+        - "Bezoek Afval Experience"
+        - "Training & gedragsverandering"
+        - "Zero Waste Game (optioneel)"
+      # SOURCE: Corporate Presentation slide 33, VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# DIFFERENTIATORS
+# ═══════════════════════════════════════════════════════════════════════════
+
+differentiators:
+  items:
+    - claim: "Onafhankelijke rol als afvalketenregisseur"
+      proof: "Organiseert hele keten zonder vast te zitten aan één inzamelstructuur of verwerker, waardoor per klant en afvalstroom beste oplossing mogelijk is"
+      # SOURCE: Onboarding CSV "Wat maakt jullie écht onderscheidend?", VERIFIED
+
+    - claim: "Hybride platformmodel als praktische kracht"
+      proof: "Combinatie van digitaal afvalplatform, groot partnernetwerk (100+) en eigen uitvoering maakt dienstverlening schaalbaar én wendbaar"
+      # SOURCE: Onboarding CSV "Wat maakt jullie écht onderscheidend?", Corporate Presentation slide 7, VERIFIED
+
+    - claim: "Datagedreven afvalmanagement"
+      proof: "Platform biedt real-time inzichten en rapportages die aansluiten op CSRD-rapportageverplichtingen"
+      # SOURCE: Onboarding CSV "Wat maakt jullie écht onderscheidend?", VERIFIED
+
+    - claim: "Van strategie naar gedrag op de werkvloer"
+      proof: "Naast uitvoering levert MSN circulair advies en ondersteuning voor gedragsverandering, zodat afvalscheiding zichtbaar en werkbaar wordt in dagelijkse praktijk"
+      # SOURCE: Onboarding CSV "Wat maakt jullie écht onderscheidend?", Corporate Presentation slide 34, VERIFIED
+
+    - claim: "Persoonlijk contact als vaste basis"
+      proof: "Vaste aanspreekpunten en korte lijnen zorgen dat afstemming snel verloopt en dienstverlening aansluit op praktijk"
+      # SOURCE: Onboarding CSV "Wat maakt jullie écht onderscheidend?", Corporate Presentation slide 12, VERIFIED
+
+    - claim: "Volledige ontzorging voor de scherpste prijs"
+      proof: "Collectieve inkoopafspraken met partners en geautomatiseerd WIN-platform combineren scherpe tarieven met directe kostenbesparing door minder restafval"
+      # SOURCE: Onboarding CSV "Voor wie is dit vooral bedoeld - Wat levert dit voor hen concreet op?", VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PROOF POINTS
+# ═══════════════════════════════════════════════════════════════════════════
+
+proof_points:
+  items:
+    - type: "metric"
+      claim: "Kiyoh-beoordeling van 9,1"
+      source: "https://www.kiyoh.com/reviews/1064828/milieu_service_nederland"
+      source_date: "2026-01"
+      # SOURCE: Onboarding CSV "Hebben jullie bewijs/voorbeelden", VERIFIED
+
+    - type: "metric"
+      claim: "20.000+ organisaties beheren afval via MSN platform in Nederland"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+      # SOURCE: Corporate Presentation slide 6, VERIFIED
+
+    - type: "metric"
+      claim: "100+ logistieke partners - grootste afvalnetwerk van Nederland"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+      # SOURCE: Corporate Presentation slide 6, Onboarding CSV, VERIFIED
+
+    - type: "metric"
+      claim: "450+ inzameloplossingen beschikbaar"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+      # SOURCE: Corporate Presentation slide 6, VERIFIED
+
+    - type: "metric"
+      claim: "35+ afvalstromen beheerd"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+      # SOURCE: Corporate Presentation slide 6, Onboarding CSV, VERIFIED
+
+    - type: "metric"
+      claim: "35+ jaar ervaring sinds 1986"
+      source: "Corporate Presentation 2025"
+      source_date: "2025-05"
+      # SOURCE: Corporate Presentation slide 7, VERIFIED
+
+    - type: "testimonial"
+      claim: "Milieu Service Nederland combineert flexibiliteit, duurzaamheid en maatwerk in afvalbeheer. Hun klantgerichte aanpak en prioriteit voor kernactiviteiten, zoals kunsttransport, geven vertrouwen in een duurzame samenwerking."
+      source: "Victor Seignette, Stichting Stedelijk Museum Amsterdam"
+      source_date: "2025"
+      # SOURCE: Corporate Presentation slide 37, VERIFIED
+
+    - type: "case_study"
+      claim: "Klantcases beschikbaar"
+      source: "https://www.milieuservicenederland.nl/kenniscentrum/klantverhalen/"
+      source_date: "2026-01"
+      # SOURCE: Onboarding CSV "Hebben jullie bewijs/voorbeelden", VERIFIED
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PRICING
+# ═══════════════════════════════════════════════════════════════════════════
+
+pricing:
+  approach: "refer_to_sales"
+  # SOURCE: Corporate Presentation slide 33 "In overleg", VERIFIED
+
+  pricing_messaging: "Hoge service tegen een scherpe prijs"
+  # SOURCE: Onboarding CSV "Kernboodschappen", VERIFIED
+  # NOTE: Messaging emphasizes value equation without specific pricing
+
+  pricing_strategy_notes: "Volledige ontzorging combineren met schaalvoordelen van afvalplatform"
+  # SOURCE: Onboarding CSV "Kernboodschappen", VERIFIED

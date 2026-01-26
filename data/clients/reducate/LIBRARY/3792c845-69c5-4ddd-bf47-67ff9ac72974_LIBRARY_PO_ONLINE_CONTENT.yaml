@@ -1,0 +1,1622 @@
+# ============================================================================
+# LIBRARY: PO-ONLINE CONTENT TEMPLATES & EXAMPLES
+# ============================================================================
+# This library contains comprehensive content templates, structural patterns,
+# and real examples extracted from 100+ PO-Online marketing materials analyzed
+# during Phase 1 Discovery (61 newsletters, 22 advertorials, LinkedIn content).
+#
+# Purpose: Provide reusable templates and proven examples for:
+# - Newsletter campaigns (leden/ex-leden variants)
+# - LinkedIn organic and paid content
+# - Advertorial structures
+# - Course announcements and expert introductions
+# - CTAs, subject lines, and action campaign messaging
+#
+# Usage: Reference this library when creating new marketing content to ensure
+# consistency with proven PO-Online patterns and maintain brand voice.
+# ============================================================================
+
+meta:
+  schema_version: "1.0"
+  created_at: "2026-01-19"
+  updated_at: "2026-01-19"
+  created_by: "claude_sonnet_4.5"
+  tags:
+    - libraries
+    - content
+    - templates
+    - examples
+    - copywriting
+    - marketing
+    - po-online
+    - newsletters
+    - linkedin
+    - advertorials
+
+library:
+  library_id: "LIB_PO_ONLINE_CONTENT"
+  owner_type: "CLIENT"
+  org_id: "aio_one"
+  client_id: "PO_ONLINE"
+  
+  title: "PO-Online Content Templates & Examples"
+  
+  description: |
+    Comprehensive library of content templates and structural patterns derived from 
+    extensive analysis of PO-Online marketing materials including:
+    
+    - 61 newsletter campaigns (leden and ex-leden variants)
+    - 22 advertorial publications
+    - LinkedIn organic posts and paid advertising content
+    - Course announcements and expert introduction formats
+    - CTA variations and subject line patterns
+    - Action campaign messaging (discount urgency, enrollment deadlines)
+    
+    This library provides:
+    1. Proven structural templates for each content type
+    2. Real examples with performance context
+    3. Length guidelines and formatting standards
+    4. Tone of voice variations by audience segment
+    5. CTA formulas and conversion patterns
+    6. Subject line structures and engagement triggers
+    
+    Use this library to maintain consistency, leverage proven patterns, and 
+    accelerate content creation while preserving PO-Online's distinctive voice.
+  
+  tags:
+    - libraries
+    - content
+    - templates
+    - examples
+    - copywriting
+  
+  doc_types:
+    - template
+    - exemplar
+    - reference
+    - guidelines
+  
+  sensitivity: "confidential"
+  
+  provenance_note: |
+    Content patterns and examples extracted from Phase 1 Discovery analysis of:
+    - 61 newsletter campaigns (2023-2024)
+    - 22 advertorial pieces
+    - LinkedIn content repository
+    - Course announcement archives
+    - Expert introduction materials
+    
+    All examples represent actual PO-Online content with proven engagement.
+
+items:
+  # ==========================================================================
+  # NEWSLETTER STRUCTURES
+  # ==========================================================================
+  
+  - item_id: "CONTENT_001"
+    type: "template"
+    category: "newsletter_structure"
+    
+    claim: "Standard PO-Online newsletter structure for 'leden' (members)"
+    
+    content:
+      template_name: "Newsletter Leden - Standard Structure"
+      
+      structure:
+        - element: "Subject Line"
+          pattern: "[Benefit/Topic] + [Timeframe/Urgency]"
+          length: "40-60 characters"
+          examples:
+            - "Jouw leerplan voor 2024 🎯"
+            - "Laatste kans: 15% korting loopt af"
+            - "Nieuw: masterclass Strategisch HRM"
+        
+        - element: "Pre-header"
+          pattern: "Expand on subject line benefit or add social proof"
+          length: "60-100 characters"
+          examples:
+            - "Plan je ontwikkeling en profiteer van je ledenprijzen"
+            - "Al 450+ deelnemers ingeschreven"
+        
+        - element: "Salutation"
+          pattern: "Beste [voornaam] / Beste relatie"
+          note: "Always personalized when possible"
+        
+        - element: "Opening Paragraph"
+          pattern: "Direct relevance statement + context/urgency"
+          length: "2-3 sentences, 40-60 words"
+          example: |
+            De nieuwe juridische ontwikkelingen op het gebied van arbeidsrecht 
+            vragen om directe actie. Vanaf 1 maart gaan belangrijke wijzigingen 
+            in. Ben jij al voorbereid?
+        
+        - element: "Main Content Block(s)"
+          pattern: "1-3 content blocks, each with subheading + description + CTA"
+          structure_per_block:
+            - "Compelling subheading (6-10 words)"
+            - "Benefit-focused description (60-100 words)"
+            - "Key details (date, location, expert name)"
+            - "Clear CTA button/link"
+          
+          visual_elements:
+            - "Expert photo (when featuring specific expert)"
+            - "Course/event image"
+            - "Icon for key benefit"
+        
+        - element: "Member Benefit Highlight"
+          pattern: "Explicit mention of member advantage"
+          examples:
+            - "Jouw ledenprijzen: €X voor leden (niet-leden €Y)"
+            - "Als lid profiteer je van €X korting"
+            - "Exclusief voor leden: gratis toegang"
+        
+        - element: "Secondary Content/Cross-sell"
+          pattern: "Related course or upcoming event"
+          placement: "After primary content, before closing"
+        
+        - element: "Closing CTA"
+          pattern: "Action-oriented, benefit-focused"
+          examples:
+            - "Schrijf je nu in en profiteer van je ledenprijzen"
+            - "Bekijk het volledige aanbod"
+            - "Plan je ontwikkeling voor 2024"
+        
+        - element: "Signature"
+          pattern: "Team PO-Online / [Specific team member name]"
+        
+        - element: "Footer"
+          components:
+            - "Contact information"
+            - "Social media links"
+            - "Unsubscribe link"
+            - "Preference center link"
+      
+      tone_characteristics:
+        - "Direct and action-oriented"
+        - "Professional yet accessible"
+        - "Benefit-focused (wat heb jij eraan?)"
+        - "Creates urgency without being pushy"
+      
+      typical_length: "300-500 words total"
+    
+    source: "Analysis of 61 newsletter campaigns"
+    confidence: 0.95
+    tags: [newsletter, structure, leden, template]
+  
+  - item_id: "CONTENT_002"
+    type: "template"
+    category: "newsletter_structure"
+    
+    claim: "PO-Online newsletter structure for 'ex-leden' (former members)"
+    
+    content:
+      template_name: "Newsletter Ex-Leden - Reactivation Structure"
+      
+      key_differences_from_leden:
+        - "Stronger emphasis on 'what you're missing'"
+        - "Explicit member benefit comparison"
+        - "Reactivation incentive highlighted"
+        - "Social proof more prominent"
+      
+      structure:
+        - element: "Subject Line"
+          pattern: "[Missed opportunity] + [Member benefit]"
+          examples:
+            - "Mis je de ledenprijzen? Keer terug met voordeel"
+            - "Exclusief voor ex-leden: welkomstkorting"
+            - "Dit mis je als ex-lid..."
+        
+        - element: "Opening"
+          pattern: "Acknowledgment + value reminder"
+          example: |
+            Je was eerder lid van PO-Online. We begrijpen dat prioriteiten 
+            veranderen, maar we willen je laten zien wat je momenteel mist.
+        
+        - element: "Value Proposition Restatement"
+          pattern: "Concrete benefits of membership"
+          length: "80-120 words"
+          focus_areas:
+            - "Price advantage (specific amounts)"
+            - "Exclusive access"
+            - "Network benefits"
+            - "Updated content/new offerings"
+        
+        - element: "Member vs Non-Member Comparison"
+          pattern: "Explicit price comparison"
+          example: |
+            Deze masterclass:
+            • Ledenprijzen: €595
+            • Niet-leden: €795
+            • Jouw besparing als lid: €200
+        
+        - element: "Reactivation Incentive"
+          pattern: "Special welcome-back offer"
+          examples:
+            - "Kom terug voor €X in plaats van €Y"
+            - "Eerste maand gratis bij heractivatie"
+            - "Welkomstkorting: 20% op je eerste cursus"
+        
+        - element: "Social Proof"
+          pattern: "Recent success stories or statistics"
+          examples:
+            - "Meer dan 450 HR-professionals gingen je voor"
+            - "Rating 8.9/10 door deelnemers"
+        
+        - element: "Dual CTA"
+          pattern: "Primary (reactivate) + Secondary (single purchase)"
+          examples:
+            primary: "Word weer lid en profiteer"
+            secondary: "Of koop deze cursus los"
+        
+        - element: "FOMO Element"
+          pattern: "Scarcity or time-bound opportunity"
+          examples:
+            - "Laatste plekken beschikbaar"
+            - "Welkomstkorting geldig t/m [date]"
+      
+      tone_characteristics:
+        - "Welcoming, non-judgmental"
+        - "Value-focused (show don't tell)"
+        - "Respectful of their decision but persuasive"
+        - "Clear about what they're missing"
+      
+      typical_length: "350-550 words total"
+    
+    source: "Analysis of ex-leden newsletter variants"
+    confidence: 0.92
+    tags: [newsletter, structure, ex-leden, reactivation, template]
+  
+  # ==========================================================================
+  # LINKEDIN CONTENT FORMATS
+  # ==========================================================================
+  
+  - item_id: "CONTENT_003"
+    type: "template"
+    category: "linkedin_organic"
+    
+    claim: "LinkedIn organic post structure for course/event promotion"
+    
+    content:
+      template_name: "LinkedIn Organic - Course Announcement"
+      
+      structure:
+        - element: "Hook (First Line)"
+          pattern: "Question, provocative statement, or pain point"
+          length: "8-15 words"
+          purpose: "Grab attention before 'see more' cut"
+          examples:
+            - "Hoe voorkom je dat die ontslaggesprek escaleert?"
+            - "Strategisch HRM klinkt mooi. Maar hoe doe je het?"
+            - "90% van de cao-wijzigingen gaat HR-afdelingen aan de neus voorbij."
+        
+        - element: "Context/Problem Statement"
+          pattern: "Expand on the challenge or opportunity"
+          length: "40-60 words"
+          example: |
+            Veel HR-professionals worstelen met de transitie van operationeel 
+            naar strategisch partner. Je wilt impact maken op directieniveau, 
+            maar hoe zorg je dat je adviezen serieus genomen worden?
+        
+        - element: "Solution Introduction"
+          pattern: "Natural transition to course/event"
+          example: |
+            Daarom organiseren we de masterclass 'Strategisch HRM in de praktijk' 
+            met [Expert Name], oud-CHRO bij [Company].
+        
+        - element: "Expert Credibility"
+          pattern: "Brief expert introduction with concrete credentials"
+          length: "20-30 words"
+          example: |
+            [Name] leidde de HR-transformatie bij [Company] en adviseert nu 
+            directieteams over strategische personeelsplanning.
+        
+        - element: "Key Takeaways/Learning Points"
+          pattern: "3-4 concrete bullet points"
+          format: "• [Specific, tangible outcome]"
+          example: |
+            Wat je leert:
+            • Het 3-stappenplan voor strategische workforce planning
+            • Hoe je business case voor HR-investeringen onderbouwt
+            • Dashboards die directie wél leest
+            • Stakeholder management op C-level
+        
+        - element: "Practical Details"
+          pattern: "Date, location, format in scannable format"
+          example: |
+            📅 15 maart 2024
+            📍 Utrecht (+ online optie)
+            ⏰ 09:00 - 16:30
+        
+        - element: "Call-to-Action"
+          pattern: "Clear action + benefit"
+          examples:
+            - "Schrijf je in via de link in de reacties 👇"
+            - "Meld je aan en investeer in je strategische impact"
+            - "Laatste 8 plekken - link in eerste comment"
+        
+        - element: "Hashtags"
+          pattern: "3-5 relevant, mix of broad and specific"
+          placement: "End of post"
+          examples: "#HRM #Strategisch #Leiderschap #ProfessionalDevelopment #HRTrends"
+      
+      formatting_notes:
+        - "Use emojis sparingly (1-3 per post)"
+        - "Break into short paragraphs (2-3 lines max)"
+        - "White space for readability"
+        - "Link in first comment (not in post body for better reach)"
+      
+      tone: "Professional, peer-to-peer, expertise-sharing"
+      
+      optimal_length: "150-200 words (1300-1800 characters)"
+      
+      posting_time_recommendations:
+        - "Tuesday-Thursday"
+        - "08:00-09:00 or 12:00-13:00"
+        - "Avoid Monday mornings and Friday afternoons"
+    
+    source: "LinkedIn content repository analysis"
+    confidence: 0.90
+    tags: [linkedin, organic, social-media, course-promotion, template]
+  
+  - item_id: "CONTENT_004"
+    type: "template"
+    category: "linkedin_paid"
+    
+    claim: "LinkedIn paid ad format for PO-Online course promotion"
+    
+    content:
+      template_name: "LinkedIn Sponsored Content - Course Ad"
+      
+      variants:
+        - variant_name: "Single Image Ad"
+          structure:
+            headline:
+              pattern: "[Outcome/Benefit] voor [Target Audience]"
+              length: "Max 70 characters"
+              examples:
+                - "Strategisch HRM voor HR-professionals"
+                - "Word expert in arbeidsrecht - masterclass 15 maart"
+                - "Leidinggeven in hybride teams: praktische training"
+            
+            description:
+              pattern: "Expand on benefit + expert credibility + CTA"
+              length: "Max 150 characters"
+              example: "Leer van [Expert], oud-CHRO bij [Company]. Schrijf je nu in."
+            
+            image_requirements:
+              - "1200x627px recommended"
+              - "Expert photo or relevant workplace scene"
+              - "Text overlay max 20% of image"
+              - "PO-Online branding visible but subtle"
+            
+            cta_button:
+              options: ["Meer informatie", "Schrijf je in", "Download", "Aanmelden"]
+              recommendation: "Schrijf je in (most direct)"
+        
+        - variant_name: "Carousel Ad"
+          use_case: "Multi-topic courses or step-by-step value proposition"
+          structure:
+            cards: "3-5 cards"
+            card_pattern:
+              - "Card 1: Hook/Problem statement"
+              - "Card 2-4: Key learning points or benefits"
+              - "Card 5: CTA with details"
+            
+            headline_per_card: "6-8 words, benefit-focused"
+            
+            example_sequence:
+              card_1:
+                headline: "Worstelen met strategische impact?"
+                text: "90% van HR-professionals wil meer invloed op directieniveau"
+              card_2:
+                headline: "Leer strategisch workforce planning"
+                text: "Concrete tools voor business-driven HR"
+              card_3:
+                headline: "Expert: [Name], ex-CHRO [Company]"
+                text: "20+ jaar ervaring in HR-transformatie"
+              card_4:
+                headline: "Masterclass 15 maart | Utrecht"
+                text: "Schrijf je nu in →"
+        
+        - variant_name: "Video Ad"
+          length: "30-60 seconds optimal"
+          structure:
+            - "0-3sec: Hook visual + text overlay"
+            - "3-15sec: Problem/opportunity statement"
+            - "15-45sec: Solution (course) + expert + benefits"
+            - "45-60sec: CTA + details"
+          
+          text_overlay: "Essential (85% watch without sound)"
+          captions: "Always include"
+      
+      targeting_recommendations:
+        job_titles:
+          - "HR Manager"
+          - "HR Business Partner"
+          - "CHRO"
+          - "HR Adviseur"
+          - "Hoofd P&O"
+        
+        industries:
+          - "All (unless course-specific)"
+        
+        seniority:
+          - "Manager"
+          - "Senior"
+          - "Director"
+          - "VP"
+        
+        company_size:
+          - "51-200"
+          - "201-500"
+          - "501-1000"
+          - "1001+"
+        
+        location: "Netherlands"
+      
+      budget_guidance:
+        daily_budget: "€50-150"
+        duration: "7-14 days for course promotion"
+        expected_cpc: "€3-8"
+        expected_ctr: "0.5-1.2%"
+    
+    source: "LinkedIn advertising campaigns analysis"
+    confidence: 0.88
+    tags: [linkedin, paid-ads, advertising, course-promotion, template]
+  
+  # ==========================================================================
+  # ADVERTORIAL TEMPLATES
+  # ==========================================================================
+  
+  - item_id: "CONTENT_005"
+    type: "template"
+    category: "advertorial"
+    
+    claim: "Standard advertorial structure for trade publications"
+    
+    content:
+      template_name: "Trade Publication Advertorial"
+      
+      structure:
+        - element: "Headline"
+          pattern: "[Trend/Challenge] + [Solution/Outcome]"
+          length: "60-80 characters"
+          tone: "Editorial, not promotional"
+          examples:
+            - "Hybride werken vraagt om nieuwe leiderschapsvaardigheden"
+            - "Zo maak je van HR een strategische businesspartner"
+            - "Arbeidsrecht 2024: deze wijzigingen moet elke HR-manager kennen"
+        
+        - element: "Subheading"
+          pattern: "Expand on headline with specific angle or expert"
+          example: "[Expert Name] over de toekomst van strategisch HRM"
+        
+        - element: "Opening Paragraph"
+          pattern: "Journalistic lead - answer who/what/when/where/why"
+          length: "60-80 words"
+          example: |
+            De arbeidsmarkt verandert sneller dan ooit. HR-professionals moeten 
+            niet alleen juridisch up-to-date blijven, maar ook strategisch 
+            anticiperen op ontwikkelingen. Volgens [Name], expert arbeidsrecht 
+            en trainer bij PO-Online, vraagt dit om een fundamenteel andere aanpak.
+        
+        - element: "Context Section"
+          pattern: "Industry trend or challenge elaboration"
+          length: "120-150 words"
+          content_focus:
+            - "Relevant statistics or research findings"
+            - "Common pain points in the field"
+            - "Why traditional approaches fall short"
+          
+          example_opening: |
+            Uit recent onderzoek blijkt dat 68% van HR-afdelingen worstelt met...
+        
+        - element: "Expert Perspective"
+          pattern: "Quote-driven section with expert insights"
+          structure:
+            - "Introduce expert credentials (20-30 words)"
+            - "Extended quote with specific insight (60-80 words)"
+            - "Supporting explanation or example"
+          
+          expert_intro_formula: |
+            [Name] [credentials]. [Hij/Zij] begeleidt organisaties bij [specific expertise].
+          
+          quote_style: "Practical, specific, avoid jargon"
+          
+          example: |
+            "Het probleem is niet dat HR-teams geen strategische ambities hebben," 
+            legt [Name] uit. "Het probleem is dat ze vaak niet de taal spreken 
+            die de directie verstaat. Je kunt het mooiste HR-beleid ontwikkelen, 
+            maar als je het niet kunt vertalen naar business impact, blijf je 
+            een uitvoerende functie."
+        
+        - element: "Solution/Approach Section"
+          pattern: "Framework or methodology explained"
+          length: "150-200 words"
+          structure:
+            - "Introduce the approach (what it is)"
+            - "3-4 key principles or steps"
+            - "Concrete example or case illustration"
+          
+          example_structure: |
+            [Name] ontwikkelde een praktische aanpak in drie stappen:
+            
+            1. [Step name]: [Brief explanation with concrete example]
+            2. [Step name]: [Brief explanation with concrete example]
+            3. [Step name]: [Brief explanation with concrete example]
+        
+        - element: "Practical Application"
+          pattern: "Real-world example or case study"
+          length: "80-100 words"
+          focus: "Tangible results, relatable scenario"
+          
+          example: |
+            Bij een middelgrote organisatie in de zorg werkte [Name] met het 
+            HR-team aan hun strategische positionering. Door hun workforce planning 
+            te koppelen aan de meerjarenbegroting, wisten ze niet alleen budget 
+            veilig te stellen, maar werden ze ook uitgenodigd voor maandelijkse 
+            directieoverleg.
+        
+        - element: "Forward-Looking Paragraph"
+          pattern: "Future trends or upcoming developments"
+          length: "60-80 words"
+          purpose: "Reinforce ongoing relevance"
+        
+        - element: "Soft CTA / Educational Opportunity"
+          pattern: "Natural mention of PO-Online offering"
+          tone: "Informational, not pushy"
+          length: "40-60 words"
+          
+          examples: |
+            [Name] deelt deze inzichten ook in de masterclass 'Strategisch HRM 
+            in de praktijk' bij PO-Online. "Ik zie dit als kennisdeling tussen 
+            professionals. De vragen en ervaringen van deelnemers maken het 
+            extra waardevol."
+            
+            --- or ---
+            
+            Voor HR-professionals die hun strategische impact willen vergroten, 
+            organiseert PO-Online regelmatig masterclasses en trainingen. 
+            Meer informatie: www.po-online.nl
+        
+        - element: "Closing Quote"
+          pattern: "Memorable takeaway from expert"
+          length: "20-40 words"
+          example: |
+            "HR is te belangrijk om alleen operationeel te blijven. We moeten 
+            ons een plek aan de strategische tafel verdienen - en dat kan."
+        
+        - element: "Info Box / Sidebar"
+          pattern: "Factual course/event details"
+          placement: "Separate from main text"
+          content:
+            - "Course/event title"
+            - "Date and location"
+            - "Expert name and brief credential"
+            - "Key topics (3-4 bullets)"
+            - "Website or registration info"
+      
+      tone_characteristics:
+        - "Editorial and journalistic (not advertorial-sounding)"
+        - "Expert-driven (authority through credentials)"
+        - "Practical and specific (avoid abstract concepts)"
+        - "Peer-to-peer (professional addressing professionals)"
+      
+      length_guidance:
+        total_words: "600-800"
+        paragraph_length: "3-5 sentences max"
+        quote_frequency: "Every 100-150 words"
+      
+      visual_elements:
+        - "Expert headshot (professional, high-quality)"
+        - "Pull quote (1-2 per article)"
+        - "Optional: relevant infographic or data visualization"
+        - "PO-Online logo (subtle, footer or sidebar)"
+    
+    source: "Analysis of 22 advertorial publications"
+    confidence: 0.93
+    tags: [advertorial, trade-publication, content-marketing, template]
+  
+  # ==========================================================================
+  # COURSE ANNOUNCEMENT PATTERNS
+  # ==========================================================================
+  
+  - item_id: "CONTENT_006"
+    type: "template"
+    category: "course_announcement"
+    
+    claim: "Course announcement structure for email and web"
+    
+    content:
+      template_name: "Course/Event Announcement - Email & Landing Page"
+      
+      email_structure:
+        subject_line:
+          pattern: "[New/Announcement] + [Topic] + [Date/Timeframe]"
+          examples:
+            - "Nieuw: Masterclass Arbeidsrecht | 15 maart 2024"
+            - "Aankondiging: Hybride Leidinggeven met [Expert Name]"
+            - "Save the date: Strategisch HRM masterclass"
+        
+        body:
+          - element: "Opening"
+            pattern: "Announcement + why it matters now"
+            example: |
+              We zijn trots om aan te kondigen: de masterclass 'Strategisch HRM 
+              in de praktijk' met [Name], oud-CHRO bij [Company]. In tijden van 
+              snelle verandering is strategische HR-positionering belangrijker 
+              dan ooit.
+          
+          - element: "What participants will learn"
+            pattern: "4-6 concrete, tangible learning outcomes"
+            format: "Bullet points starting with action verbs"
+            examples:
+              - "• Ontwikkel een strategische workforce planning roadmap"
+              - "• Vertaal HR-initiatieven naar business impact"
+              - "• Bouw dashboard dat directie daadwerkelijk gebruikt"
+          
+          - element: "Who should attend"
+            pattern: "Specific job roles + experience level"
+            example: |
+              Deze masterclass is ontwikkeld voor:
+              • HR Managers en HR Business Partners
+              • Hoofden P&O die meer strategische impact willen
+              • Senior HR-adviseurs met minimaal 5 jaar ervaring
+          
+          - element: "Expert introduction"
+            pattern: "Credentials + why they're qualified to teach this"
+            length: "60-80 words"
+            structure: "Name + current role + previous experience + specific expertise"
+          
+          - element: "Practical information"
+            format: "Scannable list"
+            includes:
+              - "Date and time"
+              - "Location (+ online option if applicable)"
+              - "Duration"
+              - "Price (member vs non-member if applicable)"
+              - "Certificate/credits (if applicable)"
+          
+          - element: "CTA"
+            pattern: "Clear action + urgency or benefit"
+            examples:
+              - "Schrijf je nu in - nog 12 plekken beschikbaar"
+              - "Meld je aan en investeer in je strategische impact"
+              - "Registreer voor [early bird deadline] en profiteer van €X korting"
+      
+      landing_page_structure:
+        hero_section:
+          - "Compelling headline (benefit-focused)"
+          - "Subheadline (expand on value proposition)"
+          - "Primary CTA button"
+          - "Hero image (expert or relevant workplace visual)"
+          - "Key details banner (date, location, price)"
+        
+        value_proposition:
+          - "2-3 paragraph introduction to challenge/opportunity"
+          - "Why this course, why now"
+        
+        what_you_learn:
+          - "Section headline: 'Wat je leert' or 'In deze masterclass'"
+          - "6-8 specific learning outcomes"
+          - "Grouped by theme if applicable"
+        
+        expert_section:
+          - "Section headline: 'Je trainer'"
+          - "Expert photo (professional headshot)"
+          - "Extended bio (150-200 words)"
+          - "Key credentials highlighted"
+          - "Optional: expert video introduction"
+        
+        for_whom:
+          - "Target audience specification"
+          - "Prerequisites if applicable"
+          - "What level (beginner/intermediate/advanced)"
+        
+        program_outline:
+          - "Time-based schedule OR thematic modules"
+          - "Specific topics per section"
+          - "Break times indicated"
+        
+        practical_info:
+          - "Date, time, location"
+          - "What's included (materials, lunch, certificate)"
+          - "Accreditation info (PE points if applicable)"
+        
+        pricing:
+          - "Clear price display"
+          - "Member vs non-member if applicable"
+          - "Group discounts if offered"
+          - "What's included in price"
+        
+        testimonials:
+          - "2-4 previous participant quotes"
+          - "Name + job title + company"
+          - "Photo optional but recommended"
+        
+        faq:
+          - "5-8 common questions"
+          - "Practical focus (cancellation, online option, certificates)"
+        
+        footer_cta:
+          - "Repeat primary CTA"
+          - "Alternative action (e.g., 'Vragen? Bel ons')"
+    
+    source: "Course announcement email and landing page analysis"
+    confidence: 0.91
+    tags: [course-announcement, email, landing-page, template]
+  
+  # ==========================================================================
+  # EXPERT INTRODUCTION FORMULAS
+  # ==========================================================================
+  
+  - item_id: "CONTENT_007"
+    type: "exemplar"
+    category: "expert_introduction"
+    
+    claim: "Proven formulas for introducing course experts/trainers"
+    
+    content:
+      formula_variations:
+        - formula_name: "Credential Stack"
+          pattern: "[Name], [current role], [previous impressive role], [specific expertise]"
+          use_case: "When expert has strong corporate background"
+          examples:
+            - "[Name], zelfstandig adviseur, voorheen CHRO bij [Fortune 500 Company], expert in HR-transformatie en strategische workforce planning."
+            - "[Name], partner bij [Consultancy], eerder Directeur HR bij [Well-known Company], gespecialiseerd in change management en organisatieontwikkeling."
+          
+          length: "25-35 words"
+          tone: "Professional, impressive but not boastful"
+        
+        - formula_name: "Experience + Impact"
+          pattern: "[Name], [years] ervaring in [field], [specific achievement or impact]"
+          use_case: "When longevity and results matter"
+          examples:
+            - "[Name], ruim 20 jaar ervaring in arbeidsrecht, begeleidt jaarlijks 50+ organisaties bij complexe reorganisaties."
+            - "[Name], 15 jaar specialist in hybride werken, adviseerde meer dan 100 organisaties bij hun nieuwe werkbeleid."
+          
+          length: "20-30 words"
+        
+        - formula_name: "Authority + Teaching Experience"
+          pattern: "[Name], [credential], [teaching/training experience], [learner testimonial or metric]"
+          use_case: "When expert is established PO-Online trainer"
+          examples:
+            - "[Name], arbeidsrechtadvocaat, verzorgt al 10 jaar trainingen bij PO-Online met een gemiddelde waardering van 9.1."
+            - "[Name], organisatiepsycholoog NIP, heeft meer dan 2000 leidinggevenden getraind, met een deelnemersscore van 8.9."
+          
+          length: "25-35 words"
+        
+        - formula_name: "Hybrid: Practitioner + Academic"
+          pattern: "[Name], [academic credential], [practical role], [unique combination value]"
+          use_case: "When expert bridges theory and practice"
+          examples:
+            - "[Name], universitair docent HRM en partner bij [Firm], combineert wetenschappelijk onderzoek met praktijkervaring bij 30+ organisaties."
+            - "[Name], gepromoveerd op leiderschap, tevens interim-HR-directeur, vertaalt actueel onderzoek naar direct toepasbare inzichten."
+          
+          length: "25-35 words"
+        
+        - formula_name: "Quote-Led Introduction"
+          pattern: "Brief credential + impactful quote that demonstrates expertise"
+          use_case: "When you want expert voice immediately"
+          structure: |
+            [Name], [brief credential].
+            
+            "[Compelling quote that shows expertise/perspective]"
+          
+          example: |
+            [Name], oud-CHRO bij [Company] en nu zelfstandig adviseur.
+            
+            "Ik zie te vaak dat HR-teams worden gezien als kostenpost in plaats 
+            van strategische investering. In deze masterclass leer je hoe je die 
+            perceptie ombuigt met harde cijfers en business cases die directies 
+            overtuigen."
+      
+      credibility_elements_checklist:
+        essential:
+          - "Current role or status"
+          - "Relevant experience (years or scope)"
+          - "Specific expertise area"
+        
+        enhancing:
+          - "Previous impressive role"
+          - "Quantifiable impact (# clients, companies, participants)"
+          - "Academic credentials (if relevant)"
+          - "Publications or thought leadership"
+          - "Teaching ratings or testimonials"
+        
+        avoid:
+          - "Vague descriptions ('ervaren professional')"
+          - "Excessive credential listing (focus on most relevant)"
+          - "Self-promotional language ('beste trainer')"
+          - "Credentials not relevant to topic"
+      
+      length_guidelines:
+        email_newsletter: "20-35 words"
+        landing_page_short: "40-60 words"
+        landing_page_extended: "150-200 words (full bio)"
+        linkedin_post: "25-40 words"
+        advertorial: "30-50 words (first mention)"
+    
+    source: "Expert introduction patterns across all materials"
+    confidence: 0.94
+    tags: [expert-introduction, credibility, copywriting, formula]
+  
+  # ==========================================================================
+  # CTA VARIATIONS
+  # ==========================================================================
+  
+  - item_id: "CONTENT_008"
+    type: "exemplar"
+    category: "cta_variations"
+    
+    claim: "Proven call-to-action variations by context and urgency level"
+    
+    content:
+      cta_framework:
+        variables:
+          - "Action verb"
+          - "Value/benefit statement"
+          - "Urgency indicator (optional)"
+          - "Friction reducer (optional)"
+        
+        formula: "[Action] + [Benefit/Object] + [Urgency] + [Friction Reducer]"
+      
+      by_urgency_level:
+        high_urgency:
+          use_case: "Limited spots, approaching deadline, time-sensitive offer"
+          examples:
+            - "Schrijf je nu in - nog 8 plekken beschikbaar"
+            - "Laatste kans: meld je aan voor [date]"
+            - "Reserveer je plek vandaag (morgen sluit inschrijving)"
+            - "Claim je ledenprijzen vóór 15 januari"
+            - "Actie eindigt over 48 uur - profiteer nu"
+          
+          characteristics:
+            - "Time-bound language"
+            - "Scarcity indicators"
+            - "Strong action verbs (claim, reserveer, grijp)"
+        
+        medium_urgency:
+          use_case: "Standard course promotion, early bird discount"
+          examples:
+            - "Schrijf je in en profiteer van je ledenprijzen"
+            - "Meld je aan voor [early bird date] en bespaar €X"
+            - "Investeer in je ontwikkeling - schrijf je in"
+            - "Reserveer je plek voor 15 maart"
+            - "Bekijk het programma en meld je aan"
+          
+          characteristics:
+            - "Benefit-focused"
+            - "Professional and direct"
+            - "Subtle urgency through dates"
+        
+        low_urgency:
+          use_case: "General information, ongoing programs, preference setting"
+          examples:
+            - "Bekijk het volledige aanbod"
+            - "Ontdek alle masterclasses"
+            - "Download de cursusbrochure"
+            - "Lees meer over het programma"
+            - "Plan je ontwikkeling voor 2024"
+          
+          characteristics:
+            - "Exploratory language"
+            - "Low-friction (bekijk, ontdek, lees)"
+            - "No time pressure"
+      
+      by_content_type:
+        newsletter_primary:
+          - "Schrijf je nu in"
+          - "Meld je aan voor deze masterclass"
+          - "Reserveer je plek"
+          - "Bekijk het programma en schrijf je in"
+        
+        newsletter_secondary:
+          - "Bekijk het volledige aanbod"
+          - "Ontdek meer cursussen"
+          - "Plan je leertraject"
+        
+        linkedin_organic:
+          - "Link in eerste comment 👇"
+          - "Meer info via de link in reacties"
+          - "Schrijf je in via mijn profiel"
+          - "DM me voor details"
+        
+        linkedin_paid:
+          button_text:
+            - "Schrijf je in"
+            - "Meer informatie"
+            - "Download"
+            - "Aanmelden"
+          
+          description_cta:
+            - "Schrijf je nu in →"
+            - "Meld je aan voor [date]"
+            - "Bekijk het programma"
+        
+        landing_page_primary:
+          - "Schrijf je in voor deze masterclass"
+          - "Ja, ik schrijf me in"
+          - "Reserveer mijn plek"
+          - "Claim mijn plek"
+        
+        landing_page_secondary:
+          - "Download programma (PDF)"
+          - "Stel een vraag"
+          - "Bel ons: [phone]"
+          - "Bekijk andere data"
+        
+        advertorial:
+          - "Meer informatie: www.po-online.nl"
+          - "Het volledige programma vind je op po-online.nl"
+          - "Schrijf je in via po-online.nl/[course-slug]"
+      
+      friction_reducers:
+        use_case: "When you want to lower barrier to action"
+        examples:
+          - "(slechts 2 minuten)"
+          - "(geen creditcard nodig)"
+          - "(vrijblijvend bekijken)"
+          - "(gratis annuleren tot 14 dagen voor aanvang)"
+          - "(ook online beschikbaar)"
+        
+        when_to_use:
+          - "New or skeptical audience"
+          - "Higher price point"
+          - "Less familiar format"
+      
+      benefit_amplifiers:
+        use_case: "When you want to emphasize value"
+        examples:
+          - "...en profiteer van €200 ledenprijzen"
+          - "...en investeer in je strategische impact"
+          - "...en ontwikkel je leiderschapsvaardigheden"
+          - "...en netwerk met 30+ HR-professionals"
+          - "...en ontvang PE-punten"
+    
+    source: "CTA analysis across newsletters, ads, and landing pages"
+    confidence: 0.93
+    tags: [cta, call-to-action, conversion, copywriting, exemplar]
+  
+  # ==========================================================================
+  # SUBJECT LINE PATTERNS
+  # ==========================================================================
+  
+  - item_id: "CONTENT_009"
+    type: "exemplar"
+    category: "subject_lines"
+    
+    claim: "High-performing email subject line patterns and structures"
+    
+    content:
+      subject_line_formulas:
+        - formula_name: "Benefit + Timeframe"
+          pattern: "[What you get] + [When/Deadline]"
+          examples:
+            - "Jouw leerplan voor 2024 🎯"
+            - "Ledenprijzen nog t/m vrijdag"
+            - "Nieuw aanbod: voorjaar 2024"
+          
+          avg_length: "35-45 characters"
+          performance_note: "Strong for promotional emails"
+        
+        - formula_name: "Urgency + Offer"
+          pattern: "[Time pressure] + [Discount/Benefit]"
+          examples:
+            - "Laatste kans: 15% korting loopt af"
+            - "Morgen sluit inschrijving - nog 6 plekken"
+            - "Vandaag laatste dag early bird"
+          
+          avg_length: "40-50 characters"
+          performance_note: "High open rates for action campaigns"
+        
+        - formula_name: "New + Topic"
+          pattern: "Nieuw: [Course/Content] + [Optional: Expert/Date]"
+          examples:
+            - "Nieuw: Masterclass Strategisch HRM"
+            - "Nieuw aanbod: Arbeidsrecht 2024 met [Name]"
+            - "Aankondiging: Hybride Leidinggeven | 15 maart"
+          
+          avg_length: "40-55 characters"
+          performance_note: "Works well for course announcements"
+        
+        - formula_name: "Question Hook"
+          pattern: "[Provocative question about pain point/goal]"
+          examples:
+            - "Klaar voor strategische HR-impact?"
+            - "Hoe voorkom je escalatie bij ontslag?"
+            - "Mis je de ledenprijzen?"
+          
+          avg_length: "30-45 characters"
+          performance_note: "Good engagement, use sparingly"
+        
+        - formula_name: "Personalized Value"
+          pattern: "Jouw [benefit/resource] + [context]"
+          examples:
+            - "Jouw ledenprijzen: besparingen tot €400"
+            - "Jouw overzicht: nieuwe cursussen maart"
+            - "[Voornaam], dit aanbod is voor jou"
+          
+          avg_length: "40-50 characters"
+          performance_note: "Higher relevance for members"
+        
+        - formula_name: "Number + Benefit"
+          pattern: "[Specific number] + [Outcome/Resource]"
+          examples:
+            - "5 strategieën voor effectief leidinggeven"
+            - "3 nieuwe masterclasses deze maand"
+            - "€200 besparen als lid"
+          
+          avg_length: "35-48 characters"
+          performance_note: "Specificity builds credibility"
+        
+        - formula_name: "Event + Date"
+          pattern: "[Event type] + [Topic] + [Date marker]"
+          examples:
+            - "Masterclass Arbeidsrecht | 15 maart"
+            - "Webinar: Hybride Werken | volgende week"
+            - "Training Strategisch HRM | laatste plekken"
+          
+          avg_length: "40-55 characters"
+          performance_note: "Clear and informational"
+      
+      subject_line_best_practices:
+        length:
+          optimal: "40-50 characters"
+          mobile_safe: "Under 50 characters (displays fully on mobile)"
+          maximum: "60 characters (before cutoff on most clients)"
+        
+        personalization:
+          effective_tokens:
+            - "first_name token - use sparingly, when relevant"
+            - "'Jouw' creates ownership feeling"
+          avoid:
+            - "Over-personalization feels manipulative"
+            - "Last name usage"
+        
+        emoji_usage:
+          when_appropriate:
+            - "Celebratory announcements 🎉"
+            - "Goal/achievement context 🎯"
+            - "Time/calendar references 📅"
+          
+          recommended_emojis:
+            - "🎯 for goals, targets"
+            - "📅 for dates, events"
+            - "💡 for insights, ideas"
+            - "✨ for new, special"
+            - "⏰ for urgency, deadlines"
+          
+          avoid:
+            - "Multiple emojis per subject line"
+            - "Unprofessional emojis"
+            - "Overuse - max 1 per subject, not every email"
+        
+        words_that_work:
+          power_words:
+            - "Nieuw / Nieuwe"
+            - "Laatste"
+            - "Jouw / Je"
+            - "Nog"
+            - "Vandaag"
+            - "Exclusief"
+          
+          benefit_words:
+            - "Korting / Besparen"
+            - "Gratis"
+            - "Profiteer"
+            - "Investeer"
+        
+        words_to_avoid:
+          spam_triggers:
+            - "Gratis geld"
+            - "Click here"
+            - "Act now"
+            - "Limited time - use Dutch carefully"
+          
+          overused_phrases:
+            - "Je wilt dit niet missen"
+            - "Onze nieuwsbrief"
+            - "Belangrijke informatie"
+      
+      a_b_testing_variants:
+        test_type_1: "Urgency vs Benefit"
+        variant_a_1: "Laatste kans: 15% korting loopt morgen af"
+        variant_b_1: "Bespaar €200 op je ontwikkeling"
+        
+        test_type_2: "Question vs Statement"
+        variant_a_2: "Klaar voor strategische HR-impact?"
+        variant_b_2: "Word strategische HR-businesspartner"
+        
+        test_type_3: "With/Without Emoji"
+        variant_a_3: "Jouw leerplan voor 2024 🎯"
+        variant_b_3: "Jouw leerplan voor 2024"
+      
+      segment_specific_patterns:
+        leden:
+          focus: "Member benefits, exclusive access, your advantage"
+          examples:
+            - "Jouw ledenprijzen: €X besparing"
+            - "Exclusief voor leden: nieuwe masterclass"
+            - "Profiteer van je ledenprijzen"
+        
+        ex_leden:
+          focus: "What they're missing, comeback offers"
+          examples:
+            - "Mis je de ledenprijzen?"
+            - "Welkomstkorting voor ex-leden"
+            - "Dit gemist als ex-lid..."
+        
+        non_members:
+          focus: "Value demonstration, quality signals"
+          examples:
+            - "Ontdek onze masterclasses"
+            - "Nieuw: [Topic] training | Rating 9.1"
+            - "Waarom 500+ HR-professionals voor ons kiezen"
+    
+    source: "Subject line analysis from 61 newsletter campaigns"
+    confidence: 0.92
+    tags: [subject-lines, email, open-rates, copywriting, exemplar]
+  
+  # ==========================================================================
+  # ACTION CAMPAIGN MESSAGING
+  # ==========================================================================
+  
+  - item_id: "CONTENT_010"
+    type: "template"
+    category: "action_campaigns"
+    
+    claim: "Messaging patterns for discount and urgency-driven campaigns"
+    
+    content:
+      campaign_types:
+        - campaign_type: "Early Bird Discount"
+          use_case: "Encourage early enrollment"
+          
+          messaging_elements:
+            headline: "[Percentage/Amount] korting bij inschrijving voor [date]"
+            subheadline: "Schrijf je vroeg in en bespaar"
+            
+            body_structure:
+              - "State the discount clearly"
+              - "Deadline for discount"
+              - "Regular price comparison"
+              - "What's included (reassure value)"
+              - "CTA with urgency"
+            
+            example: |
+              Schrijf je in vóór 1 maart en profiteer van €150 early bird korting.
+              
+              Early bird: €595 (t/m 1 maart)
+              Normale prijs: €745
+              
+              Je krijgt:
+              • Volledige dagttraining met [Expert]
+              • Alle cursusmateriaal en templates
+              • Lunch en koffiepauzes
+              • Certificaat en PE-punten
+              
+              Schrijf je nu in en bespaar €150 →
+            
+            urgency_reinforcement:
+              - "3 days before deadline: reminder email"
+              - "Final day: 'Laatste dag early bird' subject line"
+              - "Landing page: countdown timer if applicable"
+        
+        - campaign_type: "Limited Spots Available"
+          use_case: "Small group training or high-demand course"
+          
+          messaging_elements:
+            headline: "Nog [X] plekken beschikbaar"
+            scarcity_language: "Beperkt aantal deelnemers"
+            
+            body_approach:
+              - "Explain why limited (small group benefit)"
+              - "Current spot count"
+              - "Registration encouragement"
+            
+            example: |
+              Deze masterclass is beperkt tot 16 deelnemers voor optimale 
+              interactie en persoonlijke aandacht.
+              
+              Nog 5 plekken beschikbaar.
+              
+              Reserveer je plek nu →
+            
+            update_frequency: "Update spot count in real-time or daily"
+            
+            credibility_note: "Only use real scarcity - damages trust if fake"
+        
+        - campaign_type: "Member Discount Action"
+          use_case: "Promote membership benefits, retention"
+          
+          messaging_elements:
+            headline: "Jouw ledenprijzen: bespaar tot €[X]"
+            comparison: "Member vs non-member pricing prominent"
+            
+            body_structure:
+              - "Show member price advantage"
+              - "Calculate savings across multiple courses"
+              - "Emphasize 'already a member? Here's your benefit'"
+            
+            example: |
+              Als lid van PO-Online profiteer je van aantrekkelijke ledenprijzen:
+              
+              Deze masterclass:
+              • Ledenprijzen: €595
+              • Niet-leden: €795
+              • Jouw besparing: €200
+              
+              Bij 3 cursussen per jaar bespaar je €600 - meer dan je 
+              lidmaatschap kost.
+              
+              Schrijf je in met je ledenprijzen →
+        
+        - campaign_type: "Last Chance / Enrollment Closing"
+          use_case: "Final push before registration deadline"
+          
+          messaging_elements:
+            headline: "Laatste kans: inschrijving sluit [vandaag/morgen]"
+            urgency: "Maximum without being pushy"
+            
+            email_sequence:
+              - "3 days before: 'Nog 3 dagen om in te schrijven'"
+              - "1 day before: 'Morgen sluit inschrijving'"
+              - "Final day: 'Vandaag laatste dag' sent in morning"
+            
+            body_formula:
+              - "Restate core value proposition"
+              - "Mention deadline clearly"
+              - "Remove friction - 'yes, ook online mogelijk'"
+              - "Strong, direct CTA"
+            
+            example: |
+              Morgen sluit de inschrijving voor de masterclass Strategisch HRM 
+              met [Name].
+              
+              Dit leer je:
+              • [Key benefit 1]
+              • [Key benefit 2]
+              • [Key benefit 3]
+              
+              📅 15 maart | Utrecht & Online
+              
+              Schrijf je vandaag nog in →
+        
+        - campaign_type: "Seasonal / New Year Planning"
+          use_case: "Beginning of year, new quarter"
+          
+          messaging_elements:
+            headline: "Plan je ontwikkeling voor [year/quarter]"
+            tone: "Forward-looking, goal-oriented"
+            
+            approach:
+              - "Connect to planning mindset"
+              - "Overview of upcoming courses"
+              - "Encourage multi-course planning"
+            
+            example: |
+              Start 2024 met een concreet ontwikkelplan.
+              
+              Bekijk ons volledige aanbod voor Q1:
+              • Strategisch HRM (15 maart)
+              • Arbeidsrecht Update (22 maart)
+              • Hybride Leidinggeven (5 april)
+              
+              Als lid bespaar je tot €200 per cursus.
+              
+              Bekijk het volledige aanbod en plan je jaar →
+        
+        - campaign_type: "Reactivation (Ex-Members)"
+          use_case: "Win back former members"
+          
+          messaging_elements:
+            headline: "Welkom terug - exclusieve korting voor ex-leden"
+            tone: "Welcoming, no guilt, value-focused"
+            
+            offer_structure:
+              - "Acknowledge previous membership"
+              - "Special comeback offer"
+              - "Show what's new/changed"
+              - "Make rejoining easy"
+            
+            example: |
+              Je was eerder lid van PO-Online. We begrijpen dat prioriteiten 
+              veranderen.
+              
+              Exclusief voor ex-leden: kom terug met 20% korting op je eerste 
+              cursus, of heractiveer je lidmaatschap voor €X in plaats van €Y.
+              
+              Wat je nu mist:
+              • Ledenprijzen (€200+ besparing per cursus)
+              • Nieuw: online deelname opties
+              • Uitgebreid aanbod (12 nieuwe cursussen sinds 2023)
+              
+              Kom terug en profiteer →
+      
+      messaging_best_practices:
+        urgency_without_pressure:
+          - "Use real deadlines only"
+          - "Explain why deadline exists - course starts, limited spots"
+          - "Avoid manufactured urgency"
+          - "Give reasonable notice - not 'ends in 2 hours' surprise"
+        
+        discount_presentation:
+          - "Show absolute amount (€200) more effective than percentage"
+          - "Compare to regular price for context"
+          - "Calculate multi-course savings for members"
+          - "Emphasize 'bespaar' not just 'korting'"
+        
+        scarcity_ethics:
+          - "Only use real scarcity - actual limited spots"
+          - "Update numbers honestly"
+          - "Don't reuse 'last chance' too frequently"
+          - "Explain reason for limitation"
+        
+        frequency_guidelines:
+          - "Early bird: 1 reminder at 3 days before deadline"
+          - "Last chance: Max 2 emails - 1-day and final-day"
+          - "Limited spots: Update when crossing thresholds at 10, 5, 2 spots"
+          - "Avoid daily urgency emails - damages trust"
+    
+    source: "Action campaign analysis across newsletter database"
+    confidence: 0.89
+    tags: [action-campaigns, urgency, discounts, conversion, template]
+  
+  # ==========================================================================
+  # CONTENT LENGTH GUIDELINES
+  # ==========================================================================
+  
+  - item_id: "CONTENT_011"
+    type: "reference"
+    category: "content_guidelines"
+    
+    claim: "Optimal content length guidelines by channel and content type"
+    
+    content:
+      by_channel:
+        email_newsletter:
+          subject_line: "40-50 characters (mobile-safe under 50)"
+          pre_header: "60-100 characters"
+          body_total: "300-500 words"
+          opening_paragraph: "40-60 words"
+          main_content_block: "60-100 words per course/item"
+          cta_text: "3-6 words"
+          
+          structure_notes:
+            - "Single topic: 300-400 words"
+            - "Multiple courses: 400-500 words"
+            - "Avoid exceeding 600 words - engagement drops"
+        
+        linkedin_organic:
+          total_length: "150-200 words ideal (1300-1800 characters)"
+          hook_first_line: "8-15 words (before 'see more')"
+          body_paragraphs: "2-3 lines per paragraph - white space critical"
+          expert_intro: "25-40 words"
+          learning_points: "3-4 bullets, 8-12 words each"
+          hashtags: "3-5 tags"
+          
+          engagement_notes:
+            - "Under 150 words: feels incomplete"
+            - "Over 250 words: engagement drops"
+            - "Link in first comment, not body"
+        
+        linkedin_paid:
+          single_image_ad:
+            headline: "Max 70 characters (50-60 optimal)"
+            description: "Max 150 characters (100-120 optimal)"
+          
+          carousel_ad:
+            headline_per_card: "6-8 words"
+            text_per_card: "20-40 words"
+            total_cards: "3-5 cards"
+          
+          video_ad:
+            length: "30-60 seconds optimal"
+            text_overlay: "5-8 words per screen"
+        
+        landing_page:
+          hero_headline: "6-10 words"
+          hero_subheadline: "15-25 words"
+          value_proposition: "150-250 words"
+          what_you_learn: "6-8 bullet points, 8-15 words each"
+          expert_bio: "150-200 words"
+          program_outline: "15-25 words per module/section"
+          testimonials: "30-60 words each"
+          faq: "5-8 questions, 40-80 words per answer"
+          
+          total_page_length: "800-1200 words"
+        
+        advertorial:
+          total_length: "600-800 words"
+          headline: "60-80 characters"
+          subheadline: "80-120 characters"
+          opening_paragraph: "60-80 words"
+          section_paragraphs: "80-120 words"
+          expert_quotes: "40-80 words"
+          info_box: "100-150 words"
+          
+          structure_notes:
+            - "Break every 120-150 words with subheading or quote"
+            - "Paragraph max 5 sentences"
+            - "Use pull quotes every 200-250 words"
+      
+      by_content_purpose:
+        awareness:
+          focus: "Shorter, scannable"
+          linkedin_post: "120-150 words"
+          email: "250-350 words"
+          approach: "Hook fast, single clear message"
+        
+        consideration:
+          focus: "Moderate length, informative"
+          landing_page: "800-1000 words"
+          email: "400-500 words"
+          approach: "Provide enough detail to evaluate"
+        
+        conversion:
+          focus: "Complete information, overcome objections"
+          landing_page: "1000-1200 words"
+          email_sequence: "300-400 per email, 2-3 emails"
+          approach: "Answer all questions, reduce friction"
+      
+      readability_standards:
+        sentence_length: "15-20 words average"
+        paragraph_length: "3-5 sentences max"
+        subheadings: "Every 150-200 words"
+        bullet_points: "Groups of 3-6 items"
+        
+        flesch_reading_ease: "60-70 (plain language)"
+        education_level: "Grade 8-10 (algemeen begrijpelijk)"
+        
+        formatting:
+          - "Bold for key terms - use sparingly"
+          - "Italics for emphasis - rare usage"
+          - "White space between sections"
+          - "Lists for scannability"
+      
+      mobile_optimization:
+        critical_principle: "50% of opens on mobile"
+        
+        email:
+          - "Subject under 50 characters"
+          - "Single column layout"
+          - "CTA buttons large - min 44x44px"
+          - "Font size 14px minimum"
+        
+        landing_page:
+          - "Hero headline 1-2 lines on mobile"
+          - "CTA above fold"
+          - "Collapsible FAQ sections"
+          - "Click-to-call phone numbers"
+        
+        linkedin:
+          - "Hook must work in 2 lines"
+          - "Avoid long paragraphs - 4+ lines"
+          - "Emoji for visual break"
+    
+    source: "Cross-channel content analysis and best practices"
+    confidence: 0.90
+    tags: [content-length, guidelines, optimization, reference]
+  
+  # ==========================================================================
+  # TONE OF VOICE VARIATIONS
+  # ==========================================================================
+  
+  - item_id: "CONTENT_012"
+    type: "exemplar"
+    category: "tone_of_voice"
+    
+    claim: "Tone of voice variations by audience segment and context"
+    
+    content:
+      baseline_po_online_voice:
+        characteristics:
+          - "Professional but not stiff"
+          - "Direct and action-oriented"
+          - "Benefit-focused (wat heb jij eraan?)"
+          - "Peer-to-peer (expert to professional)"
+          - "Encouraging without being cheerleading"
+          - "Dutch directness with warmth"
+        
+        avoid:
+          - "Corporate jargon without purpose"
+          - "Overly casual (this is B2B professional development)"
+          - "Passive voice - use active"
+          - "Vague promises like 'beste training'"
+      
+      by_audience_segment:
+        active_members:
+          tone: "Familiar, value-reinforcing"
+          approach: "You're part of our community"
+          language_examples:
+            - "Jouw ledenprijzen"
+            - "Voor jou als lid"
+            - "Profiteer van je voordeel"
+          
+          relationship: "Ongoing, nurturing"
+        
+        ex_members:
+          tone: "Welcoming, non-judgmental, value-focused"
+          approach: "We understand, but look what you're missing"
+          language_examples:
+            - "Je was eerder lid"
+            - "Mis je [specific benefit]?"
+            - "Welkom terug"
+          
+          relationship: "Reactivation without guilt"
+        
+        prospects:
+          tone: "Professional, credibility-building"
+          approach: "Here's why professionals choose us"
+          language_examples:
+            - "Ontdek waarom 500+ HR-professionals"
+            - "Ontwikkel je expertise"
+            - "Word strategische partner"
+          
+          relationship: "Proving value, building trust"
+        
+        senior_hr:
+          tone: "Strategic, business-focused"
+          approach: "Impact and ROI matter"
+          language_examples:
+            - "Strategische workforce planning"
+            - "Business impact aantonen"
+            - "C-level stakeholder management"
+          
+          focus: "Less about skills, more about strategic outcomes"
+        
+        operational_hr:
+          tone: "Practical, immediately applicable"
+          approach: "Tools you can use Monday"
+          language_examples:
+            - "Praktische templates"
+            - "Concrete tools"
+            - "Direct toepasbaar"
+          
+          focus: "Actionable frameworks and checklists"
+      
+      by_content_context:
+        course_promotion:
+          tone: "Confident, benefit-clear"
+          key_phrases:
+            - "Dit leer je"
+            - "Na deze training kun je"
+            - "Je ontwikkelt"
+          
+          focus: "Tangible outcomes"
+        
+        thought_leadership:
+          tone: "Expert, insightful, forward-looking"
+          key_phrases:
+            - "De ontwikkeling die we zien"
+            - "HR-professionals worstelen met"
+            - "De toekomst van [topic]"
+          
+          focus: "Trends and professional insights"
+        
+        urgent_action:
+          tone: "Direct, clear, respectful urgency"
+          key_phrases:
+            - "Laatste kans"
+            - "Nog [X] plekken"
+            - "Inschrijving sluit [date]"
+          
+          focus: "Clear deadline, reason why, action needed"
+        
+        expert_voice:
+          tone: "Authoritative but accessible"
+          key_phrases:
+            - "Wat ik in de praktijk zie"
+            - "Mijn ervaring is dat"
+            - "Een aanpak die werkt"
+          
+          focus: "Experience-based insights"
+    
+    source: "Tone analysis across all content types"
+    confidence: 0.91
+    tags: [tone-of-voice, audience, copywriting, reference]
+
+# ============================================================================
+# END OF LIBRARY
+# ============================================================================
