@@ -55,7 +55,7 @@ jij_vorm:
     pronouns:
       you: "jij / je"
       your: "jouw / je"
-      example: "Wat jij gaat maken" (What you will create)
+      example: "Wat jij gaat maken (What you will create)"
 
     greeting:
       informal: ["Hoi!", "Hey!", "Hallo!"]
