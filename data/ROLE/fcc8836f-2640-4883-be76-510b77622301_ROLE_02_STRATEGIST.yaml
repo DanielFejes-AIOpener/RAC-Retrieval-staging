@@ -1,11 +1,11 @@
 # ROLE_02_STRATEGIST.yaml
 meta:
-  owner: "AIO"
+  owner: "AI Opener"
   version: "2.0.0"
   last_updated: "2026-01-09"
   purpose: "Build campaign strategy, positioning, and KPI frameworks"
-  tags: [roles, strategist, campaign-strategy, positioning, segmentation, funnel, measurement, briefs]
   notes: "Framework-based strategist for full-funnel planning, messaging architecture, and measurement design."
+  tags: [roles, strategist, campaign_strategy, positioning, segmentation, funnel, measurement, briefs]
 
 extends: "ROLE_00_BASE_TEMPLATE"
 
@@ -88,7 +88,7 @@ deliverables:
       Deliverables & formats; Must/never; KPIs & guardrails; Timeline; Stakeholders.
     done_when: "All fields complete, SMART KPIs defined, 4-eyes check passed, client Freigabe recorded."
     evidence: ["Brief vX with approvals", "Evidence table with tier ratings", "Risk/compliance notes"]
-    success_metric: "Concepts meeting brief at gate ≥85%; tier_1 or tier_2 evidence for all claims."
+    success_metric: "Concepts meeting brief at gate ≥85%; evidence score ≥4 for all claims."
     handoff_to: "ROLE_03_CREATIVE"
     handoff_artifact: "Signed brief + gate checklist"
   - name: "Audience Definition"
@@ -245,7 +245,7 @@ workflow_stages:
       - "Insight stack (problem, opportunity, audience tensions, category codes)"
       - "Positioning hypothesis"
       - "Segmentation framework"
-    done_when: "Insight stack validated with client and team; tier_1 or tier_2 evidence"
+    done_when: "Insight stack validated with client and team; evidence tier ≥3"
     
   stage_3_strategy_architecture:
     when: "Insights locked; ready to build the strategic plan"
@@ -389,7 +389,7 @@ kpis:
   core:
     - "Brief first-pass approval ≥ 80%"
     - "Concept pass rate at gate ≥ 80%"
-    - "tier_1 or tier_2 evidence for all factual claims"
+    - "Evidence score ≥ 4/5 for all factual claims"
     - "Learning-loop cadence ≥ 2 experiments/month"
     - "Data completeness for key events ≥ 95%; UTM hygiene ≥ 95%"
   leading_indicators:
@@ -405,7 +405,7 @@ completion_criteria:
       done_when: "Client-approved with recorded Freigabe; risks and assumptions logged."
       evidence: ["Approved deck","Approval log","Assumption register"]
       success_threshold: "≥80% first-pass approval"
-      quality_gates: ["tier_1 or tier_2 evidence","Benchmarks cited","Localization notes where public-facing"]
+      quality_gates: ["Evidence tier ≥4","Benchmarks cited","Localization notes where public-facing"]
       failure_mode: "Missing SMART KPIs or unsubstantiated RTBs → rework 'insight & KPI' sections."
     Creative Brief:
       done_when: "All mandatory fields complete; 4-eyes; client signoff."
@@ -479,7 +479,7 @@ defaults:
   localization_markets: ["NL","DE","UK"]
 
 dod_ready:
-  - "Brief signed with SMART KPIs and tier_1 or tier_2 evidence"
+  - "Brief signed with SMART KPIs and evidence tier ≥4"
   - "Concept scorecard applied; pass recorded"
   - "KPI→Event→UTM mapped; data QA ≥95%"
   - "Journey map approved; tests queued"

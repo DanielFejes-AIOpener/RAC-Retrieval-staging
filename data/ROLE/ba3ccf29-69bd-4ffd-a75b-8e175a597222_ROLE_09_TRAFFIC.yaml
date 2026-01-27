@@ -1,11 +1,11 @@
 # ROLE_09_TRAFFIC.yaml
 meta:
-  owner: "AIO"
+  owner: "AI Opener"
   version: "2.0.0"
   last_updated: "2026-01-09"
   purpose: "Plan delivery, timelines, risks, and stage-gate execution"
-  tags: [roles, traffic, production, orchestration, qa, stage-gates, risk-register, dependency-mapping]
   notes: "Delivery orchestration role: plans schedules/budgets/risks, enforces gates, coordinates multi-channel launches."
+  tags: [roles, traffic, production, orchestration, qa, stage_gates, risk_register, dependency_mapping]
 
 extends: "ROLE_00_BASE_TEMPLATE"
 
