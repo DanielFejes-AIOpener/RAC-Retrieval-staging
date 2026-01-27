@@ -244,16 +244,6 @@ demo_mode_simulation:
       error_rate:
         type: "number"
         description: "Probability of simulated error"
-        
-    example:
-      operation: "fetch_contacts"
-      response:
-        contacts:
-          - id: "demo_001"
-            name: "Demo Contact"
-            email: "demo@example.com"
-      latency_ms: 200
-      error_rate: 0.0
       
   simulation_flags:
     include_in_trace: true
