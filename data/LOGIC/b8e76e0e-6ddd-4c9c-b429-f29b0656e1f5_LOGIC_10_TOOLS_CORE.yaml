@@ -4,10 +4,10 @@
 
 meta:
   owner: "AI Opener"
-  version: "2.0.0"
-  last_updated: "2026-01-08"
+  version: "2.1.0"
+  last_updated: "2026-01-22"
   purpose: "Unified tools core: tool registry, capability routing, and execution mechanics (SSOT)"
-  notes: "v2.0.0 - Added Nano-Banana image rendering tool + prompt-only fallback; clarified capability routing defaults"
+  notes: "v2.1.0 - Added query_rac tool for agent RAC file retrieval"
   tags: [logic, tools, api, resilience, ssot]
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -108,6 +108,38 @@ tool_registry:
       rate_limit:
         requests_per_minute: 60
         
+    tool_query_rac:
+      id: "tool_query_rac"
+      name: "Query RAC"
+      description: "Retrieve resolved RAC configuration files. Returns fully-resolved content (inheritance applied, $refs expanded) directly into agent context."
+      category: "data"
+      input_schema:
+        type: "object"
+        properties:
+          path:
+            type: "string"
+            required: true
+            description: "RAC path in format LAYER/FILE_ID or LAYER/FILE_ID/SECTION (e.g., 'OPS/STYLE_OPTIONS', 'LOGIC/QUALITY_GATES/libraries_gates')"
+          client:
+            type: "string"
+            description: "Optional client slug for client-specific overrides"
+        required: ["path"]
+      output_schema:
+        type: "object"
+        properties:
+          path:
+            type: "string"
+            description: "Requested path"
+          resolved:
+            type: "boolean"
+            description: "Whether resolution succeeded"
+          content:
+            type: "object"
+            description: "Fully-resolved RAC content (inheritance applied, $refs expanded)"
+      timeout_ms: 5000
+      rate_limit:
+        requests_per_minute: 120
+
     tool_search_rag:
       id: "tool_search_rag"
       name: "RAG Search"
@@ -342,6 +374,11 @@ capability_tool_mapping:
       description: "Ordered fallback tools to try if preferred fails"
       default: []
   mappings:
+    # Configuration Retrieval
+    rac_query:
+      preferred_tool: "tool_query_rac"
+      fallbacks: []
+      
     # Research
     market_research:
       preferred_tool: "tool_search_web"
