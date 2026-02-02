@@ -117,14 +117,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const accessGrants = CLIENT_ACCESS_GRANTS[clientSlug] || [];
     const hasAccessGrant = accessGrants.some(grant => requestedFileId.includes(grant.toUpperCase()));
     
+    // Build list of all allowed client files for this endpoint
+    const allAllowed = [allowedFileId, 'BASE_TEMPLATE', ...accessGrants.map(g => g.toUpperCase())];
+    
     // Only allow access to own client file, BASE_TEMPLATE, or granted sub-clients
     if (requestedFileId !== allowedFileId && !requestedFileId.includes('BASE_TEMPLATE') && !hasAccessGrant) {
-      return res.status(403).json({
+      // Check for typos - normalize by removing special chars for comparison
+      const normalizedRequest = requestedFileId.replace(/[_-]/g, '');
+      const similar = allAllowed.filter(allowed => {
+        const normalizedAllowed = allowed.replace(/[_-]/g, '');
+        return normalizedAllowed.includes(normalizedRequest) || 
+               normalizedRequest.includes(normalizedAllowed) ||
+               normalizedAllowed === normalizedRequest;
+      });
+      
+      const errorResponse: any = {
         error: true,
         code: 'ACCESS_DENIED',
         message: `Access denied: cannot access other clients' data from /${clientSlug} endpoint`,
         hint: `You can only access CLIENT/${allowedFileId}, CLIENT/BASE_TEMPLATE${accessGrants.length > 0 ? `, or granted sub-clients: ${accessGrants.join(', ')}` : ''}`
-      });
+      };
+      
+      // Add typo suggestions if we found similar matches
+      if (similar.length > 0 && !similar.includes(requestedFileId)) {
+        errorResponse.did_you_mean = similar.map(s => `CLIENT/${s}`);
+      }
+      
+      errorResponse.allowed_paths = allAllowed.map(a => `CLIENT/${a}`);
+      
+      return res.status(403).json(errorResponse);
     }
   }
 
