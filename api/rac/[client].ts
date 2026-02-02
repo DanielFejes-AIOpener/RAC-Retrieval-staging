@@ -276,6 +276,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 function handleGetIndex(clientSlug: string, res: VercelResponse) {
   const index = getFileIndex();
   
+  // Get this client's allowed CLIENT files
+  const clientFileId = CLIENT_FILE_MAP[clientSlug] || '';
+  const ownClientFile = clientFileId.replace(/^CLIENT_\d+_/, '');
+  const accessGrants = CLIENT_ACCESS_GRANTS[clientSlug] || [];
+  const allowedClientFiles = new Set([
+    'BASE_TEMPLATE',
+    ownClientFile.toUpperCase(),
+    ...accessGrants.map(g => g.toUpperCase())
+  ]);
+  
   // Build structured response by layer
   const available: Record<string, { shared: string[]; client_specific: string[] }> = {};
   
@@ -322,12 +332,27 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
         // Extract short name from LAYER_NN_NAME pattern
         const match = key.match(/^[A-Z_]+_\d+_(.+)$/);
         if (match) {
-          shared.push(match[1]);
+          const shortName = match[1];
+          // For CLIENT layer, filter to only allowed files
+          if (layer === 'CLIENT') {
+            if (allowedClientFiles.has(shortName.toUpperCase())) {
+              shared.push(shortName);
+            }
+          } else {
+            shared.push(shortName);
+          }
         } else if (key.includes(':')) {
           // It's a layer:shortName format, extract shortName
           const shortName = key.split(':')[1];
           if (shortName && !shared.includes(shortName)) {
-            shared.push(shortName);
+            // For CLIENT layer, filter to only allowed files
+            if (layer === 'CLIENT') {
+              if (allowedClientFiles.has(shortName.toUpperCase())) {
+                shared.push(shortName);
+              }
+            } else {
+              shared.push(shortName);
+            }
           }
         }
       }
@@ -365,11 +390,6 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
   
   return res.status(200).json({
     client: clientSlug,
-    description: `Available RAC files for client '${clientSlug}'`,
-    usage: {
-      query_file: `POST /api/rac/${clientSlug} with body: { "path": "LAYER/FILE_ID" }`,
-      query_section: `POST /api/rac/${clientSlug} with body: { "path": "LAYER/FILE_ID/SECTION" }`
-    },
     layers: available,
     all_paths: paths.sort()
   });
