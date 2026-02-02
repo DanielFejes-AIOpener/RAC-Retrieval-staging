@@ -12,7 +12,14 @@ const CLIENT_FILE_MAP: Record<string, string> = {
   'msn': 'CLIENT_01_MSN',
   'reducate': 'CLIENT_02_PO_ONLINE',
   'aaa': 'CLIENT_01_AAA',  // No CLIENT file yet, but ORG/LIBRARY overrides exist
+  'prorail': 'CLIENT_01_PRORAIL',
 };
+
+// All available layers
+const ALL_LAYERS = ['CONFIG', 'CLIENT', 'LOGIC', 'OPS', 'ORG', 'PACK', 'ROLE', 'USE_CASE', 'WORKFLOW', 'LIBRARY'];
+
+// Layers that can have client-specific overrides
+const CLIENT_OVERRIDE_LAYERS = ['CLIENT', 'CONFIG', 'ORG', 'PACK', 'ROLE', 'LIBRARY'];
 
 // Client-specific role remapping (old role → new role)
 // Used to redirect legacy role names to client-specific versions
@@ -39,10 +46,6 @@ interface RequestBody {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: true, code: 'METHOD_NOT_ALLOWED', message: 'Only POST allowed' });
-  }
-
   // Get client from URL
   const clientSlug = (req.query.client as string)?.toLowerCase();
   
@@ -53,6 +56,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       message: `Unknown client: ${clientSlug}`,
       available_clients: Object.keys(CLIENT_FILE_MAP)
     });
+  }
+
+  // GET: Return available files index for this client
+  if (req.method === 'GET') {
+    return handleGetIndex(clientSlug, res);
+  }
+
+  // POST: Query specific file
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: true, code: 'METHOD_NOT_ALLOWED', message: 'Only GET and POST allowed' });
   }
 
   const clientFileId = CLIENT_FILE_MAP[clientSlug];
@@ -234,6 +247,111 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       message: error instanceof Error ? error.message : 'Unknown error'
     });
   }
+}
+
+/**
+ * Handle GET requests - return available files index for client
+ */
+function handleGetIndex(clientSlug: string, res: VercelResponse) {
+  const index = getFileIndex();
+  
+  // Build structured response by layer
+  const available: Record<string, { shared: string[]; client_specific: string[] }> = {};
+  
+  for (const layer of ALL_LAYERS) {
+    const shared: string[] = [];
+    const clientSpecific: string[] = [];
+    
+    for (const [key, filePath] of Object.entries(index)) {
+      // Skip client-prefixed entries when looking for shared files
+      if (key.startsWith('clients:')) {
+        // Check if this is for our client
+        if (!key.startsWith(`clients:${clientSlug}:`)) continue;
+        
+        // Check if file is in this layer
+        if (!filePath.includes(`/${layer}/`)) continue;
+        
+        // Only use layer:shortName format (clients:{slug}:{layer}:{shortName})
+        // This avoids duplicates from the cleanId format
+        const clientLayerPrefix = `clients:${clientSlug}:${layer}:`;
+        if (key.startsWith(clientLayerPrefix)) {
+          const shortName = key.substring(clientLayerPrefix.length);
+          clientSpecific.push(shortName);
+        } else {
+          // Handle non-standard format (clients:{slug}:{LAYER_NAME}) 
+          // Only if no layer:shortName format exists for this file
+          const cleanId = key.substring(`clients:${clientSlug}:`.length);
+          if (cleanId.startsWith(`${layer}_`)) {
+            // Check if a standard format key exists for this file
+            const shortName = cleanId.substring(`${layer}_`.length);
+            // Strip _NN_ prefix if present to get actual short name
+            const actualShortName = shortName.replace(/^\d+_/, '');
+            const standardKey = `clients:${clientSlug}:${layer}:${actualShortName}`;
+            // Only add if no standard key exists
+            if (!index[standardKey]) {
+              clientSpecific.push(shortName);
+            }
+          }
+        }
+        continue;
+      }
+      
+      // Check if this is a shared file in this layer
+      if (filePath.includes(`/data/${layer}/`) || filePath.includes(`\\data\\${layer}\\`)) {
+        // Extract short name from LAYER_NN_NAME pattern
+        const match = key.match(/^[A-Z_]+_\d+_(.+)$/);
+        if (match) {
+          shared.push(match[1]);
+        } else if (key.includes(':')) {
+          // It's a layer:shortName format, extract shortName
+          const shortName = key.split(':')[1];
+          if (shortName && !shared.includes(shortName)) {
+            shared.push(shortName);
+          }
+        }
+      }
+    }
+    
+    // Dedupe and sort
+    const uniqueShared = Array.from(new Set(shared)).sort();
+    const uniqueClientSpecific = Array.from(new Set(clientSpecific)).sort();
+    
+    // Only include layer if it has files
+    if (uniqueShared.length > 0 || uniqueClientSpecific.length > 0) {
+      available[layer] = {
+        shared: uniqueShared,
+        client_specific: uniqueClientSpecific
+      };
+    }
+  }
+  
+  // Build path list for easy access
+  const paths: string[] = [];
+  for (const [layer, files] of Object.entries(available)) {
+    // Client-specific files take precedence
+    const clientFiles = new Set(files.client_specific);
+    
+    for (const file of files.client_specific) {
+      paths.push(`${layer}/${file}`);
+    }
+    for (const file of files.shared) {
+      // Only add shared if not overridden by client-specific
+      if (!clientFiles.has(file)) {
+        paths.push(`${layer}/${file}`);
+      }
+    }
+  }
+  
+  return res.status(200).json({
+    client: clientSlug,
+    description: `Available RAC files for client '${clientSlug}'`,
+    usage: {
+      query_file: `POST /api/rac/${clientSlug} with body: { "path": "LAYER/FILE_ID" }`,
+      query_section: `POST /api/rac/${clientSlug} with body: { "path": "LAYER/FILE_ID/SECTION" }`
+    },
+    layers: available,
+    all_paths: paths.sort()
+  });
 }
 
 function findClientFileById(clientFileId: string, clientSlug?: string): string | null {
