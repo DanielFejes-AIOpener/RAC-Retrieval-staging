@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_04_PLATFORM.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,191 +8,110 @@ meta:
   notes: "v2.0 - Platform identity and runtime constants"
   tags: [logic, platform, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# PLATFORM IDENTITY
-# ══════════════════════════════════════════════════════════════════════════════
-
 platform_identity:
-  description: "Core platform identification"
-  
   name: "RAC"
   full_name: "Retrieval-Augmented Composition"
   version: "2.0.0"
-  
   branding:
     internal_name: "RAC"
     display_name: "AI Opener Platform"
     tagline: "Domain-expert AI agents for B2B marketing"
-    
   provider:
     organization: "AI Opener"
     website: "https://aiopener.com"
     support: "support@aiopener.com"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# AGENT SELF-AWARENESS
-# ══════════════════════════════════════════════════════════════════════════════
-
 agent_self_awareness:
-  description: "How agents understand and reference themselves"
-  
   identity_context:
-    description: "Context injected into agent prompts for self-reference"
-    
     default_identity:
       name: "AI Assistant"
       nature: "AI-powered marketing specialist"
       provider: "AI Opener"
-      
     identity_rules:
       - "Agents acknowledge being AI when directly asked"
       - "Agents do not pretend to be human"
       - "Agents reference their role name when introducing themselves"
       - "Agents can explain their capabilities honestly"
-      
     self_reference_patterns:
       first_person: "I"
       possessive: "my"
       role_reference: "{role_name}"
       platform_reference: "AI Opener platform"
-      
   capability_awareness:
-    description: "What agents know about their own capabilities"
-    
     can_describe:
       - "Current active role and capabilities"
       - "Available knowledge sources"
       - "Limitations and constraints"
       - "Confidence levels"
-      
     cannot_claim:
       - "Access to systems not configured"
       - "Real-time data without tool access"
       - "Capabilities outside defined role"
       - "Human-level judgment or liability"
-      
   memory_awareness:
-    description: "What agents know about their memory"
-    
     session_context:
-      description: "Within a session, agents maintain conversation context"
       behavior: "Can reference earlier messages in current conversation"
-      
     cross_session:
-      description: "Across sessions, agents rely on persisted data"
       behavior: "Reference CLIENT/ORG context, not prior conversations unless logged"
-      
     honest_about_limits:
       - "Acknowledge when context is insufficient"
       - "Request clarification when needed"
       - "Note when referencing stored vs session data"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# RUNTIME PARAMETERS
-# ══════════════════════════════════════════════════════════════════════════════
-
 runtime_parameters:
-  description: "Global runtime constants and defaults"
-  
   environment:
-    description: "Runtime environment designation"
     source: "$ref: CONFIG_00_INSTANCE#instance.environment"
-    values:
-      - production
-      - staging
-      - development
-      - demo
+    values: [production, staging, development, demo]
     default: "production"
-    
   timezone:
-    description: "Default timezone for date/time operations"
     default: "Europe/Amsterdam"
     source_priority:
       1: "CLIENT.preferences.timezone"
       2: "ORG.defaults.timezone"
       3: "runtime_parameters.timezone.default"
-      
   locale:
-    description: "Default locale for formatting"
     default: "nl-NL"
     source_priority:
       1: "CLIENT.preferences.locale"
       2: "ORG.defaults.locale"
       3: "runtime_parameters.locale.default"
-      
   date_format:
-    description: "Date formatting standards"
     iso: "YYYY-MM-DD"
     display:
       nl: "DD-MM-YYYY"
       en: "MM/DD/YYYY"
       de: "DD.MM.YYYY"
     default: "iso"
-    
   model_defaults:
-    description: "Default model configurations"
     source: "$ref: CONFIG_00_INSTANCE#instance.defaults.model"
-    
     primary:
       provider: "anthropic"
       model: "claude-sonnet-4-20250514"
-      
     fallback:
       provider: "openai"
       model: "gpt-4o"
-      
     fast:
       provider: "anthropic"
       model: "claude-3-5-haiku-20241022"
-      use_case: "Quick tasks, classification"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# SESSION CONTEXT
-# ══════════════════════════════════════════════════════════════════════════════
 
 session_context:
-  description: "Session-level runtime state"
-  
   session_id:
-    description: "Unique identifier for current session"
     format: "uuid-v4"
     generated_at: "session_start"
-    
   correlation_id:
-    description: "Trace correlation for distributed operations"
     format: "uuid-v4"
     propagation: "Pass to all downstream operations"
-    
   active_context:
-    description: "Currently loaded context files"
-    tracks:
-      - active_client
-      - active_packs
-      - active_roles
-      - active_use_case
-      - active_workflow
-      
+    tracks: [active_client, active_packs, active_roles, active_use_case, active_workflow]
   session_state:
-    description: "Mutable session state"
-    includes:
-      - conversation_history
-      - current_phase
-      - pending_approvals
-      - checkpoints
-      
+    includes: [conversation_history, current_phase, pending_approvals, checkpoints]
   session_limits:
     max_duration_hours: 24
     max_tokens_per_session: 1000000
     max_tool_calls_per_session: 1000
     checkpoint_interval_minutes: 15
 
-# ══════════════════════════════════════════════════════════════════════════════
-# PLATFORM CONSTANTS
-# ══════════════════════════════════════════════════════════════════════════════
-
 platform_constants:
-  description: "Immutable platform-level constants"
-  
   file_patterns:
     config: "CONFIG_*.yaml"
     demo: "DEMO_*.yaml"
@@ -206,57 +123,30 @@ platform_constants:
     workflow: "WORKFLOW_*.yaml"
     org: "ORG_*.yaml"
     client: "CLIENT_*.yaml"
-    
   reserved_ids:
-    description: "IDs reserved for system use"
-    prefixes:
-      - "sys_"
-      - "rac_"
-      - "internal_"
-    system_roles:
-      - "ROLE_00_BASE_TEMPLATE"
-      - "ROLE_01_ORCHESTRATOR"
-    system_ops:
-      - "OPS_00_STANDARDS"
-      
+    prefixes: ["sys_", "rac_", "internal_"]
+    system_roles: ["ROLE_00_BASE_TEMPLATE", "ROLE_01_ORCHESTRATOR"]
+    system_ops: ["OPS_00_STANDARDS"]
   max_limits:
     file_size_kb: 500
     array_items: 1000
     nesting_depth: 10
     ref_chain_depth: 5
 
-# ══════════════════════════════════════════════════════════════════════════════
-# FEATURE FLAGS
-# ══════════════════════════════════════════════════════════════════════════════
-
 feature_flags:
-  description: "Platform feature toggles"
-  
   flags:
     rag_enabled:
-      description: "Enable RAG retrieval"
       default: true
-      
     multi_agent_enabled:
-      description: "Enable multi-agent orchestration"
       default: true
-      
     simulation_mode_available:
-      description: "Allow simulation/sandbox mode"
       default: true
-      
     advanced_trace_enabled:
-      description: "Enable detailed trace logging"
       default: false
-      
     policy_capture_enabled:
-      description: "Enable automatic policy capture from feedback"
       default: false
-      
     image_generation_enabled:
-      description: "Enable image generation capabilities"
       default: false
-      
   evaluation:
     order: ["CLIENT", "ORG", "CONFIG", "default"]
     strategy: "first-defined-wins"

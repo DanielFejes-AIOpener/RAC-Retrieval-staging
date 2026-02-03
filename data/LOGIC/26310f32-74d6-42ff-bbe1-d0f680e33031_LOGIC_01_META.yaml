@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_01_META.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,52 +8,35 @@ meta:
   notes: "v2.0 - Complete ref validation with known valid targets"
   tags: [logic, meta, validation, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# CANONICAL META TEMPLATE
-# ══════════════════════════════════════════════════════════════════════════════
-
 canonical_meta_template:
-  description: "Required structure for all RAC file meta sections"
-  
   fields:
     owner:
       type: "string"
       required: true
       validation: "non-empty"
-      description: "Organization that maintains this file"
-      
     version:
       type: "string"
       required: true
       validation: "semver"
       pattern: "^\\d+\\.\\d+\\.\\d+$"
-      description: "Semantic versioning (major.minor.patch)"
-      
     last_updated:
       type: "date"
       required: true
       validation: "ISO8601"
       pattern: "^\\d{4}-\\d{2}-\\d{2}$"
-      description: "ISO date of last change"
-      
     purpose:
       type: "string"
       required: true
       validation: "max_length: 100"
-      description: "One-line description of file purpose"
-      
     notes:
       type: "string"
       required: false
       default: ""
-      description: "Optional context, warnings, or changelog notes"
-      
     tags:
       type: "array"
       required: true
       items: "string"
       validation: "$ref: LOGIC_03_TAXONOMY#valid_tags"
-      description: "Classification tags from controlled vocabulary"
 
   layer_extensions:
     CONFIG:
@@ -63,7 +44,6 @@ canonical_meta_template:
         type: "enum"
         values: ["production", "staging", "development"]
         required: true
-        
     CLIENT:
       - field: "client_id"
         type: "string"
@@ -75,111 +55,48 @@ canonical_meta_template:
         type: "enum"
         values: ["starter", "professional", "enterprise"]
         required: true
-        
     PACKS:
       - field: "portability"
         type: "enum"
         values: ["portable", "org-specific", "client-specific"]
         required: true
 
-# ══════════════════════════════════════════════════════════════════════════════
-# $REF VALIDATION RULES
-# ══════════════════════════════════════════════════════════════════════════════
-
 ref_validation:
-  description: "Validate all $ref paths resolve to existing targets"
-  
   syntax:
     pattern: "$ref: {FILE}#{PATH}"
     file_pattern: "{LAYER}_{NN}_{NAME}"
     path_separator: "."
-    examples:
-      - "$ref: LOGIC_02_RETRIEVAL#override_rules"
-      - "$ref: LOGIC_08_QUALITY_GATES#universal_gates.entry.base"
-      - "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.company_authoritative"
-      
   validation_rules:
     - rule: "FILE must exist in declared layer directory"
       on_failure: "error"
-      message: "Referenced file not found: {file}"
-      
     - rule: "PATH must exist as key in FILE"
       on_failure: "error"
-      message: "Referenced path not found: {file}#{path}"
-      
     - rule: "Nested paths use dot notation"
-      example: "#universal_gates.entry.base"
-      
     - rule: "Self-references within same file use #path only"
-      example: "$ref: #override_rules"
-      
   build_time_check:
     enabled: true
     action: "Parse all YAML files, extract $ref values, validate targets"
-    output: "List of broken refs with file:line locations"
     on_failure: "block_startup"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# KNOWN VALID REFS (Canonical SSOT Targets)
-# ══════════════════════════════════════════════════════════════════════════════
-
 known_valid_refs:
-  description: "Canonical $ref targets that must exist - validation reference"
-  
-  LOGIC_00_INDEX:
-    - "auto_inheritance"
-    - "boot_sequence"
-    - "layers"
-    - "override_strategy"
-    
+  LOGIC_00_INDEX: ["auto_inheritance", "boot_sequence", "layers", "override_strategy"]
   LOGIC_02_RETRIEVAL:
     - "base_dependencies_template"
     - "override_rules"
     - "override_rules.immutable_paths"
     - "override_rules.strategies"
-    - "override_rules.exceptions"
-    - "override_rules.exceptions.evidence_precedence"
-    - "override_rules.exceptions.use_case_registry_conflict"
     - "graceful_degradation_patterns"
-    - "graceful_degradation_patterns.severity_levels"
     - "layer_degradation_templates"
-    - "layer_degradation_templates.demo"
-    - "layer_degradation_templates.config"
-    - "layer_degradation_templates.logic"
-    - "layer_degradation_templates.ops"
-    - "layer_degradation_templates.roles"
-    - "layer_degradation_templates.packs"
-    - "layer_degradation_templates.use_cases"
-    - "layer_degradation_templates.workflows"
-    - "layer_degradation_templates.org"
-    - "layer_degradation_templates.client"
-    - "layer_degradation_templates.libraries"
     - "libraries_mechanics"
-    - "libraries_mechanics.eligibility"
-    - "libraries_mechanics.allowlist_precedence"
-    - "libraries_mechanics.runtime_scoping"
-    - "graceful_degradation_patterns.patterns"
     - "version_management"
     - "common_validation_checklist"
-    
   LOGIC_05_RAG_MECHANICS:
     - "vector_store"
-    - "vector_store.providers"
-    - "vector_store.namespace_strategy"
     - "embedding_models"
-    - "embedding_models.models"
-    - "embedding_models.selection"
     - "chunking"
-    - "chunking.strategies"
-    - "chunking.by_content_type"
     - "retrieval_pipeline"
-    - "retrieval_pipeline.stages"
     - "change_detection"
     - "libraries_retrieval"
-    - "libraries_retrieval.namespace_strategy"
-    - "libraries_retrieval.mandatory_metadata_filtering"
-    - "libraries_retrieval.cross_scope_prevention"
-    
   LOGIC_06_ORCHESTRATION:
     - "orchestration_modes"
     - "mode_selection_guidance"
@@ -187,72 +104,28 @@ known_valid_refs:
     - "simulation_mode"
     - "orchestrator_contract"
     - "library_discovery_step"
-    - "library_discovery_step.inputs"
-    - "library_discovery_step.process"
-    - "library_discovery_step.outputs"
-    
   LOGIC_08_QUALITY_GATES:
     - "universal_gates"
-    - "universal_gates.entry"
-    - "universal_gates.entry.base"
-    - "universal_gates.entry.use_case_additions"
-    - "universal_gates.entry.workflow_additions"
-    - "universal_gates.exit"
-    - "universal_gates.exit.base"
-    - "universal_gates.exit.use_case_additions"
-    - "universal_gates.exit.workflow_additions"
     - "evidence_tiers"
-    - "evidence_tiers.tier_1"
-    - "evidence_tiers.tier_2"
-    - "evidence_tiers.tier_3"
     - "source_reliability"
     - "evidence_item_schema"
-    - "evidence_item_schema.required_fields"
-    - "evidence_item_schema.optional_fields"
     - "combined_assessment"
-    - "combined_assessment.matrix"
-    - "combined_assessment.decision_rules"
     - "libraries_gates"
-    - "libraries_gates.scoping_gate"
-    - "libraries_gates.discovery_gate"
     - "library_gap_report_schema"
-    - "library_gap_report_schema.required_fields"
-    - "library_gap_report_schema.optional_fields"
-    
   LOGIC_09_INTERFACE:
     - "output_standards"
-    - "output_standards.accessibility"
-    - "output_standards.dei_requirements"
-    - "output_standards.formatting"
     - "hitl_triggers"
-    - "hitl_triggers.confidence_bands"
-    - "hitl_triggers.human_required"
-    - "hitl_triggers.escalation_path"
-    
   LOGIC_16_POLICY_CAPTURE:
     - "enforcement_actions"
-    - "enforcement_actions.block"
-    - "enforcement_actions.redact"
-    - "enforcement_actions.require_hitl"
-    - "enforcement_actions.library_scope_violation"
     - "policy_evaluation"
-    - "policy_evaluation.precedence"
-    - "policy_evaluation.scope"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# STRUCTURAL VALIDATION
-# ══════════════════════════════════════════════════════════════════════════════
 
 structural_validation:
   yaml_syntax:
     enabled: true
     on_failure: "error"
-    
   duplicate_keys:
     enabled: true
     on_failure: "error"
-    message: "Duplicate key detected: {key} at line {line}"
-    
   required_sections:
     by_layer:
       CONFIG: ["meta", "activation", "instance"]

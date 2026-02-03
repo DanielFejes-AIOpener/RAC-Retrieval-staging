@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_11_TRACE.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,426 +8,135 @@ meta:
   notes: "v2.0 - Complete trace schema with retention and sampling"
   tags: [logic, trace, audit, logging, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TRACE EVENTS (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 trace_events:
-  description: "Standard trace event types"
-  
   events:
     session_start:
-      description: "Session initiated"
-      required_fields:
-        - session_id
-        - timestamp
-        - client_id
-        - org_id
-      optional_fields:
-        - user_id
-        - initial_context
-        
+      required_fields: [session_id, timestamp, client_id, org_id]
+      optional_fields: [user_id, initial_context]
     session_end:
-      description: "Session completed or terminated"
-      required_fields:
-        - session_id
-        - timestamp
-        - duration_ms
-        - status
-      optional_fields:
-        - summary
-        - error
-        
+      required_fields: [session_id, timestamp, duration_ms, status]
+      optional_fields: [summary, error]
     request_received:
-      description: "User request received"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - request_type
-      optional_fields:
-        - request_hash
-        - intent_classification
-        
+      required_fields: [correlation_id, timestamp, request_type]
+      optional_fields: [request_hash, intent_classification]
     response_sent:
-      description: "Response delivered to user"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - response_type
-        - duration_ms
-      optional_fields:
-        - response_size
-        - quality_score
-        
+      required_fields: [correlation_id, timestamp, response_type, duration_ms]
+      optional_fields: [response_size, quality_score]
     role_activated:
-      description: "Agent role activated"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - role_id
-      optional_fields:
-        - context_loaded
-        - capabilities
-        
+      required_fields: [correlation_id, timestamp, role_id]
+      optional_fields: [context_loaded, capabilities]
     use_case_started:
-      description: "Use case execution started"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - use_case_id
-      optional_fields:
-        - parameters
-        - mode
-        
+      required_fields: [correlation_id, timestamp, use_case_id]
+      optional_fields: [parameters, mode]
     use_case_completed:
-      description: "Use case execution completed"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - use_case_id
-        - status
-        - duration_ms
-      optional_fields:
-        - deliverables
-        - quality_score
-        
+      required_fields: [correlation_id, timestamp, use_case_id, status, duration_ms]
+      optional_fields: [deliverables, quality_score]
     workflow_phase_entered:
-      description: "Workflow phase started"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - workflow_id
-        - phase_id
-      optional_fields:
-        - entry_conditions_met
-        
+      required_fields: [correlation_id, timestamp, workflow_id, phase_id]
+      optional_fields: [entry_conditions_met]
     workflow_phase_exited:
-      description: "Workflow phase completed"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - workflow_id
-        - phase_id
-        - status
-      optional_fields:
-        - exit_conditions_met
-        - deliverables
-        
+      required_fields: [correlation_id, timestamp, workflow_id, phase_id, status]
+      optional_fields: [exit_conditions_met, deliverables]
     handoff:
-      description: "Work handed off between roles/phases"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - from_actor
-        - to_actor
-        - handoff_type
-      optional_fields:
-        - payload_summary
-        - validation_status
-        
+      required_fields: [correlation_id, timestamp, from_actor, to_actor, handoff_type]
+      optional_fields: [payload_summary, validation_status]
     tool_call:
-      description: "External tool invoked"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - tool_id
-        - status
-        - duration_ms
-      optional_fields:
-        - input_hash
-        - output_size
-        - retry_count
-        
+      required_fields: [correlation_id, timestamp, tool_id, status, duration_ms]
+      optional_fields: [input_hash, output_size, retry_count]
     hitl_triggered:
-      description: "Human-in-the-loop triggered"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - trigger_type
-        - reason
-      optional_fields:
-        - options_presented
-        - escalation_level
-        
+      required_fields: [correlation_id, timestamp, trigger_type, reason]
+      optional_fields: [options_presented, escalation_level]
     hitl_resolved:
-      description: "Human-in-the-loop resolved"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - resolution
-        - resolved_by
-        - resolution_time_ms
-      optional_fields:
-        - feedback
-        
+      required_fields: [correlation_id, timestamp, resolution, resolved_by, resolution_time_ms]
+      optional_fields: [feedback]
     quality_gate_checked:
-      description: "Quality gate evaluated"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - gate_type
-        - gate_id
-        - result
-      optional_fields:
-        - checks_passed
-        - checks_failed
-        - details
-        
+      required_fields: [correlation_id, timestamp, gate_type, gate_id, result]
+      optional_fields: [checks_passed, checks_failed, details]
     evidence_used:
-      description: "Evidence cited in output"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - evidence_id
-        - tier
-        - reliability
-      optional_fields:
-        - claim_supported
-        - freshness_check
-        
+      required_fields: [correlation_id, timestamp, evidence_id, tier, reliability]
+      optional_fields: [claim_supported, freshness_check]
     error_occurred:
-      description: "Error during processing"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - error_code
-        - severity
-      optional_fields:
-        - error_message
-        - stack_trace
-        - recovery_action
-        
+      required_fields: [correlation_id, timestamp, error_code, severity]
+      optional_fields: [error_message, stack_trace, recovery_action]
     checkpoint_created:
-      description: "Recovery checkpoint saved"
-      required_fields:
-        - correlation_id
-        - timestamp
-        - checkpoint_id
-        - workflow_id
-      optional_fields:
-        - state_hash
-        - size_bytes
-
-# ══════════════════════════════════════════════════════════════════════════════
-# TRACE SCHEMA
-# ══════════════════════════════════════════════════════════════════════════════
+      required_fields: [correlation_id, timestamp, checkpoint_id, workflow_id]
+      optional_fields: [state_hash, size_bytes]
 
 trace_schema:
-  description: "Standard fields for all trace records"
-  
   required_fields:
-    correlation_id:
-      type: "string"
-      format: "uuid-v4"
-      description: "Links all events in a request chain"
-      
-    timestamp:
-      type: "string"
-      format: "ISO-8601"
-      description: "Event occurrence time"
-      
-    event_type:
-      type: "string"
-      enum: "$ref: #trace_events.events"
-      description: "Type of trace event"
-      
-    layer:
-      type: "string"
-      description: "RAC layer where event occurred"
-      
-    actor:
-      type: "string"
-      description: "Role or component that generated event"
-      
+    correlation_id: { type: "string", format: "uuid-v4" }
+    timestamp: { type: "string", format: "ISO-8601" }
+    event_type: { type: "string", enum: "$ref: #trace_events.events" }
+    layer: { type: "string" }
+    actor: { type: "string" }
   optional_fields:
-    session_id:
-      type: "string"
-      description: "Session context"
-      
-    parent_correlation_id:
-      type: "string"
-      description: "Parent event for nested traces"
-      
-    client_id:
-      type: "string"
-      description: "Client context"
-      
-    org_id:
-      type: "string"
-      description: "Organization context"
-      
-    environment:
-      type: "string"
-      description: "Runtime environment"
-      
-    version:
-      type: "string"
-      description: "RAC version"
-      
-    metadata:
-      type: "object"
-      description: "Event-specific additional data"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# TRACE LAYERS
-# ══════════════════════════════════════════════════════════════════════════════
+    session_id: { type: "string" }
+    parent_correlation_id: { type: "string" }
+    client_id: { type: "string" }
+    org_id: { type: "string" }
+    environment: { type: "string" }
+    version: { type: "string" }
+    metadata: { type: "object" }
 
 trace_layers:
-  description: "Two-layer trace presentation"
   reference: "$ref: LOGIC_09_INTERFACE#trace_output"
-  
   user_facing:
-    description: "Simplified trace for end users"
     marker: "#trace"
-    
-    includes:
-      - "Action summaries"
-      - "Key decisions"
-      - "Sources used"
-      - "Quality indicators"
-      
-    excludes:
-      - "Internal model prompts"
-      - "System IDs"
-      - "Raw tool names"
-      - "Technical error details"
-      
-    format:
-      style: "narrative"
-      max_items: 10
-      grouping: "by_phase"
-      
+    includes: ["Action summaries", "Key decisions", "Sources used", "Quality indicators"]
+    excludes: ["Internal model prompts", "System IDs", "Raw tool names", "Technical error details"]
+    format: { style: "narrative", max_items: 10, grouping: "by_phase" }
   audit_layer:
-    description: "Full trace for compliance and debugging"
     marker: "#detail"
-    
-    includes:
-      - "All events"
-      - "Full context"
-      - "Evidence citations"
-      - "HITL checkpoints"
-      - "Quality gate results"
-      - "Timestamps"
-      - "Correlation chain"
-      
-    format:
-      style: "structured"
-      include_all: true
-      
-    access:
-      requires: "audit_role"
-      logged: true
-
-# ══════════════════════════════════════════════════════════════════════════════
-# SAMPLING CONFIGURATION
-# ══════════════════════════════════════════════════════════════════════════════
+    includes: ["All events", "Full context", "Evidence citations", "HITL checkpoints", "Quality gate results", "Timestamps", "Correlation chain"]
+    format: { style: "structured", include_all: true }
+    access: { requires: "audit_role", logged: true }
 
 sampling:
-  description: "Trace sampling for high-volume scenarios"
-  
   strategies:
     always_sample:
-      description: "Events always captured"
-      applies_to:
-        - "hitl_triggered"
-        - "hitl_resolved"
-        - "error_occurred"
-        - "quality_gate_checked"
-        - "evidence_used"
+      applies_to: ["hitl_triggered", "hitl_resolved", "error_occurred", "quality_gate_checked", "evidence_used"]
       sample_rate: 1.0
-      
     high_sample:
-      description: "High sampling rate"
-      applies_to:
-        - "session_start"
-        - "session_end"
-        - "use_case_started"
-        - "use_case_completed"
-        - "workflow_phase_entered"
-        - "workflow_phase_exited"
+      applies_to: ["session_start", "session_end", "use_case_started", "use_case_completed", "workflow_phase_entered", "workflow_phase_exited"]
       sample_rate: 0.9
-      
     standard_sample:
-      description: "Standard sampling"
-      applies_to:
-        - "request_received"
-        - "response_sent"
-        - "role_activated"
-        - "handoff"
+      applies_to: ["request_received", "response_sent", "role_activated", "handoff"]
       sample_rate: 0.5
-      
     low_sample:
-      description: "Low sampling for high-volume events"
-      applies_to:
-        - "tool_call"
-        - "checkpoint_created"
+      applies_to: ["tool_call", "checkpoint_created"]
       sample_rate: 0.1
-      
   override:
-    debug_mode:
-      sample_rate: 1.0
-      description: "Sample everything in debug mode"
-      
-    high_risk:
-      sample_rate: 1.0
-      description: "Sample everything for high-risk workflows"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# RETENTION POLICIES
-# ══════════════════════════════════════════════════════════════════════════════
+    debug_mode: { sample_rate: 1.0 }
+    high_risk: { sample_rate: 1.0 }
 
 retention:
-  description: "Trace data retention policies"
-  
   tiers:
     hot:
-      description: "Immediately accessible"
       duration_days: 7
       storage: "primary_database"
       query_latency: "< 100ms"
-      
     warm:
-      description: "Accessible with slight delay"
       duration_days: 30
       storage: "archive_database"
       query_latency: "< 5s"
-      
     cold:
-      description: "Archived for compliance"
       duration_days: 365
       storage: "object_storage"
       query_latency: "< 60s"
-      
     permanent:
-      description: "Never deleted"
-      applies_to:
-        - "hitl_resolved"
-        - "quality_gate_checked (failures)"
-        - "error_occurred (critical)"
+      applies_to: ["hitl_resolved", "quality_gate_checked (failures)", "error_occurred (critical)"]
       storage: "compliance_archive"
-      
   deletion:
     automatic: true
     gdpr_compliant: true
     on_client_request: "anonymize within 30 days"
-    
   aggregation:
-    description: "Aggregate old data before archival"
     at_transition:
       hot_to_warm: "none"
       warm_to_cold: "daily_rollup"
-    preserve_raw:
-      - "hitl events"
-      - "critical errors"
-      - "quality failures"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# REDACTION RULES
-# ══════════════════════════════════════════════════════════════════════════════
+    preserve_raw: ["hitl events", "critical errors", "quality failures"]
 
 redaction:
-  description: "Sensitive data redaction in traces"
-  
   always_redact:
     - pattern: "api_key"
       replacement: "[REDACTED_API_KEY]"
@@ -441,18 +148,10 @@ redaction:
       replacement: "[INTERNAL]"
     - pattern: "model_prompt"
       replacement: "[PROMPT_REDACTED]"
-      
   pii_patterns:
-    email:
-      pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
-      replacement: "[EMAIL_REDACTED]"
-    phone:
-      pattern: "\\+?[0-9]{10,15}"
-      replacement: "[PHONE_REDACTED]"
-    ssn:
-      pattern: "\\d{3}-\\d{2}-\\d{4}"
-      replacement: "[SSN_REDACTED]"
-      
+    email: { pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", replacement: "[EMAIL_REDACTED]" }
+    phone: { pattern: "\\+?[0-9]{10,15}", replacement: "[PHONE_REDACTED]" }
+    ssn: { pattern: "\\d{3}-\\d{2}-\\d{4}", replacement: "[SSN_REDACTED]" }
   context_specific:
     user_facing_traces:
       redact: ["internal_id", "model_prompt", "raw_tool_name"]
@@ -460,43 +159,18 @@ redaction:
       redact: ["api_key", "password", "auth_token"]
       preserve: ["internal_id", "correlation_id"]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TRACE RECONSTRUCTION
-# ══════════════════════════════════════════════════════════════════════════════
-
 trace_reconstruction:
-  description: "How to reconstruct complete trace from events"
-  
   query_patterns:
-    by_correlation_id:
-      description: "Get all events for a request"
-      index: "correlation_id"
-      
-    by_session:
-      description: "Get all events in a session"
-      index: "session_id"
-      
-    by_workflow:
-      description: "Get all events for a workflow instance"
-      index: "workflow_id"
-      
-    by_time_range:
-      description: "Get events in time window"
-      index: "timestamp"
-      
+    by_correlation_id: { index: "correlation_id" }
+    by_session: { index: "session_id" }
+    by_workflow: { index: "workflow_id" }
+    by_time_range: { index: "timestamp" }
   reconstruction_steps:
     1: "Query events by correlation_id"
     2: "Sort by timestamp"
     3: "Build event graph using parent_correlation_id"
     4: "Apply redaction rules"
     5: "Format per requested layer (user/audit)"
-    
   visualization:
-    formats:
-      - "timeline"
-      - "waterfall"
-      - "tree"
-    tools:
-      - "built-in trace viewer"
-      - "export to Jaeger"
-      - "export to JSON"
+    formats: ["timeline", "waterfall", "tree"]
+    tools: ["built-in trace viewer", "export to Jaeger", "export to JSON"]

@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_03_TAXONOMY.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,17 +8,9 @@ meta:
   notes: "v2.0 - Complete tag dictionary for RAC 2.0 architecture"
   tags: [logic, taxonomy, tags, classification, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# VALID TAGS (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-# Referenced by LOGIC_01_META for tag validation
-# All meta.tags fields must use values from this dictionary
-
 valid_tags:
-  description: "Master list of all valid tags in RAC"
   validation_mode: "strict"
   unknown_tag_behavior: "error"
-  
   tags:
     # Layer tags
     - config
@@ -33,7 +23,6 @@ valid_tags:
     - workflows
     - org
     - client
-    
     # Function tags
     - index
     - meta
@@ -59,7 +48,6 @@ valid_tags:
     - tags
     - classification
     - case
-    
     # Domain tags
     - marketing
     - copywriting
@@ -77,7 +65,6 @@ valid_tags:
     - advertising
     - brand
     - communications
-    
     # Technical tags
     - ssot
     - boot
@@ -97,7 +84,6 @@ valid_tags:
     - logging
     - compliance
     - simulation
-    
     # Capability tags
     - analysis
     - synthesis
@@ -107,7 +93,6 @@ valid_tags:
     - review
     - generation
     - optimization
-    
     # Quality tags
     - tier_1
     - tier_2
@@ -116,318 +101,115 @@ valid_tags:
     - reliability_b
     - reliability_c
     - reliability_d
-    
     # Risk tags
     - high_risk
     - limited_risk
     - minimal_risk
-    
     # Status tags
     - stable
     - beta
     - experimental
     - deprecated
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TAG CATEGORIES
-# ══════════════════════════════════════════════════════════════════════════════
-
 tag_categories:
-  description: "Organized groupings of valid tags"
-  
   layer:
-    description: "Tags identifying RAC layers"
-    tags:
-      - config
-      - demo
-      - logic
-      - ops
-      - roles
-      - packs
-      - use_cases
-      - workflows
-      - org
-      - client
-    usage: "Identify which layer a file belongs to"
-    
+    tags: [config, demo, logic, ops, roles, packs, use_cases, workflows, org, client]
   function:
-    description: "Tags identifying file function within a layer"
-    tags:
-      - index
-      - meta
-      - retrieval
-      - taxonomy
-      - platform
-      - rag
-      - orchestration
-      - capabilities
-      - quality
-      - interface
-      - tools
-      - trace
-      - governance
-      - integration
-      - pricing
-      - estimation
-      - policy
-      - image
-    usage: "Identify the purpose of a file"
-    
+    tags: [index, meta, retrieval, taxonomy, platform, rag, orchestration, capabilities, quality, interface, tools, trace, governance, integration, pricing, estimation, policy, image]
   domain:
-    description: "Tags for marketing/content domains"
-    tags:
-      - marketing
-      - copywriting
-      - strategy
-      - creative
-      - analytics
-      - research
-      - employer_branding
-      - content
-      - social_media
-      - email
-      - seo
-      - advertising
-      - brand
-      - communications
-    usage: "Categorize content by marketing domain"
-    
+    tags: [marketing, copywriting, strategy, creative, analytics, research, employer_branding, content, social_media, email, seo, advertising, brand, communications]
   technical:
-    description: "Tags for technical/system concepts"
-    tags:
-      - ssot
-      - boot
-      - override
-      - degradation
-      - validation
-      - embeddings
-      - vector
-      - evidence
-      - gates
-      - hitl
-      - ux
-      - output
-      - api
-      - resilience
-      - audit
-      - logging
-      - compliance
-      - simulation
-    usage: "Identify technical functionality"
-    
+    tags: [ssot, boot, override, degradation, validation, embeddings, vector, evidence, gates, hitl, ux, output, api, resilience, audit, logging, compliance, simulation]
   capability:
-    description: "Tags for agent capabilities"
-    tags:
-      - analysis
-      - synthesis
-      - writing
-      - editing
-      - planning
-      - review
-      - generation
-      - optimization
-    usage: "Categorize by capability type"
-    
+    tags: [analysis, synthesis, writing, editing, planning, review, generation, optimization]
   quality:
-    description: "Tags for evidence and quality levels"
-    tags:
-      - tier_1
-      - tier_2
-      - tier_3
-      - reliability_a
-      - reliability_b
-      - reliability_c
-      - reliability_d
-    usage: "Classify evidence quality"
-    
+    tags: [tier_1, tier_2, tier_3, reliability_a, reliability_b, reliability_c, reliability_d]
   risk:
-    description: "Tags for risk classification"
-    tags:
-      - high_risk
-      - limited_risk
-      - minimal_risk
-    usage: "Classify governance risk levels"
-    
+    tags: [high_risk, limited_risk, minimal_risk]
   status:
-    description: "Tags for maturity/readiness status"
-    tags:
-      - stable
-      - beta
-      - experimental
-      - deprecated
-    usage: "Indicate feature readiness"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# TAG VALIDATION RULES
-# ══════════════════════════════════════════════════════════════════════════════
+    tags: [stable, beta, experimental, deprecated]
 
 tag_validation:
-  description: "Rules for validating tag usage"
-  
   rules:
     - rule: "All tags must be lowercase"
       pattern: "^[a-z][a-z0-9_]*$"
-      
     - rule: "Tags must use underscores, not hyphens"
       pattern: "^[^-]+$"
-      
     - rule: "Tags must be from valid_tags list"
       validation: "strict"
       on_violation: "error"
-      
     - rule: "Files should have 2-6 tags"
       minimum: 2
       maximum: 6
       on_violation: "warning"
-      
     - rule: "At least one layer tag required"
       categories_required: ["layer"]
       on_violation: "error"
-      
-  recommendations:
-    - "Include one layer tag (e.g., logic, ops, roles)"
-    - "Include one function tag (e.g., retrieval, interface)"
-    - "Include ssot tag if file defines single source of truth"
-    - "Include domain tags for content-specific files"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# CONTENT TYPE TAXONOMY
-# ══════════════════════════════════════════════════════════════════════════════
 
 content_types:
-  description: "Classification of content produced by agents"
-  
   types:
     strategic:
-      description: "High-level strategy and planning content"
-      examples:
-        - "Campaign strategy"
-        - "Brand positioning"
-        - "Market analysis"
       typical_tags: [strategy, analysis, planning]
-      
     creative:
-      description: "Original creative content"
-      examples:
-        - "Ad copy"
-        - "Social posts"
-        - "Email content"
       typical_tags: [creative, copywriting, generation]
-      
     analytical:
-      description: "Data-driven analysis and insights"
-      examples:
-        - "Performance reports"
-        - "Competitor analysis"
-        - "Audience insights"
       typical_tags: [analytics, analysis, research]
-      
     operational:
-      description: "Process and workflow documentation"
-      examples:
-        - "Playbooks"
-        - "Guidelines"
-        - "SOPs"
       typical_tags: [ops, planning, review]
-      
     editorial:
-      description: "Long-form written content"
-      examples:
-        - "Blog posts"
-        - "Whitepapers"
-        - "Case studies"
       typical_tags: [content, writing, editing]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# CHANNEL TAXONOMY
-# ══════════════════════════════════════════════════════════════════════════════
-
 channel_taxonomy:
-  description: "Marketing channel classification"
-  
   channels:
     owned:
-      description: "Channels owned by the organization"
       items:
         - id: "website"
-          name: "Website"
           tags: [content, seo]
         - id: "blog"
-          name: "Blog"
           tags: [content, seo]
         - id: "email"
-          name: "Email"
           tags: [email, marketing]
         - id: "app"
-          name: "Mobile App"
           tags: [content]
-          
     earned:
-      description: "Channels requiring earned placement"
       items:
         - id: "pr"
-          name: "Public Relations"
           tags: [communications, brand]
         - id: "organic_social"
-          name: "Organic Social"
           tags: [social_media, content]
         - id: "seo"
-          name: "Search (Organic)"
           tags: [seo, content]
         - id: "reviews"
-          name: "Reviews & Ratings"
           tags: [brand]
-          
     paid:
-      description: "Paid advertising channels"
       items:
         - id: "paid_social"
-          name: "Paid Social"
           tags: [social_media, advertising]
         - id: "paid_search"
-          name: "Paid Search"
           tags: [seo, advertising]
         - id: "display"
-          name: "Display Advertising"
           tags: [advertising, creative]
         - id: "programmatic"
-          name: "Programmatic"
           tags: [advertising]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# AUDIENCE TAXONOMY
-# ══════════════════════════════════════════════════════════════════════════════
-
 audience_taxonomy:
-  description: "Target audience classification"
-  
   b2b_personas:
     - id: "c_suite"
-      name: "C-Suite Executive"
       tags: [strategy, brand]
     - id: "director"
-      name: "Director/VP"
       tags: [strategy, analytics]
     - id: "manager"
-      name: "Manager"
       tags: [content, email]
     - id: "practitioner"
-      name: "Individual Contributor"
       tags: [content, social_media]
-      
   journey_stages:
     - id: "awareness"
-      name: "Awareness"
       tags: [brand, content]
     - id: "consideration"
-      name: "Consideration"
       tags: [content, analytics]
     - id: "decision"
-      name: "Decision"
       tags: [email, advertising]
     - id: "retention"
-      name: "Retention"
       tags: [email, content]
     - id: "advocacy"
-      name: "Advocacy"
       tags: [social_media, brand]
