@@ -1,329 +1,118 @@
-# ================================================================
-# OPS_02_VOICES_LIBRARY
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Voice profile templates combining style, persona, and patterns
-# ================================================================
+# OPS_02_VOICES_LIBRARY.yaml
 
 meta:
   owner: "AI Opener"
   version: "2.0.0"
   last_updated: "2025-12-11"
   purpose: "Reusable voice profiles combining style, persona, and communication patterns"
-  notes: "Extracted from legacy OPS_02_VOICES_LIBRARY.yaml and OPS_10_TEMPLATES_LIBRARY.yaml"
   tags: [ops, voice, persona, tone]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# SSOT REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 style_options: "$ref: OPS_01_STYLE_OPTIONS#style_presets"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# VOICE PROFILE SCHEMA
-# ═══════════════════════════════════════════════════════════════════════════
-
 voice_schema:
-  description: "Schema for voice profile definitions"
   required_fields:
-    - field: "id"
-      type: "string"
-      pattern: "voice_{name}"
-    - field: "name"
-      type: "string"
-    - field: "description"
-      type: "string"
-    - field: "style_preset"
-      type: "string"
-      reference: "$ref: OPS_01_STYLE_OPTIONS#style_presets"
-    - field: "traits"
-      type: "array"
-    - field: "use_when"
-      type: "array"
+    - { field: "id", type: "string", pattern: "voice_{name}" }
+    - { field: "name", type: "string" }
+    - { field: "style_preset", type: "string", reference: "$ref: OPS_01_STYLE_OPTIONS#style_presets" }
+    - { field: "traits", type: "array" }
+    - { field: "use_when", type: "array" }
   optional_fields:
-    - field: "style_overrides"
-      type: "object"
-      note: "Dimension adjustments to base preset"
-    - field: "phrases"
-      type: "object"
-      note: "Example phrases and patterns"
-    - field: "avoid"
-      type: "array"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VOICE PROFILES
-# ═══════════════════════════════════════════════════════════════════════════
+    - { field: "style_overrides", type: "object" }
+    - { field: "phrases", type: "object" }
+    - { field: "avoid", type: "array" }
 
 voice_profiles:
-  # -------------------------------------------------------------------------
-  # THOUGHT LEADERSHIP VOICES
-  # -------------------------------------------------------------------------
-  
   founder_thought_leader:
     id: "voice_founder_thought_leader"
     name: "Founder Thought Leader"
-    description: "Visionary founder sharing insights and perspectives with conviction and authenticity"
     style_preset: "$ref: OPS_01_STYLE_OPTIONS#style_presets.professional_authoritative"
-    style_overrides:
-      warmth: 3
-      energy: 4
-    traits:
-      - "Speaks from experience"
-      - "Shares contrarian or original insights"
-      - "Admits uncertainty where appropriate"
-      - "Personal stake visible"
-      - "Forward-looking perspective"
-    use_when:
-      - "Founder/CEO LinkedIn posts"
-      - "Vision pieces"
-      - "Industry commentary"
-      - "Company milestone announcements"
+    style_overrides: { warmth: 3, energy: 4 }
+    traits: ["Speaks from experience", "Shares contrarian or original insights", "Admits uncertainty where appropriate", "Personal stake visible", "Forward-looking perspective"]
+    use_when: ["Founder/CEO LinkedIn posts", "Vision pieces", "Industry commentary", "Company milestone announcements"]
     patterns:
-      opening:
-        - "Here's what I've learned after [experience]..."
-        - "I used to believe [X]. Then [insight changed that]."
-        - "[Counter-intuitive statement]. Let me explain."
-      body:
-        - "Use personal anecdotes to ground abstract points"
-        - "Reference specific numbers/outcomes where possible"
-        - "Acknowledge alternative viewpoints"
-      closing:
-        - "What's your take?"
-        - "I'd love to hear how you're approaching this."
-        - "[Forward-looking statement or question]"
+      opening: ["Here's what I've learned after [experience]...", "I used to believe [X]. Then [insight changed that].", "[Counter-intuitive statement]. Let me explain."]
+      body: ["Use personal anecdotes to ground abstract points", "Reference specific numbers/outcomes where possible", "Acknowledge alternative viewpoints"]
+      closing: ["What's your take?", "I'd love to hear how you're approaching this.", "[Forward-looking statement or question]"]
     phrases:
-      prefer:
-        - "In my experience..."
-        - "What we've found is..."
-        - "The uncomfortable truth is..."
-        - "Here's what actually works:"
-      avoid:
-        - "Experts say..."
-        - "Everyone knows..."
-        - "Trust me on this"
-    authenticity_test:
-      questions:
-        - "Would this person actually say this?"
-        - "Is there a genuine insight or just restating the obvious?"
-        - "Does this reflect real experience or generic advice?"
-      
+      prefer: ["In my experience...", "What we've found is...", "The uncomfortable truth is...", "Here's what actually works:"]
+      avoid: ["Experts say...", "Everyone knows...", "Trust me on this"]
+
   pragmatic_strategist:
     id: "voice_pragmatic_strategist"
     name: "Pragmatic Strategist"
-    description: "Grounded strategic advisor who balances vision with practicality"
     style_preset: "$ref: OPS_01_STYLE_OPTIONS#style_presets.professional_authoritative"
-    style_overrides:
-      warmth: 2
-      directness: 5
-    traits:
-      - "Cuts through complexity"
-      - "Focuses on actionable outcomes"
-      - "Evidence-first approach"
-      - "Acknowledges trade-offs"
-      - "Results-oriented"
-    use_when:
-      - "Strategic recommendations"
-      - "Consulting deliverables"
-      - "Executive briefings"
-      - "Decision frameworks"
+    style_overrides: { warmth: 2, directness: 5 }
+    traits: ["Cuts through complexity", "Focuses on actionable outcomes", "Evidence-first approach", "Acknowledges trade-offs", "Results-oriented"]
+    use_when: ["Strategic recommendations", "Consulting deliverables", "Executive briefings", "Decision frameworks"]
     patterns:
-      opening:
-        - "The real question is..."
-        - "Let's cut to what matters here."
-        - "[Problem statement]. Here's how to approach it."
-      body:
-        - "Structure as problem --> analysis --> recommendation"
-        - "Include trade-offs and considerations"
-        - "Support with relevant evidence"
-      closing:
-        - "The bottom line: [clear recommendation]"
-        - "Start here: [first action]"
+      opening: ["The real question is...", "Let's cut to what matters here.", "[Problem statement]. Here's how to approach it."]
+      body: ["Structure as problem --> analysis --> recommendation", "Include trade-offs and considerations", "Support with relevant evidence"]
+      closing: ["The bottom line: [clear recommendation]", "Start here: [first action]"]
     phrases:
-      prefer:
-        - "The evidence suggests..."
-        - "Given [context], I recommend..."
-        - "The trade-off is..."
-        - "What this means in practice:"
-      avoid:
-        - "\"It depends\" (without specifics)"
-        - "Best practices suggest..."
-        - Hedging without substance
+      prefer: ["The evidence suggests...", "Given [context], I recommend...", "The trade-off is...", "What this means in practice:"]
+      avoid: ["\"It depends\" (without specifics)", "Best practices suggest...", "Hedging without substance"]
 
-  # -------------------------------------------------------------------------
-  # COMPANY/BRAND VOICES
-  # -------------------------------------------------------------------------
-  
   company_authoritative:
     id: "voice_company_authoritative"
     name: "Company Authoritative"
-    description: "Confident organizational voice for official communications"
     style_preset: "$ref: OPS_01_STYLE_OPTIONS#style_presets.professional_authoritative"
-    traits:
-      - "Speaks as the organization"
-      - "Data and evidence-led"
-      - "Clear expertise positioning"
-      - "Consistent with brand values"
-      - "Professional but not robotic"
-    use_when:
-      - "Company LinkedIn posts"
-      - "Press releases"
-      - "Official announcements"
-      - "Industry reports"
+    traits: ["Speaks as the organization", "Data and evidence-led", "Clear expertise positioning", "Consistent with brand values", "Professional but not robotic"]
+    use_when: ["Company LinkedIn posts", "Press releases", "Official announcements", "Industry reports"]
     patterns:
-      opening:
-        - "[Data point or finding]. Here's what it means."
-        - "New research from our team reveals..."
-        - "We've been tracking [trend]. Key findings:"
-      body:
-        - "Lead with most important insight"
-        - "Support with specific data"
-        - "Connect to audience relevance"
-      closing:
-        - "Read more: [link]"
-        - "What trends are you seeing?"
+      opening: ["[Data point or finding]. Here's what it means.", "New research from our team reveals...", "We've been tracking [trend]. Key findings:"]
+      body: ["Lead with most important insight", "Support with specific data", "Connect to audience relevance"]
+      closing: ["Read more: [link]", "What trends are you seeing?"]
     phrases:
-      prefer:
-        - "Our research shows..."
-        - "We've found that..."
-        - "The data indicates..."
-      avoid:
-        - "\"We're excited to announce!\" (overused)"
-        - "Check out our amazing..."
-        - Empty corporate speak
-        
+      prefer: ["Our research shows...", "We've found that...", "The data indicates..."]
+      avoid: ["\"We're excited to announce!\" (overused)", "Check out our amazing...", "Empty corporate speak"]
+
   company_conversational:
     id: "voice_company_conversational"
     name: "Company Conversational"
-    description: "Approachable brand voice for engagement-focused content"
     style_preset: "$ref: OPS_01_STYLE_OPTIONS#style_presets.professional_conversational"
-    traits:
-      - "Approachable and human"
-      - "Values-aligned"
-      - "Community-focused"
-      - "Helpful without being pushy"
-    use_when:
-      - "Social engagement posts"
-      - "Community content"
-      - "Behind-the-scenes content"
-      - "Event promotions"
+    traits: ["Approachable and human", "Values-aligned", "Community-focused", "Helpful without being pushy"]
+    use_when: ["Social engagement posts", "Community content", "Behind-the-scenes content", "Event promotions"]
     patterns:
-      opening:
-        - "We've been thinking about..."
-        - "Question for our community:"
-        - "Something we noticed recently..."
-      body:
-        - "Invite participation"
-        - "Share genuine perspective"
-        - "Keep it brief and scannable"
-      closing:
-        - "Thoughts?"
-        - "What would you add?"
-        - "Join us: [specific CTA]"
+      opening: ["We've been thinking about...", "Question for our community:", "Something we noticed recently..."]
+      body: ["Invite participation", "Share genuine perspective", "Keep it brief and scannable"]
+      closing: ["Thoughts?", "What would you add?", "Join us: [specific CTA]"]
 
-  # -------------------------------------------------------------------------
-  # EDUCATIONAL VOICES
-  # -------------------------------------------------------------------------
-  
   helpful_educator:
     id: "voice_helpful_educator"
     name: "Helpful Educator"
-    description: "Patient teacher explaining concepts clearly without condescension"
     style_preset: "$ref: OPS_01_STYLE_OPTIONS#style_presets.friendly_expert"
-    traits:
-      - "Patient and clear"
-      - "Uses concrete examples"
-      - "Anticipates questions"
-      - "Builds understanding progressively"
-      - "Respects reader intelligence"
-    use_when:
-      - "How-to guides"
-      - "Educational blog posts"
-      - "Onboarding content"
-      - "Explainer content"
+    traits: ["Patient and clear", "Uses concrete examples", "Anticipates questions", "Builds understanding progressively", "Respects reader intelligence"]
+    use_when: ["How-to guides", "Educational blog posts", "Onboarding content", "Explainer content"]
     patterns:
-      opening:
-        - "Let's break this down."
-        - "Here's what you need to know about [topic]:"
-        - "[Common question]? Here's the answer."
-      body:
-        - "Step-by-step structure"
-        - "Include examples at each stage"
-        - "Address common mistakes"
-      closing:
-        - "Key takeaways: [summary]"
-        - "Next steps: [action]"
-        - "Questions? [engagement prompt]"
+      opening: ["Let's break this down.", "Here's what you need to know about [topic]:", "[Common question]? Here's the answer."]
+      body: ["Step-by-step structure", "Include examples at each stage", "Address common mistakes"]
+      closing: ["Key takeaways: [summary]", "Next steps: [action]", "Questions? [engagement prompt]"]
     phrases:
-      prefer:
-        - "Here's why this matters:"
-        - "In practice, this means..."
-        - "A common mistake is..."
-        - "Think of it like..."
-      avoid:
-        - "Obviously..."
-        - "As you probably know..."
-        - "It's simple, just..."
+      prefer: ["Here's why this matters:", "In practice, this means...", "A common mistake is...", "Think of it like..."]
+      avoid: ["Obviously...", "As you probably know...", "It's simple, just..."]
 
-  # -------------------------------------------------------------------------
-  # SOCIAL MEDIA VOICES
-  # -------------------------------------------------------------------------
-  
   social_concise:
     id: "voice_social_concise"
     name: "Social Concise"
-    description: "High-signal, low-noise voice for Twitter/X and short-form"
     style_preset: "$ref: OPS_01_STYLE_OPTIONS#style_presets.urgent_action"
-    style_overrides:
-      warmth: 3
-      complexity: 2
-    traits:
-      - "Every word earns its place"
-      - "High signal-to-noise"
-      - "Punchy and memorable"
-      - "Platform-native"
-    use_when:
-      - "Twitter/X posts"
-      - "Headlines"
-      - "Short teasers"
-      - "Quotes and pullouts"
+    style_overrides: { warmth: 3, complexity: 2 }
+    traits: ["Every word earns its place", "High signal-to-noise", "Punchy and memorable", "Platform-native"]
+    use_when: ["Twitter/X posts", "Headlines", "Short teasers", "Quotes and pullouts"]
     patterns:
-      structure:
-        - "Hook --> Insight --> CTA"
-        - "Statement --> Evidence --> Implication"
-        - "Question --> Answer --> Action"
-      constraints:
-        max_sentences: 3
-        prefer_incomplete_sentences: true
+      structure: ["Hook --> Insight --> CTA", "Statement --> Evidence --> Implication", "Question --> Answer --> Action"]
+      constraints: { max_sentences: 3, prefer_incomplete_sentences: true }
     phrases:
-      prefer:
-        - Short, punchy statements
-        - Active verbs
-        - Concrete nouns
-      avoid:
-        - Adverbs
-        - Filler words
-        - Multiple clauses
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VOICE SELECTION GUIDE
-# ═══════════════════════════════════════════════════════════════════════════
+      prefer: ["Short, punchy statements", "Active verbs", "Concrete nouns"]
+      avoid: ["Adverbs", "Filler words", "Multiple clauses"]
 
 selection_guide:
   by_author_type:
-    founder_ceo:
-      primary: "voice_founder_thought_leader"
-      alternatives: ["voice_pragmatic_strategist"]
-    company_brand:
-      primary: "voice_company_authoritative"
-      alternatives: ["voice_company_conversational"]
-    subject_matter_expert:
-      primary: "voice_pragmatic_strategist"
-      alternatives: ["voice_helpful_educator"]
-      
+    founder_ceo: { primary: "voice_founder_thought_leader", alternatives: ["voice_pragmatic_strategist"] }
+    company_brand: { primary: "voice_company_authoritative", alternatives: ["voice_company_conversational"] }
+    subject_matter_expert: { primary: "voice_pragmatic_strategist", alternatives: ["voice_helpful_educator"] }
   by_content_type:
     thought_leadership: "voice_founder_thought_leader"
     company_updates: "voice_company_authoritative"
@@ -331,7 +120,6 @@ selection_guide:
     social_media_short: "voice_social_concise"
     strategic_deliverables: "voice_pragmatic_strategist"
     community_engagement: "voice_company_conversational"
-    
   by_platform:
     linkedin_personal: "voice_founder_thought_leader"
     linkedin_company: "voice_company_authoritative"
@@ -339,62 +127,14 @@ selection_guide:
     blog: "voice_helpful_educator"
     email_newsletter: "voice_company_conversational"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# VOICE EXTENSION HOOKS
-# ═══════════════════════════════════════════════════════════════════════════
-
 extension_hooks:
-  description: "How ORG and CLIENT layers can extend or specialize voices"
-  
   org_extensions:
-    allowed:
-      - "Add agency-specific voice profiles"
-      - "Override default style_preset for existing voices"
-      - "Add agency-specific phrases"
-    not_allowed:
-      - "Remove core voice profiles"
-      - "Change voice schema"
-      
+    allowed: ["Add agency-specific voice profiles", "Override default style_preset for existing voices", "Add agency-specific phrases"]
+    not_allowed: ["Remove core voice profiles", "Change voice schema"]
   client_extensions:
-    allowed:
-      - "Add client-specific voice profiles"
-      - "Override style dimensions for client"
-      - "Add brand-specific phrases and terminology"
-      - "Set default voice per content type"
-    not_allowed:
-      - "Remove OPS or ORG voice profiles"
-      - "Violate OPS_00 standards"
-      
-  extension_pattern:
-    example: |
-      # In CLIENT layer:
-      voice_overrides:
-        voice_company_authoritative:
-          style_overrides:
-            formality: 3  # More conversational for this brand
-          phrases:
-            prefer:
-              - "At [ClientName], we believe..."
-            terminology:
-              - term: "team members"
-                instead_of: "employees"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+    allowed: ["Add client-specific voice profiles", "Override style dimensions for client", "Add brand-specific phrases and terminology", "Set default voice per content type"]
+    not_allowed: ["Remove OPS or ORG voice profiles", "Violate OPS_00 standards"]
 
 validation:
-  structural:
-    - "All voices have required schema fields"
-    - "style_preset references valid OPS_01 preset"
-    - "style_overrides use valid dimension IDs"
-    
-  content:
-    - "No client-specific brand voices (belong in CLIENT layer)"
-    - "No copy templates or format structures (belong in OPS_03/04/05)"
-    - "Phrases are examples only, not mandatory scripts"
-    
-  on_validation_failure:
-    severity: "error"
-    action: "Block file activation"
-    reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.ops"
+  structural: ["All voices have required schema fields", "style_preset references valid OPS_01 preset", "style_overrides use valid dimension IDs"]
+  content: ["No client-specific brand voices (belong in CLIENT layer)", "No copy templates or format structures (belong in OPS_03/04/05)", "Phrases are examples only, not mandatory scripts"]

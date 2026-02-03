@@ -1,0 +1,156 @@
+# CLIENT_03_PRODUCTS_SERVICES_TEMPLATE.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Template for client product and service inventories"
+  notes: "TEMPLATE - Instantiate per client with their offerings"
+  tags: [client, products, services, inventory, template]
+
+extends: "CLIENT_00_TEMPLATE"
+requires:
+  - "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE"
+  - "$ref: CLIENT_02_EVIDENCE_VAULT_TEMPLATE"
+
+template_usage:
+  description: "Product/service inventories enable accurate positioning and messaging"
+  instantiation: "Create CLIENT_{client_id}_03_PRODUCTS.yaml per client"
+  maintenance: "Update when products launch, update, or retire"
+
+inventory_schema:
+  client_id: "[PLACEHOLDER: client_id]"
+  client_name: "[PLACEHOLDER: Client Display Name]"
+  inventory_version: "1.0"
+  last_updated: "[PLACEHOLDER: YYYY-MM-DD]"
+  catalog_type: "[products | services | both]"
+
+products:
+  # [PLACEHOLDER: Client's product offerings]
+  product_template:
+    product_id: "prod-{client_id}-{nnn}"
+    name: "[Product name]"
+    category: "[Product category]"
+    status: "[active | beta | deprecated | planned]"
+    description:
+      short: "[One-line description, max 150 chars]"
+      medium: "[Paragraph description, max 500 chars]"
+      long: "[Full description for detailed contexts]"
+    value_proposition:
+      headline: "[Main value proposition]"
+      supporting_points:
+        - "[Value point 1]"
+        - "[Value point 2]"
+        - "[Value point 3]"
+      differentiators:
+        - "[What makes this different from competitors]"
+    target_audience:
+      personas: ["[Persona references from CLIENT_04]"]
+      segments: ["[Market segments]"]
+      use_cases: ["[Primary use cases]"]
+    features:
+      - { feature: "[Feature name]", benefit: "[Customer benefit]", tier: "[basic | professional | enterprise]" }
+    pricing:
+      model: "[subscription | one-time | usage-based | custom]"
+      tiers: ["[Tier names if applicable]"]
+      public_pricing: "[boolean - whether pricing is public]"
+      price_claim_approval: "[Required approval level to mention pricing]"
+    evidence_links:
+      claims: ["[claim_id references from CLIENT_02]"]
+      case_studies: ["[case_id references from CLIENT_02]"]
+    messaging_guidelines:
+      approved_taglines: ["[Approved tagline 1]", "[Approved tagline 2]"]
+      keywords: ["[SEO/messaging keywords]"]
+      terminology: { use: ["[Preferred terms]"], avoid: ["[Terms to avoid]"] }
+    competitive_positioning:
+      direct_competitors: ["[Competitor product 1]", "[Competitor product 2]"]
+      positioning_vs_competitors: "[How to position against competitors - without disparagement]"
+      comparison_restrictions: "[What comparisons are/aren't allowed]"
+    launch_date: "[YYYY-MM-DD]"
+    sunset_date: "[YYYY-MM-DD or null]"
+
+services:
+  # [PLACEHOLDER: Client's service offerings]
+  service_template:
+    service_id: "svc-{client_id}-{nnn}"
+    name: "[Service name]"
+    category: "[Service category]"
+    status: "[active | pilot | deprecated | planned]"
+    description:
+      short: "[One-line description, max 150 chars]"
+      medium: "[Paragraph description, max 500 chars]"
+      long: "[Full description for detailed contexts]"
+    value_proposition:
+      headline: "[Main value proposition]"
+      outcomes:
+        - "[Expected outcome 1]"
+        - "[Expected outcome 2]"
+      differentiators:
+        - "[What makes this service unique]"
+    target_audience:
+      personas: ["[Persona references from CLIENT_04]"]
+      segments: ["[Market segments]"]
+      ideal_client_profile: "[Description of ideal client for this service]"
+    service_components:
+      - { component: "[Component name]", description: "[What it includes]", optional: "[boolean]" }
+    delivery_model:
+      format: "[retainer | project | workshop | advisory | hybrid]"
+      typical_duration: "[Engagement duration]"
+      team_composition: "[Who delivers the service]"
+    pricing:
+      model: "[fixed | time_materials | value_based | custom]"
+      public_pricing: "[boolean]"
+      ballpark_range: "[Low to high range if shareable]"
+      price_claim_approval: "[Required approval level]"
+    evidence_links:
+      claims: ["[claim_id references]"]
+      case_studies: ["[case_id references]"]
+    messaging_guidelines:
+      approved_phrases: ["[Approved way to describe service]"]
+      terminology: { use: ["[Preferred terms]"], avoid: ["[Terms to avoid]"] }
+    availability:
+      markets: ["[Markets where available]"]
+      languages: ["[Languages supported]"]
+
+bundles_packages:
+  # [PLACEHOLDER: Pre-packaged offerings]
+  bundle_template:
+    bundle_id: "bnd-{client_id}-{nnn}"
+    name: "[Bundle name]"
+    description: "[What the bundle includes and its value]"
+    included_items:
+      - { type: "[product | service]", id: "[Reference to product or service]" }
+    pricing:
+      value_message: "[How to communicate bundle value]"
+      discount_claim: "[Any discount claim to make - requires evidence]"
+    target_use_case: "[When to recommend this bundle]"
+
+cross_sell_upsell_map:
+  # [PLACEHOLDER: Relationships between offerings]
+  relationships:
+    - { from: "[product/service_id]", to: "[product/service_id]", relationship: "[cross_sell | upsell | addon]", trigger: "[When to suggest]", messaging: "[How to position]" }
+
+product_lifecycle:
+  stages:
+    planned: { messaging: "Coming soon", restrictions: ["No pricing", "No availability dates without approval"] }
+    beta: { messaging: "Early access / Beta", restrictions: ["Clearly label as beta", "No performance guarantees"] }
+    active: { messaging: "Generally available", restrictions: "Standard messaging guidelines apply" }
+    deprecated: { messaging: "Legacy / Being phased out", restrictions: ["Don't actively promote", "Support existing customers"] }
+  transition_rules:
+    beta_to_active: ["Remove beta labeling", "Enable full marketing", "Activate case studies"]
+    active_to_deprecated: ["Update messaging to redirect to alternatives", "Stop active promotion", "Continue support messaging"]
+
+validation:
+  on_instantiation:
+    - { check: "All [PLACEHOLDER] values replaced", severity: "error" }
+    - { check: "client_id matches file naming pattern", severity: "error" }
+    - { check: "All products/services have unique IDs", severity: "error" }
+    - { check: "Evidence_links reference existing CLIENT_02 items", severity: "warning" }
+  per_item:
+    - { check: "status is valid enum value", severity: "error" }
+    - { check: "description.short <= 150 chars", severity: "warning" }
+    - { check: "At least one value_proposition point", severity: "warning" }
+  ongoing:
+    - { check: "No deprecated items with status 'active'", severity: "warning" }
+    - { check: "Sunset dates not in past for active items", severity: "error" }
+    - { check: "pricing claims have evidence_links", severity: "warning" }

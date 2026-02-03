@@ -1,0 +1,146 @@
+# CLIENT_01_BRAND_VOICE_TEMPLATE.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Template for client-specific brand voice configurations"
+  notes: "TEMPLATE - Instantiate per client following CLIENT_00_TEMPLATE#instantiation_guide"
+  tags: [client, brand_voice, template, tone, style]
+
+extends: "CLIENT_00_TEMPLATE"
+requires:
+  - "$ref: OPS_02_BRAND_VOICE"
+  - "$ref: OPS_16_LOCALIZATION"
+
+template_usage:
+  description: "This template defines the structure for client brand voice files"
+  instantiation: "Replace [PLACEHOLDER] values with client-specific content"
+  file_naming: "CLIENT_{client_id}_01_BRAND_VOICE.yaml"
+
+client_brand_profile:
+  # [PLACEHOLDER: Replace with client identifier]
+  client_id: "[client_id]"
+  client_name: "[Client Display Name]"
+
+  brand_essence:
+    purpose: "[Client's brand purpose/mission - why they exist]"
+    values:
+      # [PLACEHOLDER: Add 3-5 core values]
+      - { value: "[Value 1]", expression: "[How this value shows in communication]" }
+      - { value: "[Value 2]", expression: "[How this value shows in communication]" }
+      - { value: "[Value 3]", expression: "[How this value shows in communication]" }
+    positioning: "[Client's market positioning statement]"
+    differentiators:
+      # [PLACEHOLDER: What makes this client unique]
+      - "[Differentiator 1]"
+      - "[Differentiator 2]"
+      - "[Differentiator 3]"
+
+  voice_attributes:
+    # Map to OPS_02_BRAND_VOICE voice dimensions
+    reference: "$ref: OPS_02_BRAND_VOICE#voice_dimensions"
+    settings:
+      formality:
+        # [PLACEHOLDER: Select from OPS_02 formality_scale]
+        value: "[casual | conversational | neutral | professional | formal]"
+        rationale: "[Why this formality level]"
+        variations:
+          - { context: "executive_communication", value: "formal" }
+          - { context: "social_media", value: "conversational" }
+      tone:
+        # [PLACEHOLDER: 2-4 tone descriptors]
+        primary: "[e.g., confident, warm, innovative]"
+        secondary: "[e.g., approachable, expert, dynamic]"
+        avoid: "[e.g., aggressive, overly casual, jargon-heavy]"
+      personality:
+        # [PLACEHOLDER: Brand personality traits]
+        traits:
+          - { trait: "[Trait 1]", weight: "high", examples: ["[Example expression 1]", "[Example expression 2]"] }
+          - { trait: "[Trait 2]", weight: "medium", examples: ["[Example expression 1]", "[Example expression 2]"] }
+        anti_traits: ["[What the brand is NOT]"]
+
+  terminology_preferences:
+    reference: "$ref: OPS_01_MASTER_GLOSSARY"
+    client_specific_terms:
+      # [PLACEHOLDER: Client-specific terminology]
+      - { term: "[Client term]", meaning: "[Definition]", context: "[When to use]", standard_term: "[Industry standard equivalent if different]" }
+    preferred_terms:
+      # [PLACEHOLDER: Terms the client prefers over alternatives]
+      - { use: "[Preferred term]", instead_of: "[Alternative to avoid]", rationale: "[Why]" }
+    prohibited_terms:
+      # [PLACEHOLDER: Terms client explicitly avoids]
+      - { term: "[Avoided term]", reason: "[Why avoided]", alternative: "[What to use instead]" }
+    competitor_handling:
+      # [PLACEHOLDER: How to handle competitor mentions]
+      mention_policy: "[never | indirect_only | factual_comparison]"
+      competitors_list: ["[Competitor 1]", "[Competitor 2]"]
+      notes: "[Additional guidance on competitive context]"
+
+  style_guidelines:
+    reference: "$ref: OPS_02_BRAND_VOICE#channel_defaults"
+    writing_principles:
+      # [PLACEHOLDER: Client's core writing principles]
+      - { principle: "[Principle 1]", example: "[Example application]" }
+      - { principle: "[Principle 2]", example: "[Example application]" }
+    sentence_preferences:
+      average_length: "[short | medium | varied]"
+      structure: "[simple | compound | mixed]"
+      active_voice_preference: "[strong | moderate | flexible]"
+    paragraph_preferences:
+      max_sentences: "[3-5 is typical]"
+      white_space: "[heavy | moderate | minimal]"
+
+localization_preferences:
+  reference: "$ref: OPS_16_LOCALIZATION#language_variants"
+  primary_language:
+    # [PLACEHOLDER: Client's primary language/region]
+    code: "[nl-NL | de-DE | en-GB | fr-FR]"
+    formality_override: "[If different from language default]"
+  additional_languages:
+    # [PLACEHOLDER: Additional supported languages]
+    - { code: "[language_code]", notes: "[Any client-specific preferences for this language]" }
+  market_specific:
+    # [PLACEHOLDER: Any market-specific communication rules]
+    - { market: "[Market]", rules: ["[Rule 1]", "[Rule 2]"] }
+
+channel_configurations:
+  reference: "$ref: OPS_02_BRAND_VOICE#channel_profiles"
+  overrides:
+    # [PLACEHOLDER: Client-specific channel configurations that differ from OPS defaults]
+    - channel: "[channel_id]"
+      overrides:
+        tone: "[override value]"
+        formality: "[override value]"
+        guidelines:
+          - "[Channel-specific guideline for this client]"
+
+do_and_dont:
+  do:
+    # [PLACEHOLDER: Client-specific "always do" items]
+    - { action: "[What to always do]", example: "[Example]" }
+  dont:
+    # [PLACEHOLDER: Client-specific "never do" items]
+    - { action: "[What to never do]", example: "[Why/example of violation]" }
+
+sample_content:
+  purpose: "Reference examples demonstrating correct brand voice application"
+  samples:
+    # [PLACEHOLDER: Approved content samples for reference]
+    - type: "[content_type]"
+      context: "[When/where this was used]"
+      content: |
+        [Sample content text that exemplifies the brand voice]
+      notes: "[What makes this a good example]"
+
+validation:
+  on_instantiation:
+    - { check: "All [PLACEHOLDER] values replaced", severity: "error" }
+    - { check: "client_id matches file naming pattern", severity: "error" }
+    - { check: "formality value exists in OPS_02 scale", severity: "error" }
+    - { check: "primary_language.code is valid per OPS_16", severity: "error" }
+    - { check: "At least 3 brand values defined", severity: "warning" }
+    - { check: "At least 1 sample_content entry", severity: "warning" }
+  ongoing:
+    - { check: "terminology_preferences align with OPS_01", severity: "warning" }
+    - { check: "No prohibited_terms appear in sample_content", severity: "error" }

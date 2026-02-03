@@ -1,0 +1,167 @@
+# CLIENT_04_PERSONAS_TEMPLATE.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Template for client-specific persona definitions extending OPS personas"
+  notes: "TEMPLATE - Instantiate per client with their specific audience definitions"
+  tags: [client, personas, audience, template, targeting]
+
+extends: "CLIENT_00_TEMPLATE"
+requires:
+  - "$ref: OPS_04_PERSONA_DEFINITIONS"
+  - "$ref: OPS_05_AUDIENCE_SEGMENTS"
+  - "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE"
+  - "$ref: CLIENT_03_PRODUCTS_SERVICES_TEMPLATE"
+
+template_usage:
+  description: "Client personas are client-specific instances that extend or customize OPS base personas"
+  instantiation: "Create CLIENT_{client_id}_04_PERSONAS.yaml per client"
+  relationship_to_ops: "Client personas can extend OPS personas or be created from scratch"
+  maintenance: "Update when target audience understanding evolves or market changes"
+
+persona_framework:
+  client_id: "[PLACEHOLDER: client_id]"
+  client_name: "[PLACEHOLDER: Client Display Name]"
+  framework_version: "1.0"
+  last_research_date: "[PLACEHOLDER: YYYY-MM-DD]"
+  research_methodology: "[How personas were developed - interviews, surveys, analytics, etc.]"
+
+primary_personas:
+  # [PLACEHOLDER: Client's primary target personas (3-5 recommended)]
+  persona_template:
+    persona_id: "per-{client_id}-{nnn}"
+    name: "[Persona name - memorable archetype name]"
+    extends: "[OPS persona_id if extending, null if original]"
+    priority: "[primary | secondary | tertiary]"
+    description: "[One paragraph persona summary]"
+
+    demographics:
+      role_titles: ["[Typical job titles]"]
+      seniority: "[individual_contributor | manager | director | vp | c_level | mixed]"
+      industry_verticals: ["[Industries where common]"]
+      company_size: "[startup | smb | mid_market | enterprise | all]"
+      geography: ["[Primary regions/markets]"]
+      age_range: "[Optional: typical age range]"
+      education: "[Optional: typical education level]"
+
+    psychographics:
+      goals:
+        professional: ["[What they want to achieve at work]"]
+        personal: ["[Personal motivations that influence work decisions]"]
+      challenges:
+        primary: ["[Biggest pain points]"]
+        secondary: ["[Other frustrations]"]
+      motivations: ["[What drives their decisions]"]
+      fears: ["[What keeps them up at night]"]
+      values: ["[What they prioritize]"]
+      decision_style: "[analytical | intuitive | consensus | authority]"
+
+    behaviors:
+      information_sources:
+        trusted: ["[Where they go for information]"]
+        social_platforms: ["[Which social platforms they use professionally]"]
+        events: ["[Conferences, webinars they attend]"]
+        publications: ["[What they read]"]
+      buying_behavior:
+        research_style: "[thorough | quick | delegated]"
+        decision_timeline: "[short | medium | long | varies]"
+        influencers: ["[Who influences their decisions]"]
+        objection_patterns: ["[Common objections they raise]"]
+      communication_preferences:
+        channels: ["[Preferred communication channels]"]
+        content_formats: ["[Preferred content types]"]
+        frequency: "[How often they want to hear from vendors]"
+        timing: "[Best times/days to reach them]"
+
+    messaging:
+      tone_adjustment:
+        reference: "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE#voice_attributes"
+        formality_override: "[If different from default for this persona]"
+        emphasis: "[What to emphasize with this persona]"
+      value_proposition:
+        headline: "[Main value prop for this persona]"
+        supporting_messages:
+          - { message: "[Key message 1]", resonance: "[Why this resonates]" }
+          - { message: "[Key message 2]", resonance: "[Why this resonates]" }
+      objection_handling:
+        - { objection: "[Common objection]", response_framework: "[How to address]" }
+      terminology:
+        use: ["[Terms that resonate with this persona]"]
+        avoid: ["[Terms that don't work for this persona]"]
+
+    product_alignment:
+      reference: "$ref: CLIENT_03_PRODUCTS_SERVICES_TEMPLATE"
+      relevant_products: ["[product_id references]"]
+      relevant_services: ["[service_id references]"]
+      entry_point: "[Typical first product/service for this persona]"
+      expansion_path: ["[Logical upsell/cross-sell sequence]"]
+
+    engagement_journey:
+      awareness:
+        triggers: ["[What prompts them to look for solutions]"]
+        content_needs: ["[What content helps at awareness stage]"]
+      consideration:
+        evaluation_criteria: ["[What they compare]"]
+        content_needs: ["[What content helps at consideration stage]"]
+      decision:
+        final_concerns: ["[Last hurdles to address]"]
+        content_needs: ["[What content helps close]"]
+      retention:
+        success_indicators: ["[How they measure success]"]
+        expansion_triggers: ["[What prompts them to expand usage]"]
+
+    sample_quotes:
+      # [PLACEHOLDER: Representative quotes that capture persona voice]
+      - { context: "[When they'd say this]", quote: "[What they'd say]" }
+
+segments:
+  # [PLACEHOLDER: Client-specific audience segments]
+  segment_template:
+    segment_id: "seg-{client_id}-{nnn}"
+    name: "[Segment name]"
+    extends: "[OPS segment_id if extending, null if original]"
+    definition: "[How this segment is defined - firmographic, behavioral, etc.]"
+    sizing:
+      estimated_total: "[Total addressable market size]"
+      data_source: "[Where this estimate comes from]"
+    personas_included: ["[persona_id references]"]
+    priority: "[high | medium | low]"
+    specific_messaging: "[Any segment-level messaging considerations]"
+
+persona_interactions:
+  # [PLACEHOLDER: How personas interact in buying decisions]
+  buying_committee:
+    typical_composition:
+      - { persona_id: "[Persona reference]", role: "[champion | decision_maker | influencer | blocker | user]", involvement_stage: "[When they typically engage]" }
+    dynamics:
+      - "[Note about how personas interact in decisions]"
+  messaging_sequence:
+    description: "Optimal order to address personas in complex sales"
+    sequence:
+      - { stage: "initial", target_personas: ["[Who to engage first]"] }
+      - { stage: "expansion", target_personas: ["[Who to bring in next]"] }
+      - { stage: "close", target_personas: ["[Who to engage for final decision]"] }
+
+negative_personas:
+  # [PLACEHOLDER: Who is NOT a good fit]
+  description: "Personas to avoid targeting or qualify out early"
+  profiles:
+    - { name: "[Anti-persona name]", characteristics: ["[Why they're not a fit]"], qualification_questions: ["[Questions to identify them]"] }
+
+validation:
+  on_instantiation:
+    - { check: "All [PLACEHOLDER] values replaced", severity: "error" }
+    - { check: "client_id matches file naming pattern", severity: "error" }
+    - { check: "At least 1 primary persona defined", severity: "error" }
+    - { check: "At most 5 primary personas (recommend 3)", severity: "warning" }
+  per_persona:
+    - { check: "persona_id follows pattern per-{client_id}-{nnn}", severity: "error" }
+    - { check: "priority is valid enum value", severity: "error" }
+    - { check: "At least 2 goals defined", severity: "warning" }
+    - { check: "At least 2 challenges defined", severity: "warning" }
+    - { check: "product_alignment references valid products/services", severity: "warning" }
+  ongoing:
+    - { check: "last_research_date within 24 months", severity: "warning" }
+    - { check: "Personas align with current product offerings", severity: "warning" }

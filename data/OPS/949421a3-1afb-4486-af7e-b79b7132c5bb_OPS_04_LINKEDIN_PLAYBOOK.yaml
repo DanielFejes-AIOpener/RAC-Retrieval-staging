@@ -1,24 +1,13 @@
-# ================================================================
-# OPS_04_LINKEDIN_PLAYBOOK
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: LinkedIn-specific content patterns and best practices
-# ================================================================
+# OPS_04_LINKEDIN_PLAYBOOK.yaml
 
 meta:
   owner: "AI Opener"
   version: "2.0.0"
   last_updated: "2025-12-11"
   purpose: "LinkedIn content patterns, post formats, and engagement tactics"
-  notes: "Extracted from legacy OPS_04_CHANNELS_PLAYBOOK, OPS_10_TEMPLATES_LIBRARY"
   tags: [ops, linkedin, social, content]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 style_options: "$ref: OPS_01_STYLE_OPTIONS"
 voice_library: "$ref: OPS_02_VOICES_LIBRARY"
 copywriting_playbook: "$ref: OPS_03_COPYWRITING_PLAYBOOK"
@@ -26,374 +15,103 @@ channel_guidelines: "$ref: OPS_10_CHANNEL_GUIDELINES"
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# PLATFORM PRINCIPLES
-# ═══════════════════════════════════════════════════════════════════════════
-
 platform_principles:
-  description: "Core LinkedIn content philosophy for B2B"
-  
-  positioning:
-    - "Professional context - readers in work mindset"
-    - "Value-first - educate, inform, or inspire before asking"
-    - "Conversation-oriented - posts should invite engagement"
-    - "Authority-building - demonstrate expertise through substance"
-  
+  positioning: ["Professional context - readers in work mindset", "Value-first - educate, inform, or inspire before asking", "Conversation-oriented - posts should invite engagement", "Authority-building - demonstrate expertise through substance"]
   algorithm_awareness:
-    engagement_signals:
-      - "Comments weighted heavily (especially substantive)"
-      - "Dwell time matters - content that holds attention"
-      - "Early engagement in first hour impacts reach"
-      - "Native content preferred over external links"
-    avoid:
-      - "Engagement bait ('Comment YES if...')"
-      - "External links in main post body"
-      - "Excessive hashtags (3-5 max)"
-      - "Pod-style artificial engagement"
-
+    engagement_signals: ["Comments weighted heavily (especially substantive)", "Dwell time matters - content that holds attention", "Early engagement in first hour impacts reach", "Native content preferred over external links"]
+    avoid: ["Engagement bait ('Comment YES if...')", "External links in main post body", "Excessive hashtags (3-5 max)", "Pod-style artificial engagement"]
   tone_norms:
-    professional_yet_human:
-      - "First-person perspective for personal posts"
-      - "Specific details over generic statements"
-      - "Opinions backed by experience or data"
-      - "Vulnerability with purpose (lessons, not complaints)"
-    avoid:
-      - "Corporate jargon without substance"
-      - "Overly casual or unprofessional language"
-      - "Bragging without value to reader"
-      - "Negativity about competitors or individuals"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# POST FORMATS
-# ═══════════════════════════════════════════════════════════════════════════
+    professional_yet_human: ["First-person perspective for personal posts", "Specific details over generic statements", "Opinions backed by experience or data", "Vulnerability with purpose (lessons, not complaints)"]
+    avoid: ["Corporate jargon without substance", "Overly casual or unprofessional language", "Bragging without value to reader", "Negativity about competitors or individuals"]
 
 post_formats:
-  description: "LinkedIn post type structures and patterns"
-
   text_post:
-    description: "Standard text-only post"
     structure:
-      hook:
-        purpose: "Stop the scroll"
-        length: "First line visible in feed (≈ 140 chars)"
-        patterns:
-          - "Counterintuitive statement"
-          - "Specific result or number"
-          - "Question that resonates"
-          - "Bold opinion"
-      body:
-        format: "Short paragraphs, 1-2 sentences each"
-        whitespace: "Single line breaks between paragraphs"
-        length: "500-1200 characters optimal for engagement"
-        elements:
-          - "Story/context"
-          - "Insight/lesson"
-          - "Evidence (if applicable)"
-      closer:
-        elements: ["Takeaway", "Question for engagement", "Soft CTA"]
-        avoid: "Hard sell or aggressive link pushing"
+      hook: { purpose: "Stop the scroll", length: "First line visible in feed (≈ 140 chars)", patterns: ["Counterintuitive statement", "Specific result or number", "Question that resonates", "Bold opinion"] }
+      body: { format: "Short paragraphs, 1-2 sentences each", whitespace: "Single line breaks between paragraphs", length: "500-1200 characters optimal for engagement", elements: ["Story/context", "Insight/lesson", "Evidence (if applicable)"] }
+      closer: { elements: ["Takeaway", "Question for engagement", "Soft CTA"], avoid: "Hard sell or aggressive link pushing" }
     character_limit: 3000
     optimal_length: "700-1000 characters"
 
   founder_thought_leader:
-    description: "Personal POV from exec/founder"
     voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.founder_thought_leader"
-    structure:
-      hook: "Personal observation or counterintuitive take"
-      story: "Specific experience or example"
-      framework: "Pattern or principle extracted"
-      application: "How others can apply this"
-      engagement_prompt: "Question inviting perspective"
-    characteristics:
-      - "First person singular ('I')"
-      - "Named experiences, not generic"
-      - "Opinion + reasoning, not just opinion"
-      - "Authenticity markers (doubt, learning, evolution)"
+    structure: { hook: "Personal observation or counterintuitive take", story: "Specific experience or example", framework: "Pattern or principle extracted", application: "How others can apply this", engagement_prompt: "Question inviting perspective" }
+    characteristics: ["First person singular ('I')", "Named experiences, not generic", "Opinion + reasoning, not just opinion", "Authenticity markers (doubt, learning, evolution)"]
 
   company_post:
-    description: "Brand/company page content"
     voice: "$ref: OPS_02_VOICES_LIBRARY#voice_profiles.company_authoritative"
-    structure:
-      hook: "Data point, trend, or industry insight"
-      context: "Why this matters to audience"
-      value: "What reader gains from this"
-      cta: "Engagement prompt or resource link"
-    characteristics:
-      - "First person plural ('We') or audience-focused ('You')"
-      - "Evidence-led, data-backed"
-      - "Thought leadership angle, not promotional"
-      - "Visual asset when possible"
+    structure: { hook: "Data point, trend, or industry insight", context: "Why this matters to audience", value: "What reader gains from this", cta: "Engagement prompt or resource link" }
+    characteristics: ["First person plural ('We') or audience-focused ('You')", "Evidence-led, data-backed", "Thought leadership angle, not promotional", "Visual asset when possible"]
 
   carousel:
-    description: "Multi-slide visual content"
-    specs:
-      format: "PDF or multiple images"
-      dimensions: "1080x1350 (portrait) or 1080x1080 (square)"
-      slides: "5-10 optimal"
-    structure:
-      slide_1: "Hook slide - compelling title/question"
-      slides_2_n: "One idea per slide, minimal text"
-      final_slide: "Summary + CTA + follow prompt"
-    best_practices:
-      - "Each slide self-contained but part of arc"
-      - "Large, readable text (min 24pt equivalent)"
-      - "Consistent visual style throughout"
-      - "Swipe motivation on each slide"
-    content_types:
-      - "Framework/model breakdown"
-      - "Step-by-step guide"
-      - "Myth vs reality"
-      - "Before/after transformation"
-      - "Listicle with depth"
+    specs: { format: "PDF or multiple images", dimensions: "1080x1350 (portrait) or 1080x1080 (square)", slides: "5-10 optimal" }
+    structure: { slide_1: "Hook slide - compelling title/question", slides_2_n: "One idea per slide, minimal text", final_slide: "Summary + CTA + follow prompt" }
+    best_practices: ["Each slide self-contained but part of arc", "Large, readable text (min 24pt equivalent)", "Consistent visual style throughout", "Swipe motivation on each slide"]
+    content_types: ["Framework/model breakdown", "Step-by-step guide", "Myth vs reality", "Before/after transformation", "Listicle with depth"]
 
   poll:
-    description: "Interactive poll format"
-    structure:
-      question: "Clear, specific, answerable"
-      options: "2-4 choices, mutually exclusive"
-      follow_up: "Promise to share results/insights"
-    best_practices:
-      - "Question matters more than options"
-      - "Avoid obvious 'right' answer"
-      - "Use for genuine insight gathering"
-      - "Follow up with results + analysis"
+    structure: { question: "Clear, specific, answerable", options: "2-4 choices, mutually exclusive", follow_up: "Promise to share results/insights" }
+    best_practices: ["Question matters more than options", "Avoid obvious 'right' answer", "Use for genuine insight gathering", "Follow up with results + analysis"]
 
   document:
-    description: "Native document upload (PDF)"
-    use_cases:
-      - "Full guides or playbooks"
-      - "Research reports"
-      - "Templates and frameworks"
-    best_practices:
-      - "First page is the hook"
-      - "Optimized for in-feed viewing"
-      - "Clear download value proposition"
+    use_cases: ["Full guides or playbooks", "Research reports", "Templates and frameworks"]
+    best_practices: ["First page is the hook", "Optimized for in-feed viewing", "Clear download value proposition"]
 
   article:
-    description: "LinkedIn native long-form"
-    use_cases:
-      - "In-depth thought leadership"
-      - "SEO-optimized content"
-      - "Evergreen reference material"
+    use_cases: ["In-depth thought leadership", "SEO-optimized content", "Evergreen reference material"]
     structure: "$ref: OPS_03_COPYWRITING_PLAYBOOK#format_patterns.blog_post"
-    linkedin_adaptations:
-      - "Shorter paragraphs than blog"
-      - "More subheadings for scannability"
-      - "Cross-link to profile and other content"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# HOOK PATTERNS
-# ═══════════════════════════════════════════════════════════════════════════
+    linkedin_adaptations: ["Shorter paragraphs than blog", "More subheadings for scannability", "Cross-link to profile and other content"]
 
 hook_patterns:
-  description: "First-line patterns optimized for LinkedIn feed"
-  
   patterns:
-    contrarian:
-      formula: "[Common belief] is wrong. Here's why:"
-      example: "Your company doesn't have a talent shortage. You have a story shortage."
-      
-    specific_result:
-      formula: "[Specific outcome] in [timeframe]. Here's how:"
-      example: "We reduced time-to-hire by 47% in 3 months. Here's the exact playbook."
-      
-    observation:
-      formula: "I noticed something about [topic]:"
-      example: "I noticed something about the best LinkedIn content:"
-      
-    question:
-      formula: "[Thought-provoking question]?"
-      example: "Why do 80% of company pages fail to build any following?"
-      
-    story_starter:
-      formula: "[Time marker], [specific event]."
-      example: "Last week, a CMO told me something that changed how I think about content."
-      
-    list_preview:
-      formula: "[Number] [things] I learned about [topic]:"
-      example: "5 uncomfortable truths about B2B marketing I learned the hard way:"
-
-  anti_patterns:
-    - "Generic motivational statements ('Work hard and you'll succeed')"
-    - "Obvious statements ('Content is important')"
-    - "Self-congratulation without value ('Proud to announce...')"
-    - "Engagement bait ('Comment if you agree!')"
-    - "Clickbait without substance ('You won't believe...')"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# ENGAGEMENT TACTICS
-# ═══════════════════════════════════════════════════════════════════════════
+    contrarian: { formula: "[Common belief] is wrong. Here's why:", example: "Your company doesn't have a talent shortage. You have a story shortage." }
+    specific_result: { formula: "[Specific outcome] in [timeframe]. Here's how:", example: "We reduced time-to-hire by 47% in 3 months. Here's the exact playbook." }
+    observation: { formula: "I noticed something about [topic]:", example: "I noticed something about the best LinkedIn content:" }
+    question: { formula: "[Thought-provoking question]?", example: "Why do 80% of company pages fail to build any following?" }
+    story_starter: { formula: "[Time marker], [specific event].", example: "Last week, a CMO told me something that changed how I think about content." }
+    list_preview: { formula: "[Number] [things] I learned about [topic]:", example: "5 uncomfortable truths about B2B marketing I learned the hard way:" }
+  anti_patterns: ["Generic motivational statements ('Work hard and you'll succeed')", "Obvious statements ('Content is important')", "Self-congratulation without value ('Proud to announce...')", "Engagement bait ('Comment if you agree!')", "Clickbait without substance ('You won't believe...')"]
 
 engagement_tactics:
-  description: "Ethical approaches to drive meaningful engagement"
-  
   conversation_starters:
     question_placement: "End of post for engagement prompt"
-    question_types:
-      opinion: "What's your take on [X]?"
-      experience: "Have you seen this in your work?"
-      extension: "What would you add to this?"
-      challenge: "Where does this break down?"
-    avoid:
-      - "Yes/no questions"
-      - "Questions with obvious answers"
-      - "Self-serving questions ('Anyone else love [our product]?')"
+    question_types: { opinion: "What's your take on [X]?", experience: "Have you seen this in your work?", extension: "What would you add to this?", challenge: "Where does this break down?" }
+    avoid: ["Yes/no questions", "Questions with obvious answers", "Self-serving questions ('Anyone else love [our product]?')"]
 
   comment_strategy:
-    own_posts:
-      - "Reply to every comment in first 2 hours"
-      - "Add value in replies, don't just thank"
-      - "Ask follow-up questions"
-    others_posts:
-      - "Leave substantive comments (not 'Great post!')"
-      - "Add perspective or experience"
-      - "Build relationships, not visibility"
+    own_posts: ["Reply to every comment in first 2 hours", "Add value in replies, don't just thank", "Ask follow-up questions"]
+    others_posts: ["Leave substantive comments (not 'Great post!')", "Add perspective or experience", "Build relationships, not visibility"]
 
   storytelling_elements:
-    specificity:
-      weak: "I learned a lot at my last job."
-      strong: "In my 3rd week at [Company], my manager said something I'll never forget."
-    tension:
-      weak: "Things were going well."
-      strong: "We had 48 hours before the launch and everything was breaking."
-    transformation:
-      weak: "I got better at it."
-      strong: "That failure taught me the one rule I now follow every time."
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CONTENT PILLARS FOR B2B
-# ═══════════════════════════════════════════════════════════════════════════
+    specificity: { weak: "I learned a lot at my last job.", strong: "In my 3rd week at [Company], my manager said something I'll never forget." }
+    tension: { weak: "Things were going well.", strong: "We had 48 hours before the launch and everything was breaking." }
+    transformation: { weak: "I got better at it.", strong: "That failure taught me the one rule I now follow every time." }
 
 content_pillars:
-  description: "Content category mix for B2B LinkedIn presence"
-  
-  thought_leadership:
-    weight: "30-40%"
-    purpose: "Establish authority and differentiation"
-    content_types:
-      - "Industry trends and predictions"
-      - "Original frameworks and models"
-      - "Contrarian perspectives"
-      - "Deep expertise demonstrations"
-
-  value_education:
-    weight: "30-40%"
-    purpose: "Help audience solve problems"
-    content_types:
-      - "How-to guides and tips"
-      - "Templates and frameworks"
-      - "Lessons and learnings"
-      - "Best practices"
-
-  social_proof:
-    weight: "10-15%"
-    purpose: "Build trust and credibility"
-    content_types:
-      - "Case studies and results"
-      - "Client testimonials (with permission)"
-      - "Behind-the-scenes"
-      - "Team and culture"
-
-  engagement_community:
-    weight: "10-15%"
-    purpose: "Build relationships and dialogue"
-    content_types:
-      - "Polls and questions"
-      - "Industry commentary"
-      - "Curated insights"
-      - "Community shoutouts"
-
-  promotional:
-    weight: "5-10% max"
-    purpose: "Drive business outcomes"
-    content_types:
-      - "Product/service launches"
-      - "Events and webinars"
-      - "Job postings"
-      - "Company news"
-    caution: "Even promotional should lead with value"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CAMPAIGN INTEGRATION
-# ═══════════════════════════════════════════════════════════════════════════
+  thought_leadership: { weight: "30-40%", purpose: "Establish authority and differentiation", content_types: ["Industry trends and predictions", "Original frameworks and models", "Contrarian perspectives", "Deep expertise demonstrations"] }
+  value_education: { weight: "30-40%", purpose: "Help audience solve problems", content_types: ["How-to guides and tips", "Templates and frameworks", "Lessons and learnings", "Best practices"] }
+  social_proof: { weight: "10-15%", purpose: "Build trust and credibility", content_types: ["Case studies and results", "Client testimonials (with permission)", "Behind-the-scenes", "Team and culture"] }
+  engagement_community: { weight: "10-15%", purpose: "Build relationships and dialogue", content_types: ["Polls and questions", "Industry commentary", "Curated insights", "Community shoutouts"] }
+  promotional: { weight: "5-10% max", purpose: "Drive business outcomes", content_types: ["Product/service launches", "Events and webinars", "Job postings", "Company news"], caution: "Even promotional should lead with value" }
 
 campaign_integration:
-  description: "How LinkedIn fits broader campaign architecture"
   reference: "$ref: OPS_07_CAMPAIGN_STRUCTURES"
-  
   hero_hub_help:
-    hero:
-      role: "Amplify major campaign moments"
-      linkedin_tactics:
-        - "Founder/exec personal posts about launch"
-        - "Company page announcement with assets"
-        - "Employee advocacy activation"
-    hub:
-      role: "Ongoing thematic content"
-      linkedin_tactics:
-        - "Regular thought leadership series"
-        - "Carousels breaking down campaign themes"
-        - "Article deep-dives"
-    help:
-      role: "Problem-solving content"
-      linkedin_tactics:
-        - "Tips and how-to posts"
-        - "FAQ-based content"
-        - "Resource links (in comments)"
-
-  link_handling:
-    in_post_body: "Avoid - reduces reach"
-    in_comments: "Post link as first comment"
-    in_carousel: "Include URL on final slide"
-    native_preference: "Prioritize native content over links"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# QUALITY CHECKLIST
-# ═══════════════════════════════════════════════════════════════════════════
+    hero: { role: "Amplify major campaign moments", tactics: ["Founder/exec personal posts about launch", "Company page announcement with assets", "Employee advocacy activation"] }
+    hub: { role: "Ongoing thematic content", tactics: ["Regular thought leadership series", "Carousels breaking down campaign themes", "Article deep-dives"] }
+    help: { role: "Problem-solving content", tactics: ["Tips and how-to posts", "FAQ-based content", "Resource links (in comments)"] }
+  link_handling: { in_post_body: "Avoid - reduces reach", in_comments: "Post link as first comment", in_carousel: "Include URL on final slide", native_preference: "Prioritize native content over links" }
 
 quality_checklist:
   pre_publish:
-    hook:
-      - "First line compelling and complete"
-      - "Would stop scroll in feed"
-      - "Not clickbait or engagement bait"
-    structure:
-      - "Short paragraphs with whitespace"
-      - "Easy to scan on mobile"
-      - "Clear beginning, middle, end"
-    value:
-      - "Reader learns something or gains perspective"
-      - "Not pure self-promotion"
-      - "Specific, not generic"
-    voice:
-      - "Matches selected voice profile"
-      - "Authentic to author"
-      - "Professional yet human"
-    evidence:
-      - "Claims backed by data/experience"
-      - "Sources cited where appropriate"
-      - "No unverifiable superlatives"
-    engagement:
-      - "Ends with conversation opportunity"
-      - "Question is genuine, not manipulative"
-      - "Invites dialogue, not just likes"
-    compliance:
-      - "No confidential information"
-      - "Client mentions approved"
-      - "Brand guidelines followed"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+    hook: ["First line compelling and complete", "Would stop scroll in feed", "Not clickbait or engagement bait"]
+    structure: ["Short paragraphs with whitespace", "Easy to scan on mobile", "Clear beginning, middle, end"]
+    value: ["Reader learns something or gains perspective", "Not pure self-promotion", "Specific, not generic"]
+    voice: ["Matches selected voice profile", "Authentic to author", "Professional yet human"]
+    evidence: ["Claims backed by data/experience", "Sources cited where appropriate", "No unverifiable superlatives"]
+    engagement: ["Ends with conversation opportunity", "Question is genuine, not manipulative", "Invites dialogue, not just likes"]
+    compliance: ["No confidential information", "Client mentions approved", "Brand guidelines followed"]
 
 validation:
-  file_rules:
-    - "Post formats include structure and character limits"
-    - "Hook patterns include examples"
-    - "Engagement tactics are ethical, not manipulative"
-    - "Campaign integration references OPS_07"
-  content_rules:
-    - "No client-specific posting schedules (belongs in ORG/CLIENT)"
-    - "No generic social guidance (belongs in OPS_05)"
-    - "Technical constraints reference OPS_10"
-    - "Voice profiles reference OPS_02, not redefined"
+  file_rules: ["Post formats include structure and character limits", "Hook patterns include examples", "Engagement tactics are ethical, not manipulative", "Campaign integration references OPS_07"]
+  content_rules: ["No client-specific posting schedules (belongs in ORG/CLIENT)", "No generic social guidance (belongs in OPS_05)", "Technical constraints reference OPS_10", "Voice profiles reference OPS_02, not redefined"]

@@ -1,0 +1,254 @@
+# WORKFLOW_03_CAMPAIGN_PLANNING.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Workflow for developing comprehensive campaign plans"
+  notes: "Typically follows WORKFLOW_01 Brief Analysis"
+  tags: [workflow, campaign, planning, strategy]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: OPS_07_CAMPAIGN_ARCHETYPES"
+  - "$ref: OPS_04_PERSONA_DEFINITIONS"
+  - "$ref: CLIENT_04_PERSONAS_TEMPLATE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_03_CAMPAIGN_PLANNING"
+  name: "Campaign Planning"
+  purpose: "Develop comprehensive campaign plan including strategy, channels, content requirements, and measurement"
+  complexity: "high"
+  automation_level: "semi_automated"
+  estimated_duration: "8-16 hours"
+
+  triggers:
+    - "Brief analysis approved (WORKFLOW_01 output)"
+    - "Campaign request from client"
+    - "Annual/quarterly planning cycle"
+
+  roles_involved:
+    - "ROLE_01_STRATEGIST"
+    - "ROLE_04_RESEARCHER"
+    - "ROLE_03_ANALYST"
+
+  inputs:
+    required:
+      - { field: "brief_analysis", type: "document", description: "Output from WORKFLOW_01" }
+      - { field: "campaign_objectives", type: "object", description: "Primary and secondary objectives" }
+      - { field: "client_context", type: "reference", description: "CLIENT layer reference" }
+    optional:
+      - { field: "budget", type: "object", description: "Available budget" }
+      - { field: "timeline", type: "object", description: "Campaign timeline" }
+      - { field: "constraints", type: "array", description: "Known constraints" }
+
+  outputs:
+    - { field: "campaign_plan", type: "document", description: "Comprehensive campaign plan" }
+    - { field: "channel_strategy", type: "document", description: "Channel-specific strategies" }
+    - { field: "content_requirements", type: "array", description: "Content pieces needed" }
+    - { field: "measurement_framework", type: "document", description: "KPIs and measurement approach" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Objective Clarification"
+    objective: "Define and validate campaign objectives and success criteria"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Brief analysis available"
+      - "Client context loaded"
+    steps:
+      - step_id: "step_1"
+        action: "Review brief analysis outputs"
+        actor: "agent"
+        outputs: ["brief_review"]
+      - step_id: "step_2"
+        action: "Define SMART objectives"
+        actor: "agent"
+        outputs: ["smart_objectives"]
+      - step_id: "step_3"
+        action: "Identify KPIs and measurement criteria"
+        actor: "agent"
+        outputs: ["kpi_framework"]
+      - step_id: "step_4"
+        action: "Validate objectives against client capabilities"
+        actor: "agent"
+        outputs: ["objective_validation"]
+    exit_criteria:
+      - "Objectives clearly defined"
+      - "KPIs identified"
+      - "Objectives validated as achievable"
+
+  - phase_id: "phase_2"
+    name: "Audience Strategy"
+    objective: "Define target audiences and persona prioritization"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Objectives defined"
+    steps:
+      - step_id: "step_1"
+        action: "Load client personas"
+        actor: "agent"
+        reference: "$ref: CLIENT_04_PERSONAS_TEMPLATE"
+        outputs: ["persona_profiles"]
+      - step_id: "step_2"
+        action: "Prioritize personas for campaign"
+        actor: "agent"
+        outputs: ["persona_prioritization"]
+      - step_id: "step_3"
+        action: "Map personas to campaign objectives"
+        actor: "agent"
+        outputs: ["persona_objective_mapping"]
+      - step_id: "step_4"
+        action: "Define audience-specific messaging angles"
+        actor: "agent"
+        outputs: ["messaging_angles"]
+    exit_criteria:
+      - "Personas prioritized"
+      - "Messaging angles defined"
+      - "Persona-objective mapping complete"
+
+  - phase_id: "phase_3"
+    name: "Channel Strategy"
+    objective: "Define channel mix and channel-specific strategies"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Audience strategy defined"
+    steps:
+      - step_id: "step_1"
+        action: "Identify relevant channels for personas"
+        actor: "agent"
+        reference: "$ref: OPS_02_BRAND_VOICE#channel_profiles"
+        outputs: ["channel_options"]
+      - step_id: "step_2"
+        action: "Evaluate channel fit against objectives"
+        actor: "agent"
+        outputs: ["channel_evaluation"]
+      - step_id: "step_3"
+        action: "Define channel mix and budget allocation"
+        actor: "agent"
+        outputs: ["channel_mix"]
+      - step_id: "step_4"
+        action: "Develop channel-specific strategies"
+        actor: "agent"
+        outputs: ["channel_strategies"]
+    exit_criteria:
+      - "Channel mix defined"
+      - "Budget allocated per channel"
+      - "Channel strategies documented"
+
+  - phase_id: "phase_4"
+    name: "Content Planning"
+    objective: "Define content requirements and calendar"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Channel strategy defined"
+    steps:
+      - step_id: "step_1"
+        action: "Identify content needs per channel"
+        actor: "agent"
+        reference: "$ref: OPS_06_CONTENT_TYPE_SPECS"
+        outputs: ["content_needs"]
+      - step_id: "step_2"
+        action: "Map content to campaign phases"
+        actor: "agent"
+        outputs: ["content_phasing"]
+      - step_id: "step_3"
+        action: "Create content requirements specifications"
+        actor: "agent"
+        outputs: ["content_specs"]
+      - step_id: "step_4"
+        action: "Develop content calendar"
+        actor: "agent"
+        outputs: ["content_calendar"]
+    exit_criteria:
+      - "Content needs identified"
+      - "Content specs documented"
+      - "Calendar created"
+
+  - phase_id: "phase_5"
+    name: "Measurement Framework"
+    objective: "Define measurement approach and reporting framework"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Phase 4 complete"
+      - "Campaign plan taking shape"
+    steps:
+      - step_id: "step_1"
+        action: "Define KPIs per channel"
+        actor: "agent"
+        outputs: ["channel_kpis"]
+      - step_id: "step_2"
+        action: "Set benchmarks and targets"
+        actor: "agent"
+        reference: "$ref: OPS_10_BENCHMARK_RANGES"
+        outputs: ["targets"]
+      - step_id: "step_3"
+        action: "Design reporting framework"
+        actor: "agent"
+        outputs: ["reporting_framework"]
+      - step_id: "step_4"
+        action: "Define optimization triggers"
+        actor: "agent"
+        outputs: ["optimization_triggers"]
+    exit_criteria:
+      - "KPIs defined"
+      - "Targets set"
+      - "Reporting framework complete"
+
+  - phase_id: "phase_6"
+    name: "Plan Compilation & Approval"
+    objective: "Compile and obtain approval for campaign plan"
+    role: "ROLE_01_STRATEGIST"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phases 1-5 complete"
+      - "All components ready"
+    steps:
+      - step_id: "step_1"
+        action: "Compile comprehensive campaign plan document"
+        actor: "agent"
+        outputs: ["campaign_plan_document"]
+      - step_id: "step_2"
+        action: "Create executive summary"
+        actor: "agent"
+        outputs: ["executive_summary"]
+      - step_id: "step_3"
+        action: "Run quality checklist"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS"
+        outputs: ["quality_check"]
+      - step_id: "step_4"
+        action: "Prepare delivery handoff"
+        actor: "agent"
+        outputs: ["delivery_handoff"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_campaign_plan"
+      trigger: "phase_exit"
+      approval_required_from: "account_director | strategy_lead"
+      approval_options: ["approve", "approve_with_comments", "request_revision", "reject"]
+      timeout_hours: 48
+    exit_criteria:
+      - "Campaign plan complete"
+      - "Quality checklist passed"
+      - "HITL approval obtained"
+
+quality_gates:
+  entry:
+    - "Brief analysis complete"
+    - "Campaign objectives defined"
+    - "Client context available"
+  exit:
+    - "All plan components complete"
+    - "Budget and resource requirements defined"
+    - "Measurement framework in place"
+    - "HITL approval obtained"
+
+validation:
+  workflow_specific:
+    - "All 6 phases properly sequenced"
+    - "Campaign archetype alignment checked"
+    - "Measurement framework includes benchmarks from OPS_10"

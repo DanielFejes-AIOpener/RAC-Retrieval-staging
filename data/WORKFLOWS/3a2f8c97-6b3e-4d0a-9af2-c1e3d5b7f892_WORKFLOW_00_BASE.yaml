@@ -1,0 +1,158 @@
+# WORKFLOW_00_BASE.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Base workflow schema and common definitions for all workflows"
+  notes: "All workflow files extend this base; defines structure and common elements"
+  tags: [workflow, base, schema, governance]
+
+extends: "LOGIC_00_GOVERNANCE"
+requires:
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: LOGIC_09_INTERFACE"
+  - "$ref: OPS_18_HANDOFF_INTAKE"
+  - "$ref: OPS_19_HANDOFF_DELIVERY"
+
+workflow_schema:
+  required_fields:
+    - { field: "workflow_id", type: "string", pattern: "WORKFLOW_{NN}_{NAME}", description: "Unique workflow identifier" }
+    - { field: "name", type: "string", description: "Human-readable workflow name" }
+    - { field: "purpose", type: "string", description: "What this workflow accomplishes" }
+    - { field: "triggers", type: "array", items: "string", description: "Conditions that initiate this workflow" }
+    - { field: "phases", type: "array", items: "$ref: #phase_schema", min_items: 2 }
+    - { field: "roles_involved", type: "array", items: "string", description: "ROLE IDs that participate" }
+    - { field: "inputs", type: "object", description: "Required inputs to start workflow" }
+    - { field: "outputs", type: "object", description: "Expected outputs when workflow completes" }
+    - { field: "quality_gates", type: "object", description: "Entry and exit criteria" }
+  optional_fields:
+    - { field: "estimated_duration", type: "string", description: "Typical time to complete" }
+    - { field: "complexity", type: "enum", values: ["low", "medium", "high"] }
+    - { field: "automation_level", type: "enum", values: ["fully_automated", "semi_automated", "human_driven"] }
+    - { field: "variations", type: "array", description: "Workflow variants for different contexts" }
+
+phase_schema:
+  required_fields:
+    - { field: "phase_id", type: "string", pattern: "phase_{n}", description: "Unique phase identifier" }
+    - { field: "name", type: "string", description: "Phase name" }
+    - { field: "objective", type: "string", description: "What this phase accomplishes" }
+    - { field: "steps", type: "array", items: "$ref: #step_schema", min_items: 1 }
+    - { field: "entry_criteria", type: "array", items: "string", description: "Conditions required to enter phase" }
+    - { field: "exit_criteria", type: "array", items: "string", description: "Conditions required to exit phase" }
+  optional_fields:
+    - { field: "role", type: "string", description: "Primary ROLE responsible for this phase" }
+    - { field: "hitl_checkpoint", type: "boolean", description: "Whether human approval required before exit" }
+    - { field: "checkpoint_config", type: "object", description: "Checkpoint configuration if hitl_checkpoint is true" }
+    - { field: "handoff_to", type: "string", description: "Next phase or external destination" }
+    - { field: "timeout", type: "duration", description: "Maximum time allowed for this phase" }
+    - { field: "fallback", type: "string", description: "Action if phase fails or times out" }
+
+step_schema:
+  required_fields:
+    - { field: "step_id", type: "string", pattern: "step_{n}", description: "Unique step identifier" }
+    - { field: "action", type: "string", description: "What action is performed" }
+    - { field: "actor", type: "enum", values: ["agent", "human", "system"], description: "Who performs this step" }
+  optional_fields:
+    - { field: "tool", type: "string", description: "Tool used if applicable" }
+    - { field: "inputs", type: "array", items: "string", description: "Required inputs for this step" }
+    - { field: "outputs", type: "array", items: "string", description: "Outputs produced by this step" }
+    - { field: "validation", type: "string", description: "How to validate step completion" }
+    - { field: "retry_config", type: "object", description: "Retry behavior on failure" }
+
+quality_gates:
+  reference: "$ref: LOGIC_08_QUALITY_GATES"
+  workflow_gates:
+    entry:
+      - "Valid intake handoff received (OPS_18)"
+      - "All required inputs present"
+      - "Triggering conditions met"
+      - "Appropriate ROLE available"
+    exit:
+      - "All phase exit criteria met"
+      - "Quality checklist completed (OPS_15)"
+      - "Delivery handoff prepared (OPS_19)"
+      - "All HITL checkpoints passed"
+  per_phase:
+    entry: ["Previous phase exit criteria met OR workflow entry (for first phase)", "Phase-specific prerequisites satisfied"]
+    exit: ["Phase objective achieved", "Phase-specific exit criteria met", "HITL approval if checkpoint required"]
+
+checkpoint_schema:
+  description: "Schema for HITL checkpoints within workflows"
+  fields:
+    - { field: "checkpoint_id", type: "string", pattern: "chkpt_{workflow}_{phase}" }
+    - { field: "trigger", type: "enum", values: ["phase_exit", "step_completion", "condition"], description: "What triggers the checkpoint" }
+    - { field: "approval_required_from", type: "string", description: "Role or individual who must approve" }
+    - { field: "approval_options", type: "array", items: "enum", values: ["approve", "approve_with_comments", "request_revision", "reject", "escalate"] }
+    - { field: "timeout_hours", type: "integer", default: 24 }
+    - { field: "escalation_on_timeout", type: "string", description: "What happens if approval times out" }
+  checkpoint_outcomes:
+    approve: { action: "Proceed to next phase/step", logging: "Log approval with timestamp" }
+    approve_with_comments: { action: "Proceed, incorporate comments in subsequent phases", logging: "Log approval and comments" }
+    request_revision: { action: "Return to previous step/phase with feedback", logging: "Log revision request and feedback" }
+    reject: { action: "Terminate workflow or major branch", logging: "Log rejection and reason" }
+    escalate: { action: "Escalate to higher authority per ORG escalation chain", logging: "Log escalation" }
+
+handoff_integration:
+  intake:
+    reference: "$ref: OPS_18_HANDOFF_INTAKE"
+    usage: "Received at workflow entry, validated before first phase"
+    validation: "All required fields present, hash verified, request_id unique"
+  delivery:
+    reference: "$ref: OPS_19_HANDOFF_DELIVERY"
+    usage: "Prepared at workflow exit, delivered after final phase"
+    validation: "Links to intake via request_id, quality checklist attached, sources documented"
+  inter_phase:
+    description: "Handoffs between phases within workflow"
+    format: "Lightweight state object with phase outputs and context"
+    validation: "Phase exit criteria met, outputs present"
+
+state_management:
+  workflow_state:
+    fields:
+      - { field: "workflow_instance_id", type: "UUID" }
+      - { field: "workflow_id", type: "string" }
+      - { field: "status", type: "enum", values: ["pending", "in_progress", "paused", "completed", "failed", "cancelled"] }
+      - { field: "current_phase", type: "string" }
+      - { field: "current_step", type: "string" }
+      - { field: "started_at", type: "datetime" }
+      - { field: "last_updated_at", type: "datetime" }
+      - { field: "context", type: "object", description: "Accumulated context across phases" }
+      - { field: "checkpoints_passed", type: "array", items: "string" }
+    persistence: "State must be persisted to allow resume after interruption"
+  checkpoint_creation:
+    triggers: ["Phase transition", "HITL checkpoint", "Error condition", "Timeout"]
+    includes: ["Current state", "Phase outputs", "Context accumulated", "Timestamp"]
+
+error_handling:
+  error_types:
+    recoverable: { examples: ["Timeout", "Temporary API failure", "Validation error"], action: "Retry per retry_config or return to previous step" }
+    non_recoverable: { examples: ["Critical data missing", "Compliance violation", "Explicit rejection"], action: "Fail workflow, trigger escalation" }
+  retry_config:
+    default:
+      max_retries: 3
+      backoff: "exponential"
+      initial_delay_seconds: 60
+    override: "Per-step retry_config overrides default"
+  escalation:
+    reference: "$ref: ORG_00_CONTEXT#team_structure.escalation_chain"
+    trigger_conditions: ["Max retries exceeded", "Non-recoverable error", "Checkpoint timeout"]
+
+metrics_and_logging:
+  required_metrics:
+    - { metric: "workflow_duration", description: "Total time from start to completion" }
+    - { metric: "phase_durations", description: "Time per phase" }
+    - { metric: "checkpoint_wait_times", description: "Time waiting for HITL approval" }
+    - { metric: "retry_counts", description: "Number of retries per step" }
+    - { metric: "completion_status", description: "Final workflow status" }
+  logging_requirements:
+    - "All state transitions logged with timestamp"
+    - "Checkpoint approvals/rejections logged with actor"
+    - "Errors logged with context for debugging"
+    - "Handoff creation/verification logged"
+
+validation:
+  workflow_00_specific:
+    structural: ["workflow_schema defines all required fields", "phase_schema is complete", "step_schema is complete", "checkpoint_schema is complete"]
+    content: ["quality_gates reference LOGIC_08", "handoff_integration references OPS_18/19", "escalation references ORG_00"]
+    usage: ["All concrete workflows extend this base", "No workflow-specific logic in base", "Schemas are reusable across workflows"]

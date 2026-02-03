@@ -1,9 +1,4 @@
-# ================================================================
-# OPS_17_EXPERTS
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Expert source database for credible citations
-# ================================================================
+# OPS_17_EXPERTS.yaml
 
 meta:
   owner: "AI Opener"
@@ -14,361 +9,75 @@ meta:
   tags: [ops, experts, sources, credibility, research, evidence]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# OPS-SPECIFIC REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
 evidence_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# EXPERT SOURCE SCHEMA
-# ═══════════════════════════════════════════════════════════════════════════
-
 expert_source_schema:
-  description: "Required structure for expert source entries"
-  
   required_fields:
-    - field: "id"
-      type: "string"
-      pattern: "exp-{domain}-{nnn}"
-      description: "Unique identifier for expert source"
-      
-    - field: "name"
-      type: "string"
-      description: "Individual name or organization name"
-      
-    - field: "type"
-      type: "enum"
-      values: ["individual", "organization", "publication", "research_body"]
-      
-    - field: "domain"
-      type: "array"
-      items: "string"
-      description: "Primary expertise areas"
-      
-    - field: "reliability_rating"
-      type: "enum"
-      values: ["A", "B", "C", "D"]
-      reference: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
-      
-    - field: "typical_tier"
-      type: "enum"
-      values: ["tier_1", "tier_2", "tier_3"]
-      description: "Typical evidence tier for outputs from this source"
-      reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
-      
+    - { field: "id", type: "string", pattern: "exp-{domain}-{nnn}", description: "Unique identifier for expert source" }
+    - { field: "name", type: "string", description: "Individual name or organization name" }
+    - { field: "type", type: "enum", values: ["individual", "organization", "publication", "research_body"] }
+    - { field: "domain", type: "array", items: "string", description: "Primary expertise areas" }
+    - { field: "reliability_rating", type: "enum", values: ["A", "B", "C", "D"], reference: "$ref: LOGIC_08_QUALITY_GATES#source_reliability" }
+    - { field: "typical_tier", type: "enum", values: ["tier_1", "tier_2", "tier_3"], description: "Typical evidence tier for outputs from this source", reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers" }
   optional_fields:
-    - field: "affiliation"
-      type: "string"
-      description: "Institutional affiliation if individual"
-      
-    - field: "credentials"
-      type: "array"
-      items: "string"
-      description: "Relevant credentials or qualifications"
-      
-    - field: "publication_types"
-      type: "array"
-      items: "string"
-      description: "Types of content produced"
-      
-    - field: "url"
-      type: "string"
-      format: "uri"
-      description: "Primary web presence"
-      
-    - field: "notes"
-      type: "string"
-      description: "Usage notes or limitations"
-      
-    - field: "last_verified"
-      type: "date"
-      format: "YYYY-MM-DD"
-      description: "When source was last verified as active/credible"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CREDIBILITY CRITERIA
-# ═══════════════════════════════════════════════════════════════════════════
+    - { field: "affiliation", type: "string", description: "Institutional affiliation if individual" }
+    - { field: "credentials", type: "array", items: "string", description: "Relevant credentials or qualifications" }
+    - { field: "publication_types", type: "array", items: "string", description: "Types of content produced" }
+    - { field: "url", type: "string", format: "uri", description: "Primary web presence" }
+    - { field: "notes", type: "string", description: "Usage notes or limitations" }
+    - { field: "last_verified", type: "date", format: "YYYY-MM-DD", description: "When source was last verified as active/credible" }
 
 credibility_criteria:
-  description: "Framework for assessing expert source credibility"
-  
   assessment_dimensions:
-    expertise_depth:
-      weight: 0.3
-      indicators:
-        high: "Recognized authority with peer-reviewed publications"
-        medium: "Established practitioner with industry recognition"
-        low: "Limited track record or narrow scope"
-        
-    methodology_rigor:
-      weight: 0.25
-      indicators:
-        high: "Transparent methodology, reproducible results"
-        medium: "Clear methodology, industry-accepted approaches"
-        low: "Methodology unclear or non-standard"
-        
-    independence:
-      weight: 0.2
-      indicators:
-        high: "No commercial conflicts, transparent funding"
-        medium: "Commercial ties disclosed, editorial independence"
-        low: "Potential conflicts, sponsored content"
-        
-    track_record:
-      weight: 0.15
-      indicators:
-        high: "Consistent accuracy over 5+ years"
-        medium: "Generally accurate, occasional corrections"
-        low: "Mixed accuracy, significant retractions"
-        
-    timeliness:
-      weight: 0.1
-      indicators:
-        high: "Regular updates, current data"
-        medium: "Periodic updates, reasonably current"
-        low: "Infrequent updates, potentially stale"
-        
+    expertise_depth: { weight: 0.3, indicators: { high: "Recognized authority with peer-reviewed publications", medium: "Established practitioner with industry recognition", low: "Limited track record or narrow scope" } }
+    methodology_rigor: { weight: 0.25, indicators: { high: "Transparent methodology, reproducible results", medium: "Clear methodology, industry-accepted approaches", low: "Methodology unclear or non-standard" } }
+    independence: { weight: 0.2, indicators: { high: "No commercial conflicts, transparent funding", medium: "Commercial ties disclosed, editorial independence", low: "Potential conflicts, sponsored content" } }
+    track_record: { weight: 0.15, indicators: { high: "Consistent accuracy over 5+ years", medium: "Generally accurate, occasional corrections", low: "Mixed accuracy, significant retractions" } }
+    timeliness: { weight: 0.1, indicators: { high: "Regular updates, current data", medium: "Periodic updates, reasonably current", low: "Infrequent updates, potentially stale" } }
   reliability_mapping:
-    A:
-      minimum_score: 0.85
-      description: "Highly reliable - verified, authoritative"
-      
-    B:
-      minimum_score: 0.70
-      description: "Reliable - reputable, generally accurate"
-      
-    C:
-      minimum_score: 0.50
-      description: "Acceptable - some verification needed"
-      
-    D:
-      minimum_score: 0.0
-      description: "Low reliability - use with caution"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# EXPERT SOURCES DATABASE
-# ═══════════════════════════════════════════════════════════════════════════
+    A: { minimum_score: 0.85, description: "Highly reliable - verified, authoritative" }
+    B: { minimum_score: 0.70, description: "Reliable - reputable, generally accurate" }
+    C: { minimum_score: 0.50, description: "Acceptable - some verification needed" }
+    D: { minimum_score: 0.0, description: "Low reliability - use with caution" }
 
 expert_sources:
   research_organizations:
-    - id: "exp-market-001"
-      name: "Gartner"
-      type: "organization"
-      domain: ["technology", "market_research", "enterprise"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["market_reports", "magic_quadrants", "research_notes"]
-      url: "https://www.gartner.com"
-      notes: "Subscription required for full reports; exec summaries often public"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-market-002"
-      name: "Forrester"
-      type: "organization"
-      domain: ["technology", "customer_experience", "market_research"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["research_reports", "wave_reports", "blogs"]
-      url: "https://www.forrester.com"
-      notes: "Strong on CX and digital transformation"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-market-003"
-      name: "McKinsey Global Institute"
-      type: "research_body"
-      domain: ["strategy", "economics", "industry_trends"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["research_reports", "articles", "insights"]
-      url: "https://www.mckinsey.com/mgi"
-      notes: "High-quality macro research; potential consulting bias"
-      last_verified: "2025-01-15"
-      
+    - { id: "exp-market-001", name: "Gartner", type: "organization", domain: ["technology", "market_research", "enterprise"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["market_reports", "magic_quadrants", "research_notes"], url: "https://www.gartner.com", notes: "Subscription required for full reports; exec summaries often public", last_verified: "2025-01-15" }
+    - { id: "exp-market-002", name: "Forrester", type: "organization", domain: ["technology", "customer_experience", "market_research"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["research_reports", "wave_reports", "blogs"], url: "https://www.forrester.com", notes: "Strong on CX and digital transformation", last_verified: "2025-01-15" }
+    - { id: "exp-market-003", name: "McKinsey Global Institute", type: "research_body", domain: ["strategy", "economics", "industry_trends"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["research_reports", "articles", "insights"], url: "https://www.mckinsey.com/mgi", notes: "High-quality macro research; potential consulting bias", last_verified: "2025-01-15" }
   government_and_statistics:
-    - id: "exp-gov-001"
-      name: "CBS (Statistics Netherlands)"
-      type: "organization"
-      domain: ["statistics", "demographics", "economics", "netherlands"]
-      reliability_rating: "A"
-      typical_tier: "tier_1"
-      publication_types: ["statistical_reports", "datasets", "publications"]
-      url: "https://www.cbs.nl"
-      notes: "Official Dutch statistics; highly reliable for NL market data"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-gov-002"
-      name: "Eurostat"
-      type: "organization"
-      domain: ["statistics", "economics", "demographics", "europe"]
-      reliability_rating: "A"
-      typical_tier: "tier_1"
-      publication_types: ["statistical_reports", "datasets"]
-      url: "https://ec.europa.eu/eurostat"
-      notes: "Official EU statistics"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-gov-003"
-      name: "Statistisches Bundesamt (Destatis)"
-      type: "organization"
-      domain: ["statistics", "demographics", "economics", "germany"]
-      reliability_rating: "A"
-      typical_tier: "tier_1"
-      publication_types: ["statistical_reports", "datasets"]
-      url: "https://www.destatis.de"
-      notes: "Official German statistics"
-      last_verified: "2025-01-15"
-      
+    - { id: "exp-gov-001", name: "CBS (Statistics Netherlands)", type: "organization", domain: ["statistics", "demographics", "economics", "netherlands"], reliability_rating: "A", typical_tier: "tier_1", publication_types: ["statistical_reports", "datasets", "publications"], url: "https://www.cbs.nl", notes: "Official Dutch statistics; highly reliable for NL market data", last_verified: "2025-01-15" }
+    - { id: "exp-gov-002", name: "Eurostat", type: "organization", domain: ["statistics", "economics", "demographics", "europe"], reliability_rating: "A", typical_tier: "tier_1", publication_types: ["statistical_reports", "datasets"], url: "https://ec.europa.eu/eurostat", notes: "Official EU statistics", last_verified: "2025-01-15" }
+    - { id: "exp-gov-003", name: "Statistisches Bundesamt (Destatis)", type: "organization", domain: ["statistics", "demographics", "economics", "germany"], reliability_rating: "A", typical_tier: "tier_1", publication_types: ["statistical_reports", "datasets"], url: "https://www.destatis.de", notes: "Official German statistics", last_verified: "2025-01-15" }
   industry_publications:
-    - id: "exp-pub-001"
-      name: "Harvard Business Review"
-      type: "publication"
-      domain: ["management", "strategy", "leadership"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["articles", "case_studies", "research"]
-      url: "https://hbr.org"
-      notes: "Mix of peer-reviewed and editorial; cite specific studies"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-pub-002"
-      name: "MIT Sloan Management Review"
-      type: "publication"
-      domain: ["management", "innovation", "technology"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["articles", "research_reports"]
-      url: "https://sloanreview.mit.edu"
-      notes: "Academic rigor with practical focus"
-      last_verified: "2025-01-15"
-      
+    - { id: "exp-pub-001", name: "Harvard Business Review", type: "publication", domain: ["management", "strategy", "leadership"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["articles", "case_studies", "research"], url: "https://hbr.org", notes: "Mix of peer-reviewed and editorial; cite specific studies", last_verified: "2025-01-15" }
+    - { id: "exp-pub-002", name: "MIT Sloan Management Review", type: "publication", domain: ["management", "innovation", "technology"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["articles", "research_reports"], url: "https://sloanreview.mit.edu", notes: "Academic rigor with practical focus", last_verified: "2025-01-15" }
   hr_and_talent:
-    - id: "exp-hr-001"
-      name: "LinkedIn Talent Solutions"
-      type: "organization"
-      domain: ["talent_acquisition", "employer_branding", "workforce_trends"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["research_reports", "trend_reports", "benchmarks"]
-      url: "https://business.linkedin.com/talent-solutions"
-      notes: "Large dataset but potential platform bias"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-hr-002"
-      name: "SHRM (Society for Human Resource Management)"
-      type: "organization"
-      domain: ["human_resources", "workplace_trends", "compliance"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["research_reports", "benchmarks", "toolkits"]
-      url: "https://www.shrm.org"
-      notes: "US-focused but globally relevant methodologies"
-      last_verified: "2025-01-15"
-      
+    - { id: "exp-hr-001", name: "LinkedIn Talent Solutions", type: "organization", domain: ["talent_acquisition", "employer_branding", "workforce_trends"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["research_reports", "trend_reports", "benchmarks"], url: "https://business.linkedin.com/talent-solutions", notes: "Large dataset but potential platform bias", last_verified: "2025-01-15" }
+    - { id: "exp-hr-002", name: "SHRM (Society for Human Resource Management)", type: "organization", domain: ["human_resources", "workplace_trends", "compliance"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["research_reports", "benchmarks", "toolkits"], url: "https://www.shrm.org", notes: "US-focused but globally relevant methodologies", last_verified: "2025-01-15" }
   marketing_and_advertising:
-    - id: "exp-mkt-001"
-      name: "IPA (Institute of Practitioners in Advertising)"
-      type: "organization"
-      domain: ["advertising", "marketing_effectiveness", "creative"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["effectiveness_studies", "benchmarks"]
-      url: "https://ipa.co.uk"
-      notes: "Source for Binet & Field effectiveness research"
-      last_verified: "2025-01-15"
-      
-    - id: "exp-mkt-002"
-      name: "WARC"
-      type: "organization"
-      domain: ["marketing", "advertising", "case_studies"]
-      reliability_rating: "B"
-      typical_tier: "tier_2"
-      publication_types: ["case_studies", "research", "benchmarks"]
-      url: "https://www.warc.com"
-      notes: "Comprehensive marketing effectiveness database"
-      last_verified: "2025-01-15"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# USAGE GUIDELINES
-# ═══════════════════════════════════════════════════════════════════════════
+    - { id: "exp-mkt-001", name: "IPA (Institute of Practitioners in Advertising)", type: "organization", domain: ["advertising", "marketing_effectiveness", "creative"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["effectiveness_studies", "benchmarks"], url: "https://ipa.co.uk", notes: "Source for Binet & Field effectiveness research", last_verified: "2025-01-15" }
+    - { id: "exp-mkt-002", name: "WARC", type: "organization", domain: ["marketing", "advertising", "case_studies"], reliability_rating: "B", typical_tier: "tier_2", publication_types: ["case_studies", "research", "benchmarks"], url: "https://www.warc.com", notes: "Comprehensive marketing effectiveness database", last_verified: "2025-01-15" }
 
 usage_guidelines:
-  source_selection:
-    - "Prefer A-rated sources for quantitative claims"
-    - "B-rated sources acceptable for qualitative claims and context"
-    - "C-rated sources require additional verification or disclaimer"
-    - "D-rated sources should be avoided or used only with prominent disclaimer"
-    
-  citation_requirements:
-    - "Always cite specific report/publication, not just organization"
-    - "Include publication date in citation"
-    - "Note if data is behind paywall"
-    - "Track which experts were relied upon for audit trail"
-    
+  source_selection: ["Prefer A-rated sources for quantitative claims", "B-rated sources acceptable for qualitative claims and context", "C-rated sources require additional verification or disclaimer", "D-rated sources should be avoided or used only with prominent disclaimer"]
+  citation_requirements: ["Always cite specific report/publication, not just organization", "Include publication date in citation", "Note if data is behind paywall", "Track which experts were relied upon for audit trail"]
   freshness_rules:
-    market_data:
-      max_age_months: 12
-      exception: "Clearly labeled as historical"
-    trend_analysis:
-      max_age_months: 24
-      exception: "Foundational research with ongoing relevance"
-    statistics:
-      max_age_months: 24
-      exception: "Official statistics pending update"
-      
-  conflict_of_interest:
-    - "Disclose if source has commercial relationship with subject"
-    - "Note vendor-sponsored research as potential bias"
-    - "Prefer independent research over vendor studies when available"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# EXPERT VS THOUGHT LEADER DISTINCTION
-# ═══════════════════════════════════════════════════════════════════════════
+    market_data: { max_age_months: 12, exception: "Clearly labeled as historical" }
+    trend_analysis: { max_age_months: 24, exception: "Foundational research with ongoing relevance" }
+    statistics: { max_age_months: 24, exception: "Official statistics pending update" }
+  conflict_of_interest: ["Disclose if source has commercial relationship with subject", "Note vendor-sponsored research as potential bias", "Prefer independent research over vendor studies when available"]
 
 expert_vs_thought_leader:
-  description: "Clarification of OPS_17 vs OPS_13 scope"
-  
-  ops_17_experts:
-    focus: "Factual evidence and data sources"
-    use_for:
-      - "Substantiating quantitative claims"
-      - "Supporting evidence-based arguments"
-      - "Providing verifiable data points"
-    credibility_basis: "Methodology, data quality, verification"
-    
-  ops_13_thought_leaders:
-    focus: "Narrative frameworks and perspectives"
-    use_for:
-      - "Strategic framing and positioning"
-      - "Conceptual frameworks"
-      - "Industry perspective and insight"
-    credibility_basis: "Reputation, influence, recognition"
-    
-  overlap_handling:
-    rule: "When citing for evidence, use OPS_17. When citing for perspective, use OPS_13."
-    example: "Cite Binet & Field's data from IPA (OPS_17) but reference their effectiveness philosophy (OPS_13)"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+  ops_17_experts: { focus: "Factual evidence and data sources", use_for: ["Substantiating quantitative claims", "Supporting evidence-based arguments", "Providing verifiable data points"], credibility_basis: "Methodology, data quality, verification" }
+  ops_13_thought_leaders: { focus: "Narrative frameworks and perspectives", use_for: ["Strategic framing and positioning", "Conceptual frameworks", "Industry perspective and insight"], credibility_basis: "Reputation, influence, recognition" }
+  overlap_handling: { rule: "When citing for evidence, use OPS_17. When citing for perspective, use OPS_13.", example: "Cite Binet & Field's data from IPA (OPS_17) but reference their effectiveness philosophy (OPS_13)" }
 
 validation:
   ops_17_specific:
-    structural:
-      - "All expert entries follow expert_source_schema"
-      - "reliability_rating aligns with LOGIC_08 source_reliability"
-      - "typical_tier aligns with LOGIC_08 evidence_tiers"
-      
-    content:
-      - "No actual evidence items (those belong in evidence vaults)"
-      - "No client-nominated experts without external validation"
-      - "Credibility criteria use same scales as LOGIC_08"
-      
-    maintenance:
-      - "last_verified date within 12 months"
-      - "URLs are functional"
-      - "Domain classifications are current"
+    structural: ["All expert entries follow expert_source_schema", "reliability_rating aligns with LOGIC_08 source_reliability", "typical_tier aligns with LOGIC_08 evidence_tiers"]
+    content: ["No actual evidence items (those belong in evidence vaults)", "No client-nominated experts without external validation", "Credibility criteria use same scales as LOGIC_08"]
+    maintenance: ["last_verified date within 12 months", "URLs are functional", "Domain classifications are current"]

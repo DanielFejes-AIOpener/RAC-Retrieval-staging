@@ -1,280 +1,110 @@
-# ================================================================
-# OPS_00_STANDARDS
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Quality standards, KPI framework, and base OPS template
-# ================================================================
+# OPS_00_STANDARDS.yaml
 
 meta:
   owner: "AI Opener"
   version: "2.0.0"
   last_updated: "2025-01-15"
   purpose: "Operational standards, KPI framework, and base OPS template"
-  notes: "v2.0 - Added base template pattern for all OPS files"
   tags: [ops, standards, kpi, base]
-
-# ═══════════════════════════════════════════════════════════════════════════
-# AUTO-INHERITANCE
-# ═══════════════════════════════════════════════════════════════════════════
-# Base dependencies auto-inherited per LOGIC_00_INDEX#auto_inheritance
-# No explicit declaration required
-
-# ═══════════════════════════════════════════════════════════════════════════
-# OPS-SPECIFIC REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
 
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
 ai_policy_enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# BASE TEMPLATE FOR OPS FILES
-# ═══════════════════════════════════════════════════════════════════════════
-
 ops_base_template:
-  description: "Standard structure all OPS files should follow"
-  
   required_sections:
     - section: "meta"
       fields:
-        - field: "owner"
-          type: "string"
-          required: true
-        - field: "version"
-          type: "string"
-          required: true
-          format: "semver"
-        - field: "last_updated"
-          type: "date"
-          required: true
-          format: "ISO"
-        - field: "purpose"
-          type: "string"
-          required: true
-          max_length: 100
-        - field: "notes"
-          type: "string"
-          required: false
-        - field: "tags"
-          type: "array"
-          required: true
-          validation: "LOGIC_03_TAXONOMY"
+        - { field: "owner", type: "string", required: true }
+        - { field: "version", type: "string", required: true, format: "semver" }
+        - { field: "last_updated", type: "date", required: true, format: "ISO" }
+        - { field: "purpose", type: "string", required: true, max_length: 100 }
+        - { field: "notes", type: "string", required: false }
+        - { field: "tags", type: "array", required: true, validation: "LOGIC_03_TAXONOMY" }
     - section: "extends"
       value: "OPS_00_STANDARDS"
-      note: "Implicit or explicit"
     - section: "primary_content"
-      note: "File-specific content section(s)"
-      
-  optional_sections:
-    - "validation"
-    - "examples"
-    - "quick_reference"
-    
+  optional_sections: ["validation", "examples", "quick_reference"]
   naming_convention:
     pattern: "OPS_{NN}_{NAME}"
     nn_format: "Two-digit zero-padded number"
     name_format: "UPPERCASE_SNAKE_CASE"
-    examples:
-      - "OPS_01_STYLE_OPTIONS"
-      - "OPS_03_COPYWRITING_PLAYBOOK"
-      - "OPS_18_HANDOFF_INTAKE"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# KPI FRAMEWORK
-# ═══════════════════════════════════════════════════════════════════════════
 
 kpi_framework:
   north_star:
     metric: "Client-reported value delivered"
     measurement: "Quarterly NPS + retention rate"
     target: ">= 8.5 NPS, >= 90% retention"
-    
   guardrails:
-    - metric: "Factual accuracy"
-      threshold: ">= 98%"
-      measurement: "Post-delivery audit sampling"
-      frequency: "Weekly"
-      escalation: "Immediate review if < 95%"
-      
-    - metric: "Brand alignment"
-      threshold: ">= 95%"
-      measurement: "Style guide compliance check"
-      frequency: "Per deliverable"
-      escalation: "Review if < 90%"
-      
-    - metric: "Deadline adherence"
-      threshold: ">= 90%"
-      measurement: "Delivery timestamp vs. committed"
-      frequency: "Per deliverable"
-      escalation: "Workflow review if < 85%"
-      
-    - metric: "Evidence compliance"
-      threshold: "100%"
-      measurement: "Claims vs. evidence vault"
-      frequency: "Per deliverable"
-      escalation: "Block delivery if non-compliant"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# EVIDENCE POLICY
-# ═══════════════════════════════════════════════════════════════════════════
+    - { metric: "Factual accuracy", threshold: ">= 98%", measurement: "Post-delivery audit sampling", frequency: "Weekly", escalation: "Immediate review if < 95%" }
+    - { metric: "Brand alignment", threshold: ">= 95%", measurement: "Style guide compliance check", frequency: "Per deliverable", escalation: "Review if < 90%" }
+    - { metric: "Deadline adherence", threshold: ">= 90%", measurement: "Delivery timestamp vs. committed", frequency: "Per deliverable", escalation: "Workflow review if < 85%" }
+    - { metric: "Evidence compliance", threshold: "100%", measurement: "Claims vs. evidence vault", frequency: "Per deliverable", escalation: "Block delivery if non-compliant" }
 
 evidence_policy:
   tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
   source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
   item_schema: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
-  
   operational_rules:
-    citation_required:
-      - "Statistics and numbers"
-      - "Market claims"
-      - "Competitor comparisons"
-      - "Regulatory statements"
-      - "Performance benchmarks"
-      - "Industry trends"
-      
+    citation_required: ["Statistics and numbers", "Market claims", "Competitor comparisons", "Regulatory statements", "Performance benchmarks", "Industry trends"]
     freshness_requirements:
-      market_data:
-        max_age_months: 12
-        exception: "Historical analysis explicitly noted"
-      regulatory:
-        requirement: "Current version only"
-        verification: "Check source date before use"
-      statistics:
-        max_age_months: 24
-        exception: "Historical context explicitly noted"
-      case_studies:
-        max_age_months: 36
-        note: "Older case studies acceptable with date context"
-        
+      market_data: { max_age_months: 12, exception: "Historical analysis explicitly noted" }
+      regulatory: { requirement: "Current version only", verification: "Check source date before use" }
+      statistics: { max_age_months: 24, exception: "Historical context explicitly noted" }
+      case_studies: { max_age_months: 36 }
     reliability_minimums:
-      quantitative_claims:
-        min_tier: "tier_1"
-        min_reliability: "B"
-      qualitative_claims:
-        min_tier: "tier_2"
-        min_reliability: "C"
-      background_context:
-        min_tier: "tier_3"
-        min_reliability: "C"
-        
+      quantitative_claims: { min_tier: "tier_1", min_reliability: "B" }
+      qualitative_claims: { min_tier: "tier_2", min_reliability: "C" }
+      background_context: { min_tier: "tier_3", min_reliability: "C" }
     d_rated_handling:
       action: "Requires disclaimer"
       disclaimer_text: "Source reliability is limited; verify independently"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# AI POLICY COMPLIANCE (Procedural)
-# ═══════════════════════════════════════════════════════════════════════════
-
 ai_policy_compliance:
-  description: |
-    OPS defines procedural steps for verifying policy compliance.
-    OPS consumes active ai_policy from ORG/CLIENT but does not define or interpret it.
-    Final enforcement remains the responsibility of LOGIC_16_POLICY_CAPTURE.
-  
   enforcement_reference: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
-  
   procedural_checks:
-    description: "Policy-related review steps; ai_policy non-compliance can fail an applicable gate and block delivery (enforcement via LOGIC_16)"
-    
     pre_delivery:
       - "Confirm no forbidden inputs were used (per ai_policy.data_handling)"
       - "Confirm external communication complies with policy (per ai_policy.external_communication)"
       - "Confirm sensitive topics were handled per policy (per ai_policy.sensitive_topics)"
       - "Confirm disclosure requirements are met (per ai_policy.disclosure)"
-      
     on_failure:
       action: "Block delivery or escalate to HITL"
       enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
       hitl_trigger: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
-      
   scope:
     applies_to: "All OPS review checklists and delivery handoffs"
-    note: "OPS defines the checklist items; LOGIC enforces the policy"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CONTENT QUALITY STANDARDS
-# ═══════════════════════════════════════════════════════════════════════════
 
 content_standards:
   readability:
     default_level: "Professional audience"
     flesch_kincaid_target: "10-14"
-    adjust_per_audience:
-      technical: "12-16"
-      executive: "8-12"
-      general: "8-10"
-    
+    adjust_per_audience: { technical: "12-16", executive: "8-12", general: "8-10" }
   structure:
     max_paragraph_sentences: 5
     max_bullet_points: 7
     heading_hierarchy: "Required for content > 500 words"
-    section_length_guidance:
-      short: "< 300 words"
-      medium: "300-800 words"
-      long: "> 800 words, requires section breaks"
-    
+    section_length_guidance: { short: "< 300 words", medium: "300-800 words", long: "> 800 words, requires section breaks" }
   accuracy:
     fact_check_required: true
     source_citation: "Required for claims"
-    disclaimer_required_for:
-      - "projections"
-      - "estimates"
-      - "opinions"
-      - "forecasts"
-      - "unverified claims"
-      
+    disclaimer_required_for: ["projections", "estimates", "opinions", "forecasts", "unverified claims"]
   tone:
     default: "Professional, consultative"
-    avoid:
-      - "Hyperbole"
-      - "Unsubstantiated superlatives"
-      - "Competitor disparagement"
-      - "Legal claims without review"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# HANDOFF CONTRACT SCHEMA
-# ═══════════════════════════════════════════════════════════════════════════
+    avoid: ["Hyperbole", "Unsubstantiated superlatives", "Competitor disparagement", "Legal claims without review"]
 
 handoff_contracts:
-  description: "Schema for structured work handoffs between phases"
-  
   intake_contract:
     reference: "OPS_18_HANDOFF_INTAKE"
-    required_fields:
-      - "request_id"
-      - "request_summary"
-      - "requester"
-      - "deliverable_type"
-      - "deadline"
-      - "priority"
-    optional_fields:
-      - "context_documents"
-      - "constraints"
-      - "success_criteria"
-    hash_verification:
-      enabled: true
-      algorithm: "SHA-256"
-      
+    required_fields: ["request_id", "request_summary", "requester", "deliverable_type", "deadline", "priority"]
+    optional_fields: ["context_documents", "constraints", "success_criteria"]
+    hash_verification: { enabled: true, algorithm: "SHA-256" }
   delivery_contract:
     reference: "OPS_19_HANDOFF_DELIVERY"
-    required_fields:
-      - "request_id"
-      - "deliverable"
-      - "quality_checklist"
-      - "sources_used"
-      - "delivered_at"
-      - "delivered_by"
-    hash_verification:
-      enabled: true
-      algorithm: "SHA-256"
-    recipient_acknowledgment:
-      required: true
-      timeout_hours: 24
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION RULES (FOR ALL OPS FILES)
-# ═══════════════════════════════════════════════════════════════════════════
+    required_fields: ["request_id", "deliverable", "quality_checklist", "sources_used", "delivered_at", "delivered_by"]
+    hash_verification: { enabled: true, algorithm: "SHA-256" }
+    recipient_acknowledgment: { required: true, timeout_hours: 24 }
 
 validation:
   all_ops_files:
@@ -286,19 +116,12 @@ validation:
       - "Extends OPS_00_STANDARDS (implicit or explicit)"
       - "Tags from LOGIC_03_TAXONOMY only"
       - "All $ref paths resolve to valid targets"
-      
     content:
       - "No WHO definitions (agent identities belong in CONFIG/ROLES)"
       - "No behavioral rules (those belong in LOGIC)"
       - "No client-specific content (that belongs in CLIENT layer)"
       - "Evidence references follow evidence_item_schema"
-      
-    format:
-      - "YAML syntax valid"
-      - "No duplicate keys"
-      - "UTF-8 encoding"
-      - "No trailing whitespace"
-      
+    format: ["YAML syntax valid", "No duplicate keys", "UTF-8 encoding", "No trailing whitespace"]
   on_validation_failure:
     severity: "error"
     action: "Block file activation"

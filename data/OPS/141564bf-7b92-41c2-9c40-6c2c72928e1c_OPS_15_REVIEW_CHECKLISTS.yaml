@@ -1,9 +1,4 @@
-# ================================================================
-# OPS_15_REVIEW_CHECKLISTS
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Quality assurance checklists operationalizing Definition of Done
-# ================================================================
+# OPS_15_REVIEW_CHECKLISTS.yaml
 
 meta:
   owner: "AI Opener"
@@ -14,677 +9,156 @@ meta:
   tags: [ops, quality, checklists, review, dod]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 output_standards: "$ref: LOGIC_09_INTERFACE#output_standards"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# CHECKLIST SCHEMA
-# ═══════════════════════════════════════════════════════════════════════════
-
 checklist_schema:
-  description: "Standard structure for all checklists"
-  
   item_structure:
-    - field: "id"
-      type: "string"
-      pattern: "chk-{category}-{nnn}"
-    - field: "check"
-      type: "string"
-      description: "Clear, verifiable check item"
-    - field: "category"
-      type: "enum"
-      values: [accuracy, compliance, brand, quality, process]
-    - field: "severity"
-      type: "enum"
-      values: [blocker, major, minor]
-      description: "Impact if check fails"
-    - field: "automated"
-      type: "boolean"
-      description: "Whether check can be automated"
-      
+    - { field: "id", type: "string", pattern: "chk-{category}-{nnn}" }
+    - { field: "check", type: "string", description: "Clear, verifiable check item" }
+    - { field: "category", type: "enum", values: [accuracy, compliance, brand, quality, process] }
+    - { field: "severity", type: "enum", values: [blocker, major, minor], description: "Impact if check fails" }
+    - { field: "automated", type: "boolean", description: "Whether check can be automated" }
   severity_definitions:
-    blocker:
-      description: "Cannot proceed; must fix"
-      action: "Block delivery until resolved"
-    major:
-      description: "Significant issue; should fix"
-      action: "Fix before delivery or document exception"
-    minor:
-      description: "Improvement opportunity"
-      action: "Fix if time permits; note for future"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# UNIVERSAL CHECKLIST
-# ═══════════════════════════════════════════════════════════════════════════
+    blocker: { description: "Cannot proceed; must fix", action: "Block delivery until resolved" }
+    major: { description: "Significant issue; should fix", action: "Fix before delivery or document exception" }
+    minor: { description: "Improvement opportunity", action: "Fix if time permits; note for future" }
 
 universal_checklist:
-  description: "Base checks that apply to ALL deliverables"
-  
   accuracy:
-    - id: "chk-accuracy-001"
-      check: "All factual claims have evidence citations"
-      category: "accuracy"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-accuracy-002"
-      check: "Statistics and numbers verified against sources"
-      category: "accuracy"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-accuracy-003"
-      check: "No outdated information (check freshness thresholds)"
-      category: "accuracy"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-accuracy-004"
-      check: "Proper names and titles spelled correctly"
-      category: "accuracy"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-accuracy-001", check: "All factual claims have evidence citations", category: "accuracy", severity: "blocker", automated: true }
+    - { id: "chk-accuracy-002", check: "Statistics and numbers verified against sources", category: "accuracy", severity: "blocker", automated: false }
+    - { id: "chk-accuracy-003", check: "No outdated information (check freshness thresholds)", category: "accuracy", severity: "major", automated: true }
+    - { id: "chk-accuracy-004", check: "Proper names and titles spelled correctly", category: "accuracy", severity: "major", automated: false }
   compliance:
-    - id: "chk-compliance-001"
-      check: "No competitor disparagement"
-      category: "compliance"
-      severity: "blocker"
-      automated: true
-      reference: "$ref: LOGIC_09_INTERFACE#hitl_triggers.human_required"
-      
-    - id: "chk-compliance-002"
-      check: "No unsubstantiated legal/regulatory claims"
-      category: "compliance"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-compliance-003"
-      check: "No pricing commitments without approval"
-      category: "compliance"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-compliance-004"
-      check: "GDPR/privacy compliant (no unauthorized PII)"
-      category: "compliance"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-compliance-005"
-      check: "Copyright and trademark usage appropriate"
-      category: "compliance"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-compliance-001", check: "No competitor disparagement", category: "compliance", severity: "blocker", automated: true, reference: "$ref: LOGIC_09_INTERFACE#hitl_triggers.human_required" }
+    - { id: "chk-compliance-002", check: "No unsubstantiated legal/regulatory claims", category: "compliance", severity: "blocker", automated: true }
+    - { id: "chk-compliance-003", check: "No pricing commitments without approval", category: "compliance", severity: "blocker", automated: true }
+    - { id: "chk-compliance-004", check: "GDPR/privacy compliant (no unauthorized PII)", category: "compliance", severity: "blocker", automated: false }
+    - { id: "chk-compliance-005", check: "Copyright and trademark usage appropriate", category: "compliance", severity: "major", automated: false }
   brand_safety:
-    - id: "chk-brand-001"
-      check: "Tone aligned with brand voice profile"
-      category: "brand"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-brand-002"
-      check: "No offensive or inappropriate content"
-      category: "brand"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-brand-003"
-      check: "Client terminology preferences applied"
-      category: "brand"
-      severity: "minor"
-      automated: true
-      
+    - { id: "chk-brand-001", check: "Tone aligned with brand voice profile", category: "brand", severity: "major", automated: false }
+    - { id: "chk-brand-002", check: "No offensive or inappropriate content", category: "brand", severity: "blocker", automated: true }
+    - { id: "chk-brand-003", check: "Client terminology preferences applied", category: "brand", severity: "minor", automated: true }
   dei_requirements:
-    - reference: "$ref: LOGIC_09_INTERFACE#output_standards.dei_requirements"
-    
-    - id: "chk-dei-001"
-      check: "Inclusive language used"
-      category: "compliance"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-dei-002"
-      check: "No stereotypes or bias"
-      category: "compliance"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-dei-003"
-      check: "Diverse representation in examples"
-      category: "compliance"
-      severity: "minor"
-      automated: false
-      
-    - id: "chk-dei-004"
-      check: "Gender-neutral defaults where appropriate"
-      category: "compliance"
-      severity: "minor"
-      automated: true
-      
+    - { reference: "$ref: LOGIC_09_INTERFACE#output_standards.dei_requirements" }
+    - { id: "chk-dei-001", check: "Inclusive language used", category: "compliance", severity: "major", automated: true }
+    - { id: "chk-dei-002", check: "No stereotypes or bias", category: "compliance", severity: "blocker", automated: false }
+    - { id: "chk-dei-003", check: "Diverse representation in examples", category: "compliance", severity: "minor", automated: false }
+    - { id: "chk-dei-004", check: "Gender-neutral defaults where appropriate", category: "compliance", severity: "minor", automated: true }
   accessibility:
-    - reference: "$ref: LOGIC_09_INTERFACE#output_standards.accessibility"
-    
-    - id: "chk-a11y-001"
-      check: "Alt text provided for all images"
-      category: "compliance"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-a11y-002"
-      check: "Heading hierarchy correct (H1 --> H2 --> H3)"
-      category: "compliance"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-a11y-003"
-      check: "Sufficient color contrast (if applicable)"
-      category: "compliance"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-a11y-004"
-      check: "Screen reader compatible structure"
-      category: "compliance"
-      severity: "major"
-      automated: false
-
+    - { reference: "$ref: LOGIC_09_INTERFACE#output_standards.accessibility" }
+    - { id: "chk-a11y-001", check: "Alt text provided for all images", category: "compliance", severity: "blocker", automated: true }
+    - { id: "chk-a11y-002", check: "Heading hierarchy correct (H1 --> H2 --> H3)", category: "compliance", severity: "major", automated: true }
+    - { id: "chk-a11y-003", check: "Sufficient color contrast (if applicable)", category: "compliance", severity: "major", automated: true }
+    - { id: "chk-a11y-004", check: "Screen reader compatible structure", category: "compliance", severity: "major", automated: false }
   ai_policy_compliance:
-    - description: "AI policy procedural verification checks"
-      reference: "$ref: OPS_00_STANDARDS#ai_policy_compliance"
-    
-    - id: "chk-aipolicy-001"
-      check: "No forbidden inputs used (per ai_policy.data_handling)"
-      category: "compliance"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-aipolicy-002"
-      check: "External communication complies with policy (per ai_policy.external_communication)"
-      category: "compliance"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-aipolicy-003"
-      check: "Sensitive topics handled per policy (per ai_policy.sensitive_topics)"
-      category: "compliance"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-aipolicy-004"
-      check: "AI disclosure requirements met (per ai_policy.disclosure)"
-      category: "compliance"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-aipolicy-005"
-      check: "Content not in ai_policy.prohibited_use_cases"
-      category: "compliance"
-      severity: "blocker"
-      automated: true
-
-# ═══════════════════════════════════════════════════════════════════════════
-# EDITORIAL DOD CHECKLIST
-# ═══════════════════════════════════════════════════════════════════════════
+    - { reference: "$ref: OPS_00_STANDARDS#ai_policy_compliance" }
+    - { id: "chk-aipolicy-001", check: "No forbidden inputs used (per ai_policy.data_handling)", category: "compliance", severity: "blocker", automated: false }
+    - { id: "chk-aipolicy-002", check: "External communication complies with policy (per ai_policy.external_communication)", category: "compliance", severity: "blocker", automated: false }
+    - { id: "chk-aipolicy-003", check: "Sensitive topics handled per policy (per ai_policy.sensitive_topics)", category: "compliance", severity: "blocker", automated: false }
+    - { id: "chk-aipolicy-004", check: "AI disclosure requirements met (per ai_policy.disclosure)", category: "compliance", severity: "blocker", automated: true }
+    - { id: "chk-aipolicy-005", check: "Content not in ai_policy.prohibited_use_cases", category: "compliance", severity: "blocker", automated: true }
 
 editorial_dod:
-  description: "Definition of Done for editorial/copy content"
   applies_to: ["blog_post", "article", "whitepaper", "case_study", "email", "social_post"]
-  
   extends: "universal_checklist"
-  
   content_quality:
-    - id: "chk-edit-001"
-      check: "Grammar and spelling error-free"
-      category: "quality"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-edit-002"
-      check: "Punctuation correct"
-      category: "quality"
-      severity: "minor"
-      automated: true
-      
-    - id: "chk-edit-003"
-      check: "Sentence structure varied and readable"
-      category: "quality"
-      severity: "minor"
-      automated: false
-      
-    - id: "chk-edit-004"
-      check: "Paragraph length appropriate (< 5 sentences)"
-      category: "quality"
-      severity: "minor"
-      automated: true
-      
-    - id: "chk-edit-005"
-      check: "Active voice preferred"
-      category: "quality"
-      severity: "minor"
-      automated: true
-      
-    - id: "chk-edit-006"
-      check: "Jargon minimized or explained"
-      category: "quality"
-      severity: "minor"
-      automated: false
-      
+    - { id: "chk-edit-001", check: "Grammar and spelling error-free", category: "quality", severity: "major", automated: true }
+    - { id: "chk-edit-002", check: "Punctuation correct", category: "quality", severity: "minor", automated: true }
+    - { id: "chk-edit-003", check: "Sentence structure varied and readable", category: "quality", severity: "minor", automated: false }
+    - { id: "chk-edit-004", check: "Paragraph length appropriate (< 5 sentences)", category: "quality", severity: "minor", automated: true }
+    - { id: "chk-edit-005", check: "Active voice preferred", category: "quality", severity: "minor", automated: true }
+    - { id: "chk-edit-006", check: "Jargon minimized or explained", category: "quality", severity: "minor", automated: false }
   structure:
-    - id: "chk-edit-007"
-      check: "Clear headline/title"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-edit-008"
-      check: "Logical flow and organization"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-edit-009"
-      check: "Strong opening hook"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-edit-010"
-      check: "Clear call-to-action (if applicable)"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-edit-011"
-      check: "Word count within specification"
-      category: "quality"
-      severity: "minor"
-      automated: true
-      
+    - { id: "chk-edit-007", check: "Clear headline/title", category: "quality", severity: "major", automated: false }
+    - { id: "chk-edit-008", check: "Logical flow and organization", category: "quality", severity: "major", automated: false }
+    - { id: "chk-edit-009", check: "Strong opening hook", category: "quality", severity: "major", automated: false }
+    - { id: "chk-edit-010", check: "Clear call-to-action (if applicable)", category: "quality", severity: "major", automated: false }
+    - { id: "chk-edit-011", check: "Word count within specification", category: "quality", severity: "minor", automated: true }
   seo_if_applicable:
-    - id: "chk-edit-012"
-      check: "Meta description present and within limits"
-      category: "quality"
-      severity: "minor"
-      automated: true
-      
-    - id: "chk-edit-013"
-      check: "Target keywords naturally integrated"
-      category: "quality"
-      severity: "minor"
-      automated: false
-      
-    - id: "chk-edit-014"
-      check: "Internal/external links appropriate"
-      category: "quality"
-      severity: "minor"
-      automated: false
-
-# ═══════════════════════════════════════════════════════════════════════════
-# TEST DOD CHECKLIST
-# ═══════════════════════════════════════════════════════════════════════════
+    - { id: "chk-edit-012", check: "Meta description present and within limits", category: "quality", severity: "minor", automated: true }
+    - { id: "chk-edit-013", check: "Target keywords naturally integrated", category: "quality", severity: "minor", automated: false }
+    - { id: "chk-edit-014", check: "Internal/external links appropriate", category: "quality", severity: "minor", automated: false }
 
 test_dod:
-  description: "Definition of Done for A/B tests and experiments"
   applies_to: ["ab_test", "multivariate_test", "experiment"]
-  
   extends: "universal_checklist"
-  
   hypothesis:
-    - id: "chk-test-001"
-      check: "Hypothesis clearly stated"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      format: "If [change], then [outcome], because [reason]"
-      
-    - id: "chk-test-002"
-      check: "Success metric defined"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-test-003"
-      check: "Minimum detectable effect specified"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-test-001", check: "Hypothesis clearly stated", category: "quality", severity: "blocker", automated: false, format: "If [change], then [outcome], because [reason]" }
+    - { id: "chk-test-002", check: "Success metric defined", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-test-003", check: "Minimum detectable effect specified", category: "quality", severity: "major", automated: false }
   sample_sanity:
-    - id: "chk-test-004"
-      check: "Sample size calculation performed"
-      category: "accuracy"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-test-005"
-      check: "Sample size sufficient for statistical power"
-      category: "accuracy"
-      severity: "blocker"
-      automated: true
-      threshold: "80% power minimum"
-      
-    - id: "chk-test-006"
-      check: "Random assignment verified"
-      category: "accuracy"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-test-007"
-      check: "Sample representativeness checked"
-      category: "accuracy"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-test-004", check: "Sample size calculation performed", category: "accuracy", severity: "blocker", automated: false }
+    - { id: "chk-test-005", check: "Sample size sufficient for statistical power", category: "accuracy", severity: "blocker", automated: true, threshold: "80% power minimum" }
+    - { id: "chk-test-006", check: "Random assignment verified", category: "accuracy", severity: "blocker", automated: true }
+    - { id: "chk-test-007", check: "Sample representativeness checked", category: "accuracy", severity: "major", automated: false }
   statistical_significance:
-    - id: "chk-test-008"
-      check: "Statistical significance threshold defined"
-      category: "accuracy"
-      severity: "blocker"
-      automated: false
-      default: "p < 0.05"
-      
-    - id: "chk-test-009"
-      check: "Test duration sufficient"
-      category: "accuracy"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-test-010"
-      check: "External validity factors documented"
-      category: "accuracy"
-      severity: "minor"
-      automated: false
-      examples: ["seasonality", "competing campaigns", "news events"]
-      
+    - { id: "chk-test-008", check: "Statistical significance threshold defined", category: "accuracy", severity: "blocker", automated: false, default: "p < 0.05" }
+    - { id: "chk-test-009", check: "Test duration sufficient", category: "accuracy", severity: "major", automated: true }
+    - { id: "chk-test-010", check: "External validity factors documented", category: "accuracy", severity: "minor", automated: false, examples: ["seasonality", "competing campaigns", "news events"] }
   results_documentation:
-    - id: "chk-test-011"
-      check: "Results clearly documented"
-      category: "process"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-test-012"
-      check: "Confidence intervals reported"
-      category: "accuracy"
-      severity: "major"
-      automated: true
-      
-    - id: "chk-test-013"
-      check: "Practical significance assessed (not just statistical)"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-test-014"
-      check: "Learnings and recommendations documented"
-      category: "quality"
-      severity: "major"
-      automated: false
-
-# ═══════════════════════════════════════════════════════════════════════════
-# BRIEF --> CONCEPT DOD CHECKLIST
-# ═══════════════════════════════════════════════════════════════════════════
+    - { id: "chk-test-011", check: "Results clearly documented", category: "process", severity: "major", automated: false }
+    - { id: "chk-test-012", check: "Confidence intervals reported", category: "accuracy", severity: "major", automated: true }
+    - { id: "chk-test-013", check: "Practical significance assessed (not just statistical)", category: "quality", severity: "major", automated: false }
+    - { id: "chk-test-014", check: "Learnings and recommendations documented", category: "quality", severity: "major", automated: false }
 
 brief_to_concept_dod:
-  description: "Definition of Done for brief-to-concept handoff"
   applies_to: ["creative_brief", "campaign_brief", "content_brief"]
-  
   extends: "universal_checklist"
-  
   brief_completeness:
-    - id: "chk-btc-001"
-      check: "Objective clearly stated"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-btc-002"
-      check: "Target audience defined"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-btc-003"
-      check: "Key messages identified"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-btc-004"
-      check: "Success criteria measurable"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-btc-005"
-      check: "Constraints documented"
-      category: "quality"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-btc-006"
-      check: "Timeline and milestones clear"
-      category: "process"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-btc-007"
-      check: "Budget parameters defined (if applicable)"
-      category: "process"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-btc-001", check: "Objective clearly stated", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-btc-002", check: "Target audience defined", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-btc-003", check: "Key messages identified", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-btc-004", check: "Success criteria measurable", category: "quality", severity: "major", automated: false }
+    - { id: "chk-btc-005", check: "Constraints documented", category: "quality", severity: "major", automated: false }
+    - { id: "chk-btc-006", check: "Timeline and milestones clear", category: "process", severity: "major", automated: false }
+    - { id: "chk-btc-007", check: "Budget parameters defined (if applicable)", category: "process", severity: "major", automated: false }
   concept_readiness:
-    - id: "chk-btc-008"
-      check: "Concept addresses brief objectives"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-btc-009"
-      check: "Concept is within stated constraints"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-btc-010"
-      check: "Concept is producible within timeline"
-      category: "process"
-      severity: "major"
-      automated: false
-      
-    - id: "chk-btc-011"
-      check: "Concept includes rationale/justification"
-      category: "quality"
-      severity: "major"
-      automated: false
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CONCEPT --> PRODUCTION QA CHECKLIST
-# ═══════════════════════════════════════════════════════════════════════════
+    - { id: "chk-btc-008", check: "Concept addresses brief objectives", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-btc-009", check: "Concept is within stated constraints", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-btc-010", check: "Concept is producible within timeline", category: "process", severity: "major", automated: false }
+    - { id: "chk-btc-011", check: "Concept includes rationale/justification", category: "quality", severity: "major", automated: false }
 
 concept_to_production_dod:
-  description: "Definition of Done for concept-to-production handoff"
   applies_to: ["design", "video", "campaign_assets", "production_files"]
-  
   extends: "universal_checklist"
-  
   production_readiness:
-    - id: "chk-ctp-001"
-      check: "All required assets present"
-      category: "process"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-ctp-002"
-      check: "File formats correct for channel"
-      category: "process"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-ctp-003"
-      check: "Resolution/dimensions meet specifications"
-      category: "quality"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-ctp-004"
-      check: "Naming conventions followed"
-      category: "process"
-      severity: "minor"
-      automated: true
-      
+    - { id: "chk-ctp-001", check: "All required assets present", category: "process", severity: "blocker", automated: true }
+    - { id: "chk-ctp-002", check: "File formats correct for channel", category: "process", severity: "blocker", automated: true }
+    - { id: "chk-ctp-003", check: "Resolution/dimensions meet specifications", category: "quality", severity: "blocker", automated: true }
+    - { id: "chk-ctp-004", check: "Naming conventions followed", category: "process", severity: "minor", automated: true }
   content_finalization:
-    - id: "chk-ctp-005"
-      check: "Copy finalized and proofread"
-      category: "quality"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-ctp-006"
-      check: "All placeholder content replaced"
-      category: "quality"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-ctp-007"
-      check: "Legal disclaimers included (if required)"
-      category: "compliance"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-ctp-008"
-      check: "Tracking/UTM parameters defined"
-      category: "process"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-ctp-005", check: "Copy finalized and proofread", category: "quality", severity: "blocker", automated: false }
+    - { id: "chk-ctp-006", check: "All placeholder content replaced", category: "quality", severity: "blocker", automated: true }
+    - { id: "chk-ctp-007", check: "Legal disclaimers included (if required)", category: "compliance", severity: "blocker", automated: false }
+    - { id: "chk-ctp-008", check: "Tracking/UTM parameters defined", category: "process", severity: "major", automated: false }
   approval_status:
-    - id: "chk-ctp-009"
-      check: "Internal review completed"
-      category: "process"
-      severity: "blocker"
-      automated: false
-      
-    - id: "chk-ctp-010"
-      check: "Client approval obtained (if required)"
-      category: "process"
-      severity: "blocker"
-      automated: false
-
-# ═══════════════════════════════════════════════════════════════════════════
-# PROCESS CHECKS
-# ═══════════════════════════════════════════════════════════════════════════
+    - { id: "chk-ctp-009", check: "Internal review completed", category: "process", severity: "blocker", automated: false }
+    - { id: "chk-ctp-010", check: "Client approval obtained (if required)", category: "process", severity: "blocker", automated: false }
 
 process_checks:
-  description: "Process-level quality checks"
-  
   four_eyes_signoff:
-    - description: "Peer review requirement"
-      rule: "All external-facing content requires review by second person"
-    
-    - id: "chk-proc-001"
-      check: "Peer review completed"
-      category: "process"
-      severity: "blocker"
-      automated: false
-      applies_to: ["external_publication"]
-      
-    - id: "chk-proc-002"
-      check: "Reviewer different from creator"
-      category: "process"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-proc-003"
-      check: "Review feedback addressed"
-      category: "process"
-      severity: "major"
-      automated: false
-      
+    - { rule: "All external-facing content requires review by second person" }
+    - { id: "chk-proc-001", check: "Peer review completed", category: "process", severity: "blocker", automated: false, applies_to: ["external_publication"] }
+    - { id: "chk-proc-002", check: "Reviewer different from creator", category: "process", severity: "blocker", automated: true }
+    - { id: "chk-proc-003", check: "Review feedback addressed", category: "process", severity: "major", automated: false }
   traceability:
-    - id: "chk-proc-004"
-      check: "Version history maintained"
-      category: "process"
-      severity: "minor"
-      automated: true
-      
-    - id: "chk-proc-005"
-      check: "Change log documented"
-      category: "process"
-      severity: "minor"
-      automated: false
-      
-    - id: "chk-proc-006"
-      check: "Approval chain documented"
-      category: "process"
-      severity: "major"
-      automated: false
-      
+    - { id: "chk-proc-004", check: "Version history maintained", category: "process", severity: "minor", automated: true }
+    - { id: "chk-proc-005", check: "Change log documented", category: "process", severity: "minor", automated: false }
+    - { id: "chk-proc-006", check: "Approval chain documented", category: "process", severity: "major", automated: false }
   handoff_completion:
-    - reference: "OPS_19_HANDOFF_DELIVERY"
-    
-    - id: "chk-proc-007"
-      check: "Handoff contract fields complete"
-      category: "process"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-proc-008"
-      check: "Sources used documented"
-      category: "process"
-      severity: "blocker"
-      automated: true
-      
-    - id: "chk-proc-009"
-      check: "Quality checklist attached"
-      category: "process"
-      severity: "blocker"
-      automated: true
-
-# ═══════════════════════════════════════════════════════════════════════════
-# EXTENSIBILITY
-# ═══════════════════════════════════════════════════════════════════════════
+    - { reference: "OPS_19_HANDOFF_DELIVERY" }
+    - { id: "chk-proc-007", check: "Handoff contract fields complete", category: "process", severity: "blocker", automated: true }
+    - { id: "chk-proc-008", check: "Sources used documented", category: "process", severity: "blocker", automated: true }
+    - { id: "chk-proc-009", check: "Quality checklist attached", category: "process", severity: "blocker", automated: true }
 
 extensibility:
-  description: "How ORG and CLIENT layers can extend checklists"
-  
-  extension_rules:
-    - "Cannot remove or weaken blocker items"
-    - "Can add additional checks"
-    - "Can elevate minor to major (not downgrade)"
-    - "Must preserve universal checklist items"
-    
-  org_extensions:
-    description: "Agency-specific additional checks"
-    example: "Agency-specific brand guidelines check"
-    
-  client_extensions:
-    description: "Client-specific additional checks"
-    example: "Client legal review requirement"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+  extension_rules: ["Cannot remove or weaken blocker items", "Can add additional checks", "Can elevate minor to major (not downgrade)", "Must preserve universal checklist items"]
+  org_extensions: { description: "Agency-specific additional checks", example: "Agency-specific brand guidelines check" }
+  client_extensions: { description: "Client-specific additional checks", example: "Client legal review requirement" }
 
 validation:
-  checklist_validation:
-    - "All checklist items have unique IDs"
-    - "IDs follow pattern chk-{category}-{nnn}"
-    - "Severity is valid enum value"
-    - "Category is valid enum value"
-    - "Blocker items cannot be skipped"
-    
-  completion_validation:
-    - "All blocker items passed"
-    - "Major items passed or exceptions documented"
-    - "Four-eyes signoff completed for external content"
-    - "Checklist attached to handoff contract"
+  checklist_validation: ["All checklist items have unique IDs", "IDs follow pattern chk-{category}-{nnn}", "Severity is valid enum value", "Category is valid enum value", "Blocker items cannot be skipped"]
+  completion_validation: ["All blocker items passed", "Major items passed or exceptions documented", "Four-eyes signoff completed for external content", "Checklist attached to handoff contract"]

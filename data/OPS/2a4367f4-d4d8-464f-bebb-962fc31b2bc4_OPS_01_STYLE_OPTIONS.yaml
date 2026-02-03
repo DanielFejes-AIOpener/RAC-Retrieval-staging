@@ -1,435 +1,124 @@
-# ================================================================
-# OPS_01_STYLE_OPTIONS
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Style spectrum definitions and reusable style dimensions
-# ================================================================
+# OPS_01_STYLE_OPTIONS.yaml
 
 meta:
   owner: "AI Opener"
   version: "2.0.0"
   last_updated: "2025-12-11"
   purpose: "Style spectrum definitions as reusable dimensions and presets"
-  notes: "Extracted from legacy OPS_01_STYLEGUIDE_LITE.yaml and OPS_14_LOCALIZATION_GUIDELINES.yaml"
   tags: [ops, style, voice, tone]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# SSOT REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# STYLE DIMENSIONS
-# ═══════════════════════════════════════════════════════════════════════════
-# Each dimension is a spectrum from 1-5
-# ROLES, USE_CASES, ORG, and CLIENT can reference these to compose styles
-
 style_dimensions:
-  description: "Reusable style dimensions that can be composed into concrete style selections"
-  
   formality:
     id: "formality"
-    description: "Level of formal vs casual language"
     spectrum:
-      1:
-        label: "Very Casual"
-        characteristics:
-          - "Contractions freely used"
-          - "Colloquial expressions"
-          - "First-person plural common"
-          - "Sentence fragments acceptable"
-        example: "Hey! We've got something cool to share..."
-      2:
-        label: "Casual"
-        characteristics:
-          - "Contractions used"
-          - "Conversational tone"
-          - "Direct address"
-        example: "Here's what you need to know about..."
-      3:
-        label: "Professional Conversational"
-        characteristics:
-          - "Selective contractions"
-          - "Approachable but polished"
-          - "Balance of warmth and authority"
-        example: "Let's explore how this approach can help your team..."
-      4:
-        label: "Professional Formal"
-        characteristics:
-          - "Few contractions"
-          - "Complete sentences"
-          - "Third-person acceptable"
-        example: "This analysis examines the key factors that influence..."
-      5:
-        label: "Highly Formal"
-        characteristics:
-          - "No contractions"
-          - "Formal vocabulary"
-          - "Structured syntax"
-          - "Academic or legal register"
-        example: "The organization hereby presents the following findings..."
-    default: 3
-    
-  complexity:
-    id: "complexity"
-    description: "Level of technical depth and vocabulary"
-    spectrum:
-      1:
-        label: "Simplified"
-        characteristics:
-          - "Plain language only"
-          - "No jargon"
-          - "Short sentences (< 15 words avg)"
-          - "Common vocabulary"
-        flesch_kincaid: "6-8"
-      2:
-        label: "Accessible"
-        characteristics:
-          - "Minimal jargon, explained when used"
-          - "Moderate sentence length"
-          - "Concrete examples"
-        flesch_kincaid: "8-10"
-      3:
-        label: "Professional"
-        characteristics:
-          - "Industry-standard terminology"
-          - "Assumes baseline knowledge"
-          - "Balanced abstraction"
-        flesch_kincaid: "10-14"
-      4:
-        label: "Technical"
-        characteristics:
-          - "Domain-specific vocabulary"
-          - "Complex sentence structures acceptable"
-          - "Assumes expert audience"
-        flesch_kincaid: "14-16"
-      5:
-        label: "Expert"
-        characteristics:
-          - "Full technical depth"
-          - "Specialized terminology"
-          - "Academic/specialist register"
-        flesch_kincaid: "16+"
-    default: 3
-    
-  warmth:
-    id: "warmth"
-    description: "Level of interpersonal connection and empathy"
-    spectrum:
-      1:
-        label: "Neutral"
-        characteristics:
-          - "Facts-focused"
-          - "Minimal personal address"
-          - "Objective tone"
-        example: "The data indicates..."
-      2:
-        label: "Professional"
-        characteristics:
-          - "Respectful but reserved"
-          - "Occasional acknowledgment"
-        example: "You may find that..."
-      3:
-        label: "Approachable"
-        characteristics:
-          - "Acknowledges reader perspective"
-          - "Supportive framing"
-          - "Inclusive language"
-        example: "We understand that this can be challenging..."
-      4:
-        label: "Warm"
-        characteristics:
-          - "Empathetic tone"
-          - "Personal connection"
-          - "Encouraging language"
-        example: "We're excited to help you tackle this together..."
-      5:
-        label: "Highly Warm"
-        characteristics:
-          - "Strong emotional connection"
-          - "Enthusiasm expressed"
-          - "Personal touches"
-        example: "We can't wait to see what you'll achieve!"
-    default: 3
-    
-  directness:
-    id: "directness"
-    description: "Level of explicit vs implicit communication"
-    spectrum:
-      1:
-        label: "Very Indirect"
-        characteristics:
-          - "Suggestions over statements"
-          - "Hedged language"
-          - "Multiple qualifiers"
-        example: "It might be worth considering whether..."
-      2:
-        label: "Indirect"
-        characteristics:
-          - "Softened directives"
-          - "Some hedging"
-        example: "You may want to think about..."
-      3:
-        label: "Balanced"
-        characteristics:
-          - "Clear recommendations"
-          - "Professional hedging where appropriate"
-        example: "We recommend focusing on..."
-      4:
-        label: "Direct"
-        characteristics:
-          - "Clear statements"
-          - "Minimal hedging"
-          - "Action-oriented"
-        example: "Do this first. Then move to..."
-      5:
-        label: "Very Direct"
-        characteristics:
-          - "Imperatives common"
-          - "No hedging"
-          - "Dutch-style directness"
-        example: "Stop. Read this. Act now."
-    default: 4
-    note: "NL B2B audiences typically prefer higher directness (4-5)"
-    
-  energy:
-    id: "energy"
-    description: "Level of dynamism and urgency"
-    spectrum:
-      1:
-        label: "Calm"
-        characteristics:
-          - "Measured pace"
-          - "Longer sentences"
-          - "Reflective tone"
-        example: "Taking time to consider these factors allows for..."
-      2:
-        label: "Steady"
-        characteristics:
-          - "Even pacing"
-          - "Balanced urgency"
-        example: "Here's what to keep in mind as you plan..."
-      3:
-        label: "Engaged"
-        characteristics:
-          - "Active voice dominant"
-          - "Clear momentum"
-        example: "Let's break this down and get started..."
-      4:
-        label: "Dynamic"
-        characteristics:
-          - "Punchy sentences"
-          - "Action verbs"
-          - "Forward momentum"
-        example: "Move fast. Test often. Learn quickly."
-      5:
-        label: "High Energy"
-        characteristics:
-          - "Short, punchy phrases"
-          - "Urgency conveyed"
-          - "Exclamation acceptable"
-        example: "This changes everything. Here's why."
+      1: { label: "Very Casual", characteristics: ["Contractions freely used", "Colloquial expressions", "Sentence fragments acceptable"], example: "Hey! We've got something cool to share..." }
+      2: { label: "Casual", characteristics: ["Contractions used", "Conversational tone", "Direct address"], example: "Here's what you need to know about..." }
+      3: { label: "Professional Conversational", characteristics: ["Selective contractions", "Approachable but polished", "Balance of warmth and authority"], example: "Let's explore how this approach can help your team..." }
+      4: { label: "Professional Formal", characteristics: ["Few contractions", "Complete sentences", "Third-person acceptable"], example: "This analysis examines the key factors that influence..." }
+      5: { label: "Highly Formal", characteristics: ["No contractions", "Formal vocabulary", "Academic or legal register"], example: "The organization hereby presents the following findings..." }
     default: 3
 
-# ═══════════════════════════════════════════════════════════════════════════
-# STYLE PRESETS
-# ═══════════════════════════════════════════════════════════════════════════
-# Named combinations of dimensions for common use cases
-# Referenced by OPS_02_VOICES_LIBRARY, USE_CASES, ORG, CLIENT
+  complexity:
+    id: "complexity"
+    spectrum:
+      1: { label: "Simplified", characteristics: ["Plain language only", "No jargon", "Short sentences (< 15 words avg)"], flesch_kincaid: "6-8" }
+      2: { label: "Accessible", characteristics: ["Minimal jargon, explained when used", "Moderate sentence length", "Concrete examples"], flesch_kincaid: "8-10" }
+      3: { label: "Professional", characteristics: ["Industry-standard terminology", "Assumes baseline knowledge"], flesch_kincaid: "10-14" }
+      4: { label: "Technical", characteristics: ["Domain-specific vocabulary", "Complex sentence structures acceptable"], flesch_kincaid: "14-16" }
+      5: { label: "Expert", characteristics: ["Full technical depth", "Specialized terminology"], flesch_kincaid: "16+" }
+    default: 3
+
+  warmth:
+    id: "warmth"
+    spectrum:
+      1: { label: "Neutral", characteristics: ["Facts-focused", "Minimal personal address", "Objective tone"], example: "The data indicates..." }
+      2: { label: "Professional", characteristics: ["Respectful but reserved", "Occasional acknowledgment"], example: "You may find that..." }
+      3: { label: "Approachable", characteristics: ["Acknowledges reader perspective", "Supportive framing", "Inclusive language"], example: "We understand that this can be challenging..." }
+      4: { label: "Warm", characteristics: ["Empathetic tone", "Personal connection", "Encouraging language"], example: "We're excited to help you tackle this together..." }
+      5: { label: "Highly Warm", characteristics: ["Strong emotional connection", "Enthusiasm expressed", "Personal touches"], example: "We can't wait to see what you'll achieve!" }
+    default: 3
+
+  directness:
+    id: "directness"
+    spectrum:
+      1: { label: "Very Indirect", characteristics: ["Suggestions over statements", "Hedged language", "Multiple qualifiers"], example: "It might be worth considering whether..." }
+      2: { label: "Indirect", characteristics: ["Softened directives", "Some hedging"], example: "You may want to think about..." }
+      3: { label: "Balanced", characteristics: ["Clear recommendations", "Professional hedging where appropriate"], example: "We recommend focusing on..." }
+      4: { label: "Direct", characteristics: ["Clear statements", "Minimal hedging", "Action-oriented"], example: "Do this first. Then move to..." }
+      5: { label: "Very Direct", characteristics: ["Imperatives common", "No hedging", "Dutch-style directness"], example: "Stop. Read this. Act now." }
+    default: 4
+    note: "NL B2B audiences typically prefer higher directness (4-5)"
+
+  energy:
+    id: "energy"
+    spectrum:
+      1: { label: "Calm", characteristics: ["Measured pace", "Longer sentences", "Reflective tone"], example: "Taking time to consider these factors allows for..." }
+      2: { label: "Steady", characteristics: ["Even pacing", "Balanced urgency"], example: "Here's what to keep in mind as you plan..." }
+      3: { label: "Engaged", characteristics: ["Active voice dominant", "Clear momentum"], example: "Let's break this down and get started..." }
+      4: { label: "Dynamic", characteristics: ["Punchy sentences", "Action verbs", "Forward momentum"], example: "Move fast. Test often. Learn quickly." }
+      5: { label: "High Energy", characteristics: ["Short, punchy phrases", "Urgency conveyed"], example: "This changes everything. Here's why." }
+    default: 3
 
 style_presets:
   professional_authoritative:
     id: "professional_authoritative"
-    description: "Confident expert voice for thought leadership and strategic content"
-    dimensions:
-      formality: 4
-      complexity: 3
-      warmth: 2
-      directness: 4
-      energy: 3
-    use_cases:
-      - "Thought leadership articles"
-      - "Strategic recommendations"
-      - "Executive communications"
-      - "Industry analysis"
-    avoid:
-      - "Excessive hedging"
-      - "Overly casual language"
-      - "Unsubstantiated claims"
-      
+    dimensions: { formality: 4, complexity: 3, warmth: 2, directness: 4, energy: 3 }
+    use_cases: ["Thought leadership articles", "Strategic recommendations", "Executive communications", "Industry analysis"]
+    avoid: ["Excessive hedging", "Overly casual language", "Unsubstantiated claims"]
+
   professional_conversational:
     id: "professional_conversational"
-    description: "Approachable expertise for educational and engagement content"
-    dimensions:
-      formality: 3
-      complexity: 3
-      warmth: 3
-      directness: 3
-      energy: 3
-    use_cases:
-      - "Blog posts"
-      - "LinkedIn posts"
-      - "Email newsletters"
-      - "Case studies"
-    avoid:
-      - "Stiff corporate language"
-      - "Jargon without explanation"
-      - "Impersonal tone"
-      
+    dimensions: { formality: 3, complexity: 3, warmth: 3, directness: 3, energy: 3 }
+    use_cases: ["Blog posts", "LinkedIn posts", "Email newsletters", "Case studies"]
+    avoid: ["Stiff corporate language", "Jargon without explanation", "Impersonal tone"]
+
   friendly_expert:
     id: "friendly_expert"
-    description: "Warm, helpful guide for educational and support content"
-    dimensions:
-      formality: 2
-      complexity: 2
-      warmth: 4
-      directness: 4
-      energy: 3
-    use_cases:
-      - "Onboarding content"
-      - "How-to guides"
-      - "FAQ content"
-      - "Community engagement"
-    avoid:
-      - "Condescension"
-      - "Oversimplification that loses accuracy"
-      - "Excessive enthusiasm"
-      
+    dimensions: { formality: 2, complexity: 2, warmth: 4, directness: 4, energy: 3 }
+    use_cases: ["Onboarding content", "How-to guides", "FAQ content", "Community engagement"]
+    avoid: ["Condescension", "Oversimplification that loses accuracy", "Excessive enthusiasm"]
+
   data_driven:
     id: "data_driven"
-    description: "Evidence-focused voice for reports and analysis"
-    dimensions:
-      formality: 4
-      complexity: 4
-      warmth: 2
-      directness: 4
-      energy: 2
-    use_cases:
-      - "Research reports"
-      - "Performance analysis"
-      - "Competitive intelligence"
-      - "ROI presentations"
-    avoid:
-      - "Unsupported assertions"
-      - "Emotional appeals"
-      - "Vague qualifiers"
-      
+    dimensions: { formality: 4, complexity: 4, warmth: 2, directness: 4, energy: 2 }
+    use_cases: ["Research reports", "Performance analysis", "Competitive intelligence", "ROI presentations"]
+    avoid: ["Unsupported assertions", "Emotional appeals", "Vague qualifiers"]
+
   urgent_action:
     id: "urgent_action"
-    description: "High-energy voice for campaigns and calls-to-action"
-    dimensions:
-      formality: 2
-      complexity: 2
-      warmth: 3
-      directness: 5
-      energy: 5
-    use_cases:
-      - "Campaign launches"
-      - "Limited-time offers"
-      - "Event promotions"
-      - "CTAs"
-    avoid:
-      - "False urgency"
-      - "Clickbait tactics"
-      - "Pressure without value"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# REGIONAL STYLE ADAPTATIONS
-# ═══════════════════════════════════════════════════════════════════════════
-# Base style adaptations by region
-# Full localization rules in OPS_16_LOCALIZATION
+    dimensions: { formality: 2, complexity: 2, warmth: 3, directness: 5, energy: 5 }
+    use_cases: ["Campaign launches", "Limited-time offers", "Event promotions", "CTAs"]
+    avoid: ["False urgency", "Clickbait tactics", "Pressure without value"]
 
 regional_adaptations:
   NL:
-    description: "Dutch B2B style defaults"
-    adaptations:
-      directness: "+1"
-      formality: "-1"
+    adaptations: { directness: "+1", formality: "-1" }
     pronoun_default: "je/jij"
     pronoun_formal: "u"
-    notes:
-      - "Dutch directness is valued; avoid excessive hedging"
-      - "Informal tone (je/jij) standard unless formal required"
-      - "Short paragraphs preferred"
-      - "Mobile-first formatting"
-      
+    notes: ["Dutch directness is valued; avoid excessive hedging", "Informal tone (je/jij) standard unless formal required", "Short paragraphs preferred", "Mobile-first formatting"]
   DE:
-    description: "German B2B style defaults"
-    adaptations:
-      directness: "0"
-      formality: "+1"
+    adaptations: { directness: "0", formality: "+1" }
     pronoun_default: "Sie"
-    pronoun_formal: "Sie"
-    notes:
-      - "Formal address (Sie) is standard for B2B"
-      - "Noun capitalization required"
-      - "Thorough explanation valued over brevity"
-      - "Credentials and evidence emphasized"
-      
+    notes: ["Formal address (Sie) is standard for B2B", "Noun capitalization required", "Thorough explanation valued over brevity", "Credentials and evidence emphasized"]
   EN_UK:
-    description: "British English B2B style defaults"
-    adaptations:
-      directness: "-1"
-      warmth: "+1"
-    notes:
-      - "More hedging acceptable than NL/US"
-      - "Understatement valued"
-      - "Politeness markers important"
-      
+    adaptations: { directness: "-1", warmth: "+1" }
+    notes: ["More hedging acceptable than NL/US", "Understatement valued", "Politeness markers important"]
   EN_US:
-    description: "American English B2B style defaults"
-    adaptations:
-      energy: "+1"
-      warmth: "+1"
-    notes:
-      - "More enthusiastic tone acceptable"
-      - "Benefits-focused language"
-      - "Action-oriented preferred"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# STYLE CONSTRAINTS
-# ═══════════════════════════════════════════════════════════════════════════
-# Non-negotiable style rules regardless of dimension settings
+    adaptations: { energy: "+1", warmth: "+1" }
+    notes: ["More enthusiastic tone acceptable", "Benefits-focused language", "Action-oriented preferred"]
 
 constraints:
-  always:
-    - "Inclusive language (gender-neutral defaults)"
-    - "Accessible vocabulary for stated complexity level"
-    - "Active voice preferred (passive < 20% of sentences)"
-    - "Evidence-backed claims per OPS_00 standards"
-    
-  never:
-    - "Discriminatory or exclusionary language"
-    - "Hyperbole or unsubstantiated superlatives"
-    - "Misleading or deceptive framing"
-    - "Competitor disparagement"
-    - "Claims without evidence support"
-    
-  formatting:
-    max_paragraph_sentences: 5
-    max_bullet_items: 7
-    heading_required_after_words: 500
-    mobile_first: true
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+  always: ["Inclusive language (gender-neutral defaults)", "Accessible vocabulary for stated complexity level", "Active voice preferred (passive < 20% of sentences)", "Evidence-backed claims per OPS_00 standards"]
+  never: ["Discriminatory or exclusionary language", "Hyperbole or unsubstantiated superlatives", "Misleading or deceptive framing", "Competitor disparagement", "Claims without evidence support"]
+  formatting: { max_paragraph_sentences: 5, max_bullet_items: 7, heading_required_after_words: 500, mobile_first: true }
 
 validation:
-  structural:
-    - "All dimension values between 1-5"
-    - "All presets reference valid dimension IDs"
-    - "Regional adaptations use relative modifiers or absolute values"
-    
-  content:
-    - "No client-specific style definitions (belong in CLIENT layer)"
-    - "No voice personas (belong in OPS_02_VOICES_LIBRARY)"
-    - "No copy templates (belong in OPS_03/04/05)"
-    
+  structural: ["All dimension values between 1-5", "All presets reference valid dimension IDs", "Regional adaptations use relative modifiers or absolute values"]
+  content: ["No client-specific style definitions (belong in CLIENT layer)", "No voice personas (belong in OPS_02_VOICES_LIBRARY)", "No copy templates (belong in OPS_03/04/05)"]
   on_validation_failure:
     severity: "error"
     action: "Block file activation"

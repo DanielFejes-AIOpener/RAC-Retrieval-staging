@@ -1,0 +1,143 @@
+# META.yaml - RAC 2.0 Master Registry
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Master registry for RAC 2.0 layer structure and file manifest"
+  notes: "This file is the entry point for understanding RAC structure"
+
+rac_overview:
+  name: "Retrieval Augmented Context (RAC)"
+  version: "2.0"
+  description: "Structured knowledge base for AI agent orchestration in marketing contexts"
+  architecture: "Layered context with precedence hierarchy"
+
+layer_hierarchy:
+  description: "Layers listed in precedence order (highest to lowest)"
+  layers:
+    - layer: "LOGIC"
+      precedence: 1
+      mutability: "immutable"
+      description: "Foundational governance, roles, evidence standards"
+      file_count: 11
+    - layer: "OPS"
+      precedence: 2
+      mutability: "mutable"
+      description: "Operational standards, templates, processes"
+      file_count: 20
+    - layer: "CLIENT"
+      precedence: 3
+      mutability: "mutable"
+      description: "Client-specific context, brand voice, evidence"
+      file_count: 5
+    - layer: "ORG"
+      precedence: 4
+      mutability: "mutable"
+      description: "Organization-level configuration and defaults"
+      file_count: 1
+    - layer: "WORKFLOWS"
+      precedence: 5
+      mutability: "mutable"
+      description: "Execution workflows and process definitions"
+      file_count: 10
+
+file_registry:
+  LOGIC:
+    - { id: "LOGIC_00", file: "LOGIC_00_GOVERNANCE.yaml", purpose: "Core governance, precedence, immutability rules" }
+    - { id: "LOGIC_01", file: "LOGIC_01_AGENT_CONTRACT.yaml", purpose: "Agent behavioral contract and boundaries" }
+    - { id: "LOGIC_02", file: "LOGIC_02_RETRIEVAL.yaml", purpose: "Context retrieval strategy and layer loading" }
+    - { id: "LOGIC_03", file: "LOGIC_03_CONTEXT_WINDOWS.yaml", purpose: "Token budget management and prioritization" }
+    - { id: "LOGIC_04", file: "LOGIC_04_ROLE_DEFINITIONS.yaml", purpose: "Agent role schema and capabilities" }
+    - { id: "LOGIC_05", file: "LOGIC_05_USE_CASE_TEMPLATES.yaml", purpose: "Use case schema and workflow templates" }
+    - { id: "LOGIC_06", file: "LOGIC_06_SCHEMAS.yaml", purpose: "Universal schemas and data structures" }
+    - { id: "LOGIC_07", file: "LOGIC_07_ERROR_HANDLING.yaml", purpose: "Error taxonomy and recovery procedures" }
+    - { id: "LOGIC_08", file: "LOGIC_08_QUALITY_GATES.yaml", purpose: "Evidence tiers, quality gates, source reliability" }
+    - { id: "LOGIC_09", file: "LOGIC_09_INTERFACE.yaml", purpose: "HITL interfaces, output standards, escalation" }
+    - { id: "LOGIC_10", file: "LOGIC_10_TOOLS_CORE.yaml", purpose: "Tool definitions, permissions, usage patterns" }
+
+  OPS:
+    - { id: "OPS_00", file: "OPS_00_STANDARDS.yaml", purpose: "Universal operational standards and AI policy compliance" }
+    - { id: "OPS_01", file: "OPS_01_MASTER_GLOSSARY.yaml", purpose: "Terminology definitions and usage standards" }
+    - { id: "OPS_02", file: "OPS_02_BRAND_VOICE.yaml", purpose: "Voice dimensions, formality scales, channel profiles" }
+    - { id: "OPS_03", file: "OPS_03_EVP_FRAMEWORKS.yaml", purpose: "Employer Value Proposition frameworks" }
+    - { id: "OPS_04", file: "OPS_04_PERSONA_DEFINITIONS.yaml", purpose: "Base persona schema and archetypes" }
+    - { id: "OPS_05", file: "OPS_05_AUDIENCE_SEGMENTS.yaml", purpose: "Audience segmentation frameworks" }
+    - { id: "OPS_06", file: "OPS_06_CONTENT_TYPE_SPECS.yaml", purpose: "Content type specifications and requirements" }
+    - { id: "OPS_07", file: "OPS_07_CAMPAIGN_ARCHETYPES.yaml", purpose: "Campaign strategy archetypes" }
+    - { id: "OPS_08", file: "OPS_08_BRIEF_TEMPLATES.yaml", purpose: "Brief structures and requirements" }
+    - { id: "OPS_09", file: "OPS_09_MESSAGING_FRAMEWORKS.yaml", purpose: "Messaging hierarchy and frameworks" }
+    - { id: "OPS_10", file: "OPS_10_BENCHMARK_RANGES.yaml", purpose: "Performance benchmarks by channel" }
+    - { id: "OPS_11", file: "OPS_11_COPYWRITING_PATTERNS.yaml", purpose: "Copywriting formulas and patterns" }
+    - { id: "OPS_12", file: "OPS_12_DATA_VISUALIZATION_GUIDE.yaml", purpose: "Data visualization standards" }
+    - { id: "OPS_13", file: "OPS_13_THOUGHT_LEADERS.yaml", purpose: "Thought leader profiles and frameworks" }
+    - { id: "OPS_14", file: "OPS_14_PROMPT_LIBRARY.yaml", purpose: "Reusable prompt templates" }
+    - { id: "OPS_15", file: "OPS_15_REVIEW_CHECKLISTS.yaml", purpose: "Quality checklists and DoD" }
+    - { id: "OPS_16", file: "OPS_16_LOCALIZATION.yaml", purpose: "Language and regional adaptation" }
+    - { id: "OPS_17", file: "OPS_17_EXPERTS.yaml", purpose: "Expert source database" }
+    - { id: "OPS_18", file: "OPS_18_HANDOFF_INTAKE.yaml", purpose: "Intake handoff contract schema" }
+    - { id: "OPS_19", file: "OPS_19_HANDOFF_DELIVERY.yaml", purpose: "Delivery handoff contract schema" }
+
+  CLIENT:
+    - { id: "CLIENT_00", file: "CLIENT_00_TEMPLATE.yaml", purpose: "Base client template and schema" }
+    - { id: "CLIENT_01", file: "CLIENT_01_BRAND_VOICE_TEMPLATE.yaml", purpose: "Client brand voice template" }
+    - { id: "CLIENT_02", file: "CLIENT_02_EVIDENCE_VAULT_TEMPLATE.yaml", purpose: "Client evidence vault template" }
+    - { id: "CLIENT_03", file: "CLIENT_03_PRODUCTS_SERVICES_TEMPLATE.yaml", purpose: "Client product/service inventory template" }
+    - { id: "CLIENT_04", file: "CLIENT_04_PERSONAS_TEMPLATE.yaml", purpose: "Client persona definitions template" }
+
+  ORG:
+    - { id: "ORG_00", file: "ORG_00_CONTEXT.yaml", purpose: "Organization context and defaults" }
+
+  WORKFLOWS:
+    - { id: "WORKFLOW_00", file: "WORKFLOW_00_BASE.yaml", purpose: "Base workflow schema and definitions" }
+    - { id: "WORKFLOW_01", file: "WORKFLOW_01_BRIEF_ANALYSIS.yaml", purpose: "Brief analysis workflow" }
+    - { id: "WORKFLOW_02", file: "WORKFLOW_02_CONTENT_CREATION.yaml", purpose: "Content creation workflow" }
+    - { id: "WORKFLOW_03", file: "WORKFLOW_03_CAMPAIGN_PLANNING.yaml", purpose: "Campaign planning workflow" }
+    - { id: "WORKFLOW_04", file: "WORKFLOW_04_RESEARCH.yaml", purpose: "Research and evidence gathering workflow" }
+    - { id: "WORKFLOW_05", file: "WORKFLOW_05_REVIEW_APPROVAL.yaml", purpose: "Review and approval workflow" }
+    - { id: "WORKFLOW_06", file: "WORKFLOW_06_LOCALIZATION.yaml", purpose: "Content localization workflow" }
+    - { id: "WORKFLOW_07", file: "WORKFLOW_07_AB_TESTING.yaml", purpose: "A/B testing workflow" }
+    - { id: "WORKFLOW_08", file: "WORKFLOW_08_EMPLOYER_BRANDING.yaml", purpose: "Employer branding workflow" }
+    - { id: "WORKFLOW_09", file: "WORKFLOW_09_REPORTING.yaml", purpose: "Performance reporting workflow" }
+
+cross_references:
+  description: "Key cross-reference patterns used throughout RAC"
+  syntax: "$ref: FILE_ID#section.subsection"
+  common_refs:
+    governance: "$ref: LOGIC_00_GOVERNANCE"
+    agent_contract: "$ref: LOGIC_01_AGENT_CONTRACT"
+    retrieval: "$ref: LOGIC_02_RETRIEVAL"
+    quality_gates: "$ref: LOGIC_08_QUALITY_GATES"
+    evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+    source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+    hitl_interface: "$ref: LOGIC_09_INTERFACE"
+    tools: "$ref: LOGIC_10_TOOLS_CORE"
+    ops_standards: "$ref: OPS_00_STANDARDS"
+    brand_voice: "$ref: OPS_02_BRAND_VOICE"
+    handoff_intake: "$ref: OPS_18_HANDOFF_INTAKE"
+    handoff_delivery: "$ref: OPS_19_HANDOFF_DELIVERY"
+    quality_checklists: "$ref: OPS_15_REVIEW_CHECKLISTS"
+
+retrieval_guidance:
+  always_load:
+    description: "Files that should always be loaded for any agent context"
+    files: ["LOGIC_00_GOVERNANCE", "LOGIC_01_AGENT_CONTRACT", "LOGIC_08_QUALITY_GATES"]
+  load_on_context:
+    description: "Files loaded based on context (client, task type)"
+    patterns:
+      - { context: "client_work", load: ["CLIENT_*", "ORG_00"] }
+      - { context: "content_creation", load: ["OPS_02", "OPS_06", "OPS_11", "WORKFLOW_02"] }
+      - { context: "research", load: ["OPS_17", "WORKFLOW_04"] }
+      - { context: "campaign", load: ["OPS_07", "OPS_10", "WORKFLOW_03"] }
+      - { context: "employer_branding", load: ["OPS_03", "OPS_04", "WORKFLOW_08"] }
+  chunk_strategy:
+    primary: "semantic"
+    fallback: "hierarchical"
+    max_chunk_tokens: 8000
+
+validation:
+  meta_specific:
+    - "All files in registry exist"
+    - "File counts match actual directory contents"
+    - "Cross-reference syntax is consistent"
+    - "Layer precedence is correctly documented"

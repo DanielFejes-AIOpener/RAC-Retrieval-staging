@@ -1,9 +1,4 @@
-# ================================================================
-# OPS_19_HANDOFF_DELIVERY
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Delivery handoff contract schema
-# ================================================================
+# OPS_19_HANDOFF_DELIVERY.yaml
 
 meta:
   owner: "AI Opener"
@@ -14,407 +9,134 @@ meta:
   tags: [ops, handoff, delivery, contract]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# AUTO-INHERITANCE
-# ═══════════════════════════════════════════════════════════════════════════
-# Base dependencies auto-inherited per LOGIC_00_INDEX#auto_inheritance
-
-# ═══════════════════════════════════════════════════════════════════════════
-# OPS-SPECIFIC REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
 quality_checklists: "$ref: OPS_15_REVIEW_CHECKLISTS#universal_checklist"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# HANDOFF CONTRACT
-# ═══════════════════════════════════════════════════════════════════════════
-
 handoff_contract:
   type: "delivery"
   version: "2.0"
   pairs_with: "OPS_18_HANDOFF_INTAKE"
-  
+
   required_fields:
-    - field: "request_id"
-      type: "string"
-      format: "UUID"
-      description: "Must match intake request_id from OPS_18"
-      validation: "Lookup in active intake records"
-      
+    - { field: "request_id", type: "string", format: "UUID", description: "Must match intake request_id from OPS_18", validation: "Lookup in active intake records" }
     - field: "deliverable"
       type: "object"
-      description: "The actual work product being delivered"
       schema:
-        type:
-          type: "enum"
-          values:
-            - "brief"
-            - "strategy"
-            - "campaign"
-            - "content"
-            - "copy"
-            - "report"
-            - "analysis"
-            - "creative"
-            - "other"
-        content:
-          type: "string | file_reference"
-          description: "Inline content or path to deliverable file"
-        format:
-          type: "string"
-          examples: ["markdown", "docx", "pdf", "pptx", "html"]
-        word_count:
-          type: "integer"
-          required: false
-        version:
-          type: "string"
-          default: "1.0"
-          description: "Deliverable version for revision tracking"
-          
+        type: { type: "enum", values: ["brief", "strategy", "campaign", "content", "copy", "report", "analysis", "creative", "other"] }
+        content: { type: "string | file_reference", description: "Inline content or path to deliverable file" }
+        format: { type: "string", examples: ["markdown", "docx", "pdf", "pptx", "html"] }
+        word_count: { type: "integer", required: false }
+        version: { type: "string", default: "1.0", description: "Deliverable version for revision tracking" }
     - field: "quality_checklist"
       type: "object"
-      description: "Results of quality validation"
       reference: "$ref: OPS_15_REVIEW_CHECKLISTS"
       schema:
-        checklist_id:
-          type: "string"
-          description: "Which checklist was applied"
-          examples: ["general_content", "copywriting", "strategy", "technical"]
-        items_checked:
-          type: "array"
-          items: "string"
-          description: "List of checklist items verified"
-        all_passed:
-          type: "boolean"
-          description: "True if all applicable items passed"
-        exceptions:
-          type: "array"
-          items:
-            item: "string"
-            reason: "string"
-            severity: "enum[minor, major, blocker]"
-            mitigation: "string"
-          description: "Items that did not pass with explanations"
-        checked_by:
-          type: "string"
-          description: "Agent or human who performed check"
-        checked_at:
-          type: "datetime"
-          format: "ISO8601"
-          
+        checklist_id: { type: "string", examples: ["general_content", "copywriting", "strategy", "technical"] }
+        items_checked: { type: "array", items: "string" }
+        all_passed: { type: "boolean" }
+        exceptions: { type: "array", items: { item: "string", reason: "string", severity: "enum[minor, major, blocker]", mitigation: "string" } }
+        checked_by: { type: "string" }
+        checked_at: { type: "datetime", format: "ISO8601" }
     - field: "sources_used"
       type: "array"
       min_items: 1
-      description: "All evidence sources referenced in deliverable"
       items:
         schema:
-          evidence_id:
-            type: "string"
-            description: "Reference to evidence vault item"
-            pattern: "ev-{source}-{topic}-{nnn}"
-            required: false
-          source:
-            type: "string"
-            description: "Full source citation"
-            required: true
-          tier:
-            type: "enum"
-            values: ["tier_1", "tier_2", "tier_3"]
-            required: true
-          reliability:
-            type: "enum"
-            values: ["A", "B", "C", "D"]
-            required: true
-          claim_supported:
-            type: "string"
-            description: "The specific claim this source backs"
-            required: false
-          page_or_section:
-            type: "string"
-            description: "Specific location in source"
-            required: false
-            
-    - field: "delivered_at"
-      type: "datetime"
-      format: "ISO8601"
-      description: "Timestamp of delivery"
-      auto_generated: true
-      
+          evidence_id: { type: "string", pattern: "ev-{source}-{topic}-{nnn}", required: false }
+          source: { type: "string", required: true }
+          tier: { type: "enum", values: ["tier_1", "tier_2", "tier_3"], required: true }
+          reliability: { type: "enum", values: ["A", "B", "C", "D"], required: true }
+          claim_supported: { type: "string", required: false }
+          page_or_section: { type: "string", required: false }
+    - { field: "delivered_at", type: "datetime", format: "ISO8601", auto_generated: true }
     - field: "delivered_by"
       type: "object"
-      description: "Who/what produced this delivery"
       schema:
-        agent_id:
-          type: "string"
-          description: "ROLE ID of delivering agent"
-          pattern: "ROLE_{NN}_{CAPABILITY}"
-        use_case_id:
-          type: "string"
-          description: "USE_CASE that was instantiated"
-          pattern: "USE_CASE_{NN}_{NAME}"
-          required: false
-        workflow_id:
-          type: "string"
-          description: "WORKFLOW if part of multi-phase process"
-          pattern: "WORKFLOW_{NN}_{NAME}"
-          required: false
-        phase_id:
-          type: "string"
-          description: "Phase within workflow"
-          required: false
+        agent_id: { type: "string", pattern: "ROLE_{NN}_{CAPABILITY}" }
+        use_case_id: { type: "string", pattern: "USE_CASE_{NN}_{NAME}", required: false }
+        workflow_id: { type: "string", pattern: "WORKFLOW_{NN}_{NAME}", required: false }
+        phase_id: { type: "string", required: false }
 
   optional_fields:
-    - field: "revision_notes"
-      type: "string"
-      max_length: 1000
-      description: "Notes for revisions after v1.0"
-      
-    - field: "changes_from_brief"
-      type: "array"
-      items: "string"
-      description: "Documented deviations from original request"
-      
-    - field: "recommendations"
-      type: "array"
-      items:
-        recommendation: "string"
-        priority: "enum[low, medium, high]"
-        rationale: "string"
-      description: "Suggested next steps or improvements"
-      
+    - { field: "revision_notes", type: "string", max_length: 1000, description: "Notes for revisions after v1.0" }
+    - { field: "changes_from_brief", type: "array", items: "string", description: "Documented deviations from original request" }
+    - { field: "recommendations", type: "array", items: { recommendation: "string", priority: "enum[low, medium, high]", rationale: "string" }, description: "Suggested next steps or improvements" }
     - field: "time_spent"
       type: "object"
-      description: "Effort tracking for calibration"
       schema:
-        ai_minutes:
-          type: "integer"
-          description: "AI processing time"
-        human_minutes:
-          type: "integer"
-          description: "Human review/editing time"
-        total_minutes:
-          type: "integer"
-          description: "Total elapsed time"
-          
-    - field: "attachments"
-      type: "array"
-      items:
-        filename: "string"
-        file_type: "string"
-        file_size_kb: "integer"
-        description: "string"
-      description: "Supporting files included with delivery"
-      
-    - field: "confidentiality"
-      type: "enum"
-      values: ["public", "internal", "confidential", "restricted"]
-      default: "internal"
-      
-    - field: "expiry"
-      type: "datetime"
-      format: "ISO8601"
-      description: "When deliverable content expires or needs refresh"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# HASH VERIFICATION
-# ═══════════════════════════════════════════════════════════════════════════
+        ai_minutes: { type: "integer" }
+        human_minutes: { type: "integer" }
+        total_minutes: { type: "integer" }
+    - { field: "attachments", type: "array", items: { filename: "string", file_type: "string", file_size_kb: "integer", description: "string" }, description: "Supporting files included with delivery" }
+    - { field: "confidentiality", type: "enum", values: ["public", "internal", "confidential", "restricted"], default: "internal" }
+    - { field: "expiry", type: "datetime", format: "ISO8601", description: "When deliverable content expires or needs refresh" }
 
 hash_verification:
   enabled: true
   algorithm: "SHA-256"
   field: "content_hash"
-  
-  hash_includes:
-    - "request_id"
-    - "deliverable.type"
-    - "deliverable.content"
-    - "deliverable.format"
-    - "quality_checklist.all_passed"
-    - "delivered_at"
-    - "delivered_by.agent_id"
-    
+  hash_includes: ["request_id", "deliverable.type", "deliverable.content", "deliverable.format", "quality_checklist.all_passed", "delivered_at", "delivered_by.agent_id"]
   verification_process:
-    on_send:
-      - "Compute hash from hash_includes fields"
-      - "Attach as content_hash field"
-      - "Log hash for audit trail"
-    on_receive:
-      - "Recompute hash from received fields"
-      - "Compare to content_hash"
-      - "If mismatch: reject delivery, log error, notify sender"
-      - "If match: proceed to acknowledgment"
-      
-  tamper_response:
-    action: "reject"
-    log_level: "error"
-    notification: ["sender", "orchestrator"]
-    message: "Delivery hash verification failed - content may be corrupted"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# RECIPIENT ACKNOWLEDGMENT
-# ═══════════════════════════════════════════════════════════════════════════
+    on_send: ["Compute hash from hash_includes fields", "Attach as content_hash field", "Log hash for audit trail"]
+    on_receive: ["Recompute hash from received fields", "Compare to content_hash", "If mismatch: reject delivery, log error, notify sender", "If match: proceed to acknowledgment"]
+  tamper_response: { action: "reject", log_level: "error", notification: ["sender", "orchestrator"], message: "Delivery hash verification failed - content may be corrupted" }
 
 recipient_acknowledgment:
   required: true
-  
   timeout:
     hours: 24
     escalation_if_no_ack: "notify_orchestrator"
     escalation_chain:
-      - hours: 24
-        action: "Notify orchestrator"
-      - hours: 48
-        action: "Notify workflow owner"
-      - hours: 72
-        action: "Auto-close with 'unacknowledged' status"
-        
+      - { hours: 24, action: "Notify orchestrator" }
+      - { hours: 48, action: "Notify workflow owner" }
+      - { hours: 72, action: "Auto-close with 'unacknowledged' status" }
   acknowledgment_schema:
     required_fields:
-      - field: "request_id"
-        type: "string"
-        description: "Matching request_id"
-      - field: "acknowledged_at"
-        type: "datetime"
-        format: "ISO8601"
-      - field: "acknowledged_by"
-        type: "object"
-        schema:
-          name: "string"
-          role: "string"
-          email: "string"
-      - field: "status"
-        type: "enum"
-        values:
-          - "accepted"
-          - "accepted_with_comments"
-          - "revision_requested"
-          - "rejected"
-          
+      - { field: "request_id", type: "string" }
+      - { field: "acknowledged_at", type: "datetime", format: "ISO8601" }
+      - { field: "acknowledged_by", type: "object", schema: { name: "string", role: "string", email: "string" } }
+      - { field: "status", type: "enum", values: ["accepted", "accepted_with_comments", "revision_requested", "rejected"] }
     optional_fields:
-      - field: "comments"
-        type: "string"
-        max_length: 2000
-      - field: "revision_items"
-        type: "array"
-        items:
-          item: "string"
-          priority: "enum[must_fix, should_fix, nice_to_have]"
-        required_if: "status == revision_requested"
-      - field: "rejection_reason"
-        type: "string"
-        required_if: "status == rejected"
-        
+      - { field: "comments", type: "string", max_length: 2000 }
+      - { field: "revision_items", type: "array", items: { item: "string", priority: "enum[must_fix, should_fix, nice_to_have]" }, required_if: "status == revision_requested" }
+      - { field: "rejection_reason", type: "string", required_if: "status == rejected" }
   status_handling:
-    accepted:
-      action: "Close delivery, mark workflow phase complete"
-      next: "Proceed to next phase or complete workflow"
-    accepted_with_comments:
-      action: "Close delivery, log comments for learning"
-      next: "Proceed to next phase or complete workflow"
-    revision_requested:
-      action: "Return to sender with revision_items"
-      next: "Re-enter delivery phase"
-      max_revisions: 3
-      escalation_after_max: "Human review required"
-    rejected:
-      action: "Log rejection_reason, notify orchestrator"
-      next: "Workflow paused for human intervention"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# QUALITY VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+    accepted: { action: "Close delivery, mark workflow phase complete", next: "Proceed to next phase or complete workflow" }
+    accepted_with_comments: { action: "Close delivery, log comments for learning", next: "Proceed to next phase or complete workflow" }
+    revision_requested: { action: "Return to sender with revision_items", next: "Re-enter delivery phase", max_revisions: 3, escalation_after_max: "Human review required" }
+    rejected: { action: "Log rejection_reason, notify orchestrator", next: "Workflow paused for human intervention" }
 
 quality_validation:
   on_deliver:
-    - check: "request_id matches existing intake"
-      on_fail: "reject - orphan delivery"
-    - check: "quality_checklist.all_passed is true OR exceptions documented"
-      on_fail: "reject - incomplete quality check"
-    - check: "sources_used entries have tier and reliability"
-      on_fail: "reject - incomplete source attribution"
-    - check: "At least one source in sources_used"
-      on_fail: "reject - no sources provided"
-    - check: "No tier_3-only sources for quantitative claims"
-      on_fail: "reject - insufficient evidence tier"
-    - check: "No D-rated sources without disclaimer"
-      on_fail: "reject - low reliability source unacknowledged"
-    - check: "delivered_at is not in future"
-      on_fail: "reject - invalid timestamp"
-    - check: "hash verification passes"
-      on_fail: "reject - content integrity failure"
-    - check: "AI policy compliance confirmed"
-      on_fail: "reject - policy compliance not verified"
-      
+    - { check: "request_id matches existing intake", on_fail: "reject - orphan delivery" }
+    - { check: "quality_checklist.all_passed is true OR exceptions documented", on_fail: "reject - incomplete quality check" }
+    - { check: "sources_used entries have tier and reliability", on_fail: "reject - incomplete source attribution" }
+    - { check: "At least one source in sources_used", on_fail: "reject - no sources provided" }
+    - { check: "No tier_3-only sources for quantitative claims", on_fail: "reject - insufficient evidence tier" }
+    - { check: "No D-rated sources without disclaimer", on_fail: "reject - low reliability source unacknowledged" }
+    - { check: "delivered_at is not in future", on_fail: "reject - invalid timestamp" }
+    - { check: "hash verification passes", on_fail: "reject - content integrity failure" }
+    - { check: "AI policy compliance confirmed", on_fail: "reject - policy compliance not verified" }
   blocking_exceptions:
-    description: "Exceptions that block delivery regardless of documentation"
-    items:
-      - "quality_checklist contains blocker severity exception"
-      - "Missing required evidence for quantitative claims"
-      - "Content violates immutable governance paths"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# WORKFLOW INTEGRATION
-# ═══════════════════════════════════════════════════════════════════════════
+    items: ["quality_checklist contains blocker severity exception", "Missing required evidence for quantitative claims", "Content violates immutable governance paths"]
 
 workflow_integration:
   phase_exit:
-    description: "Delivery contract validates at workflow phase exit"
     validation: "$ref: LOGIC_08_QUALITY_GATES#universal_gates.exit.workflow_additions"
     checkpoint: "Create checkpoint after successful delivery"
-    
   handoff_linkage:
     intake_reference: "OPS_18_HANDOFF_INTAKE"
     linkage_field: "request_id"
     lifecycle:
-      - stage: "intake_created"
-        contract: "OPS_18"
-        status: "pending"
-      - stage: "work_in_progress"
-        contract: null
-        status: "active"
-      - stage: "delivery_submitted"
-        contract: "OPS_19"
-        status: "awaiting_acknowledgment"
-      - stage: "acknowledged"
-        contract: "OPS_19"
-        status:
-          - "complete"
-          - "revision_requested"
-          - "rejected"
-        
-  audit_trail:
-    log_events:
-      - "delivery_submitted"
-      - "hash_verified"
-      - "acknowledgment_received"
-      - "status_changed"
-      - "escalation_triggered"
-    retention_days: 365
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+      - { stage: "intake_created", contract: "OPS_18", status: "pending" }
+      - { stage: "work_in_progress", contract: null, status: "active" }
+      - { stage: "delivery_submitted", contract: "OPS_19", status: "awaiting_acknowledgment" }
+      - { stage: "acknowledged", contract: "OPS_19", status: ["complete", "revision_requested", "rejected"] }
+  audit_trail: { log_events: ["delivery_submitted", "hash_verified", "acknowledgment_received", "status_changed", "escalation_triggered"], retention_days: 365 }
 
 validation:
-  structural:
-    - "All required fields present per handoff_contract.required_fields"
-    - "request_id is valid UUID format"
-    - "request_id exists in intake records"
-    - "deliverable.type is valid enum value"
-    - "All datetime fields are ISO8601 format"
-    - "sources_used entries have required tier and reliability"
-    
-  content:
-    - "quality_checklist references valid checklist_id"
-    - "delivered_by.agent_id matches ROLE pattern"
-    - "Hash verification passes"
-    - "AI policy compliance confirmed (per OPS_00_STANDARDS#ai_policy_compliance)"
-    
-  on_failure:
-    severity: "error"
-    action: "Reject delivery, return to sender"
-    reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.ops"
+  structural: ["All required fields present per handoff_contract.required_fields", "request_id is valid UUID format", "request_id exists in intake records", "deliverable.type is valid enum value", "All datetime fields are ISO8601 format", "sources_used entries have required tier and reliability"]
+  content: ["quality_checklist references valid checklist_id", "delivered_by.agent_id matches ROLE pattern", "Hash verification passes", "AI policy compliance confirmed (per OPS_00_STANDARDS#ai_policy_compliance)"]
+  on_failure: { severity: "error", action: "Reject delivery, return to sender", reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.ops" }
