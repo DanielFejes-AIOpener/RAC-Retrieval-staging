@@ -432,7 +432,7 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
   
   return res.status(200).json({
     client: clientSlug,
-    usage_hint: "Most tasks only need 3-8 sections across multiple files. Use LAYER/FILE/SECTION (e.g., OPS/COPYWRITING_PLAYBOOK/hooks) instead of loading entire files to reduce context and improve accuracy.",
+    usage_hint: "Most tasks only need 3-8 sections across multiple files. Use LAYER/FILE/SECTION (e.g., OPS/COPYWRITING_PLAYBOOK/copy_elements) instead of loading entire files to reduce context and improve accuracy.",
     files,
     all_paths: paths.sort()
   });
