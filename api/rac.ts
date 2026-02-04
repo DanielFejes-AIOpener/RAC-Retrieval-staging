@@ -152,7 +152,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         hint = `Did you mean "${layer}/${shortName}"? Use short names, not full file IDs.`;
       }
       
-      return res.status(404).json({
+      return res.status(200).json({
         error: true,
         code: 'NOT_FOUND',
         message: `Path not found: ${pathString}`,
@@ -188,7 +188,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const extracted = extractSection(content, sectionPath);
       
       if (extracted === null || extracted === undefined) {
-        return res.status(404).json({
+        return res.status(200).json({
           error: true,
           code: 'SECTION_NOT_FOUND',
           message: `Section not found: ${sectionPath}`,

@@ -50,7 +50,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const clientSlug = (req.query.client as string)?.toLowerCase();
   
   if (!clientSlug || !CLIENT_FILE_MAP[clientSlug]) {
-    return res.status(404).json({
+    return res.status(200).json({
       error: true,
       code: 'UNKNOWN_CLIENT',
       message: `Unknown client: ${clientSlug}`,
@@ -211,7 +211,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       errorResponse.available_in_layer = layerFiles.slice(0, 15).map(f => `${layer}/${f}`);
 
-      return res.status(404).json(errorResponse);
+      return res.status(200).json(errorResponse);
     }
 
     // Load & process
@@ -228,7 +228,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (sectionPath) {
       content = extractSection(content, sectionPath);
       if (content === null || content === undefined) {
-        return res.status(404).json({
+        return res.status(200).json({
           error: true,
           code: 'SECTION_NOT_FOUND',
           message: `Section not found: ${sectionPath}`
