@@ -36,11 +36,11 @@ layer_hierarchy:
       mutability: "mutable"
       description: "Organization-level configuration and defaults"
       file_count: 1
-    - layer: "WORKFLOWS"
+    - layer: "WORKFLOW"
       precedence: 5
       mutability: "mutable"
       description: "Execution workflows and process definitions"
-      file_count: 10
+      file_count: 12
 
 file_registry:
   LOGIC:
@@ -88,7 +88,7 @@ file_registry:
   ORG:
     - { id: "ORG_00", file: "ORG_00_CONTEXT.yaml", purpose: "Organization context and defaults" }
 
-  WORKFLOWS:
+  WORKFLOW:
     - { id: "WORKFLOW_00", file: "WORKFLOW_00_BASE.yaml", purpose: "Base workflow schema and definitions" }
     - { id: "WORKFLOW_01", file: "WORKFLOW_01_BRIEF_ANALYSIS.yaml", purpose: "Brief analysis workflow" }
     - { id: "WORKFLOW_02", file: "WORKFLOW_02_CONTENT_CREATION.yaml", purpose: "Content creation workflow" }
