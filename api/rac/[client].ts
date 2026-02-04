@@ -273,6 +273,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 /**
  * Handle GET requests - return available files index for client
  */
+/**
+ * Extract top-level section keys from file content
+ */
+function getFileSections(content: any): string[] {
+  if (!content || typeof content !== 'object' || Array.isArray(content)) {
+    return [];
+  }
+  return Object.keys(content).filter(k => k !== 'meta' && k !== 'extends');
+}
+
 function handleGetIndex(clientSlug: string, res: VercelResponse) {
   const index = getFileIndex();
   
@@ -288,6 +298,8 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
   
   // Build structured response by layer
   const available: Record<string, { shared: string[]; client_specific: string[] }> = {};
+  // Track file paths for section extraction
+  const filePathMap: Record<string, string> = {}; // "LAYER/FILE" -> actual file path
   
   for (const layer of ALL_LAYERS) {
     const shared: string[] = [];
@@ -308,6 +320,7 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
         if (key.startsWith(clientLayerPrefix)) {
           const shortName = key.substring(clientLayerPrefix.length);
           clientSpecific.push(shortName);
+          filePathMap[`${layer}/${shortName}`] = filePath;
         } else {
           // Handle non-standard format (clients:{slug}:{LAYER_NAME}) 
           // Only if no layer:shortName format exists for this file
@@ -321,6 +334,7 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
             // Only add if no standard key exists
             if (!index[standardKey]) {
               clientSpecific.push(shortName);
+              filePathMap[`${layer}/${shortName}`] = filePath;
             }
           }
         }
@@ -337,9 +351,11 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
           if (layer === 'CLIENT') {
             if (allowedClientFiles.has(shortName.toUpperCase())) {
               shared.push(shortName);
+              filePathMap[`${layer}/${shortName}`] = filePath;
             }
           } else {
             shared.push(shortName);
+            filePathMap[`${layer}/${shortName}`] = filePath;
           }
         } else if (key.includes(':')) {
           // It's a layer:shortName format, extract shortName
@@ -349,9 +365,11 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
             if (layer === 'CLIENT') {
               if (allowedClientFiles.has(shortName.toUpperCase())) {
                 shared.push(shortName);
+                filePathMap[`${layer}/${shortName}`] = filePath;
               }
             } else {
               shared.push(shortName);
+              filePathMap[`${layer}/${shortName}`] = filePath;
             }
           }
         }
@@ -371,26 +389,51 @@ function handleGetIndex(clientSlug: string, res: VercelResponse) {
     }
   }
   
-  // Build path list for easy access
+  // Build path list and extract sections for each file
   const paths: string[] = [];
-  for (const [layer, files] of Object.entries(available)) {
+  const files: Record<string, string[]> = {};
+  
+  for (const [layer, layerFiles] of Object.entries(available)) {
     // Client-specific files take precedence
-    const clientFiles = new Set(files.client_specific);
+    const clientFiles = new Set(layerFiles.client_specific);
     
-    for (const file of files.client_specific) {
-      paths.push(`${layer}/${file}`);
+    for (const file of layerFiles.client_specific) {
+      const path = `${layer}/${file}`;
+      paths.push(path);
+      
+      // Load file and extract sections
+      const filePath = filePathMap[path];
+      if (filePath) {
+        const content = loadFile(filePath);
+        const sections = getFileSections(content);
+        if (sections.length > 0) {
+          files[path] = sections;
+        }
+      }
     }
-    for (const file of files.shared) {
+    for (const file of layerFiles.shared) {
       // Only add shared if not overridden by client-specific
       if (!clientFiles.has(file)) {
-        paths.push(`${layer}/${file}`);
+        const path = `${layer}/${file}`;
+        paths.push(path);
+        
+        // Load file and extract sections
+        const filePath = filePathMap[path];
+        if (filePath) {
+          const content = loadFile(filePath);
+          const sections = getFileSections(content);
+          if (sections.length > 0) {
+            files[path] = sections;
+          }
+        }
       }
     }
   }
   
   return res.status(200).json({
     client: clientSlug,
-    layers: available,
+    usage_hint: "Most tasks only need a single section. Use LAYER/FILE/SECTION (e.g., OPS/COPYWRITING_PLAYBOOK/hooks) instead of loading entire files to reduce context and improve accuracy.",
+    files,
     all_paths: paths.sort()
   });
 }
