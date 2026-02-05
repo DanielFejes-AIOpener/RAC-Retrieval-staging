@@ -2,10 +2,10 @@
 
 meta:
   owner: "AI Opener"
-  version: "2.1.0"
-  last_updated: "2026-01-22"
+  version: "2.2.0"
+  last_updated: "2026-02-03"
   purpose: "Unified tools core: tool registry, capability routing, and execution mechanics (SSOT)"
-  notes: "v2.1.0 - Added query_rac tool for agent RAC file retrieval"
+  notes: "v2.2.0 - Renamed tool_search_rag to vector_search, removed deprecated tools (tool_data_analytics, TOOL_IMAGE_PROMPT_PACKAGE_ONLY, tool_util_calculate), fixed tool arguments for manual_handoff, create_document_access, edit_document, look_for_document"
   tags: [logic, tools, api, resilience, ssot]
 
 tool_schema:
@@ -60,39 +60,21 @@ tool_registry:
       timeout_ms: 5000
       rate_limit: { requests_per_minute: 120 }
 
-    tool_search_rag:
-      id: "tool_search_rag"
-      name: "RAG Search"
+    vector_search:
+      id: "vector_search"
+      name: "Vector Search"
       category: "search"
       input_schema:
         type: "object"
         properties:
           query: { type: "string", required: true }
-          namespaces: { type: "array", items: "string" }
-          top_k: { type: "integer", default: 10 }
-          filters: { type: "object" }
+          chunks: { type: "integer", default: 10, description: "Number of chunks to return" }
+        required: ["query"]
       output_schema:
         type: "object"
         properties:
           results: { type: "array", items: { properties: { content: "string", source: "string", score: "number", metadata: "object" } } }
       config_ref: "$ref: LOGIC_05_RAG_MECHANICS#retrieval_pipeline"
-
-    tool_data_analytics:
-      id: "tool_data_analytics"
-      name: "Analytics Data"
-      category: "data"
-      input_schema:
-        type: "object"
-        properties:
-          source: { type: "string", required: true }
-          metric: { type: "string", required: true }
-          date_range: { type: "object", properties: { start: "date", end: "date" } }
-      output_schema:
-        type: "object"
-        properties:
-          data: "array"
-          aggregations: "object"
-      auth_required: true
 
     tool_gen_image:
       id: "tool_gen_image"
@@ -140,41 +122,65 @@ tool_registry:
         required: ["images", "metadata"]
       timeout_ms: 60000
       retry_config: "$ref: #resilience_patterns.retry.default_config"
-      fallback: "TOOL_IMAGE_PROMPT_PACKAGE_ONLY"
 
-    TOOL_IMAGE_PROMPT_PACKAGE_ONLY:
-      id: "TOOL_IMAGE_PROMPT_PACKAGE_ONLY"
-      name: "Image Prompt Package Only"
-      category: "utility"
-      constraints:
-        deterministic: true
-        executes_external_calls: false
+    perplexity_tool:
+      id: "perplexity_tool"
+      name: "Perplexity"
+      category: "search"
       input_schema:
         type: "object"
-        additionalProperties: false
         properties:
-          image_prompt_package: { type: "object", required: true }
-        required: ["image_prompt_package"]
+          query: { type: "string", required: true }
+        required: ["query"]
       output_schema:
         type: "object"
         properties:
-          image_prompt_package: { type: "object" }
-          manual_next_steps: { type: "array", items: { type: "string" } }
-        required: ["image_prompt_package", "manual_next_steps"]
+          results: { type: "array" }
 
-    tool_util_calculate:
-      id: "tool_util_calculate"
-      name: "Calculator"
+    manual_handoff_tool:
+      id: "manual_handoff_tool"
+      name: "Manual Handoff"
       category: "utility"
       input_schema:
         type: "object"
         properties:
-          expression: { type: "string", required: true }
-      output_schema:
+          agent: { type: "string", required: true, description: "Who to hand off to" }
+          message: { type: "string", required: true, description: "What to hand off" }
+        required: ["agent", "message"]
+
+    create_document_access_tool:
+      id: "create_document_access_tool"
+      name: "Create Document Access"
+      category: "utility"
+      input_schema:
         type: "object"
         properties:
-          result: "number"
-          formatted: "string"
+          doc_name: { type: "string", required: true, description: "Name of document" }
+          access_to: { type: "string", required: true, description: "Who to share with" }
+          content: { type: "string", required: true, description: "Content of the document" }
+        required: ["doc_name", "access_to", "content"]
+
+    edit_document_tool:
+      id: "edit_document_tool"
+      name: "Edit Document"
+      category: "utility"
+      input_schema:
+        type: "object"
+        properties:
+          doc_url: { type: "string", required: true, description: "URL of document" }
+          text_to_delete: { type: "string", required: true, description: "Text to delete" }
+          text_to_replace: { type: "string", required: true, description: "Text to replace the deleted text" }
+        required: ["doc_url", "text_to_delete", "text_to_replace"]
+
+    look_for_document_tool:
+      id: "look_for_document_tool"
+      name: "Look for Document"
+      category: "utility"
+      input_schema:
+        type: "object"
+        properties:
+          proposed_id: { type: "string", required: true, description: "URL of document to be read" }
+        required: ["proposed_id"]
 
 capability_tool_mapping:
   mapping_key_source: "$ref: LOGIC_07_CAPABILITIES#capability_catalog.capabilities"
@@ -183,13 +189,11 @@ capability_tool_mapping:
     fallbacks: "Ordered fallback tools"
   mappings:
     rac_query: { preferred_tool: "query_rac", fallbacks: [] }
-    market_research: { preferred_tool: "tool_search_web", fallbacks: ["tool_search_rag"] }
-    audience_research: { preferred_tool: "tool_search_web", fallbacks: ["tool_search_rag"] }
-    competitive_research: { preferred_tool: "tool_search_web", fallbacks: ["tool_search_rag"] }
-    data_analysis: { preferred_tool: "tool_data_analytics", fallbacks: [] }
-    performance_reporting: { preferred_tool: "tool_data_analytics", fallbacks: [] }
-    image_generation: { preferred_tool: "TOOL_IMAGE_NANO_BANANA", fallbacks: ["TOOL_IMAGE_PROMPT_PACKAGE_ONLY"] }
-    capability.image_generation.render: { preferred_tool: "TOOL_IMAGE_NANO_BANANA", fallbacks: ["TOOL_IMAGE_PROMPT_PACKAGE_ONLY"] }
+    market_research: { preferred_tool: "tool_search_web", fallbacks: ["vector_search"] }
+    audience_research: { preferred_tool: "tool_search_web", fallbacks: ["vector_search"] }
+    competitive_research: { preferred_tool: "tool_search_web", fallbacks: ["vector_search"] }
+    image_generation: { preferred_tool: "TOOL_IMAGE_NANO_BANANA", fallbacks: [] }
+    capability.image_generation.render: { preferred_tool: "TOOL_IMAGE_NANO_BANANA", fallbacks: [] }
 
 resilience_patterns:
   retry:
