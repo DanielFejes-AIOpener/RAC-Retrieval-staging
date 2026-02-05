@@ -165,24 +165,59 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!filePath) {
       const index = getFileIndex();
       
-      // Get all files in the requested layer
+      // Build allowed CLIENT files for this endpoint
+      const allowedFileId = clientFileId.replace(/^CLIENT_\d+_/, '');
+      const accessGrants = CLIENT_ACCESS_GRANTS[clientSlug] || [];
+      const allowedClientFiles = new Set([
+        'BASE_TEMPLATE',
+        allowedFileId.toUpperCase(),
+        ...accessGrants.map(g => g.toUpperCase())
+      ]);
+      
+      // Get all files in the requested layer (filtered for CLIENT layer)
       const layerFiles = Object.keys(index)
         .filter(k => k.startsWith(`${layer}_`) || k.startsWith(`${layer}:`))
         .map(k => {
           const m = k.match(/_\d+_(.+)$/);
           return m ? m[1] : k.replace(`${layer}:`, '');
         })
-        .filter((v, i, a) => a.indexOf(v) === i); // dedupe
+        .filter((v, i, a) => a.indexOf(v) === i) // dedupe
+        .filter(f => {
+          // For CLIENT layer, only show files this endpoint can access
+          if (layer === 'CLIENT') {
+            return allowedClientFiles.has(f.toUpperCase());
+          }
+          return true;
+        });
       
-      // Check if file exists in a different layer
+      // Also include client-specific files for override layers
+      if (CLIENT_OVERRIDE_LAYERS.includes(layer)) {
+        const clientSpecificFiles = Object.keys(index)
+          .filter(k => k.startsWith(`clients:${clientSlug}:${layer}:`))
+          .map(k => k.split(':').pop() || '')
+          .filter(f => f && !layerFiles.includes(f));
+        layerFiles.push(...clientSpecificFiles);
+      }
+      
+      // Check if file exists in a different layer (respecting access rules)
       const allLayers = ['CONFIG', 'CLIENT', 'LOGIC', 'OPS', 'ORG', 'PACK', 'ROLE', 'USE_CASE', 'WORKFLOW'];
       let foundInLayer: string | null = null;
       for (const otherLayer of allLayers) {
         if (otherLayer === layer) continue;
-        const found = Object.keys(index).find(k => 
-          (k.startsWith(`${otherLayer}_`) || k.startsWith(`${otherLayer}:`)) && 
-          k.toUpperCase().includes(fileId.toUpperCase())
-        );
+        const found = Object.keys(index).find(k => {
+          const matchesLayer = k.startsWith(`${otherLayer}_`) || k.startsWith(`${otherLayer}:`);
+          const matchesFileId = k.toUpperCase().includes(fileId.toUpperCase());
+          
+          if (!matchesLayer || !matchesFileId) return false;
+          
+          // For CLIENT layer, check access permissions
+          if (otherLayer === 'CLIENT') {
+            const m = k.match(/_\d+_(.+)$/);
+            const shortName = m ? m[1] : k.replace(`${otherLayer}:`, '');
+            return allowedClientFiles.has(shortName.toUpperCase());
+          }
+          return true;
+        });
         if (found) {
           foundInLayer = otherLayer;
           break;
