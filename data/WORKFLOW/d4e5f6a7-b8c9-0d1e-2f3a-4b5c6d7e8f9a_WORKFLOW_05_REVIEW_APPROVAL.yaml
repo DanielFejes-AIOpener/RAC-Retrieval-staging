@@ -1,0 +1,227 @@
+# WORKFLOW_05_REVIEW_APPROVAL.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Standard workflow for content/deliverable review and approval"
+  notes: "Reusable review workflow invokable from other workflows"
+  tags: [workflow, review, approval, quality]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: OPS_15_REVIEW_CHECKLISTS"
+  - "$ref: OPS_19_HANDOFF_DELIVERY"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_05_REVIEW_APPROVAL"
+  name: "Review & Approval"
+  purpose: "Conduct quality review and obtain approval for deliverables"
+  complexity: "low"
+  automation_level: "semi_automated"
+  estimated_duration: "1-4 hours"
+
+  triggers:
+    - "Deliverable ready for review"
+    - "Content creation complete"
+    - "Campaign plan ready"
+    - "Any output requiring approval"
+
+  roles_involved:
+    - "ROLE_05_REVIEWER"
+
+  inputs:
+    required:
+      - { field: "deliverable", type: "document | object", description: "Item to review" }
+      - { field: "deliverable_type", type: "string", description: "Type for checklist selection" }
+      - { field: "quality_requirements", type: "object", description: "Specific quality criteria" }
+    optional:
+      - { field: "review_focus", type: "array", description: "Specific aspects to focus on" }
+      - { field: "previous_feedback", type: "array", description: "Feedback from prior review rounds" }
+
+  outputs:
+    - { field: "review_result", type: "object", description: "Review outcome with details" }
+    - { field: "checklist_completed", type: "object", description: "Completed quality checklist" }
+    - { field: "feedback", type: "array", description: "Detailed feedback items" }
+    - { field: "approval_status", type: "enum", values: ["approved", "approved_with_comments", "revision_required", "rejected"] }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Review Setup"
+    objective: "Load context and select appropriate checklist"
+    role: "ROLE_05_REVIEWER"
+    entry_criteria:
+      - "Deliverable available"
+      - "Deliverable type specified"
+    steps:
+      - step_id: "step_1"
+        action: "Load deliverable and context"
+        actor: "agent"
+        outputs: ["deliverable_loaded"]
+      - step_id: "step_2"
+        action: "Select appropriate checklist"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS"
+        outputs: ["checklist_selected"]
+      - step_id: "step_3"
+        action: "Load previous feedback if revision"
+        actor: "agent"
+        outputs: ["previous_context"]
+    exit_criteria:
+      - "Deliverable accessible"
+      - "Checklist selected"
+      - "Context loaded"
+
+  - phase_id: "phase_2"
+    name: "Quality Review"
+    objective: "Execute comprehensive quality review"
+    role: "ROLE_05_REVIEWER"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Checklist ready"
+    steps:
+      - step_id: "step_1"
+        action: "Run accuracy checks"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#universal_checklist.accuracy"
+        outputs: ["accuracy_results"]
+      - step_id: "step_2"
+        action: "Run compliance checks"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#universal_checklist.compliance"
+        outputs: ["compliance_results"]
+      - step_id: "step_3"
+        action: "Run brand safety checks"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#universal_checklist.brand_safety"
+        outputs: ["brand_results"]
+      - step_id: "step_4"
+        action: "Run type-specific checks"
+        actor: "agent"
+        outputs: ["type_specific_results"]
+      - step_id: "step_5"
+        action: "Run AI policy compliance checks"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#universal_checklist.ai_policy_compliance"
+        outputs: ["ai_policy_results"]
+    exit_criteria:
+      - "All checklist items evaluated"
+      - "Results documented"
+
+  - phase_id: "phase_3"
+    name: "Feedback Compilation"
+    objective: "Compile and prioritize feedback"
+    role: "ROLE_05_REVIEWER"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Review results available"
+    steps:
+      - step_id: "step_1"
+        action: "Categorize issues by severity"
+        actor: "agent"
+        outputs: ["categorized_issues"]
+      - step_id: "step_2"
+        action: "Compile actionable feedback"
+        actor: "agent"
+        outputs: ["feedback_items"]
+      - step_id: "step_3"
+        action: "Determine overall status"
+        actor: "agent"
+        outputs: ["status_determination"]
+      - step_id: "step_4"
+        action: "Prepare revision guidance if needed"
+        actor: "agent"
+        outputs: ["revision_guidance"]
+    exit_criteria:
+      - "Feedback compiled"
+      - "Status determined"
+      - "Guidance prepared"
+
+  - phase_id: "phase_4"
+    name: "Approval Decision"
+    objective: "Make or obtain approval decision"
+    role: "ROLE_05_REVIEWER"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Status determined"
+    steps:
+      - step_id: "step_1"
+        action: "Present review summary"
+        actor: "agent"
+        outputs: ["review_summary"]
+      - step_id: "step_2"
+        action: "Request human approval decision"
+        actor: "human"
+        outputs: ["approval_decision"]
+      - step_id: "step_3"
+        action: "Record decision and rationale"
+        actor: "agent"
+        outputs: ["decision_record"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_review_approval"
+      trigger: "step_completion"
+      approval_required_from: "content_lead | creative_lead | strategy_lead"
+      approval_options: ["approve", "approve_with_comments", "request_revision", "reject"]
+      timeout_hours: 24
+    exit_criteria:
+      - "Decision obtained"
+      - "Decision recorded"
+
+  - phase_id: "phase_5"
+    name: "Output Preparation"
+    objective: "Prepare review outputs"
+    role: "ROLE_05_REVIEWER"
+    entry_criteria:
+      - "Phase 4 complete"
+      - "Decision recorded"
+    steps:
+      - step_id: "step_1"
+        action: "Compile final checklist"
+        actor: "agent"
+        outputs: ["completed_checklist"]
+      - step_id: "step_2"
+        action: "Format feedback for handoff"
+        actor: "agent"
+        outputs: ["formatted_feedback"]
+      - step_id: "step_3"
+        action: "Prepare delivery handoff if approved"
+        actor: "agent"
+        reference: "$ref: OPS_19_HANDOFF_DELIVERY"
+        outputs: ["delivery_handoff"]
+    exit_criteria:
+      - "Outputs complete"
+      - "Handoff prepared"
+
+quality_gates:
+  entry:
+    - "Deliverable complete"
+    - "Deliverable type valid"
+    - "Quality requirements specified"
+  exit:
+    - "All checklist items evaluated"
+    - "Approval decision recorded"
+    - "Feedback documented"
+
+status_handling:
+  approved:
+    action: "Proceed with delivery"
+    next_workflow: "Delivery or next workflow phase"
+  approved_with_comments:
+    action: "Proceed with delivery, note comments for future"
+    next_workflow: "Delivery or next workflow phase"
+  revision_required:
+    action: "Return to creator with feedback"
+    next_workflow: "Return to creation workflow revision phase"
+    max_revision_rounds: 3
+  rejected:
+    action: "Escalate to supervisor"
+    next_workflow: "Escalation handling"
+
+validation:
+  workflow_specific:
+    - "Checklist selection matches deliverable type"
+    - "HITL checkpoint properly configured"
+    - "Status handling covers all outcomes"

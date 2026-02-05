@@ -37,7 +37,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         .filter(k => k.toLowerCase().includes(fileId.toLowerCase().split('_').pop() || ''))
         .slice(0, 5);
       
-      return res.status(404).json({
+      return res.status(200).json({
         error: true,
         code: 'NOT_FOUND',
         message: `File not found: ${fileId}`,
@@ -60,7 +60,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (section) {
       content = extractSection(content, section);
       if (content === null || content === undefined) {
-        return res.status(404).json({
+        return res.status(200).json({
           error: true,
           code: 'SECTION_NOT_FOUND',
           message: `Section not found: ${section}`

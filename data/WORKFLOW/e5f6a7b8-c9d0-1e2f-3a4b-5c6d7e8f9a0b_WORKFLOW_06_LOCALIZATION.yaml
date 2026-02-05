@@ -1,0 +1,187 @@
+# WORKFLOW_06_LOCALIZATION.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Workflow for localizing content to different languages and markets"
+  notes: "Typically follows WORKFLOW_02 Content Creation"
+  tags: [workflow, localization, translation, adaptation]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: OPS_16_LOCALIZATION"
+  - "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_06_LOCALIZATION"
+  name: "Content Localization"
+  purpose: "Adapt approved content for different languages and regional markets"
+  complexity: "medium"
+  automation_level: "semi_automated"
+  estimated_duration: "2-4 hours per language"
+
+  triggers:
+    - "Content approved for localization"
+    - "Multi-market campaign launch"
+    - "Regional content adaptation request"
+
+  roles_involved:
+    - "ROLE_02_WRITER"
+    - "ROLE_05_REVIEWER"
+
+  inputs:
+    required:
+      - { field: "source_content", type: "document", description: "Approved source content" }
+      - { field: "source_language", type: "string", description: "Language of source content" }
+      - { field: "target_languages", type: "array", description: "Languages to localize to" }
+      - { field: "client_context", type: "reference", description: "CLIENT layer reference" }
+    optional:
+      - { field: "market_specific_requirements", type: "object", description: "Market-specific adaptations" }
+      - { field: "translation_memory", type: "reference", description: "Previous translations for consistency" }
+
+  outputs:
+    - { field: "localized_content", type: "array", description: "Localized versions per target language" }
+    - { field: "localization_notes", type: "document", description: "Adaptation decisions and rationale" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Localization Setup"
+    objective: "Prepare localization context and classify content elements"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Source content available and approved"
+      - "Target languages specified"
+    steps:
+      - step_id: "step_1"
+        action: "Load source content"
+        actor: "agent"
+        outputs: ["content_loaded"]
+      - step_id: "step_2"
+        action: "Load localization guidelines"
+        actor: "agent"
+        reference: "$ref: OPS_16_LOCALIZATION"
+        outputs: ["localization_rules"]
+      - step_id: "step_3"
+        action: "Classify content as invariant vs adaptable"
+        actor: "agent"
+        reference: "$ref: OPS_16_LOCALIZATION#localization_principles"
+        outputs: ["element_classification"]
+      - step_id: "step_4"
+        action: "Load client localization preferences"
+        actor: "agent"
+        reference: "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE#localization_preferences"
+        outputs: ["client_preferences"]
+    exit_criteria:
+      - "Content classified"
+      - "Guidelines loaded"
+      - "Client preferences available"
+
+  - phase_id: "phase_2"
+    name: "Content Adaptation"
+    objective: "Adapt content for each target language"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Classification complete"
+    steps:
+      - step_id: "step_1"
+        action: "Translate/adapt for first target language"
+        actor: "agent"
+        outputs: ["first_localization"]
+      - step_id: "step_2"
+        action: "Apply language-specific formatting"
+        actor: "agent"
+        reference: "$ref: OPS_16_LOCALIZATION#language_variants"
+        outputs: ["formatting_applied"]
+      - step_id: "step_3"
+        action: "Add regional legal requirements"
+        actor: "agent"
+        reference: "$ref: OPS_16_LOCALIZATION#regional_legal"
+        outputs: ["legal_added"]
+      - step_id: "step_4"
+        action: "Repeat for additional target languages"
+        actor: "agent"
+        outputs: ["all_localizations"]
+    exit_criteria:
+      - "All target languages adapted"
+      - "Formatting applied per language"
+      - "Legal requirements included"
+
+  - phase_id: "phase_3"
+    name: "Quality Review"
+    objective: "Review localized content for quality"
+    role: "ROLE_05_REVIEWER"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Localizations available"
+    steps:
+      - step_id: "step_1"
+        action: "Verify invariant elements preserved"
+        actor: "agent"
+        outputs: ["invariant_check"]
+      - step_id: "step_2"
+        action: "Verify tone and formality per market"
+        actor: "agent"
+        outputs: ["tone_check"]
+      - step_id: "step_3"
+        action: "Verify legal compliance per market"
+        actor: "agent"
+        outputs: ["legal_check"]
+      - step_id: "step_4"
+        action: "Run localization quality checklist"
+        actor: "agent"
+        outputs: ["quality_checklist"]
+    exit_criteria:
+      - "All quality checks passed"
+      - "No compliance issues"
+
+  - phase_id: "phase_4"
+    name: "Final Approval & Delivery"
+    objective: "Obtain approval and prepare delivery"
+    role: "ROLE_05_REVIEWER"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Quality checks passed"
+    steps:
+      - step_id: "step_1"
+        action: "Compile localization package"
+        actor: "agent"
+        outputs: ["localization_package"]
+      - step_id: "step_2"
+        action: "Document adaptation decisions"
+        actor: "agent"
+        outputs: ["localization_notes"]
+      - step_id: "step_3"
+        action: "Prepare delivery handoff per language"
+        actor: "agent"
+        outputs: ["delivery_handoffs"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_localization_final"
+      trigger: "phase_exit"
+      approval_required_from: "content_lead"
+      approval_options: ["approve", "approve_with_comments", "request_revision"]
+      timeout_hours: 24
+    exit_criteria:
+      - "All localizations approved"
+      - "Notes documented"
+      - "Handoffs prepared"
+
+quality_gates:
+  entry:
+    - "Source content approved"
+    - "Target languages valid per OPS_16"
+    - "Client localization preferences available"
+  exit:
+    - "All target languages localized"
+    - "Invariant elements preserved"
+    - "Legal requirements met per market"
+    - "HITL approval obtained"
+
+validation:
+  workflow_specific:
+    - "Target languages match OPS_16 supported variants"
+    - "Invariant/adaptable classification follows OPS_16 principles"
+    - "Regional legal requirements addressed"

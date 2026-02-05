@@ -1,0 +1,261 @@
+# WORKFLOW_08_EMPLOYER_BRANDING.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Specialized workflow for employer branding content and campaigns"
+  notes: "Core workflow for AI Opener's employer branding specialization"
+  tags: [workflow, employer_branding, recruitment, evp, talent]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: OPS_03_EVP_FRAMEWORKS"
+  - "$ref: OPS_04_PERSONA_DEFINITIONS"
+  - "$ref: OPS_07_CAMPAIGN_ARCHETYPES"
+  - "$ref: CLIENT_04_PERSONAS_TEMPLATE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_08_EMPLOYER_BRANDING"
+  name: "Employer Branding"
+  purpose: "Develop employer branding strategy, EVP, and recruitment marketing content"
+  complexity: "high"
+  automation_level: "semi_automated"
+  estimated_duration: "16-40 hours (varies by scope)"
+
+  triggers:
+    - "Employer branding project initiation"
+    - "EVP development request"
+    - "Recruitment campaign request"
+    - "Talent attraction strategy needed"
+
+  roles_involved:
+    - "ROLE_01_STRATEGIST"
+    - "ROLE_02_WRITER"
+    - "ROLE_04_RESEARCHER"
+    - "ROLE_03_ANALYST"
+
+  inputs:
+    required:
+      - { field: "project_brief", type: "document", description: "Project brief/requirements" }
+      - { field: "client_context", type: "reference", description: "CLIENT layer reference" }
+      - { field: "project_type", type: "enum", values: ["evp_development", "campaign", "content_series", "full_program"], description: "Type of EB project" }
+    optional:
+      - { field: "existing_evp", type: "document", description: "Current EVP if exists" }
+      - { field: "target_roles", type: "array", description: "Specific roles/functions to target" }
+      - { field: "competitive_context", type: "document", description: "Competitor EB analysis" }
+
+  outputs:
+    - { field: "eb_strategy", type: "document", description: "Employer branding strategy" }
+    - { field: "evp_framework", type: "document", description: "EVP pillars and messaging (if applicable)" }
+    - { field: "candidate_personas", type: "array", description: "Target candidate personas" }
+    - { field: "content_plan", type: "document", description: "Content/campaign plan" }
+    - { field: "deliverables", type: "array", description: "Produced content/assets" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Discovery & Research"
+    objective: "Understand client employer brand and talent landscape"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Project brief received"
+      - "Client context available"
+    steps:
+      - step_id: "step_1"
+        action: "Review client context and existing EB materials"
+        actor: "agent"
+        outputs: ["client_eb_review"]
+      - step_id: "step_2"
+        action: "Research talent market and competition"
+        actor: "agent"
+        outputs: ["market_research"]
+      - step_id: "step_3"
+        action: "Identify target candidate segments"
+        actor: "agent"
+        reference: "$ref: OPS_04_PERSONA_DEFINITIONS"
+        outputs: ["candidate_segments"]
+      - step_id: "step_4"
+        action: "Gather employer review/sentiment data"
+        actor: "agent"
+        outputs: ["sentiment_data"]
+    exit_criteria:
+      - "Research complete"
+      - "Segments identified"
+      - "Competitive landscape understood"
+
+  - phase_id: "phase_2"
+    name: "Candidate Persona Development"
+    objective: "Develop or refine target candidate personas"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Research available"
+    steps:
+      - step_id: "step_1"
+        action: "Load persona framework"
+        actor: "agent"
+        reference: "$ref: OPS_04_PERSONA_DEFINITIONS"
+        outputs: ["persona_framework"]
+      - step_id: "step_2"
+        action: "Develop candidate personas"
+        actor: "agent"
+        outputs: ["candidate_personas"]
+      - step_id: "step_3"
+        action: "Map personas to roles/functions"
+        actor: "agent"
+        outputs: ["persona_role_mapping"]
+      - step_id: "step_4"
+        action: "Define persona-specific messaging needs"
+        actor: "agent"
+        outputs: ["messaging_needs"]
+    exit_criteria:
+      - "Personas developed"
+      - "Role mapping complete"
+      - "Messaging needs identified"
+
+  - phase_id: "phase_3"
+    name: "EVP Development/Validation"
+    objective: "Develop or validate EVP framework"
+    role: "ROLE_01_STRATEGIST"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Personas available"
+    steps:
+      - step_id: "step_1"
+        action: "Load EVP framework"
+        actor: "agent"
+        reference: "$ref: OPS_03_EVP_FRAMEWORKS"
+        outputs: ["evp_framework_loaded"]
+      - step_id: "step_2"
+        action: "Develop/refine EVP pillars"
+        actor: "agent"
+        outputs: ["evp_pillars"]
+      - step_id: "step_3"
+        action: "Create pillar messaging hierarchy"
+        actor: "agent"
+        outputs: ["pillar_messaging"]
+      - step_id: "step_4"
+        action: "Validate EVP against personas"
+        actor: "agent"
+        outputs: ["evp_validation"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_evp_approval"
+      trigger: "phase_exit"
+      approval_required_from: "strategy_lead | account_director"
+      approval_options: ["approve", "approve_with_comments", "request_revision"]
+      timeout_hours: 48
+    exit_criteria:
+      - "EVP pillars defined"
+      - "Messaging hierarchy complete"
+      - "HITL approval obtained"
+
+  - phase_id: "phase_4"
+    name: "Campaign/Content Strategy"
+    objective: "Develop campaign or content strategy"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "EVP approved"
+    steps:
+      - step_id: "step_1"
+        action: "Select campaign archetype"
+        actor: "agent"
+        reference: "$ref: OPS_07_CAMPAIGN_ARCHETYPES"
+        outputs: ["archetype_selection"]
+      - step_id: "step_2"
+        action: "Define channel strategy"
+        actor: "agent"
+        outputs: ["channel_strategy"]
+      - step_id: "step_3"
+        action: "Create content requirements"
+        actor: "agent"
+        outputs: ["content_requirements"]
+      - step_id: "step_4"
+        action: "Develop campaign timeline"
+        actor: "agent"
+        outputs: ["campaign_timeline"]
+    exit_criteria:
+      - "Strategy defined"
+      - "Content requirements documented"
+      - "Timeline established"
+
+  - phase_id: "phase_5"
+    name: "Content Creation"
+    objective: "Create employer branding content"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Phase 4 complete"
+      - "Strategy approved"
+    steps:
+      - step_id: "step_1"
+        action: "Create hero messaging and taglines"
+        actor: "agent"
+        outputs: ["hero_messaging"]
+      - step_id: "step_2"
+        action: "Develop pillar content"
+        actor: "agent"
+        outputs: ["pillar_content"]
+      - step_id: "step_3"
+        action: "Create channel-specific content"
+        actor: "agent"
+        outputs: ["channel_content"]
+      - step_id: "step_4"
+        action: "Develop job posting templates"
+        actor: "agent"
+        outputs: ["job_templates"]
+    exit_criteria:
+      - "Content created"
+      - "All requirements addressed"
+    invokes: "WORKFLOW_02_CONTENT_CREATION"
+
+  - phase_id: "phase_6"
+    name: "Review & Delivery"
+    objective: "Final review and delivery"
+    role: "ROLE_05_REVIEWER"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 5 complete"
+      - "Content ready"
+    steps:
+      - step_id: "step_1"
+        action: "Review all deliverables"
+        actor: "agent"
+        outputs: ["review_complete"]
+      - step_id: "step_2"
+        action: "Compile final package"
+        actor: "agent"
+        outputs: ["final_package"]
+      - step_id: "step_3"
+        action: "Prepare handoff documentation"
+        actor: "agent"
+        outputs: ["handoff_docs"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_eb_final"
+      trigger: "phase_exit"
+      approval_required_from: "account_director"
+      approval_options: ["approve", "approve_with_comments", "request_revision"]
+      timeout_hours: 48
+    exit_criteria:
+      - "All deliverables approved"
+      - "Package complete"
+      - "Handoff ready"
+
+quality_gates:
+  entry:
+    - "Project brief complete"
+    - "Client context available"
+    - "Project type specified"
+  exit:
+    - "EVP framework complete (if applicable)"
+    - "Candidate personas defined"
+    - "Content/campaign delivered"
+    - "Quality checklists passed"
+
+validation:
+  workflow_specific:
+    - "EVP development uses OPS_03 frameworks"
+    - "Personas align with OPS_04 definitions"
+    - "Campaign archetype from OPS_07"
+    - "Multiple HITL checkpoints at strategic gates"

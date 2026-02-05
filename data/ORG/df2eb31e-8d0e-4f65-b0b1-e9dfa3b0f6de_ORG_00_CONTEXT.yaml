@@ -1,0 +1,182 @@
+# ORG_00_CONTEXT.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Organization-level context configuration and defaults"
+  notes: "Single ORG file containing agency identity, defaults, and client registry"
+  tags: [org, context, configuration, agency, defaults]
+
+extends: "OPS_00_STANDARDS"
+requires:
+  - "$ref: LOGIC_00_GOVERNANCE"
+  - "$ref: LOGIC_02_RETRIEVAL"
+  - "$ref: OPS_00_STANDARDS"
+
+organization_profile:
+  org_id: "ai_opener"
+  org_name: "AI Opener"
+  org_type: "marketing_agency"
+  description: "B2B marketing agency specializing in employer branding and recruitment marketing"
+  specializations: ["employer_branding", "recruitment_marketing", "b2b_marketing", "content_strategy"]
+  markets:
+    primary: ["NL", "DE", "BE"]
+    secondary: ["UK", "EU"]
+  languages:
+    primary: "nl-NL"
+    supported: ["nl-NL", "de-DE", "en-GB", "fr-FR"]
+  founded: "2020"
+
+organizational_defaults:
+  description: "Agency-wide defaults that apply when not overridden by CLIENT layer"
+
+  brand_voice_defaults:
+    reference: "$ref: OPS_02_BRAND_VOICE"
+    org_settings:
+      default_formality: "professional"
+      default_tone: ["expert", "approachable", "results-focused"]
+      default_language: "nl-NL"
+
+  quality_defaults:
+    reference: "$ref: LOGIC_08_QUALITY_GATES"
+    org_settings:
+      minimum_evidence_tier: "tier_2"
+      minimum_source_reliability: "B"
+      freshness_threshold_months: 24
+      four_eyes_requirement: true
+
+  compliance_defaults:
+    reference: "$ref: OPS_00_STANDARDS#ai_policy_compliance"
+    org_settings:
+      competitor_mention_policy: "indirect_only"
+      pricing_disclosure_approval: "account_director"
+      legal_claim_review: true
+
+  workflow_defaults:
+    reference: "$ref: WORKFLOWS"
+    org_settings:
+      default_hitl_points: ["strategy_approval", "final_review"]
+      checkpoint_frequency: "per_phase"
+      escalation_timeout_hours: 24
+
+team_structure:
+  roles:
+    - { role_id: "account_director", title: "Account Director", responsibilities: ["Client relationship", "Strategy approval", "Budget authority"], approval_levels: ["strategy", "budget", "pricing"] }
+    - { role_id: "strategy_lead", title: "Strategy Lead", responsibilities: ["Strategic direction", "Campaign planning", "Research oversight"], approval_levels: ["strategy", "creative_direction"] }
+    - { role_id: "creative_lead", title: "Creative Lead", responsibilities: ["Creative direction", "Brand compliance", "Quality standards"], approval_levels: ["creative", "brand"] }
+    - { role_id: "content_lead", title: "Content Lead", responsibilities: ["Content strategy", "Editorial standards", "Production oversight"], approval_levels: ["content", "editorial"] }
+    - { role_id: "specialist", title: "Specialist", responsibilities: ["Execution", "Production", "Research"], approval_levels: [] }
+  escalation_chain:
+    - { level: 1, role: "specialist", escalate_to: "content_lead | creative_lead" }
+    - { level: 2, role: "content_lead | creative_lead", escalate_to: "strategy_lead" }
+    - { level: 3, role: "strategy_lead", escalate_to: "account_director" }
+    - { level: 4, role: "account_director", escalate_to: "external_stakeholder" }
+
+client_registry:
+  description: "Registry of active and inactive clients with their context file locations"
+  active_clients:
+    # [Add client entries as they are onboarded]
+    # Example structure:
+    # - client_id: "example_client"
+    #   client_name: "Example Client"
+    #   context_files:
+    #     profile: "CLIENT_example_client_00_PROFILE.yaml"
+    #     brand_voice: "CLIENT_example_client_01_BRAND_VOICE.yaml"
+    #     evidence_vault: "CLIENT_example_client_02_EVIDENCE_VAULT.yaml"
+    #     products: "CLIENT_example_client_03_PRODUCTS.yaml"
+    #     personas: "CLIENT_example_client_04_PERSONAS.yaml"
+    #   onboarded_date: "2025-01-15"
+    #   account_owner: "account_director_name"
+    #   status: "active"
+    entries: []
+  inactive_clients:
+    # [Clients no longer active but retained for reference]
+    # Example structure:
+    # - client_id: "former_client"
+    #   client_name: "Former Client"
+    #   offboarded_date: "2024-12-31"
+    #   retention_until: "2027-12-31"
+    #   archive_location: "/archive/clients/former_client/"
+    entries: []
+
+retrieval_configuration:
+  reference: "$ref: LOGIC_02_RETRIEVAL"
+  org_settings:
+    layer_loading:
+      always_load: ["LOGIC", "OPS"]
+      load_on_context: ["CLIENT", "ORG"]
+      load_on_task: ["WORKFLOWS"]
+    default_retrieval_strategy: "hierarchical"
+    max_context_tokens: 100000
+    chunk_strategy: "semantic"
+
+ai_agent_configuration:
+  description: "Configuration for AI agents operating under this ORG context"
+  available_roles:
+    reference: "$ref: LOGIC_04_ROLE_DEFINITIONS"
+    enabled_roles: ["ROLE_01_STRATEGIST", "ROLE_02_WRITER", "ROLE_03_ANALYST", "ROLE_04_RESEARCHER", "ROLE_05_REVIEWER"]
+  available_use_cases:
+    reference: "$ref: LOGIC_05_USE_CASE_TEMPLATES"
+    enabled_use_cases: ["USE_CASE_01_BRIEF_ANALYSIS", "USE_CASE_02_CONTENT_CREATION", "USE_CASE_03_RESEARCH", "USE_CASE_04_REVIEW"]
+  tool_permissions:
+    reference: "$ref: LOGIC_10_TOOLS_CORE"
+    permitted_tool_categories: ["content", "research", "analysis", "formatting"]
+    restricted_tools: ["publication", "external_api_write"]
+
+governance_overrides:
+  description: "Organization-specific governance adjustments (can only strengthen, not weaken)"
+  reference: "$ref: LOGIC_00_GOVERNANCE"
+  org_overrides:
+    # Example: Agency-wide stricter evidence requirements
+    evidence_standards:
+      note: "Agency requires higher evidence standards than baseline"
+      override:
+        tier_2_minimum_for_all_external: true
+        rationale: "Agency reputation depends on accuracy"
+    # Example: Agency-wide HITL requirements
+    hitl_requirements:
+      note: "Agency has stricter human oversight than baseline"
+      override:
+        all_external_content_requires_human_review: true
+        rationale: "Client protection and quality assurance"
+
+operational_calendar:
+  description: "Recurring operational checkpoints"
+  schedules:
+    evidence_audit:
+      frequency: "quarterly"
+      scope: "All active client evidence vaults"
+      owner: "strategy_lead"
+    client_review:
+      frequency: "monthly"
+      scope: "All active clients"
+      owner: "account_director"
+    workflow_optimization:
+      frequency: "quarterly"
+      scope: "Workflow performance metrics"
+      owner: "operations"
+    rac_maintenance:
+      frequency: "monthly"
+      scope: "RAC file updates and validation"
+      owner: "system_admin"
+
+integration_points:
+  description: "External systems and integrations"
+  content_management:
+    system: "[CMS name]"
+    integration_type: "[API | Manual | Export]"
+    sync_frequency: "[As needed | Daily | Weekly]"
+  project_management:
+    system: "[PM tool name]"
+    integration_type: "[API | Manual]"
+    workflow_sync: true
+  analytics:
+    system: "[Analytics platform]"
+    metrics_tracked: ["Content performance", "Campaign metrics", "Quality scores"]
+
+validation:
+  org_00_specific:
+    structural: ["organization_profile contains required fields", "team_structure.escalation_chain is complete", "client_registry structure is valid"]
+    content: ["governance_overrides only strengthen, not weaken baseline", "ai_agent_configuration references valid LOGIC files", "retrieval_configuration aligns with LOGIC_02"]
+    maintenance: ["client_registry is current", "operational_calendar schedules are maintained", "integration_points are documented"]

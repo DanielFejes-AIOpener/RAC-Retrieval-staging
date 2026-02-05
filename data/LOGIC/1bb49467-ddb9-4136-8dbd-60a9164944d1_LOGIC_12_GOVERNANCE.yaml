@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_12_GOVERNANCE.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,256 +8,115 @@ meta:
   notes: "v2.0 - EU AI Act alignment with immutable minimums"
   tags: [logic, governance, compliance, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# GOVERNANCE MINIMUMS (SSOT - IMMUTABLE)
-# ══════════════════════════════════════════════════════════════════════════════
-# Path: LOGIC_12_GOVERNANCE.minimums
-# Status: IMMUTABLE per LOGIC_02_RETRIEVAL#override_rules.immutable_paths
-# No layer may override these requirements
-
 minimums:
-  description: "Non-negotiable governance baselines"
   immutable: true
-  
+
   ai_transparency:
-    description: "AI-generated content disclosure requirements"
     rules:
       - rule: "Disclose AI generation for limited-risk and high-risk outputs"
-        applies_to:
-          - "External publications"
-          - "Client deliverables"
-          - "Content entering public domain"
-          - "Direct customer communications"
+        applies_to: ["External publications", "Client deliverables", "Content entering public domain", "Direct customer communications"]
         disclosure_requirement: "mandatory"
-        
       - rule: "AI disclosure must be clear and prominent"
         placement: "Near content, not hidden"
         language: "Plain language, no jargon"
-        
       - rule: "Maintain disclosure even after human editing"
         threshold: "If AI contributed >20% of content"
-        
     templates: "$ref: LOGIC_09_INTERFACE#ai_disclosure.disclosure_templates"
-    
+
   human_oversight:
-    description: "Required human involvement for critical decisions"
     rules:
       - rule: "Human approval required for high-risk actions"
-        high_risk_actions:
-          - "External publication"
-          - "Binding commitments"
-          - "Legal/regulatory claims"
-          - "Financial decisions"
+        high_risk_actions: ["External publication", "Binding commitments", "Legal/regulatory claims", "Financial decisions"]
         approval_type: "explicit_confirmation"
-        
       - rule: "Human review required for high-risk content"
-        high_risk_content:
-          - "Public-facing communications"
-          - "Regulatory submissions"
-          - "Contractual language"
+        high_risk_content: ["Public-facing communications", "Regulatory submissions", "Contractual language"]
         review_type: "review_before_release"
-        
       - rule: "No fully autonomous high-stakes decisions"
         exceptions: "None"
-        
+
   data_protection:
-    description: "Privacy and data handling requirements"
     rules:
       - rule: "No PII storage without explicit consent"
         consent_type: "opt-in"
-        
       - rule: "Data minimization"
         principle: "Collect only what's necessary"
-        
       - rule: "Right to deletion"
         timeline: "30 days from request"
-        
       - rule: "Pseudonymization for analytics"
         applies_to: "All non-essential identifiers"
-        
+
   evidence_standards:
-    description: "Minimum evidence requirements"
     rules:
       - rule: "Quantitative claims require tier_1 or tier_2 evidence"
         minimum_tier: "tier_2"
         minimum_reliability: "B"
-        
       - rule: "Claims must cite sources"
         format: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
-        
       - rule: "Expired evidence requires disclosure"
         action: "Include freshness warning"
-        
+
   ethical_boundaries:
-    description: "Ethical constraints on AI behavior"
     rules:
       - rule: "No deceptive practices"
-        prohibited:
-          - "Impersonating humans"
-          - "Fake testimonials"
-          - "Misleading claims"
-          
+        prohibited: ["Impersonating humans", "Fake testimonials", "Misleading claims"]
       - rule: "No discriminatory content"
-        protected_characteristics:
-          - "Race"
-          - "Gender"
-          - "Age"
-          - "Disability"
-          - "Religion"
-          - "National origin"
-          
+        protected_characteristics: ["Race", "Gender", "Age", "Disability", "Religion", "National origin"]
       - rule: "No harmful content"
-        prohibited:
-          - "Incitement"
-          - "Harassment"
-          - "Misinformation"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# AI POLICY SCHEMA (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
+        prohibited: ["Incitement", "Harassment", "Misinformation"]
 
 ai_policy_schema:
-  description: "Structure for organizational AI use policies"
   override_strategy: "$ref: LOGIC_02_RETRIEVAL#override_rules.strategies.most_restrictive_wins"
-  
   schema:
     disclosure:
-      description: "AI content disclosure settings"
       fields:
-        required:
-          type: "boolean"
-          default: false
-          description: "Whether AI disclosure is mandatory"
-          override_rule: "CLIENT cannot set false if ORG is true"
-        default_position:
-          type: "enum"
-          values: ["none", "footer", "header", "inline", "metadata_only"]
-          default: "none"
-          override_rule: "CLIENT can only be same or more visible"
-        text:
-          type: "string"
-          max_length: 200
-          default: "Content created with AI assistance"
-          override_rule: "CLIENT can customize, ORG provides default"
-        exceptions:
-          type: "array"
-          items: "string"
-          default: []
-          description: "Content types exempt from disclosure"
-          override_rule: "CLIENT can remove exceptions (stricter), not add"
-          
-    prohibited_use_cases:
-      type: "array"
-      items: "string"
-      default: []
-      description: "USE_CASE IDs that cannot be activated"
-      override_rule: "CLIENT can add, not remove"
-      
-    approval_required_for:
-      type: "array"
-      items: "string"
-      default: []
-      description: "Actions requiring human approval beyond HITL defaults"
-      override_rule: "CLIENT can add, not remove"
-      
+        required: { type: "boolean", default: false, override_rule: "CLIENT cannot set false if ORG is true" }
+        default_position: { type: "enum", values: ["none", "footer", "header", "inline", "metadata_only"], default: "none", override_rule: "CLIENT can only be same or more visible" }
+        text: { type: "string", max_length: 200, default: "Content created with AI assistance" }
+        exceptions: { type: "array", items: "string", default: [], override_rule: "CLIENT can remove exceptions (stricter), not add" }
+    prohibited_use_cases: { type: "array", items: "string", default: [], override_rule: "CLIENT can add, not remove" }
+    approval_required_for: { type: "array", items: "string", default: [], override_rule: "CLIENT can add, not remove" }
     content_restrictions:
-      description: "Content generation restrictions"
       fields:
-        blocked_topics:
-          type: "array"
-          items: "string"
-          default: []
-          override_rule: "CLIENT can add, not remove"
-        required_review_for:
-          type: "array"
-          items: "string"
-          default: []
-          override_rule: "CLIENT can add, not remove"
-          
+        blocked_topics: { type: "array", items: "string", default: [], override_rule: "CLIENT can add, not remove" }
+        required_review_for: { type: "array", items: "string", default: [], override_rule: "CLIENT can add, not remove" }
     data_handling:
-      description: "How AI should handle client data"
       fields:
-        pii_allowed:
-          type: "boolean"
-          default: false
-          override_rule: "CLIENT cannot enable if ORG disables"
-        retention_allowed:
-          type: "boolean"
-          default: false
-          override_rule: "CLIENT cannot enable if ORG disables"
-          
+        pii_allowed: { type: "boolean", default: false, override_rule: "CLIENT cannot enable if ORG disables" }
+        retention_allowed: { type: "boolean", default: false, override_rule: "CLIENT cannot enable if ORG disables" }
   defaults:
-    description: "Default ai_policy when none specified"
-    disclosure:
-      required: false
-      default_position: "none"
-      text: "Content created with AI assistance"
-      exceptions: []
+    disclosure: { required: false, default_position: "none", text: "Content created with AI assistance", exceptions: [] }
     prohibited_use_cases: []
     approval_required_for: []
-    content_restrictions:
-      blocked_topics: []
-      required_review_for: []
-    data_handling:
-      pii_allowed: false
-      retention_allowed: false
-
-# ══════════════════════════════════════════════════════════════════════════════
-# RISK CLASSIFICATION
-# ══════════════════════════════════════════════════════════════════════════════
+    content_restrictions: { blocked_topics: [], required_review_for: [] }
+    data_handling: { pii_allowed: false, retention_allowed: false }
 
 risk_classification:
-  description: "Risk levels aligned with EU AI Act categories"
-  
   levels:
     minimal_risk:
-      description: "Low-impact, internal use"
-      examples:
-        - "Internal brainstorming"
-        - "Draft content for review"
-        - "Research summaries"
-        - "Internal reports"
+      examples: ["Internal brainstorming", "Draft content for review", "Research summaries", "Internal reports"]
       governance_requirements:
         ai_disclosure: "optional"
         human_review: "optional"
         evidence_tier: "tier_3_acceptable"
         trace_level: "standard"
-        
     limited_risk:
-      description: "Customer-facing with disclosure obligations"
-      examples:
-        - "Marketing content"
-        - "Customer emails"
-        - "Social media posts"
-        - "Blog articles"
+      examples: ["Marketing content", "Customer emails", "Social media posts", "Blog articles"]
       governance_requirements:
         ai_disclosure: "required"
         human_review: "recommended"
         evidence_tier: "tier_2_minimum"
         trace_level: "enhanced"
-        hitl_triggers:
-          - "Before external publication"
-          
+        hitl_triggers: ["Before external publication"]
     high_risk:
-      description: "Significant impact requiring strict controls"
-      examples:
-        - "Regulated communications"
-        - "Legal documents"
-        - "Financial advice"
-        - "Employment decisions"
-        - "Healthcare content"
+      examples: ["Regulated communications", "Legal documents", "Financial advice", "Employment decisions", "Healthcare content"]
       governance_requirements:
         ai_disclosure: "mandatory_prominent"
         human_review: "mandatory"
         evidence_tier: "tier_1_required"
         trace_level: "full"
-        hitl_triggers:
-          - "Before any output"
-          - "Before external use"
-        additional_controls:
-          - "Four-eyes review"
-          - "Audit trail retention: permanent"
-          
+        hitl_triggers: ["Before any output", "Before external use"]
+        additional_controls: ["Four-eyes review", "Audit trail retention: permanent"]
+
   classification_criteria:
     factors:
       - factor: "Audience"
@@ -267,155 +124,81 @@ risk_classification:
         external_b2b: "limited"
         external_consumer: "limited to high"
         regulated: "high"
-        
       - factor: "Content type"
         informational: "minimal to limited"
         persuasive: "limited"
         transactional: "limited to high"
         legal_binding: "high"
-        
       - factor: "Reversibility"
         easily_corrected: "lower risk"
         difficult_to_correct: "higher risk"
         irreversible: "high risk"
-        
       - factor: "Scale of impact"
         individual: "lower risk"
         group: "medium risk"
         public: "higher risk"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# EU AI ACT ALIGNMENT
-# ══════════════════════════════════════════════════════════════════════════════
-
 eu_ai_act:
-  description: "EU AI Act compliance mappings"
-  
   transparency_obligations:
     article_52:
-      description: "Transparency obligations for AI systems"
-      
       notification_requirement:
-        description: "Users must be informed they're interacting with AI"
         implementation: "$ref: #minimums.ai_transparency"
-        
-      emotion_recognition:
-        description: "Special rules for emotion recognition AI"
-        status: "Not applicable to RAC marketing use cases"
-        
       deep_fake:
-        description: "Disclosure for AI-generated content"
         implementation: "AI disclosure in outputs"
-        
   high_risk_requirements:
     applicable_when: "risk_classification == high_risk"
-    
     requirements:
-      risk_management:
-        description: "Risk management system"
-        implementation: "$ref: #risk_classification"
-        
-      data_governance:
-        description: "Data governance and management"
-        implementation: "$ref: #minimums.data_protection"
-        
-      technical_documentation:
-        description: "Maintain technical documentation"
-        implementation: "$ref: LOGIC_11_TRACE"
-        
-      record_keeping:
-        description: "Logging capabilities"
-        implementation: "$ref: LOGIC_11_TRACE#retention"
-        
-      transparency_to_users:
-        description: "Clear user information"
-        implementation: "$ref: #minimums.ai_transparency"
-        
-      human_oversight:
-        description: "Human oversight measures"
-        implementation: "$ref: #minimums.human_oversight"
-        
-      accuracy_robustness:
-        description: "Accuracy and robustness"
-        implementation: "$ref: LOGIC_08_QUALITY_GATES"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# COMMERCIAL GOVERNANCE
-# ══════════════════════════════════════════════════════════════════════════════
+      risk_management: { implementation: "$ref: #risk_classification" }
+      data_governance: { implementation: "$ref: #minimums.data_protection" }
+      technical_documentation: { implementation: "$ref: LOGIC_11_TRACE" }
+      record_keeping: { implementation: "$ref: LOGIC_11_TRACE#retention" }
+      transparency_to_users: { implementation: "$ref: #minimums.ai_transparency" }
+      human_oversight: { implementation: "$ref: #minimums.human_oversight" }
+      accuracy_robustness: { implementation: "$ref: LOGIC_08_QUALITY_GATES" }
 
 commercial_governance:
-  description: "Business and commercial governance rules"
-  
   pricing_commitments:
-    description: "Rules for AI-generated pricing"
     rules:
       - rule: "No autonomous pricing commitments"
         requires: "human_approval"
-        
       - rule: "Discounts require approval"
         threshold: "Any discount"
-        
       - rule: "Contract terms require legal review"
         scope: "All binding terms"
-        
+
   competitor_references:
-    description: "Rules for competitor mentions"
     rules:
       - rule: "No disparagement"
         prohibited: "Negative claims about competitors"
-        
       - rule: "Factual claims require evidence"
         minimum_tier: "tier_2"
-        
       - rule: "Comparative claims require approval"
         approval: "legal_marketing"
-        
+
   brand_protection:
-    description: "Protect client and own brand"
     rules:
       - rule: "Stay within brand guidelines"
         source: "CLIENT.brand OR ORG.brand"
-        
       - rule: "No unauthorized brand commitments"
         requires: "client_approval"
-        
       - rule: "Trademark usage compliance"
         source: "Legal guidance"
-        
+
   intellectual_property:
-    description: "IP protection rules"
     rules:
       - rule: "Respect third-party IP"
-        actions:
-          - "No unauthorized copying"
-          - "Proper attribution"
-          - "License compliance"
-          
+        actions: ["No unauthorized copying", "Proper attribution", "License compliance"]
       - rule: "Protect client IP"
-        actions:
-          - "No sharing between clients"
-          - "Confidentiality maintained"
-          
+        actions: ["No sharing between clients", "Confidentiality maintained"]
       - rule: "Clear AI-generated IP ownership"
         default: "Client owns deliverables"
         terms: "Per service agreement"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# GOVERNANCE INTEGRATION
-# ══════════════════════════════════════════════════════════════════════════════
-
 governance_integration:
-  description: "How governance integrates with other LOGIC files"
-  
   quality_gates_link:
-    description: "Governance-driven quality gates"
     reference: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
-    additions:
-      - "Risk classification check at entry"
-      - "Disclosure check at exit"
-      
+    additions: ["Risk classification check at entry", "Disclosure check at exit"]
   hitl_triggers_link:
-    description: "Governance-driven HITL triggers"
     reference: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
     governance_triggers:
       - trigger: "high_risk_classification"
@@ -424,18 +207,10 @@ governance_integration:
         action: "approval_required"
       - trigger: "legal_regulatory_content"
         action: "legal_review_required"
-        
   trace_requirements:
-    description: "Governance-mandated trace events"
     reference: "$ref: LOGIC_11_TRACE"
-    mandatory_events:
-      - "risk_classification_applied"
-      - "disclosure_added"
-      - "human_approval_obtained"
-      - "evidence_cited"
-      
+    mandatory_events: ["risk_classification_applied", "disclosure_added", "human_approval_obtained", "evidence_cited"]
   evidence_requirements:
-    description: "Governance-driven evidence standards"
     reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
     by_risk_level:
       minimal_risk: "tier_3_acceptable"

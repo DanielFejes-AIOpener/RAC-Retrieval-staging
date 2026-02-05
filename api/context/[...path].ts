@@ -72,7 +72,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           return match ? `${layer}/${match[1]}` : k;
         });
       
-      return res.status(404).json({
+      return res.status(200).json({
         error: true,
         code: 'NOT_FOUND',
         message: `Path not found: ${pathString}`,
@@ -105,7 +105,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (actualSection) {
       content = extractSection(content, actualSection);
       if (content === null || content === undefined) {
-        return res.status(404).json({
+        return res.status(200).json({
           error: true,
           code: 'SECTION_NOT_FOUND',
           message: `Section not found: ${actualSection}`

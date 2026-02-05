@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_17_IMAGE_GENERATION.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,33 +8,18 @@ meta:
   notes: "v2.0 - Image generation patterns with safety and accessibility"
   tags: [logic, image, generation, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# REFERENCES (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 references:
   interface_output_standards:
-    description: "Output conventions and formatting requirements"
     codebox_conventions: "$ref: LOGIC_09_INTERFACE#output_standards.formatting"
     accessibility: "$ref: LOGIC_09_INTERFACE#output_standards.accessibility"
     dei_requirements: "$ref: LOGIC_09_INTERFACE#output_standards.dei_requirements"
-
   visual_system_expected_source:
-    description: "Expected source for visual rules (ORG is default; CLIENT may override when active)"
     org_default_visual_identity:
       reference: "$ref: ORG_06_VISUAL_SYSTEM#visual_system.visual_identity"
-      note: "Canonical expected source path. If not present, use fallback_paths."
-    fallback_paths:
-      - "ORG_06_VISUAL_SYSTEM#visual_system.visual_dna_default"
-      - "ORG_06_VISUAL_SYSTEM#design_qa"
+      fallback_paths: ["ORG_06_VISUAL_SYSTEM#visual_system.visual_dna_default", "ORG_06_VISUAL_SYSTEM#design_qa"]
     client_override_expected:
-      note: "CLIENT visual system is optional overlay; expected to mirror ORG_06 shapes when present."
       canonical_path: "CLIENT.*.visual_identity (overlay)"
-      behavior: "If runtime.client_id is set and CLIENT visual identity exists, merge (CLIENT overrides ORG)."
-
-# ══════════════════════════════════════════════════════════════════════════════
-# ENGINE CAPABILITIES (ENGINE-SPECIFIC CONSTRAINTS)
-# ══════════════════════════════════════════════════════════════════════════════
+      behavior: "If runtime.client_id is set and CLIENT visual identity exists, merge (CLIENT overrides ORG)"
 
 engine_capabilities:
   nano_banana:
@@ -47,486 +30,136 @@ engine_capabilities:
     allowed_resolutions: ["1k", "2k", "4k"]
     allowed_output_formats: ["png", "jpeg", "webp"]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# IMAGE PROMPT PACKAGE CONTRACT (DETERMINISTIC OUTPUT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 image_prompt_package_contract:
-  description: "Canonical deterministic contract: output ONE image_prompt_package only (no tool execution here). Separates portable constraints from engine-ready payload(s)."
-
-  required_fields:
-    - "effective_visual_dna_ref"
-    - "creative_brief"
-    - "constraints"
-    - "nano_banana_payload"
-    - "refs_used"
-    - "qa_check"
-
+  required_fields: ["effective_visual_dna_ref", "creative_brief", "constraints", "nano_banana_payload", "refs_used", "qa_check"]
   constraints_schema:
     do_dont: "Lists from Visual DNA"
-    negative_constraints: "Brand negatives stored as constraints (not as an API field)"
+    negative_constraints: "Brand negatives stored as constraints (not as API field)"
     style_tokens_used: "Which Visual DNA elements were applied"
-
   nano_banana_payload_schema:
-    prompt: "Full-sentence prompt (includes translated constraints)."
+    prompt: "Full-sentence prompt (includes translated constraints)"
     aspect_ratio: "One of allowed aspect ratios"
     resolution: "1k|2k|4k"
     output_format: "png|jpeg|webp"
     num_images: "1-4"
     reference_images: "Optional list of URLs/IDs/pointers (external only)"
-
   validation_rules:
-    - "The assistant must output exactly ONE image_prompt_package in a single yaml codebox."
-    - "constraints must be engine-agnostic; store Visual DNA negatives as constraints.negative_constraints (do not treat as an API field)."
-    - "nano_banana_payload MUST NOT contain keys: negative_prompt, seed."
-    - "If user requests > 4 images, set nano_banana_payload.num_images to 4 and record the clamp in qa_check.failed_items and/or qa_check.notes."
-    - "refs_used may be an empty list."
-
-# Backwards-compatibility: legacy schema retained for older engines/routes.
-legacy_image_prompt_package_schema:
-  description: "Legacy deterministic schema (pre-2.0 Nano-Banana compatibility). Prefer image_prompt_package_contract for new work."
-
-  required_fields:
-    creative_brief:
-      type: "object"
-      description: "Concise brief derived from user request + active visual system"
-      required_fields:
-        objective:
-          type: "string"
-          description: "What the image(s) must achieve"
-        target_audience:
-          type: "string"
-          description: "Who the image(s) are for"
-        placement_context:
-          type: "string"
-          description: "Where it will be used (channel/format) and any constraints"
-      optional_fields:
-        key_message:
-          type: "string"
-        constraints:
-          type: "array"
-          items: "string"
-
-    prompt:
-      type: "string"
-      description: "Final positive prompt string for the renderer"
-      validation: "Must incorporate active visual system (dna + do/don’t) and user intent; no brand improvisation beyond provided inputs."
-
-    negative_prompt:
-      type: "string"
-      description: "Final negative prompt string (merged from visual system negatives + safety/quality constraints) (legacy engines only)"
-
-    style_tokens_used:
-      type: "array"
-      items: "string"
-      description: "Exact list of style tokens actually used (derived from ORG/CLIENT visual system + user overrides)"
-      validation: "Must be deterministic and auditable; do not invent tokens not supported by sources."
-
-    composition:
-      type: "object"
-      description: "Composition rules and camera framing"
-      required_fields:
-        aspect_ratio:
-          type: "string"
-          description: "e.g. 1:1, 16:9, 9:16"
-        framing:
-          type: "string"
-          description: "Subject placement, whitespace, focal point rules"
-      optional_fields:
-        camera_angle:
-          type: "string"
-        lighting:
-          type: "string"
-
-    deliverables:
-      type: "array"
-      description: "What to generate (variants), independent of tool execution"
-      items:
-        type: "object"
-        required_fields:
-          id:
-            type: "string"
-            description: "Local ID within this package"
-          description:
-            type: "string"
-            description: "What the image should depict"
-          size:
-            type: "string"
-            description: "Requested pixel size (if known) or channel standard"
-        optional_fields:
-          count:
-            type: "integer"
-            default: 1
-          notes:
-            type: "string"
-
-    external_refs_used:
-      type: "array"
-      description: "External reference pointers used (IDs/URLs only; no embedded images)"
-      items:
-        type: "object"
-        required_fields:
-          pointer:
-            type: "string"
-            description: "refset_id or https URL"
-          type:
-            type: "enum"
-            values: ["refset_id", "https_url", "other"]
-        optional_fields:
-          caption:
-            type: "string"
-
-    qc_checklist:
-      type: "array"
-      description: "Quality-control checks to run against outputs (brand-fit + safety + accessibility/DEI where applicable)"
-      items:
-        type: "object"
-        required_fields:
-          check:
-            type: "string"
-          source:
-            type: "string"
-            description: "Where this check comes from (ORG_06 / LOGIC_09 / LOGIC_17 safety)"
-        optional_fields:
-          pass_fail:
-            type: "enum"
-            values: ["pass", "fail", "unknown"]
-          notes:
-            type: "string"
-
-  validation_rules:
-    - "All required_fields must be present at top level"
-    - "external_refs_used must contain pointers only (IDs/URLs); no binaries/base64"
-    - "style_tokens_used must be explicitly listed and traceable to visual system inputs"
-    - "If user requests text in image, include it explicitly; otherwise prefer no text overlays per visual rules"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# IMAGE GENERATION FLOW (HIGH-LEVEL, DECLARATIVE)
-# ══════════════════════════════════════════════════════════════════════════════
+    - "Output exactly ONE image_prompt_package in a single yaml codebox"
+    - "Store Visual DNA negatives as constraints.negative_constraints (not API field)"
+    - "nano_banana_payload MUST NOT contain: negative_prompt, seed"
+    - "If user requests > 4 images, set num_images to 4 and record clamp in qa_check"
+    - "refs_used may be empty list"
 
 image_generation_flow:
-  description: "Declarative flow for producing an Image Prompt Package (contract-first)."
-  note: "This flow produces image_prompt_package only. Tool invocation (rendering) is handled elsewhere (LOGIC_10)."
-
   steps:
     - id: "resolve_active_scope"
-      description: "Resolve active scope: CLIENT overlay if runtime.client_id is set; else ORG baseline."
-      outputs:
-        - "active_scope: ORG|CLIENT"
-        - "active_client_id (optional)"
-
+      outputs: ["active_scope: ORG|CLIENT", "active_client_id (optional)"]
     - id: "load_visual_system"
-      description: "Pull visual system from ORG_06 visual identity; apply CLIENT override if active and present."
       expected_sources:
-        org:
-          reference: "$ref: ORG_06_VISUAL_SYSTEM#visual_system.visual_identity"
-        org_fallbacks:
-          - "ORG_06_VISUAL_SYSTEM#visual_system.visual_dna_default"
-          - "ORG_06_VISUAL_SYSTEM#design_qa"
-      merge_rule: "ORG is default; CLIENT overrides ORG when keys collide (most-specific-wins)."
-
+        org: { reference: "$ref: ORG_06_VISUAL_SYSTEM#visual_system.visual_identity" }
+        org_fallbacks: ["ORG_06_VISUAL_SYSTEM#visual_system.visual_dna_default", "ORG_06_VISUAL_SYSTEM#design_qa"]
+      merge_rule: "ORG is default; CLIENT overrides ORG when keys collide"
     - id: "validate_visual_system_minimums"
-      description: "Validate minimum inputs exist to generate deterministic prompts."
       minimum_required_inputs:
         brand_dna_caption:
-          accepted_source_paths:
-            - "visual_identity.brand_dna_caption"
-            - "visual_dna_default.dna_caption"
-          note: "ORG_06 currently uses dna_caption; logic accepts either key."
+          accepted_source_paths: ["visual_identity.brand_dna_caption", "visual_dna_default.dna_caption"]
         do_dont:
-          accepted_source_paths:
-            - "visual_identity.do_dont"
-            - "visual_dna_default.do_dont"
+          accepted_source_paths: ["visual_identity.do_dont", "visual_dna_default.do_dont"]
       optional_inputs:
         reference_pointers:
-          accepted_source_paths:
-            - "visual_identity.external_reference_sets"
-            - "visual_dna_default.external_reference_sets"
-          note: "Optional; pointers only."
+          accepted_source_paths: ["visual_identity.external_reference_sets", "visual_dna_default.external_reference_sets"]
       on_missing:
         action: "Return missing_fields response per output_rules.missing_visual_system_minimums"
-
     - id: "compose_image_prompt_package"
-      description: "Produce a single image_prompt_package matching image_prompt_package_contract."
       output_contract: "$ref: #image_prompt_package_contract"
       determinism_controls:
         - "Derive constraints.style_tokens_used only from visual system + explicit user overrides"
-        - "Store Visual DNA do/don’t and negatives in constraints (engine-agnostic); do not emit engine fields at this stage"
-        - "Collect brand negatives from: visual system negative_prompts + do_dont.dont -> constraints.negative_constraints (deterministic)"
-        - "For engines without negative prompt support (e.g., nano_banana), translate negative_constraints into positive instruction sentences appended to nano_banana_payload.prompt (e.g., 'Avoid …', 'Do not …')."
-        - "Do not include seed in nano_banana_payload; use reference images/refsets for consistency."
-        - "Include refs_used only when pointers exist in ORG/CLIENT or user supplied them (refs_used may be empty)."
+        - "Store Visual DNA do/don't and negatives in constraints (engine-agnostic)"
+        - "For engines without negative prompt, translate into positive 'Avoid/Do not…' instruction sentences"
+        - "Do not include seed in nano_banana_payload"
+        - "Include refs_used only when pointers exist (may be empty)"
         - "Do not generate images or call tools in this flow"
-
     - id: "return_package_only"
-      description: "Stop after producing the package; do not add extra narrative unless output_rules specifies a missing_fields response."
-
-# ══════════════════════════════════════════════════════════════════════════════
-# OUTPUT RULES (FOR IMAGE REQUESTS)
-# ══════════════════════════════════════════════════════════════════════════════
 
 output_rules:
-  description: "Output contract enforcement for image requests."
-  reference: "$ref: LOGIC_09_INTERFACE#output_standards.formatting"
-
   when_user_asks_for_images:
     must_output: "Exactly ONE image_prompt_package"
-    format:
-      requirement: "Single codebox only"
-      codebox_language_hint: "yaml"
-      outside_codebox_text: "forbidden"
-    allowed_top_level_keys_in_codebox:
-      - "image_prompt_package"
+    format: { requirement: "Single codebox only", codebox_language_hint: "yaml", outside_codebox_text: "forbidden" }
+    allowed_top_level_keys_in_codebox: ["image_prompt_package"]
     must_conform_to_contract: "$ref: #image_prompt_package_contract"
-    package_validation:
-      - "Output exactly ONE package in the codebox (no extra narrative)."
-      - "The image_prompt_package MUST include required fields: effective_visual_dna_ref, creative_brief, constraints, nano_banana_payload, refs_used, qa_check."
-      - "refs_used is allowed to be an empty list."
-      - "nano_banana_payload MUST NOT contain keys: negative_prompt, seed."
-      - "If user requests > 4 images, set nano_banana_payload.num_images = 4 and record the clamp in qa_check.failed_items and/or qa_check.notes."
-    note: "Rendering/tool execution must not occur here unless explicitly invoked by a tool-routing workflow."
-
   missing_visual_system_minimums:
-    description: "If minimum visual system inputs are missing, return missing_fields + minimal onboarding ask."
-    format:
-      requirement: "Single codebox only"
-      codebox_language_hint: "yaml"
-      outside_codebox_text: "forbidden"
-    required_keys_in_codebox:
-      - "missing_fields"
-      - "onboarding_ask"
-    onboarding_ask_rules:
-      - "Ask only for the minimum needed to proceed (brand_dna_caption and do/don’t)."
-      - "Do not ask for brand content beyond what ORG/CLIENT visual system should supply."
-
-# ══════════════════════════════════════════════════════════════════════════════
-# IMAGE GENERATION CONFIGURATION
-# ══════════════════════════════════════════════════════════════════════════════
+    format: { requirement: "Single codebox only", codebox_language_hint: "yaml", outside_codebox_text: "forbidden" }
+    required_keys_in_codebox: ["missing_fields", "onboarding_ask"]
+    onboarding_ask_rules: ["Ask only for minimum needed (brand_dna_caption and do/don't)", "Do not ask for content beyond visual system"]
 
 image_generation:
-  description: "Configuration for AI image generation"
-  
   enabled:
     source: "$ref: CONFIG_00_INSTANCE#features.image_generation"
     default: false
-    
   providers:
     dall_e_3:
       provider: "openai"
       model: "dall-e-3"
-      capabilities:
-        - "text_to_image"
-        - "high_quality"
-        - "style_control"
-      sizes:
-        - "1024x1024"
-        - "1024x1792"
-        - "1792x1024"
-      quality_options:
-        - "standard"
-        - "hd"
-      style_options:
-        - "vivid"
-        - "natural"
-      rate_limit:
-        images_per_minute: 5
-        
+      capabilities: ["text_to_image", "high_quality", "style_control"]
+      sizes: ["1024x1024", "1024x1792", "1792x1024"]
+      quality_options: ["standard", "hd"]
+      style_options: ["vivid", "natural"]
+      rate_limit: { images_per_minute: 5 }
     dall_e_2:
       provider: "openai"
       model: "dall-e-2"
-      capabilities:
-        - "text_to_image"
-        - "image_editing"
-        - "variations"
-      sizes:
-        - "256x256"
-        - "512x512"
-        - "1024x1024"
-      rate_limit:
-        images_per_minute: 10
-        
+      capabilities: ["text_to_image", "image_editing", "variations"]
+      sizes: ["256x256", "512x512", "1024x1024"]
+      rate_limit: { images_per_minute: 10 }
     stable_diffusion:
       provider: "stability"
       model: "stable-diffusion-xl"
-      capabilities:
-        - "text_to_image"
-        - "image_to_image"
-        - "inpainting"
-      sizes:
-        - "512x512"
-        - "768x768"
-        - "1024x1024"
-      rate_limit:
-        images_per_minute: 20
-        
+      capabilities: ["text_to_image", "image_to_image", "inpainting"]
+      sizes: ["512x512", "768x768", "1024x1024"]
+      rate_limit: { images_per_minute: 20 }
     midjourney:
       provider: "midjourney"
-      capabilities:
-        - "text_to_image"
-        - "style_variations"
-      note: "API access may be limited"
-      
-  default_provider:
-    source: "dall_e_3"
-    note: "Provider selection handled internally by LOGIC_17"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PROMPT ENGINEERING
-# ══════════════════════════════════════════════════════════════════════════════
+      capabilities: ["text_to_image", "style_variations"]
+  default_provider: { source: "dall_e_3" }
 
 prompt_engineering:
-  description: "Patterns for effective image prompts"
-  
   prompt_structure:
-    recommended_order:
-      1: "Subject/main focus"
-      2: "Action or state"
-      3: "Environment/setting"
-      4: "Style/aesthetic"
-      5: "Lighting/mood"
-      6: "Technical specifications"
-      
-    example: "Professional business team collaborating in modern office, corporate photography style, natural lighting, high resolution"
-    
+    recommended_order: [1, "Subject/main focus", 2, "Action or state", 3, "Environment/setting", 4, "Style/aesthetic", 5, "Lighting/mood", 6, "Technical specifications"]
   style_templates:
-    corporate:
-      description: "Professional business imagery"
-      modifiers:
-        - "professional"
-        - "corporate"
-        - "clean"
-        - "modern"
-        - "high quality"
-        
-    marketing:
-      description: "Marketing and advertising imagery"
-      modifiers:
-        - "vibrant"
-        - "engaging"
-        - "eye-catching"
-        - "commercial quality"
-        
-    editorial:
-      description: "Editorial and journalistic style"
-      modifiers:
-        - "documentary"
-        - "authentic"
-        - "storytelling"
-        - "natural"
-        
-    abstract:
-      description: "Abstract and conceptual imagery"
-      modifiers:
-        - "abstract"
-        - "conceptual"
-        - "artistic"
-        - "creative"
-        
-    technical:
-      description: "Technical illustrations"
-      modifiers:
-        - "diagram"
-        - "technical illustration"
-        - "schematic"
-        - "clean lines"
-        
+    corporate: { modifiers: ["professional", "corporate", "clean", "modern", "high quality"] }
+    marketing: { modifiers: ["vibrant", "engaging", "eye-catching", "commercial quality"] }
+    editorial: { modifiers: ["documentary", "authentic", "storytelling", "natural"] }
+    abstract: { modifiers: ["abstract", "conceptual", "artistic", "creative"] }
+    technical: { modifiers: ["diagram", "technical illustration", "schematic", "clean lines"] }
   brand_integration:
-    description: "How to integrate brand guidelines"
     elements:
-      colors:
-        source: "active_visual_system.palette (ORG default; CLIENT override if active)"
-        application: "Use palette as constraints (not as creative exploration); never include forbidden colors."
-        
-      style:
-        source: "active_visual_system.style_keywords (and/or visual_identity style tokens)"
-        application: "Add only listed style tokens to prompt; record them in constraints.style_tokens_used."
-        
-      avoid:
-        source: "active_visual_system.negative_prompts + do_dont.dont"
-        application: "Store as constraints.negative_constraints (deterministic). For engines that support negative prompts, it may be mapped to an engine-specific field; for Nano-Banana, translate into positive 'Avoid/Do not…' instruction sentences appended to the main prompt."
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PAYLOAD MAPPING (ENGINE EXECUTION)
-# ══════════════════════════════════════════════════════════════════════════════
+      colors: { source: "active_visual_system.palette", application: "Use palette as constraints; never include forbidden colors" }
+      style: { source: "active_visual_system.style_keywords", application: "Add only listed style tokens; record in constraints.style_tokens_used" }
+      avoid: { source: "active_visual_system.negative_prompts + do_dont.dont", application: "Store as constraints.negative_constraints" }
 
 payload_mapping:
   nano_banana:
     source_of_truth:
-      visual_dna: "ORG_06_VISUAL_SYSTEM.visual_system.visual_dna_default (plus CLIENT overlay when active)"
+      visual_dna: "ORG_06_VISUAL_SYSTEM.visual_system.visual_dna_default"
       qa_checklist: "ORG_06_VISUAL_SYSTEM.design_qa.checklist"
     translation_rules:
-      - "Do NOT output a separate negative_prompt field for Nano-Banana."
-      - "Translate Visual DNA negative_prompts.brand[] into positive instruction sentences appended to the prompt, e.g. 'Avoid neon colors. Avoid harsh shadows. Do not include text overlays. Keep the scene uncluttered.'"
-      - "If user requests > 4 images, set num_images to 4 and note this in qa_check.failed_items or qa_check.notes."
-      - "Do NOT include seed in Nano-Banana payload; use reference images/refsets for consistency."
-    prompt_skeleton:
-      - "Subject"
-      - "Composition"
-      - "Action (if any)"
-      - "Setting"
-      - "Style (from Visual DNA)"
-      - "Instructions (translated constraints + do/don't)"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# SIZE AND FORMAT
-# ══════════════════════════════════════════════════════════════════════════════
+      - "Do NOT output separate negative_prompt field for Nano-Banana"
+      - "Translate Visual DNA negative_prompts.brand[] into positive instruction sentences"
+      - "If user requests > 4 images, set num_images to 4 and note in qa_check"
+      - "Do NOT include seed; use reference images for consistency"
+    prompt_skeleton: ["Subject", "Composition", "Action (if any)", "Setting", "Style (from Visual DNA)", "Instructions (translated constraints + do/don't)"]
 
 size_and_format:
-  description: "Output size and format specifications"
-  
   aspect_ratios:
-    square:
-      ratio: "1:1"
-      use_cases:
-        - "Social media posts"
-        - "Profile images"
-        - "Thumbnails"
-      sizes: ["256x256", "512x512", "1024x1024"]
-      
-    landscape:
-      ratio: "16:9"
-      use_cases:
-        - "Website headers"
-        - "Blog featured images"
-        - "Presentations"
-      sizes: ["1024x576", "1792x1024"]
-      
-    portrait:
-      ratio: "9:16"
-      use_cases:
-        - "Social stories"
-        - "Mobile content"
-        - "Vertical ads"
-      sizes: ["576x1024", "1024x1792"]
-      
-    banner:
-      ratio: "3:1"
-      use_cases:
-        - "Email headers"
-        - "LinkedIn banners"
-        - "Website banners"
-      sizes: ["1200x400", "1500x500"]
-      
+    square: { ratio: "1:1", use_cases: ["Social media posts", "Profile images", "Thumbnails"], sizes: ["256x256", "512x512", "1024x1024"] }
+    landscape: { ratio: "16:9", use_cases: ["Website headers", "Blog featured images", "Presentations"], sizes: ["1024x576", "1792x1024"] }
+    portrait: { ratio: "9:16", use_cases: ["Social stories", "Mobile content", "Vertical ads"], sizes: ["576x1024", "1024x1792"] }
+    banner: { ratio: "3:1", use_cases: ["Email headers", "LinkedIn banners", "Website banners"], sizes: ["1200x400", "1500x500"] }
   by_channel:
-    linkedin:
-      post: "1200x627"
-      profile: "400x400"
-      banner: "1584x396"
-      
-    twitter:
-      post: "1200x675"
-      profile: "400x400"
-      header: "1500x500"
-      
-    instagram:
-      post: "1080x1080"
-      story: "1080x1920"
-      
-    facebook:
-      post: "1200x630"
-      profile: "180x180"
-      cover: "820x312"
-      
+    linkedin: { post: "1200x627", profile: "400x400", banner: "1584x396" }
+    twitter: { post: "1200x675", profile: "400x400", header: "1500x500" }
+    instagram: { post: "1080x1080", story: "1080x1920" }
+    facebook: { post: "1200x630", profile: "180x180", cover: "820x312" }
   output_formats:
     supported:
       - format: "PNG"
@@ -537,231 +170,91 @@ size_and_format:
         use_case: "Modern web, best compression"
     default: "PNG"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# SAFETY AND CONTENT MODERATION
-# ══════════════════════════════════════════════════════════════════════════════
-
 safety:
-  description: "Content safety and moderation"
   immutable: true
-  
   pre_generation_checks:
-    description: "Checks before generating"
     checks:
       - check: "No prohibited content in prompt"
         prohibited_content: "$ref: #prohibited_content"
         action: "Block generation"
-        
       - check: "No real person names"
         action: "Warn and require confirmation"
-        exception: "Public figures with explicit permission"
-        
       - check: "No trademark/brand misuse"
         action: "Block or require approval"
-        
       - check: "Compliance with brand guidelines"
-        source: "active_visual_system (ORG_06 default; CLIENT override if active)"
+        source: "active_visual_system"
         action: "Warn if potential conflict"
-        
   post_generation_checks:
-    description: "Checks after generating"
     checks:
       - check: "Content moderation scan"
         method: "Provider's built-in moderation"
         action: "Flag or block if unsafe"
-        
       - check: "Brand safety"
         method: "Visual similarity check"
         action: "Flag for review"
-        
   prohibited_content:
-    categories:
-      - "Violence or gore"
-      - "Sexual or adult content"
-      - "Hate symbols or content"
-      - "Real people without consent"
-      - "Copyrighted characters"
-      - "Misleading/deceptive imagery"
-      - "Illegal activities"
-      
-  deny_lists:
-    terms: []
-    note: "Populated from CONFIG or CLIENT overrides"
-    
-  safe_lists:
-    terms: []
-    note: "Pre-approved terms/concepts"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# ACCESSIBILITY
-# ══════════════════════════════════════════════════════════════════════════════
+    categories: ["Violence or gore", "Sexual or adult content", "Hate symbols or content", "Real people without consent", "Copyrighted characters", "Misleading/deceptive imagery", "Illegal activities"]
+  deny_lists: { terms: [] }
+  safe_lists: { terms: [] }
 
 accessibility:
-  description: "Accessibility requirements for generated images"
   reference: "$ref: LOGIC_09_INTERFACE#output_standards.accessibility"
-  
   alt_text:
-    description: "Alternative text generation"
     required: true
-    
     generation:
       method: "Auto-generate from prompt and image analysis"
-      components:
-        - "Main subject"
-        - "Action/state"
-        - "Context/setting"
+      components: ["Main subject", "Action/state", "Context/setting"]
       max_length: 125
-      
-    review:
-      recommended: true
-      reason: "Verify accuracy and completeness"
-      
+    review: { recommended: true }
   color_considerations:
-    description: "Color accessibility"
-    guidelines:
-      - "Avoid color-only information"
-      - "Ensure sufficient contrast"
-      - "Consider colorblind users"
-      
+    guidelines: ["Avoid color-only information", "Ensure sufficient contrast", "Consider colorblind users"]
     checks:
       - check: "Contrast ratio"
         minimum: "4.5:1"
-        
   text_in_images:
-    description: "When images contain text"
-    guidelines:
-      - "Minimize text in images"
-      - "Include text in alt_text"
-      - "Ensure readability"
+    guidelines: ["Minimize text in images", "Include text in alt_text", "Ensure readability"]
     minimum_font_size: "12pt equivalent"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# DEI REQUIREMENTS
-# ══════════════════════════════════════════════════════════════════════════════
-
 dei_requirements:
-  description: "Diversity, equity, and inclusion in imagery"
   reference: "$ref: LOGIC_09_INTERFACE#output_standards.dei_requirements"
-  
   representation:
-    description: "Diverse representation in generated images"
-    guidelines:
-      - "Vary demographics across image sets"
-      - "Avoid stereotypical portrayals"
-      - "Include diverse body types, ages, abilities"
-      - "Represent diverse settings and contexts"
-      
+    guidelines: ["Vary demographics across image sets", "Avoid stereotypical portrayals", "Include diverse body types, ages, abilities", "Represent diverse settings and contexts"]
     prompt_guidance:
       for_people: "Specify diverse representation or leave open"
       avoid: "Stereotypical associations"
-      
   bias_awareness:
-    description: "Address AI bias in image generation"
-    known_issues:
-      - "Default to certain demographics"
-      - "Stereotypical role associations"
-      - "Western-centric aesthetics"
-    mitigations:
-      - "Explicit diversity in prompts"
-      - "Review generated sets for balance"
-      - "Client approval for representation"
-      
+    known_issues: ["Default to certain demographics", "Stereotypical role associations", "Western-centric aesthetics"]
+    mitigations: ["Explicit diversity in prompts", "Review generated sets for balance", "Client approval for representation"]
   cultural_sensitivity:
-    description: "Culturally appropriate imagery"
-    guidelines:
-      - "Research cultural context"
-      - "Avoid cultural appropriation"
-      - "Respect religious symbols"
-      - "Consider regional norms"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# RESILIENCE AND FALLBACKS
-# ══════════════════════════════════════════════════════════════════════════════
+    guidelines: ["Research cultural context", "Avoid cultural appropriation", "Respect religious symbols", "Consider regional norms"]
 
 resilience:
-  description: "Error handling for image generation"
   reference: "$ref: LOGIC_10_TOOLS_CORE#resilience_patterns"
-  
-  retry_config:
-    max_attempts: 3
-    initial_delay_ms: 2000
-    backoff_multiplier: 2.0
-    
+  retry_config: { max_attempts: 3, initial_delay_ms: 2000, backoff_multiplier: 2.0 }
   fallback_strategies:
-    provider_fallback:
-      description: "Try alternative provider"
-      order: ["dall_e_3", "stable_diffusion", "dall_e_2"]
-      
-    prompt_simplification:
-      description: "Simplify prompt and retry"
-      steps:
-        - "Remove complex modifiers"
-        - "Reduce specificity"
-        - "Try generic style"
-        
-    stock_image_fallback:
-      description: "Suggest stock image search"
-      action: "Provide search terms for stock libraries"
-      
-    placeholder:
-      description: "Return placeholder with description"
-      action: "Return text description of intended image"
-      
+    provider_fallback: { order: ["dall_e_3", "stable_diffusion", "dall_e_2"] }
+    prompt_simplification: { steps: ["Remove complex modifiers", "Reduce specificity", "Try generic style"] }
+    stock_image_fallback: { action: "Provide search terms for stock libraries" }
+    placeholder: { action: "Return text description of intended image" }
   error_handling:
-    content_policy_violation:
-      action: "Review and modify prompt"
-      user_message: "The image couldn't be generated due to content policies. Let me suggest an alternative approach."
-      
-    rate_limit:
-      action: "Queue and retry"
-      user_message: "Image generation is queued and will complete shortly."
-      
-    provider_error:
-      action: "Try fallback provider"
-      user_message: "Trying alternative image generation service."
-
-# ══════════════════════════════════════════════════════════════════════════════
-# GOVERNANCE INTEGRATION
-# ══════════════════════════════════════════════════════════════════════════════
+    content_policy_violation: { action: "Review and modify prompt", user_message: "The image couldn't be generated due to content policies. Let me suggest an alternative approach." }
+    rate_limit: { action: "Queue and retry", user_message: "Image generation is queued and will complete shortly." }
+    provider_error: { action: "Try fallback provider", user_message: "Trying alternative image generation service." }
 
 governance:
-  description: "Governance for image generation"
-  
   risk_classification:
     default: "limited_risk"
-    high_risk_triggers:
-      - "Images for regulated industries"
-      - "Images depicting people"
-      - "Images for public campaigns"
+    high_risk_triggers: ["Images for regulated industries", "Images depicting people", "Images for public campaigns"]
     governance_ref: "$ref: LOGIC_12_GOVERNANCE#risk_classification"
-    
   approval_requirements:
-    internal_use:
-      approval: "optional"
-      
-    external_use:
-      approval: "recommended"
-      
-    public_campaigns:
-      approval: "required"
-      approvers: ["creative_director", "brand_manager"]
-      
-    people_imagery:
-      approval: "required"
-      approvers: ["legal", "brand_manager"]
-      
+    internal_use: { approval: "optional" }
+    external_use: { approval: "recommended" }
+    public_campaigns: { approval: "required", approvers: ["creative_director", "brand_manager"] }
+    people_imagery: { approval: "required", approvers: ["legal", "brand_manager"] }
   ai_disclosure:
-    required_for:
-      - "External publications"
-      - "Client deliverables"
+    required_for: ["External publications", "Client deliverables"]
     template: "AI-generated image"
     placement: "Image caption or metadata"
-    
   audit:
-    track:
-      - "prompt"
-      - "provider"
-      - "timestamp"
-      - "requester"
-      - "approval_status"
+    track: ["prompt", "provider", "timestamp", "requester", "approval_status"]
     retention: "$ref: LOGIC_11_TRACE#retention"

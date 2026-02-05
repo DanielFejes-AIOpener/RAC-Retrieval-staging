@@ -1,1105 +1,282 @@
-# ================================================================
-# OPS_08_BRIEF_TEMPLATES
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Standardized brief formats and completeness checklists
-# ================================================================
+# OPS_08_BRIEF_TEMPLATES.yaml
 
 meta:
   owner: "AI Opener"
-  version: "2.0.0"
-  last_updated: "2025-01-15"
+  version: "2.1.0"
+  last_updated: "2026-01-27"
   purpose: "Standardized brief formats and completeness checklists"
-  notes: "Aligns with OPS_18 intake contracts"
   tags: [ops, briefs, templates, intake]
 
-extends: "OPS_00_STANDARDS"
-quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
-evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# BRIEF TYPE CATALOG
-# ═══════════════════════════════════════════════════════════════════════════
-
 brief_types:
-  description: "Standard brief formats for different project types"
-  
   catalog:
-    - id: "creative_brief"
-      name: "Creative Brief"
-      purpose: "Guide creative development for campaigns or assets"
-      typical_uses:
-        - "Campaign creative development"
-        - "Brand refresh projects"
-        - "Visual identity work"
-        - "Video/multimedia production"
-      template_reference: "#creative_brief_template"
-      
-    - id: "strategy_brief"
-      name: "Strategy Brief"
-      purpose: "Define strategic direction and positioning"
-      typical_uses:
-        - "Market entry planning"
-        - "Competitive positioning"
-        - "Brand strategy development"
-        - "Go-to-market planning"
-      template_reference: "#strategy_brief_template"
-      
-    - id: "campaign_brief"
-      name: "Campaign Brief"
-      purpose: "Specify multi-channel campaign requirements"
-      typical_uses:
-        - "Integrated marketing campaigns"
-        - "Product launches"
-        - "Seasonal/promotional campaigns"
-        - "ABM campaigns"
-      template_reference: "#campaign_brief_template"
-      
-    - id: "content_brief"
-      name: "Content Brief"
-      purpose: "Guide specific content piece creation"
-      typical_uses:
-        - "Blog posts and articles"
-        - "Whitepapers and ebooks"
-        - "Case studies"
-        - "Social media content series"
-      template_reference: "#content_brief_template"
-      
-    - id: "quick_brief"
-      name: "Quick Brief"
-      purpose: "Lightweight brief for simple, routine requests"
-      typical_uses:
-        - "Single social posts"
-        - "Minor content updates"
-        - "Template-based deliverables"
-        - "Routine reporting"
-      template_reference: "#quick_brief_template"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CREATIVE BRIEF TEMPLATE
-# ═══════════════════════════════════════════════════════════════════════════
+    - { id: "creative_brief", name: "Creative Brief", purpose: "Guide creative development for campaigns or assets", typical_uses: ["Campaign creative development", "Brand refresh projects", "Visual identity work", "Video/multimedia production"], template_reference: "#creative_brief_template" }
+    - { id: "strategy_brief", name: "Strategy Brief", purpose: "Define strategic direction and positioning", typical_uses: ["Market entry planning", "Competitive positioning", "Brand strategy development", "Go-to-market planning"], template_reference: "#strategy_brief_template" }
+    - { id: "campaign_brief", name: "Campaign Brief", purpose: "Specify multi-channel campaign requirements", typical_uses: ["Integrated marketing campaigns", "Product launches", "Seasonal/promotional campaigns", "ABM campaigns"], template_reference: "#campaign_brief_template" }
+    - { id: "content_brief", name: "Content Brief", purpose: "Guide specific content piece creation", typical_uses: ["Blog posts and articles", "Whitepapers and ebooks", "Case studies", "Social media content series"], template_reference: "#content_brief_template" }
+    - { id: "quick_brief", name: "Quick Brief", purpose: "Lightweight brief for simple, routine requests", typical_uses: ["Single social posts", "Minor content updates", "Template-based deliverables", "Routine reporting"], template_reference: "#quick_brief_template" }
 
 creative_brief_template:
   id: "creative_brief"
   version: "2.0"
-  
   sections:
     project_overview:
       required: true
       fields:
-        - field: "project_name"
-          type: "string"
-          required: true
-          description: "Clear, descriptive project title"
-          
-        - field: "project_type"
-          type: "enum"
-          required: true
-          options: [campaign, brand, video, print, digital, event, other]
-          
-        - field: "background"
-          type: "text"
-          required: true
-          max_length: 500
-          description: "Context and situation leading to this project"
-          guidance: "What problem are we solving? Why now?"
-          
-        - field: "business_objective"
-          type: "text"
-          required: true
-          description: "Business outcome this project should achieve"
-          guidance: "Link to measurable business goal"
-          
+        - { field: "project_name", type: "string", required: true }
+        - { field: "project_type", type: "enum", required: true, options: [campaign, brand, video, print, digital, event, other] }
+        - { field: "background", type: "text", required: true, max_length: 500, guidance: "What problem are we solving? Why now?" }
+        - { field: "business_objective", type: "text", required: true, guidance: "Link to measurable business goal" }
     audience:
       required: true
       fields:
-        - field: "primary_audience"
-          type: "text"
-          required: true
-          description: "Primary target audience description"
-          guidance: "Include demographics, psychographics, behaviors"
-          
-        - field: "secondary_audience"
-          type: "text"
-          required: false
-          description: "Secondary audiences if applicable"
-          
-        - field: "audience_insights"
-          type: "text"
-          required: false
-          description: "Key insights about audience needs, pain points, motivations"
-          
-        - field: "current_perception"
-          type: "text"
-          required: false
-          description: "How audience currently perceives brand/product"
-          
-        - field: "desired_perception"
-          type: "text"
-          required: true
-          description: "How we want audience to perceive after exposure"
-          
+        - { field: "primary_audience", type: "text", required: true, guidance: "Include demographics, psychographics, behaviors" }
+        - { field: "secondary_audience", type: "text", required: false }
+        - { field: "audience_insights", type: "text", required: false }
+        - { field: "current_perception", type: "text", required: false }
+        - { field: "desired_perception", type: "text", required: true }
     messaging:
       required: true
       fields:
-        - field: "single_minded_proposition"
-          type: "text"
-          required: true
-          max_length: 100
-          description: "One key message we want audience to take away"
-          guidance: "If they remember only one thing, what should it be?"
-          
-        - field: "key_messages"
-          type: "array"
-          required: true
-          min_items: 2
-          max_items: 5
-          description: "Supporting messages that reinforce SMP"
-          
-        - field: "proof_points"
-          type: "array"
-          required: false
-          description: "Evidence to support claims"
-          evidence_requirement: "tier_2_minimum"
-          
-        - field: "tone_direction"
-          type: "text"
-          required: true
-          description: "Desired tone and voice for creative"
-          cross_reference: "OPS_01_STYLE_OPTIONS, OPS_02_VOICES_LIBRARY"
-          
+        - { field: "single_minded_proposition", type: "text", required: true, max_length: 100, guidance: "If they remember only one thing, what should it be?" }
+        - { field: "key_messages", type: "array", required: true, min_items: 2, max_items: 5 }
+        - { field: "proof_points", type: "array", required: false, evidence_requirement: "tier_2_minimum" }
+        - { field: "tone_direction", type: "text", required: true, cross_reference: "OPS_01_STYLE_OPTIONS, OPS_02_VOICES_LIBRARY" }
     deliverables:
       required: true
       fields:
-        - field: "deliverable_list"
-          type: "array"
-          required: true
-          item_schema:
-            type: "string"
-            format: "enum"
-            channel: "string"
-            specifications: "text"
-          description: "Specific assets to be produced"
-          
-        - field: "mandatory_elements"
-          type: "array"
-          required: false
-          description: "Elements that must be included (logo, legal, etc.)"
-          
-        - field: "constraints"
-          type: "array"
-          required: false
-          description: "Things to avoid or restrictions"
-          
+        - { field: "deliverable_list", type: "array", required: true }
+        - { field: "mandatory_elements", type: "array", required: false }
+        - { field: "constraints", type: "array", required: false }
     success_metrics:
       required: true
       fields:
-        - field: "primary_kpi"
-          type: "text"
-          required: true
-          description: "Primary success metric"
-          guidance: "SMART format required"
-          cross_reference: "OPS_00_STANDARDS#kpi_framework"
-          
-        - field: "secondary_kpis"
-          type: "array"
-          required: false
-          description: "Supporting metrics"
-          
-        - field: "baseline"
-          type: "text"
-          required: false
-          description: "Current performance baseline if available"
-          
+        - { field: "primary_kpi", type: "text", required: true, guidance: "SMART format required", cross_reference: "OPS_00_STANDARDS#kpi_framework" }
+        - { field: "secondary_kpis", type: "array", required: false }
+        - { field: "baseline", type: "text", required: false }
     timeline_budget:
       required: true
       fields:
-        - field: "deadline"
-          type: "date"
-          required: true
-          description: "Final delivery deadline"
-          
-        - field: "key_milestones"
-          type: "array"
-          required: false
-          item_schema:
-            milestone: "string"
-            date: "date"
-          description: "Important intermediate dates"
-          
-        - field: "budget_range"
-          type: "enum"
-          required: false
-          options: [under_5k, 5k_15k, 15k_50k, 50k_plus, tbd]
-          description: "Budget indication if relevant"
-          
+        - { field: "deadline", type: "date", required: true }
+        - { field: "key_milestones", type: "array", required: false }
+        - { field: "budget_range", type: "enum", required: false, options: [under_5k, 5k_15k, 15k_50k, 50k_plus, tbd] }
     approvals:
       required: true
       fields:
-        - field: "approver"
-          type: "object"
-          required: true
-          schema:
-            name: "string"
-            role: "string"
-            email: "string"
-          description: "Primary approver for this project"
-          
-        - field: "stakeholders"
-          type: "array"
-          required: false
-          description: "Other stakeholders to inform or consult"
-          
+        - { field: "approver", type: "object", required: true, schema: { name: "string", role: "string", email: "string" } }
+        - { field: "stakeholders", type: "array", required: false }
     reference_materials:
       required: false
       fields:
-        - field: "inspiration"
-          type: "array"
-          required: false
-          description: "Examples of work we like or want to emulate"
-          
-        - field: "anti_examples"
-          type: "array"
-          required: false
-          description: "Examples of what to avoid"
-          
-        - field: "brand_assets"
-          type: "array"
-          required: false
-          description: "Links to brand guidelines, asset libraries"
-          
-        - field: "previous_work"
-          type: "array"
-          required: false
-          description: "Relevant previous projects to reference"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# STRATEGY BRIEF TEMPLATE
-# ═══════════════════════════════════════════════════════════════════════════
+        - { field: "inspiration", type: "array", required: false }
+        - { field: "anti_examples", type: "array", required: false }
+        - { field: "brand_assets", type: "array", required: false }
+        - { field: "previous_work", type: "array", required: false }
 
 strategy_brief_template:
   id: "strategy_brief"
   version: "2.0"
-  
   sections:
     strategic_context:
       required: true
       fields:
-        - field: "project_name"
-          type: "string"
-          required: true
-          
-        - field: "strategic_challenge"
-          type: "text"
-          required: true
-          description: "Core strategic question or challenge to address"
-          guidance: "Frame as a question: 'How might we...?'"
-          
-        - field: "business_context"
-          type: "text"
-          required: true
-          description: "Business situation, market dynamics, competitive pressures"
-          
-        - field: "scope"
-          type: "enum"
-          required: true
-          options: [brand_strategy, market_entry, positioning, gtm, competitive, portfolio]
-          
+        - { field: "project_name", type: "string", required: true }
+        - { field: "strategic_challenge", type: "text", required: true, guidance: "Frame as a question: 'How might we...?'" }
+        - { field: "business_context", type: "text", required: true }
+        - { field: "scope", type: "enum", required: true, options: [brand_strategy, market_entry, positioning, gtm, competitive, portfolio] }
     situation_analysis:
       required: true
       fields:
-        - field: "current_state"
-          type: "text"
-          required: true
-          description: "Where we are today"
-          
-        - field: "desired_state"
-          type: "text"
-          required: true
-          description: "Where we want to be"
-          
-        - field: "key_barriers"
-          type: "array"
-          required: false
-          description: "Obstacles to achieving desired state"
-          
-        - field: "key_enablers"
-          type: "array"
-          required: false
-          description: "Factors that could help achieve desired state"
-          
-        - field: "evidence_available"
-          type: "array"
-          required: false
-          description: "Data, research, insights already available"
-          evidence_requirement: "document_sources"
-          
+        - { field: "current_state", type: "text", required: true }
+        - { field: "desired_state", type: "text", required: true }
+        - { field: "key_barriers", type: "array", required: false }
+        - { field: "key_enablers", type: "array", required: false }
+        - { field: "evidence_available", type: "array", required: false, evidence_requirement: "document_sources" }
     strategic_parameters:
       required: true
       fields:
-        - field: "strategic_options"
-          type: "text"
-          required: false
-          description: "Options already being considered"
-          
-        - field: "constraints"
-          type: "array"
-          required: false
-          description: "Non-negotiable constraints (budget, timeline, brand)"
-          
-        - field: "success_criteria"
-          type: "array"
-          required: true
-          description: "How we will know strategy is successful"
-          guidance: "SMART format where possible"
-          
-        - field: "decision_criteria"
-          type: "array"
-          required: false
-          description: "Criteria for evaluating strategic options"
-          cross_reference: "OPS_09_STRATEGY_FRAMEWORKS#impact_feasibility"
-          
+        - { field: "strategic_options", type: "text", required: false }
+        - { field: "constraints", type: "array", required: false }
+        - { field: "success_criteria", type: "array", required: true, guidance: "SMART format where possible" }
+        - { field: "decision_criteria", type: "array", required: false, cross_reference: "OPS_09_STRATEGY_FRAMEWORKS#impact_feasibility" }
     deliverables:
       required: true
       fields:
-        - field: "expected_outputs"
-          type: "array"
-          required: true
-          description: "What strategic deliverables are expected"
-          typical_items:
-            - "Strategic recommendation document"
-            - "Positioning framework"
-            - "Competitive analysis"
-            - "Market segmentation"
-            - "Go-to-market roadmap"
-            
-        - field: "format_preferences"
-          type: "text"
-          required: false
-          description: "Preferred format for deliverables"
-          
-        - field: "presentation_required"
-          type: "boolean"
-          required: true
-          description: "Whether strategy requires formal presentation"
-          
+        - { field: "expected_outputs", type: "array", required: true }
+        - { field: "format_preferences", type: "text", required: false }
+        - { field: "presentation_required", type: "boolean", required: true }
     timeline_stakeholders:
       required: true
       fields:
-        - field: "deadline"
-          type: "date"
-          required: true
-          
-        - field: "decision_date"
-          type: "date"
-          required: false
-          description: "When strategic decision needs to be made"
-          
-        - field: "key_stakeholders"
-          type: "array"
-          required: true
-          item_schema:
-            name: "string"
-            role: "string"
-            involvement: "enum[approver, consulted, informed]"
-            
-        - field: "workshop_requirements"
-          type: "text"
-          required: false
-          description: "If workshops needed, specify requirements"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CAMPAIGN BRIEF TEMPLATE
-# ═══════════════════════════════════════════════════════════════════════════
+        - { field: "deadline", type: "date", required: true }
+        - { field: "decision_date", type: "date", required: false }
+        - { field: "key_stakeholders", type: "array", required: true }
+        - { field: "workshop_requirements", type: "text", required: false }
 
 campaign_brief_template:
   id: "campaign_brief"
   version: "2.0"
-  
   sections:
     campaign_overview:
       required: true
       fields:
-        - field: "campaign_name"
-          type: "string"
-          required: true
-          
-        - field: "campaign_type"
-          type: "enum"
-          required: true
-          options: [launch, nurture, abm, event, evergreen, seasonal, awareness]
-          cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#campaign_archetypes"
-          
-        - field: "campaign_objective"
-          type: "text"
-          required: true
-          description: "Primary objective of campaign"
-          
-        - field: "background"
-          type: "text"
-          required: true
-          description: "Why this campaign, why now"
-          
-        - field: "offer_proposition"
-          type: "text"
-          required: false
-          description: "What we're offering or promoting"
-          
+        - { field: "campaign_name", type: "string", required: true }
+        - { field: "campaign_type", type: "enum", required: true, options: [launch, nurture, abm, event, evergreen, seasonal, awareness], cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#campaign_archetypes" }
+        - { field: "campaign_objective", type: "text", required: true }
+        - { field: "background", type: "text", required: true }
+        - { field: "offer_proposition", type: "text", required: false }
     target_audience:
       required: true
       fields:
-        - field: "primary_segment"
-          type: "object"
-          required: true
-          schema:
-            segment_name: "string"
-            description: "text"
-            size_estimate: "string"
-            channels_preferred: "array"
-            
-        - field: "secondary_segments"
-          type: "array"
-          required: false
-          
-        - field: "buyer_journey_stage"
-          type: "enum"
-          required: true
-          options: [awareness, consideration, decision, retention, advocacy]
-          
-        - field: "persona_references"
-          type: "array"
-          required: false
-          description: "Links to relevant persona documents"
-          
+        - { field: "primary_segment", type: "object", required: true }
+        - { field: "secondary_segments", type: "array", required: false }
+        - { field: "buyer_journey_stage", type: "enum", required: true, options: [awareness, consideration, decision, retention, advocacy] }
+        - { field: "persona_references", type: "array", required: false }
     messaging_creative:
       required: true
       fields:
-        - field: "campaign_theme"
-          type: "text"
-          required: true
-          description: "Overarching theme or big idea"
-          
-        - field: "key_messages"
-          type: "array"
-          required: true
-          min_items: 2
-          max_items: 5
-          
-        - field: "cta_primary"
-          type: "text"
-          required: true
-          description: "Primary call-to-action"
-          
-        - field: "cta_secondary"
-          type: "text"
-          required: false
-          
-        - field: "tone_direction"
-          type: "text"
-          required: true
-          cross_reference: "OPS_01_STYLE_OPTIONS"
-          
-        - field: "creative_mandatories"
-          type: "array"
-          required: false
-          description: "Required creative elements"
-          
+        - { field: "campaign_theme", type: "text", required: true }
+        - { field: "key_messages", type: "array", required: true, min_items: 2, max_items: 5 }
+        - { field: "cta_primary", type: "text", required: true }
+        - { field: "cta_secondary", type: "text", required: false }
+        - { field: "tone_direction", type: "text", required: true, cross_reference: "OPS_01_STYLE_OPTIONS" }
+        - { field: "creative_mandatories", type: "array", required: false }
     channel_mix:
       required: true
       fields:
-        - field: "channels"
-          type: "array"
-          required: true
-          item_schema:
-            channel: "enum[linkedin, email, blog, paid_social, paid_search, webinar, event, other]"
-            role: "enum[hero, hub, help, amplification]"
-            budget_allocation: "percentage"
-            notes: "text"
-          cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#hero_hub_help"
-          
-        - field: "content_types"
-          type: "array"
-          required: true
-          description: "Types of content needed per channel"
-          cross_reference: "OPS_06_INDEX#content_types"
-          
-        - field: "integration_requirements"
-          type: "text"
-          required: false
-          description: "How channels should work together"
-          
+        - { field: "channels", type: "array", required: true, cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#hero_hub_help" }
+        - { field: "content_types", type: "array", required: true, cross_reference: "OPS_06_INDEX#content_types" }
+        - { field: "integration_requirements", type: "text", required: false }
     kpis_measurement:
       required: true
       fields:
-        - field: "north_star_metric"
-          type: "object"
-          required: true
-          schema:
-            metric: "string"
-            target: "string"
-            baseline: "string"
-          cross_reference: "OPS_00_STANDARDS#kpi_framework"
-          
-        - field: "kpi_chain"
-          type: "array"
-          required: true
-          description: "KPI-->Event-->Measurement chain"
-          cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#kpi_event_chain"
-          
-        - field: "reporting_cadence"
-          type: "enum"
-          required: true
-          options: [daily, weekly, biweekly, monthly, campaign_end]
-          
-        - field: "attribution_model"
-          type: "enum"
-          required: false
-          options: [last_touch, first_touch, linear, time_decay, custom]
-          
+        - { field: "north_star_metric", type: "object", required: true, cross_reference: "OPS_00_STANDARDS#kpi_framework" }
+        - { field: "kpi_chain", type: "array", required: true, cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#kpi_event_chain" }
+        - { field: "reporting_cadence", type: "enum", required: true, options: [daily, weekly, biweekly, monthly, campaign_end] }
+        - { field: "attribution_model", type: "enum", required: false, options: [last_touch, first_touch, linear, time_decay, custom] }
     timeline_budget:
       required: true
       fields:
-        - field: "campaign_dates"
-          type: "object"
-          required: true
-          schema:
-            start_date: "date"
-            end_date: "date"
-            
-        - field: "phase_timeline"
-          type: "array"
-          required: false
-          item_schema:
-            phase: "string"
-            start: "date"
-            end: "date"
-            deliverables: "array"
-            
-        - field: "total_budget"
-          type: "object"
-          required: false
-          schema:
-            amount: "number"
-            currency: "string"
-            includes_media: "boolean"
-            
-        - field: "budget_breakdown"
-          type: "array"
-          required: false
-          item_schema:
-            category: "string"
-            amount: "number"
-            percentage: "number"
-            
+        - { field: "campaign_dates", type: "object", required: true, schema: { start_date: "date", end_date: "date" } }
+        - { field: "phase_timeline", type: "array", required: false }
+        - { field: "total_budget", type: "object", required: false }
+        - { field: "budget_breakdown", type: "array", required: false }
     approvals_governance:
       required: true
       fields:
-        - field: "approver"
-          type: "object"
-          required: true
-          
-        - field: "review_checkpoints"
-          type: "array"
-          required: false
-          description: "Key review moments in campaign"
-          cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#qa_touchpoints"
-          
-        - field: "legal_compliance"
-          type: "object"
-          required: false
-          schema:
-            legal_review_required: "boolean"
-            compliance_requirements: "array"
-            disclaimers_needed: "array"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CONTENT BRIEF TEMPLATE
-# ═══════════════════════════════════════════════════════════════════════════
+        - { field: "approver", type: "object", required: true }
+        - { field: "review_checkpoints", type: "array", required: false, cross_reference: "OPS_07_CAMPAIGN_STRUCTURES#qa_touchpoints" }
+        - { field: "legal_compliance", type: "object", required: false }
 
 content_brief_template:
   id: "content_brief"
   version: "2.0"
-  
   sections:
     content_overview:
       required: true
       fields:
-        - field: "content_title"
-          type: "string"
-          required: true
-          description: "Working title for content piece"
-          
-        - field: "content_type"
-          type: "enum"
-          required: true
-          options: [blog_post, article, whitepaper, ebook, case_study, infographic, video_script, social_series, email_sequence, landing_page, other]
-          cross_reference: "OPS_06_INDEX#content_types"
-          
-        - field: "purpose"
-          type: "text"
-          required: true
-          description: "Why we're creating this content"
-          
-        - field: "campaign_context"
-          type: "text"
-          required: false
-          description: "Which campaign this supports, if any"
-          
+        - { field: "content_title", type: "string", required: true }
+        - { field: "content_type", type: "enum", required: true, options: [blog_post, article, whitepaper, ebook, case_study, infographic, video_script, social_series, email_sequence, landing_page, other], cross_reference: "OPS_06_INDEX#content_types" }
+        - { field: "purpose", type: "text", required: true }
+        - { field: "campaign_context", type: "text", required: false }
     audience_intent:
       required: true
       fields:
-        - field: "target_audience"
-          type: "text"
-          required: true
-          
-        - field: "audience_knowledge_level"
-          type: "enum"
-          required: true
-          options: [beginner, intermediate, expert, mixed]
-          
-        - field: "reader_intent"
-          type: "text"
-          required: true
-          description: "What reader is trying to accomplish"
-          
-        - field: "desired_action"
-          type: "text"
-          required: true
-          description: "What we want reader to do after reading"
-          
+        - { field: "target_audience", type: "text", required: true }
+        - { field: "audience_knowledge_level", type: "enum", required: true, options: [beginner, intermediate, expert, mixed] }
+        - { field: "reader_intent", type: "text", required: true }
+        - { field: "desired_action", type: "text", required: true }
     content_direction:
       required: true
       fields:
-        - field: "main_argument"
-          type: "text"
-          required: true
-          description: "Central thesis or key point"
-          
-        - field: "key_points"
-          type: "array"
-          required: true
-          min_items: 3
-          max_items: 7
-          description: "Supporting points to cover"
-          
-        - field: "evidence_requirements"
-          type: "object"
-          required: false
-          schema:
-            stats_needed: "array"
-            quotes_needed: "array"
-            examples_needed: "array"
-          cross_reference: "OPS_00_STANDARDS#evidence_policy"
-          
-        - field: "sources_provided"
-          type: "array"
-          required: false
-          description: "Sources already identified"
-          
-        - field: "seo_keywords"
-          type: "array"
-          required: false
-          description: "Target keywords if SEO content"
-          
+        - { field: "main_argument", type: "text", required: true }
+        - { field: "key_points", type: "array", required: true, min_items: 3, max_items: 7 }
+        - { field: "evidence_requirements", type: "object", required: false, cross_reference: "OPS_00_STANDARDS#evidence_policy" }
+        - { field: "sources_provided", type: "array", required: false }
+        - { field: "seo_keywords", type: "array", required: false }
     format_specifications:
       required: true
       fields:
-        - field: "target_length"
-          type: "object"
-          required: true
-          schema:
-            min_words: "number"
-            max_words: "number"
-            
-        - field: "structure_requirements"
-          type: "text"
-          required: false
-          description: "Required structure or sections"
-          
-        - field: "voice_style"
-          type: "text"
-          required: true
-          cross_reference: "OPS_02_VOICES_LIBRARY"
-          
-        - field: "visual_requirements"
-          type: "array"
-          required: false
-          description: "Images, graphics, or visual elements needed"
-          
-        - field: "cta"
-          type: "text"
-          required: true
-          description: "Call-to-action for content"
-          
+        - { field: "target_length", type: "object", required: true, schema: { min_words: "number", max_words: "number" } }
+        - { field: "structure_requirements", type: "text", required: false }
+        - { field: "voice_style", type: "text", required: true, cross_reference: "OPS_02_VOICES_LIBRARY" }
+        - { field: "visual_requirements", type: "array", required: false }
+        - { field: "cta", type: "text", required: true }
     publication_details:
       required: true
       fields:
-        - field: "publication_channel"
-          type: "enum"
-          required: true
-          options: [company_blog, linkedin, medium, guest_post, email, social, other]
-          
-        - field: "deadline"
-          type: "date"
-          required: true
-          
-        - field: "publish_date"
-          type: "date"
-          required: false
-          
-        - field: "distribution_plan"
-          type: "text"
-          required: false
-          description: "How content will be promoted"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# QUICK BRIEF TEMPLATE
-# ═══════════════════════════════════════════════════════════════════════════
+        - { field: "publication_channel", type: "enum", required: true, options: [company_blog, linkedin, medium, guest_post, email, social, other] }
+        - { field: "deadline", type: "date", required: true }
+        - { field: "publish_date", type: "date", required: false }
+        - { field: "distribution_plan", type: "text", required: false }
 
 quick_brief_template:
   id: "quick_brief"
   version: "2.0"
-  description: "Lightweight brief for simple, routine requests"
-  
   sections:
     request_summary:
       required: true
       fields:
-        - field: "what_needed"
-          type: "text"
-          required: true
-          max_length: 200
-          description: "What do you need?"
-          
-        - field: "context"
-          type: "text"
-          required: true
-          max_length: 300
-          description: "Brief context"
-          
-        - field: "deadline"
-          type: "date"
-          required: true
-          
+        - { field: "what_needed", type: "text", required: true, max_length: 200 }
+        - { field: "context", type: "text", required: true, max_length: 300 }
+        - { field: "deadline", type: "date", required: true }
     specifications:
       required: true
       fields:
-        - field: "format"
-          type: "enum"
-          required: true
-          options: [social_post, email, copy_update, report, image, other]
-          
-        - field: "length_guidance"
-          type: "text"
-          required: false
-          
-        - field: "key_points"
-          type: "array"
-          required: false
-          max_items: 3
-          
-        - field: "reference_materials"
-          type: "array"
-          required: false
-          description: "Links to relevant materials"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# COMPLETENESS CHECKLISTS
-# ═══════════════════════════════════════════════════════════════════════════
+        - { field: "format", type: "enum", required: true, options: [social_post, email, copy_update, report, image, other] }
+        - { field: "length_guidance", type: "text", required: false }
+        - { field: "key_points", type: "array", required: false, max_items: 3 }
+        - { field: "reference_materials", type: "array", required: false }
 
 completeness_checklists:
-  description: "Validation checklists before brief is marked ready"
-  
   creative_brief_checklist:
-    minimum_required:
-      - item: "Project name defined"
-        field: "project_overview.project_name"
-      - item: "Business objective stated"
-        field: "project_overview.business_objective"
-      - item: "Primary audience described"
-        field: "audience.primary_audience"
-      - item: "Single-minded proposition defined"
-        field: "messaging.single_minded_proposition"
-      - item: "Key messages listed (2-5)"
-        field: "messaging.key_messages"
-      - item: "Deliverables specified"
-        field: "deliverables.deliverable_list"
-      - item: "Primary KPI defined"
-        field: "success_metrics.primary_kpi"
-      - item: "Deadline set"
-        field: "timeline_budget.deadline"
-      - item: "Approver identified"
-        field: "approvals.approver"
-        
-    quality_enhanced:
-      - item: "Audience insights provided"
-        field: "audience.audience_insights"
-      - item: "Proof points with evidence"
-        field: "messaging.proof_points"
-      - item: "Baseline metrics available"
-        field: "success_metrics.baseline"
-      - item: "Reference materials attached"
-        field: "reference_materials"
-        
+    minimum_required: ["Project name defined", "Business objective stated", "Primary audience described", "Single-minded proposition defined", "Key messages listed (2-5)", "Deliverables specified", "Primary KPI defined", "Deadline set", "Approver identified"]
+    quality_enhanced: ["Audience insights provided", "Proof points with evidence", "Baseline metrics available", "Reference materials attached"]
   strategy_brief_checklist:
-    minimum_required:
-      - item: "Strategic challenge framed"
-        field: "strategic_context.strategic_challenge"
-      - item: "Current state described"
-        field: "situation_analysis.current_state"
-      - item: "Desired state described"
-        field: "situation_analysis.desired_state"
-      - item: "Success criteria defined"
-        field: "strategic_parameters.success_criteria"
-      - item: "Expected outputs listed"
-        field: "deliverables.expected_outputs"
-      - item: "Deadline set"
-        field: "timeline_stakeholders.deadline"
-      - item: "Key stakeholders identified"
-        field: "timeline_stakeholders.key_stakeholders"
-        
+    minimum_required: ["Strategic challenge framed", "Current state described", "Desired state described", "Success criteria defined", "Expected outputs listed", "Deadline set", "Key stakeholders identified"]
   campaign_brief_checklist:
-    minimum_required:
-      - item: "Campaign type selected"
-        field: "campaign_overview.campaign_type"
-      - item: "Campaign objective stated"
-        field: "campaign_overview.campaign_objective"
-      - item: "Primary segment defined"
-        field: "target_audience.primary_segment"
-      - item: "Journey stage identified"
-        field: "target_audience.buyer_journey_stage"
-      - item: "Campaign theme defined"
-        field: "messaging_creative.campaign_theme"
-      - item: "Key messages listed"
-        field: "messaging_creative.key_messages"
-      - item: "Primary CTA defined"
-        field: "messaging_creative.cta_primary"
-      - item: "Channel mix specified"
-        field: "channel_mix.channels"
-      - item: "North star metric defined"
-        field: "kpis_measurement.north_star_metric"
-      - item: "KPI chain mapped"
-        field: "kpis_measurement.kpi_chain"
-      - item: "Campaign dates set"
-        field: "timeline_budget.campaign_dates"
-      - item: "Approver identified"
-        field: "approvals_governance.approver"
-        
+    minimum_required: ["Campaign type selected", "Campaign objective stated", "Primary segment defined", "Journey stage identified", "Campaign theme defined", "Key messages listed", "Primary CTA defined", "Channel mix specified", "North star metric defined", "KPI chain mapped", "Campaign dates set", "Approver identified"]
   content_brief_checklist:
-    minimum_required:
-      - item: "Content type selected"
-        field: "content_overview.content_type"
-      - item: "Purpose stated"
-        field: "content_overview.purpose"
-      - item: "Target audience defined"
-        field: "audience_intent.target_audience"
-      - item: "Reader intent described"
-        field: "audience_intent.reader_intent"
-      - item: "Main argument defined"
-        field: "content_direction.main_argument"
-      - item: "Key points listed (3-7)"
-        field: "content_direction.key_points"
-      - item: "Target length specified"
-        field: "format_specifications.target_length"
-      - item: "Voice/style selected"
-        field: "format_specifications.voice_style"
-      - item: "CTA defined"
-        field: "format_specifications.cta"
-      - item: "Publication channel selected"
-        field: "publication_details.publication_channel"
-      - item: "Deadline set"
-        field: "publication_details.deadline"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# SMART OBJECTIVES GUIDANCE
-# ═══════════════════════════════════════════════════════════════════════════
+    minimum_required: ["Content type selected", "Purpose stated", "Target audience defined", "Reader intent described", "Main argument defined", "Key points listed (3-7)", "Target length specified", "Voice/style selected", "CTA defined", "Publication channel selected", "Deadline set"]
 
 smart_objectives:
-  description: "Guidance for writing SMART objectives in briefs"
-  
   framework:
-    S:
-      label: "Specific"
-      question: "What exactly will be achieved?"
-      guidance: "Define precise outcome, not vague aspiration"
-      examples:
-        good: "Increase LinkedIn follower count"
-        bad: "Improve social presence"
-        
-    M:
-      label: "Measurable"
-      question: "How will we measure success?"
-      guidance: "Include quantifiable metric"
-      examples:
-        good: "Increase LinkedIn followers by 25%"
-        bad: "Significantly increase followers"
-        
-    A:
-      label: "Achievable"
-      question: "Is this realistic given resources?"
-      guidance: "Ambitious but possible"
-      validation: "Check against historical performance"
-      
-    R:
-      label: "Relevant"
-      question: "Does this support business objectives?"
-      guidance: "Connect to business goals"
-      examples:
-        good: "...to expand thought leadership reach"
-        bad: "...because competitors have more"
-        
-    T:
-      label: "Time-bound"
-      question: "By when?"
-      guidance: "Include specific deadline"
-      examples:
-        good: "...by end of Q2 2025"
-        bad: "...eventually"
-        
+    S: { label: "Specific", question: "What exactly will be achieved?", examples: { good: "Increase LinkedIn follower count", bad: "Improve social presence" } }
+    M: { label: "Measurable", question: "How will we measure success?", examples: { good: "Increase LinkedIn followers by 25%", bad: "Significantly increase followers" } }
+    A: { label: "Achievable", question: "Is this realistic given resources?", validation: "Check against historical performance" }
+    R: { label: "Relevant", question: "Does this support business objectives?", examples: { good: "...to expand thought leadership reach", bad: "...because competitors have more" } }
+    T: { label: "Time-bound", question: "By when?", examples: { good: "...by end of Q2 2025", bad: "...eventually" } }
   template: "Increase [metric] from [baseline] to [target] by [date] in order to [business objective]"
-  
-  examples:
-    - objective: "Increase LinkedIn company page followers from 5,000 to 7,500 by June 30, 2025 to expand thought leadership reach in NL market"
-      analysis:
-        specific: "LinkedIn followers, NL market"
-        measurable: "5,000 --> 7,500 (50% increase)"
-        achievable: "Based on current 10% quarterly growth"
-        relevant: "Supports thought leadership goal"
-        time_bound: "June 30, 2025"
-        
-    - objective: "Generate 150 marketing qualified leads from ABM campaign targeting enterprise accounts by campaign end (March 31) to feed Q2 sales pipeline"
-      analysis:
-        specific: "MQLs from ABM, enterprise accounts"
-        measurable: "150 MQLs"
-        achievable: "Based on similar past campaigns"
-        relevant: "Feeds sales pipeline"
-        time_bound: "March 31"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# EVIDENCE TABLE FORMAT
-# ═══════════════════════════════════════════════════════════════════════════
 
 evidence_table:
-  description: "Standard format for documenting evidence in briefs"
   cross_reference: "LOGIC_08_QUALITY_GATES#evidence_item_schema"
-  
   columns:
-    - column: "claim"
-      description: "The claim being supported"
-      required: true
-      
-    - column: "evidence"
-      description: "Supporting data or source"
-      required: true
-      
-    - column: "source"
-      description: "Full source citation"
-      required: true
-      
-    - column: "tier"
-      description: "Evidence tier (1/2/3)"
-      required: true
-      options: [tier_1, tier_2, tier_3]
-      
-    - column: "reliability"
-      description: "Source reliability (A/B/C/D)"
-      required: true
-      options: [A, B, C, D]
-      
-    - column: "date"
-      description: "Source date"
-      required: true
-      format: "YYYY-MM"
-      
-    - column: "freshness_ok"
-      description: "Within freshness requirements"
-      required: true
-      options: [yes, no_disclaimer_needed]
-      
-  example:
-    - claim: "50% of B2B buyers consume 3-5 pieces of content before engaging sales"
-      evidence: "Demand Gen Report 2023"
-      source: "Demand Gen Report, B2B Buyer Behavior Study"
-      tier: "tier_2"
-      reliability: "B"
-      date: "2023-06"
-      freshness_ok: "yes"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# INTAKE CONTRACT ALIGNMENT
-# ═══════════════════════════════════════════════════════════════════════════
+    - { column: "claim", required: true }
+    - { column: "evidence", required: true }
+    - { column: "source", required: true }
+    - { column: "tier", required: true, options: [tier_1, tier_2, tier_3] }
+    - { column: "reliability", required: true, options: [A, B, C, D] }
+    - { column: "date", required: true, format: "YYYY-MM" }
+    - { column: "freshness_ok", required: true, options: [yes, no_disclaimer_needed] }
 
 intake_alignment:
-  description: "Mapping between OPS_18 intake fields and brief templates"
   cross_reference: "OPS_18_HANDOFF_INTAKE"
-  
   field_mapping:
     intake_to_brief:
-      - intake_field: "request_summary"
-        maps_to: "project_overview.background"
-        
-      - intake_field: "requester"
-        maps_to: "approvals.approver"
-        
-      - intake_field: "deliverable_type"
-        maps_to: "deliverables.deliverable_list"
-        
-      - intake_field: "deadline"
-        maps_to: "timeline_budget.deadline"
-        
-      - intake_field: "priority"
-        maps_to: "timeline_budget.key_milestones"
-        
-      - intake_field: "context_documents"
-        maps_to: "reference_materials"
-        
-      - intake_field: "constraints"
-        maps_to: "deliverables.constraints"
-        
-      - intake_field: "success_criteria"
-        maps_to: "success_metrics"
-        
+      - { intake_field: "request_summary", maps_to: "project_overview.background" }
+      - { intake_field: "requester", maps_to: "approvals.approver" }
+      - { intake_field: "deliverable_type", maps_to: "deliverables.deliverable_list" }
+      - { intake_field: "deadline", maps_to: "timeline_budget.deadline" }
+      - { intake_field: "constraints", maps_to: "deliverables.constraints" }
+      - { intake_field: "success_criteria", maps_to: "success_metrics" }
   workflow_integration:
-    description: "How briefs fit into WORKFLOW phases"
-    typical_flow:
-      - step: "Intake received"
-        source: "OPS_18 intake contract"
-      - step: "Brief template selected"
-        source: "brief_types catalog"
-      - step: "Brief populated"
-        source: "Intake data + discovery"
-      - step: "Completeness validated"
-        source: "completeness_checklists"
-      - step: "Brief approved"
-        source: "HITL checkpoint"
-      - step: "Brief handed off"
-        destination: "Concept/strategy phase"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+    typical_flow: ["Intake received (OPS_18)", "Brief template selected", "Brief populated from intake + discovery", "Completeness validated", "Brief approved (HITL checkpoint)", "Brief handed off to concept/strategy phase"]
 
 validation:
   brief_validation_rules:
-    - rule: "All required fields must be populated"
-      severity: "blocking"
-      
-    - rule: "SMART objectives must pass framework validation"
-      severity: "warning"
-      
-    - rule: "Evidence cited must include tier and reliability"
-      severity: "blocking"
-      cross_reference: "OPS_00_STANDARDS#evidence_policy"
-      
-    - rule: "Deadlines must be in the future"
-      severity: "blocking"
-      
-    - rule: "Approver must have valid contact information"
-      severity: "blocking"
-      
-    - rule: "KPIs must have measurable targets"
-      severity: "warning"
-      
-  on_validation_failure:
-    blocking: "Brief marked incomplete, cannot proceed"
-    warning: "Brief flagged, can proceed with acknowledgment"
+    - { rule: "All required fields must be populated", severity: "blocking" }
+    - { rule: "SMART objectives must pass framework validation", severity: "warning" }
+    - { rule: "Evidence cited must include tier and reliability", severity: "blocking", cross_reference: "OPS_00_STANDARDS#evidence_policy" }
+    - { rule: "Deadlines must be in the future", severity: "blocking" }
+    - { rule: "Approver must have valid contact information", severity: "blocking" }
+    - { rule: "KPIs must have measurable targets", severity: "warning" }
+  on_validation_failure: { blocking: "Brief marked incomplete, cannot proceed", warning: "Brief flagged, can proceed with acknowledgment" }

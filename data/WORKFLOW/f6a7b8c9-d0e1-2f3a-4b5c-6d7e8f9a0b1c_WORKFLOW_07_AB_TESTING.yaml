@@ -1,0 +1,258 @@
+# WORKFLOW_07_AB_TESTING.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Workflow for designing and analyzing A/B tests"
+  notes: "Supports test hypothesis, variant creation, and results analysis"
+  tags: [workflow, testing, ab_test, optimization, experimentation]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: OPS_10_BENCHMARK_RANGES"
+  - "$ref: OPS_15_REVIEW_CHECKLISTS#test_dod"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_07_AB_TESTING"
+  name: "A/B Testing"
+  purpose: "Design, execute, and analyze A/B tests with statistical rigor"
+  complexity: "medium"
+  automation_level: "semi_automated"
+  estimated_duration: "Variable (design: 2-4h, analysis: 2-4h after test completes)"
+
+  triggers:
+    - "Optimization opportunity identified"
+    - "Hypothesis to test"
+    - "Content variant comparison needed"
+    - "Campaign optimization cycle"
+
+  roles_involved:
+    - "ROLE_03_ANALYST"
+    - "ROLE_02_WRITER"
+    - "ROLE_01_STRATEGIST"
+
+  inputs:
+    required:
+      - { field: "test_hypothesis", type: "string", description: "What we're testing and why" }
+      - { field: "test_subject", type: "reference", description: "Content/element being tested" }
+      - { field: "success_metric", type: "string", description: "Primary metric to measure" }
+    optional:
+      - { field: "secondary_metrics", type: "array", description: "Additional metrics to track" }
+      - { field: "audience_segment", type: "string", description: "Target segment for test" }
+      - { field: "duration_constraints", type: "object", description: "Min/max test duration" }
+
+  outputs:
+    - { field: "test_plan", type: "document", description: "Complete test design" }
+    - { field: "test_variants", type: "array", description: "Control and treatment variants" }
+    - { field: "results_analysis", type: "document", description: "Statistical analysis of results" }
+    - { field: "recommendations", type: "document", description: "Action recommendations" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Hypothesis Development"
+    objective: "Develop and document clear test hypothesis"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Test opportunity identified"
+      - "Success metric definable"
+    steps:
+      - step_id: "step_1"
+        action: "Document hypothesis in If-Then-Because format"
+        actor: "agent"
+        outputs: ["formatted_hypothesis"]
+      - step_id: "step_2"
+        action: "Define success metric and MDE"
+        actor: "agent"
+        reference: "$ref: OPS_10_BENCHMARK_RANGES"
+        outputs: ["metric_definition"]
+      - step_id: "step_3"
+        action: "Identify potential confounders"
+        actor: "agent"
+        outputs: ["confounders"]
+      - step_id: "step_4"
+        action: "Document secondary metrics"
+        actor: "agent"
+        outputs: ["secondary_metrics"]
+    exit_criteria:
+      - "Hypothesis clearly stated"
+      - "Metrics defined"
+      - "Confounders identified"
+
+  - phase_id: "phase_2"
+    name: "Test Design"
+    objective: "Design test methodology and calculate sample size"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Hypothesis documented"
+    steps:
+      - step_id: "step_1"
+        action: "Calculate required sample size"
+        actor: "agent"
+        outputs: ["sample_size_calculation"]
+      - step_id: "step_2"
+        action: "Estimate test duration"
+        actor: "agent"
+        outputs: ["duration_estimate"]
+      - step_id: "step_3"
+        action: "Define randomization approach"
+        actor: "agent"
+        outputs: ["randomization_plan"]
+      - step_id: "step_4"
+        action: "Document test protocol"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#test_dod"
+        outputs: ["test_protocol"]
+    exit_criteria:
+      - "Sample size calculated"
+      - "Duration estimated"
+      - "Protocol documented"
+
+  - phase_id: "phase_3"
+    name: "Variant Creation"
+    objective: "Create control and treatment variants"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Test design approved"
+    steps:
+      - step_id: "step_1"
+        action: "Document control variant"
+        actor: "agent"
+        outputs: ["control_variant"]
+      - step_id: "step_2"
+        action: "Create treatment variant(s)"
+        actor: "agent"
+        outputs: ["treatment_variants"]
+      - step_id: "step_3"
+        action: "Verify single-variable isolation"
+        actor: "agent"
+        outputs: ["isolation_verification"]
+      - step_id: "step_4"
+        action: "Quality check variants"
+        actor: "agent"
+        outputs: ["variant_quality_check"]
+    exit_criteria:
+      - "All variants created"
+      - "Single variable confirmed"
+      - "Quality verified"
+
+  - phase_id: "phase_4"
+    name: "Test Execution Monitoring"
+    objective: "Monitor test execution (if applicable)"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Variants ready"
+    steps:
+      - step_id: "step_1"
+        action: "Confirm test launch"
+        actor: "agent"
+        outputs: ["launch_confirmation"]
+      - step_id: "step_2"
+        action: "Monitor for technical issues"
+        actor: "agent"
+        outputs: ["technical_monitoring"]
+      - step_id: "step_3"
+        action: "Track sample accumulation"
+        actor: "agent"
+        outputs: ["sample_tracking"]
+      - step_id: "step_4"
+        action: "Flag if stopping criteria met early"
+        actor: "agent"
+        outputs: ["stopping_check"]
+    exit_criteria:
+      - "Test running successfully OR"
+      - "Sufficient sample collected OR"
+      - "Early stopping triggered"
+    timeout: "Defined by test duration"
+
+  - phase_id: "phase_5"
+    name: "Results Analysis"
+    objective: "Analyze test results with statistical rigor"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Test complete"
+      - "Data available"
+    steps:
+      - step_id: "step_1"
+        action: "Validate data quality"
+        actor: "agent"
+        outputs: ["data_validation"]
+      - step_id: "step_2"
+        action: "Calculate statistical significance"
+        actor: "agent"
+        outputs: ["significance_calculation"]
+      - step_id: "step_3"
+        action: "Calculate confidence intervals"
+        actor: "agent"
+        outputs: ["confidence_intervals"]
+      - step_id: "step_4"
+        action: "Assess practical significance"
+        actor: "agent"
+        outputs: ["practical_significance"]
+      - step_id: "step_5"
+        action: "Document external validity factors"
+        actor: "agent"
+        outputs: ["validity_factors"]
+    exit_criteria:
+      - "Analysis complete"
+      - "Statistical results documented"
+      - "Practical significance assessed"
+
+  - phase_id: "phase_6"
+    name: "Recommendations & Reporting"
+    objective: "Develop recommendations and document learnings"
+    role: "ROLE_03_ANALYST"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 5 complete"
+      - "Analysis available"
+    steps:
+      - step_id: "step_1"
+        action: "Formulate action recommendations"
+        actor: "agent"
+        outputs: ["recommendations"]
+      - step_id: "step_2"
+        action: "Document learnings"
+        actor: "agent"
+        outputs: ["learnings"]
+      - step_id: "step_3"
+        action: "Compile test report"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#test_dod"
+        outputs: ["test_report"]
+      - step_id: "step_4"
+        action: "Prepare delivery handoff"
+        actor: "agent"
+        outputs: ["delivery_handoff"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_test_results"
+      trigger: "phase_exit"
+      approval_required_from: "strategy_lead | account_director"
+      approval_options: ["approve", "approve_with_comments", "request_revision"]
+      timeout_hours: 48
+    exit_criteria:
+      - "Recommendations documented"
+      - "Report complete"
+      - "HITL approval obtained"
+
+quality_gates:
+  entry:
+    - "Hypothesis clearly stated"
+    - "Success metric definable"
+    - "Test feasible within constraints"
+  exit:
+    - "Statistical analysis complete"
+    - "Confidence intervals reported"
+    - "Recommendations justified by data"
+    - "Test DOD checklist passed"
+
+validation:
+  workflow_specific:
+    - "Sample size calculation documented"
+    - "Statistical significance threshold defined (default p<0.05)"
+    - "Test DOD from OPS_15 applied"

@@ -1,15 +1,9 @@
-# ═══════════════════════════════════════════════════════════════════════════════
-# LOGIC_02_RETRIEVAL.yaml -- Retrieval & Override Rules
-# RAC 2.0 -- Single Source of Truth
-# ═══════════════════════════════════════════════════════════════════════════════
+# LOGIC_02_RETRIEVAL.yaml -- Retrieval & Override Rules (SSOT)
 
 meta:
   id: "LOGIC_02_RETRIEVAL"
   type: "logic_rules"
   title: "Retrieval & Override Rules"
-  description: >
-    Defines deterministic layer retrieval, merge order, override strategies,
-    immutability constraints, and safety gating for SSOT composition.
   owner: "AI Opener"
   status: "active"
   version: "2.0.0"
@@ -17,15 +11,7 @@ meta:
   notes: "v2.0 - Complete layer degradation templates for all 11 layers"
   tags: [logic, retrieval, override, ssot]
 
-# -----------------------------------------------------------------------------
-# Base dependency resolution template
-# -----------------------------------------------------------------------------
 base_dependencies_template:
-  description: >
-    Layers may declare dependencies as refs. The runtime resolver must:
-    1) Load dependency targets first
-    2) Validate schemas
-    3) Merge in deterministic order
   schema:
     dependencies:
       type: "array"
@@ -36,15 +22,7 @@ base_dependencies_template:
           $ref:
             type: "string"
 
-# -----------------------------------------------------------------------------
-# Override rules (canonical)
-# -----------------------------------------------------------------------------
 override_rules:
-  description: >
-    Governs deterministic override behavior across all layers.
-    - Lower layers define defaults
-    - Higher layers apply patches/overrides
-    - Governance constraints may block overrides
   evaluation_order:
     - CONFIG
     - DEMO
@@ -59,70 +37,29 @@ override_rules:
     - CLIENT
 
   strategies:
-    # -------------------------------------------------------------------------
-    # Strategy: last_wins
-    # -------------------------------------------------------------------------
     last_wins:
-      description: "The latest layer value replaces previous value entirely."
       behavior: "replace"
-
-    # -------------------------------------------------------------------------
-    # Strategy: additive_merge
-    # -------------------------------------------------------------------------
     additive_merge:
-      description: "Later layer adds to earlier (arrays merged, not replaced)"
       behavior: "append"
       applies_to:
         - "quality_gates.entry"
         - "quality_gates.exit"
         - "constraints.requires_approval_for"
-      note: "Used for accumulating quality gates and approval requirements across layers"
-
-    # -------------------------------------------------------------------------
-    # Strategy: merge_maps
-    # -------------------------------------------------------------------------
     merge_maps:
-      description: >
-        Merge dictionaries/maps. Conflicts are resolved by last_wins at the leaf.
       behavior: "deep_merge"
       conflict_resolution: "last_wins"
-
-    # -------------------------------------------------------------------------
-    # Strategy: most_restrictive_wins
-    # -------------------------------------------------------------------------
     most_restrictive_wins:
-      description: "Restrictions can only increase, never decrease"
       behavior: "restrictive_merge"
       applies_to:
         - "security_constraints"
         - "blocked_domains"
         - "ai_policy"
-      note: |
-        For ai_policy specifically:
-        - Merge rule: most-restrictive-wins
-        - Arrays: merged as union of restrictions (later layers can add, not remove)
-        - Booleans: most restrictive value wins (cannot be relaxed by later layers)
-        - Precedence: CLIENT > ORG > LOGIC_12_GOVERNANCE.minimums
-        - LOGIC_12_GOVERNANCE.minimums are immutable safety floors
-        - Enforcement via LOGIC_16_POLICY_CAPTURE: block, redact, or require HITL
-
-    # -------------------------------------------------------------------------
-    # Strategy: immutable
-    # -------------------------------------------------------------------------
+      note: "Precedence: CLIENT > ORG > LOGIC_12_GOVERNANCE.minimums"
     immutable:
-      description: >
-        Paths marked immutable cannot be overridden by any layer.
-        Attempts to override must be rejected at validation time.
       behavior: "reject_override"
       applies_to: "$ref: #override_rules.immutable_paths"
 
-  # ---------------------------------------------------------------------------
-  # Canonical immutable paths (cannot be overridden)
-  # ---------------------------------------------------------------------------
   immutable_paths:
-    description: >
-      List of dot-paths that cannot be overridden by any layer.
-      These paths represent governance minimums and system invariants.
     paths:
       - "LOGIC_12_GOVERNANCE.minimums"
       - "LOGIC_09_INTERFACE.output_standards.accessibility"
@@ -131,29 +68,15 @@ override_rules:
       - "LOGIC_08_QUALITY_GATES.evidence_tiers"
       - "LOGIC_08_QUALITY_GATES.universal_gates"
 
-  # ---------------------------------------------------------------------------
-  # Override exceptions (special rules that differ from default strategies)
-  # ---------------------------------------------------------------------------
   exceptions:
     evidence_precedence:
-      description: "Evidence rules differ from standard last-wins override"
       rule: "ORG/PACK evidence takes precedence over CLIENT evidence for verified benchmarks"
-      reason: "Prevents client from contradicting industry-validated data"
-      scope: "Only applies to benchmark-type claims; client-specific facts remain client-authoritative"
-      
+      scope: "Only applies to benchmark-type claims"
     use_case_registry_conflict:
-      description: "When both ORG and CLIENT define custom USE_CASE with same ID"
       rule: "CLIENT custom USE_CASE wins (last-wins applies)"
       behavior: "CLIENT.use_cases.custom overrides ORG.use_case_registry.custom for matching IDs"
-      note: "Log warning when conflict detected for audit purposes"
 
-  # ---------------------------------------------------------------------------
-  # Tool mapping override schema (ORG/CLIENT may patch this only)
-  # ---------------------------------------------------------------------------
   tool_mapping_override:
-    description: >
-      Defines the allowed structure for ORG/CLIENT patches to capability-->tool routing.
-      Tool definitions remain centralized in LOGIC_10_TOOLS_CORE.yaml.
     precedence: "CLIENT overrides ORG overrides LOGIC_10_TOOLS_CORE defaults"
     patch_shape:
       patch:
@@ -161,100 +84,46 @@ override_rules:
           type: "map"
           key: "capability_key"
           value:
-            type: "object"
-            allowed_fields:
-              - "preferred_tool"
-              - "fallbacks"
-              - "constraints"
-            required_fields:
-              - "preferred_tool"
-            fields:
-              preferred_tool:
-                type: "string"
-                description: "Tool ID, must exist in LOGIC_10 tool_registry"
-              fallbacks:
-                type: "array"
-                items:
-                  type: "string"
-                description: >
-                  Explicit replacement list. Not additive.
-                  The final fallbacks list is the resolved list at the highest layer.
-              constraints:
-                type: "object"
-                description: >
-                  Optional constraints tightening only (never loosening).
-                  Validation rules for tightening are enforced by governance validation.
+            allowed_fields: ["preferred_tool", "fallbacks", "constraints"]
+            required_fields: ["preferred_tool"]
     validation:
       must_reference_existing_tools: true
       enforce_tightening_only: true
-      notes:
-        note: "CLIENT can change the selected tool for a capability; ORG can override LOGIC_10_TOOLS_CORE defaults."
-        constraint_rule: >
-          Constraints can only get stricter as layers progress
-          (CLIENT > ORG > LOGIC_10_TOOLS_CORE defaults).
 
-# -----------------------------------------------------------------------------
-# LIBRARIES eligibility and allowlists (SSOT)
-# -----------------------------------------------------------------------------
 libraries_mechanics:
-  description: "Scoping, allowlists, and eligibility rules for LIBRARIES layer"
-  
   eligibility:
-    description: "Determine eligible libraries for the session"
     rules:
       - "Library manifest ownership must match runtime org scope"
       - "Library must be explicitly allowlisted via ORG/CLIENT pointers"
-      - "Nothing is implicitly in-scope just because it exists"
       - "Deny by default if no effective allowlist exists"
-  
   allowlist_precedence:
-    description: "CLIENT > ORG allowlist resolution"
     order: ["CLIENT.libraries.allowlist", "ORG.libraries.allowlist"]
     rules:
-      - rule: "If CLIENT.libraries.allowlist is present (non-empty), it becomes effective allowlist"
-        effect: "ORG allowlist is ignored for that session"
-      - rule: "Else if ORG.libraries.allowlist is present (non-empty), it becomes effective allowlist"
+      - rule: "If CLIENT allowlist present, it becomes effective allowlist"
+      - rule: "Else if ORG allowlist present, it becomes effective allowlist"
       - rule: "Else: effective allowlist is empty (deny by default)"
-    note: "PACKS are not allowlisted (PACKS are global/public, governed by their own inclusion rules)"
-    
   runtime_scoping:
     org_scope:
       required: true
-      rule: "Any library retrieval MUST include org_id == runtime.org_id metadata filtering"
+      rule: "Any library retrieval MUST include org_id == runtime.org_id"
     client_scope:
       conditional: true
-      rule: "If library is client-specific (has client_id), retrieval MUST also include client_id == runtime.client_id"
-      fallback: "If library is org-scoped (no client_id), it MAY be used by any client within the org, subject to allowlists"
+      rule: "If library has client_id, retrieval MUST include client_id == runtime.client_id"
     cross_org:
       prohibited: true
-      rule: "If org_id does not match runtime org, retrieval MUST be blocked and captured as policy event"
+      rule: "Block retrieval and capture policy event if org_id mismatch"
 
-# -----------------------------------------------------------------------------
-# Layer degradation templates (SSOT for all 11 layers)
-# -----------------------------------------------------------------------------
 layer_degradation_templates:
-  description: >
-    Each layer must degrade deterministically to preserve runtime compilation.
-    Master list of all layer-specific degradation patterns.
-    Each layer references: $ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.{layer}
-
   demo:
-    description: "DEMO layer has conditional load - ignored entirely when demo_mode: false"
-    
     if_demo_mode_missing:
       severity: "warning"
-      action: "Default to demo_mode: false (production behavior)"
-      
+      action: "Default to demo_mode: false"
     if_client_file_missing:
       severity: "error"
       action: "Block demo start"
-      message: "CLIENT file not found: {client}"
-      
     if_mock_data_missing:
       severity: "warning"
       action: "Disable that simulation, continue with others"
-      message: "Mock data not found for {id}, simulation disabled"
-      
     if_presenter_name_missing:
       severity: "warning"
       action: "Use default: 'Presenter'"
@@ -262,228 +131,123 @@ layer_degradation_templates:
   config:
     if_config_missing:
       severity: "critical"
-      action: "Abort startup - CONFIG is required"
-      
+      action: "Abort startup"
     if_client_has_placeholders:
       severity: "error"
       action: "Block client context activation"
       fallback: "Continue with ORG defaults only"
-      
     if_ref_validation_fails:
       severity: "error"
-      action: "Log broken $ref path with location"
-      fallback: "Block startup if critical ref, warn if optional"
+      action: "Block startup if critical ref, warn if optional"
 
   logic:
-    description: "LOGIC is the SSOT layer - degradation here is critical"
-    
     if_logic_file_missing:
       severity: "critical (startup) | error (on-demand)"
       action: "Startup-critical files abort startup; on-demand files log error"
-      
     if_ssot_section_missing:
       severity: "critical"
-      action: "Abort startup - SSOT sections are required"
-      examples: ["override_rules", "evidence_tiers", "universal_gates", "ai_policy_schema"]
-      
-    if_taxonomy_invalid:
-      severity: "error"
-      action: "Block tag validation, warn on unrecognized tags"
-      
+      action: "Abort startup"
     if_version_mismatch:
       severity: "error"
-      action: "Block if major version mismatch per version_management"
+      action: "Block if major version mismatch"
 
   ops:
     if_playbook_missing:
       severity: "warning"
       action: "Use OPS_00_STANDARDS defaults"
-      fallback: "Generic best practices"
-      
     if_voice_undefined:
       severity: "warning"
       action: "Use default professional voice"
-      
     if_handoff_schema_missing:
       severity: "error"
       action: "Block phase transition"
-      fallback: "Require manual handoff"
 
   roles:
     if_role_missing:
       severity: "error"
       action: "Route to alternative role with capability"
-      fallback: "Surface capability gap to user"
-      
     if_capability_unavailable:
       severity: "warning"
-      action: "Check for alternative role with secondary capability"
-      fallback: "Escalate to orchestrator"
-      
-    if_knowledge_source_missing:
-      severity: "warning"
-      action: "Proceed with reduced context"
-      fallback: "Use OPS_00_STANDARDS defaults"
-      
+      action: "Check alternative role, escalate to orchestrator"
     if_token_budget_exceeded:
       severity: "warning"
       action: "Truncate response, note truncation"
-      fallback: "Split into multiple responses"
 
   packs:
     if_pack_missing:
       severity: "warning"
       action: "Proceed without pack knowledge"
-      fallback: "Use OPS-level knowledge only"
-      
     if_evidence_expired:
       severity: "warning"
       action: "Include evidence with freshness warning"
-      fallback: "Flag for evidence refresh"
-      
     if_evidence_below_tier:
       severity: "error"
       action: "Block claim or add prominent disclaimer"
-      
-    if_rag_index_unavailable:
-      severity: "warning"
-      action: "Fall back to keyword search in pack content"
 
   libraries:
-    description: "LIBRARIES are private corpora and must be strictly scoped"
-    
     if_no_eligible_libraries:
       severity: "info"
       action: "Proceed without LIBRARIES context; produce gap report"
-      message: "No eligible libraries for org/client scope; onboarding recommended"
-      
     if_library_scope_violation:
       severity: "error"
       action: "Block retrieval and capture policy event"
-      message: "Attempted library retrieval outside runtime org/client scope"
       enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
-      
     if_library_not_allowlisted:
       severity: "error"
       action: "Block retrieval and capture policy event"
-      message: "Attempted library retrieval from non-allowlisted library"
-      enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
-      
-    if_library_index_unavailable:
-      severity: "warning"
-      action: "Treat as temporarily unavailable; exclude from discovery"
-      fallback: "Try other eligible libraries; otherwise produce gap report"
 
   use_cases:
     if_use_case_missing:
       severity: "error"
-      action: "Route to ROLE_01_ORCHESTRATOR for capability-based routing"
-      
+      action: "Route to ROLE_01_ORCHESTRATOR"
     if_role_unavailable:
       severity: "error"
-      action: "Block use case activation, surface missing capability"
-      
-    if_knowledge_source_missing:
-      severity: "warning"
-      action: "Proceed with reduced context"
-      fallback: "Use OPS_00_STANDARDS defaults"
-      
-    if_persona_conflict:
-      severity: "info"
-      action: "CLIENT persona overrides USE_CASE default"
-      
+      action: "Block use case activation"
     if_ai_policy_blocks_use_case:
       severity: "error"
       action: "Block USE_CASE activation"
-      message: "USE_CASE {id} is prohibited by ai_policy"
       enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
 
   workflows:
     if_workflow_missing:
       severity: "error"
-      action: "Route to ROLE_01_ORCHESTRATOR for manual coordination"
-      
+      action: "Route to ROLE_01_ORCHESTRATOR"
     if_phase_entry_blocked:
       severity: "warning"
-      action: "Queue phase, notify user of blocking conditions"
-      
-    if_use_case_unavailable:
-      severity: "error"
-      action: "Attempt capability-based routing via ROLE_01_ORCHESTRATOR"
-      fallback: "Pause workflow, escalate to human"
-      
+      action: "Queue phase, notify user"
     if_handoff_rejected:
       severity: "warning"
       action: "Return to previous phase exit gate"
-      fallback: "Trigger rollback to last checkpoint"
-      
-    if_checkpoint_corrupted:
-      severity: "error"
-      action: "Attempt recovery from previous checkpoint"
-      fallback: "Restart workflow with preserved context"
-      
     if_rollback_fails:
       severity: "critical"
       action: "Pause workflow, escalate to human"
-      
-    if_ai_policy_blocks_workflow:
-      severity: "error"
-      action: "Block WORKFLOW activation or phase entry"
-      message: "WORKFLOW {id} or phase blocked by ai_policy"
-      enforcement: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions"
 
   org:
     if_org_identity_missing:
       severity: "error"
-      action: "Block startup - ORG identity required"
-      
+      action: "Block startup"
     if_org_config_missing:
       severity: "warning"
       action: "Use RAC defaults"
-      
-    if_evidence_vault_missing:
-      severity: "info"
-      action: "Proceed with PACK evidence only"
-      
-    if_calibration_stale:
-      severity: "warning"
-      action: "Use LOGIC_15 defaults, flag for recalibration"
-      
     if_ai_policy_missing:
       severity: "info"
       action: "Use LOGIC_12 ai_policy defaults"
-      note: "System operates with permissive defaults"
 
   client:
     if_client_missing:
       severity: "warning"
       action: "Proceed with ORG context only"
-      
     if_client_has_placeholders:
       severity: "error"
-      action: "Block CLIENT activation, list placeholders"
-      fallback: "Use ORG defaults only"
-      
+      action: "Block CLIENT activation"
     if_brand_incomplete:
       severity: "warning"
-      action: "Use ORG voice defaults for missing fields"
-      
-    if_evidence_contradicts_org:
-      severity: "warning"
-      action: "Use ORG/PACK evidence, log conflict"
-      note: "Per evidence_precedence rules"
-      
+      action: "Use ORG voice defaults"
     if_ai_policy_less_restrictive:
       severity: "warning"
       action: "Enforce ORG ai_policy, log attempted relaxation"
-      note: "Per most_restrictive_wins strategy for ai_policy"
 
-# -----------------------------------------------------------------------------
-# Graceful degradation patterns (severity and recovery)
-# -----------------------------------------------------------------------------
 graceful_degradation_patterns:
-  description: "How the system handles failures gracefully"
-  
   severity_levels:
     info:
       action: "log and continue"
@@ -493,39 +257,25 @@ graceful_degradation_patterns:
       action: "log, alert, attempt recovery or fallback"
     critical:
       action: "log, alert, halt operation, require human intervention"
-      
   patterns:
     retry_with_backoff:
       max_attempts: 3
       initial_delay_ms: 1000
       backoff_multiplier: 2.0
-      
     fallback_to_cached:
-      description: "Use cached response if available"
       max_age_minutes: 60
-      
     degraded_mode:
-      description: "Continue with reduced functionality"
       log_level: "warning"
 
-# -----------------------------------------------------------------------------
-# Version management (SSOT evolution)
-# -----------------------------------------------------------------------------
 version_management:
-  description: >
-    Defines how SSOT changes must be introduced without breaking determinism.
   rules:
-    - "Changes to override_rules require version bump."
-    - "Immutable paths may only grow (never shrink) without major version bump."
-    - "Tool routing override schema must remain backward compatible."
+    - "Changes to override_rules require version bump"
+    - "Immutable paths may only grow without major version bump"
+    - "Tool routing override schema must remain backward compatible"
 
-# -----------------------------------------------------------------------------
-# Common validation checklist
-# -----------------------------------------------------------------------------
 common_validation_checklist:
   must_pass:
-    - "All $ref must resolve."
-    - "No override may modify immutable paths."
-    - "most_restrictive_wins applies only to the specified paths."
-    - "tool_mapping_override must not introduce undefined tool IDs."
-    - "constraints tightening must be validated against governance minimums."
+    - "All $ref must resolve"
+    - "No override may modify immutable paths"
+    - "most_restrictive_wins applies only to specified paths"
+    - "tool_mapping_override must not introduce undefined tool IDs"

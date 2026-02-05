@@ -1,8 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_05_RAG_MECHANICS.yaml
-# ══════════════════════════════════════════════════════════════════════════════
-
-# To be deleted, the entire file is 
 
 meta:
   owner: "AI Opener"
@@ -12,118 +8,68 @@ meta:
   notes: "v2.0 - Complete vector store, embedding, chunking, and retrieval specs"
   tags: [logic, rag, retrieval, embeddings, vector, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# VECTOR STORE CONFIGURATION
-# ══════════════════════════════════════════════════════════════════════════════
-
 vector_store:
-  description: "Vector database configuration and provider bindings"
-  
   providers:
     qdrant:
       type: "managed"
-      features:
-        - "metadata_filtering"
-        - "namespaces"
-        - "hybrid_search"
-        - "multi_tenancy"
+      features: ["metadata_filtering", "namespaces", "hybrid_search", "multi_tenancy"]
       connection: "${QDRANT_CONNECTION}"
       recommended: true
-      
     pinecone:
       type: "managed"
-      features:
-        - "metadata_filtering"
-        - "namespaces"
-        - "hybrid_search"
+      features: ["metadata_filtering", "namespaces", "hybrid_search"]
       connection: "${PINECONE_CONNECTION}"
-      
     chroma:
       type: "self-hosted"
-      features:
-        - "metadata_filtering"
-        - "local_persistence"
+      features: ["metadata_filtering", "local_persistence"]
       connection: "${CHROMA_CONNECTION}"
-      use_case: "Development and testing"
-      
     weaviate:
       type: "managed | self-hosted"
-      features:
-        - "graphql"
-        - "hybrid_search"
-        - "multi_tenancy"
+      features: ["graphql", "hybrid_search", "multi_tenancy"]
       connection: "${WEAVIATE_CONNECTION}"
-      
   selection:
     primary: "weaviate"
     fallback: "pinecone"
-    
   namespace_strategy:
-    description: "How to organize vectors by organization and content type"
     pattern: "{org_id}_{layer}_{file_id}"
-    examples:
-      - "aiopener_PACK_01_EMPLOYER_BRANDING"
-      - "aiopener_CLIENT_acme_corp"
-      - "aiopener_OPS_03_COPYWRITING_PLAYBOOK"
-    isolation: "Namespace per organization ensures multi-tenant separation"
-    
   multi_tenancy:
     enabled: true
     strategy: "namespace-per-organization"
     isolation_level: "strict"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# EMBEDDING MODELS
-# ══════════════════════════════════════════════════════════════════════════════
-
 embedding_models:
-  description: "Embedding model configurations for vector generation"
-  
   models:
     voyage-3:
       provider: "voyageai"
       dimensions: 1024
       max_tokens: 32000
       languages: ["multi"]
-      use_case: "General purpose, high quality"
       recommended: true
-      
     voyage-3-lite:
       provider: "voyageai"
       dimensions: 512
       max_tokens: 32000
       languages: ["multi"]
-      use_case: "Cost-optimized, good quality"
-      
     bge-base-en-v1.5:
       provider: "huggingface"
       dimensions: 768
       max_tokens: 512
       languages: ["en"]
-      use_case: "Open-source, English content"
-      mteb_score: 63.55
-      
     bge-m3:
       provider: "huggingface"
       dimensions: 1024
       max_tokens: 8192
       languages: ["multi"]
-      use_case: "Multilingual, long context"
-      
     text-embedding-3-small:
       provider: "openai"
       dimensions: 1536
       max_tokens: 8191
       languages: ["multi"]
-      use_case: "High quality, API-based"
-      
     text-embedding-3-large:
       provider: "openai"
       dimensions: 3072
       max_tokens: 8191
       languages: ["multi"]
-      use_case: "Highest quality, premium"
-      
   selection:
     default: "voyage-3"
     by_content_type:
@@ -131,71 +77,34 @@ embedding_models:
       long_document: "voyage-3"
       multilingual: "voyage-3"
       cost_sensitive: "bge-base-en-v1.5"
-      
   caching:
     enabled: true
     store: "redis"
     ttl_days: 30
 
-# ══════════════════════════════════════════════════════════════════════════════
-# CHUNKING STRATEGIES
-# ══════════════════════════════════════════════════════════════════════════════
-
 chunking:
-  description: "Content chunking strategies for vector indexing"
-  
   strategies:
     fixed_size:
-      description: "Fixed token count per chunk"
       chunk_size: 512
       overlap: 50
-      overlap_percentage: "~10%"
-      use_case: "General content, consistent retrieval"
-      
     semantic:
-      description: "Split on semantic boundaries"
       method: "sentence_boundary"
       max_chunk_size: 1024
       min_chunk_size: 100
-      use_case: "Preserving context, Q&A retrieval"
-      
     hierarchical:
-      description: "Parent-child chunk relationships"
       levels:
-        document:
-          max_size: 4096
-          indexed: true
-        section:
-          max_size: 1024
-          indexed: true
-        paragraph:
-          max_size: 256
-          indexed: true
-      use_case: "Complex documents, multi-level retrieval"
-      
+        document: { max_size: 4096, indexed: true }
+        section: { max_size: 1024, indexed: true }
+        paragraph: { max_size: 256, indexed: true }
     markdown_aware:
-      description: "Respect markdown structure"
-      split_on:
-        - "## "
-        - "### "
-        - "---"
+      split_on: ["## ", "### ", "---"]
       preserve_headers: true
       include_header_in_chunk: true
-      use_case: "Structured documentation"
-      
     recursive_character:
-      description: "Recursive splitting with overlap"
-      separators:
-        - "\n\n"
-        - "\n"
-        - ". "
-        - " "
+      separators: ["\n\n", "\n", ". ", " "]
       chunk_size: 500
       overlap: 50
-      use_case: "Generic text, fallback strategy"
-      
   default_strategy: "semantic"
-  
   by_content_type:
     pack_evidence: "fixed_size"
     pack_frameworks: "markdown_aware"
@@ -204,174 +113,94 @@ chunking:
     role_definitions: "fixed_size"
     workflow_definitions: "markdown_aware"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# RETRIEVAL PIPELINE (5 STAGES)
-# ══════════════════════════════════════════════════════════════════════════════
-
 retrieval_pipeline:
-  description: "End-to-end retrieval flow from query to context"
-  
   stages:
     1_query_processing:
-      description: "Prepare query for retrieval"
       steps:
         - action: "query_expansion"
           method: "synonym_injection"
           enabled: true
-          
         - action: "query_embedding"
           model: "$ref: #embedding_models.selection.default"
-          
         - action: "intent_classification"
-          categories:
-            - "factual"
-            - "conceptual"
-            - "procedural"
-            - "comparative"
+          categories: ["factual", "conceptual", "procedural", "comparative"]
           threshold: 0.7
-          
         - action: "hyde_generation"
-          description: "Hypothetical Document Embeddings"
           enabled: false
-          use_case: "Complex queries where direct matching fails"
-          
     2_candidate_retrieval:
-      description: "Initial broad retrieval"
       method: "hybrid"
       components:
-        dense:
-          weight: 0.7
-          top_k: 50
-          similarity_metric: "cosine"
-        sparse:
-          weight: 0.3
-          method: "BM25"
-          index: "elasticsearch"
+        dense: { weight: 0.7, top_k: 50, similarity_metric: "cosine" }
+        sparse: { weight: 0.3, method: "BM25", index: "elasticsearch" }
       fusion_method: "reciprocal_rank_fusion"
-      
     3_filtering:
-      description: "Apply metadata filters"
       filters:
         - type: "namespace"
           source: "session.active_packs"
-          
         - type: "freshness"
           max_age_days: 365
           field: "source_date"
-          
         - type: "tier"
           minimum: "tier_3"
           field: "evidence_tier"
-          
         - type: "reliability"
           minimum: "D"
           field: "source_reliability"
-          
         - type: "expiration"
           exclude_expired: true
           field: "valid_until"
-          
     4_reranking:
-      description: "Reorder by relevance using cross-encoder"
       model: "cohere-rerank-v3"
-      models_available:
-        - "cross-encoder/ms-marco-MiniLM-L-6-v2"
-        - "BAAI/bge-reranker-base"
-        - "cohere-rerank-v3"
       top_k: 10
       threshold: 0.5
-      
     5_result_assembly:
-      description: "Prepare final results for context injection"
       steps:
         - action: "deduplication"
           method: "semantic_similarity"
           threshold: 0.95
-          
         - action: "context_assembly"
           max_tokens: 4000
           ordering: "relevance_score_desc"
-          
         - action: "source_attribution"
-          include:
-            - "source"
-            - "tier"
-            - "reliability"
-            - "date"
-            - "valid_until"
-            
+          include: ["source", "tier", "reliability", "date", "valid_until"]
         - action: "confidence_scoring"
           output_field: "retrieval_confidence"
-          
   performance_targets:
     latency_p95_ms: 500
     recall_at_10: 0.85
 
-# ══════════════════════════════════════════════════════════════════════════════
-# CHANGE DETECTION & REINDEXING
-# ══════════════════════════════════════════════════════════════════════════════
-
 change_detection:
-  description: "Detect and handle content changes for index freshness"
-  
   triggers:
     - type: "file_hash"
       algorithm: "SHA-256"
       action: "re-index on change"
-      
     - type: "version_bump"
       action: "re-index on major/minor change"
       ignore_patch: true
-      
     - type: "evidence_expiry"
       check_frequency: "daily"
       action: "flag expired, remove from retrieval"
-      
     - type: "scheduled"
       frequency: "weekly"
       action: "full revalidation"
-      
   reindex_behavior:
     incremental: true
     preserve_history: true
     version_store: "git"
-    
   index_metadata:
-    track_fields:
-      - "indexed_at"
-      - "source_hash"
-      - "source_version"
-      - "chunk_count"
-      
+    track_fields: ["indexed_at", "source_hash", "source_version", "chunk_count"]
   stale_detection:
     max_age_days: 90
     action: "flag_for_review"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# LIBRARIES RETRIEVAL MECHANICS (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-# Referenced by: LOGIC_02_RETRIEVAL#libraries_mechanics
-# Enforcement: Scope-filter-before-ranking (hard constraint)
-
 libraries_retrieval:
-  description: "Scoping and retrieval rules for tenant-specific LIBRARIES corpora"
   reference: "$ref: LOGIC_02_RETRIEVAL#libraries_mechanics"
-  
   namespace_strategy:
-    description: "How LIBRARIES are organized in vector store namespaces"
     patterns:
       org_scoped: "{org_id}_LIBRARY_{library_id}"
       client_scoped: "{org_id}_{client_id}_LIBRARY_{library_id}"
-    examples:
-      - "aiopener_LIBRARY_rfp_examples"
-      - "aiopener_acme_LIBRARY_brand_assets"
-    isolation: "Namespace per library ensures tenant separation"
-  
   mandatory_metadata_filtering:
-    description: "Filters applied BEFORE ranking/reranking (hard constraint)"
     principle: "scope-filter-before-ranking"
-    rationale: "First filter candidate corpora by tenant scope, THEN run retrieval/ranking only inside that scoped set"
-    
     filter_sequence:
       1_org_filter:
         field: "org_id"
@@ -379,42 +208,31 @@ libraries_retrieval:
         value: "runtime.org_id"
         required: true
         on_mismatch: "exclude from candidate set"
-        
       2_client_filter:
         field: "client_id"
         operator: "equals"
         value: "runtime.client_id"
         required_when: "library metadata contains client_id"
         on_mismatch: "exclude from candidate set"
-        
       3_allowlist_filter:
         field: "library_id"
         operator: "in"
         value: "effective_allowlist"
         required: true
         on_mismatch: "exclude from candidate set"
-        
     enforcement:
       mode: "strict"
       violation_action: "block retrieval, do not return results"
       trace_event: "library_scope_violation"
       policy_capture: "$ref: LOGIC_16_POLICY_CAPTURE#enforcement_actions.library_scope_violation"
-      
   cross_scope_prevention:
-    description: "Hard constraints preventing cross-tenant data leakage"
-    
     cross_org_retrieval:
       allowed: false
       enforcement: "Block at metadata filter stage"
-      on_attempt: "Log policy violation, return empty result set"
-      
     cross_client_retrieval:
       allowed: "Only for org-scoped libraries (no client_id)"
       enforcement: "Block client-specific libraries when client_id mismatch"
-      on_attempt: "Log policy violation, return empty result set"
-      
   retrieval_pipeline_integration:
-    description: "How LIBRARIES integrates with standard retrieval pipeline"
     stage_overrides:
       3_filtering:
         prepend_filters:
@@ -425,4 +243,3 @@ libraries_retrieval:
             conditional: true
           - type: "allowlist"
             source: "effective_allowlist"
-        note: "These filters run BEFORE standard filters defined in retrieval_pipeline.stages.3_filtering"

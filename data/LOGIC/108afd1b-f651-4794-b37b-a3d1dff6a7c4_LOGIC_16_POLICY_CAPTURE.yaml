@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_16_POLICY_CAPTURE.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,517 +8,165 @@ meta:
   notes: "v2.0 - Policy capture, storage, and retrieval integration"
   tags: [logic, policy, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# ENFORCEMENT ACTIONS (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 enforcement_actions:
-  description: "How policy violations are handled at runtime"
-  
   block:
-    description: "Prevent action from proceeding"
-    applies_to:
-      - "prohibited_use_cases"
-      - "blocked_topics"
+    applies_to: ["prohibited_use_cases", "blocked_topics"]
     behavior: "Return error, do not execute"
-    
   redact:
-    description: "Remove or mask sensitive content"
-    applies_to:
-      - "confidential_information"
-      - "pii_when_not_allowed"
+    applies_to: ["confidential_information", "pii_when_not_allowed"]
     behavior: "Strip content, continue with sanitized output"
-    
   require_hitl:
-    description: "Escalate to human approval"
-    applies_to:
-      - "approval_required_for items"
-      - "external_communication"
-      - "sensitive_topics"
+    applies_to: ["approval_required_for items", "external_communication", "sensitive_topics"]
     behavior: "Pause, trigger HITL per LOGIC_09_INTERFACE#hitl_triggers"
-
   library_scope_violation:
-    description: "Block cross-scope library access attempts"
-    applies_to:
-      - "Cross-org retrieval attempts"
-      - "Cross-client retrieval when client scope applies"
-      - "Non-allowlisted library access attempts"
-      - "Ineligible library access attempts"
+    applies_to: ["Cross-org retrieval attempts", "Cross-client retrieval when client scope applies", "Non-allowlisted library access attempts", "Ineligible library access attempts"]
     behavior: "Block retrieval, return empty result set, capture policy event"
     trace_event_type: "library_scope_violation"
-    trace_fields:
-      - "attempted_library_id"
-      - "runtime_org_id"
-      - "runtime_client_id"
-      - "violation_type"
-      - "timestamp"
+    trace_fields: ["attempted_library_id", "runtime_org_id", "runtime_client_id", "violation_type", "timestamp"]
     reference: "$ref: LOGIC_05_RAG_MECHANICS#libraries_retrieval.mandatory_metadata_filtering.enforcement"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# POLICY EVALUATION (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 policy_evaluation:
-  description: "How policies are resolved and applied"
-  
   precedence:
     order: ["LOGIC_12_GOVERNANCE.minimums", "ORG.ai_policy", "CLIENT.ai_policy"]
     rule: "CLIENT > ORG > LOGIC minimums (most restrictive wins)"
     note: "LOGIC_12_GOVERNANCE.minimums are immutable safety floors"
-    
   scope:
     - "USE_CASES: checked at activation"
     - "WORKFLOWS: checked at activation and phase entry"
     - "LIBRARIES: checked at retrieval time (scope + allowlist validation)"
     - "Content generation: checked before output"
     - "Data handling: checked before processing"
-    
   merge_behavior:
     strategy: "$ref: LOGIC_02_RETRIEVAL#override_rules.strategies.most_restrictive_wins"
     arrays: "Union (CLIENT adds to ORG restrictions)"
     booleans: "Most restrictive value wins"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# POLICY CAPTURE OVERVIEW
-# ══════════════════════════════════════════════════════════════════════════════
-
 policy_capture_overview:
-  description: "How feedback becomes reusable policy"
-  
   flow:
     1_feedback_event:
-      description: "User provides feedback or makes decision"
-      sources:
-        - "HITL approvals/rejections"
-        - "Review comments"
-        - "Explicit policy statements"
-        - "Quality gate failures with correction"
-        - "Preference expressions"
-        
+      sources: ["HITL approvals/rejections", "Review comments", "Explicit policy statements", "Quality gate failures with correction", "Preference expressions"]
     2_pattern_detection:
-      description: "Identify if feedback is policy-worthy"
-      criteria:
-        - "Repeated pattern (3+ occurrences)"
-        - "Explicit policy statement"
-        - "Critical correction"
-        - "Stakeholder directive"
-        
+      criteria: ["Repeated pattern (3+ occurrences)", "Explicit policy statement", "Critical correction", "Stakeholder directive"]
     3_policy_extraction:
-      description: "Extract structured policy from feedback"
       output: "$ref: #policy_schema"
-      
     4_policy_validation:
-      description: "Validate and approve policy"
       requires: "human_confirmation"
-      
     5_policy_storage:
-      description: "Store policy in appropriate location"
       locations: "$ref: #policy_storage"
-      
     6_retrieval_integration:
-      description: "Make policy available for retrieval"
       mechanism: "$ref: #retrieval_integration"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# FEEDBACK SOURCES
-# ══════════════════════════════════════════════════════════════════════════════
-
 feedback_sources:
-  description: "Where policy-relevant feedback originates"
-  
   sources:
     hitl_decisions:
-      description: "Human decisions during HITL checkpoints"
-      policy_signals:
-        - "Approval with modification"
-        - "Rejection with reason"
-        - "Escalation decisions"
-        - "Override of AI recommendation"
-      capture_fields:
-        - "decision"
-        - "reason"
-        - "modification_made"
-        - "context"
-        
+      policy_signals: ["Approval with modification", "Rejection with reason", "Escalation decisions", "Override of AI recommendation"]
+      capture_fields: ["decision", "reason", "modification_made", "context"]
     review_feedback:
-      description: "Feedback during content review"
-      policy_signals:
-        - "Consistent style corrections"
-        - "Repeated content changes"
-        - "Terminology preferences"
-        - "Format preferences"
-      capture_fields:
-        - "original_content"
-        - "corrected_content"
-        - "feedback_comment"
-        - "category"
-        
+      policy_signals: ["Consistent style corrections", "Repeated content changes", "Terminology preferences", "Format preferences"]
+      capture_fields: ["original_content", "corrected_content", "feedback_comment", "category"]
     explicit_policies:
-      description: "Direct policy statements from users"
-      triggers:
-        - "Always..."
-        - "Never..."
-        - "We prefer..."
-        - "Our policy is..."
-        - "Don't mention..."
-      capture_fields:
-        - "statement"
-        - "context"
-        - "source_user"
-        - "timestamp"
-        
+      triggers: ["Always...", "Never...", "We prefer...", "Our policy is...", "Don't mention..."]
+      capture_fields: ["statement", "context", "source_user", "timestamp"]
     quality_corrections:
-      description: "Corrections after quality gate failures"
-      policy_signals:
-        - "Repeated gate failures"
-        - "Systematic corrections"
-        - "Evidence updates"
-      capture_fields:
-        - "gate_failed"
-        - "correction_made"
-        - "root_cause"
-
+      policy_signals: ["Repeated gate failures", "Systematic corrections", "Evidence updates"]
+      capture_fields: ["gate_failed", "correction_made", "root_cause"]
     library_scope_events:
-      description: "Policy events from LIBRARIES layer violations"
-      policy_signals:
-        - "Attempted cross-org access"
-        - "Attempted cross-client access"
-        - "Non-allowlisted library access"
-        - "Eligibility gate failures"
-      capture_fields:
-        - "violation_type"
-        - "attempted_library_id"
-        - "runtime_scope"
-        - "timestamp"
-        - "use_case_context"
-        
+      policy_signals: ["Attempted cross-org access", "Attempted cross-client access", "Non-allowlisted library access", "Eligibility gate failures"]
+      capture_fields: ["violation_type", "attempted_library_id", "runtime_scope", "timestamp", "use_case_context"]
     preference_expressions:
-      description: "Implicit preferences from interactions"
-      policy_signals:
-        - "Consistent selections"
-        - "Rejected alternatives"
-        - "Positive reactions"
-      capture_fields:
-        - "preference_type"
-        - "preferred_option"
-        - "rejected_options"
-        - "frequency"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# POLICY SCHEMA
-# ══════════════════════════════════════════════════════════════════════════════
+      policy_signals: ["Consistent selections", "Rejected alternatives", "Positive reactions"]
+      capture_fields: ["preference_type", "preferred_option", "rejected_options", "frequency"]
 
 policy_schema:
-  description: "Structure for captured policies"
-  
   required_fields:
-    id:
-      type: "string"
-      pattern: "pol_{scope}_{category}_{nnn}"
-      description: "Unique policy identifier"
-      examples:
-        - "pol_client_style_001"
-        - "pol_org_content_003"
-        
-    type:
-      type: "enum"
-      values:
-        - "directive"
-        - "preference"
-        - "constraint"
-        - "guidance"
-      descriptions:
-        directive: "Must follow (hard rule)"
-        preference: "Should follow unless conflict"
-        constraint: "Boundary not to cross"
-        guidance: "Suggested approach"
-        
-    scope:
-      type: "enum"
-      values: ["org", "client", "project", "user"]
-      description: "Where policy applies"
-      
-    category:
-      type: "string"
-      description: "Policy domain"
-      examples:
-        - "style"
-        - "content"
-        - "terminology"
-        - "format"
-        - "process"
-        - "competitor"
-        - "compliance"
-        
-    statement:
-      type: "string"
-      max_length: 500
-      description: "Clear policy statement"
-      examples:
-        - "Never mention competitor X by name"
-        - "Always include disclaimer Y in external content"
-        - "Use 'we' not 'I' in company communications"
-        
-    rationale:
-      type: "string"
-      description: "Why this policy exists"
-      
+    id: { type: "string", pattern: "pol_{scope}_{category}_{nnn}" }
+    type: { type: "enum", values: ["directive", "preference", "constraint", "guidance"], descriptions: { directive: "Must follow (hard rule)", preference: "Should follow unless conflict", constraint: "Boundary not to cross", guidance: "Suggested approach" } }
+    scope: { type: "enum", values: ["org", "client", "project", "user"] }
+    category: { type: "string", examples: ["style", "content", "terminology", "format", "process", "competitor", "compliance"] }
+    statement: { type: "string", max_length: 500 }
+    rationale: { type: "string" }
   optional_fields:
-    source_feedback:
-      type: "array"
-      description: "Feedback events that led to policy"
-      
-    effective_date:
-      type: "date"
-      format: "YYYY-MM-DD"
-      
-    expiry_date:
-      type: "date"
-      format: "YYYY-MM-DD"
-      
-    approved_by:
-      type: "string"
-      description: "Who approved the policy"
-      
-    tags:
-      type: "array"
-      items: "string"
-      validation: "$ref: LOGIC_03_TAXONOMY#valid_tags"
-      
-    supersedes:
-      type: "string"
-      description: "ID of policy this replaces"
-      
-    exceptions:
-      type: "array"
-      description: "When policy doesn't apply"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PATTERN DETECTION
-# ══════════════════════════════════════════════════════════════════════════════
+    source_feedback: { type: "array" }
+    effective_date: { type: "date", format: "YYYY-MM-DD" }
+    expiry_date: { type: "date", format: "YYYY-MM-DD" }
+    approved_by: { type: "string" }
+    tags: { type: "array", items: "string", validation: "$ref: LOGIC_03_TAXONOMY#valid_tags" }
+    supersedes: { type: "string" }
+    exceptions: { type: "array" }
 
 pattern_detection:
-  description: "How to detect policy-worthy patterns"
-  
   detection_rules:
     frequency_threshold:
-      description: "Minimum occurrences to suggest policy"
-      thresholds:
-        style_correction: 3
-        content_change: 3
-        rejection_pattern: 2
-        explicit_statement: 1
-        
-    recency_window:
-      description: "Time window for counting occurrences"
-      default_days: 30
-      
-    similarity_threshold:
-      description: "How similar feedback must be to count as pattern"
-      method: "semantic_similarity"
-      threshold: 0.8
-      
+      thresholds: { style_correction: 3, content_change: 3, rejection_pattern: 2, explicit_statement: 1 }
+    recency_window: { default_days: 30 }
+    similarity_threshold: { method: "semantic_similarity", threshold: 0.8 }
   detection_triggers:
     immediate:
-      description: "Capture immediately"
-      conditions:
-        - "Explicit policy statement"
-        - "Critical compliance issue"
-        - "Direct directive from approver"
-        
+      conditions: ["Explicit policy statement", "Critical compliance issue", "Direct directive from approver"]
     accumulated:
-      description: "Capture after pattern detected"
-      conditions:
-        - "Frequency threshold met"
-        - "Consistent pattern across time"
-        
+      conditions: ["Frequency threshold met", "Consistent pattern across time"]
   notification:
     on_pattern_detected:
       message: "Policy pattern detected: {summary}"
       action: "Request confirmation"
       recipient: "Primary contact"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# POLICY STORAGE
-# ══════════════════════════════════════════════════════════════════════════════
-
 policy_storage:
-  description: "Where policies are stored"
-  
   storage_locations:
-    org_policies:
-      path: "ORG.policies"
-      scope: "org"
-      description: "Agency-wide policies"
-      
-    client_policies:
-      path: "CLIENT.policies"
-      scope: "client"
-      description: "Client-specific policies"
-      
-    project_policies:
-      path: "CLIENT.projects.{project_id}.policies"
-      scope: "project"
-      description: "Project-specific policies"
-      
+    org_policies: { path: "ORG.policies", scope: "org" }
+    client_policies: { path: "CLIENT.policies", scope: "client" }
+    project_policies: { path: "CLIENT.projects.{project_id}.policies", scope: "project" }
   storage_format:
     structure: "Array of policy objects"
     schema: "$ref: #policy_schema"
-    
   indexing:
     for_retrieval:
-      index_fields:
-        - "category"
-        - "type"
-        - "tags"
+      index_fields: ["category", "type", "tags"]
       vector_embedding: true
       namespace_pattern: "{scope}_policies"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# RETRIEVAL INTEGRATION
-# ══════════════════════════════════════════════════════════════════════════════
-
 retrieval_integration:
-  description: "How policies integrate with RAG retrieval"
   reference: "$ref: LOGIC_05_RAG_MECHANICS#retrieval_pipeline"
-  
   injection_points:
-    context_assembly:
-      description: "Policies injected during context assembly"
-      stage: "5_result_assembly"
-      priority: "high"
-      
-    query_expansion:
-      description: "Policy-relevant terms added to queries"
-      stage: "1_query_processing"
-      method: "Add policy categories to query"
-      
+    context_assembly: { stage: "5_result_assembly", priority: "high" }
+    query_expansion: { stage: "1_query_processing", method: "Add policy categories to query" }
   always_retrieve:
-    description: "Policies always included for matching scope"
-    conditions:
-      - "CLIENT context active --> include client policies"
-      - "ORG context active --> include org policies"
-      - "Project active --> include project policies"
-      
-  retrieval_boost:
-    description: "Boost policy relevance in retrieval"
-    boost_factor: 1.5
-    rationale: "Policies should surface prominently"
-    
-  freshness:
-    description: "Policy freshness handling"
-    max_age: "none (policies don't expire by age)"
-    expiry_check: "Check expiry_date field"
-    
+    conditions: ["CLIENT context active --> include client policies", "ORG context active --> include org policies", "Project active --> include project policies"]
+  retrieval_boost: { boost_factor: 1.5 }
+  freshness: { max_age: "none (policies don't expire by age)", expiry_check: "Check expiry_date field" }
   conflict_resolution:
-    description: "When policies conflict"
     priority_order:
       1: "directive over preference over guidance"
       2: "More specific scope over broader"
       3: "More recent over older"
     on_conflict: "Use highest priority, log conflict"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# POLICY LIFECYCLE
-# ══════════════════════════════════════════════════════════════════════════════
-
 policy_lifecycle:
-  description: "Policy management over time"
-  
   states:
-    draft:
-      description: "Newly captured, awaiting confirmation"
-      actions: ["confirm", "edit", "discard"]
-      
-    active:
-      description: "Confirmed and in effect"
-      actions: ["edit", "suspend", "expire", "supersede"]
-      
-    suspended:
-      description: "Temporarily inactive"
-      actions: ["reactivate", "expire"]
-      
-    expired:
-      description: "No longer in effect"
-      actions: ["reactivate"]
-      
+    draft: { actions: ["confirm", "edit", "discard"] }
+    active: { actions: ["edit", "suspend", "expire", "supersede"] }
+    suspended: { actions: ["reactivate", "expire"] }
+    expired: { actions: ["reactivate"] }
   transitions:
-    draft_to_active:
-      requires: "human_confirmation"
-      
-    active_to_suspended:
-      requires: "human_action"
-      
-    active_to_expired:
-      trigger: "expiry_date reached OR manual expiry"
-      
-    superseded:
-      trigger: "New policy with supersedes reference"
-      
-  review:
-    frequency: "quarterly"
-    notification: "Policy review due for {client}"
-    action: "Review and confirm/update/expire policies"
-    
+    draft_to_active: { requires: "human_confirmation" }
+    active_to_suspended: { requires: "human_action" }
+    active_to_expired: { trigger: "expiry_date reached OR manual expiry" }
+    superseded: { trigger: "New policy with supersedes reference" }
+  review: { frequency: "quarterly", notification: "Policy review due for {client}", action: "Review and confirm/update/expire policies" }
   audit:
-    track:
-      - "creation"
-      - "modifications"
-      - "state_changes"
-      - "applications"
+    track: ["creation", "modifications", "state_changes", "applications"]
     retention: "$ref: LOGIC_11_TRACE#retention"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# POLICY APPLICATION
-# ══════════════════════════════════════════════════════════════════════════════
-
 policy_application:
-  description: "How policies are applied during operations"
-  
   application_points:
-    content_generation:
-      description: "Apply during content creation"
-      policies_checked:
-        - "style"
-        - "terminology"
-        - "content constraints"
-        
-    quality_gates:
-      description: "Apply during quality checks"
-      policies_checked:
-        - "compliance"
-        - "format"
-        - "required elements"
-        
-    review:
-      description: "Apply during review phase"
-      policies_checked:
-        - "all applicable policies"
-        
+    content_generation: { policies_checked: ["style", "terminology", "content constraints"] }
+    quality_gates: { policies_checked: ["compliance", "format", "required elements"] }
+    review: { policies_checked: ["all applicable policies"] }
   enforcement:
-    directive:
-      enforcement: "block if violated"
-      
-    preference:
-      enforcement: "warn if violated"
-      
-    constraint:
-      enforcement: "block if violated"
-      
-    guidance:
-      enforcement: "log if not followed"
-      
+    directive: { enforcement: "block if violated" }
+    preference: { enforcement: "warn if violated" }
+    constraint: { enforcement: "block if violated" }
+    guidance: { enforcement: "log if not followed" }
   logging:
-    on_application:
-      log_event: "policy_applied"
-      fields:
-        - "policy_id"
-        - "context"
-        - "outcome"
-        
-    on_violation:
-      log_event: "policy_violation"
-      fields:
-        - "policy_id"
-        - "violation_details"
-        - "action_taken"
+    on_application: { log_event: "policy_applied", fields: ["policy_id", "context", "outcome"] }
+    on_violation: { log_event: "policy_violation", fields: ["policy_id", "violation_details", "action_taken"] }

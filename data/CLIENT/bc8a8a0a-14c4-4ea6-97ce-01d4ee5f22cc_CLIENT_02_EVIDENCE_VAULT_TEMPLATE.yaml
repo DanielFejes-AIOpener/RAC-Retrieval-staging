@@ -1,0 +1,186 @@
+# CLIENT_02_EVIDENCE_VAULT_TEMPLATE.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Template for client-specific evidence vaults aligned with LOGIC_08 quality gates"
+  notes: "TEMPLATE - Instantiate per client for approved claims and supporting evidence"
+  tags: [client, evidence, claims, quality, template]
+
+extends: "CLIENT_00_TEMPLATE"
+requires:
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: OPS_17_EXPERTS"
+
+template_usage:
+  description: "Client evidence vaults store approved claims and their supporting evidence"
+  instantiation: "Create CLIENT_{client_id}_02_EVIDENCE_VAULT.yaml per client"
+  maintenance: "Update when new evidence is approved or existing evidence expires"
+
+evidence_vault_schema:
+  client_id: "[PLACEHOLDER: client_id]"
+  client_name: "[PLACEHOLDER: Client Display Name]"
+  vault_version: "1.0"
+  last_audit: "[PLACEHOLDER: YYYY-MM-DD]"
+  next_audit_due: "[PLACEHOLDER: YYYY-MM-DD - typically 12 months from last_audit]"
+
+evidence_governance:
+  tier_definitions: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+  source_reliability: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+  client_minimum_tier:
+    # [PLACEHOLDER: Client's minimum evidence tier requirement]
+    default: "tier_2"
+    external_communications: "[tier_1 | tier_2]"
+    internal_communications: "[tier_2 | tier_3]"
+    rationale: "[Why this tier requirement]"
+  client_minimum_reliability:
+    # [PLACEHOLDER: Client's minimum source reliability requirement]
+    default: "B"
+    high_stakes_claims: "[A | B]"
+    rationale: "[Why this reliability requirement]"
+  freshness_policy:
+    # [PLACEHOLDER: How recent evidence must be]
+    market_data_max_age_months: 12
+    industry_trends_max_age_months: 24
+    foundational_research_max_age_months: 60
+    exception_handling: "Clearly label as historical if using older data"
+
+approved_claims:
+  # [PLACEHOLDER: Client-approved claims with supporting evidence]
+  # Structure per claim:
+  claim_template:
+    claim_id: "clm-{client_id}-{category}-{nnn}"
+    claim_text: "[The exact claim that can be made]"
+    claim_type: "[quantitative | qualitative | comparative | testimonial]"
+    evidence_items:
+      - evidence_id: "ev-{source}-{topic}-{nnn}"
+        source: "[Source name]"
+        source_type: "[research_org | academic | industry_body | client_data | third_party]"
+        tier: "[tier_1 | tier_2 | tier_3]"
+        reliability: "[A | B | C | D]"
+        publication_date: "[YYYY-MM-DD]"
+        accessed_date: "[YYYY-MM-DD]"
+        url: "[source URL if available]"
+        page_or_section: "[Specific location in source]"
+        quote_or_summary: "[Relevant quote or summary]"
+        confidence_score: "[0.0-1.0]"
+    usage_restrictions:
+      channels: "[all | specific channels]"
+      markets: "[all | specific markets]"
+      expiry_date: "[YYYY-MM-DD or null]"
+      requires_approval: "[boolean]"
+      disclaimer_required: "[text of required disclaimer if any]"
+    approval_record:
+      approved_by: "[Approver name]"
+      approved_date: "[YYYY-MM-DD]"
+      approval_notes: "[Any conditions or notes]"
+
+  # Example claims structure (replace with actual client claims):
+  examples:
+    - claim_id: "clm-{client_id}-perf-001"
+      claim_text: "[Client] customers see an average of [X]% improvement in [metric]"
+      claim_type: "quantitative"
+      evidence_items:
+        - evidence_id: "ev-client-research-001"
+          source: "Client Customer Survey 2024"
+          source_type: "client_data"
+          tier: "tier_2"
+          reliability: "B"
+          publication_date: "2024-06-15"
+          accessed_date: "2024-07-01"
+          page_or_section: "Executive Summary, p.3"
+          quote_or_summary: "Survey of 500 customers showed average improvement of X% (n=500, 95% CI)"
+          confidence_score: 0.85
+      usage_restrictions:
+        channels: "all"
+        markets: "all"
+        expiry_date: "2025-06-15"
+        disclaimer_required: "Based on customer self-reported data"
+      approval_record:
+        approved_by: "Marketing Director"
+        approved_date: "2024-07-15"
+        approval_notes: "Approved for external use with disclaimer"
+
+case_studies:
+  # [PLACEHOLDER: Approved case studies with evidence]
+  case_study_template:
+    case_id: "cs-{client_id}-{nnn}"
+    title: "[Case study title]"
+    customer_name: "[Customer name or 'confidential']"
+    industry: "[Customer industry]"
+    use_case: "[What problem was solved]"
+    results:
+      - { metric: "[Metric name]", value: "[Value achieved]", evidence_id: "[Link to evidence_item]" }
+    narrative_approved: true
+    full_text_location: "[URL or file path to full case study]"
+    usage_restrictions:
+      customer_approval: "[approved | pending | restricted]"
+      anonymization_required: "[boolean]"
+      channels: "[all | specific channels]"
+
+testimonials:
+  # [PLACEHOLDER: Approved customer testimonials]
+  testimonial_template:
+    testimonial_id: "tm-{client_id}-{nnn}"
+    quote: "[Exact testimonial quote]"
+    attribution:
+      name: "[Person's name or 'Customer']"
+      title: "[Title]"
+      company: "[Company or 'confidential']"
+    approval:
+      customer_approved: true
+      approval_date: "[YYYY-MM-DD]"
+      usage_scope: "[All marketing | Specific campaign | Website only]"
+    verification:
+      verified_date: "[YYYY-MM-DD]"
+      verified_by: "[Who verified the testimonial]"
+
+awards_recognition:
+  # [PLACEHOLDER: Industry awards and recognition]
+  award_template:
+    award_id: "aw-{client_id}-{nnn}"
+    award_name: "[Award name]"
+    awarding_body: "[Organization that gave award]"
+    year: "[YYYY]"
+    category: "[Award category]"
+    verification_url: "[URL to verify award]"
+    usage_notes: "[Any restrictions on how to cite]"
+
+certifications:
+  # [PLACEHOLDER: Current certifications]
+  certification_template:
+    cert_id: "cert-{client_id}-{nnn}"
+    certification_name: "[Certification name]"
+    issuing_body: "[Organization that issued certification]"
+    issue_date: "[YYYY-MM-DD]"
+    expiry_date: "[YYYY-MM-DD]"
+    scope: "[What the certification covers]"
+    verification_url: "[URL to verify]"
+
+evidence_audit_log:
+  purpose: "Track evidence updates and audits"
+  log_entries:
+    # [PLACEHOLDER: Audit log entries]
+    - date: "[YYYY-MM-DD]"
+      action: "[added | updated | expired | removed | audited]"
+      item_id: "[Evidence/claim ID affected]"
+      performed_by: "[Who performed action]"
+      notes: "[Additional context]"
+
+validation:
+  on_instantiation:
+    - { check: "All [PLACEHOLDER] values replaced", severity: "error" }
+    - { check: "client_id matches file naming pattern", severity: "error" }
+    - { check: "client_minimum_tier is valid per LOGIC_08", severity: "error" }
+    - { check: "client_minimum_reliability is valid per LOGIC_08", severity: "error" }
+  per_claim:
+    - { check: "claim_id follows pattern clm-{client_id}-{category}-{nnn}", severity: "error" }
+    - { check: "At least one evidence_item per claim", severity: "error" }
+    - { check: "evidence_item tier >= client_minimum_tier", severity: "error" }
+    - { check: "evidence_item reliability >= client_minimum_reliability", severity: "error" }
+    - { check: "publication_date within freshness_policy", severity: "warning" }
+  ongoing:
+    - { check: "last_audit within 12 months", severity: "warning" }
+    - { check: "No expired evidence used without flag", severity: "error" }
+    - { check: "All certifications current", severity: "warning" }

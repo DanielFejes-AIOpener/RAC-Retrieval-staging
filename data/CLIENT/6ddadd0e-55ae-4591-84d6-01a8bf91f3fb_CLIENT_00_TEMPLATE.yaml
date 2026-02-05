@@ -1,0 +1,132 @@
+# CLIENT_00_TEMPLATE.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Base CLIENT template showing required structure for client-specific configurations"
+  notes: "This is a TEMPLATE file - instantiate per client using this structure"
+  tags: [client, template, governance, context]
+
+extends: "OPS_00_STANDARDS"
+requires:
+  - "$ref: LOGIC_00_GOVERNANCE"
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: LOGIC_09_INTERFACE"
+  - "$ref: OPS_00_STANDARDS"
+
+client_template_purpose:
+  description: "The CLIENT layer contains client-specific knowledge and preferences that tailor outputs"
+  layer_characteristics:
+    mutable: true
+    scope: "Single client context"
+    precedence: 3
+    inheritance: "Extends and customizes OPS and LOGIC defaults"
+  what_belongs_here: ["Client brand voice and terminology", "Client-approved evidence vaults", "Client-specific compliance requirements", "Client personas and segments", "Client product/service inventories", "Client preference overrides"]
+  what_does_not_belong: ["Universal logic or governance (→ LOGIC)", "Cross-client processes (→ OPS)", "Agency-level standards (→ ORG)", "Execution workflows (→ WORKFLOWS)"]
+
+client_file_schema:
+  required_elements:
+    meta:
+      required: true
+      fields:
+        - { field: "client_id", type: "string", description: "Unique client identifier", format: "lowercase_underscore" }
+        - { field: "client_name", type: "string", description: "Display name for the client" }
+        - { field: "version", type: "string", format: "semver" }
+        - { field: "last_updated", type: "date", format: "YYYY-MM-DD" }
+        - { field: "contract_start", type: "date", format: "YYYY-MM-DD", required: false }
+        - { field: "contract_end", type: "date", format: "YYYY-MM-DD", required: false }
+        - { field: "owner", type: "string", description: "Primary account owner at agency" }
+        - { field: "stakeholders", type: "array", items: "string", required: false }
+    extends:
+      required: true
+      value: "CLIENT_00_TEMPLATE"
+      description: "All client files must extend this template"
+    governance_refs:
+      required: true
+      description: "References to LOGIC and OPS foundations"
+      minimum_refs:
+        - "$ref: LOGIC_00_GOVERNANCE"
+        - "$ref: OPS_00_STANDARDS"
+
+  optional_elements:
+    brand_voice: { description: "Client-specific brand voice profile", reference: "$ref: OPS_02_BRAND_VOICE#voice_schema", required_for: ["content_creation", "copywriting"] }
+    evidence_vault: { description: "Client-approved evidence items", reference: "$ref: CLIENT_02_EVIDENCE_VAULT_TEMPLATE", required_for: ["claims", "case_studies"] }
+    terminology: { description: "Client-specific term preferences", reference: "$ref: OPS_01_MASTER_GLOSSARY#terminology_schema" }
+    compliance_extensions: { description: "Additional compliance requirements beyond OPS", example: "Client-specific legal review requirements" }
+    personas: { description: "Client-defined target personas", reference: "$ref: OPS_04_PERSONA_DEFINITIONS#persona_schema" }
+    products_services: { description: "Client product/service inventory", reference: "$ref: CLIENT_03_PRODUCTS_SERVICES_TEMPLATE" }
+    preference_overrides: { description: "Client-specific preference overrides", reference: "#override_schema" }
+
+override_schema:
+  description: "How clients can override OPS defaults"
+  constraints: ["Cannot override LOGIC layer (governance)", "Cannot weaken compliance requirements", "Can strengthen requirements", "Can customize within allowable ranges"]
+  override_types:
+    tone_formality:
+      reference: "$ref: OPS_02_BRAND_VOICE#formality_scale"
+      default_source: "OPS_02"
+      client_can: "Select different default within defined scale"
+    evidence_tier_minimum:
+      reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+      default: "tier_2"
+      client_can: "Raise minimum tier (e.g., tier_1 only), cannot lower"
+    source_reliability_minimum:
+      reference: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+      default: "C"
+      client_can: "Raise minimum (A or B only), cannot lower"
+    review_requirements:
+      reference: "$ref: OPS_15_REVIEW_CHECKLISTS#four_eyes_signoff"
+      default: "As defined in OPS_15"
+      client_can: "Add additional review steps, cannot remove"
+    localization_defaults:
+      reference: "$ref: OPS_16_LOCALIZATION#language_variants"
+      default: "As defined in OPS_16"
+      client_can: "Specify preferred language/region variants"
+  override_documentation:
+    required_fields: ["override_type", "original_value", "client_value", "rationale", "approved_by", "effective_date"]
+    example:
+      override_type: "evidence_tier_minimum"
+      original_value: "tier_2"
+      client_value: "tier_1"
+      rationale: "Client requires only primary research for external claims due to regulatory environment"
+      approved_by: "Account Director"
+      effective_date: "2025-01-01"
+
+instantiation_guide:
+  step_1_copy_templates:
+    description: "Copy the relevant template files to create client-specific versions"
+    files_to_copy:
+      - { from: "CLIENT_00_TEMPLATE.yaml", to: "CLIENT_{client_id}_00_PROFILE.yaml" }
+      - { from: "CLIENT_01_BRAND_VOICE_TEMPLATE.yaml", to: "CLIENT_{client_id}_01_BRAND_VOICE.yaml", if: "client_produces_content" }
+      - { from: "CLIENT_02_EVIDENCE_VAULT_TEMPLATE.yaml", to: "CLIENT_{client_id}_02_EVIDENCE_VAULT.yaml", if: "client_makes_claims" }
+      - { from: "CLIENT_03_PRODUCTS_SERVICES_TEMPLATE.yaml", to: "CLIENT_{client_id}_03_PRODUCTS.yaml", if: "client_has_product_inventory" }
+      - { from: "CLIENT_04_PERSONAS_TEMPLATE.yaml", to: "CLIENT_{client_id}_04_PERSONAS.yaml", if: "client_has_defined_personas" }
+  step_2_update_meta:
+    description: "Update meta block with client-specific information"
+    required_changes: ["client_id", "client_name", "version", "last_updated", "owner"]
+  step_3_populate_content:
+    description: "Populate content sections based on client onboarding"
+    sources: ["Brand guidelines document", "Previous work samples", "Client interviews", "Competitive analysis"]
+  step_4_validate:
+    description: "Validate client configuration against this template"
+    validation_checks: ["All required fields present", "References resolve correctly", "Overrides are within allowable ranges", "No governance violations"]
+  step_5_register:
+    description: "Register client in ORG context configuration"
+    action: "Add client entry to ORG_00_CONTEXT.yaml active_clients section"
+
+client_lifecycle:
+  onboarding:
+    triggers: ["New client contract signed", "Client re-engagement after hiatus"]
+    actions: ["Instantiate templates", "Conduct brand voice discovery", "Populate evidence vault with approved sources", "Configure preference overrides"]
+  maintenance:
+    triggers: ["Brand refresh", "New product launch", "Strategy pivot", "Annual review"]
+    actions: ["Update relevant client files", "Version bump", "Re-validate against templates"]
+  offboarding:
+    triggers: ["Contract end", "Client departure"]
+    actions: ["Archive client context files", "Remove from active_clients registry", "Retain for contractual period per data policy"]
+
+validation:
+  client_00_specific:
+    structural: ["All CLIENT files extend CLIENT_00_TEMPLATE", "meta block contains required fields", "governance_refs include minimum required refs"]
+    content: ["No LOGIC overrides (governance is immutable)", "Overrides documented per override_schema", "References use $ref syntax correctly"]
+    maintenance: ["last_updated is current", "Version follows semver", "Owner is valid team member"]

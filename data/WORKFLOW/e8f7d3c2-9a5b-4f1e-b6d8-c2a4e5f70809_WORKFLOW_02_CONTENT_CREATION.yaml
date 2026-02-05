@@ -1,0 +1,266 @@
+# WORKFLOW_02_CONTENT_CREATION.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "End-to-end workflow for content creation from brief to final delivery"
+  notes: "Primary content production workflow"
+  tags: [workflow, content, creation, copywriting]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: OPS_02_BRAND_VOICE"
+  - "$ref: OPS_06_CONTENT_TYPE_SPECS"
+  - "$ref: OPS_11_COPYWRITING_PATTERNS"
+  - "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_02_CONTENT_CREATION"
+  name: "Content Creation"
+  purpose: "Create content pieces from brief through final approved delivery"
+  complexity: "medium"
+  automation_level: "semi_automated"
+  estimated_duration: "4-8 hours"
+
+  triggers:
+    - "Content brief approved"
+    - "Content request from WORKFLOW_01"
+    - "Campaign content requirement"
+
+  roles_involved:
+    - "ROLE_02_WRITER"
+    - "ROLE_05_REVIEWER"
+    - "ROLE_04_RESEARCHER"
+
+  inputs:
+    required:
+      - { field: "content_brief", type: "document", description: "Approved content brief" }
+      - { field: "content_type", type: "enum", values: ["blog_post", "article", "whitepaper", "case_study", "email", "social_post", "web_copy"], description: "Type of content to create" }
+      - { field: "client_context", type: "reference", description: "Reference to CLIENT layer" }
+    optional:
+      - { field: "reference_content", type: "array", description: "Examples or reference materials" }
+      - { field: "seo_keywords", type: "array", description: "Target keywords if applicable" }
+
+  outputs:
+    - { field: "final_content", type: "document", description: "Approved final content" }
+    - { field: "metadata", type: "object", description: "Content metadata (word count, keywords, etc.)" }
+    - { field: "source_citations", type: "array", description: "Evidence and sources used" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Setup & Research"
+    objective: "Load context and gather required research"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Valid intake handoff"
+      - "Content brief available"
+      - "Content type specified"
+    steps:
+      - step_id: "step_1"
+        action: "Load client brand voice and terminology"
+        actor: "agent"
+        reference: "$ref: CLIENT_01_BRAND_VOICE_TEMPLATE"
+        outputs: ["brand_voice_context"]
+      - step_id: "step_2"
+        action: "Load content type specifications"
+        actor: "agent"
+        reference: "$ref: OPS_06_CONTENT_TYPE_SPECS"
+        outputs: ["content_spec"]
+      - step_id: "step_3"
+        action: "Gather evidence from client vault"
+        actor: "agent"
+        reference: "$ref: CLIENT_02_EVIDENCE_VAULT_TEMPLATE"
+        outputs: ["available_evidence"]
+      - step_id: "step_4"
+        action: "Identify and fill research gaps"
+        actor: "agent"
+        outputs: ["research_complete"]
+    exit_criteria:
+      - "Context fully loaded"
+      - "Research sufficient for content"
+      - "Evidence meets quality requirements"
+
+  - phase_id: "phase_2"
+    name: "Outline & Structure"
+    objective: "Create content outline and structural framework"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Context and research available"
+    steps:
+      - step_id: "step_1"
+        action: "Develop content outline based on brief and spec"
+        actor: "agent"
+        outputs: ["content_outline"]
+      - step_id: "step_2"
+        action: "Map evidence to outline sections"
+        actor: "agent"
+        outputs: ["evidence_mapping"]
+      - step_id: "step_3"
+        action: "Define key messages and CTA"
+        actor: "agent"
+        outputs: ["key_messages"]
+    exit_criteria:
+      - "Outline complete"
+      - "Evidence mapped to sections"
+      - "Key messages defined"
+
+  - phase_id: "phase_3"
+    name: "Draft Creation"
+    objective: "Write first draft of content"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Outline approved (implicit)"
+    steps:
+      - step_id: "step_1"
+        action: "Write opening/hook"
+        actor: "agent"
+        reference: "$ref: OPS_11_COPYWRITING_PATTERNS#opening_patterns"
+        outputs: ["draft_opening"]
+      - step_id: "step_2"
+        action: "Write body sections per outline"
+        actor: "agent"
+        outputs: ["draft_body"]
+      - step_id: "step_3"
+        action: "Write conclusion and CTA"
+        actor: "agent"
+        outputs: ["draft_conclusion"]
+      - step_id: "step_4"
+        action: "Assemble complete first draft"
+        actor: "agent"
+        outputs: ["first_draft"]
+      - step_id: "step_5"
+        action: "Add evidence citations inline"
+        actor: "agent"
+        reference: "$ref: LOGIC_08_QUALITY_GATES"
+        outputs: ["draft_with_citations"]
+    exit_criteria:
+      - "Complete draft created"
+      - "All sections written"
+      - "Citations included"
+
+  - phase_id: "phase_4"
+    name: "Quality Review"
+    objective: "Review draft against quality standards"
+    role: "ROLE_05_REVIEWER"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "First draft available"
+    steps:
+      - step_id: "step_1"
+        action: "Review for brand voice compliance"
+        actor: "agent"
+        reference: "$ref: OPS_02_BRAND_VOICE"
+        outputs: ["brand_voice_review"]
+      - step_id: "step_2"
+        action: "Review for accuracy and evidence quality"
+        actor: "agent"
+        reference: "$ref: LOGIC_08_QUALITY_GATES"
+        outputs: ["accuracy_review"]
+      - step_id: "step_3"
+        action: "Review for compliance (no competitor disparagement, legal claims)"
+        actor: "agent"
+        reference: "$ref: OPS_00_STANDARDS#ai_policy_compliance"
+        outputs: ["compliance_review"]
+      - step_id: "step_4"
+        action: "Run editorial checklist"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#editorial_dod"
+        outputs: ["editorial_checklist"]
+      - step_id: "step_5"
+        action: "Compile review feedback"
+        actor: "agent"
+        outputs: ["review_feedback"]
+    exit_criteria:
+      - "All reviews complete"
+      - "Feedback documented"
+      - "No blocker issues OR revision loop initiated"
+
+  - phase_id: "phase_5"
+    name: "Revision"
+    objective: "Address review feedback and refine content"
+    role: "ROLE_02_WRITER"
+    entry_criteria:
+      - "Phase 4 complete"
+      - "Review feedback available"
+    steps:
+      - step_id: "step_1"
+        action: "Address accuracy and compliance issues"
+        actor: "agent"
+        outputs: ["compliance_fixes"]
+      - step_id: "step_2"
+        action: "Refine brand voice and tone"
+        actor: "agent"
+        outputs: ["voice_refinements"]
+      - step_id: "step_3"
+        action: "Polish and optimize"
+        actor: "agent"
+        outputs: ["polished_draft"]
+      - step_id: "step_4"
+        action: "Verify all feedback addressed"
+        actor: "agent"
+        outputs: ["revision_complete"]
+    exit_criteria:
+      - "All feedback addressed"
+      - "Revised draft complete"
+    loop_to: "phase_4"
+    max_loops: 3
+    loop_condition: "review_feedback contains unresolved items"
+
+  - phase_id: "phase_6"
+    name: "Final Approval & Delivery"
+    objective: "Obtain final approval and prepare delivery"
+    role: "ROLE_05_REVIEWER"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 5 complete"
+      - "Revised draft ready"
+    steps:
+      - step_id: "step_1"
+        action: "Final quality check"
+        actor: "agent"
+        outputs: ["final_quality_check"]
+      - step_id: "step_2"
+        action: "Prepare content metadata"
+        actor: "agent"
+        outputs: ["content_metadata"]
+      - step_id: "step_3"
+        action: "Compile source citations"
+        actor: "agent"
+        outputs: ["source_list"]
+      - step_id: "step_4"
+        action: "Prepare delivery handoff"
+        actor: "agent"
+        reference: "$ref: OPS_19_HANDOFF_DELIVERY"
+        outputs: ["delivery_handoff"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_content_final"
+      trigger: "phase_exit"
+      approval_required_from: "content_lead | creative_lead"
+      approval_options: ["approve", "approve_with_comments", "request_revision", "reject"]
+      timeout_hours: 24
+    exit_criteria:
+      - "Final quality check passed"
+      - "HITL approval obtained"
+      - "Delivery handoff prepared"
+
+quality_gates:
+  entry:
+    - "Valid content brief"
+    - "Content type specified"
+    - "Client context accessible"
+  exit:
+    - "Content meets content_type specifications"
+    - "Brand voice compliance verified"
+    - "Evidence quality meets LOGIC_08 requirements"
+    - "Editorial checklist passed"
+    - "HITL approval obtained"
+
+validation:
+  workflow_specific:
+    - "Revision loop properly configured with max_loops"
+    - "HITL checkpoint on final phase"
+    - "References to OPS_02, OPS_06, OPS_11, OPS_15 valid"

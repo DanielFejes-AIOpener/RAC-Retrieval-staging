@@ -1,0 +1,234 @@
+# WORKFLOW_09_REPORTING.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Workflow for creating performance reports and analytics summaries"
+  notes: "Supports campaign reporting, monthly reviews, and ad-hoc analysis"
+  tags: [workflow, reporting, analytics, performance, insights]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: OPS_10_BENCHMARK_RANGES"
+  - "$ref: OPS_12_DATA_VISUALIZATION_GUIDE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_09_REPORTING"
+  name: "Performance Reporting"
+  purpose: "Create data-driven performance reports with insights and recommendations"
+  complexity: "medium"
+  automation_level: "semi_automated"
+  estimated_duration: "4-8 hours"
+
+  triggers:
+    - "Reporting period end"
+    - "Campaign completion"
+    - "Ad-hoc analysis request"
+    - "Client review meeting preparation"
+
+  roles_involved:
+    - "ROLE_03_ANALYST"
+    - "ROLE_01_STRATEGIST"
+
+  inputs:
+    required:
+      - { field: "reporting_period", type: "object", description: "Start and end dates" }
+      - { field: "report_type", type: "enum", values: ["campaign", "monthly", "quarterly", "annual", "ad_hoc"], description: "Type of report" }
+      - { field: "data_sources", type: "array", description: "Where to pull performance data" }
+    optional:
+      - { field: "comparison_period", type: "object", description: "Period for comparison" }
+      - { field: "focus_areas", type: "array", description: "Specific areas to analyze deeply" }
+      - { field: "audience", type: "string", description: "Who will read this report" }
+
+  outputs:
+    - { field: "performance_report", type: "document", description: "Complete performance report" }
+    - { field: "executive_summary", type: "document", description: "High-level summary for leadership" }
+    - { field: "insights", type: "array", description: "Key insights and findings" }
+    - { field: "recommendations", type: "array", description: "Action recommendations" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Data Collection"
+    objective: "Gather all required performance data"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Reporting period defined"
+      - "Data sources identified"
+    steps:
+      - step_id: "step_1"
+        action: "Identify all required metrics"
+        actor: "agent"
+        outputs: ["metric_list"]
+      - step_id: "step_2"
+        action: "Collect data from sources"
+        actor: "agent"
+        outputs: ["raw_data"]
+      - step_id: "step_3"
+        action: "Validate data quality"
+        actor: "agent"
+        outputs: ["data_validation"]
+      - step_id: "step_4"
+        action: "Collect comparison period data if applicable"
+        actor: "agent"
+        outputs: ["comparison_data"]
+    exit_criteria:
+      - "All required data collected"
+      - "Data quality validated"
+      - "Comparison data available if needed"
+
+  - phase_id: "phase_2"
+    name: "Analysis"
+    objective: "Analyze performance data"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Data available"
+    steps:
+      - step_id: "step_1"
+        action: "Calculate KPIs and metrics"
+        actor: "agent"
+        outputs: ["calculated_metrics"]
+      - step_id: "step_2"
+        action: "Compare to benchmarks"
+        actor: "agent"
+        reference: "$ref: OPS_10_BENCHMARK_RANGES"
+        outputs: ["benchmark_comparison"]
+      - step_id: "step_3"
+        action: "Perform period-over-period comparison"
+        actor: "agent"
+        outputs: ["period_comparison"]
+      - step_id: "step_4"
+        action: "Identify trends and patterns"
+        actor: "agent"
+        outputs: ["trend_analysis"]
+      - step_id: "step_5"
+        action: "Identify anomalies and outliers"
+        actor: "agent"
+        outputs: ["anomaly_detection"]
+    exit_criteria:
+      - "All metrics calculated"
+      - "Comparisons complete"
+      - "Trends identified"
+
+  - phase_id: "phase_3"
+    name: "Insight Development"
+    objective: "Develop actionable insights from analysis"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Analysis available"
+    steps:
+      - step_id: "step_1"
+        action: "Synthesize key findings"
+        actor: "agent"
+        outputs: ["key_findings"]
+      - step_id: "step_2"
+        action: "Develop insight statements"
+        actor: "agent"
+        outputs: ["insight_statements"]
+      - step_id: "step_3"
+        action: "Connect insights to business impact"
+        actor: "agent"
+        outputs: ["impact_analysis"]
+      - step_id: "step_4"
+        action: "Formulate recommendations"
+        actor: "agent"
+        outputs: ["recommendations"]
+    exit_criteria:
+      - "Insights developed"
+      - "Recommendations formulated"
+      - "Impact articulated"
+
+  - phase_id: "phase_4"
+    name: "Report Creation"
+    objective: "Create the performance report"
+    role: "ROLE_03_ANALYST"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Insights available"
+    steps:
+      - step_id: "step_1"
+        action: "Select appropriate visualizations"
+        actor: "agent"
+        reference: "$ref: OPS_12_DATA_VISUALIZATION_GUIDE"
+        outputs: ["visualization_plan"]
+      - step_id: "step_2"
+        action: "Create data visualizations"
+        actor: "agent"
+        outputs: ["visualizations"]
+      - step_id: "step_3"
+        action: "Write report narrative"
+        actor: "agent"
+        outputs: ["report_narrative"]
+      - step_id: "step_4"
+        action: "Compile full report"
+        actor: "agent"
+        outputs: ["full_report"]
+      - step_id: "step_5"
+        action: "Create executive summary"
+        actor: "agent"
+        outputs: ["executive_summary"]
+    exit_criteria:
+      - "Visualizations created"
+      - "Report compiled"
+      - "Executive summary ready"
+
+  - phase_id: "phase_5"
+    name: "Review & Delivery"
+    objective: "Review and deliver the report"
+    role: "ROLE_03_ANALYST"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 4 complete"
+      - "Report ready"
+    steps:
+      - step_id: "step_1"
+        action: "Quality check report"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS"
+        outputs: ["quality_check"]
+      - step_id: "step_2"
+        action: "Verify data accuracy"
+        actor: "agent"
+        outputs: ["accuracy_verification"]
+      - step_id: "step_3"
+        action: "Prepare delivery package"
+        actor: "agent"
+        outputs: ["delivery_package"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_report_final"
+      trigger: "phase_exit"
+      approval_required_from: "account_director | strategy_lead"
+      approval_options: ["approve", "approve_with_comments", "request_revision"]
+      timeout_hours: 24
+    exit_criteria:
+      - "Quality check passed"
+      - "Accuracy verified"
+      - "HITL approval obtained"
+
+quality_gates:
+  entry:
+    - "Reporting period defined"
+    - "Data sources accessible"
+    - "Report type specified"
+  exit:
+    - "Data accuracy verified"
+    - "Insights evidence-backed"
+    - "Recommendations actionable"
+    - "Visualizations follow OPS_12 guidelines"
+    - "HITL approval obtained"
+
+report_templates:
+  campaign_report: { sections: ["Executive Summary", "Campaign Overview", "Performance vs Objectives", "Channel Performance", "Audience Insights", "Key Learnings", "Recommendations"] }
+  monthly_report: { sections: ["Executive Summary", "KPI Dashboard", "Month-over-Month Trends", "Notable Wins", "Areas for Improvement", "Upcoming Focus"] }
+  quarterly_report: { sections: ["Executive Summary", "Quarter Overview", "Strategic Progress", "Performance Deep-Dive", "Competitive Context", "Q+1 Recommendations"] }
+
+validation:
+  workflow_specific:
+    - "Data sources validated before analysis"
+    - "Benchmarks from OPS_10 applied"
+    - "Visualizations follow OPS_12 guidelines"
+    - "All metrics have evidence sources"

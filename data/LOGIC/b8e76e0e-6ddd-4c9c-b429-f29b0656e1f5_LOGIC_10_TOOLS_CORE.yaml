@@ -1,223 +1,92 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_10_TOOLS_CORE.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
-  version: "2.1.0"
-  last_updated: "2026-01-22"
+  version: "2.2.0"
+  last_updated: "2026-02-03"
   purpose: "Unified tools core: tool registry, capability routing, and execution mechanics (SSOT)"
-  notes: "v2.1.0 - Added query_rac tool for agent RAC file retrieval"
+  notes: "v2.2.0 - Renamed tool_search_rag to vector_search, removed deprecated tools (tool_data_analytics, TOOL_IMAGE_PROMPT_PACKAGE_ONLY, tool_util_calculate), fixed tool arguments for manual_handoff, create_document_access, edit_document, look_for_document"
   tags: [logic, tools, api, resilience, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TOOL SCHEMA (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 tool_schema:
-  description: "Standard schema for tool definitions"
-  
   required_fields:
-    id:
-      type: "string"
-      pattern: "tool_{category}_{name}"
-      description: "Unique tool identifier"
-      
-    name:
-      type: "string"
-      description: "Human-readable tool name"
-      
-    description:
-      type: "string"
-      description: "What the tool does"
-      
-    category:
-      type: "enum"
-      values: ["search", "data", "integration", "generation", "utility"]
-      
-    input_schema:
-      type: "object"
-      description: "JSON Schema for tool inputs"
-      
-    output_schema:
-      type: "object"
-      description: "JSON Schema for tool outputs"
-      
+    id: { type: "string", pattern: "tool_{category}_{name}" }
+    name: { type: "string" }
+    category: { type: "enum", values: ["search", "data", "integration", "generation", "utility"] }
+    input_schema: { type: "object" }
+    output_schema: { type: "object" }
   optional_fields:
-    auth_required:
-      type: "boolean"
-      default: false
-      
-    rate_limit:
-      type: "object"
-      properties:
-        requests_per_minute: "integer"
-        requests_per_day: "integer"
-        
-    timeout_ms:
-      type: "integer"
-      default: 30000
-      
-    retry_config:
-      type: "object"
-      reference: "$ref: #resilience_patterns.retry"
-      
-    circuit_breaker:
-      type: "object"
-      reference: "$ref: #resilience_patterns.circuit_breaker"
-      
-    fallback:
-      type: "string"
-      description: "Fallback tool ID if this fails"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# TOOL REGISTRY
-# ══════════════════════════════════════════════════════════════════════════════
+    auth_required: { type: "boolean", default: false }
+    rate_limit: { type: "object", properties: { requests_per_minute: "integer", requests_per_day: "integer" } }
+    timeout_ms: { type: "integer", default: 30000 }
+    retry_config: { type: "object", reference: "$ref: #resilience_patterns.retry" }
+    circuit_breaker: { type: "object", reference: "$ref: #resilience_patterns.circuit_breaker" }
+    fallback: { type: "string" }
 
 tool_registry:
-  description: "Core platform tools"
-  
   tools:
-    # Search Tools
     tool_search_web:
       id: "tool_search_web"
       name: "Web Search"
-      description: "Search the web for information"
       category: "search"
       input_schema:
         type: "object"
         properties:
-          query:
-            type: "string"
-            required: true
-          max_results:
-            type: "integer"
-            default: 10
+          query: { type: "string", required: true }
+          max_results: { type: "integer", default: 10 }
       output_schema:
         type: "object"
         properties:
-          results:
-            type: "array"
-            items:
-              type: "object"
-              properties:
-                title: "string"
-                url: "string"
-                snippet: "string"
+          results: { type: "array", items: { properties: { title: "string", url: "string", snippet: "string" } } }
       timeout_ms: 10000
-      rate_limit:
-        requests_per_minute: 60
-        
-    tool_query_rac:
-      id: "tool_query_rac"
+      rate_limit: { requests_per_minute: 60 }
+
+    query_rac:
+      id: "query_rac"
       name: "Query RAC"
-      description: "Retrieve resolved RAC configuration files. Returns fully-resolved content (inheritance applied, $refs expanded) directly into agent context."
       category: "data"
       input_schema:
         type: "object"
         properties:
-          path:
-            type: "string"
-            required: true
-            description: "RAC path in format LAYER/FILE_ID or LAYER/FILE_ID/SECTION (e.g., 'OPS/STYLE_OPTIONS', 'LOGIC/QUALITY_GATES/libraries_gates')"
-          client:
-            type: "string"
-            description: "Optional client slug for client-specific overrides"
+          path: { type: "string", required: true }
+          client: { type: "string" }
         required: ["path"]
       output_schema:
         type: "object"
         properties:
-          path:
-            type: "string"
-            description: "Requested path"
-          resolved:
-            type: "boolean"
-            description: "Whether resolution succeeded"
-          content:
-            type: "object"
-            description: "Fully-resolved RAC content (inheritance applied, $refs expanded)"
+          path: { type: "string" }
+          resolved: { type: "boolean" }
+          content: { type: "object" }
       timeout_ms: 5000
-      rate_limit:
-        requests_per_minute: 120
+      rate_limit: { requests_per_minute: 120 }
 
-    tool_search_rag:
-      id: "tool_search_rag"
-      name: "RAG Search"
-      description: "Search indexed knowledge bases"
+    vector_search:
+      id: "vector_search"
+      name: "Vector Search"
       category: "search"
       input_schema:
         type: "object"
         properties:
-          query:
-            type: "string"
-            required: true
-          namespaces:
-            type: "array"
-            items: "string"
-          top_k:
-            type: "integer"
-            default: 10
-          filters:
-            type: "object"
+          query: { type: "string", required: true }
+          chunks: { type: "integer", default: 10, description: "Number of chunks to return" }
+        required: ["query"]
       output_schema:
         type: "object"
         properties:
-          results:
-            type: "array"
-            items:
-              type: "object"
-              properties:
-                content: "string"
-                source: "string"
-                score: "number"
-                metadata: "object"
+          results: { type: "array", items: { properties: { content: "string", source: "string", score: "number", metadata: "object" } } }
       config_ref: "$ref: LOGIC_05_RAG_MECHANICS#retrieval_pipeline"
-      
-    # Data Tools
-    tool_data_analytics:
-      id: "tool_data_analytics"
-      name: "Analytics Data"
-      description: "Fetch analytics and metrics data"
-      category: "data"
-      input_schema:
-        type: "object"
-        properties:
-          source:
-            type: "string"
-            required: true
-          metric:
-            type: "string"
-            required: true
-          date_range:
-            type: "object"
-            properties:
-              start: "date"
-              end: "date"
-      output_schema:
-        type: "object"
-        properties:
-          data: "array"
-          aggregations: "object"
-      auth_required: true
-      
-    # Generation Tools
+
     tool_gen_image:
       id: "tool_gen_image"
       name: "Image Generation"
-      description: "Generate images using AI"
       category: "generation"
       governance: "$ref: LOGIC_17_IMAGE_GENERATION"
       input_schema:
         type: "object"
         properties:
-          prompt:
-            type: "string"
-            required: true
-          style:
-            type: "string"
-          size:
-            type: "string"
-            enum: ["256x256", "512x512", "1024x1024"]
+          prompt: { type: "string", required: true }
+          style: { type: "string" }
+          size: { type: "string", enum: ["256x256", "512x512", "1024x1024"] }
       output_schema:
         type: "object"
         properties:
@@ -225,371 +94,189 @@ tool_registry:
           alt_text: "string"
       timeout_ms: 60000
 
-    # Generation Tools (Primary: Nano-Banana)
     TOOL_IMAGE_NANO_BANANA:
       id: "TOOL_IMAGE_NANO_BANANA"
-      tool_id: "TOOL_IMAGE_NANO_BANANA"
       name: "Nano-Banana Image Rendering"
-      purpose: "Text-to-image rendering via Nano-Banana endpoint"
-      description: "Text-to-image rendering via Nano-Banana endpoint"
       category: "generation"
       governance: "$ref: LOGIC_17_IMAGE_GENERATION"
       constraints:
         max_variants: 4
         allowed_aspect_ratios: ["1:1", "4:5", "3:4", "16:9", "9:16"]
         reference_images_optional: true
-        reference_images_handling_note: "Reference images are external inputs; do not store or persist them."
       input_schema:
         type: "object"
         additionalProperties: false
         properties:
-          prompt:
-            type: "string"
-            required: true
-            description: "Primary text prompt"
-          negative_prompt:
-            type: "string"
-            default: ""
-            description: "Optional negative prompt to steer away from undesired attributes"
-          aspect_ratio:
-            type: "string"
-            enum: ["1:1", "4:5", "3:4", "16:9", "9:16"]
-            default: "1:1"
-            description: "Requested output aspect ratio"
-          num_variants:
-            type: "integer"
-            minimum: 1
-            maximum: 4
-            default: 1
-            description: "Number of image variants to generate"
-          seed:
-            type: "integer"
-            description: "Optional seed for reproducibility"
-          reference_image_urls_or_ids:
-            type: "array"
-            items:
-              type: "string"
-            description: "Optional reference images (URLs or ids). External inputs; must not be stored."
+          prompt: { type: "string", required: true }
+          negative_prompt: { type: "string", default: "" }
+          aspect_ratio: { type: "string", enum: ["1:1", "4:5", "3:4", "16:9", "9:16"], default: "1:1" }
+          num_variants: { type: "integer", minimum: 1, maximum: 4, default: 1 }
+          seed: { type: "integer" }
+          reference_image_urls_or_ids: { type: "array", items: { type: "string" } }
       output_schema:
         type: "object"
         properties:
-          images:
-            type: "array"
-            items:
-              type: "string"
-            description: "Rendered images (URLs or ids)"
-          metadata:
-            type: "object"
-            description: "Model/version/settings used for generation"
-            properties:
-              provider: "string"
-              model: "string"
-              version: "string"
-              settings: "object"
-          safety_flags:
-            type: "array"
-            description: "Any safety signals/flags returned by the provider and/or policy enforcement"
-            items:
-              type: "object"
-              properties:
-                code: "string"
-                severity: "string"
-                message: "string"
+          images: { type: "array", items: { type: "string" } }
+          metadata: { type: "object", properties: { provider: "string", model: "string", version: "string", settings: "object" } }
+          safety_flags: { type: "array", items: { properties: { code: "string", severity: "string", message: "string" } } }
         required: ["images", "metadata"]
       timeout_ms: 60000
       retry_config: "$ref: #resilience_patterns.retry.default_config"
-      fallback: "TOOL_IMAGE_PROMPT_PACKAGE_ONLY"
 
-    # Generation Tools (Prompt-only mode / deterministic fallback)
-    TOOL_IMAGE_PROMPT_PACKAGE_ONLY:
-      id: "TOOL_IMAGE_PROMPT_PACKAGE_ONLY"
-      tool_id: "TOOL_IMAGE_PROMPT_PACKAGE_ONLY"
-      name: "Image Prompt Package Only"
-      purpose: "Return an image prompt package for manual execution when tool execution is disabled/unavailable"
-      description: "No-op tool that returns the prompt package and manual next steps (supports prompt-only mode)"
-      category: "utility"
-      constraints:
-        deterministic: true
-        executes_external_calls: false
+    perplexity_tool:
+      id: "perplexity_tool"
+      name: "Perplexity"
+      category: "search"
       input_schema:
         type: "object"
-        additionalProperties: false
         properties:
-          image_prompt_package:
-            type: "object"
-            required: true
-            description: "Fully-specified prompt package for a human/operator or external system to run"
-        required: ["image_prompt_package"]
+          query: { type: "string", required: true }
+        required: ["query"]
       output_schema:
         type: "object"
         properties:
-          image_prompt_package:
-            type: "object"
-            description: "Same prompt package, unchanged"
-          manual_next_steps:
-            type: "array"
-            items:
-              type: "string"
-            description: "Deterministic guidance for manual execution"
-        required: ["image_prompt_package", "manual_next_steps"]
-      
-    # Utility Tools
-    tool_util_calculate:
-      id: "tool_util_calculate"
-      name: "Calculator"
-      description: "Perform calculations"
+          results: { type: "array" }
+
+    manual_handoff_tool:
+      id: "manual_handoff_tool"
+      name: "Manual Handoff"
       category: "utility"
       input_schema:
         type: "object"
         properties:
-          expression:
-            type: "string"
-            required: true
-      output_schema:
+          agent: { type: "string", required: true, description: "Who to hand off to" }
+          message: { type: "string", required: true, description: "What to hand off" }
+        required: ["agent", "message"]
+
+    create_document_access_tool:
+      id: "create_document_access_tool"
+      name: "Create Document Access"
+      category: "utility"
+      input_schema:
         type: "object"
         properties:
-          result: "number"
-          formatted: "string"
+          doc_name: { type: "string", required: true, description: "Name of document" }
+          access_to: { type: "string", required: true, description: "Who to share with" }
+          content: { type: "string", required: true, description: "Content of the document" }
+        required: ["doc_name", "access_to", "content"]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# CAPABILITY --> TOOL MAPPING (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-# Default routing from canonical capability keys --> preferred tool + fallbacks.
-# ORG/CLIENT may override these defaults by patching mapping entries per:
-#   $ref: LOGIC_02_RETRIEVAL#override_rules.tool_mapping_override
-#
-# IMPORTANT:
-# - Mapping keys SHOULD be canonical capability keys from:
-#     $ref: LOGIC_07_CAPABILITIES#capability_catalog.capabilities
-# - Tool IDs MUST exist in tool_registry.tools.
-#
-# This section defines routing defaults only; it does not redefine tools.
+    edit_document_tool:
+      id: "edit_document_tool"
+      name: "Edit Document"
+      category: "utility"
+      input_schema:
+        type: "object"
+        properties:
+          doc_url: { type: "string", required: true, description: "URL of document" }
+          text_to_delete: { type: "string", required: true, description: "Text to delete" }
+          text_to_replace: { type: "string", required: true, description: "Text to replace the deleted text" }
+        required: ["doc_url", "text_to_delete", "text_to_replace"]
+
+    look_for_document_tool:
+      id: "look_for_document_tool"
+      name: "Look for Document"
+      category: "utility"
+      input_schema:
+        type: "object"
+        properties:
+          proposed_id: { type: "string", required: true, description: "URL of document to be read" }
+        required: ["proposed_id"]
+
 capability_tool_mapping:
-  description: "Default capability-->tool routing (preferred + fallbacks)"
   mapping_key_source: "$ref: LOGIC_07_CAPABILITIES#capability_catalog.capabilities"
   fields:
-    preferred_tool:
-      description: "Primary tool to use for this capability (tool ID)"
-    fallbacks:
-      description: "Ordered fallback tools to try if preferred fails"
-      default: []
+    preferred_tool: "Primary tool to use (tool ID)"
+    fallbacks: "Ordered fallback tools"
   mappings:
-    # Configuration Retrieval
-    rac_query:
-      preferred_tool: "tool_query_rac"
-      fallbacks: []
-      
-    # Research
-    market_research:
-      preferred_tool: "tool_search_web"
-      fallbacks: ["tool_search_rag"]
-    audience_research:
-      preferred_tool: "tool_search_web"
-      fallbacks: ["tool_search_rag"]
-    competitive_research:
-      preferred_tool: "tool_search_web"
-      fallbacks: ["tool_search_rag"]
-
-    # Analytical
-    data_analysis:
-      preferred_tool: "tool_data_analytics"
-      fallbacks: []
-    performance_reporting:
-      preferred_tool: "tool_data_analytics"
-      fallbacks: []
-
-    # Creative
-    image_generation:
-      preferred_tool: "TOOL_IMAGE_NANO_BANANA"
-      fallbacks: ["TOOL_IMAGE_PROMPT_PACKAGE_ONLY"]
-
-    # Canonical image rendering capability (preferred)
-    capability.image_generation.render:
-      preferred_tool: "TOOL_IMAGE_NANO_BANANA"
-      fallbacks: ["TOOL_IMAGE_PROMPT_PACKAGE_ONLY"]
-
-# ══════════════════════════════════════════════════════════════════════════════
-# RESILIENCE PATTERNS (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
+    rac_query: { preferred_tool: "query_rac", fallbacks: [] }
+    market_research: { preferred_tool: "tool_search_web", fallbacks: ["vector_search"] }
+    audience_research: { preferred_tool: "tool_search_web", fallbacks: ["vector_search"] }
+    competitive_research: { preferred_tool: "tool_search_web", fallbacks: ["vector_search"] }
+    image_generation: { preferred_tool: "TOOL_IMAGE_NANO_BANANA", fallbacks: [] }
+    capability.image_generation.render: { preferred_tool: "TOOL_IMAGE_NANO_BANANA", fallbacks: [] }
 
 resilience_patterns:
-  description: "Error handling and resilience for tool calls"
-  
   retry:
-    description: "Retry configuration for transient failures"
-    
     default_config:
       max_attempts: 3
       initial_delay_ms: 1000
       max_delay_ms: 10000
       backoff_multiplier: 2.0
       jitter: true
-      
     retry_conditions:
-      retryable:
-        - "timeout"
-        - "rate_limit"
-        - "server_error_5xx"
-        - "connection_reset"
-      not_retryable:
-        - "client_error_4xx"
-        - "auth_failure"
-        - "invalid_input"
-        - "not_found"
-        
+      retryable: ["timeout", "rate_limit", "server_error_5xx", "connection_reset"]
+      not_retryable: ["client_error_4xx", "auth_failure", "invalid_input", "not_found"]
     backoff_strategies:
       exponential:
-        description: "Exponential backoff with jitter"
         formula: "min(initial_delay * (multiplier ^ attempt) + jitter, max_delay)"
-        use_case: "Default for most tools"
-        
       linear:
-        description: "Linear backoff"
         formula: "min(initial_delay * attempt, max_delay)"
-        use_case: "Rate-limited APIs with predictable reset"
-        
       constant:
-        description: "Fixed delay between retries"
         formula: "initial_delay"
-        use_case: "APIs with known recovery time"
-        
+
   circuit_breaker:
-    description: "Circuit breaker for failing services"
-    
     default_config:
       failure_threshold: 5
       success_threshold: 2
       timeout_ms: 60000
       half_open_max_calls: 3
-      
     states:
       closed:
-        description: "Normal operation, requests flow through"
         transition: "Open after failure_threshold consecutive failures"
-        
       open:
-        description: "Failing fast, no requests to service"
         transition: "Half-Open after timeout_ms"
         behavior: "Return cached response or fallback"
-        
       half_open:
-        description: "Testing if service recovered"
         transition: "Closed after success_threshold successes, Open after any failure"
         behavior: "Allow half_open_max_calls to test"
-        
     metrics:
-      track:
-        - "failure_count"
-        - "success_count"
-        - "last_failure_time"
-        - "state_transitions"
-        
-  fallback:
-    description: "Fallback strategies when all retries fail"
-    
-    strategies:
-      cached_response:
-        description: "Return last known good response"
-        applicable_when: "Cache available and not stale"
-        staleness_threshold_minutes: 60
-        
-      alternative_tool:
-        description: "Use alternative tool"
-        applicable_when: "Fallback tool configured"
-        
-      degraded_response:
-        description: "Return partial or degraded response"
-        applicable_when: "Partial data available"
-        
-      graceful_error:
-        description: "Return informative error"
-        applicable_when: "No other fallback available"
-        template: "Service temporarily unavailable. {context}"
-        
-    selection_order:
-      1: "cached_response"
-      2: "alternative_tool"
-      3: "degraded_response"
-      4: "graceful_error"
+      track: ["failure_count", "success_count", "last_failure_time", "state_transitions"]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TIMEOUT CONFIGURATION
-# ══════════════════════════════════════════════════════════════════════════════
+  fallback:
+    strategies:
+      cached_response: { applicable_when: "Cache available and not stale", staleness_threshold_minutes: 60 }
+      alternative_tool: { applicable_when: "Fallback tool configured" }
+      degraded_response: { applicable_when: "Partial data available" }
+      graceful_error: { applicable_when: "No other fallback available", template: "Service temporarily unavailable. {context}" }
+    selection_order: [1, "cached_response", 2, "alternative_tool", 3, "degraded_response", 4, "graceful_error"]
 
 timeout_configuration:
-  description: "Timeout settings by operation type"
-  
   defaults:
     simple_tool_ms: 5000
     search_tool_ms: 10000
     data_tool_ms: 30000
     generation_tool_ms: 60000
     integration_tool_ms: 30000
-    
   overrides:
-    description: "Tool-specific timeout overrides"
     source: "tool_schema.timeout_ms"
-    
   cascade_timeout:
-    description: "Total time budget for multi-tool operations"
     enabled: true
     budget_ms: 120000
     behavior: "Cancel remaining tools when budget exhausted"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# RATE LIMITING
-# ══════════════════════════════════════════════════════════════════════════════
-
 rate_limiting:
-  description: "Rate limiting configuration"
-  
   global_limits:
     requests_per_minute: 1000
     requests_per_hour: 50000
     concurrent_requests: 100
-    
   per_tool_limits:
-    description: "Tool-specific limits"
     source: "tool_schema.rate_limit"
-    
   per_client_limits:
-    description: "Client-specific limits"
     source: "CLIENT.limits.api_calls"
-    
   rate_limit_response:
     status: 429
-    headers:
-      retry_after: "seconds until reset"
-      x_rate_limit_remaining: "calls remaining"
+    headers: { retry_after: "seconds until reset", x_rate_limit_remaining: "calls remaining" }
     behavior: "Queue and retry with backoff"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# ERROR ENVELOPE
-# ══════════════════════════════════════════════════════════════════════════════
-
 error_envelope:
-  description: "Standard error response format"
-  
   schema:
     error:
-      code:
-        type: "string"
-        description: "Machine-readable error code"
-      message:
-        type: "string"
-        description: "Human-readable error message"
-      category:
-        type: "enum"
-        values: ["validation", "auth", "rate_limit", "timeout", "server", "unknown"]
-      retryable:
-        type: "boolean"
-      retry_after_ms:
-        type: "integer"
-        description: "Suggested retry delay"
-      context:
-        type: "object"
-        description: "Additional error context"
-        
+      code: { type: "string" }
+      message: { type: "string" }
+      category: { type: "enum", values: ["validation", "auth", "rate_limit", "timeout", "server", "unknown"] }
+      retryable: { type: "boolean" }
+      retry_after_ms: { type: "integer" }
+      context: { type: "object" }
   error_codes:
     TOOL_VALIDATION_ERROR: "Invalid tool input"
     TOOL_AUTH_ERROR: "Authentication failed"
@@ -600,39 +287,19 @@ error_envelope:
     TOOL_UNAVAILABLE: "Tool temporarily unavailable"
     TOOL_CIRCUIT_OPEN: "Circuit breaker open"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# LOGGING AND METRICS
-# ══════════════════════════════════════════════════════════════════════════════
-
 tool_logging:
-  description: "Logging requirements for tool calls"
-  
-  required_fields:
-    - "correlation_id"
-    - "tool_id"
-    - "timestamp"
-    - "duration_ms"
-    - "status"
-    
-  optional_fields:
-    - "input_hash"
-    - "output_size"
-    - "retry_count"
-    - "error_code"
-    
+  required_fields: ["correlation_id", "tool_id", "timestamp", "duration_ms", "status"]
+  optional_fields: ["input_hash", "output_size", "retry_count", "error_code"]
   metrics:
     - name: "tool_call_duration"
       type: "histogram"
       labels: ["tool_id", "status"]
-      
     - name: "tool_call_count"
       type: "counter"
       labels: ["tool_id", "status"]
-      
     - name: "tool_error_count"
       type: "counter"
       labels: ["tool_id", "error_code"]
-      
     - name: "circuit_breaker_state"
       type: "gauge"
       labels: ["tool_id", "state"]

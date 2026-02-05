@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_06_ORCHESTRATION.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -10,106 +8,62 @@ meta:
   notes: "v2.1 - Mode schemas only; selection is Orchestrator + USE_CASE responsibility"
   tags: [logic, orchestration, ssot]
 
-# ══════════════════════════════════════════════════════════════════════════════
-# ORCHESTRATION MODES (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-
 orchestration_modes:
-  description: "Canonical orchestration mode definitions"
-  
   modes:
     SOM:
       name: "Single Output Mode"
-      description: "Direct task execution, single capability, minimal overhead"
-      
       characteristics:
         - "Single, clear objective"
         - "One role handles entire task"
         - "No handoffs or phase transitions"
         - "Minimal context assembly"
-        
       constraints:
         max_capabilities: 2
         max_steps: 3
         hitl_checkpoints: 0
-        
       qa_profile: "lean"
       trace_level: "minimal"
       required_gates: []
-      
-      typical_use_cases:
-        - "Simple Q&A"
-        - "Single document generation"
-        - "Quick calculations"
-        - "Status checks"
-        
+      typical_use_cases: ["Simple Q&A", "Single document generation", "Quick calculations", "Status checks"]
+
     SAM:
       name: "Sequential Agent Mode"
-      description: "One agent handles multi-step task with maintained context"
-      
       characteristics:
         - "Multi-step but coherent task"
         - "Single role with full capability set"
         - "Maintains state across steps"
         - "Self-orchestrated within session"
-        
       constraints:
         max_capabilities: 5
         max_steps: 10
         hitl_checkpoints: 1
-        
       qa_profile: "structured"
       trace_level: "full"
-      required_gates:
-        - "exit_review"
-        
-      typical_use_cases:
-        - "Document with research"
-        - "Analysis with recommendations"
-        - "Content with revisions"
-        - "Plan development"
-        
+      required_gates: ["exit_review"]
+      typical_use_cases: ["Document with research", "Analysis with recommendations", "Content with revisions", "Plan development"]
+
     Wizard:
       name: "Wizard Mode"
-      description: "Iterative, human-guided process for complex or unclear tasks"
-      
       characteristics:
         - "Requirements may be unclear initially"
         - "Multiple specialized roles possible"
         - "Explicit handoffs between phases"
         - "HITL checkpoints throughout"
-        
       constraints:
         max_capabilities: null
         max_steps: null
         hitl_checkpoints: null
-        
       qa_profile: "structured"
       trace_level: "full"
-      required_gates:
-        - "consent_gate"
-        - "phase_approval"
-        - "exit_review"
-        
-      typical_use_cases:
-        - "Campaign development"
-        - "Strategy creation"
-        - "Multi-deliverable projects"
-        - "Requirements unclear upfront"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# MODE SELECTION GUIDANCE
-# ══════════════════════════════════════════════════════════════════════════════
+      required_gates: ["consent_gate", "phase_approval", "exit_review"]
+      typical_use_cases: ["Campaign development", "Strategy creation", "Multi-deliverable projects", "Requirements unclear upfront"]
 
 mode_selection_guidance:
-  description: "Guidance for builder wizard and Orchestrator -- NOT hardcoded rules"
-  
   purpose: |
-    This guidance helps:
-    1. Builder wizard suggest appropriate mode to human during USE_CASE creation
-    2. Orchestrator make runtime decisions when USE_CASE.typical_mode needs override
+    Helps builder wizard suggest appropriate mode during USE_CASE creation.
+    Orchestrator makes runtime decisions when USE_CASE.typical_mode needs override.
     Human always has final say during USE_CASE creation.
-  
+
   guidance_by_mode:
     SOM:
       appropriate_when:
@@ -121,7 +75,6 @@ mode_selection_guidance:
         - "Multiple handoffs needed"
         - "Public-facing output requiring review"
         - "Requires human checkpoints"
-        
     SAM:
       appropriate_when:
         - "Multiple capabilities but single coherent task"
@@ -132,7 +85,6 @@ mode_selection_guidance:
         - "Trivial single-shot task (use SOM)"
         - "Requires multiple specialized roles"
         - "Complex approval workflows"
-        
     Wizard:
       appropriate_when:
         - "Requirements unclear, needs iterative clarification"
@@ -142,21 +94,8 @@ mode_selection_guidance:
       not_appropriate_when:
         - "Simple, well-defined task"
         - "Time-critical with no room for iteration"
-        
-  builder_wizard_usage: |
-    1. Present mode options with guidance text to human
-    2. Based on capabilities_from and knowledge_from, SUGGEST a mode
-    3. Explain why the suggestion fits
-    4. Human confirms or overrides
-    5. Store result in USE_CASE.typical_mode field
-
-# ══════════════════════════════════════════════════════════════════════════════
-# USE_CASE INTEGRATION
-# ══════════════════════════════════════════════════════════════════════════════
 
 use_case_integration:
-  description: "How USE_CASES declare mode preference"
-  
   typical_mode_field:
     field_name: "typical_mode"
     location: "use_case_definition.typical_mode"
@@ -164,155 +103,71 @@ use_case_integration:
     values: ["SOM", "SAM", "Wizard"]
     required: false
     default: "SOM"
-    description: "USE_CASE author's suggested mode. Orchestrator may override at runtime."
-    
   runtime_behavior:
     - "Orchestrator reads USE_CASE.typical_mode as starting point"
     - "Orchestrator evaluates actual task context"
-    - "Orchestrator may upgrade mode (SOM-->SAM, SAM-->Wizard) if task is more complex"
-    - "Orchestrator may downgrade mode if task is simpler than typical"
+    - "Orchestrator may upgrade mode if task is more complex"
+    - "Orchestrator may downgrade mode if task is simpler"
     - "Override decision is logged for trace"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# USE CASE REGISTRY
-# ══════════════════════════════════════════════════════════════════════════════
-
 use_case_registry:
-  description: "Registry of known use cases for routing"
-  
   registry_structure:
-    description: "How use cases are indexed"
-    
     entry_schema:
-      id:
-        type: "string"
-        pattern: "USE_CASE_{NN}_{NAME}"
-        required: true
-      name:
-        type: "string"
-        required: true
-      description:
-        type: "string"
-        required: true
-      primary_capability:
-        type: "string"
-        required: true
-      secondary_capabilities:
-        type: "array"
-        required: false
-      typical_mode:
-        type: "enum"
-        values: ["SOM", "SAM", "Wizard"]
-        required: false
-        default: "SOM"
-      use_case_file:
-        type: "string"
-        pattern: "USE_CASE_*.yaml"
-        required: false
-      workflow_file:
-        type: "string"
-        pattern: "WORKFLOW_*.yaml"
-        required: false
-        
+      id: { type: "string", pattern: "USE_CASE_{NN}_{NAME}", required: true }
+      name: { type: "string", required: true }
+      primary_capability: { type: "string", required: true }
+      secondary_capabilities: { type: "array", required: false }
+      typical_mode: { type: "enum", values: ["SOM", "SAM", "Wizard"], default: "SOM" }
+      use_case_file: { type: "string", pattern: "USE_CASE_*.yaml" }
+      workflow_file: { type: "string", pattern: "WORKFLOW_*.yaml" }
   resolution_priority:
-    description: "Where to look for use case definitions"
     order:
       1: "CLIENT.use_cases.custom"
       2: "ORG.use_case_registry.custom"
       3: "USE_CASES layer (standard)"
     conflict_rule: "CLIENT wins per $ref: LOGIC_02_RETRIEVAL#override_rules"
-    
   fallback_behavior:
     if_no_match:
       action: "Route to ROLE_01_ORCHESTRATOR"
       behavior: "Orchestrator determines best-fit role by capability"
-      
   discovery:
     auto_register: true
-    scan_patterns:
-      - "USE_CASE_*.yaml"
-      - "WORKFLOW_*.yaml"
+    scan_patterns: ["USE_CASE_*.yaml", "WORKFLOW_*.yaml"]
     refresh_on: "startup"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# SIMULATION MODE
-# ══════════════════════════════════════════════════════════════════════════════
-
 simulation_mode:
-  description: "Sandbox/what-if execution patterns"
-  
   modes:
     sandbox:
-      description: "Full simulation, no side effects"
-      behavior:
-        - "All tool calls are mocked"
-        - "No external API calls"
-        - "No data persistence"
-        - "Full trace preserved"
+      behavior: ["All tool calls mocked", "No external API calls", "No data persistence", "Full trace preserved"]
       activation: "demo_mode: true OR explicit sandbox request"
-      
     dry_run:
-      description: "Plan without execution"
-      behavior:
-        - "Generate execution plan"
-        - "Validate all steps"
-        - "Estimate resources/time"
-        - "No actual execution"
+      behavior: ["Generate execution plan", "Validate all steps", "Estimate resources/time", "No actual execution"]
       activation: "Explicit dry_run request"
-      
     shadow:
-      description: "Execute in parallel with production, compare"
-      behavior:
-        - "Run both paths"
-        - "Compare outputs"
-        - "Log differences"
-        - "Production result used"
+      behavior: ["Run both paths", "Compare outputs", "Log differences", "Production result used"]
       activation: "shadow_mode: true in CONFIG"
-      use_case: "Testing new configurations"
-      
   simulation_hooks:
-    pre_execution:
-      - "Validate simulation mode is permitted"
-      - "Configure mock responses"
-      - "Initialize trace capture"
-    post_execution:
-      - "Generate simulation report"
-      - "Compare with expectations"
-      - "Store for analysis"
-
-# ══════════════════════════════════════════════════════════════════════════════
-# ORCHESTRATOR CONTRACT
-# ══════════════════════════════════════════════════════════════════════════════
+    pre_execution: ["Validate simulation mode is permitted", "Configure mock responses", "Initialize trace capture"]
+    post_execution: ["Generate simulation report", "Compare with expectations", "Store for analysis"]
 
 orchestrator_contract:
-  description: "Contract between LOGIC_06 and ROLE_01_ORCHESTRATOR"
-  
   orchestrator_role: "ROLE_01_ORCHESTRATOR"
-  
   inputs:
     task_description: "The user's request"
     use_case_id: "Matched USE_CASE (if any)"
-    typical_mode_hint: "USE_CASE.typical_mode value (if USE_CASE matched)"
-    runtime_context:
-      - "Active CLIENT/ORG configuration"
-      - "Available roles and capabilities"
-      - "Current session state"
-      - "Governance constraints"
-      
+    typical_mode_hint: "USE_CASE.typical_mode value"
+    runtime_context: ["Active CLIENT/ORG configuration", "Available roles and capabilities", "Current session state", "Governance constraints"]
   outputs:
     selected_mode: "SOM | SAM | Wizard"
     routing_target: "ROLE_ID | USE_CASE_ID | WORKFLOW_ID"
     context_additions: "Additional context to load"
     override_reason: "If mode differs from typical_mode hint, explain why"
-    
   override_authority:
-    description: "Orchestrator may override USE_CASE.typical_mode"
     conditions:
       - "Task context differs significantly from typical"
       - "Governance requires higher mode (e.g., HITL triggers Wizard)"
       - "Resource constraints require lower mode"
     logging: "All overrides logged with reason for trace"
-    
   fallback_behavior:
     if_no_use_case_match:
       action: "Orchestrator determines best-fit role by capability matching"
@@ -320,109 +175,49 @@ orchestrator_contract:
       action: "Escalate to human via HITL"
       reference: "$ref: LOGIC_09_INTERFACE#hitl_triggers"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# LIBRARY DISCOVERY STEP TEMPLATE (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-# Referenced by: USE_CASES and WORKFLOWS that need tenant-specific knowledge
-# Contract: "discover-or-gap" - either select libraries OR produce gap report
-
 library_discovery_step:
-  description: "Standard builder/runtime step for discovering relevant LIBRARIES"
   contract_name: "discover-or-gap"
-  
-  purpose: |
-    Before a USE_CASE or WORKFLOW can leverage tenant-specific knowledge,
-    the system must discover which LIBRARIES are relevant and available.
-    If no relevant library exists, a gap report guides onboarding.
-  
   inputs:
     brief:
-      description: "Use case/workflow brief describing the task"
       required: true
     diagnostic_answers:
-      description: "Runtime context for scoping"
       required: true
-      fields:
-        - "runtime.org_id"
-        - "runtime.client_id (if applicable)"
-        - "domains/topics needed"
-        - "constraints"
-        - "intended outputs"
-  
+      fields: ["runtime.org_id", "runtime.client_id (if applicable)", "domains/topics needed", "constraints", "intended outputs"]
   process:
     1_manifest_scan:
-      description: "Scan LIBRARIES manifests/metadata limited to runtime org scope"
       scope: "org_id (+ client_id when applicable)"
       action: "Query library manifests within permitted scope"
       output: "List of potentially relevant libraries"
-      
     2_shortlist:
-      description: "Apply eligibility and shortlist candidate libraries"
-      criteria:
-        - "Scoping rules (org/client match)"
-        - "Effective allowlist membership"
-        - "Descriptor/tag relevance"
-        - "Owner/doc_type alignment"
+      criteria: ["Scoping rules (org/client match)", "Effective allowlist membership", "Descriptor/tag relevance", "Owner/doc_type alignment"]
       output: "Shortlisted library IDs"
-      
     3_probe_retrieval:
-      description: "Run lightweight probes against shortlisted libraries"
       method: "Quick queries to validate relevance/coverage"
-      metrics:
-        - "Top similarity scores"
-        - "Hit count above threshold"
-        - "Distinct source doc coverage"
+      metrics: ["Top similarity scores", "Hit count above threshold", "Distinct source doc coverage"]
       output: "Relevance assessment per library"
-      
     4_select_or_gap:
-      description: "Either select libraries OR produce gap report"
-      decision_rule: |
-        If probe retrieval shows relevant coverage --> Output A (selected)
-        If no eligible libraries OR probes fail minimum relevance --> Output B (gap)
-  
+      decision_rule: "If probe retrieval shows relevant coverage --> Output A; If no eligible libraries OR probes fail minimum relevance --> Output B"
   outputs:
     output_a_selected:
-      description: "Libraries selected for use"
       schema:
-        selected_library_ids:
-          type: "array"
-          items: "string"
-          description: "IDs of libraries to use"
-        rationale:
-          type: "string"
-          description: "Why selected; why others excluded"
+        selected_library_ids: { type: "array", items: "string" }
+        rationale: { type: "string" }
       quality_gate: "$ref: LOGIC_08_QUALITY_GATES#libraries_gates.discovery_gate"
-      
     output_b_gap:
-      description: "No relevant library found"
       schema:
-        library_gap_report:
-          type: "object"
-          reference: "$ref: LOGIC_08_QUALITY_GATES#library_gap_report_schema"
-        onboarding_recommendation:
-          type: "string"
-          description: "Guidance for what content to add"
+        library_gap_report: { type: "object", reference: "$ref: LOGIC_08_QUALITY_GATES#library_gap_report_schema" }
+        onboarding_recommendation: { type: "string" }
       action: "Surface gap to user, suggest onboarding"
-      
   no_relevant_library_conditions:
-    description: "When to conclude 'no relevant library' and output B"
-    
     condition_1_no_eligible:
-      trigger: "No eligible libraries exist after applying:"
-      checks:
-        - "org/client scoping rules"
-        - "effective allowlist resolution"
-        - "basic health/availability (index exists, retrievable, not disabled)"
-        
+      trigger: "No eligible libraries exist after scoping rules, allowlist resolution, health/availability checks"
     condition_2_probe_fails:
       trigger: "Eligible libraries exist but probe retrieval fails minimum relevance"
       thresholds:
-        score: "Top similarity/reranker scores below minimum"
+        score: "Top similarity scores below minimum"
         hits: "Too few results above threshold"
-        docs: "Insufficient distinct source docs/chunks for coverage"
-      note: "Thresholds are implementation-defined but consistent"
-      
+        docs: "Insufficient distinct source docs"
   integration:
     when_to_invoke: "During USE_CASE/WORKFLOW initialization when knowledge_from includes LIBRARIES"
-    fallback_behavior: "If gap, proceed with PACKS-only (global knowledge) but surface gap report"
+    fallback_behavior: "If gap, proceed with PACKS-only but surface gap report"
     trace_event: "library_discovery_completed"

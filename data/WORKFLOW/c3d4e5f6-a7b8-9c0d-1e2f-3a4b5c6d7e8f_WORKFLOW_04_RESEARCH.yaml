@@ -1,0 +1,227 @@
+# WORKFLOW_04_RESEARCH.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Structured research workflow for evidence gathering and analysis"
+  notes: "Can be triggered standalone or as sub-workflow from other workflows"
+  tags: [workflow, research, evidence, analysis]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: LOGIC_08_QUALITY_GATES"
+  - "$ref: OPS_17_EXPERTS"
+  - "$ref: CLIENT_02_EVIDENCE_VAULT_TEMPLATE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_04_RESEARCH"
+  name: "Research & Evidence Gathering"
+  purpose: "Conduct systematic research to gather and validate evidence for claims and content"
+  complexity: "medium"
+  automation_level: "semi_automated"
+  estimated_duration: "2-6 hours"
+
+  triggers:
+    - "Research request from other workflow"
+    - "Evidence gap identified"
+    - "Client evidence vault update needed"
+    - "Competitive analysis request"
+
+  roles_involved:
+    - "ROLE_04_RESEARCHER"
+    - "ROLE_01_STRATEGIST"
+
+  inputs:
+    required:
+      - { field: "research_questions", type: "array", description: "Specific questions to answer" }
+      - { field: "evidence_requirements", type: "object", description: "Minimum tier and freshness requirements" }
+    optional:
+      - { field: "client_context", type: "reference", description: "CLIENT layer if client-specific" }
+      - { field: "domain_focus", type: "array", description: "Specific domains to research" }
+      - { field: "source_preferences", type: "array", description: "Preferred source types" }
+
+  outputs:
+    - { field: "research_findings", type: "document", description: "Compiled research findings" }
+    - { field: "evidence_items", type: "array", description: "Validated evidence items with metadata" }
+    - { field: "source_evaluation", type: "document", description: "Source credibility assessments" }
+    - { field: "gaps_remaining", type: "array", description: "Unanswered questions" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Research Scoping"
+    objective: "Define research scope and approach"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Research questions provided"
+      - "Evidence requirements defined"
+    steps:
+      - step_id: "step_1"
+        action: "Analyze research questions"
+        actor: "agent"
+        outputs: ["question_analysis"]
+      - step_id: "step_2"
+        action: "Define search strategy"
+        actor: "agent"
+        outputs: ["search_strategy"]
+      - step_id: "step_3"
+        action: "Identify relevant source types"
+        actor: "agent"
+        reference: "$ref: OPS_17_EXPERTS"
+        outputs: ["source_targets"]
+      - step_id: "step_4"
+        action: "Check existing client evidence vault"
+        actor: "agent"
+        reference: "$ref: CLIENT_02_EVIDENCE_VAULT_TEMPLATE"
+        outputs: ["existing_evidence"]
+    exit_criteria:
+      - "Research scope defined"
+      - "Search strategy established"
+      - "Existing evidence identified"
+
+  - phase_id: "phase_2"
+    name: "Primary Research"
+    objective: "Conduct primary source research"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Search strategy defined"
+    steps:
+      - step_id: "step_1"
+        action: "Search tier_1 sources (primary research)"
+        actor: "agent"
+        outputs: ["tier_1_results"]
+      - step_id: "step_2"
+        action: "Search tier_2 sources (reputable secondary)"
+        actor: "agent"
+        outputs: ["tier_2_results"]
+      - step_id: "step_3"
+        action: "Search tier_3 sources (supporting context)"
+        actor: "agent"
+        outputs: ["tier_3_results"]
+      - step_id: "step_4"
+        action: "Compile raw research results"
+        actor: "agent"
+        outputs: ["raw_results"]
+    exit_criteria:
+      - "All source types searched"
+      - "Raw results compiled"
+      - "Coverage assessed"
+
+  - phase_id: "phase_3"
+    name: "Source Evaluation"
+    objective: "Evaluate source credibility and evidence quality"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Raw results available"
+    steps:
+      - step_id: "step_1"
+        action: "Assess source credibility per LOGIC_08"
+        actor: "agent"
+        reference: "$ref: LOGIC_08_QUALITY_GATES#source_reliability"
+        outputs: ["credibility_assessments"]
+      - step_id: "step_2"
+        action: "Validate evidence tier classification"
+        actor: "agent"
+        reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+        outputs: ["tier_validation"]
+      - step_id: "step_3"
+        action: "Check evidence freshness"
+        actor: "agent"
+        outputs: ["freshness_check"]
+      - step_id: "step_4"
+        action: "Flag conflicts or contradictions"
+        actor: "agent"
+        outputs: ["conflict_analysis"]
+    exit_criteria:
+      - "All sources evaluated"
+      - "Tiers assigned"
+      - "Conflicts identified"
+
+  - phase_id: "phase_4"
+    name: "Synthesis & Analysis"
+    objective: "Synthesize findings and answer research questions"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Evidence validated"
+    steps:
+      - step_id: "step_1"
+        action: "Synthesize evidence by research question"
+        actor: "agent"
+        outputs: ["synthesis_by_question"]
+      - step_id: "step_2"
+        action: "Identify patterns and insights"
+        actor: "agent"
+        outputs: ["insights"]
+      - step_id: "step_3"
+        action: "Document remaining gaps"
+        actor: "agent"
+        outputs: ["gaps_identified"]
+      - step_id: "step_4"
+        action: "Formulate evidence-backed conclusions"
+        actor: "agent"
+        outputs: ["conclusions"]
+    exit_criteria:
+      - "Research questions answered (where possible)"
+      - "Insights documented"
+      - "Gaps clearly identified"
+
+  - phase_id: "phase_5"
+    name: "Output Preparation"
+    objective: "Prepare research deliverables"
+    role: "ROLE_04_RESEARCHER"
+    hitl_checkpoint: false
+    entry_criteria:
+      - "Phase 4 complete"
+      - "Analysis complete"
+    steps:
+      - step_id: "step_1"
+        action: "Compile research findings document"
+        actor: "agent"
+        outputs: ["findings_document"]
+      - step_id: "step_2"
+        action: "Format evidence items per schema"
+        actor: "agent"
+        reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_item_schema"
+        outputs: ["formatted_evidence"]
+      - step_id: "step_3"
+        action: "Prepare source evaluation summary"
+        actor: "agent"
+        outputs: ["source_summary"]
+      - step_id: "step_4"
+        action: "Prepare delivery handoff"
+        actor: "agent"
+        outputs: ["delivery_handoff"]
+    exit_criteria:
+      - "All outputs prepared"
+      - "Evidence properly formatted"
+      - "Handoff ready"
+
+quality_gates:
+  entry:
+    - "Research questions clearly defined"
+    - "Evidence tier requirements specified"
+    - "Search resources accessible"
+  exit:
+    - "Research questions addressed"
+    - "Evidence meets tier requirements"
+    - "Source credibility documented"
+    - "Gaps clearly identified"
+
+sub_workflow_usage:
+  description: "This workflow can be invoked as sub-workflow from other workflows"
+  invocation_pattern:
+    from_workflow: "WORKFLOW_01 | WORKFLOW_02 | WORKFLOW_03"
+    trigger_condition: "evidence_gap_identified"
+    inputs_from_parent: ["research_questions", "evidence_requirements"]
+    outputs_to_parent: ["evidence_items", "gaps_remaining"]
+  state_handling: "Parent workflow pauses; research workflow completes; parent resumes with outputs"
+
+validation:
+  workflow_specific:
+    - "Evidence tier validation aligns with LOGIC_08"
+    - "Source evaluation uses OPS_17 expert sources"
+    - "Sub-workflow invocation pattern documented"

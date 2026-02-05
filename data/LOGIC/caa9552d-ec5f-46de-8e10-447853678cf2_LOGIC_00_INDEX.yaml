@@ -1,6 +1,4 @@
-# ══════════════════════════════════════════════════════════════════════════════
 # LOGIC_00_INDEX.yaml
-# ══════════════════════════════════════════════════════════════════════════════
 
 meta:
   owner: "AI Opener"
@@ -9,10 +7,6 @@ meta:
   purpose: "Boot sequence, file map, and auto-inheritance rules (SSOT)"
   notes: "v2.0 - RAC 2.0 architecture with 11-layer load order"
   tags: [logic, index, boot, ssot]
-
-# ══════════════════════════════════════════════════════════════════════════════
-# BOOT SEQUENCE
-# ══════════════════════════════════════════════════════════════════════════════
 
 boot_sequence:
   - CONFIG
@@ -27,27 +21,15 @@ boot_sequence:
   - ORG
   - CLIENT
 
-# ══════════════════════════════════════════════════════════════════════════════
-# AUTO-INHERITANCE RULES (SSOT)
-# ══════════════════════════════════════════════════════════════════════════════
-# These dependencies are automatically inherited by ALL layers.
-# Layers do NOT need to declare base_dependencies explicitly.
-# Only declare dependencies if OVERRIDING the base.
-
 auto_inheritance:
-  description: "All layers automatically inherit from LOGIC_02_RETRIEVAL#base_dependencies_template"
-  
   inherited_by_all:
     - "$ref: LOGIC_02_RETRIEVAL#base_dependencies_template"
-    
   layer_behavior:
     default: "auto-inherit base_dependencies"
     override: "Only declare base_dependencies if overriding specific values"
-    
   validation:
     check_explicit_declaration: false
     warn_on_redundant_declaration: true
-    
   what_is_inherited:
     - "override_rules"
     - "immutable_paths"
@@ -56,21 +38,13 @@ auto_inheritance:
     - "version_management"
     - "common_validation_checklist"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# LAYER FILE MAP
-# ══════════════════════════════════════════════════════════════════════════════
-
 layers:
   CONFIG:
-    files:
-      - "CONFIG_00_INSTANCE.yaml"
+    files: ["CONFIG_00_INSTANCE.yaml"]
     load_behavior: "always_first"
-    
   DEMO:
-    files:
-      - "DEMO_01_SESSION.yaml"
+    files: ["DEMO_01_SESSION.yaml"]
     load_behavior: "always_read, apply_only_if_demo_mode_true"
-    
   LOGIC:
     files:
       startup_critical:
@@ -94,32 +68,23 @@ layers:
         - "LOGIC_16_POLICY_CAPTURE.yaml"
         - "LOGIC_17_IMAGE_GENERATION.yaml"
         - "LOGIC_18_CASE_CAPTURE.yaml"
-        
   OPS:
-    files: null  # resolved at runtime
+    files: null
     base_required: "OPS_00_STANDARDS.yaml"
-    
   ROLES:
-    files: null  # resolved at runtime
-    base_required:
-      - "ROLE_00_BASE_TEMPLATE.yaml"
-      - "ROLE_01_ORCHESTRATOR.yaml"
-      
+    files: null
+    base_required: ["ROLE_00_BASE_TEMPLATE.yaml", "ROLE_01_ORCHESTRATOR.yaml"]
   PACKS:
-    files: null  # resolved at runtime
-    
+    files: null
   LIBRARIES:
-    files: null  # resolved at runtime
+    files: null
     load_behavior: "scope-filtered by org_id/client_id"
-    
   USE_CASES:
-    files: null  # resolved at runtime
+    files: null
     base_required: "USE_CASE_00_BASE_TEMPLATE.yaml"
-    
   WORKFLOWS:
-    files: null  # resolved at runtime
+    files: null
     base_required: "WORKFLOW_00_BASE_TEMPLATE.yaml"
-    
   ORG:
     files:
       - "ORG_01_FOUNDATION.yaml"
@@ -133,15 +98,9 @@ layers:
       - "ORG_09_MEASUREMENT_SYSTEM.yaml"
       - "ORG_10_MARKET_LOCALIZATION.yaml"
     load_behavior: "always"
-    
   CLIENT:
     files: "[dynamic - one per client]"
     pattern: "CLIENT_{client_id}.yaml"
 
-# ══════════════════════════════════════════════════════════════════════════════
-# OVERRIDE STRATEGY
-# ══════════════════════════════════════════════════════════════════════════════
-
 override_strategy: "last-wins"
-
 override_reference: "$ref: LOGIC_02_RETRIEVAL#override_rules"

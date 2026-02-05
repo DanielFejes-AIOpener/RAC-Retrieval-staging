@@ -1,0 +1,234 @@
+# WORKFLOW_01_BRIEF_ANALYSIS.yaml
+
+meta:
+  owner: "AI Opener"
+  version: "2.0.0"
+  last_updated: "2025-01-15"
+  purpose: "Workflow for analyzing client briefs and producing strategy recommendations"
+  notes: "Entry point for most client engagements"
+  tags: [workflow, brief, analysis, strategy]
+
+extends: "WORKFLOW_00_BASE"
+requires:
+  - "$ref: LOGIC_04_ROLE_DEFINITIONS"
+  - "$ref: OPS_08_BRIEF_TEMPLATES"
+  - "$ref: CLIENT_00_TEMPLATE"
+
+workflow_definition:
+  workflow_id: "WORKFLOW_01_BRIEF_ANALYSIS"
+  name: "Brief Analysis"
+  purpose: "Analyze client brief, extract requirements, develop strategic recommendations"
+  complexity: "medium"
+  automation_level: "semi_automated"
+  estimated_duration: "2-4 hours"
+
+  triggers:
+    - "New brief received from client"
+    - "Request for strategic recommendations"
+    - "Campaign initiation request"
+
+  roles_involved:
+    - "ROLE_01_STRATEGIST"
+    - "ROLE_04_RESEARCHER"
+
+  inputs:
+    required:
+      - { field: "brief_document", type: "file | text", description: "Client's brief document" }
+      - { field: "client_context", type: "reference", description: "Reference to CLIENT layer files" }
+    optional:
+      - { field: "previous_work", type: "array", description: "References to previous related work" }
+      - { field: "constraints", type: "object", description: "Known constraints (budget, timeline, etc.)" }
+
+  outputs:
+    - { field: "brief_analysis", type: "document", description: "Structured analysis of brief" }
+    - { field: "strategic_recommendations", type: "document", description: "Recommended approach" }
+    - { field: "clarification_questions", type: "array", description: "Questions requiring client input" }
+    - { field: "resource_estimate", type: "object", description: "Estimated resources needed" }
+
+phases:
+  - phase_id: "phase_1"
+    name: "Brief Intake & Validation"
+    objective: "Receive and validate brief completeness"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Valid intake handoff received (OPS_18)"
+      - "Brief document accessible"
+      - "Client context available"
+    steps:
+      - step_id: "step_1"
+        action: "Validate intake handoff structure"
+        actor: "system"
+        validation: "OPS_18 schema compliance"
+      - step_id: "step_2"
+        action: "Load client context (brand voice, personas, evidence vault)"
+        actor: "agent"
+        tool: "context_retrieval"
+        outputs: ["client_context_loaded"]
+      - step_id: "step_3"
+        action: "Parse brief document and extract key elements"
+        actor: "agent"
+        outputs: ["brief_elements"]
+      - step_id: "step_4"
+        action: "Check brief completeness against OPS_08 requirements"
+        actor: "agent"
+        reference: "$ref: OPS_08_BRIEF_TEMPLATES"
+        outputs: ["completeness_assessment", "missing_elements"]
+    exit_criteria:
+      - "Brief parsed successfully"
+      - "Completeness assessment complete"
+      - "Client context loaded"
+
+  - phase_id: "phase_2"
+    name: "Requirements Extraction"
+    objective: "Extract and structure all requirements from brief"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 1 complete"
+      - "Brief elements available"
+    steps:
+      - step_id: "step_1"
+        action: "Identify explicit requirements from brief"
+        actor: "agent"
+        outputs: ["explicit_requirements"]
+      - step_id: "step_2"
+        action: "Infer implicit requirements from context and client history"
+        actor: "agent"
+        outputs: ["implicit_requirements"]
+      - step_id: "step_3"
+        action: "Map requirements to client personas and objectives"
+        actor: "agent"
+        reference: "$ref: CLIENT_04_PERSONAS_TEMPLATE"
+        outputs: ["persona_mapping"]
+      - step_id: "step_4"
+        action: "Identify constraints and dependencies"
+        actor: "agent"
+        outputs: ["constraints_list"]
+      - step_id: "step_5"
+        action: "Generate clarification questions for gaps"
+        actor: "agent"
+        outputs: ["clarification_questions"]
+    exit_criteria:
+      - "All requirements documented"
+      - "Constraints identified"
+      - "Clarification questions prepared"
+
+  - phase_id: "phase_3"
+    name: "Research & Context Gathering"
+    objective: "Gather supporting evidence and market context"
+    role: "ROLE_04_RESEARCHER"
+    entry_criteria:
+      - "Phase 2 complete"
+      - "Requirements available"
+    steps:
+      - step_id: "step_1"
+        action: "Search client evidence vault for relevant data"
+        actor: "agent"
+        reference: "$ref: CLIENT_02_EVIDENCE_VAULT_TEMPLATE"
+        outputs: ["client_evidence"]
+      - step_id: "step_2"
+        action: "Identify gaps requiring external research"
+        actor: "agent"
+        outputs: ["research_gaps"]
+      - step_id: "step_3"
+        action: "Conduct targeted research to fill gaps"
+        actor: "agent"
+        tool: "research_tools"
+        reference: "$ref: OPS_17_EXPERTS"
+        outputs: ["external_evidence"]
+      - step_id: "step_4"
+        action: "Validate evidence quality against LOGIC_08"
+        actor: "agent"
+        reference: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
+        outputs: ["validated_evidence"]
+    exit_criteria:
+      - "Relevant evidence gathered"
+      - "Evidence meets quality thresholds"
+      - "Research gaps addressed or documented"
+
+  - phase_id: "phase_4"
+    name: "Strategic Analysis"
+    objective: "Analyze brief and develop strategic recommendations"
+    role: "ROLE_01_STRATEGIST"
+    entry_criteria:
+      - "Phase 3 complete"
+      - "Evidence available"
+    steps:
+      - step_id: "step_1"
+        action: "Analyze competitive landscape and positioning opportunities"
+        actor: "agent"
+        outputs: ["competitive_analysis"]
+      - step_id: "step_2"
+        action: "Develop strategic options with pros/cons"
+        actor: "agent"
+        outputs: ["strategic_options"]
+      - step_id: "step_3"
+        action: "Select recommended approach with rationale"
+        actor: "agent"
+        outputs: ["recommended_approach"]
+      - step_id: "step_4"
+        action: "Estimate resource requirements"
+        actor: "agent"
+        outputs: ["resource_estimate"]
+    exit_criteria:
+      - "Strategic options developed"
+      - "Recommendation justified"
+      - "Resource estimate provided"
+
+  - phase_id: "phase_5"
+    name: "Output Preparation & Review"
+    objective: "Prepare deliverables and obtain approval"
+    role: "ROLE_01_STRATEGIST"
+    hitl_checkpoint: true
+    entry_criteria:
+      - "Phase 4 complete"
+      - "All analysis complete"
+    steps:
+      - step_id: "step_1"
+        action: "Compile brief analysis document"
+        actor: "agent"
+        outputs: ["brief_analysis_document"]
+      - step_id: "step_2"
+        action: "Compile strategic recommendations document"
+        actor: "agent"
+        outputs: ["recommendations_document"]
+      - step_id: "step_3"
+        action: "Run quality checklist"
+        actor: "agent"
+        reference: "$ref: OPS_15_REVIEW_CHECKLISTS#brief_to_concept_dod"
+        outputs: ["quality_checklist_result"]
+      - step_id: "step_4"
+        action: "Prepare delivery handoff"
+        actor: "agent"
+        reference: "$ref: OPS_19_HANDOFF_DELIVERY"
+        outputs: ["delivery_handoff"]
+    checkpoint_config:
+      checkpoint_id: "chkpt_brief_final"
+      trigger: "phase_exit"
+      approval_required_from: "strategy_lead | account_director"
+      approval_options: ["approve", "approve_with_comments", "request_revision"]
+      timeout_hours: 24
+    exit_criteria:
+      - "Deliverables complete"
+      - "Quality checklist passed"
+      - "HITL approval obtained"
+      - "Delivery handoff prepared"
+
+quality_gates:
+  entry:
+    - "Valid OPS_18 intake handoff"
+    - "Brief document readable"
+    - "Client context files accessible"
+  exit:
+    - "Brief analysis complete"
+    - "Strategic recommendations documented"
+    - "Evidence citations valid per LOGIC_08"
+    - "Quality checklist passed"
+    - "HITL approval obtained"
+    - "OPS_19 delivery handoff valid"
+
+validation:
+  workflow_specific:
+    - "All phases have entry and exit criteria"
+    - "HITL checkpoint configured for final phase"
+    - "References to OPS_08, OPS_15, OPS_18, OPS_19 are valid"
+    - "Role references match LOGIC_04 definitions"

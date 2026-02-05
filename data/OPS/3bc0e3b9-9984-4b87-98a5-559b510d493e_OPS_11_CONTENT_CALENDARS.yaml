@@ -1,9 +1,4 @@
-# ================================================================
-# OPS_11_CONTENT_CALENDARS
-# ================================================================
-# SSOT: 03_OPS_LAYER_BLUEPRINT.md
-# Purpose: Calendar planning patterns and scheduling templates
-# ================================================================
+# OPS_11_CONTENT_CALENDARS.yaml
 
 meta:
   owner: "AI Opener"
@@ -14,261 +9,105 @@ meta:
   tags: [ops, planning, calendar, scheduling, editorial]
 
 extends: "OPS_00_STANDARDS"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# OPS-SPECIFIC REFERENCES
-# ═══════════════════════════════════════════════════════════════════════════
-
 quality_gates: "$ref: LOGIC_08_QUALITY_GATES#universal_gates"
 evidence_tiers: "$ref: LOGIC_08_QUALITY_GATES#evidence_tiers"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# CALENDAR STRUCTURES
-# ═══════════════════════════════════════════════════════════════════════════
-
 calendar_structures:
-  description: "Reusable calendar structure patterns for content planning"
-  
   monthly_editorial:
     name: "Monthly Editorial Calendar"
     purpose: "Plan and track content across a calendar month"
     fields:
       required:
-        - field: "date"
-          type: "date"
-          format: "YYYY-MM-DD"
-        - field: "content_type"
-          type: "enum"
-          values: ["blog", "social", "email", "video", "webinar", "whitepaper", "case_study", "other"]
-        - field: "channel"
-          type: "string"
-          reference: "OPS_10_CHANNEL_GUIDELINES"
-        - field: "status"
-          type: "enum"
-          values: ["planned", "in_progress", "review", "approved", "published", "archived"]
-        - field: "owner"
-          type: "string"
+        - { field: "date", type: "date", format: "YYYY-MM-DD" }
+        - { field: "content_type", type: "enum", values: ["blog", "social", "email", "video", "webinar", "whitepaper", "case_study", "other"] }
+        - { field: "channel", type: "string", reference: "OPS_10_CHANNEL_GUIDELINES" }
+        - { field: "status", type: "enum", values: ["planned", "in_progress", "review", "approved", "published", "archived"] }
+        - { field: "owner", type: "string" }
       optional:
-        - field: "topic"
-          type: "string"
-        - field: "campaign"
-          type: "string"
-        - field: "target_audience"
-          type: "string"
-        - field: "notes"
-          type: "string"
-        - field: "dependencies"
-          type: "array"
-          
+        - { field: "topic", type: "string" }
+        - { field: "campaign", type: "string" }
+        - { field: "target_audience", type: "string" }
+        - { field: "notes", type: "string" }
+        - { field: "dependencies", type: "array" }
+
   campaign_calendar:
     name: "Campaign Calendar"
     purpose: "Plan content phases within a campaign lifecycle"
     fields:
       required:
-        - field: "phase"
-          type: "enum"
-          values: ["awareness", "consideration", "conversion", "retention"]
-        - field: "week"
-          type: "integer"
-          description: "Week number within campaign"
-        - field: "content_pieces"
-          type: "array"
-          items:
-            - "content_type"
-            - "channel"
-            - "key_message"
-        - field: "kpi_targets"
-          type: "object"
-          reference: "OPS_00_STANDARDS#kpi_framework"
+        - { field: "phase", type: "enum", values: ["awareness", "consideration", "conversion", "retention"] }
+        - { field: "week", type: "integer", description: "Week number within campaign" }
+        - { field: "content_pieces", type: "array", items: ["content_type", "channel", "key_message"] }
+        - { field: "kpi_targets", type: "object", reference: "OPS_00_STANDARDS#kpi_framework" }
       optional:
-        - field: "budget_allocation"
-          type: "number"
-        - field: "a_b_tests"
-          type: "array"
-          
+        - { field: "budget_allocation", type: "number" }
+        - { field: "a_b_tests", type: "array" }
+
   always_on_calendar:
     name: "Always-On Content Rotation"
     purpose: "Evergreen content scheduling patterns"
     structure:
       rotation_types:
-        - type: "pillar_content"
-          frequency: "monthly"
-          description: "Major cornerstone pieces"
-        - type: "supporting_content"
-          frequency: "weekly"
-          description: "Blog posts, articles supporting pillars"
-        - type: "social_amplification"
-          frequency: "daily"
-          description: "Social posts promoting content"
-        - type: "engagement_content"
-          frequency: "2-3x_weekly"
-          description: "Community engagement, responses"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CADENCE PATTERNS
-# ═══════════════════════════════════════════════════════════════════════════
+        - { type: "pillar_content", frequency: "monthly", description: "Major cornerstone pieces" }
+        - { type: "supporting_content", frequency: "weekly", description: "Blog posts, articles supporting pillars" }
+        - { type: "social_amplification", frequency: "daily", description: "Social posts promoting content" }
+        - { type: "engagement_content", frequency: "2-3x_weekly", description: "Community engagement, responses" }
 
 cadence_patterns:
-  description: "Recommended publishing frequencies by channel and content type"
-  
   by_channel:
-    linkedin:
-      minimum: "1x per week"
-      optimal: "3-5x per week"
-      peak_times:
-        - "Tuesday-Thursday, 8-10 AM local"
-        - "Tuesday-Thursday, 12-1 PM local"
-      notes: "Avoid weekends for B2B"
-      
-    twitter_x:
-      minimum: "3x per week"
-      optimal: "1-3x per day"
-      peak_times:
-        - "Weekdays, 9 AM - 3 PM local"
-      notes: "Higher frequency acceptable due to feed velocity"
-      
-    blog:
-      minimum: "2x per month"
-      optimal: "1x per week"
-      notes: "Consistency more important than frequency"
-      
-    email_newsletter:
-      minimum: "1x per month"
-      optimal: "bi-weekly to weekly"
-      notes: "Frequency depends on subscriber preferences"
-      
-    video:
-      minimum: "1x per month"
-      optimal: "bi-weekly"
-      notes: "Quality over quantity"
-      
+    linkedin: { minimum: "1x per week", optimal: "3-5x per week", peak_times: ["Tuesday-Thursday, 8-10 AM local", "Tuesday-Thursday, 12-1 PM local"], notes: "Avoid weekends for B2B" }
+    twitter_x: { minimum: "3x per week", optimal: "1-3x per day", peak_times: ["Weekdays, 9 AM - 3 PM local"], notes: "Higher frequency acceptable due to feed velocity" }
+    blog: { minimum: "2x per month", optimal: "1x per week", notes: "Consistency more important than frequency" }
+    email_newsletter: { minimum: "1x per month", optimal: "bi-weekly to weekly", notes: "Frequency depends on subscriber preferences" }
+    video: { minimum: "1x per month", optimal: "bi-weekly", notes: "Quality over quantity" }
   by_campaign_type:
-    launch_campaign:
-      pre_launch: "2-4 weeks of teaser content"
-      launch_week: "Daily multi-channel push"
-      post_launch: "Sustain 2-4 weeks, then taper"
-      
-    nurture_campaign:
-      frequency: "Weekly touchpoints"
-      duration: "4-12 weeks typical"
-      variety: "Rotate content types to maintain engagement"
-      
-    event_campaign:
-      pre_event: "4-6 weeks buildup"
-      event_week: "Daily content"
-      post_event: "2 weeks follow-up content"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# SCHEDULING RULES
-# ═══════════════════════════════════════════════════════════════════════════
+    launch_campaign: { pre_launch: "2-4 weeks of teaser content", launch_week: "Daily multi-channel push", post_launch: "Sustain 2-4 weeks, then taper" }
+    nurture_campaign: { frequency: "Weekly touchpoints", duration: "4-12 weeks typical", variety: "Rotate content types to maintain engagement" }
+    event_campaign: { pre_event: "4-6 weeks buildup", event_week: "Daily content", post_event: "2 weeks follow-up content" }
 
 scheduling_rules:
-  description: "Rules for coordinating content across channels and campaigns"
-  
   cross_channel_coordination:
     timing_tolerance: "±15 minutes for synchronized launches"
-    sequencing:
-      - "Email first (owned audience)"
-      - "Social within 30 minutes"
-      - "Paid amplification 1-2 hours after organic"
+    sequencing: ["Email first (owned audience)", "Social within 30 minutes", "Paid amplification 1-2 hours after organic"]
     conflict_resolution: "Campaign content takes priority over always-on"
-    
   seasonality:
-    considerations:
-      - "Industry events and trade shows"
-      - "Holiday periods (reduced engagement)"
-      - "Budget cycles (Q4 planning, Q1 budget releases)"
-      - "Sector-specific patterns (retail Q4, B2B January resets)"
-    blackout_periods:
-      - "Major holidays (Christmas week, national holidays)"
-      - "Client-specific blackouts (earnings, M&A)"
-      
+    considerations: ["Industry events and trade shows", "Holiday periods (reduced engagement)", "Budget cycles (Q4 planning, Q1 budget releases)", "Sector-specific patterns (retail Q4, B2B January resets)"]
+    blackout_periods: ["Major holidays (Christmas week, national holidays)", "Client-specific blackouts (earnings, M&A)"]
   resource_allocation:
-    lead_time_guidelines:
-      blog_post: "5-7 business days"
-      social_post: "1-2 business days"
-      video: "2-4 weeks"
-      whitepaper: "4-6 weeks"
-      webinar: "6-8 weeks"
+    lead_time_guidelines: { blog_post: "5-7 business days", social_post: "1-2 business days", video: "2-4 weeks", whitepaper: "4-6 weeks", webinar: "6-8 weeks" }
     review_buffer: "Add 2-3 days for approval cycles"
 
-# ═══════════════════════════════════════════════════════════════════════════
-# AUTOMATED CALENDAR PATTERNS
-# ═══════════════════════════════════════════════════════════════════════════
-
 automated_patterns:
-  description: "Patterns for automated or semi-automated content scheduling"
-  
   trendwatcher_sequence:
     name: "Daily Trend Monitoring Calendar"
     pattern:
-      - time: "07:00"
-        action: "Scan trend sources"
-      - time: "09:00"
-        action: "Curate top items"
-      - time: "10:00"
-        action: "Draft trend summary"
-      - time: "14:00"
-        action: "Review and approve"
-      - time: "15:00"
-        action: "Publish/distribute"
+      - { time: "07:00", action: "Scan trend sources" }
+      - { time: "09:00", action: "Curate top items" }
+      - { time: "10:00", action: "Draft trend summary" }
+      - { time: "14:00", action: "Review and approve" }
+      - { time: "15:00", action: "Publish/distribute" }
     frequency: "Daily on business days"
-    
   content_recycling:
     name: "Evergreen Content Recycling"
-    rules:
-      - "Re-share top performers after 90+ days"
-      - "Update stats/evidence before resharing"
-      - "Vary format (text --> carousel --> video)"
-      - "Maximum 3 reshares per piece per year"
-
-# ═══════════════════════════════════════════════════════════════════════════
-# CALENDAR TEMPLATES
-# ═══════════════════════════════════════════════════════════════════════════
+    rules: ["Re-share top performers after 90+ days", "Update stats/evidence before resharing", "Vary format (text --> carousel --> video)", "Maximum 3 reshares per piece per year"]
 
 templates:
   weekly_planning_template:
     name: "Weekly Content Planning Template"
     sections:
-      - section: "This Week's Content"
-        fields: ["date", "content_type", "channel", "topic", "owner", "status"]
-      - section: "In Progress"
-        fields: ["content_piece", "due_date", "blockers", "next_action"]
-      - section: "Pipeline (Next 2 Weeks)"
-        fields: ["tentative_date", "content_type", "topic", "assigned"]
-      - section: "Performance Review"
-        fields: ["last_week_highlights", "metrics_vs_targets", "learnings"]
-        
+      - { section: "This Week's Content", fields: ["date", "content_type", "channel", "topic", "owner", "status"] }
+      - { section: "In Progress", fields: ["content_piece", "due_date", "blockers", "next_action"] }
+      - { section: "Pipeline (Next 2 Weeks)", fields: ["tentative_date", "content_type", "topic", "assigned"] }
+      - { section: "Performance Review", fields: ["last_week_highlights", "metrics_vs_targets", "learnings"] }
   quarterly_planning_template:
     name: "Quarterly Content Planning Template"
     sections:
-      - section: "Quarter Objectives"
-        fields: ["business_goals", "content_goals", "key_campaigns"]
-      - section: "Monthly Breakdown"
-        fields: ["month", "themes", "major_content", "events"]
-      - section: "Resource Plan"
-        fields: ["capacity", "external_support", "budget"]
-      - section: "Success Metrics"
-        fields: ["kpis", "targets", "measurement_plan"]
-
-# ═══════════════════════════════════════════════════════════════════════════
-# VALIDATION
-# ═══════════════════════════════════════════════════════════════════════════
+      - { section: "Quarter Objectives", fields: ["business_goals", "content_goals", "key_campaigns"] }
+      - { section: "Monthly Breakdown", fields: ["month", "themes", "major_content", "events"] }
+      - { section: "Resource Plan", fields: ["capacity", "external_support", "budget"] }
+      - { section: "Success Metrics", fields: ["kpis", "targets", "measurement_plan"] }
 
 validation:
-  structural:
-    - "meta section complete with all required fields"
-    - "All $ref paths resolve to valid targets"
-    - "Extends OPS_00_STANDARDS"
-    - "Tags from LOGIC_03_TAXONOMY only"
-    
-  content:
-    - "Calendar fields are tool-agnostic"
-    - "No client-specific content or schedules"
-    - "Cadence patterns include rationale"
-    - "Templates include all required metadata fields"
-    
-  on_validation_failure:
-    severity: "error"
-    action: "Block file activation"
-    reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.ops"
+  structural: ["meta section complete with all required fields", "All $ref paths resolve to valid targets", "Extends OPS_00_STANDARDS", "Tags from LOGIC_03_TAXONOMY only"]
+  content: ["Calendar fields are tool-agnostic", "No client-specific content or schedules", "Cadence patterns include rationale", "Templates include all required metadata fields"]
+  on_validation_failure: { severity: "error", action: "Block file activation", reference: "$ref: LOGIC_02_RETRIEVAL#layer_degradation_templates.ops" }
